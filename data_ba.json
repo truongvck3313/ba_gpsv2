@@ -1,38 +1,14 @@
 {
   "login": {
-    "quenmatkhau_tendangnhap": "truongvck33",
-    "quenmatkhau_dienthoaisai": "0359667666",
+    "ghinhodangnhap_user1": "truongtq@bagroup.vn",
+    "ghinhodangnhap_password1": "atgmj123",
     "quenmatkhau_tendangnhap1": "truongtq@bagroup.vn",
-    "quenmatkhau_dienthoaidung1": "0359667694",
-    "quenmatkhau_tendangnhap_nhanOTP": "truongk1dlls",
-    "quenmatkhau_dienthoai_nhanOTP": "0835210360",
-    "user": "truongvck33",
-    "password": "atgmj123",
-    "user_thatbai1": "truongtest1",
-    "user_thatbai2": "nhienlieubay",
-    "user_thatbai3": "vuonglam123",
     "quenmatkhau_dienthoaidung": "0359667694"
   },
   "giamsat": {
     "timkiem_diem": "CT Binh Anh -NCD",
     "timkiem_toado": "21.00858, 105.880454",
     "cauhinhhienthi_dorong": "651",
-    "timkiem_toado1": "20.991635, 105.855516",
-    "timkiem_toado2": "20.97587, 105.835726",
-    "timkiem_toado3": "20.728746, 105.949487",
-    "timkiem_toado4": "21.002708, 105.865113",
-    "taodiem_bankinh": "20",
-    "taodiem_tendiem": "Trường tạo điểm để test",
-    "taodiem_tenrieng": "Trường tạo tên riêng",
-    "mqh_name": "Ngọc Mai",
-    "bietdanh": "Viwant",
-    "songtai_dulieusai": "Đình Lập 1",
-    "dentu_dulieusai": "Đình Lập 2",
-    "sodienthoai_dai": "0835210360832",
-    "sodienthoai_ngan": "08",
-    "sodienthoai_trung": "0835210361",
-    "sodienthoai2": "0359667564",
-    "bietdanh_dai": "đây là biệt danh quá dài aaaaaaaaaaaawww",
     "bietdanh2": "Ohhh Noo"
   }
 }

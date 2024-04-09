@@ -20,7 +20,8 @@ def timerun():
         print("Thời gian chạy tool:", var.timerun)
         if var.timerun == time.strftime("%H:%M", time.localtime()):
             break
-
+        if var.timerun == "":
+            break
 
 
 def modetest():
