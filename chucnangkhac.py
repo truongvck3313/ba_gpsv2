@@ -89,6 +89,9 @@ def writeData(file,sheetName,caseid,columnno,data):
 
 
 def notification_telegram():
+    # from DrissionPage import *
+    from DrissionPage import ChromiumPage
+    driver2 = ChromiumPage()
     wordbook = openpyxl.load_workbook(var.checklistpath)
     sheet = wordbook.get_sheet_by_name("Checklist")
     case_pass = 0
@@ -105,36 +108,36 @@ def notification_telegram():
     print("số lượng case Pass", case_pass)
     print("số lượng case Fail", case_fail)
     if case_fail >= 1:
-        var.driver2.get("https://web.telegram.org/a/")
+        driver2.get("https://web.telegram.org/a/")
         time.sleep(2)
         case_pass = str(case_pass)
         case_fail = str(case_fail)
-        var.driver2.ele(var.hopthoai).click()
+        driver2.ele(var.hopthoai).click()
         time.sleep(0.5)
         time_string = time.strftime("%m/%d/%Y, %H:%M", time.localtime())
         time_string = str(time_string)
-        var.driver2.ele(var.hopthoai_input).input("- DateTest : "+time_string+
+        driver2.ele(var.hopthoai_input).input("- DateTest : "+time_string+
                                                   "\n- LinkTest: " + var.linktest+
                                                   "\n- ModeTest: " + var.modetest+
                                                   "\n- Số case Pass: " + case_pass+
                                                   "\n- Số case False: "+ case_fail)
-        var.driver2.ele(var.hopthoai_input).input(Keys.ENTER)
+        driver2.ele(var.hopthoai_input).input(Keys.ENTER)
         time.sleep(1)
-        var.driver2.ele(var.hopthoai_iconlink).click()
+        driver2.ele(var.hopthoai_iconlink).click()
         time.sleep(1)
-        var.driver2.ele(var.hopthoai_iconlink_file).click()
+        driver2.ele(var.hopthoai_iconlink_file).click()
         time.sleep(1)
         subprocess.Popen(var.uploadpath+"checklist_bagps.exe")
         time.sleep(1)
-        var.driver2.ele(var.hopthoai_send).click()
+        driver2.ele(var.hopthoai_send).click()
         time.sleep(2)
-        var.driver2.ele(var.hopthoai_iconlink).click()
+        driver2.ele(var.hopthoai_iconlink).click()
         time.sleep(1)
-        var.driver2.ele(var.hopthoai_iconlink_file).click()
+        driver2.ele(var.hopthoai_iconlink_file).click()
         time.sleep(1)
         subprocess.Popen(var.uploadpath+"ba_log.exe")
         time.sleep(1)
-        var.driver2.ele(var.hopthoai_send).click()
+        driver2.ele(var.hopthoai_send).click()
         time.sleep(1)
 
 

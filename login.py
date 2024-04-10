@@ -35,7 +35,7 @@ logging.basicConfig(handlers=[logging.FileHandler(filename= var.logpath,
 
 class login:
     def login_v2(self, user, password):
-        var.driver.implicitly_wait(5)
+        var.driver.implicitly_wait(10)
         var.driver.maximize_window()
         var.driver.get(var.linktest)
         time.sleep(2)
@@ -44,6 +44,7 @@ class login:
         var.driver.find_element(By.XPATH, var.login_ghinhodangnhap).click()
         var.driver.find_element(By.XPATH, var.dangnhap).click()
         time.sleep(2.5)
+        var.driver.find_element(By.XPATH, var.iconngonngu_tienganh)
 
 
     def login_v2_tkkhachhangcoquyengiamsat(self, user, password, ma, tensukien):

@@ -4,6 +4,8 @@ import var
 import time
 import unittest
 import mucdo
+import giamsat
+
 
 
 # chucnangkhac.timerun()
@@ -22,12 +24,20 @@ class Test(unittest.TestCase):
         chucnangkhac.delete_image()
         # mucdo.mucdo1(self)
         # mucdo.mucdo2(self)
-        mucdo.mucdo3(self)
+        # mucdo.mucdo3(self)
         # mucdo.mucdo4(self)
         # mucdo.chaytatca(self)
-        chucnangkhac.notification_telegram()
+        # chucnangkhac.notification_telegram()
 
-
+        login.login.login_v2(self, "viconshipdanang1", "12341234")
+        # # giamsat.danhsachxe.timkiem(self)
+        # # giamsat.danhsachxe.nhomxe(self)
+        # giamsat.danhsachxe.trangthai(self)
+        # giamsat.danhsachxe.icon_khac(self)
+        # giamsat.danhsachxe.chuotphaixe_xemlailotrinh(self)
+        # giamsat.danhsachxe.chuotphaixe_xemlotrinhnhieuxe(self)
+        # giamsat.danhsachxe.chuotphaixe_gannhomxedacbiet(self)
+        giamsat.danhsachxe.chuotphaixe_anxe(self)
 
 
 
