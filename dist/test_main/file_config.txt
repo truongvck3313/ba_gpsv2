@@ -1,0 +1,10 @@
+- ModeTest: "2"
+- LinkTest: "https://gps.binhanh.vn"
+- TimeRun: ""
+- LogPath: "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/ba.log"
+- CheckListPath: "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/GPS_ChecklistForAutoTest.xlsx"
+- ImagePath: "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/anhchup/"
+- DataTestPath: "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/data_ba.json"
+- UploadPath: "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/file/"
+
+
