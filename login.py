@@ -43,8 +43,8 @@ class login:
         var.driver.find_element(By.XPATH, var.login_password).send_keys(password)
         var.driver.find_element(By.XPATH, var.login_ghinhodangnhap).click()
         var.driver.find_element(By.XPATH, var.dangnhap).click()
-        time.sleep(2.5)
-        var.driver.find_element(By.XPATH, var.iconngonngu_tienganh)
+        time.sleep(10)
+        # var.driver.find_element(By.XPATH, var.iconngonngu_tienganh)
 
 
     def login_v2_tkkhachhangcoquyengiamsat(self, user, password, ma, tensukien):

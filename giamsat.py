@@ -3,25 +3,29 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 import var
 import time
-import openpyxl
 import json
+from retry import retry
+# import retry
 from selenium.webdriver.common.by import By
 import chucnangkhac
 import login
+from seleniumwire.utils import decode as sw_decode
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+import mouse
+
+
 
 
 file_name = var.datatestpath
 with open(file_name, 'r', encoding='utf-8') as f:
     data = json.load(f, strict=False)
 
-logging.basicConfig(handlers=[logging.FileHandler(filename= var.logpath,
-                                                 encoding='utf-8', mode='w')], #mode='a+'
+logging.basicConfig(handlers=[logging.FileHandler(filename=var.logpath,
+                                                  encoding='utf-8', mode='w')],  # mode='a+'
                     format="%(asctime)s %(name)s:%(levelname)s:%(message)s",
                     datefmt="%F %A %T",
                     level=logging.INFO)
-
-
-
 
 
 class danhsachxe:
@@ -30,8 +34,8 @@ class danhsachxe:
         # var.driver.find_element(By.XPATH, var.menu_giamsat).click()
         time.sleep(1)
         tenphuongtien = var.driver.find_element(By.XPATH, var.danhsachxe_tenphuongtien).text
-        #Tim xe
-        var.driver.find_element(By.XPATH, var.timkiem_icon).click()
+        # Tim xe
+        var.driver.find_element(By.XPATH, var.timkiem_icon2).click()
         time.sleep(0.5)
         var.driver.find_element(By.XPATH, var.timkiem_icon_timxe).click()
         time.sleep(0.5)
@@ -39,8 +43,8 @@ class danhsachxe:
         var.driver.find_element(By.XPATH, var.timkiem_iconsearch).click()
         time.sleep(1.5)
 
-        #Tìm địa chỉ
-        var.driver.find_element(By.XPATH, var.timkiem_icon).click()
+        # Tìm địa chỉ
+        var.driver.find_element(By.XPATH, var.timkiem_icon2).click()
         time.sleep(0.5)
         var.driver.find_element(By.XPATH, var.timkiem_icon_timdiachi).click()
         time.sleep(2)
@@ -59,8 +63,8 @@ class danhsachxe:
                 var.driver.close()
         var.driver.switch_to_window(tab_0)
 
-        #Tên điểm
-        var.driver.find_element(By.XPATH, var.timkiem_icon).click()
+        # Tên điểm
+        var.driver.find_element(By.XPATH, var.timkiem_icon2).click()
         time.sleep(0.5)
         var.driver.find_element(By.XPATH, var.timkiem_icon_tendiem).click()
         time.sleep(1)
@@ -72,7 +76,7 @@ class danhsachxe:
         var.driver.find_element(By.XPATH, var.timkiem_iconsearch).click()
         time.sleep(1.5)
 
-        #Tìm tọa độ
+        # Tìm tọa độ
         var.driver.find_element(By.XPATH, var.timkiem_icon1).click()
         time.sleep(0.5)
         var.driver.find_element(By.XPATH, var.timkiem_icon_timtoado).click()
@@ -84,28 +88,77 @@ class danhsachxe:
 
     def nhomxe(self):
         var.driver.implicitly_wait(10)
-        #Chọn nhóm xe 1
+        # Chọn nhóm xe 1
         var.driver.find_element(By.XPATH, var.nhomxe).click()
         time.sleep(0.5)
         var.driver.find_element(By.XPATH, var.chonnhomxe1).click()
         time.sleep(2)
         bienso1 = var.driver.find_element(By.XPATH, var.bienso1).text
-        #Tất cả nhóm xe
+        # Tất cả nhóm xe
         var.driver.find_element(By.XPATH, var.nhomxe).click()
         time.sleep(0.5)
         var.driver.find_element(By.XPATH, var.tatcanhomxe).click()
         time.sleep(2)
 
-
     def trangthai(self):
         var.driver.implicitly_wait(10)
-        #Bật máy 1
-        # var.driver.find_element(By.XPATH, var.trangthai).click()
-        # time.sleep(0.5)
+        #Tổng số xe api
+        for request in var.driver.requests:
+            if request.url == "https://gps.binhanh.vn/HttpHandlers/OnlineHandler.ashx?method=getVehicleList4Hidden":
+                data1 = sw_decode(request.response.body, request.response.headers.get('Content-Encoding', 'identity'))
+                data1 = data1.decode("utf8")
+                res = json.loads(data1)
+                i = 0
+                while (i <999):
+                    var.driver.implicitly_wait(5)
+                    try:
+                        print("phương tiện be số: ", i+1, res['data'][i]['pri_code'])
+                    except:
+                        print("Tổng số xe be: ", i)
+                        var.writeData(var.path_luutamthoi, "Sheet1", 3, 2, i)
+                        break
+                    i += 1
+            else:
+                print("không có  response")
+
+
+        #Tổng số xe fe
+        n = 0
+        while (n < 999):
+            var.driver.implicitly_wait(2)
+            n += 1
+            n = str(n)
+            pathtenphuongtien = "//*[@id='idClearOnline']/table/tbody/tr[" + n + "]/td[2]/div[2]"
+            try:
+                tenphuongtienfe = var.driver.find_element(By.XPATH, pathtenphuongtien).text
+                print("Phương tiện fe sô:", n, ":", tenphuongtienfe)
+                var.writeData(var.path_luutamthoi, "Sheet1", 4, 2, n)
+
+            except:
+                n = int(n)
+                print("Tổng số xe fe: ", n-1)
+                break
+            n = int(n)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        # Bật máy 1
         var.driver.find_element(By.XPATH, var.trangthai_batmay1).click()
         time.sleep(1.5)
         checkiconxe_batmay1 = var.driver.find_element(By.XPATH, var.checkiconxe_batmay1).get_attribute("src")
-        print("icon xe", checkiconxe_batmay1)    #https://gps.binhanh.vn/icons/vehicle/car/Blue0.png
+        print("icon xe", checkiconxe_batmay1)  # https://gps.binhanh.vn/icons/vehicle/car/Blue0.png
         soluong_dungbat = var.driver.find_element(By.XPATH, var.soluong_dungbat).get_attribute("data-count")
         soluong_dichuyen = var.driver.find_element(By.XPATH, var.soluong_dichuyen).get_attribute("data-count")
         soluong_quatocdo = var.driver.find_element(By.XPATH, var.soluong_quatocdo).get_attribute("data-count")
@@ -114,7 +167,7 @@ class danhsachxe:
         print("Tổng số xe bật máy trên 1: ", tongsoxe_tren)
         print("Tổng số xe bật máy 1: ", tongsoxe_batmay1)
 
-        #Tắt máy 1
+        # Tắt máy 1
         var.driver.find_element(By.XPATH, var.trangthai_tatmay1).click()
         time.sleep(1.5)
         soluong_dungtat = var.driver.find_element(By.XPATH, var.soluong_dungtat).get_attribute("data-count")
@@ -123,7 +176,7 @@ class danhsachxe:
         print("Tổng số xe tắt máy trên 1: ", tongsoxe_tren)
         print("Tổng số xe tắt máy 1: ", tongsoxe_tatmay1)
 
-        #Di chuyển
+        # Di chuyển
         var.driver.find_element(By.XPATH, var.trangthai_dichuyen).click()
         time.sleep(1.5)
         soluong_dichuyen = var.driver.find_element(By.XPATH, var.soluong_dichuyen).get_attribute("data-count")
@@ -131,8 +184,7 @@ class danhsachxe:
         print("Tổng số xe di chuyển trên: ", tongsoxe_tren)
         print("Tổng số xe di chuyển: ", soluong_dichuyen)
 
-
-        #Quá tốc độ
+        # Quá tốc độ
         var.driver.find_element(By.XPATH, var.trangthai_quatocdo).click()
         time.sleep(1.5)
         soluong_quatocdo = var.driver.find_element(By.XPATH, var.soluong_quatocdo).get_attribute("data-count")
@@ -140,7 +192,7 @@ class danhsachxe:
         print("Tổng số xe quá tốc độ trên: ", tongsoxe_tren)
         print("Tổng số xe quá tốc độ: ", soluong_quatocdo)
 
-        #Dừng đỗ
+        # Dừng đỗ
         var.driver.find_element(By.XPATH, var.trangthai_dungdo).click()
         time.sleep(1.5)
         soluong_dungbat = var.driver.find_element(By.XPATH, var.soluong_dungbat).get_attribute("data-count")
@@ -150,7 +202,7 @@ class danhsachxe:
         print("Tổng số xe dừng đỗ trên: ", tongsoxe_tren)
         print("Tổng số xe dừng đỗ: ", tongsoxe_dungdo)
 
-        #Tắt máy 2
+        # Tắt máy 2
         var.driver.find_element(By.XPATH, var.trangthai_tatmay2).click()
         time.sleep(1.5)
         soluong_dungtat = var.driver.find_element(By.XPATH, var.soluong_dungtat).get_attribute("data-count")
@@ -158,7 +210,7 @@ class danhsachxe:
         print("Tổng số xe tắt máy trên 2: ", tongsoxe_tren)
         print("Tổng số xe tắt máy 2: ", soluong_dungtat)
 
-        #Bật máy 2
+        # Bật máy 2
         var.driver.find_element(By.XPATH, var.trangthai_batmay2).click()
         time.sleep(1.5)
         soluong_dungbat = var.driver.find_element(By.XPATH, var.soluong_dungbat).get_attribute("data-count")
@@ -166,7 +218,7 @@ class danhsachxe:
         print("Tổng số xe bật máy trên 2: ", tongsoxe_tren)
         print("Tổng số xe bật máy 2: ", soluong_dungbat)
 
-        #Mất tín hiệu
+        # Mất tín hiệu
         var.driver.find_element(By.XPATH, var.trangthai_mattinhieu).click()
         time.sleep(1.5)
         soluong_mattinhieu = var.driver.find_element(By.XPATH, var.soluong_mattinhieu).get_attribute("data-count")
@@ -174,26 +226,24 @@ class danhsachxe:
         print("Tổng số xe mất tín hiệu trên: ", tongsoxe_tren)
         print("Tổng số xe mất tín hiệu: ", soluong_mattinhieu)
 
-
     def icon_khac(self):
         var.driver.implicitly_wait(10)
-        #Xuất excel
+        # Xuất excel
         var.driver.find_element(By.XPATH, var.icon_xuatexcel).click()
         time.sleep(2)
-        #Cập nhật dữ liệu
+        # Cập nhật dữ liệu
         var.driver.find_element(By.XPATH, var.icon_capnhatdulieu).click()
         time.sleep(1)
-        #Hiện trạng hệ thống
+        # Hiện trạng hệ thống
         var.driver.find_element(By.XPATH, var.icon_hientranghethong).click()
         time.sleep(2)
         var.driver.find_element(By.XPATH, var.hientranghethong_x).click()
         time.sleep(1)
-        #Ý nghĩa biểu tượng xe
+        # Ý nghĩa biểu tượng xe
         var.driver.find_element(By.XPATH, var.icon_ynghiabieutuongxe).click()
         time.sleep(2)
         var.driver.find_element(By.XPATH, var.ynghiabieutuongxe_x).click()
         time.sleep(1)
-
 
     def danhsachxe_chuotphaixedangdichuyen(self):
         var.driver.implicitly_wait(10)
@@ -205,41 +255,40 @@ class danhsachxe:
             var.driver.implicitly_wait(2)
             n += 1
             n = str(n)
-            pathtenphuongtien = "//*[@id='idClearOnline']/table/tbody/tr["+n+"]"
+            pathtenphuongtien = "//*[@id='idClearOnline']/table/tbody/tr[" + n + "]"
             try:
                 tenphuongtien = var.driver.find_element(By.XPATH, pathtenphuongtien)
                 if tenphuongtien.get_attribute("style") != "display: none;":
                     print("Tên phương tiện", n, tenphuongtien.text)
-                    tenphuongtien1 = var.driver.find_element(By.XPATH, "//*[@id='idClearOnline']/table/tbody/tr["+n+"]/td[2]/div[2]").text
+                    tenphuongtien1 = var.driver.find_element(By.XPATH,"//*[@id='idClearOnline']/table/tbody/tr[" + n + "]/td[2]/div[2]").text
                     var.writeData(var.luudulieutamthoipath, "Sheet1", 2, 2, tenphuongtien1)
             except:
                 print("số n cuối", n)
                 break
             n = int(n)
 
-        #Chuột phải vào xe đầu tiên
+        # Chuột phải vào xe đầu tiên
         tenphuongtien1 = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 2, 2))
-        button = var.driver.find_element(By.XPATH, "//*[@id='idClearOnline']/table/tbody//*[text()='"+tenphuongtien1+"']")
+        button = var.driver.find_element(By.XPATH,"//*[@id='idClearOnline']/table/tbody//*[text()='" + tenphuongtien1 + "']")
         actions = ActionChains(var.driver)
         actions.context_click(button).perform()
         time.sleep(1)
-
 
     def chuotphaixe_xemlailotrinh(self):
         var.driver.implicitly_wait(10)
         danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
 
-        #Xem lại lộ trình - Xem nhanh
+        # Xem lại lộ trình - Xem nhanh
         xemlailotrinh_hover = var.driver.find_element(By.XPATH, var.xemlailotrinh)
         actions = ActionChains(var.driver)
         actions.move_to_element(xemlailotrinh_hover).perform()
-        #8h gần đây
+        # 8h gần đây
         time.sleep(0.5)
         tamgioganday_hover = var.driver.find_element(By.XPATH, var.tamgioganday)
         actions = ActionChains(var.driver)
         actions.move_to_element(tamgioganday_hover).perform()
         time.sleep(1)
-        #Xem nhanh
+        # Xem nhanh
         var.driver.find_element(By.XPATH, var.xemnhanh).click()
         time.sleep(2)
         check_popup_xemnhanhlotrinh = var.driver.find_element(By.XPATH, var.check_popup_xemnhanhlotrinh).is_displayed()
@@ -249,23 +298,24 @@ class danhsachxe:
         var.driver.find_element(By.XPATH, var.xemnhanhlotrinh_x).click()
         time.sleep(0.5)
 
-        #Xem lại lộ trình - Xem chi tiết trên cửa sổ mới
+        # Xem lại lộ trình - Xem chi tiết trên cửa sổ mới
         var.driver.refresh()
         time.sleep(2)
         var.driver.find_element(By.XPATH, var.trangthai_dichuyen).click()
         time.sleep(1)
         tenphuongtien1 = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 2, 2))
-        button = var.driver.find_element(By.XPATH, "//*[@id='idClearOnline']/table/tbody//*[text()='"+tenphuongtien1+"']")
+        button = var.driver.find_element(By.XPATH,
+                                         "//*[@id='idClearOnline']/table/tbody//*[text()='" + tenphuongtien1 + "']")
         button.click()
         time.sleep(0.5)
         actions = ActionChains(var.driver)
         actions.context_click(button).perform()
         time.sleep(1)
-        #Xem lại lộ trình
+        # Xem lại lộ trình
         xemlailotrinh_hover = var.driver.find_element(By.XPATH, var.xemlailotrinh)
         actions = ActionChains(var.driver)
         actions.move_to_element(xemlailotrinh_hover).perform()
-        #8h gần đây
+        # 8h gần đây
         time.sleep(0.5)
         tamgioganday_hover = var.driver.find_element(By.XPATH, var.tamgioganday)
         actions = ActionChains(var.driver)
@@ -281,20 +331,21 @@ class danhsachxe:
         print("Xem chi tiết trên cửa sổ mới", var.driver.title)
         var.driver.switch_to_window(tab_0)
 
-        #Xem lại lộ trình - Trong ngay
+        # Xem lại lộ trình - Trong ngay
         time.sleep(1)
         tenphuongtien1 = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 2, 2))
-        button = var.driver.find_element(By.XPATH, "//*[@id='idClearOnline']/table/tbody//*[text()='"+tenphuongtien1+"']")
+        button = var.driver.find_element(By.XPATH,
+                                         "//*[@id='idClearOnline']/table/tbody//*[text()='" + tenphuongtien1 + "']")
         button.click()
         time.sleep(0.5)
         actions = ActionChains(var.driver)
         actions.context_click(button).perform()
         time.sleep(1)
-        #Xem lại lộ trình
+        # Xem lại lộ trình
         xemlailotrinh_hover = var.driver.find_element(By.XPATH, var.xemlailotrinh)
         actions = ActionChains(var.driver)
         actions.move_to_element(xemlailotrinh_hover).perform()
-        #Trong ngày
+        # Trong ngày
         time.sleep(0.5)
         var.driver.find_element(By.XPATH, var.trongngay).click()
         time.sleep(2)
@@ -304,20 +355,21 @@ class danhsachxe:
         print("Trong ngày", var.driver.title)
         var.driver.switch_to_window(tab_0)
 
-        #Xem lại lộ trình - Tùy chọn
+        # Xem lại lộ trình - Tùy chọn
         time.sleep(1)
         tenphuongtien1 = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 2, 2))
-        button = var.driver.find_element(By.XPATH, "//*[@id='idClearOnline']/table/tbody//*[text()='"+tenphuongtien1+"']")
+        button = var.driver.find_element(By.XPATH,
+                                         "//*[@id='idClearOnline']/table/tbody//*[text()='" + tenphuongtien1 + "']")
         button.click()
         time.sleep(0.5)
         actions = ActionChains(var.driver)
         actions.context_click(button).perform()
         time.sleep(1)
-        #Xem lại lộ trình
+        # Xem lại lộ trình
         xemlailotrinh_hover = var.driver.find_element(By.XPATH, var.xemlailotrinh)
         actions = ActionChains(var.driver)
         actions.move_to_element(xemlailotrinh_hover).perform()
-        #Tùy chọn
+        # Tùy chọn
         time.sleep(0.5)
         var.driver.find_element(By.XPATH, var.tuychon).click()
         time.sleep(2)
@@ -328,25 +380,26 @@ class danhsachxe:
         var.driver.switch_to_window(tab_0)
         login.linklienket.linklienket_dongtab(self)
 
-
     def chuotphaixe_nhapthongtinxe(self):
         var.driver.implicitly_wait(10)
         danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
 
         var.driver.find_element(By.XPATH, var.nhapthongtinxe).click()
         time.sleep(1)
-        #Popup thông tin xe
-        var.driver.find_element(By.XPATH, var.popupthongtinxe_trongtaiinput).send_keys(data['giamsat']['popupthongtinxe_trongtai'])
+        # Popup thông tin xe
+        var.driver.find_element(By.XPATH, var.popupthongtinxe_trongtaiinput).send_keys(
+            data['giamsat']['popupthongtinxe_trongtai'])
         var.driver.find_element(By.XPATH, var.popupthongtinxe_capnhat).click()
         time.sleep(1)
         check_capnhat_thongtinxe = var.driver.find_element(By.XPATH, var.capnhatthanhcong).text
         time.sleep(1)
         var.driver.find_element(By.XPATH, var.ok).click()
 
-        #check thông tin trong lượng đã nhập
+        # check thông tin trong lượng đã nhập
         time.sleep(1)
         tenphuongtien1 = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 2, 2))
-        button = var.driver.find_element(By.XPATH, "//*[@id='idClearOnline']/table/tbody//*[text()='"+tenphuongtien1+"']")
+        button = var.driver.find_element(By.XPATH,
+                                         "//*[@id='idClearOnline']/table/tbody//*[text()='" + tenphuongtien1 + "']")
         actions = ActionChains(var.driver)
         actions.context_click(button).perform()
         time.sleep(1)
@@ -356,7 +409,6 @@ class danhsachxe:
         time.sleep(1)
         var.driver.find_element(By.XPATH, var.huy).click()
         time.sleep(1)
-
 
     def chuotphaixe_xemlotrinhnhieuxe(self):
         var.driver.implicitly_wait(10)
@@ -372,7 +424,7 @@ class danhsachxe:
             var.driver.implicitly_wait(2)
             n += 1
             n = str(n)
-            pathtenphuongtien = "//*[@id='idClearOnline']/table/tbody/tr["+n+"]"
+            pathtenphuongtien = "//*[@id='idClearOnline']/table/tbody/tr[" + n + "]"
             try:
                 tenphuongtien = var.driver.find_element(By.XPATH, pathtenphuongtien)
                 if tenphuongtien.get_attribute("style") != "display: none;":
@@ -390,7 +442,6 @@ class danhsachxe:
         var.driver.refresh()
         time.sleep(4)
 
-
     def chuotphaixe_hientrang(self):
         var.driver.implicitly_wait(10)
         danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
@@ -398,7 +449,6 @@ class danhsachxe:
         var.driver.find_element(By.XPATH, var.hientrang).click()
         time.sleep(2)
         check_danhsachxe_hientrang = var.driver.find_element(By.XPATH, var.check_danhsachxe_hientrang).is_displayed()
-
 
     def chuotphaixe_gannhomxedacbiet(self):
         var.driver.implicitly_wait(10)
@@ -415,26 +465,497 @@ class danhsachxe:
         var.driver.switch_to_window(tab_1)
 
         check_themnhomdacbiet = var.driver.find_element(By.XPATH, var.check_themnhomdacbiet).text
-        print(check_themnhomdacbiet)    #QUẢN LÝ NHÓM XE
+        print(check_themnhomdacbiet)  # QUẢN LÝ NHÓM XE
         login.linklienket.linklienket_dongtab(self)
         time.sleep(1)
-
 
     def chuotphaixe_anxe(self):
         var.driver.implicitly_wait(10)
         danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
 
+        tenphuongtien = var.readData(var.luudulieutamthoipath, 'Sheet1', 2, 2)
         var.driver.find_element(By.XPATH, var.anxe).click()
         time.sleep(2)
 
-        #Trạng thái - ẩn toàn bộ trang
+        # Trạng thái - ẩn toàn bộ trang
         var.driver.find_element(By.XPATH, var.anxe_antoanbotrang).click()
         var.driver.find_element(By.XPATH, var.anxe_truyen).click()
         # var.driver.find_element(By.XPATH, var.anxe_nguyennhan).click()
         time.sleep(0.5)
         var.driver.find_element(By.XPATH, var.anxe_nguyennhan_xetainan).click()
         var.driver.find_element(By.XPATH, var.anxe_ghichu).send_keys(data['giamsat']['anxe_ghichu'])
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.luu).click()
+        time.sleep(1)
+        var.driver.implicitly_wait(2)
+        check_tenphuongtien = var.driver.find_element(By.XPATH,"//*[@id='idClearOnline']/table/tbody//*[@vh_online='" + tenphuongtien + "']").get_attribute("style")  # != "display: none;"
+        print("Phương tiện: ", tenphuongtien, check_tenphuongtien)
+        time.sleep(1.5)
+
+        # Bỏ ẩn phương tiện
+        var.driver.find_element(By.XPATH, var.icon_danhsachxedangan).click()
+        time.sleep(1.5)
+        check_danhsachxedangan_tenphuongtien = var.driver.find_element(By.XPATH,
+                                                                       var.check_danhsachxedangan_tenphuongtien).text
+        print("Danh sách xe đang ẩn", check_danhsachxedangan_tenphuongtien)
+        if check_danhsachxedangan_tenphuongtien == tenphuongtien:
+            var.driver.find_element(By.XPATH, var.icon_danhsachxedangan_x).click()
+            time.sleep(1)
+            var.driver.switch_to.alert.accept()
+            time.sleep(2)
+            try:
+                tenphuongtien1 = var.driver.find_element(By.XPATH, var.check_danhsachxedangan_tenphuongtien).text
+                if tenphuongtien1 == tenphuongtien:
+                    print(tenphuongtien1)
+                    print("False")
+                else:
+                    print("True")
+            except:
+                print("True2")
+        else:
+            print("Không hiển thị phuong tiện đang ẩn", tenphuongtien)
+
+    def chuotphaixe_thongtinthietbi(self):
+        var.driver.implicitly_wait(10)
+        danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
+
+        var.driver.find_element(By.XPATH, var.thongtinthietbi).click()
         time.sleep(2)
+        check_danhsachxe_thongtinthietbi = var.driver.find_element(By.XPATH,
+                                                                   var.check_danhsachxe_thongtinthietbi).is_displayed()
+        var.driver.find_element(By.XPATH, var.thongtinthietbi_x).click()
+
+    def chuotphaixe_xemhinhanhnhanh(self):  # dùng tk quản trị
+        var.driver.implicitly_wait(10)
+        danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
+
+        var.driver.find_element(By.XPATH, var.xemhinhanhnhanh).click()
+        time.sleep(2)
+        var.driver.find_element(By.XPATH, var.ok).click()
+        time.sleep(0.5)
+
+    def chuotphaixe_xemhanhcamera(self):  # dùng tk quản trị
+        var.driver.implicitly_wait(10)
+        danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
+
+        var.driver.find_element(By.XPATH, var.xemanhcamera).click()
+        time.sleep(2)
+        tab_id = var.driver.window_handles
+        tab_1 = tab_id[1]
+        var.driver.switch_to_window(tab_1)
+        check_xemanhcamera_tuchoitruycap = var.driver.find_element(By.XPATH, var.check_xemanhcamera_tuchoitruycap).text
+        print(check_xemanhcamera_tuchoitruycap)
+        time.sleep(0.5)
+        login.linklienket.linklienket_dongtab(self)
+        time.sleep(0.5)
+
+    def chuotphaixe_xemhanhcamera_nd10(self):
+        var.driver.implicitly_wait(10)
+        danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
+
+        var.driver.find_element(By.XPATH, var.xemanhcamera_nd10).click()
+        time.sleep(2)
+        tab_id = var.driver.window_handles
+        tab_1 = tab_id[1]
+        var.driver.switch_to_window(tab_1)
+        check_xemanhcamera_nd10 = var.driver.find_element(By.XPATH, var.check_xemanhcamera_nd10).text
+        print(check_xemanhcamera_nd10)  # QUẢN LÝ ẢNH CAMERA
+        time.sleep(0.5)
+        login.linklienket.linklienket_dongtab(self)
+        time.sleep(0.5)
+
+    def chuotphaixe_giamsatcamera_nd10(self):
+        var.driver.implicitly_wait(10)
+        danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
+
+        var.driver.find_element(By.XPATH, var.giamsatcamera_nd10).click()
+        time.sleep(2)
+        tab_id = var.driver.window_handles
+        tab_1 = tab_id[1]
+        var.driver.switch_to_window(tab_1)
+        check_giamsatcamera_nd10 = var.driver.find_element(By.XPATH, var.check_giamsatcamera_nd10).text
+        print(check_giamsatcamera_nd10)  # GIÁM SÁT VIDEO
+        time.sleep(0.5)
+        login.linklienket.linklienket_dongtab(self)
+        time.sleep(0.5)
+
+    def chuotphaixe_bieudonhienlieu(self):
+        var.driver.implicitly_wait(10)
+        danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
+
+        var.driver.find_element(By.XPATH, var.bieudonhienlieu).click()
+        time.sleep(2)
+        check_popupbieudonhienlieu = var.driver.find_element(By.XPATH, var.check_popupbieudonhienlieu).text
+        print(check_popupbieudonhienlieu)  #BIỂU ĐỒ NHIÊN LIỆU
+        var.driver.find_element(By.XPATH, var.bieudonhienlieu_x).click()
+        time.sleep(0.5)
+
+
+    def chuotphaixe_bieudonhienlieumoi(self):
+        var.driver.implicitly_wait(10)
+        danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
+
+        var.driver.find_element(By.XPATH, var.bieudonhienlieumoi).click()
+        time.sleep(2)
+        check_popupbieudonhienlieumoi = var.driver.find_element(By.XPATH, var.check_popupbieudonhienlieumoi).text
+        print(check_popupbieudonhienlieumoi)  #BIỂU ĐỒ NHIÊN LIỆU
+        var.driver.find_element(By.XPATH, var.bieudonhienlieumoi_x).click()
+        time.sleep(0.5)
+
+    def chuotphaixe_bieudonhietdo(self):
+        var.driver.implicitly_wait(10)
+        danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
+
+        var.driver.find_element(By.XPATH, var.bieudonhietdo).click()
+        time.sleep(2)
+        check_popupbieudonhietdo = var.driver.find_element(By.XPATH, var.check_popupbieudonhietdo).text
+        print(check_popupbieudonhietdo)  #Xe chưa cấu hình hiển thị nhiệt độ.
+        var.driver.find_element(By.XPATH, var.ok).click()
+        time.sleep(0.5)
+
+
+    def chuotphaixe_khoangcachdencacxe(self):
+        var.driver.implicitly_wait(10)
+        danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
+
+        var.driver.find_element(By.XPATH, var.khoangcachdencacxe).click()
+        time.sleep(2)
+        khoancach_ngan = var.driver.find_element(By.XPATH, var.khoancach_ngan)
+        khoancach_dai = var.driver.find_element(By.XPATH, var.khoancach_dai)
+        button_keo = var.driver.find_element(By.XPATH, var.button_keo)
+        action = ActionChains(var.driver)
+        action.drag_and_drop(button_keo, khoancach_ngan).perform()
+        time.sleep(1.5)
+
+        action.drag_and_drop(button_keo, khoancach_dai).perform()
+        time.sleep(1.5)
+        var.driver.find_element(By.XPATH, var.khoancachdencacxe_x).click()
+        time.sleep(0.5)
+
+    def chuotphaixe_khoangcachdencacdiem(self):
+        var.driver.implicitly_wait(10)
+        danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
+
+        var.driver.find_element(By.XPATH, var.khoangcachdencacdiem).click()
+        time.sleep(2)
+        khoancach_ngan = var.driver.find_element(By.XPATH, var.khoancach_ngan)
+        khoancach_dai = var.driver.find_element(By.XPATH, var.khoancach_dai)
+        button_keo = var.driver.find_element(By.XPATH, var.button_keo)
+        action = ActionChains(var.driver)
+        action.drag_and_drop(button_keo, khoancach_ngan).perform()
+        time.sleep(1.5)
+
+        action.drag_and_drop(button_keo, khoancach_dai).perform()
+        time.sleep(1.5)
+        var.driver.find_element(By.XPATH, var.khoancachdencacxe_x).click()
+        time.sleep(0.5)
+
+    @retry(tries=3, delay=2, backoff=1, jitter=5 )
+    def hientranghethong(self):
+        var.driver.implicitly_wait(10)
+        time.sleep(2)
+        var.driver.find_element(By.XPATH, var.trangthai_dichuyen).click()
+        time.sleep(2)
+        n = 0
+        while (n < 100):
+            var.driver.implicitly_wait(2)
+            n += 1
+            n = str(n)
+            pathtenphuongtien = "//*[@id='idClearOnline']/table/tbody/tr[" + n + "]"
+            try:
+                tenphuongtien = var.driver.find_element(By.XPATH, pathtenphuongtien)
+                if tenphuongtien.get_attribute("style") != "display: none;":
+                    print("Tên phương tiện", n, tenphuongtien.text)
+                    tenphuongtien1 = var.driver.find_element(By.XPATH,"//*[@id='idClearOnline']/table/tbody/tr[" + n + "]/td[2]/div[2]").text
+                    var.writeData(var.path_luutamthoi, "Sheet1", 2, 2, tenphuongtien1)
+                    button = var.driver.find_element(By.XPATH,"//*[@id='idClearOnline']/table/tbody//*[text()='" + tenphuongtien1 + "']")
+                    action = ActionChains(var.driver)
+                    action.double_click(button).perform()
+
+                    time.sleep(2)
+                    popupthongtinxe_masorieng = var.driver.find_element(By.XPATH, var.popupthongtinxe_masorieng).text
+                    popupthongtinxe_dangdo = var.driver.find_element(By.XPATH, var.popupthongtinxe_dangdo).text
+                    popupthongtinxe_dienthoai = var.driver.find_element(By.XPATH, var.popupthongtinxe_dienthoai).text
+                    if popupthongtinxe_masorieng != "Mã số riêng :" and popupthongtinxe_dangdo != "Đang đỗ :" and popupthongtinxe_dienthoai == "Điện thoại :":
+                        break
+            except:
+                print("số n cuối", n)
+                break
+            n = int(n)
+
+
+        time.sleep(2)
+        #Popup thông tin xe
+        popupthongtinxe_bienso = var.driver.find_element(By.XPATH, var.popupthongtinxe_bienso).text
+        print(popupthongtinxe_bienso)
+        popupthongtinxe_giocapnhat = var.driver.find_element(By.XPATH, var.popupthongtinxe_giocapnhat).text
+        print(popupthongtinxe_giocapnhat)
+        popupthongtinxe_vantocgps = var.driver.find_element(By.XPATH, var.popupthongtinxe_vantocgps).text
+        print(popupthongtinxe_vantocgps)
+        popupthongtinxe_vantocco = var.driver.find_element(By.XPATH, var.popupthongtinxe_vantocco).text
+        print(popupthongtinxe_vantocco)
+        popupthongtinxe_dungdo = var.driver.find_element(By.XPATH, var.popupthongtinxe_dungdo).text
+        print(popupthongtinxe_dungdo)
+        popupthongtinxe_kmtrongngay = var.driver.find_element(By.XPATH, var.popupthongtinxe_kmtrongngay).text
+        print(popupthongtinxe_kmtrongngay)
+        popupthongtinxe_may = var.driver.find_element(By.XPATH, var.popupthongtinxe_may).text
+        print(popupthongtinxe_may)
+        popupthongtinxe_dieuhoa = var.driver.find_element(By.XPATH, var.popupthongtinxe_dieuhoa).text
+        print(popupthongtinxe_dieuhoa)
+        popupthongtinxe_diachi = var.driver.find_element(By.XPATH, var.popupthongtinxe_diachi).text
+        print(popupthongtinxe_diachi)
+        popupthongtinxe_nhienlieu = var.driver.find_element(By.XPATH, var.popupthongtinxe_nhienlieu).text
+        print(popupthongtinxe_nhienlieu)
+        popupthongtinxe_laixe = var.driver.find_element(By.XPATH, var.popupthongtinxe_laixe).text
+        print(popupthongtinxe_laixe)
+        popupthongtinxe_giaypheplaixe = var.driver.find_element(By.XPATH, var.popupthongtinxe_giaypheplaixe).text
+        print(popupthongtinxe_giaypheplaixe)
+        popupthongtinxe_quatocdo = var.driver.find_element(By.XPATH, var.popupthongtinxe_quatocdo).text
+        print(popupthongtinxe_quatocdo)
+        popupthongtinxe_thoigianlaixelientuc = var.driver.find_element(By.XPATH, var.popupthongtinxe_thoigianlaixelientuc).text
+        print(popupthongtinxe_thoigianlaixelientuc)
+        popupthongtinxe_thoigianlaixetrongngay = var.driver.find_element(By.XPATH, var.popupthongtinxe_thoigianlaixetrongngay).text
+        print(popupthongtinxe_thoigianlaixetrongngay)
+        popupthongtinxe_thongtinthenho = var.driver.find_element(By.XPATH, var.popupthongtinxe_thongtinthenho).text
+        print(popupthongtinxe_thongtinthenho)
+        popupthongtinxe_soquanly = var.driver.find_element(By.XPATH, var.popupthongtinxe_soquanly).text
+        print(popupthongtinxe_soquanly)
+        popupthongtinxe_thongtinphi = var.driver.find_element(By.XPATH, var.popupthongtinxe_thongtinphi).text
+        print(popupthongtinxe_thongtinphi)
+
+        #Popup GÓI CƯỚC CAMERA
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.goicuoccamera).click()
+        time.sleep(1)
+        popupthongtinxe_goicuocdichvuvienthong = var.driver.find_element(By.XPATH, var.popupthongtinxe_goicuocdichvuvienthong).text
+        print(popupthongtinxe_goicuocdichvuvienthong)
+        popupthongtinxe_nhamang = var.driver.find_element(By.XPATH, var.popupthongtinxe_nhamang).text
+        print(popupthongtinxe_nhamang)
+        popupthongtinxe_dungluonggoicuoc = var.driver.find_element(By.XPATH, var.popupthongtinxe_dungluonggoicuoc).text
+        print(popupthongtinxe_dungluonggoicuoc)
+        popupthongtinxe_songayluutru = var.driver.find_element(By.XPATH, var.popupthongtinxe_songayluutru).text
+        print(popupthongtinxe_songayluutru)
+        popupthongtinxe_sokenhluutru = var.driver.find_element(By.XPATH, var.popupthongtinxe_sokenhluutru).text
+        print(popupthongtinxe_sokenhluutru)
+        popupthongtinxe_tinhnangdinhvi = var.driver.find_element(By.XPATH, var.popupthongtinxe_tinhnangdinhvi).text
+        print(popupthongtinxe_tinhnangdinhvi)
+        popupthongtinxe_tinhnanganh = var.driver.find_element(By.XPATH, var.popupthongtinxe_tinhnanganh).text
+        print(popupthongtinxe_tinhnanganh)
+        popupthongtinxe_tinhnangvideo = var.driver.find_element(By.XPATH, var.popupthongtinxe_tinhnangvideo).text
+        print(popupthongtinxe_tinhnangvideo)
+        popupthongtinxe_kenhlapcamera = var.driver.find_element(By.XPATH, var.popupthongtinxe_kenhlapcamera).text
+        print(popupthongtinxe_kenhlapcamera)
+        popupthongtinxe_kenhhoatdong = var.driver.find_element(By.XPATH, var.popupthongtinxe_kenhhoatdong).text
+        print(popupthongtinxe_kenhhoatdong)
+        popupthongtinxe_dungluongocung = var.driver.find_element(By.XPATH, var.popupthongtinxe_dungluongocung).text
+        print(popupthongtinxe_dungluongocung)
+        popupthongtinxe_mangketnoi = var.driver.find_element(By.XPATH, var.popupthongtinxe_mangketnoi).text
+        print(popupthongtinxe_mangketnoi)
+
+
+        #Popup hiện trạng hệ thống
+        var.driver.find_element(By.XPATH, var.icon_hientranghethong1).click()
+        time.sleep(1.5)
+        var.driver.find_element(By.XPATH, var.hientranghethong_biensoinput).send_keys(popupthongtinxe_bienso)
+        time.sleep(1)
+        wait = WebDriverWait(var.driver, 10)
+        element = wait.until(EC.element_to_be_clickable((By.XPATH, "//*[@role='listbox']//*[text()='"+popupthongtinxe_bienso+"']")))
+        element.click()
+        time.sleep(1.5)
+        n = 0
+        while (n < 100):
+            var.driver.implicitly_wait(2)
+            n += 1
+            n = str(n)
+            paththongtinxe = "//*[@id='tblVehicleStatus']//*[@class='scrollContent']/tr["+n+"]"
+            try:
+                popuphientranghethong_bienso = var.driver.find_element(By.XPATH, paththongtinxe+"/td[2]/div[2]").text
+                if popuphientranghethong_bienso == popupthongtinxe_bienso:
+                    print("Biển số", n, popuphientranghethong_bienso)
+                    popuphientranghethong_vantocgps = var.driver.find_element(By.XPATH, paththongtinxe+"/td[3]").text
+                    print("Vận tốc gps", n, popuphientranghethong_vantocgps)
+                    popuphientranghethong_thoigian = var.driver.find_element(By.XPATH, paththongtinxe+"/td[4]").text
+                    print("Thời gian", n, popuphientranghethong_thoigian)
+                    popuphientranghethong_kmtrongngay = var.driver.find_element(By.XPATH, paththongtinxe+"/td[5]").text
+                    print("Km trong ngày", n, popuphientranghethong_kmtrongngay)
+                    popuphientranghethong_khuvuc = var.driver.find_element(By.XPATH, paththongtinxe+"/td[6]").text
+                    print("Khu vục", n, popuphientranghethong_khuvuc)
+                    popuphientranghethong_laixe = var.driver.find_element(By.XPATH, paththongtinxe+"/td[7]").text
+                    print("Lái xe", n, popuphientranghethong_laixe)
+                    popuphientranghethong_banglai = var.driver.find_element(By.XPATH, paththongtinxe+"/td[8]").text
+                    print("Bằng lái", n, popuphientranghethong_banglai)
+                    popuphientranghethong_dieuhoa = var.driver.find_element(By.XPATH, paththongtinxe+"/td[9]").text
+                    print("Điều hòa", n, popuphientranghethong_dieuhoa)
+                    popuphientranghethong_nhietdo = var.driver.find_element(By.XPATH, paththongtinxe+"/td[10]").text
+                    print("Nhiệt độ", n, popuphientranghethong_nhietdo)
+                    popuphientranghethong_thoigiandungdo = var.driver.find_element(By.XPATH, paththongtinxe+"/td[11]").text
+                    print("Thời gian dừng đỗ", n, popuphientranghethong_thoigiandungdo)
+                    popuphientranghethong_thoigianlaixelientuc = var.driver.find_element(By.XPATH, paththongtinxe+"/td[12]").text
+                    print("Thời gian lái xe liên tục", n, popuphientranghethong_thoigianlaixelientuc)
+                    popuphientranghethong_thoigianlaixetrongngay = var.driver.find_element(By.XPATH, paththongtinxe+"/td[13]").text
+                    print("Thời gian lái xe trong ngày", n, popuphientranghethong_thoigianlaixetrongngay)
+                    break
+            except:
+                break
+            n = int(n)
+
+
+
+
+        del var.driver.requests
+        #CHECK THÔNG TIN XE TỪ API 2            thông tin xe
+        tenphuongtien = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 2, 2))
+        button = var.driver.find_element(By.XPATH,"//*[@id='idClearOnline']/table/tbody//*[text()='" + tenphuongtien + "']")
+        action = ActionChains(var.driver)
+        action.double_click(button).perform()
+        time.sleep(1.5)
+        for request in var.driver.requests:
+            if request.url[0:82] == "https://gps.binhanh.vn/HttpHandlers/OnlineHandler.ashx?method=detail&VehiclePlate=":
+                data1 = sw_decode(request.response.body, request.response.headers.get('Content-Encoding', 'identity'))
+                data1 = data1.decode("utf8")
+                res = json.loads(data1)
+                i = 0
+                while (i <999):
+                    var.driver.implicitly_wait(5)
+                    try:
+                        thongtinxeapi_bienso = res['data']['bgt_type']['VehiclePlate']
+                        print("Biển số api:", thongtinxeapi_bienso)
+
+                        thongtinxeapi_giocapnhat = res['data']['u_date']
+                        print("Giờ cập nhật api:", thongtinxeapi_giocapnhat)
+
+                        thongtinxeapi_vantocgps = res['data']['v_gps']
+                        print("Vận tốc gps api:", thongtinxeapi_vantocgps)
+
+                        thongtinxeapi_vantocco = res['data']['v_co']
+                        print("Vận tốc cơ api:", thongtinxeapi_vantocco)
+
+                        thongtinxeapi_dungdo = res['data']['s_count']
+                        print("Dừng đỗ api:", thongtinxeapi_dungdo)
+
+                        thongtinxeapi_kmtrongngay = res['data']['t_km']
+                        print("Km trong ngày api:", thongtinxeapi_kmtrongngay)
+
+                        thongtinxeapi_diachi = res['data']['adds']
+                        print("Địa chỉ api:", thongtinxeapi_diachi)
+
+                        thongtinxeapi_nhienlieu = res['data']['fuel']['liters']
+                        print("Nhiên liệu api:", thongtinxeapi_nhienlieu)
+
+                        thongtinxeapi_laixe = res['data']['bgt']['name']
+                        print("Lái xe api:", thongtinxeapi_laixe)
+
+                        thongtinxeapi_dienthoai = res['data']['bgt']['mobile']
+                        print("Điện thoại api:", thongtinxeapi_dienthoai)
+
+                        thongtinxeapi_giaypheplaixe = res['data']['bgt']['license']
+                        print("Giấy phép lái xe api:", thongtinxeapi_giaypheplaixe)
+
+                        thongtinxeapi_quatocdo = res['data']['bgt']['speed_o']
+                        print("Quá tốc độ api:", thongtinxeapi_quatocdo)
+
+                        thongtinxeapi_thoigianlaixelientuc = res['data']['bgt']['t_continus']
+                        print("Thời gian lái xe liên tục api:", thongtinxeapi_thoigianlaixelientuc)
+
+                        thongtinxeapi_thoigianlaixetrongngay = res['data']['bgt']['t_day']
+                        print("Thời gian lái xe trong ngày api:", thongtinxeapi_thoigianlaixetrongngay)
+
+                        thongtinxeapi_thongtinthenho = res['data']['bgt']['m_label']
+                        print("Thông tin thẻ nhớ api:", thongtinxeapi_thongtinthenho)
+
+                        thongtinxeapi_soquanly = res['data']['bgt']['d_name']
+                        print("Sở quản lý api:", thongtinxeapi_soquanly)
+
+                        thongtinxeapi_thongtinphi = res['data']['fee_message']
+                        print("Thông tin phí api:", thongtinxeapi_thongtinphi)
+
+                        break
+                    except:
+                        print("Không tìm thấy phương tiện: ", tenphuongtien)
+                        break
+                i += 1
+            else:
+                pass
+
+
+
+class chuotphaimap:
+    def phongto_thunho(self):
+        var.driver.implicitly_wait(5)
+        # Tìm tọa độ
+        try:
+            var.driver.find_element(By.XPATH, var.timkiem_icon2).click()
+        except:
+            var.driver.find_element(By.XPATH, var.timkiem_icon1).click()
+        time.sleep(0.5)
+        var.driver.find_element(By.XPATH, var.timkiem_icon_timtoado).click()
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.timkiem_timtoado_input).send_keys(data['giamsat']['timkiem_toado1'])
+        time.sleep(0.5)
+        var.driver.find_element(By.XPATH, var.timkiem_iconsearch).click()
+        time.sleep(1.5)
+        try:
+            var.driver.find_element(By.XPATH, var.danhsachxe2g_x).click()
+        except:
+            pass
+
+        #Phóng to
+        mouse.move("850", "750")
+        mouse.click(button='right')
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.chuotphaimap_phongto).click()
+        time.sleep(1)
+
+        mouse.move("850", "750")
+        mouse.click(button='right')
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.chuotphaimap_phongto).click()
+        time.sleep(1)
+
+        #Thu nhỏ
+        mouse.move("850", "750")
+        mouse.click(button='right')
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.chuotphaimap_thunho).click()
+        time.sleep(1)
+
+        mouse.move("850", "750")
+        mouse.click(button='right')
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.chuotphaimap_thunho).click()
+        time.sleep(1)
+        try:
+            var.driver.find_element(By.XPATH, var.canhbaoquatocdo_x).click()
+        except:
+            pass
+
+
+    def trungtamoday(self):
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.timkiem_icon2).click()
+        except:
+            var.driver.find_element(By.XPATH, var.timkiem_icon1).click()
+        time.sleep(0.5)
+        var.driver.find_element(By.XPATH, var.timkiem_icon_timtoado).click()
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.timkiem_timtoado_input).send_keys(data['giamsat']['timkiem_toado5'])
+        time.sleep(0.5)
+        var.driver.find_element(By.XPATH, var.timkiem_iconsearch).click()
+        time.sleep(1.5)
+        try:
+            var.driver.find_element(By.XPATH, var.danhsachxe2g_x).click()
+        except:
+            pass
+
+        mouse.move("850", "750")
+        mouse.click(button='right')
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.chuotphaimap_trungtamoday).click()
+        time.sleep(1)
+
+
+
 
 
 
