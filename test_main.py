@@ -53,10 +53,19 @@ class Test(unittest.TestCase):
 
 
         login.login.login_v2(self, "ungroup", "12341234")
-        giamsat.chuotphaimap.phongto_thunho(self)
+        # giamsat.chuotphaimap.phongto_thunho(self)
+        # giamsat.chuotphaimap.trungtamoday(self)
+        # giamsat.chuotphaimap.xemdiachi(self)
+        # giamsat.chuotphaimap.dokhoangcach(self)
+        # giamsat.chuotphaimap.chihuong(self)
+        giamsat.chuotphaimap.chidanduong(self)
+
 
 
 
 
 if __name__ == "__main__":
     unittest.main()
+
+
+
