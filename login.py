@@ -1,6 +1,8 @@
 import logging
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
+
+import giamsat
 import var
 import time
 import openpyxl
@@ -35,16 +37,18 @@ logging.basicConfig(handlers=[logging.FileHandler(filename= var.logpath,
 
 class login:
     def login_v2(self, user, password):
-        var.driver.implicitly_wait(10)
+        var.driver.implicitly_wait(15)
         var.driver.maximize_window()
         var.driver.get(var.linktest)
-        time.sleep(2)
+        time.sleep(3)
         var.driver.find_element(By.XPATH, var.login_user).send_keys(user)
         var.driver.find_element(By.XPATH, var.login_password).send_keys(password)
         var.driver.find_element(By.XPATH, var.login_ghinhodangnhap).click()
         var.driver.find_element(By.XPATH, var.dangnhap).click()
-        time.sleep(10)
+        # time.sleep(3)
         # var.driver.find_element(By.XPATH, var.iconngonngu_tienganh)
+        time.sleep(5)
+        giamsat.xoacanhbao()
 
 
     def login_v2_tkkhachhangcoquyengiamsat(self, user, password, ma, tensukien):

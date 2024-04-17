@@ -41,8 +41,6 @@ def mucdo4(self):
     caseid.caseid_login18(self)
 
 
-
-
 def chaytatca(self):
     mucdo1(self)
     mucdo2(self)

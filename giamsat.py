@@ -54,14 +54,14 @@ def zoom_map(loai, solanzoom):
         for i in range(solanzoom):
             i = i + 1
             var.driver.find_element(By.XPATH, var.giamsat_iconphongto).click()
-            time.sleep(1)
+            time.sleep(0.7)
 
     if loai == "thu nhỏ":
         i = 0
         for i in range(solanzoom):
             i = i + 1
             var.driver.find_element(By.XPATH, var.giamsat_iconthunho).click()
-            time.sleep(1)
+            time.sleep(0.7)
 
     try:
         var.driver.find_element(By.XPATH, var.canhbaoquatocdo_x).click()
@@ -335,8 +335,7 @@ class danhsachxe:
         var.driver.find_element(By.XPATH, var.trangthai_dichuyen).click()
         time.sleep(1)
         tenphuongtien1 = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 2, 2))
-        button = var.driver.find_element(By.XPATH,
-                                         "//*[@id='idClearOnline']/table/tbody//*[text()='" + tenphuongtien1 + "']")
+        button = var.driver.find_element(By.XPATH,"//*[@id='idClearOnline']/table/tbody//*[text()='" + tenphuongtien1 + "']")
         button.click()
         time.sleep(0.5)
         actions = ActionChains(var.driver)
@@ -418,8 +417,7 @@ class danhsachxe:
         var.driver.find_element(By.XPATH, var.nhapthongtinxe).click()
         time.sleep(1)
         # Popup thông tin xe
-        var.driver.find_element(By.XPATH, var.popupthongtinxe_trongtaiinput).send_keys(
-            data['giamsat']['popupthongtinxe_trongtai'])
+        var.driver.find_element(By.XPATH, var.popupthongtinxe_trongtaiinput).send_keys( data['giamsat']['popupthongtinxe_trongtai'])
         var.driver.find_element(By.XPATH, var.popupthongtinxe_capnhat).click()
         time.sleep(1)
         check_capnhat_thongtinxe = var.driver.find_element(By.XPATH, var.capnhatthanhcong).text
@@ -429,8 +427,7 @@ class danhsachxe:
         # check thông tin trong lượng đã nhập
         time.sleep(1)
         tenphuongtien1 = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 2, 2))
-        button = var.driver.find_element(By.XPATH,
-                                         "//*[@id='idClearOnline']/table/tbody//*[text()='" + tenphuongtien1 + "']")
+        button = var.driver.find_element(By.XPATH,"//*[@id='idClearOnline']/table/tbody//*[text()='" + tenphuongtien1 + "']")
         actions = ActionChains(var.driver)
         actions.context_click(button).perform()
         time.sleep(1)
@@ -697,11 +694,9 @@ class danhsachxe:
                 tenphuongtien = var.driver.find_element(By.XPATH, pathtenphuongtien)
                 if tenphuongtien.get_attribute("style") != "display: none;":
                     print("Tên phương tiện", n, tenphuongtien.text)
-                    tenphuongtien1 = var.driver.find_element(By.XPATH,
-                                                             "//*[@id='idClearOnline']/table/tbody/tr[" + n + "]/td[2]/div[2]").text
+                    tenphuongtien1 = var.driver.find_element(By.XPATH,"//*[@id='idClearOnline']/table/tbody/tr[" + n + "]/td[2]/div[2]").text
                     var.writeData(var.path_luutamthoi, "Sheet1", 2, 2, tenphuongtien1)
-                    button = var.driver.find_element(By.XPATH,
-                                                     "//*[@id='idClearOnline']/table/tbody//*[text()='" + tenphuongtien1 + "']")
+                    button = var.driver.find_element(By.XPATH,"//*[@id='idClearOnline']/table/tbody//*[text()='" + tenphuongtien1 + "']")
                     action = ActionChains(var.driver)
                     action.double_click(button).perform()
 
@@ -1001,13 +996,20 @@ class chuotphaimap:
             print("Không tìm được điểm trung tâm ở đây")
 
     def timdiachi(self, toado):
-        var.driver.implicitly_wait(5)
+        var.driver.implicitly_wait(10)
         try:
-            var.driver.find_element(By.XPATH, var.timkiem_icon2).click()
+            button = var.driver.find_element(By.XPATH, var.timkiem_icon2)
+            var.driver.execute_script("arguments[0].click();", button)
+            # var.driver.find_element(By.XPATH, var.timkiem_icon2).click()
         except:
             var.driver.find_element(By.XPATH, var.timkiem_icon1).click()
         time.sleep(0.5)
-        var.driver.find_element(By.XPATH, var.timkiem_icon_timtoado).click()
+        try:
+            var.driver.find_element(By.XPATH, var.timkiem_icon_timtoado).click()
+        except:
+            var.driver.find_element(By.XPATH, var.timkiem_icon2).click()
+            time.sleep(0.5)
+            var.driver.find_element(By.XPATH, var.timkiem_icon_timtoado).click()
         time.sleep(1)
         var.driver.find_element(By.XPATH, var.timkiem_timtoado_input).send_keys(toado)
         time.sleep(0.5)
@@ -1045,7 +1047,6 @@ class chuotphaimap:
         time.sleep(2)
         check_dokhoangcach_thongbao = var.driver.find_element(By.XPATH, var.check_dokhoangcach_thongbao).text
         print(check_dokhoangcach_thongbao)
-
 
     def chihuong(self):     #Thiếu lộ trình r, Chỉ hướng không hoạt động, tài liệu chị hương gửi
         var.driver.implicitly_wait(5)
@@ -1091,8 +1092,6 @@ class chuotphaimap:
         time.sleep(0.5)
         var.driver.find_element(By.XPATH, var.chihuong_thoat).click()
         time.sleep(1)
-
-
 
     def chidanduong(self):
         var.driver.implicitly_wait(5)
@@ -1226,3 +1225,400 @@ class chuotphaimap:
         time.sleep(1)
         var.driver.find_element(By.XPATH, var.timtheolotrinh).click()
         time.sleep(1)
+        # Nhóm phương tiện
+        var.driver.find_element(By.XPATH, var.chidanduong_nhomphuongtien).click()
+        time.sleep(0.5)
+        var.driver.find_element(By.XPATH, var.chidanduong_nhomphuongtien1).click()
+        ten_nhomphuongtien1 = var.driver.find_element(By.XPATH, var.chidanduong_nhomphuongtien1).text
+        # Phương tiện
+        var.driver.find_element(By.XPATH, var.chidanduong_phuongtieninput).send_keys(ten_nhomphuongtien1)
+        time.sleep(0.5)
+        var.driver.find_element(By.XPATH, var.chidanduong_phuongtieninput).send_keys(Keys.TAB)
+        var.driver.find_element(By.XPATH, var.timtheolotrinh_giobatdau).send_keys(data['giamsat']['timtheolotrinh_giobatdau'])
+        var.driver.find_element(By.XPATH, var.timtheolotrinh_gioketthuc).send_keys(data['giamsat']['timtheolotrinh_gioketthuc'])
+        # var.driver.find_element(By.XPATH, var.chidanduong_timchiduong).click()
+        button = var.driver.find_element(By.XPATH, var.chidanduong_timchiduong)
+        var.driver.execute_script("arguments[0].click();", button)
+        time.sleep(3)
+
+    def taodiembando(self):
+        var.driver.implicitly_wait(5)
+        chuotphaimap.timdiachi(self, data['giamsat']['timkiem_toado8'])
+        # zoom_map("thu nhỏ", 6)
+        mouse.move("500", "800")
+        mouse.click(button='right')
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.chuotphaimap_taodiembando).click()
+        time.sleep(1)
+        xoacanhbao()
+        try:
+            var.driver.find_element(By.XPATH, var.taodiem_huy).click()
+        except:
+            xoacanhbao()
+        time.sleep(1)
+        mouse.move("500", "800")
+        mouse.click(button='right')
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.chuotphaimap_taodiembando).click()
+        time.sleep(1)
+        xoacanhbao()
+        var.driver.find_element(By.XPATH, var.taodiem_tendiem).send_keys(data['giamsat']['taodiem_tendiem1'])
+        if var.driver.find_element(By.XPATH, var.taodiem_laydiachibando).is_selected() == False:
+            var.driver.find_element(By.XPATH, var.taodiem_laydiachibando).click()
+        if var.driver.find_element(By.XPATH, var.taodiem_nhaptoado).is_selected() == False:
+            var.driver.find_element(By.XPATH, var.taodiem_nhaptoado).click()
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.taodiem_kinhdo).send_keys(data['giamsat']['taodiem_kinhdo'])
+        var.driver.find_element(By.XPATH, var.taodiem_vido).send_keys(data['giamsat']['taodiem_vido'])
+        var.driver.find_element(By.XPATH, var.taodiem_loaidiem).click()
+        var.driver.find_element(By.XPATH, var.taodiem_loaidiem).send_keys(Keys.DOWN)
+        var.driver.find_element(By.XPATH, var.taodiem_loaidiem).send_keys(Keys.ENTER)
+        var.driver.find_element(By.XPATH, var.taodiem_tenrieng).send_keys(data['giamsat']['taodiem_tenrieng'])
+        var.driver.find_element(By.XPATH, var.taodiem_mota).send_keys(data['giamsat']['taodiem_mota'])
+        var.driver.find_element(By.XPATH, var.taodiem_sophutdungdo).send_keys(data['giamsat']['taodiem_sophutdungdo'])
+
+        if var.driver.find_element(By.XPATH, var.taodiem_diemkiemsoat).is_selected() == False:
+            var.driver.find_element(By.XPATH, var.taodiem_diemkiemsoat).click()
+        if var.driver.find_element(By.XPATH, var.taodiem_hienthidiem).is_selected() == False:
+            var.driver.find_element(By.XPATH, var.taodiem_hienthidiem).click()
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.taodiem_bankinh).clear()
+        var.driver.find_element(By.XPATH, var.taodiem_bankinh).send_keys(data['giamsat']['taodiem_bankinh1'])
+        time.sleep(3)
+        var.driver.find_element(By.XPATH, var.taodiem_luu).click()
+        time.sleep(1)
+        check_message_taodiem = var.driver.find_element(By.XPATH, var.check_message_taodiem1)
+        if check_message_taodiem.text == "Cập nhật thành công":
+            print(check_message_taodiem.text)
+            var.driver.refresh()
+        time.sleep(3)
+        xoacanhbao()
+
+        #Cập nhật
+        chuotphaimap.timdiachi(self, data['giamsat']['timkiem_toado8'])
+        button = var.driver.find_element(By.XPATH, var.taodiem_chon)
+        action = ActionChains(var.driver)
+        action.double_click(button).perform()
+        time.sleep(3)
+        xoacanhbao()
+        var.driver.find_element(By.XPATH, var.taodiem_tendiem).clear()
+        var.driver.find_element(By.XPATH, var.taodiem_tendiem).send_keys(data['giamsat']['taodiem_tendiem2'])
+        time.sleep(0.5)
+        button = var.driver.find_element(By.XPATH, var.taodiem_capnhat)
+        var.driver.execute_script("arguments[0].click();", button)
+        # var.driver.find_element(By.XPATH, var.taodiem_capnhat).click()
+        time.sleep(1)
+        check_message_capnhatdiem = var.driver.find_element(By.XPATH, var.check_message_taodiem1)
+        if check_message_capnhatdiem.text == "Cập nhật thành công":
+            print(check_message_capnhatdiem.text)
+            var.driver.refresh()
+        time.sleep(3)
+        xoacanhbao()
+        chuotphaimap.timdiachi(self, data['giamsat']['timkiem_toado8'])
+        check_capnhatdiem = var.driver.find_element(By.XPATH, "//*[text()='"+data['giamsat']['taodiem_tendiem2']+"']").text
+        print(check_capnhatdiem)
+
+        #Xóa điểm
+        button = var.driver.find_element(By.XPATH, var.taodiem_chon)
+        action = ActionChains(var.driver)
+        action.double_click(button).perform()
+        time.sleep(3)
+        xoacanhbao()
+        # var.driver.find_element(By.XPATH, var.taodiem_xoa).click()
+        button = var.driver.find_element(By.XPATH, var.taodiem_xoa)
+        var.driver.execute_script("arguments[0].click();", button)
+        time.sleep(1)
+        var.driver.switch_to.alert.accept()
+        time.sleep(1)
+        check_message_xoadiem = var.driver.find_element(By.XPATH, var.check_message_xoadiem).text
+        print(check_message_xoadiem)
+        time.sleep(1)
+
+
+
+
+    def taodiembando(self):
+        var.driver.implicitly_wait(5)
+        chuotphaimap.timdiachi(self, data['giamsat']['timkiem_toado8'])
+
+
+    def taovunglotrinh(self):
+        var.driver.implicitly_wait(5)
+        chuotphaimap.timdiachi(self, data['giamsat']['timkiem_toado9'])
+        mouse.move("800", "800")
+        mouse.click(button='right')
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.chuotphaimap_taovunglotrinh).click()
+        time.sleep(1)
+        checkpopup_taovunglotrinh = var.driver.find_element(By.XPATH, var.checkpopup_taovunglotrinh).text
+        print(checkpopup_taovunglotrinh)
+        var.driver.find_element(By.XPATH, var.taovunglotrinh_iconx).click()
+        time.sleep(1)
+
+    def timxetrongvung(self):
+        var.driver.implicitly_wait(5)
+        chuotphaimap.timdiachi(self, data['giamsat']['timkiem_toado9'])
+        zoom_map("thu nhỏ", 10)
+        xoacanhbao()
+        time.sleep(2)
+        mouse.move("1000", "800")
+        mouse.click(button='right')
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.chuotphaimap_timxetrongvung).click()
+        time.sleep(1)
+        #điểm 1
+        mouse.move("660", "855")
+        mouse.click(button='left')
+        time.sleep(1)
+        #điểm 2
+        # var.driver.find_element(By.XPATH, var.giamsat_icondautru).click()
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.giamsat_diem2).click()
+        time.sleep(2)
+        # #điểm 3
+        mouse.move("1000", "305")
+        mouse.click(button='left')
+        mouse.click(button='left')
+        mouse.click(button='left')
+        mouse.click(button='left')
+        mouse.click(button='left')
+        time.sleep(2)
+        check_timxetrongvung = var.driver.find_element(By.XPATH, var.check_timxetrongvung).text
+        print(check_timxetrongvung)
+        time.sleep(1)
+
+
+
+    def timxegannhat(self):
+        var.driver.implicitly_wait(5)
+        chuotphaimap.timdiachi(self, data['giamsat']['timkiem_toado9'])
+        mouse.move("800", "800")
+        mouse.click(button='right')
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.chuotphaimap_timxegannhat).click()
+        time.sleep(1.5)
+        xoacanhbao()
+        checkpopup_timxegannhat = var.driver.find_element(By.XPATH, var.checkpopup_timxegannhat).text
+        print(checkpopup_timxegannhat)
+        time.sleep(1)
+
+
+    def cauhinhhienthinhomdiem(self):
+        var.driver.implicitly_wait(5)
+        chuotphaimap.timdiachi(self, data['giamsat']['timkiem_toado10'])
+        zoom_map("thu nhỏ", 2)
+        mouse.move("800", "800")
+        mouse.click(button='right')
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.chuotphaimap_cauhinhhienthinhomdiem).click()
+        time.sleep(1)
+        xoacanhbao()
+        #Trạm thu phi - Tắt hiển thị
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_chuachonnhom).is_selected() == True:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_chuachonnhom).click()
+
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_tramthuphi).is_selected() == True:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_tramthuphi).click()
+
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthivungbao).is_selected() == True:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthivungbao).click()
+
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthitendiem).is_selected() == True:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthitendiem).click()
+
+        var.driver.find_element(By.XPATH, var.chuotphaimap_luuthongtinhienthi).click()
+        time.sleep(1.5)
+        check_message_luucauhinhhienthi = var.driver.find_element(By.XPATH, var.check_message_luucauhinhhienthi).text
+        print(check_message_luucauhinhhienthi)
+        var.driver.find_element(By.XPATH, var.chuotphaimap_luuthongtinhienthi_ok).click()
+        var.driver.implicitly_wait(1)
+        try:
+            check_tramthuphi_vungbao = var.driver.find_element(By.XPATH, var.check_tramthuphi_vungbao).is_displayed()
+            print("Tắt vùng bao - trạm thu phi: False")
+        except:
+            print("Tắt vùng bao - trạm thu phi: True")
+
+        try:
+            check_tramthuphi_tendiem = var.driver.find_element(By.XPATH, var.check_tramthuphi_tendiem).is_displayed()
+            print("Tắt tên điểm - trạm thu phi: False")
+        except:
+            print("Tắt tên điểm - trạm thu phi: True")
+        time.sleep(1)
+
+
+        var.driver.implicitly_wait(5)
+        #Trạm thu phi - Bật hiển thị
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_chuachonnhom).is_selected() == False:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_chuachonnhom).click()
+
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_tramthuphi).is_selected() == False:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_tramthuphi).click()
+
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthivungbao).is_selected() == False:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthivungbao).click()
+
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthitendiem).is_selected() == False:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthitendiem).click()
+        var.driver.find_element(By.XPATH, var.chuotphaimap_luuthongtinhienthi).click()
+        time.sleep(1.5)
+        var.driver.find_element(By.XPATH, var.chuotphaimap_luuthongtinhienthi_ok).click()
+        try:
+            check_tramthuphi_vungbao = var.driver.find_element(By.XPATH, var.check_tramthuphi_vungbao).is_displayed()
+            print("Bật vùng bao - trạm thu phi: True")
+        except:
+            print("Bật vùng bao - trạm thu phi: False")
+        try:
+            check_tramthuphi_tendiem = var.driver.find_element(By.XPATH, var.check_tramthuphi_tendiem).is_displayed()
+            print("Bật tên điểm - trạm thu phi: True")
+        except:
+            print("Bật tên điểm - trạm thu phi: False")
+        time.sleep(1)
+
+        #Chưa chọn nhóm - Tắt hiển thị
+        var.driver.implicitly_wait(1)
+        var.driver.find_element(By.XPATH, var.timkiem_timtoado_input).clear()
+        var.driver.find_element(By.XPATH, var.timkiem_timtoado_input).send_keys(data['giamsat']['timkiem_toado11'])
+        time.sleep(0.5)
+        var.driver.find_element(By.XPATH, var.timkiem_iconsearch).click()
+        time.sleep(1.5)
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_chuachonnhom).is_selected() == True:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_chuachonnhom).click()
+
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_tramthuphi).is_selected() == True:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_tramthuphi).click()
+
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthivungbao).is_selected() == True:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthivungbao).click()
+
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthitendiem).is_selected() == True:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthitendiem).click()
+        var.driver.find_element(By.XPATH, var.chuotphaimap_luuthongtinhienthi).click()
+        time.sleep(1.5)
+        var.driver.find_element(By.XPATH, var.chuotphaimap_luuthongtinhienthi_ok).click()
+        var.driver.implicitly_wait(1)
+        try:
+            check_chuachonnhom_vungbao = var.driver.find_element(By.XPATH, var.check_chuachonnhom_vungbao).is_displayed()
+            print("Tắt vùng bao - Chưa chọn nhóm: False")
+        except:
+            print("Tắt vùng bao - Chưa chọn nhóm: True")
+
+        try:
+            check_chuachonnhom_tendiem = var.driver.find_element(By.XPATH, var.check_chuachonnhom_tendiem).is_displayed()
+            print("Tắt tên điểm - Chưa chọn nhóm: False")
+        except:
+            print("Tắt tên điểm - Chưa chọn nhóm: True")
+        time.sleep(1)
+
+        var.driver.implicitly_wait(3)
+        #Chưa chọn nhóm - Bật hiển thị
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_chuachonnhom).is_selected() == False:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_chuachonnhom).click()
+
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_tramthuphi).is_selected() == False:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_tramthuphi).click()
+
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthivungbao).is_selected() == False:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthivungbao).click()
+
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthitendiem).is_selected() == False:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthitendiem).click()
+        var.driver.find_element(By.XPATH, var.chuotphaimap_luuthongtinhienthi).click()
+        time.sleep(1.5)
+        var.driver.find_element(By.XPATH, var.chuotphaimap_luuthongtinhienthi_ok).click()
+        try:
+            check_chuachonnhom_vungbao = var.driver.find_element(By.XPATH, var.check_chuachonnhom_vungbao).is_displayed()
+            print("Bật vùng bao - Chưa chọn nhóm: True")
+        except:
+            print("Bật vùng bao - Chưa chọn nhóm: False")
+
+        try:
+            check_chuachonnhom_tendiem = var.driver.find_element(By.XPATH, var.check_chuachonnhom_tendiem).is_displayed()
+            print("Bật tên điểm - Chưa chọn nhóm: True")
+        except:
+            print("Bật tên điểm - Chưa chọn nhóm: False")
+        time.sleep(1)
+
+
+
+    def cauhinhkhoidong(self):
+        var.driver.implicitly_wait(5)
+        # chuotphaimap.timdiachi(self, data['giamsat']['timkiem_toado12'])
+        mouse.move("800", "800")
+        mouse.click(button='right')
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.chuotphaimap_cauhinhkhoidong).click()
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.cauhinhienthi_huy).click()
+        time.sleep(1)
+
+        mouse.move("800", "800")
+        mouse.click(button='right')
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.chuotphaimap_cauhinhkhoidong).click()
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.cauhinhienthi_loaibando).click()
+        time.sleep(0.5)
+        var.driver.find_element(By.XPATH, var.cauhinhienthi_loaibando_vetinhbinhanh).click()
+        var.driver.find_element(By.XPATH, var.cauhinhienthi_kinhdo).clear()
+        var.driver.find_element(By.XPATH, var.cauhinhienthi_kinhdo).send_keys(data['giamsat']['cauhinhkhoidong_kinhdo'])
+        var.driver.find_element(By.XPATH, var.cauhinhienthi_vido).clear()
+        var.driver.find_element(By.XPATH, var.cauhinhienthi_vido).send_keys(data['giamsat']['cauhinhkhoidong_vido'])
+        var.driver.find_element(By.XPATH, var.cauhinhienthi_muczoombando).clear()
+        var.driver.find_element(By.XPATH, var.cauhinhienthi_muczoombando).send_keys(data['giamsat']['cauhinhkhoidong_muczoombando'])
+        var.driver.find_element(By.XPATH, var.cauhinhienthi_luu).click()
+        time.sleep(1)
+        check_message_cauhinhkhoidong = var.driver.find_element(By.XPATH, var.capnhatthanhcong).text
+        print(check_message_cauhinhkhoidong)
+        var.driver.find_element(By.XPATH, var.ok).click()
+
+        #Setup lại
+        var.driver.refresh()
+        time.sleep(4)
+        mouse.move("800", "800")
+        mouse.click(button='right')
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.chuotphaimap_cauhinhkhoidong).click()
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.cauhinhienthi_loaibando).click()
+        time.sleep(0.5)
+        var.driver.find_element(By.XPATH, var.cauhinhienthi_loaibando_bando).click()
+        var.driver.find_element(By.XPATH, var.cauhinhienthi_kinhdo).clear()
+        var.driver.find_element(By.XPATH, var.cauhinhienthi_kinhdo).send_keys(data['giamsat']['cauhinhkhoidong_kinhdo1'])
+        var.driver.find_element(By.XPATH, var.cauhinhienthi_vido).clear()
+        var.driver.find_element(By.XPATH, var.cauhinhienthi_vido).send_keys(data['giamsat']['cauhinhkhoidong_vido1'])
+        var.driver.find_element(By.XPATH, var.cauhinhienthi_muczoombando).clear()
+        var.driver.find_element(By.XPATH, var.cauhinhienthi_muczoombando).send_keys(data['giamsat']['cauhinhkhoidong_muczoombando'])
+        var.driver.find_element(By.XPATH, var.cauhinhienthi_luu).click()
+        time.sleep(1)
+        check_message_cauhinhkhoidong = var.driver.find_element(By.XPATH, var.capnhatthanhcong).text
+        var.driver.refresh()
+        time.sleep(5)
+
+
+    def bieudonhienlieumoi(self):
+        var.driver.implicitly_wait(5)
+        mouse.move("800", "800")
+        mouse.click(button='right')
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.chuotphaimap_bieudonhienlieumoi).click()
+        time.sleep(1)
+        check_popup_bieudonhienlieumoi = var.driver.find_element(By.XPATH, var.check_popup_bieudonhienlieumoi).text
+        print(check_popup_bieudonhienlieumoi)
+        var.driver.find_element(By.XPATH, var.ok).click()
+        time.sleep(1)
+
+
+
+    def gstheotuyenmau(self):
+        var.driver.implicitly_wait(5)
+        mouse.move("800", "800")
+        mouse.click(button='right')
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.chuotphaimap_gstheotuyenmau).click()
+        time.sleep(1)
+        check_popup_gstheotuyenmau = var.driver.find_element(By.XPATH, var.check_popup_gstheotuyenmau).text
+        print(check_popup_gstheotuyenmau)
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.chuotphaimap_gstheotuyenmau_iconx).click()
+        time.sleep(1)
+

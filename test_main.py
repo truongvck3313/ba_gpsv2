@@ -58,7 +58,15 @@ class Test(unittest.TestCase):
         # giamsat.chuotphaimap.xemdiachi(self)
         # giamsat.chuotphaimap.dokhoangcach(self)
         # giamsat.chuotphaimap.chihuong(self)
-        giamsat.chuotphaimap.chidanduong(self)
+        # giamsat.chuotphaimap.chidanduong(self)
+        # giamsat.chuotphaimap.taodiembando(self)
+        # giamsat.chuotphaimap.taovunglotrinh(self)
+        # giamsat.chuotphaimap.timxetrongvung(self)
+        # giamsat.chuotphaimap.timxegannhat(self)
+        # giamsat.chuotphaimap.cauhinhhienthinhomdiem(self)
+        # giamsat.chuotphaimap.cauhinhkhoidong(self)
+        # giamsat.chuotphaimap.bieudonhienlieumoi(self)
+        giamsat.chuotphaimap.gstheotuyenmau(self)
 
 
 
