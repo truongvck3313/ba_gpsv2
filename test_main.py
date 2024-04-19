@@ -1,3 +1,4 @@
+import caseid
 import login
 import chucnangkhac
 import var
@@ -8,31 +9,34 @@ import giamsat
 
 
 
-# chucnangkhac.timerun()
+chucnangkhac.timerun()
 
 
 class Test(unittest.TestCase):
-    # def test_run1(self):
-    #     chucnangkhac.clearData(var.path_baocao, "Checklist", "", "")
-    #     chucnangkhac.delete_image()
-    #     chucnangkhac.modetest()
-    #     chucnangkhac.notification_telegram()
-
-
-    def test_run2(self):
-        # chucnangkhac.clearData(var.path_baocao, "Checklist", "", "")
-        # chucnangkhac.delete_image()
-        # mucdo.mucdo1(self)
-        # mucdo.mucdo2(self)
-        # mucdo.mucdo3(self)
-        # mucdo.mucdo4(self)
-        # mucdo.chaytatca(self)
+    def test_run1(self):
+        chucnangkhac.clearData(var.path_baocao, "Checklist", "", "")
+        chucnangkhac.delete_image()
+        mucdo.modetest(self)
         # chucnangkhac.notification_telegram()
 
-        # login.login.login_v2(self, "viconshipdanang1", "12341234")
-        # giamsat.danhsachxe.timkiem(self)
-        # giamsat.danhsachxe.nhomxe(self)
+
+    # def test_run2(self):
+    #     chucnangkhac.clearData(var.path_baocao, "Checklist", "", "")
+    #     chucnangkhac.delete_image()
+    #     # chucnangkhac.notification_telegram()
+    #
+    #     # login.login.login_v2(self, "viconshipdanang1", "12341234")
+    #     caseid.caseid_giamsat01(self)
+    #     caseid.caseid_giamsat02(self)
+    #     caseid.caseid_giamsat03(self)
+    #     caseid.caseid_giamsat04(self)
+    #     caseid.caseid_login21(self)
+
+
+# giamsat.danhsachxe.nhomxe(self)
         # giamsat.danhsachxe.trangthai(self)
+        # giamsat.danhsachxe.check_onlinehandler(self)
+
         # giamsat.danhsachxe.icon_khac(self)
         # giamsat.danhsachxe.chuotphaixe_xemlailotrinh(self)
         # giamsat.danhsachxe.chuotphaixe_xemlotrinhnhieuxe(self)
@@ -51,8 +55,7 @@ class Test(unittest.TestCase):
         # giamsat.danhsachxe.hientranghethong(self)
 
 
-
-        login.login.login_v2(self, "ungroup", "12341234")
+        # login.login.login_v2(self, "ungroup", "12341234")
         # giamsat.chuotphaimap.phongto_thunho(self)
         # giamsat.chuotphaimap.trungtamoday(self)
         # giamsat.chuotphaimap.xemdiachi(self)
@@ -66,8 +69,11 @@ class Test(unittest.TestCase):
         # giamsat.chuotphaimap.cauhinhhienthinhomdiem(self)
         # giamsat.chuotphaimap.cauhinhkhoidong(self)
         # giamsat.chuotphaimap.bieudonhienlieumoi(self)
-        giamsat.chuotphaimap.gstheotuyenmau(self)
+        # giamsat.chuotphaimap.gstheotuyenmau(self)
 
+
+        # login.login.login_v2(self, "truongtq@bagroup.vn", "atgmj123")
+        # giamsat.chuotphaimap.dieuxedituyen(self)
 
 
 

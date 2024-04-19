@@ -7,7 +7,7 @@
   },
   "giamsat": {
     "timkiem_diem": "CT Binh Anh -NCD",
-    "timkiem_toado": "21.00858, 105.880454",
+    "timkiem_toado": "21.008580, 105.880454",
     "cauhinhhienthi_dorong": "651",
     "timkiem_toado1": "20.991635, 105.855516",
     "timkiem_toado2": "20.97587, 105.835726",
@@ -38,6 +38,9 @@
     "cauhinhkhoidong_kinhdo1": "105.855495",
     "cauhinhkhoidong_vido1": "20.991608",
     "cauhinhkhoidong_muczoombando": "19",
+    "dieuxedituyen_bienkiemsoat": "12B12822_C",
+    "dieuxedituyen_sdtlaixe": "0359667693",
+    "dieuxedituyen_ghichu": "Trường test điều xe đi tuyến",
     "dentu_dulieusai": "Đình Lập 2"
   }
 }

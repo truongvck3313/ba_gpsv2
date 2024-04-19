@@ -266,7 +266,13 @@ class linklienket:
 
     def linklienket_trangchu(self, ma, tensukien):
         var.driver.implicitly_wait(5)
-        linklienket.linklienket(self, var.login_icontrangchu)
+        try:
+            linklienket.linklienket(self, var.login_icontrangchu)
+        except:
+            var.driver.maximize_window()
+            var.driver.get(var.linktest)
+            time.sleep(3)
+            linklienket.linklienket(self, var.login_icontrangchu)
         time.sleep(1)
         logging.info("Login - Link liên kết - Trang chủ")
         logging.info("check font-end: Chuyển tới trang Trang chủ")
@@ -286,13 +292,20 @@ class linklienket:
 
     def linklienket_lienhezalo(self, ma, tensukien):
         var.driver.implicitly_wait(5)
-        tab_id = var.driver.window_handles
-        tab_0 = tab_id[0]
-        var.driver.switch_to_window(tab_0)
-        var.driver.maximize_window()
-        var.driver.get(var.linktest)
-        time.sleep(3)
-        var.driver.find_element(By.XPATH, var.login_iconlienhezalo).click()
+        try:
+            tab_id = var.driver.window_handles
+            tab_0 = tab_id[0]
+            var.driver.switch_to_window(tab_0)
+            var.driver.maximize_window()
+            var.driver.get(var.linktest)
+            time.sleep(3)
+            var.driver.find_element(By.XPATH, var.login_iconlienhezalo).click()
+        except:
+            var.driver.maximize_window()
+            var.driver.get(var.linktest)
+            time.sleep(3)
+            var.driver.find_element(By.XPATH, var.login_iconlienhezalo).click()
+
         time.sleep(1)
         try:
             check_login_lienhezalo = var.driver.find_element(By.XPATH,var.check_login_lienhezalo).text
@@ -324,7 +337,13 @@ class linklienket:
 
     def linklienket_sodienthoai(self, ma, tensukien):
         var.driver.implicitly_wait(5)
-        linklienket.linklienket(self, var.login_iconsodienthoai)
+        try:
+            linklienket.linklienket(self, var.login_iconsodienthoai)
+        except:
+            var.driver.maximize_window()
+            var.driver.get(var.linktest)
+            time.sleep(3)
+            linklienket.linklienket(self, var.login_iconsodienthoai)
         time.sleep(1)
         print(var.driver.title)
         logging.info("Login - Link liên kết - Số điện thoại")
@@ -344,7 +363,13 @@ class linklienket:
 
     def linklienket_bagps(self, ma, tensukien):
         var.driver.implicitly_wait(5)
-        linklienket.linklienket(self, var.login_bagps)
+        try:
+            linklienket.linklienket(self, var.login_bagps)
+        except:
+            var.driver.maximize_window()
+            var.driver.get(var.linktest)
+            time.sleep(3)
+            linklienket.linklienket(self, var.login_bagps)
         time.sleep(1)
         logging.info("Login - Link liên kết - bagps.vn")
         logging.info("check font-end: Chuyển tới trang bagps.vn")
@@ -364,7 +389,13 @@ class linklienket:
 
     def linklienket_appstore(self, ma, tensukien):
         var.driver.implicitly_wait(5)
-        linklienket.linklienket(self, var.login_iconappstore)
+        try:
+            linklienket.linklienket(self, var.login_iconappstore)
+        except:
+            var.driver.maximize_window()
+            var.driver.get(var.linktest)
+            time.sleep(3)
+            linklienket.linklienket(self, var.login_iconappstore)
         time.sleep(1)
         try:
             check_login_appstore = var.driver.find_element(By.XPATH,var.check_login_appstore).text
@@ -394,7 +425,13 @@ class linklienket:
 
     def linklienket_chplay(self, ma, tensukien):
         var.driver.implicitly_wait(5)
-        linklienket.linklienket(self, var.login_iconchplay)
+        try:
+            linklienket.linklienket(self, var.login_iconchplay)
+        except:
+            var.driver.maximize_window()
+            var.driver.get(var.linktest)
+            time.sleep(3)
+            linklienket.linklienket(self, var.login_iconchplay)
         time.sleep(1)
         try:
             check_login_chplay = var.driver.find_element(By.XPATH,var.check_login_chplay).text
@@ -424,7 +461,13 @@ class linklienket:
 
     def linklienket_hotlinemuahang(self, ma, tensukien):
         var.driver.implicitly_wait(5)
-        linklienket.linklienket(self, var.login_hotlinemuahang)
+        try:
+            linklienket.linklienket(self, var.login_hotlinemuahang)
+        except:
+            var.driver.maximize_window()
+            var.driver.get(var.linktest)
+            time.sleep(3)
+            linklienket.linklienket(self, var.login_hotlinemuahang)
         time.sleep(1)
         logging.info("Login - Link liên kết - Hotline mua hàng")
         logging.info("check font-end: Chuyển tới Hotline mua hàng")
@@ -442,7 +485,13 @@ class linklienket:
 
     def linklienket_muasamsanpham(self, ma, tensukien):
         var.driver.implicitly_wait(5)
-        linklienket.linklienket(self, var.login_muasamsanpham)
+        try:
+            linklienket.linklienket(self, var.login_muasamsanpham)
+        except:
+            var.driver.maximize_window()
+            var.driver.get(var.linktest)
+            time.sleep(3)
+            linklienket.linklienket(self, var.login_muasamsanpham)
         time.sleep(1)
         try:
             check_login_muasamsanpham = var.driver.find_element(By.XPATH,var.check_login_muasamsanpham).text
@@ -472,7 +521,13 @@ class linklienket:
 
     def linklienket_thongtingiaiphap(self, ma, tensukien):
         var.driver.implicitly_wait(5)
-        linklienket.linklienket(self, var.login_thongtingiaiphap)
+        try:
+            linklienket.linklienket(self, var.login_thongtingiaiphap)
+        except:
+            var.driver.maximize_window()
+            var.driver.get(var.linktest)
+            time.sleep(3)
+            linklienket.linklienket(self, var.login_thongtingiaiphap)
         time.sleep(1)
         try:
             check_login_thongtingiaiphap = var.driver.find_element(By.XPATH,var.check_login_muasamsanpham).text
@@ -502,7 +557,13 @@ class linklienket:
 
     def linklienket_vechungtoi(self, ma, tensukien):
         var.driver.implicitly_wait(5)
-        linklienket.linklienket(self, var.login_vechungtoi)
+        try:
+            linklienket.linklienket(self, var.login_vechungtoi)
+        except:
+            var.driver.maximize_window()
+            var.driver.get(var.linktest)
+            time.sleep(3)
+            linklienket.linklienket(self, var.login_vechungtoi)
         time.sleep(1)
         try:
             check_login_vechungtoi = var.driver.find_element(By.XPATH,var.check_login_vechungtoi).text
@@ -532,7 +593,13 @@ class linklienket:
 
     def linklienket_mangluoi(self, ma, tensukien):
         var.driver.implicitly_wait(5)
-        linklienket.linklienket(self, var.login_mangluoi)
+        try:
+            linklienket.linklienket(self, var.login_mangluoi)
+        except:
+            var.driver.maximize_window()
+            var.driver.get(var.linktest)
+            time.sleep(3)
+            linklienket.linklienket(self, var.login_mangluoi)
         time.sleep(1)
         try:
             check_login_mangluoi = var.driver.find_element(By.XPATH,var.check_login_mangluoi).text
@@ -562,7 +629,13 @@ class linklienket:
 
     def linklienket_huongdansudung(self, ma, tensukien):
         var.driver.implicitly_wait(5)
-        linklienket.linklienket(self, var.login_huongdansudung)
+        try:
+            linklienket.linklienket(self, var.login_huongdansudung)
+        except:
+            var.driver.maximize_window()
+            var.driver.get(var.linktest)
+            time.sleep(3)
+            linklienket.linklienket(self, var.login_huongdansudung)
         time.sleep(1)
         try:
             check_login_huongdansudung = var.driver.find_element(By.XPATH,var.check_login_huongdansudung).text
@@ -592,7 +665,13 @@ class linklienket:
 
     def linklienket_huongdandongphi(self, ma, tensukien):
         var.driver.implicitly_wait(5)
-        linklienket.linklienket(self, var.login_huongdandongphi)
+        try:
+            linklienket.linklienket(self, var.login_huongdandongphi)
+        except:
+            var.driver.maximize_window()
+            var.driver.get(var.linktest)
+            time.sleep(3)
+            linklienket.linklienket(self, var.login_huongdandongphi)
         time.sleep(1)
         try:
             check_login_huongdandongphi = var.driver.find_element(By.XPATH,var.check_login_huongdandongphi).text
@@ -624,9 +703,17 @@ class linklienket:
         var.driver.implicitly_wait(5)
         time.sleep(3)
         try:
+            tab_id = var.driver.window_handles
+            tab_0 = tab_id[0]
+            var.driver.switch_to_window(tab_0)
             var.driver.find_element(By.XPATH, var.linklienket_hopthoaizalo).click()
         except:
-            time.sleep(3)
+            var.driver.maximize_window()
+            tab_id = var.driver.window_handles
+            tab_0 = tab_id[0]
+            var.driver.switch_to_window(tab_0)
+            var.driver.get(var.linktest)
+            time.sleep(5)
             var.driver.find_element(By.XPATH, var.linklienket_hopthoaizalo).click()
         time.sleep(1)
         chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")

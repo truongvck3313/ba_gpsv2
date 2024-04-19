@@ -24,20 +24,6 @@ def timerun():
             break
 
 
-def modetest():
-    modetest = ''.join(re.findall(r'\d+', var.modetest))
-    for i in modetest:
-        if i == "1":
-            mucdo.mucdo1(self="")
-        if i == "2":
-            mucdo.mucdo2(self="")
-        if i == "3":
-            mucdo.mucdo3(self="")
-        if i == "4":
-            mucdo.mucdo4(self="")
-        if i == "5":
-            mucdo.chaytatca(self="")
-
 
 def clearData(file,sheetName,ketqua, tenanh):
     wordbook = openpyxl.load_workbook(file)
@@ -77,7 +63,7 @@ def writeData(file,sheetName,caseid,columnno,data):
     wordbook = openpyxl.load_workbook(file)
     sheet = wordbook.get_sheet_by_name(sheetName)
     i = 0
-    while (i < 1000):
+    while (i < 5000):
         i += 1
         i = str(i)
         if sheet["A"+i].value == caseid:

@@ -38,6 +38,7 @@ f = open("file_config.txt", 'r')
 for x in f:
      if x[0:11] == "- ModeTest:":   #1,2,3,4
          modetest = x[13:-2]
+         # print(modetest)
      if x[0:11] == "- LinkTest:":   #https://gps.binhanh.vn
          linktest = x[13:-2]
      if x[0:10] == "- TimeRun:":    #09:41
@@ -358,6 +359,38 @@ check_popup_bieudonhienlieumoi = "//*[@class='bootbox modal fade bootbox-alert i
 chuotphaimap_gstheotuyenmau = "/html/body/div[21]/div[2]/div[2]/div[17]"
 check_popup_gstheotuyenmau = "//*[@id='popUpBoxVehicleTrackingForm']/div/div[1]/div[2]"
 chuotphaimap_gstheotuyenmau_iconx = "//*[@id='btnCloseVTWRForm']"
+danhsachcongty = "//*[text()='Danh sách công ty']"
+danhsachcongty_loai = "//*[@name='ctl00$ctl00$MainContent$Content$companySearch$ddlSearchType']"
+danhsachcongty_loai_tencongty = "//*[@name='ctl00$ctl00$MainContent$Content$companySearch$ddlSearchType']//*[@value='2']"
+danhsachcongty_noidung = "//*[@placeholder='Nội dung']"
+danhsachcongty_timkiem = "//*[@id='btnSearch']"
+check_timkiem_congty = "//*[@id='ctl00_ctl00_MainContent_Content_grvReport']/tbody/tr[2]/td[2]"
+danhsachcongty_icondencongty = "//*[@src='../../Images/s_icon_GotoCompany.png']"
+giamsat = "//*[@id='ModuleOnline']"
+danhsachxe_dungtat = "//*[text()='Dừng - Tắt']"
+chuotphaimap_dieuxedituyen = "/html/body/div[21]/div[2]/div[2]/div[19]"
+check_popup_dieuxedituyen = "//*[@id='divVehicleOperator']/div[1]/div/div"
+dieuxedituyen_tuyendichuyen = "//*[@id='txtRoute']"
+dieuxedituyen_diemnhanhang = "//*[@id='txtRecive']"
+dieuxedituyen_bienkiemsoat = "//*[@id='txtVehiclePlateOpertator']"
+dieuxedituyen_ghichu = "//*[@id='txtNote']"
+dieuxedituyen_sdtlaixe = "//*[@id='txtPhone']"
+dieuxedituyen_laixe = "//*[@id='txtDriver']"
+dieuxedituyen_luuvatieptuc = "//*[@id='btnaddVhOperatorCon']"
+dieuxedituyen_themmoi = "//*[@id='btnaddVhOperator']"
+dieuxedituyen_thoat = "//*[@id='btnCloseVhOperator']"
+check_gs_timkiem_timxe = "//*[@class='leaflet-popup-content-wrapper']/div/div[3]/div[1]/div[2]"
+timkiem_timxe_input1 = "//*[@id='toolbox']//*[@placeholder='Nhập xe cần tìm']"
+check_gs_mauxe = "//*[@id='idClearOnline']/table/tbody/tr[1]"
+check_gs_tendiem = "//*[@class='leaflet-popup-content-wrapper']/div/div/div[2]"
+check_gs_timtoado_kinhdo = "//*[@class='leaflet-popup-content-wrapper']/div/div/div[5]"
+check_gs_timtoado_vido = "//*[@class='leaflet-popup-content-wrapper']/div/div/div[8]"
+
+
+
+
+
+
 
 
 
