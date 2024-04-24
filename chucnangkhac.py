@@ -1,4 +1,6 @@
 import logging
+
+import caseid
 import var
 import time
 import openpyxl
@@ -134,3 +136,29 @@ def delete_image():
     for i in l:
         print(os.path.join(path, i))
         os.remove(os.path.join(path, i))
+
+
+def delete_excel():
+    path = os.path.join(var.excelpath)
+    l = os.listdir(path)
+    print(l)
+    for i in l:
+        print(os.path.join(path, i))
+        os.remove(os.path.join(path, i))
+
+
+
+def get_datachecklist(ma):
+        wordbook = openpyxl.load_workbook(var.checklistpath)
+        sheet = wordbook.get_sheet_by_name("Checklist")
+        rownum = 9
+        while (rownum < 3000):
+            rownum += 1
+            rownum = str(rownum)
+            if sheet["A"+rownum].value == ma:
+                tensukien = sheet["B"+rownum].value
+                ketqua = sheet["C"+rownum].value
+                print(tensukien)
+                print(ketqua)
+            rownum = int(rownum)
+

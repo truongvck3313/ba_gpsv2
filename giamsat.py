@@ -14,6 +14,11 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 import mouse
 from selenium.common.exceptions import NoSuchElementException
+from urllib.request import urlretrieve
+import urllib.request
+import requests
+import openpyxl
+
 
 file_name = var.datatestpath
 with open(file_name, 'r', encoding='utf-8') as f:
@@ -73,9 +78,10 @@ def zoom_map(loai, solanzoom):
 
 
 class danhsachxe:
-    def timkiem_timxe(self, ma, tensukien):
+    def timkiem_timxe(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
+            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
             var.driver.find_element(By.XPATH, var.danhsachxe_tenphuongtien)
         except:
             login.login.login_v2(self, "viconshipdanang1", "12341234")
@@ -93,6 +99,7 @@ class danhsachxe:
         logging.info("check font-end: Màu xe khi được chọn: rgba(51, 153, 255, 1)")
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
         if check_gs_timkiem_timxe == tenphuongtien and check_gs_mauxe == "rgba(51, 153, 255, 1)":
             logging.info("True")
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
@@ -103,9 +110,10 @@ class danhsachxe:
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_TimKiem_TimXe.png")
 
 
-    def timkiem_timdiachi(self, ma, tensukien):
+    def timkiem_timdiachi(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
+            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
             var.driver.find_element(By.XPATH, var.danhsachxe_tenphuongtien)
         except:
             login.login.login_v2(self, "viconshipdanang1", "12341234")
@@ -125,6 +133,7 @@ class danhsachxe:
         logging.info("check font-end: Chuyển tới trang - Google Maps")
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
         if var.driver.title == "Google Maps":
             logging.info("True")
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
@@ -143,9 +152,10 @@ class danhsachxe:
         var.driver.switch_to_window(tab_0)
 
 
-    def timkiem_tendiem(self, ma, tensukien):
+    def timkiem_tendiem(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
+            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
             var.driver.find_element(By.XPATH, var.danhsachxe_tenphuongtien)
         except:
             login.login.login_v2(self, "viconshipdanang1", "12341234")
@@ -165,6 +175,7 @@ class danhsachxe:
         logging.info("check font-end: Hiển thị tên điểm đã tìm kiếm - "+ tendiem)
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
         try:
             check_gs_tendiem = var.driver.find_element(By.XPATH, var.check_gs_tendiem).text
             if check_gs_tendiem == tendiem:
@@ -182,9 +193,10 @@ class danhsachxe:
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_TimKiem_TenDiem.png")
 
 
-    def timkiem_timtoado(self, ma, tensukien):
+    def timkiem_timtoado(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
+            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
             var.driver.find_element(By.XPATH, var.danhsachxe_tenphuongtien)
         except:
             login.login.login_v2(self, "viconshipdanang1", "12341234")
@@ -204,6 +216,7 @@ class danhsachxe:
         logging.info("check font-end: Tìm tới tọa độ - "+ data['giamsat']['timkiem_toado'])
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
         print(data['giamsat']['timkiem_toado'][0:9])
         print(data['giamsat']['timkiem_toado'][11:21])
         try:
@@ -226,142 +239,93 @@ class danhsachxe:
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_TimKiem_TimToaDo.png")
 
 
-
-
-
-    def nhomxe(self):
-        var.driver.implicitly_wait(10)
+    def nhomxe_chonmotnhom(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(5)
         # Chọn nhóm xe 1
-        var.driver.find_element(By.XPATH, var.nhomxe).click()
+        try:
+            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            var.driver.find_element(By.XPATH, var.nhomxe).click()
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
+
+            var.driver.find_element(By.XPATH, var.nhomxe).click()
+
         time.sleep(0.5)
+        tennhomxe1 = var.driver.find_element(By.XPATH, var.chonnhomxe1).text
+        print("Tên nhóm xe 1", tennhomxe1)
         var.driver.find_element(By.XPATH, var.chonnhomxe1).click()
-        time.sleep(2)
-        bienso1 = var.driver.find_element(By.XPATH, var.bienso1).text
+        time.sleep(1.5)
+        bienso1 = var.driver.find_element(By.XPATH, "//*[@id='tblVehicleList']/tbody//*[text()='"+tennhomxe1+"']").text
+        print("Tên nhóm xe 1 sau khi chọn", bienso1)
+
+        logging.info("Giám sát - Nhóm phương tiện - Chọn 1 nhóm phương tiện")
+        logging.info("check font-end: Tên nhóm phương tiện đầu tiên: "+ tennhomxe1)
+        logging.info("check font-end: Tên nhóm xe 1 sau khi chọn: " + bienso1)
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        if tennhomxe1 == bienso1:
+                logging.info("True")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+        else:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChonNhom_ConMotNhom.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChonNhom_ConMotNhom.png")
+
+
+    def nhomxe_chontatca(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(5)
+        # Chọn nhóm xe 1
+        try:
+            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            # var.driver.find_element(By.XPATH, var.nhomxe).click()
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
         # Tất cả nhóm xe
-        var.driver.find_element(By.XPATH, var.nhomxe).click()
         time.sleep(0.5)
         var.driver.find_element(By.XPATH, var.tatcanhomxe).click()
-        time.sleep(2)
-
-
-
-    def trangthai(self):
-        var.driver.implicitly_wait(10)
-        # Tổng số xe api
-        for request in var.driver.requests:
-            if request.url == "https://gps.binhanh.vn/HttpHandlers/OnlineHandler.ashx?method=getVehicleList4Hidden":
-                data1 = sw_decode(request.response.body, request.response.headers.get('Content-Encoding', 'identity'))
-                data1 = data1.decode("utf8")
-                res = json.loads(data1)
-                i = 0
-                while (i < 999):
-                    var.driver.implicitly_wait(5)
-                    try:
-                        print("phương tiện be số: ", i + 1, res['data'][i]['pri_code'])
-                    except:
-                        print("Tổng số xe be: ", i)
-                        var.writeData(var.path_luutamthoi, "Sheet1", 3, 2, i)
-                        break
-                    i += 1
-            else:
-                print("không có  response")
-
-        # Tổng số xe fe
-        n = 0
-        while (n < 999):
-            var.driver.implicitly_wait(2)
-            n += 1
-            n = str(n)
-            pathtenphuongtien = "//*[@id='idClearOnline']/table/tbody/tr[" + n + "]/td[2]/div[2]"
-            try:
-                tenphuongtienfe = var.driver.find_element(By.XPATH, pathtenphuongtien).text
-                print("Phương tiện fe sô:", n, ":", tenphuongtienfe)
-                var.writeData(var.path_luutamthoi, "Sheet1", 4, 2, n)
-
-            except:
-                n = int(n)
-                print("Tổng số xe fe: ", n - 1)
-                break
-            n = int(n)
-
-        # Bật máy 1
-        var.driver.find_element(By.XPATH, var.trangthai_batmay1).click()
         time.sleep(1.5)
-        checkiconxe_batmay1 = var.driver.find_element(By.XPATH, var.checkiconxe_batmay1).get_attribute("src")
-        print("icon xe", checkiconxe_batmay1)  # https://gps.binhanh.vn/icons/vehicle/car/Blue0.png
+        soluong_dungtat = var.driver.find_element(By.XPATH, var.soluong_dungtat).get_attribute("data-count")
         soluong_dungbat = var.driver.find_element(By.XPATH, var.soluong_dungbat).get_attribute("data-count")
         soluong_dichuyen = var.driver.find_element(By.XPATH, var.soluong_dichuyen).get_attribute("data-count")
         soluong_quatocdo = var.driver.find_element(By.XPATH, var.soluong_quatocdo).get_attribute("data-count")
-        tongsoxe_tren = var.driver.find_element(By.XPATH, var.tongsoxe_tren).text
-        tongsoxe_batmay1 = int(soluong_dungbat) + int(soluong_dichuyen) + int(soluong_quatocdo)
-        print("Tổng số xe bật máy trên 1: ", tongsoxe_tren)
-        print("Tổng số xe bật máy 1: ", tongsoxe_batmay1)
-
-        # Tắt máy 1
-        var.driver.find_element(By.XPATH, var.trangthai_tatmay1).click()
-        time.sleep(1.5)
-        soluong_dungtat = var.driver.find_element(By.XPATH, var.soluong_dungtat).get_attribute("data-count")
-        tongsoxe_tren = var.driver.find_element(By.XPATH, var.tongsoxe_tren).text
-        tongsoxe_tatmay1 = int(soluong_dungtat)
-        print("Tổng số xe tắt máy trên 1: ", tongsoxe_tren)
-        print("Tổng số xe tắt máy 1: ", tongsoxe_tatmay1)
-
-        # Di chuyển
-        var.driver.find_element(By.XPATH, var.trangthai_dichuyen).click()
-        time.sleep(1.5)
-        soluong_dichuyen = var.driver.find_element(By.XPATH, var.soluong_dichuyen).get_attribute("data-count")
-        tongsoxe_tren = var.driver.find_element(By.XPATH, var.tongsoxe_tren).text
-        print("Tổng số xe di chuyển trên: ", tongsoxe_tren)
-        print("Tổng số xe di chuyển: ", soluong_dichuyen)
-
-        # Quá tốc độ
-        var.driver.find_element(By.XPATH, var.trangthai_quatocdo).click()
-        time.sleep(1.5)
-        soluong_quatocdo = var.driver.find_element(By.XPATH, var.soluong_quatocdo).get_attribute("data-count")
-        tongsoxe_tren = var.driver.find_element(By.XPATH, var.tongsoxe_tren).text
-        print("Tổng số xe quá tốc độ trên: ", tongsoxe_tren)
-        print("Tổng số xe quá tốc độ: ", soluong_quatocdo)
-
-        # Dừng đỗ
-        var.driver.find_element(By.XPATH, var.trangthai_dungdo).click()
-        time.sleep(1.5)
-        soluong_dungbat = var.driver.find_element(By.XPATH, var.soluong_dungbat).get_attribute("data-count")
-        soluong_dungtat = var.driver.find_element(By.XPATH, var.soluong_dungtat).get_attribute("data-count")
-        tongsoxe_tren = var.driver.find_element(By.XPATH, var.tongsoxe_tren).text
-        tongsoxe_dungdo = int(soluong_dungbat) + int(soluong_dungtat)
-        print("Tổng số xe dừng đỗ trên: ", tongsoxe_tren)
-        print("Tổng số xe dừng đỗ: ", tongsoxe_dungdo)
-
-        # Tắt máy 2
-        var.driver.find_element(By.XPATH, var.trangthai_tatmay2).click()
-        time.sleep(1.5)
-        soluong_dungtat = var.driver.find_element(By.XPATH, var.soluong_dungtat).get_attribute("data-count")
-        tongsoxe_tren = var.driver.find_element(By.XPATH, var.tongsoxe_tren).text
-        print("Tổng số xe tắt máy trên 2: ", tongsoxe_tren)
-        print("Tổng số xe tắt máy 2: ", soluong_dungtat)
-
-        # Bật máy 2
-        var.driver.find_element(By.XPATH, var.trangthai_batmay2).click()
-        time.sleep(1.5)
-        soluong_dungbat = var.driver.find_element(By.XPATH, var.soluong_dungbat).get_attribute("data-count")
-        tongsoxe_tren = var.driver.find_element(By.XPATH, var.tongsoxe_tren).text
-        print("Tổng số xe bật máy trên 2: ", tongsoxe_tren)
-        print("Tổng số xe bật máy 2: ", soluong_dungbat)
-
-        # Mất tín hiệu
-        var.driver.find_element(By.XPATH, var.trangthai_mattinhieu).click()
-        time.sleep(1.5)
         soluong_mattinhieu = var.driver.find_element(By.XPATH, var.soluong_mattinhieu).get_attribute("data-count")
         tongsoxe_tren = var.driver.find_element(By.XPATH, var.tongsoxe_tren).text
-        print("Tổng số xe mất tín hiệu trên: ", tongsoxe_tren)
-        print("Tổng số xe mất tín hiệu: ", soluong_mattinhieu)
+        tongsoxe_duoi = var.driver.find_element(By.XPATH, var.tongsoxe_duoi).text
+        tongsoxecactrangthai = int(soluong_dungtat) \
+                               + int(soluong_dungbat) \
+                               + int(soluong_dichuyen) \
+                               + int(soluong_quatocdo) \
+                               + int(soluong_mattinhieu)
+        tongsoxecactrangthai = str(tongsoxecactrangthai)
+        logging.info("Giám sát - Nhóm phương tiện - Chọn tất cả nhóm phương tiện")
+        logging.info("check font-end: Tổng số xe các trạng thái: " + tongsoxecactrangthai)
+        logging.info("check font-end: Tổng số xe trên: " + tongsoxe_tren)
+        logging.info("check font-end: Tổng số xe dưới: " + tongsoxe_duoi)
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        if tongsoxecactrangthai == tongsoxe_tren == tongsoxe_duoi:
+                logging.info("True")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+        else:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChonNhom_TatCa.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChonNhom_TatCa.png")
 
 
-    def check_onlinehandler(self):
+    def check_onlinehandler(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        del var.driver.requests
-        time.sleep(2)
-        var.driver.find_element(By.XPATH, var.trangthai_dichuyen).click()
+        try:
+            del var.driver.requests
+            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            var.driver.find_element(By.XPATH, var.trangthai_dichuyen).click()
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            del var.driver.requests
+            var.driver.find_element(By.XPATH, var.trangthai_dichuyen).click()
         time.sleep(2)
         n = 0
         while (n < 100):
@@ -384,16 +348,13 @@ class danhsachxe:
                 break
             n = int(n)
 
-
-
         tenphuongtien = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 2, 2))
         button = var.driver.find_element(By.XPATH,"//*[@id='idClearOnline']/table/tbody//*[text()='" + tenphuongtien + "']")
         action = ActionChains(var.driver)
         action.double_click(button).perform()
         time.sleep(1.5)
         for request in var.driver.requests:
-            if request.url[
-               0:82] == "https://gps.binhanh.vn/HttpHandlers/OnlineHandler.ashx?method=detail&VehiclePlate=":
+            if request.url[0:82] == "https://gps.binhanh.vn/HttpHandlers/OnlineHandler.ashx?method=detail&VehiclePlate=":
                 data1 = sw_decode(request.response.body, request.response.headers.get('Content-Encoding', 'identity'))
                 data1 = data1.decode("utf8")
                 res = json.loads(data1)
@@ -423,15 +384,24 @@ class danhsachxe:
                         print("Giây hiện tại: ", giay_hientai)
                         tongsogiay_hientai = (gio_hientai*3600) + (phut_hientai*60) + giay_hientai
                         print("Tổng số giây hiện tại: ", tongsogiay_hientai)
-
                         thoigiantre = tongsogiay_hientai - tongsogiay_api
                         print("Thời gian trễ: ", thoigiantre)
 
+                        logging.info("Giám sát - Check thời gian gửi api danh sách xe(dưới 120s)")
+                        logging.info("check font-end: Thời gian hiện tại:: " + str(timerun))
+                        logging.info("check font-end: Thời gian cập nhật api:: " + thongtinxeapi_giocapnhat[:8])
+                        logging.info("check font-end: Thời gian trễ: " + str(thoigiantre))
+                        logging.info("Mã - " + ma)
+                        logging.info("Tên sự kiện - " + tensukien)
+                        logging.info("Kết quả - " + ketqua)
                         if thoigiantre <= 120:
-                            print("case check time api Pass")
+                            logging.info("True")
+                            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
                         else:
-                            print("case check time api Fail")
-
+                            logging.info("False")
+                            var.driver.save_screenshot(var.imagepath + ma + "_TimeUpdateAPI120s.png")
+                            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_TimeUpdateAPI120s.png")
                         break
                     except:
                         print("Không tìm thấy phương tiện: ", tenphuongtien)
@@ -442,34 +412,748 @@ class danhsachxe:
 
 
 
+    def trangthai(self, ma, tensukien, ketqua, quyen, nhomdoi):
+        var.driver.implicitly_wait(3)
+        if quyen == "quyền quản trị" and nhomdoi == "công ty không có nhóm":
+            try:
+                var.driver.find_element(By.XPATH, var.ungroup)
+            except:
+                login.login.login_v2(self, "ungroup", "12341234")
 
-    def icon_khac(self):
-        var.driver.implicitly_wait(10)
+        if quyen == "quyền thường" and nhomdoi == "công ty không có nhóm":
+            try:
+                var.driver.find_element(By.XPATH, var.ungroup_1)
+            except:
+                login.login.login_v2(self, "ungroup_1", "12341234")
+
+        if quyen == "quyền quản trị" and nhomdoi == "công ty có nhóm":
+            try:
+                var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            except:
+                login.login.login_v2(self, "viconshipdanang1", "12341234")
+
+        if quyen == "quyền thường" and nhomdoi == "công ty có nhóm":
+            try:
+                var.driver.find_element(By.XPATH, var.e43E02743)
+            except:
+                login.login.login_v2(self, "43E02743", "12341234")
+
+        # Bật máy 1
+        if ma == "GiamSat08" or ma == "GiamSat17" or ma == "GiamSat26" or ma == "GiamSat35":
+            var.driver.find_element(By.XPATH, var.trangthai_batmay1).click()
+            time.sleep(1)
+            # checkiconxe_batmay1 = var.driver.find_element(By.XPATH, var.checkiconxe_batmay1).get_attribute("src")
+            # print("icon xe", checkiconxe_batmay1)  # https://gps.binhanh.vn/icons/vehicle/car/Blue0.png
+            soluong_dungbat = var.driver.find_element(By.XPATH, var.soluong_dungbat).get_attribute("data-count")
+            soluong_dichuyen = var.driver.find_element(By.XPATH, var.soluong_dichuyen).get_attribute("data-count")
+            soluong_quatocdo = var.driver.find_element(By.XPATH, var.soluong_quatocdo).get_attribute("data-count")
+            tongsoxe_tren = var.driver.find_element(By.XPATH, var.tongsoxe_tren).text
+            tongsoxe_batmay1 = int(soluong_dungbat) + int(soluong_dichuyen) + int(soluong_quatocdo)
+            logging.info("Giám sát - Trạng thái phương tiện - Bật máy 1")
+            logging.info("Mã - " + ma)
+            logging.info("Tên sự kiện - " + tensukien)
+            logging.info("Kết quả - " + ketqua)
+            logging.info("Quyền - " + quyen)
+            logging.info("Nhóm đội - " + nhomdoi)
+            logging.info("Số lượng xe dừng bật - " + soluong_dungbat)
+            logging.info("Số lượng xe di chuyển - " + soluong_dichuyen)
+            logging.info("Số lượng xe quá tốc độ - " + soluong_quatocdo)
+            logging.info("Tổng số phương tiện bật máy trên 1: " + str(tongsoxe_tren))
+            logging.info("Tổng số phương tiện bật máy 1: " + str(tongsoxe_batmay1))
+            if str(tongsoxe_tren) == str(tongsoxe_batmay1):
+                logging.info("True")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+            else:
+                logging.info("False")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                if quyen == "quyền quản trị" and nhomdoi == "công ty không có nhóm":
+                    var.driver.save_screenshot(var.imagepath + ma + "_QuanTri_KhongCoNhom_TrangThai_BatMay1.png")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_QuanTri_KhongCoNhom_TrangThai_BatMay1.png")
+                if quyen == "quyền thường" and nhomdoi == "công ty không có nhóm":
+                    var.driver.save_screenshot(var.imagepath + ma + "_Thuong_KhongCoNhom_TrangThai_BatMay1.png")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_Thuong_KhongCoNhom_TrangThai_BatMay1.png")
+                if quyen == "quyền quản trị" and nhomdoi == "công ty có nhóm":
+                    var.driver.save_screenshot(var.imagepath + ma + "_QuanTri_CoNhom_TrangThai_BatMay1.png")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_QuanTri_CoNhom_TrangThai_BatMay1.png")
+                if quyen == "quyền thường" and nhomdoi == "công ty có nhóm":
+                    var.driver.save_screenshot(var.imagepath + ma + "_QuanTri_CoNhom_TrangThai_BatMay1.png")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_Thuong_CoNhom_TrangThai_BatMay1.png")
+
+        # Tắt máy 1
+        if ma == "GiamSat09" or ma == "GiamSat18" or ma == "GiamSat27" or ma == "GiamSat36":
+            var.driver.find_element(By.XPATH, var.trangthai_tatmay1).click()
+            time.sleep(1)
+            soluong_dungtat = var.driver.find_element(By.XPATH, var.soluong_dungtat).get_attribute("data-count")
+            tongsoxe_tren = var.driver.find_element(By.XPATH, var.tongsoxe_tren).text
+            tongsoxe_tatmay1 = int(soluong_dungtat)
+            print("Tổng số xe tắt máy trên 1: ", tongsoxe_tren)
+            print("Tổng số xe tắt máy 1: ", tongsoxe_tatmay1)
+            logging.info("Giám sát - Trạng thái phương tiện - Tắt máy 1")
+            logging.info("Mã - " + ma)
+            logging.info("Tên sự kiện - " + tensukien)
+            logging.info("Kết quả - " + ketqua)
+            logging.info("Quyền - " + quyen)
+            logging.info("Nhóm đội - " + nhomdoi)
+            logging.info("Tổng số xe dừng tắt: " + str(soluong_dungtat))
+            logging.info("Tổng số xe tắt máy trên 1: " + str(tongsoxe_tren))
+            logging.info("Tổng số xe tắt máy 1: " + str(tongsoxe_tatmay1))
+            if str(tongsoxe_tren) == str(tongsoxe_tatmay1) == str(soluong_dungtat):
+                logging.info("True")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+            else:
+                logging.info("False")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                if quyen == "quyền quản trị" and nhomdoi == "công ty không có nhóm":
+                    var.driver.save_screenshot(var.imagepath + ma + "_QuanTri_KhongCoNhom_TrangThai_TatMay1.png")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_QuanTri_KhongCoNhom_TrangThai_TatMay1.png")
+                if quyen == "quyền thường" and nhomdoi == "công ty không có nhóm":
+                    var.driver.save_screenshot(var.imagepath + ma + "_Thuong_KhongCoNhom_TrangThai_TatMay1.png")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_Thuong_KhongCoNhom_TrangThai_TatMay1.png")
+                if quyen == "quyền quản trị" and nhomdoi == "công ty có nhóm":
+                    var.driver.save_screenshot(var.imagepath + ma + "_QuanTri_CoNhom_TrangThai_TatMay1.png")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_QuanTri_CoNhom_TrangThai_TatMay1.png")
+                if quyen == "quyền thường" and nhomdoi == "công ty có nhóm":
+                    var.driver.save_screenshot(var.imagepath + ma + "_QuanTri_CoNhom_TrangThai_TatMay1.png")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_Thuong_CoNhom_TrangThai_TatMay1.png")
+
+        # Di chuyển
+        if ma == "GiamSat10" or ma == "GiamSat19" or ma == "GiamSat28" or ma == "GiamSat37":
+            var.driver.find_element(By.XPATH, var.trangthai_dichuyen).click()
+            time.sleep(1)
+            soluong_dichuyen = var.driver.find_element(By.XPATH, var.soluong_dichuyen).get_attribute("data-count")
+            tongsoxe_tren = var.driver.find_element(By.XPATH, var.tongsoxe_tren).text
+            logging.info("Giám sát - Trạng thái phương tiện - Di Chuyển")
+            logging.info("Mã - " + ma)
+            logging.info("Tên sự kiện - " + tensukien)
+            logging.info("Kết quả - " + ketqua)
+            logging.info("Quyền - " + quyen)
+            logging.info("Nhóm đội - " + nhomdoi)
+            logging.info("Tổng số xe di chuyển trên: " + str(tongsoxe_tren))
+            logging.info("Tổng số xe di chuyển: " + str(soluong_dichuyen))
+            if str(tongsoxe_tren) == str(soluong_dichuyen):
+                logging.info("True")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+            else:
+                logging.info("False")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                if quyen == "quyền quản trị" and nhomdoi == "công ty không có nhóm":
+                    var.driver.save_screenshot(var.imagepath + ma + "_QuanTri_KhongCoNhom_TrangThai_DiChuyen.png")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_QuanTri_KhongCoNhom_TrangThai_DiChuyen.png")
+                if quyen == "quyền thường" and nhomdoi == "công ty không có nhóm":
+                    var.driver.save_screenshot(var.imagepath + ma + "_Thuong_KhongCoNhom_TrangThai_DiChuyen.png")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_Thuong_KhongCoNhom_TrangThai_DiChuyen.png")
+                if quyen == "quyền quản trị" and nhomdoi == "công ty có nhóm":
+                    var.driver.save_screenshot(var.imagepath + ma + "_QuanTri_CoNhom_TrangThai_DiChuyen.png")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_QuanTri_CoNhom_TrangThai_DiChuyen.png")
+                if quyen == "quyền thường" and nhomdoi == "công ty có nhóm":
+                    var.driver.save_screenshot(var.imagepath + ma + "_Thuong_CoNhom_TrangThai_DiChuyen.png")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_Thuong_CoNhom_TrangThai_DiChuyen.png")
+
+        # Quá tốc độ
+        if ma == "GiamSat11" or ma == "GiamSat20" or ma == "GiamSat29" or ma == "GiamSat38":
+            var.driver.find_element(By.XPATH, var.trangthai_quatocdo).click()
+            time.sleep(1)
+            soluong_quatocdo = var.driver.find_element(By.XPATH, var.soluong_quatocdo).get_attribute("data-count")
+            tongsoxe_tren = var.driver.find_element(By.XPATH, var.tongsoxe_tren).text
+            logging.info("Giám sát - Trạng thái phương tiện - Quá tốc độ")
+            logging.info("Mã - " + ma)
+            logging.info("Tên sự kiện - " + tensukien)
+            logging.info("Kết quả - " + ketqua)
+            logging.info("Quyền - " + quyen)
+            logging.info("Nhóm đội - " + nhomdoi)
+            logging.info("Tổng số xe quá tốc độ trên: " + str(tongsoxe_tren))
+            logging.info("Tổng số xe quá tốc độ: " + str(soluong_quatocdo))
+            if str(tongsoxe_tren) == str(soluong_quatocdo):
+                logging.info("True")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+            else:
+                logging.info("False")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                if quyen == "quyền quản trị" and nhomdoi == "công ty không có nhóm":
+                    var.driver.save_screenshot(var.imagepath + ma + "_QuanTri_KhongCoNhom_TrangThai_QuaTocDo.png")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_QuanTri_KhongCoNhom_TrangThai_QuaTocDo.png")
+                if quyen == "quyền thường" and nhomdoi == "công ty không có nhóm":
+                    var.driver.save_screenshot(var.imagepath + ma + "_Thuong_KhongCoNhom_TrangThai_QuaTocDo.png")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_Thuong_KhongCoNhom_TrangThai_QuaTocDo.png")
+                if quyen == "quyền quản trị" and nhomdoi == "công ty có nhóm":
+                    var.driver.save_screenshot(var.imagepath + ma + "_QuanTri_CoNhom_TrangThai_QuaTocDo.png")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_QuanTri_CoNhom_TrangThai_QuaTocDo.png")
+                if quyen == "quyền thường" and nhomdoi == "công ty có nhóm":
+                    var.driver.save_screenshot(var.imagepath + ma + "_Thuong_CoNhom_TrangThai_QuaTocDo.png")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_Thuong_CoNhom_TrangThai_QuaTocDo.png")
+
+        # Dừng đỗ
+        if ma == "GiamSat12" or ma == "GiamSat21" or ma == "GiamSat30" or ma == "GiamSat39":
+            var.driver.find_element(By.XPATH, var.trangthai_dungdo).click()
+            time.sleep(1)
+            soluong_dungbat = var.driver.find_element(By.XPATH, var.soluong_dungbat).get_attribute("data-count")
+            soluong_dungtat = var.driver.find_element(By.XPATH, var.soluong_dungtat).get_attribute("data-count")
+            tongsoxe_tren = var.driver.find_element(By.XPATH, var.tongsoxe_tren).text
+            tongsoxe_dungdo = int(soluong_dungbat) + int(soluong_dungtat)
+            logging.info("Giám sát - Trạng thái phương tiện - Dừng Đỗ")
+            logging.info("Mã - " + ma)
+            logging.info("Tên sự kiện - " + tensukien)
+            logging.info("Kết quả - " + ketqua)
+            logging.info("Quyền - " + quyen)
+            logging.info("Nhóm đội - " + nhomdoi)
+            logging.info("Tổng số xe dừng bật: " + str(soluong_dungbat))
+            logging.info("Tổng số xe dừng tắt: " + str(soluong_dungtat))
+            logging.info("Tổng số xe dừng đỗ trên: " + str(tongsoxe_tren))
+            logging.info("Tổng số xe dừng đỗ: " + str(tongsoxe_dungdo))
+            if str(tongsoxe_tren) == str(tongsoxe_dungdo):
+                logging.info("True")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+            else:
+                logging.info("False")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                if quyen == "quyền quản trị" and nhomdoi == "công ty không có nhóm":
+                    var.driver.save_screenshot(var.imagepath + ma + "_QuanTri_KhongCoNhom_TrangThai_DungDo.png")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_QuanTri_KhongCoNhom_TrangThai_DungDo.png")
+                if quyen == "quyền thường" and nhomdoi == "công ty không có nhóm":
+                    var.driver.save_screenshot(var.imagepath + ma + "_Thuong_KhongCoNhom_TrangThai_DungDo.png")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_Thuong_KhongCoNhom_TrangThai_DungDo.png")
+                if quyen == "quyền quản trị" and nhomdoi == "công ty có nhóm":
+                    var.driver.save_screenshot(var.imagepath + ma + "_QuanTri_CoNhom_TrangThai_DungDo.png")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_QuanTri_CoNhom_TrangThai_DungDo.png")
+                if quyen == "quyền thường" and nhomdoi == "công ty có nhóm":
+                    var.driver.save_screenshot(var.imagepath + ma + "_Thuong_CoNhom_TrangThai_DungDo.png")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_Thuong_CoNhom_TrangThai_DungDo.png")
+
+        # Bật máy 2
+        if ma == "GiamSat13" or ma == "GiamSat22" or ma == "GiamSat31" or ma == "GiamSat40":
+            var.driver.find_element(By.XPATH, var.trangthai_batmay2).click()
+            time.sleep(1)
+            soluong_dungbat = var.driver.find_element(By.XPATH, var.soluong_dungbat).get_attribute("data-count")
+            tongsoxe_tren = var.driver.find_element(By.XPATH, var.tongsoxe_tren).text
+            print("Tổng số xe bật máy trên 2: ", tongsoxe_tren)
+            print("Tổng số xe bật máy 2: ", soluong_dungbat)
+            logging.info("Giám sát - Trạng thái phương tiện - Bật máy 2")
+            logging.info("Mã - " + ma)
+            logging.info("Tên sự kiện - " + tensukien)
+            logging.info("Kết quả - " + ketqua)
+            logging.info("Quyền - " + quyen)
+            logging.info("Nhóm đội - " + nhomdoi)
+            logging.info("Tổng số xe bật máy trên 2: " + str(tongsoxe_tren))
+            logging.info("Tổng số xe bật máy 2: " + str(soluong_dungbat))
+            if str(tongsoxe_tren) == str(soluong_dungbat):
+                logging.info("True")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+            else:
+                logging.info("False")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                if quyen == "quyền quản trị" and nhomdoi == "công ty không có nhóm":
+                    var.driver.save_screenshot(var.imagepath + ma + "_QuanTri_KhongCoNhom_TrangThai_BatMay2.png")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_QuanTri_KhongCoNhom_TrangThai_BatMay2.png")
+                if quyen == "quyền thường" and nhomdoi == "công ty không có nhóm":
+                    var.driver.save_screenshot(var.imagepath + ma + "_Thuong_KhongCoNhom_TrangThai_BatMay2.png")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_Thuong_KhongCoNhom_TrangThai_BatMay2.png")
+                if quyen == "quyền quản trị" and nhomdoi == "công ty có nhóm":
+                    var.driver.save_screenshot(var.imagepath + ma + "_QuanTri_CoNhom_TrangThai_BatMay2.png")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_QuanTri_CoNhom_TrangThai_BatMay2.png")
+                if quyen == "quyền thường" and nhomdoi == "công ty có nhóm":
+                    var.driver.save_screenshot(var.imagepath + ma + "_Thuong_CoNhom_TrangThai_BatMay2.png")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_Thuong_CoNhom_TrangThai_BatMay2.png")
+
+        # Tắt máy 2
+        if ma == "GiamSat14" or ma == "GiamSat23" or ma == "GiamSat32" or ma == "GiamSat41":
+            var.driver.find_element(By.XPATH, var.trangthai_tatmay2).click()
+            time.sleep(1)
+            soluong_dungtat = var.driver.find_element(By.XPATH, var.soluong_dungtat).get_attribute("data-count")
+            tongsoxe_tren = var.driver.find_element(By.XPATH, var.tongsoxe_tren).text
+            logging.info("Giám sát - Trạng thái phương tiện - Tắt máy 2")
+            logging.info("Mã - " + ma)
+            logging.info("Tên sự kiện - " + tensukien)
+            logging.info("Kết quả - " + ketqua)
+            logging.info("Quyền - " + quyen)
+            logging.info("Nhóm đội - " + nhomdoi)
+            logging.info("Tổng số xe tắt máy trên 2: " + str(tongsoxe_tren))
+            logging.info("Tổng số xe tắt máy 2: " + str(soluong_dungtat))
+            if str(tongsoxe_tren) == str(soluong_dungtat):
+                logging.info("True")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+            else:
+                logging.info("False")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                if quyen == "quyền quản trị" and nhomdoi == "công ty không có nhóm":
+                    var.driver.save_screenshot(var.imagepath + ma + "_QuanTri_KhongCoNhom_TrangThai_TatMay2.png")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_QuanTri_KhongCoNhom_TrangThai_TatMay2.png")
+                if quyen == "quyền thường" and nhomdoi == "công ty không có nhóm":
+                    var.driver.save_screenshot(var.imagepath + ma + "_Thuong_KhongCoNhom_TrangThai_TatMay2.png")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_Thuong_KhongCoNhom_TrangThai_TatMay2.png")
+                if quyen == "quyền quản trị" and nhomdoi == "công ty có nhóm":
+                    var.driver.save_screenshot(var.imagepath + ma + "_QuanTri_CoNhom_TrangThai_TatMay2.png")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_QuanTri_CoNhom_TrangThai_TatMay2.png")
+                if quyen == "quyền thường" and nhomdoi == "công ty có nhóm":
+                    var.driver.save_screenshot(var.imagepath + ma + "_Thuong_CoNhom_TrangThai_TatMay2.png")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_Thuong_CoNhom_TrangThai_TatMay2.png")
+
+        # Mất tín hiệu
+        if ma == "GiamSat15" or ma == "GiamSat24" or ma == "GiamSat33" or ma == "GiamSat42":
+            var.driver.find_element(By.XPATH, var.trangthai_mattinhieu).click()
+            time.sleep(1)
+            soluong_mattinhieu = var.driver.find_element(By.XPATH, var.soluong_mattinhieu).get_attribute("data-count")
+            tongsoxe_tren = var.driver.find_element(By.XPATH, var.tongsoxe_tren).text
+            print("Tổng số xe mất tín hiệu trên: ", tongsoxe_tren)
+            print("Tổng số xe mất tín hiệu: ", soluong_mattinhieu)
+            logging.info("Giám sát - Trạng thái phương tiện - Mất tín hiệu")
+            logging.info("Mã - " + ma)
+            logging.info("Tên sự kiện - " + tensukien)
+            logging.info("Kết quả - " + ketqua)
+            logging.info("Quyền - " + quyen)
+            logging.info("Nhóm đội - " + nhomdoi)
+            logging.info("Tổng số xe mất tín hiệu trên: " + str(tongsoxe_tren))
+            logging.info("Tổng số xe mất tín hiệu: " + str(soluong_mattinhieu))
+            if str(tongsoxe_tren) == str(soluong_mattinhieu):
+                logging.info("True")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+            else:
+                logging.info("False")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                if quyen == "quyền quản trị" and nhomdoi == "công ty không có nhóm":
+                    var.driver.save_screenshot(var.imagepath + ma + "_QuanTri_KhongCoNhom_TrangThai_MatTinHieu.png")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_QuanTri_KhongCoNhom_TrangThai_MatTinHieu.png")
+                if quyen == "quyền thường" and nhomdoi == "công ty không có nhóm":
+                    var.driver.save_screenshot(var.imagepath + ma + "_Thuong_KhongCoNhom_TrangThai_MatTinHieu.png")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_Thuong_KhongCoNhom_TrangThai_MatTinHieu.png")
+                if quyen == "quyền quản trị" and nhomdoi == "công ty có nhóm":
+                    var.driver.save_screenshot(var.imagepath + ma + "_QuanTri_CoNhom_TrangThai_MatTinHieu.png")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_QuanTri_CoNhom_TrangThai_MatTinHieu.png")
+                if quyen == "quyền thường" and nhomdoi == "công ty có nhóm":
+                    var.driver.save_screenshot(var.imagepath + ma + "_Thuong_CoNhom_TrangThai_MatTinHieu.png")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_Thuong_CoNhom_TrangThai_MatTinHieu.png")
+            var.driver.find_element(By.XPATH, var.trangthai_mattinhieu).click()
+            time.sleep(1)
+
+        #Tổng số xe
+        if ma == "GiamSat16" or ma == "GiamSat25" or ma == "GiamSat34" or ma == "GiamSat43":
+            var.driver.find_element(By.XPATH, var.trangthai_tatca).click()
+            time.sleep(1)
+            soluong_dungtat = var.driver.find_element(By.XPATH, var.soluong_dungtat).get_attribute("data-count")
+            soluong_dungbat = var.driver.find_element(By.XPATH, var.soluong_dungbat).get_attribute("data-count")
+            soluong_dichuyen = var.driver.find_element(By.XPATH, var.soluong_dichuyen).get_attribute("data-count")
+            soluong_quatocdo = var.driver.find_element(By.XPATH, var.soluong_quatocdo).get_attribute("data-count")
+            soluong_mattinhieu = var.driver.find_element(By.XPATH, var.soluong_mattinhieu).get_attribute("data-count")
+            tongsoxe_tren = var.driver.find_element(By.XPATH, var.tongsoxe_tren).text
+            tongsoxe_duoi = var.driver.find_element(By.XPATH, var.tongsoxe_duoi).text
+            tongsoxecactrangthai = int(soluong_dungtat) \
+                                   + int(soluong_dungbat) \
+                                   + int(soluong_dichuyen) \
+                                   + int(soluong_quatocdo) \
+                                   + int(soluong_mattinhieu)
+            tongsoxecactrangthai = str(tongsoxecactrangthai)
+
+            logging.info("Giám sát - Trạng thái phương tiện - Tổng số xe")
+            logging.info("Mã - " + ma)
+            logging.info("Tên sự kiện - " + tensukien)
+            logging.info("Kết quả - " + ketqua)
+            logging.info("Quyền - " + quyen)
+            logging.info("Nhóm đội - " + nhomdoi)
+            logging.info("Tổng số xe Dừng tắt: " + str(soluong_dungtat))
+            logging.info("Tổng số xe Dừng bật: " + str(soluong_dungbat))
+            logging.info("Tổng số xe Di chuyển: " + str(soluong_dichuyen))
+            logging.info("Tổng số xe Quá tốc độ: " + str(soluong_quatocdo))
+            logging.info("Tổng số xe Mất tín hiệu: " + str(soluong_mattinhieu))
+            logging.info("Tổng số xe trên: " + str(tongsoxe_tren))
+            logging.info("Tổng số xe dưới: " + str(tongsoxe_duoi))
+            logging.info("Tổng số xe các trạng thái: " + str(tongsoxecactrangthai))
+            if str(tongsoxe_tren) == str(tongsoxe_duoi) == str(tongsoxecactrangthai):
+                logging.info("True")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+            else:
+                logging.info("False")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                if quyen == "quyền quản trị" and nhomdoi == "công ty không có nhóm":
+                    var.driver.save_screenshot(var.imagepath + ma + "_QuanTri_KhongCoNhom_TrangThai_TongSoXe.png")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_QuanTri_KhongCoNhom_TrangThai_TongSoXe.png")
+                if quyen == "quyền thường" and nhomdoi == "công ty không có nhóm":
+                    var.driver.save_screenshot(var.imagepath + ma + "_Thuong_KhongCoNhom_TrangThai_TongSoXe.png")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_Thuong_KhongCoNhom_TrangThai_TongSoXe.png")
+                if quyen == "quyền quản trị" and nhomdoi == "công ty có nhóm":
+                    var.driver.save_screenshot(var.imagepath + ma + "_QuanTri_CoNhom_TrangThai_TongSoXe.png")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_QuanTri_CoNhom_TrangThai_TongSoXe.png")
+                if quyen == "quyền thường" and nhomdoi == "công ty có nhóm":
+                    var.driver.save_screenshot(var.imagepath + ma + "_Thuong_CoNhom_TrangThai_TongSoXe.png")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_Thuong_CoNhom_TrangThai_TongSoXe.png")
+
+
+
+    def check_onlinehandler_soluongxe(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(5)
+        login.login.login_v2(self, "viconshipdanang1", "12341234")
+        var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+        time.sleep(2)
+        var.driver.find_element(By.XPATH, var.icon_danhsachxedangan).click()
+        time.sleep(1)
+        n = 0
+        while (n < 999):
+            var.driver.implicitly_wait(2)
+            n += 1
+            n = str(n)
+            pathtenphuongtien = "//*[@class='errorTableContent']/tr[" + n + "]"
+            try:
+                tenphuongtienfe = var.driver.find_element(By.XPATH, pathtenphuongtien).text
+                print("Phương tiện fe sô:", n, ":", tenphuongtienfe)
+            except:
+                n = int(n)
+                print("Tổng số xe fe: ", n - 1)
+                var.writeData(var.path_luutamthoi, "Sheet1", 44, 2, n - 1)
+                break
+            n = int(n)
+
+        # Tổng số xe api
+        for request in var.driver.requests:
+            if request.url == "https://gps.binhanh.vn/HttpHandlers/OnlineHandler.ashx?method=getVehicleList4Hidden":
+                data1 = sw_decode(request.response.body, request.response.headers.get('Content-Encoding', 'identity'))
+                data1 = data1.decode("utf8")
+                res = json.loads(data1)
+                i = 0
+                while (i < 999):
+                    var.driver.implicitly_wait(5)
+                    try:
+                        print("phương tiện be số: ", i + 1, res['data'][i]['pri_code'])
+                    except:
+                        print("Tổng số xe be: ", i)
+                        var.writeData(var.path_luutamthoi, "Sheet1", 3, 2, i)
+                        break
+                    i += 1
+            else:
+                print("không có  response")
+
+        # Tổng số xe fe
+        tongsoxe_duoi = var.driver.find_element(By.XPATH, var.tongsoxe_duoi).text
+        tongsoxe_be = var.readData(var.luudulieutamthoipath, 'Sheet1', 3, 2)
+        tongsoxe_dangan = var.readData(var.luudulieutamthoipath, 'Sheet1', 44, 2)
+        logging.info("Giám sát - Check tổng danh sách xe")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        logging.info("Tổng số xe Trên danh sách: " + str(tongsoxe_duoi))
+        logging.info("Tổng số xe đang ẩn: " + str(tongsoxe_dangan))
+        logging.info("Tổng số xe Be: " + str(tongsoxe_be))
+        if int(tongsoxe_be) == int(tongsoxe_duoi) + int(tongsoxe_dangan):
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+        else:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_CheckDanhSachXeFeVaAPI.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_CheckDanhSachXeFeVaAPI.png")
+
+
+
+    def icon_xuatexcel(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(4)
+        del var.driver.requests
+        try:
+            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
+        chucnangkhac.delete_excel()
         # Xuất excel
         var.driver.find_element(By.XPATH, var.icon_xuatexcel).click()
-        time.sleep(2)
+        time.sleep(3)
+        for request in var.driver.requests:
+            if request.url == "https://gps.binhanh.vn/HttpHandlers/OnlineHandler.ashx?method=exportExcelNew":
+                data1 = sw_decode(request.response.body, request.response.headers.get('Content-Encoding', 'identity'))
+                data1 = data1.decode("utf8")
+                res = json.loads(data1)
+                print("File path: ", res['filePath'])
+                req = requests.get(res['filePath'])
+                var.writeData(var.luudulieutamthoipath, "Sheet1", 45, 2, res['filePath'])
+                path = var.excelpath+"/hien_trang_he_thong.xlsx"
+                with open(path, 'wb') as f:
+                    f.write(req.content)
+                time.sleep(2)
+                break
+            else:
+                pass
+        time.sleep(1)
+        #Đọc check file excel
+        bangchucai = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O']
+        try:
+            wordbook = openpyxl.load_workbook(var.excelpath+"/hien_trang_he_thong.xlsx")
+            sheet = wordbook.get_sheet_by_name("Data")
+        except:
+            linkexcel_hientranghethong = var.readData(var.luudulieutamthoipath, 'Sheet1', 45, 2)
+            path = var.excelpath + "/hien_trang_he_thong.xlsx"
+            with open(path, 'wb') as f:
+                req = requests.get(linkexcel_hientranghethong)
+                f.write(req.content)
+                wordbook = openpyxl.load_workbook(var.excelpath + "/hien_trang_he_thong.xlsx")
+                sheet = wordbook.get_sheet_by_name("Data")
+
+        logging.info("Giám sát - Danh sách xe - Icon Xuất excel")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        for column in bangchucai:
+            print(sheet[column + "3"].value)
+            print(sheet[column + "3"])
+
+            if str(sheet[column + "3"]) == "<Cell 'Data'.A3>":
+                logging.info("Check vị trí A3:  STT")
+                if str(sheet[column + "3"].value) == "STT":
+                    logging.info("True")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 12, " ")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+                else:
+                    logging.info("False")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 12, "File hiện trạng hệ thống sai ô A3")
+
+            if str(sheet[column + "3"]) == "<Cell 'Data'.B3>":
+                logging.info("Check vị trí B3:  Biển số")
+                if str(sheet[column + "3"].value) == "Biển số":
+                    logging.info("True")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+                else:
+                    logging.info("False")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 12, "File hiện trạng hệ thống sai ô B3")
+
+            if str(sheet[column + "3"]) == "<Cell 'Data'.C3>":
+                logging.info("Check vị trí C3: V (km/h)")
+                if str(sheet[column + "3"].value) == " V (km/h)":
+                    logging.info("True")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+                else:
+                    logging.info("False")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 12, "File hiện trạng hệ thống sai ô C3")
+
+            if str(sheet[column + "3"]) == "<Cell 'Data'.D3>":
+                logging.info("Check vị trí D3: Thời gian")
+                if str(sheet[column + "3"].value) == "Thời gian":
+                    logging.info("True")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+                else:
+                    logging.info("False")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 12, "File hiện trạng hệ thống sai ô D3")
+
+            if str(sheet[column + "3"]) == "<Cell 'Data'.E3>":
+                logging.info("Check vị trí E3: Km trong ngày")
+                if str(sheet[column + "3"].value) == "Km trong ngày":
+                    logging.info("True")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+                else:
+                    logging.info("False")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 12, "File hiện trạng hệ thống sai ô E3")
+
+            if str(sheet[column + "3"]) == "<Cell 'Data'.F3>":
+                logging.info("Check vị trí F3: Khu vực")
+                if str(sheet[column + "3"].value) == "Khu vực":
+                    logging.info("True")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+                else:
+                    logging.info("False")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 12, "File hiện trạng hệ thống sai ô F3")
+
+            if str(sheet[column + "3"]) == "<Cell 'Data'.G3>":
+                logging.info("Check vị trí G3: Kinh độ")
+                if str(sheet[column + "3"].value) == "Kinh độ":
+                    logging.info("True")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+                else:
+                    logging.info("False")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 12, "File hiện trạng hệ thống sai ô G3")
+
+            if str(sheet[column + "3"]) == "<Cell 'Data'.H3>":
+                logging.info("Check vị trí H3: Vĩ độ")
+                if str(sheet[column + "3"].value) == "Vĩ độ":
+                    logging.info("True")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+                else:
+                    logging.info("False")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 12, "File hiện trạng hệ thống sai ô H3")
+
+            if str(sheet[column + "3"]) == "<Cell 'Data'.I3>":
+                logging.info("Check vị trí I3: Trạng thái")
+                if str(sheet[column + "3"].value) == "Trạng thái":
+                    logging.info("True")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+                else:
+                    logging.info("False")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 12, "File hiện trạng hệ thống sai ô I3")
+
+            if str(sheet[column + "3"]) == "<Cell 'Data'.J3>":
+                logging.info("Check vị trí J3: Lái xe")
+                if str(sheet[column + "3"].value) == "Lái xe":
+                    logging.info("True")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+                else:
+                    logging.info("False")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 12, "File hiện trạng hệ thống sai ô J3")
+
+            if str(sheet[column + "3"]) == "<Cell 'Data'.K3>":
+                logging.info("Check vị trí K3: Bằng lái")
+                if str(sheet[column + "3"].value) == "Bằng lái":
+                    logging.info("True")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+                else:
+                    logging.info("False")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 12, "File hiện trạng hệ thống sai ô K3")
+
+            if str(sheet[column + "3"]) == "<Cell 'Data'.L3>":
+                logging.info("Check vị trí L3: Điều hòa")
+                if str(sheet[column + "3"].value) == "Điều hòa":
+                    logging.info("True")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+                else:
+                    logging.info("False")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 12, "File hiện trạng hệ thống sai ô L3")
+
+            if str(sheet[column + "3"]) == "<Cell 'Data'.M3>":
+                logging.info("Check vị trí M3: Thời gian dừng đỗ")
+                if str(sheet[column + "3"].value) == "Thời gian dừng đỗ":
+                    logging.info("True")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+                else:
+                    logging.info("False")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 12, "File hiện trạng hệ thống sai ô M3")
+
+            if str(sheet[column + "3"]) == "<Cell 'Data'.N3>":
+                logging.info("Check vị trí N3: TG LX liên tục")
+                if str(sheet[column + "3"].value) == "TG LX liên tục":
+                    logging.info("True")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+                else:
+                    logging.info("False")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 12, "File hiện trạng hệ thống sai ô N3")
+
+            if str(sheet[column + "3"]) == "<Cell 'Data'.O3>":
+                logging.info("Check vị trí O3: TG LX trong ngày")
+                logging.info(str(sheet[column + "3"].value) == "TG LX trong ngày")
+                if str(sheet[column + "3"].value) == "TG LX trong ngày":
+                    logging.info("True")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+                else:
+                    logging.info("False")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 12, "File hiện trạng hệ thống sai ô O3")
+        time.sleep(1)
+
+
+    def icon_capnhatmoidulieu(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(4)
+        try:
+            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
+        del var.driver.requests
+        time.sleep(0.5)
         # Cập nhật dữ liệu
         var.driver.find_element(By.XPATH, var.icon_capnhatdulieu).click()
         time.sleep(1)
+        logging.info("Giám sát - Danh sách xe - Icon cập nhật mới dữ liệu")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        for request in var.driver.requests:
+            if request.url[0:82] == "https://gps.binhanh.vn/HttpHandlers/OnlineHandler.ashx?method=initListVehicleLite&":
+                print("status code: ", request.response.status_code)
+                if request.response.status_code == 200:
+                    logging.info("Status code: 200")
+                    logging.info("True")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+                else:
+                    logging.info("False")
+                    var.driver.save_screenshot(var.imagepath + ma + "_DanhSachXe_IconCapNhatMoiDuLieu.png")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_DanhSachXe_IconCapNhatMoiDuLieu.png")
+                break
+            else:
+                pass
+
+
+
+    def icon_hientranghethong(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(4)
+        try:
+            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
+        del var.driver.requests
+        time.sleep(0.5)
         # Hiện trạng hệ thống
         var.driver.find_element(By.XPATH, var.icon_hientranghethong).click()
         time.sleep(2)
+        logging.info("Giám sát - Danh sách xe - Icon Hiện trạng hệ thống")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            check_popup_hientranghethong = var.driver.find_element(By.XPATH, var.check_popup_hientranghethong).text
+            if check_popup_hientranghethong == "Hiện trạng hệ thống":
+                logging.info("True")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+            else:
+                logging.info("False")
+                var.driver.save_screenshot(var.imagepath + ma + "_DanhSachXe_IconHienTrangHeThong.png")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_DanhSachXe_IconHienTrangHeThong.png")
+        except:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_DanhSachXe_IconHienTrangHeThong.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_DanhSachXe_IconHienTrangHeThong.png")
         var.driver.find_element(By.XPATH, var.hientranghethong_x).click()
         time.sleep(1)
+
+
+
+    def icon_ynghiabieutuongxe(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(4)
+        try:
+            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
         # Ý nghĩa biểu tượng xe
         var.driver.find_element(By.XPATH, var.icon_ynghiabieutuongxe).click()
         time.sleep(2)
+        logging.info("Giám sát - Danh sách xe - Icon Ý ngha biểu tượng xe")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            check_popup_ynghiabieutuongxe = var.driver.find_element(By.XPATH, var.check_popup_ynghiabieutuongxe).text
+            logging.info(check_popup_ynghiabieutuongxe)
+            if check_popup_ynghiabieutuongxe == "Ý NGHĨA BIỂU TƯỢNG XE":
+                logging.info("True")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+            else:
+                logging.info("False")
+                var.driver.save_screenshot(var.imagepath + ma + "DanhSachXe_IconYNghiaBieuTuongXe.png")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_DanhSachXe_IconYNghiaBieuTuongXe.png")
+        except:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "DanhSachXe_IconYNghiaBieuTuongXe.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_DanhSachXe_IconYNghiaBieuTuongXe.png")
+
         var.driver.find_element(By.XPATH, var.ynghiabieutuongxe_x).click()
         time.sleep(1)
 
+
     def danhsachxe_chuotphaixedangdichuyen(self):
-        var.driver.implicitly_wait(10)
-        time.sleep(2)
+        var.driver.implicitly_wait(5)
+        time.sleep(1)
         var.driver.find_element(By.XPATH, var.trangthai_dichuyen).click()
-        time.sleep(2)
+        time.sleep(1)
         n = 0
         while (n < 100):
-            var.driver.implicitly_wait(2)
+            var.driver.implicitly_wait(1)
             n += 1
             n = str(n)
             pathtenphuongtien = "//*[@id='idClearOnline']/table/tbody/tr[" + n + "]"
@@ -477,8 +1161,7 @@ class danhsachxe:
                 tenphuongtien = var.driver.find_element(By.XPATH, pathtenphuongtien)
                 if tenphuongtien.get_attribute("style") != "display: none;":
                     print("Tên phương tiện", n, tenphuongtien.text)
-                    tenphuongtien1 = var.driver.find_element(By.XPATH,
-                                                             "//*[@id='idClearOnline']/table/tbody/tr[" + n + "]/td[2]/div[2]").text
+                    tenphuongtien1 = var.driver.find_element(By.XPATH,"//*[@id='idClearOnline']/table/tbody/tr[" + n + "]/td[2]/div[2]").text
                     var.writeData(var.luudulieutamthoipath, "Sheet1", 2, 2, tenphuongtien1)
             except:
                 print("số n cuối", n)
@@ -487,21 +1170,49 @@ class danhsachxe:
 
         # Chuột phải vào xe đầu tiên
         tenphuongtien1 = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 2, 2))
-        button = var.driver.find_element(By.XPATH,
-                                         "//*[@id='idClearOnline']/table/tbody//*[text()='" + tenphuongtien1 + "']")
+        button = var.driver.find_element(By.XPATH,"//*[@id='idClearOnline']/table/tbody//*[text()='" + tenphuongtien1 + "']")
         actions = ActionChains(var.driver)
         actions.context_click(button).perform()
         time.sleep(1)
 
-    def chuotphaixe_xemlailotrinh(self):
-        var.driver.implicitly_wait(10)
-        danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
 
+    def chuotphaixe_xemlailotrinh(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(4)
+        try:
+            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
+
+        danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
+        logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Xem lộ trình")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
         # Xem lại lộ trình - Xem nhanh
+        try:
+            xemlailotrinh_hover = var.driver.find_element(By.XPATH, var.xemlailotrinh)
+            actions = ActionChains(var.driver)
+            actions.move_to_element(xemlailotrinh_hover).perform()
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+        except:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_XemLaiLoTrinh.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_XemLaiLoTrinh.png")
+
+
+    def chuotphaixe_xemlailotrinh_8hganday(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(4)
+        try:
+            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
+
+        # 8h gần đây
         xemlailotrinh_hover = var.driver.find_element(By.XPATH, var.xemlailotrinh)
         actions = ActionChains(var.driver)
         actions.move_to_element(xemlailotrinh_hover).perform()
-        # 8h gần đây
         time.sleep(0.5)
         tamgioganday_hover = var.driver.find_element(By.XPATH, var.tamgioganday)
         actions = ActionChains(var.driver)
@@ -510,13 +1221,33 @@ class danhsachxe:
         # Xem nhanh
         var.driver.find_element(By.XPATH, var.xemnhanh).click()
         time.sleep(2)
-        check_popup_xemnhanhlotrinh = var.driver.find_element(By.XPATH, var.check_popup_xemnhanhlotrinh).is_displayed()
-        time.sleep(0.5)
-        var.driver.find_element(By.XPATH, var.xemnhanhlotrinh_xoa).click()
-        time.sleep(0.5)
-        var.driver.find_element(By.XPATH, var.xemnhanhlotrinh_x).click()
-        time.sleep(0.5)
+        danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
+        logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Xem lộ trình - 8h gần đây - Xem lại lộ trình")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            check_popup_xemnhanhlotrinh = var.driver.find_element(By.XPATH, var.check_popup_xemnhanhlotrinh).is_displayed()
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+            time.sleep(0.5)
+            var.driver.find_element(By.XPATH, var.xemnhanhlotrinh_xoa).click()
+            time.sleep(0.5)
+            var.driver.find_element(By.XPATH, var.xemnhanhlotrinh_x).click()
+            time.sleep(0.5)
+        except NoSuchElementException:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_XemLaiLoTrinh_8h_XemNhanh.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_XemLaiLoTrinh_8h_XemNhanh.png")
 
+
+    def chuotphaixe_xemlailotrinh_chitiettrencuasomoi(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(4)
+        try:
+            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
         # Xem lại lộ trình - Xem chi tiết trên cửa sổ mới
         var.driver.refresh()
         time.sleep(2)
@@ -547,13 +1278,34 @@ class danhsachxe:
         tab_1 = tab_id[1]
         var.driver.switch_to_window(tab_1)
         print("Xem chi tiết trên cửa sổ mới", var.driver.title)
+        logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Xem lộ trình - Xem chi tiết trên cửa sổ mới")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        logging.info(var.driver.title)
+        if var.driver.title == "Lộ trình":
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+            time.sleep(0.5)
+        else:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_XemLaiLoTrinh_ChiTiettrenCuaSoMoi.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_XemLaiLoTrinh_ChiTiettrenCuaSoMoi.png")
         var.driver.switch_to_window(tab_0)
+
+
+    def chuotphaixe_xemlailotrinh_trongngay(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(4)
+        try:
+            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
 
         # Xem lại lộ trình - Trong ngay
         time.sleep(1)
         tenphuongtien1 = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 2, 2))
-        button = var.driver.find_element(By.XPATH,
-                                         "//*[@id='idClearOnline']/table/tbody//*[text()='" + tenphuongtien1 + "']")
+        button = var.driver.find_element(By.XPATH,"//*[@id='idClearOnline']/table/tbody//*[text()='" + tenphuongtien1 + "']")
         button.click()
         time.sleep(0.5)
         actions = ActionChains(var.driver)
@@ -567,17 +1319,38 @@ class danhsachxe:
         time.sleep(0.5)
         var.driver.find_element(By.XPATH, var.trongngay).click()
         time.sleep(2)
+        tab_id = var.driver.window_handles
         tab_0 = tab_id[0]
         tab_1 = tab_id[1]
         var.driver.switch_to_window(tab_1)
         print("Trong ngày", var.driver.title)
+        logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Xem lộ trình - Trong ngày")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        logging.info(var.driver.title)
+        if var.driver.title == "Lộ trình":
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+            time.sleep(0.5)
+        else:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_XemLaiLoTrinh_TrongNgay.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_XemLaiLoTrinh_TrongNgay.png")
         var.driver.switch_to_window(tab_0)
 
+
+    def chuotphaixe_xemlailotrinh_tuychon(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(4)
+        try:
+            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
         # Xem lại lộ trình - Tùy chọn
         time.sleep(1)
         tenphuongtien1 = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 2, 2))
-        button = var.driver.find_element(By.XPATH,
-                                         "//*[@id='idClearOnline']/table/tbody//*[text()='" + tenphuongtien1 + "']")
+        button = var.driver.find_element(By.XPATH,"//*[@id='idClearOnline']/table/tbody//*[text()='" + tenphuongtien1 + "']")
         button.click()
         time.sleep(0.5)
         actions = ActionChains(var.driver)
@@ -591,47 +1364,315 @@ class danhsachxe:
         time.sleep(0.5)
         var.driver.find_element(By.XPATH, var.tuychon).click()
         time.sleep(2)
+        tab_id = var.driver.window_handles
         tab_0 = tab_id[0]
         tab_1 = tab_id[1]
         var.driver.switch_to_window(tab_1)
         print("Tùy chọn", var.driver.title)
+        logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Xem lộ trình - Tùy chọn")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        logging.info(var.driver.title)
+        if var.driver.title == "Lộ trình":
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+            time.sleep(0.5)
+        else:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_XemLaiLoTrinh_TuyChon.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_XemLaiLoTrinh_TuyChon.png")
         var.driver.switch_to_window(tab_0)
         login.linklienket.linklienket_dongtab(self)
 
-    def chuotphaixe_nhapthongtinxe(self):
-        var.driver.implicitly_wait(10)
-        danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
+
+    def chuotphaixe_nhapthongtinxe(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(4)
+        login.login.login_v2(self, "ungroup", "12341234")
+
+        button = var.driver.find_element(By.XPATH, var.danhsachxe_xe1)
+        actions = ActionChains(var.driver)
+        actions.context_click(button).perform()
+        time.sleep(1)
+
+        # button = var.driver.find_element(By.XPATH, var.nhapthongtinxe)
+        # var.driver.execute_script("arguments[0].click();", button)
+
+        var.driver.find_element(By.XPATH, var.nhapthongtinxe).click()
+        time.sleep(1)
+        logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Nhập thông tin xe")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            var.driver.find_element(By.XPATH, var.nhapthongtinxe_x).click()
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+        except:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_NhapThongTinXe.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_NhapThongTinXe.png")
+
+
+    def chuotphaixe_nhapthongtinxe_capnhat(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(4)
+        try:
+            var.driver.find_element(By.XPATH, var.ungroup)
+        except:
+            login.login.login_v2(self, "ungroup", "12341234")
+
+        button = var.driver.find_element(By.XPATH, var.danhsachxe_xe1)
+        actions = ActionChains(var.driver)
+        actions.context_click(button).perform()
+        time.sleep(1)
 
         var.driver.find_element(By.XPATH, var.nhapthongtinxe).click()
         time.sleep(1)
         # Popup thông tin xe
-        var.driver.find_element(By.XPATH, var.popupthongtinxe_trongtaiinput).send_keys( data['giamsat']['popupthongtinxe_trongtai'])
-        var.driver.find_element(By.XPATH, var.popupthongtinxe_capnhat).click()
+        var.driver.find_element(By.XPATH, var.popupthongtinxe_loaihinhvantai_vantaihanghoa).click()
         time.sleep(1)
-        check_capnhat_thongtinxe = var.driver.find_element(By.XPATH, var.capnhatthanhcong).text
-        time.sleep(1)
-        var.driver.find_element(By.XPATH, var.ok).click()
 
+        if var.driver.find_element(By.XPATH, var.popupthongtinxe_vantaidangkychaynoithanh).is_selected() == True:
+            var.driver.find_element(By.XPATH, var.popupthongtinxe_vantaidangkychaynoithanh).click()
+
+        if var.driver.find_element(By.XPATH, var.popupthongtinxe_chopheptichtruyendulieu).is_selected() == True:
+            var.driver.find_element(By.XPATH, var.popupthongtinxe_chopheptichtruyendulieu).click()
+
+        JS_ADD_TEXT_TO_INPUT = """
+          elm = arguments[0], txt = arguments[1];
+          elm.value += txt;
+          elm.dispatchEvent(new Event('change'));
+          """
+        elm = var.driver.find_element(By.XPATH, var.popupthongtinxe_trongtaiinput)
+        var.driver.execute_script(JS_ADD_TEXT_TO_INPUT, elm, data['giamsat']['popupthongtinxe_trongtai'])
+
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.popupthongtinxe_capnhat1).click()
+        time.sleep(1)
+        logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Nhập thông tin xe")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            check_capnhat_thongtinxe = var.driver.find_element(By.XPATH, var.capnhatthanhcong).text
+            if check_capnhat_thongtinxe == "Cập nhật thành công":
+                logging.info("True")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+                time.sleep(1)
+                var.driver.find_element(By.XPATH, var.ok).click()
+            else:
+                logging.info("False")
+                var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_NhapThongTinXe_CapNhat.png")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "ChuotPhaiXe_NhapThongTinXe_CapNhat.png")
+        except:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_NhapThongTinXe_CapNhat.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "ChuotPhaiXe_NhapThongTinXe_CapNhat.png")
+
+
+    def chuotphaixe_nhapthongtinxe_checkthongtinxe_Congty(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(4)
+        try:
+            var.driver.find_element(By.XPATH, var.ungroup)
+        except:
+            login.login.login_v2(self, "ungroup", "12341234")
         # check thông tin trong lượng đã nhập
         time.sleep(1)
-        tenphuongtien1 = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 2, 2))
-        button = var.driver.find_element(By.XPATH,"//*[@id='idClearOnline']/table/tbody//*[text()='" + tenphuongtien1 + "']")
+
+        button = var.driver.find_element(By.XPATH, var.danhsachxe_xe1)
         actions = ActionChains(var.driver)
         actions.context_click(button).perform()
         time.sleep(1)
+
         var.driver.find_element(By.XPATH, var.nhapthongtinxe).click()
         time.sleep(1)
-        check_popupthongtinxe_trongluong = var.driver.find_element(By.XPATH, var.nhapthongtinxe).get_attribute("value")
+        logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Nhập thông tin xe")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            check_popupthongtinxe_congty = var.driver.find_element(By.XPATH, var.check_popupthongtinxe_congty).text
+            logging.info("Tên công ty vừa chọn: " + check_popupthongtinxe_congty)
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+        except:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_NhapThongTinXe_CongTy.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_NhapThongTinXe_CongTy.png")
+
+
+    def chuotphaixe_nhapthongtinxe_checkthongtinxe_loaihinhvantai(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(4)
+        logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Nhập thông tin xe")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            check_popupthongtinxe_loaihinhvantai = var.driver.find_element(By.XPATH, var.popupthongtinxe_loaihinhvantai_vantaihanghoa).text
+            logging.info("Loại hình vận tải vừa chọn: " + check_popupthongtinxe_loaihinhvantai)
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+        except:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_NhapThongTinXe_LoaiHinhVanTai.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_NhapThongTinXe_LoaiHinhVanTai.png")
+
+
+    def chuotphaixe_nhapthongtinxe_checkthongtinxe_trongtai(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(4)
+        logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Nhập thông tin xe")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            check_popupthongtinxe_trongtai = var.driver.find_element(By.XPATH, var.check_popupthongtinxe_trongtai).get_attribute("value")
+            logging.info("Trọng tải kg: " + data['giamsat']['popupthongtinxe_trongtai'])
+            if check_popupthongtinxe_trongtai == data['giamsat']['popupthongtinxe_trongtai']:
+                logging.info("True")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+            else:
+                logging.info("False")
+                var.driver.save_screenshot(var.imagepath + ma + "ChuotPhaiXe_NhapThongTinXe_TrongLuong.png")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9,ma + "_ChuotPhaiXe_NhapThongTinXe_TrongLuong.png")
+        except:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "ChuotPhaiXe_NhapThongTinXe_TrongLuong.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_NhapThongTinXe_TrongLuong.png")
+
+
+    def chuotphaixe_nhapthongtinxe_checkthongtinxe_vantaidangkynoithanh(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(4)
+        logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Nhập thông tin xe")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        if var.driver.find_element(By.XPATH, var.popupthongtinxe_vantaidangkychaynoithanh).is_selected() == False:
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+        else:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_NhapThongTinXe_VanTaiDangKyNoiThanh.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_NhapThongTinXe_VanTaiDangKyNoiThanh.png")
+
+
+    def chuotphaixe_nhapthongtinxe_checkthongtinxe_chopheptruyendulieu(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(4)
+        logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Nhập thông tin xe")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        if var.driver.find_element(By.XPATH, var.popupthongtinxe_chopheptichtruyendulieu).is_selected() == False:
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+        else:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_NhapThongTinXe_ChoPhepTichTruyenDuLieu.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_NhapThongTinXe_ChoPhepTichTruyenDuLieu.png")
+
+
+    def chuotphaixe_nhapthongtinxe_huy(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(4)
+        try:
+            var.driver.find_element(By.XPATH, var.ungroup)
+        except:
+            login.login.login_v2(self, "ungroup", "12341234")
+
+            button = var.driver.find_element(By.XPATH, var.danhsachxe_xe1)
+            actions = ActionChains(var.driver)
+            actions.context_click(button).perform()
+            time.sleep(1)
+
+            var.driver.find_element(By.XPATH, var.nhapthongtinxe).click()
+            time.sleep(1)
+        # Popup thông tin xe
+        xoacanhbao()
+        var.driver.find_element(By.XPATH, var.popupthongtinxe_loaihinhvantai_xekhachtuyencodinh).click()
+
+        if var.driver.find_element(By.XPATH, var.popupthongtinxe_vantaidangkychaynoithanh).is_selected() == True:
+            var.driver.find_element(By.XPATH, var.popupthongtinxe_vantaidangkychaynoithanh).click()
+
+        if var.driver.find_element(By.XPATH, var.popupthongtinxe_chopheptichtruyendulieu).is_selected() == True:
+            var.driver.find_element(By.XPATH, var.popupthongtinxe_chopheptichtruyendulieu).click()
+
+        var.driver.find_element(By.XPATH, var.popupthongtinxe_capnhat).click()
         time.sleep(1)
+        var.driver.find_element(By.XPATH, var.ok).click()
+        time.sleep(1)
+
+        button = var.driver.find_element(By.XPATH, var.danhsachxe_xe1)
+        actions = ActionChains(var.driver)
+        actions.context_click(button).perform()
+        time.sleep(1)
+
+        var.driver.find_element(By.XPATH, var.nhapthongtinxe).click()
+        time.sleep(1)
+        logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Nhập thông tin xe")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
         var.driver.find_element(By.XPATH, var.huy).click()
+        chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
         time.sleep(1)
+        # try:
+        #     var.driver.find_element(By.XPATH, var.popupthongtinxe_capnhat).click()
+        #     logging.info("False")
+        #     var.driver.save_screenshot(var.imagepath + ma + "ChuotPhaiXe_NhapThongTinXe_Huy")
+        #     chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+        #     chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "ChuotPhaiXe_NhapThongTinXe_Huy.png")
+        # except:
+        #     logging.info("True")
+        #     chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+        # time.sleep(1)
 
-    def chuotphaixe_xemlotrinhnhieuxe(self):
-        var.driver.implicitly_wait(10)
+
+
+    def chuotphaixe_giamsatnhieuxe(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(4)
+        try:
+            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
+
         danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
-
         var.driver.find_element(By.XPATH, var.xemlotrinhnhieuxe).click()
+        time.sleep(3)
+        print(var.driver.title)
+        logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Nhập thông tin xe")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        if var.driver.title == "Giám sát nhiều xe - Hệ thống quản lý xe trực tuyến BA-WebGPS":
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+        else:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_GiamSatNhieuXe.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_GiamSatNhieuXe.png")
+
+
+    def chuotphaixe_giamsatnhieuxe_xem1(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(4)
+        try:
+            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
+
+        var.driver.find_element(By.XPATH, var.giamsat).click()
         time.sleep(2)
+        danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
+        var.driver.find_element(By.XPATH, var.xemlotrinhnhieuxe).click()
+        time.sleep(3)
         var.driver.find_element(By.XPATH, var.trangthai_dichuyen).click()
         time.sleep(1.5)
         n = 0
@@ -655,19 +1696,162 @@ class danhsachxe:
                 break
             n = int(n)
         time.sleep(1.5)
-        var.driver.refresh()
-        time.sleep(4)
+        logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Giám sát nhiều xe")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            check_giamsatnhieuxe_xe1 = var.driver.find_element(By.XPATH, var.check_giamsatnhieuxe_xe1).is_displayed()
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+        except NoSuchElementException:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_GiamSatNhieuXe_Xem1Xe.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_GiamSatNhieuXe_Xem1Xe.png")
 
-    def chuotphaixe_hientrang(self):
-        var.driver.implicitly_wait(10)
+
+    def chuotphaixe_giamsatnhieuxe_xemnhieu(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(4)
+        logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Giám sát nhiều xe")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            check_giamsatnhieuxe_xe3 = var.driver.find_element(By.XPATH, var.check_giamsatnhieuxe_xe3).is_displayed()
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+        except NoSuchElementException:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_GiamSatNhieuXe_XemNhieuXe.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_GiamSatNhieuXe_XemNhieuXe.png")
+
+
+    def chuotphaixe_giamsatnhieuxe_iconphongto(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(4)
+        actions = ActionChains(var.driver)
+        hover_giamsat = var.driver.find_element(By.XPATH, var.hover_giamsat)
+        actions.move_to_element(hover_giamsat).perform()
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.hover_giamsat_phongto).click()
+        logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Giám sát nhiều xe - Icon phóng to")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        time.sleep(1.5)
+        try:
+            check_giamsat_iconphongto = var.driver.find_element(By.XPATH, var.check_giamsat_iconphongto)
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+            var.driver.find_element(By.XPATH, var.hover_giamsat_phongto_x).click()
+            time.sleep(0.5)
+        except NoSuchElementException:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_GiamSatNhieuXe_IconPhongTo.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_GiamSatNhieuXe_IconPhongTo.png")
+
+
+    def chuotphaixe_giamsatnhieuxe_iconx(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(4)
+        logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Giám sát nhiều xe - Icon x")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            var.driver.find_element(By.XPATH, var.giamsatnhieuxe_iconx3).click()
+            time.sleep(1)
+            var.driver.find_element(By.XPATH, var.giamsatnhieuxe_iconx2).click()
+            time.sleep(1)
+            var.driver.find_element(By.XPATH, var.giamsatnhieuxe_iconx1).click()
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+            time.sleep(0.5)
+        except NoSuchElementException:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_GiamSatNhieuXe_IconX.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_GiamSatNhieuXe_IconX.png")
+
+
+    def chuotphaixe_hientrang_thongtinxe(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(4)
+        try:
+            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
+
         danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
 
         var.driver.find_element(By.XPATH, var.hientrang).click()
         time.sleep(2)
-        check_danhsachxe_hientrang = var.driver.find_element(By.XPATH, var.check_danhsachxe_hientrang).is_displayed()
+        logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Hiện trạng(Thông tin xe)")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            check_danhsachxe_thongtinxe = var.driver.find_element(By.XPATH, var.check_danhsachxe_thongtinxe).text
+            if check_danhsachxe_thongtinxe == "THÔNG TIN XE":
+                logging.info("True")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+                time.sleep(0.5)
+                var.driver.find_element(By.XPATH, var.check_danhsachxe_hientrang_x).click()
+                time.sleep(0.5)
+            else:
+                logging.info("False")
+                var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_HienTrang_ThongTinXe.png")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_HienTrang_ThongTinXe.png")
+        except:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_HienTrang_ThongTinXe.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_HienTrang_ThongTinXe.png")
 
-    def chuotphaixe_gannhomxedacbiet(self):
-        var.driver.implicitly_wait(10)
+
+    def chuotphaixe_hientrang_goicuoc(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(4)
+        try:
+            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
+
+        danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
+        var.driver.find_element(By.XPATH, var.hientrang).click()
+        time.sleep(2)
+        var.driver.find_element(By.XPATH, var.hientrang_goicuoc).click()
+
+        logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Hiện trạng(Gói cước camera)")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            check_danhsachxe_goicuoc = var.driver.find_element(By.XPATH, var.hientrang_goicuoc).text
+            if check_danhsachxe_goicuoc == "GÓI CƯỚC CAMERA":
+                logging.info("True")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+                time.sleep(0.5)
+                var.driver.find_element(By.XPATH, var.check_danhsachxe_hientrang_x).click()
+                time.sleep(0.5)
+            else:
+                logging.info("False")
+                var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_HienTrang_GoiCuocCamera.png")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_HienTrang_GoiCuocCamera.png")
+        except:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_HienTrang_GoiCuocCamera.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_HienTrang_GoiCuocCamera.png")
+
+
+    def chuotphaixe_gannhomxedacbiet(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(4)
+        try:
+            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
         danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
 
         gannhomdacbiet_hover = var.driver.find_element(By.XPATH, var.gannhomdacbiet_hover)
@@ -679,81 +1863,404 @@ class danhsachxe:
         tab_id = var.driver.window_handles
         tab_1 = tab_id[1]
         var.driver.switch_to_window(tab_1)
-
+        logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Gán nhóm xe đặc biệt")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
         check_themnhomdacbiet = var.driver.find_element(By.XPATH, var.check_themnhomdacbiet).text
         print(check_themnhomdacbiet)  # QUẢN LÝ NHÓM XE
+        if check_themnhomdacbiet == "QUẢN LÝ NHÓM XE":
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+        else:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_GanNhomDacBiet.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_GanNhomDacBiet.png")
+
         login.linklienket.linklienket_dongtab(self)
         time.sleep(1)
 
-    def chuotphaixe_anxe(self):
-        var.driver.implicitly_wait(10)
-        danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
 
-        tenphuongtien = var.readData(var.luudulieutamthoipath, 'Sheet1', 2, 2)
+    def chuotphaixe_anxe(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(4)
+        login.login.login_v2(self, "ungroup", "12341234")
+
+        button = var.driver.find_element(By.XPATH, var.danhsachxe_xe1)
+        actions = ActionChains(var.driver)
+        actions.context_click(button).perform()
+        time.sleep(1)
+
         var.driver.find_element(By.XPATH, var.anxe).click()
         time.sleep(2)
+        logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Gán nhóm xe đặc biệt")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            check_popup_anxe = var.driver.find_element(By.XPATH, var.check_popup_anxe).text
+            if check_popup_anxe == "ẨN XE":
+                logging.info("True")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+            else:
+                logging.info("False")
+                var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_AnXe.png")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_AnXe.png")
+        except:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_AnXe.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_AnXe.png")
+
+
+    def chuotphaixe_anxe_dong(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(4)
+        logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Ẩn xe")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            var.driver.find_element(By.XPATH, var.giamsat_anxe_dong).click()
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+        except:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_AnXe_Dong.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_AnXe_Dong.png")
+
+
+    def chuotphaixe_anxe_luu(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(4)
+        login.login.login_v2(self, "ungroup", "12341234")
+
+        button = var.driver.find_element(By.XPATH, var.danhsachxe_xe1)
+        actions = ActionChains(var.driver)
+        actions.context_click(button).perform()
+        time.sleep(1)
+
+        var.driver.find_element(By.XPATH, var.anxe).click()
+        time.sleep(2)
+        danhsachxe_tenphuongtien1 = var.driver.find_element(By.XPATH, var.danhsachxe_tenphuongtien).text
+        var.writeData(var.path_luutamthoi, "Sheet1", 46, 2, danhsachxe_tenphuongtien1)
 
         # Trạng thái - ẩn toàn bộ trang
-        var.driver.find_element(By.XPATH, var.anxe_antoanbotrang).click()
-        var.driver.find_element(By.XPATH, var.anxe_truyen).click()
+        if var.driver.find_element(By.XPATH, var.anxe_antoanbotrang).is_selected() == False:
+            var.driver.find_element(By.XPATH, var.anxe_antoanbotrang).click()
+
+        if var.driver.find_element(By.XPATH, var.anxe_truyen).is_selected() == False:
+            var.driver.find_element(By.XPATH, var.anxe_truyen).click()
+
         # var.driver.find_element(By.XPATH, var.anxe_nguyennhan).click()
         time.sleep(0.5)
         var.driver.find_element(By.XPATH, var.anxe_nguyennhan_xetainan).click()
         var.driver.find_element(By.XPATH, var.anxe_ghichu).send_keys(data['giamsat']['anxe_ghichu'])
         time.sleep(1)
         var.driver.find_element(By.XPATH, var.luu).click()
-        time.sleep(1)
-        var.driver.implicitly_wait(2)
-        check_tenphuongtien = var.driver.find_element(By.XPATH,
-                                                      "//*[@id='idClearOnline']/table/tbody//*[@vh_online='" + tenphuongtien + "']").get_attribute(
-            "style")  # != "display: none;"
-        print("Phương tiện: ", tenphuongtien, check_tenphuongtien)
-        time.sleep(1.5)
+        time.sleep(2)
+        danhsachxe_tenphuongtien1_daan = var.driver.find_element(By.XPATH, var.danhsachxe_tenphuongtien).text
+        logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Ẩn xe")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        if danhsachxe_tenphuongtien1 != danhsachxe_tenphuongtien1_daan:
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+        else:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_AnXe_Luu.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_AnXe_Luu.png")
 
+
+    def chuotphaixe_anxe_phuongtien(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(4)
+        try:
+            var.driver.find_element(By.XPATH, var.ungroup)
+        except:
+            login.login.login_v2(self, "ungroup", "12341234")
+
+        xoacanhbao()
+        tenphuongtien = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 46, 2))
         # Bỏ ẩn phương tiện
         var.driver.find_element(By.XPATH, var.icon_danhsachxedangan).click()
         time.sleep(1.5)
-        check_danhsachxedangan_tenphuongtien = var.driver.find_element(By.XPATH,
-                                                                       var.check_danhsachxedangan_tenphuongtien).text
-        print("Danh sách xe đang ẩn", check_danhsachxedangan_tenphuongtien)
-        if check_danhsachxedangan_tenphuongtien == tenphuongtien:
-            var.driver.find_element(By.XPATH, var.icon_danhsachxedangan_x).click()
-            time.sleep(1)
-            var.driver.switch_to.alert.accept()
-            time.sleep(2)
-            try:
-                tenphuongtien1 = var.driver.find_element(By.XPATH, var.check_danhsachxedangan_tenphuongtien).text
-                if tenphuongtien1 == tenphuongtien:
-                    print(tenphuongtien1)
-                    print("False")
-                else:
-                    print("True")
-            except:
-                print("True2")
+        check_danhsachxedangan_tenphuongtien = var.driver.find_element(By.XPATH,var.check_danhsachxedangan_tenphuongtien).text
+        logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Ẩn xe")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        logging.info("Tên phương tiện:  " + tenphuongtien)
+        if tenphuongtien == check_danhsachxedangan_tenphuongtien:
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
         else:
-            print("Không hiển thị phuong tiện đang ẩn", tenphuongtien)
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_AnXe_TenPhuongTien.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_AnXe_TenPhuongTien.png")
 
-    def chuotphaixe_thongtinthietbi(self):
-        var.driver.implicitly_wait(10)
+
+    def chuotphaixe_anxe_antoanbotrang(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(4)
+        check_danhsachxedangan_trangthai = var.driver.find_element(By.XPATH,var.check_danhsachxedangan_trangthai).text
+        logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Ẩn xe")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        if check_danhsachxedangan_trangthai == "Ẩn toàn bộ":
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+        else:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_AnXe_AnToanBo.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_AnXe_AnToanBo.png")
+
+
+    def chuotphaixe_anxe_truyen(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(4)
+        logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Ẩn xe")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+
+        try:
+            check_danhsachxedangan_truyentcdb = var.driver.find_element(By.XPATH, var.check_danhsachxedangan_truyentcdb).is_displayed()
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+        except NoSuchElementException:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_AnXe_TichTruyen.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_AnXe_TichTruyen.png")
+
+
+    def chuotphaixe_anxe_timnguyennhan(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(4)
+        var.driver.find_element(By.XPATH, var.icon_danhsachxedangan_nguyennhan).click()
+        time.sleep(0.5)
+        var.driver.find_element(By.XPATH, var.icon_danhsachxedangan_timkiem).click()
+        time.sleep(1)
+        logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Ẩn xe")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        logging.info("Nguyên nhân: Xe tai nạn")
+        try:
+            check_danhsachxedangan_tenphuongtien = var.driver.find_element(By.XPATH,var.check_danhsachxedangan_tenphuongtien).text
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+        except NoSuchElementException:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_AnXe_NguyenNhan.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_AnXe_NguyenNhan.png")
+
+
+    def chuotphaixe_anxe_ghichu(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(4)
+        button = var.driver.find_element(By.XPATH, var.check_danhsachxedangan_tenphuongtien)
+        action = ActionChains(var.driver)
+        action.double_click(button).perform()
+        time.sleep(1)
+        logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Ẩn xe")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        logging.info("Ghi chú - " + data['giamsat']['anxe_ghichu'])
+        check_capnhatxe_ghichu = var.driver.find_element(By.XPATH, var.check_capnhatxe_ghichu).text
+        if check_capnhatxe_ghichu == data['giamsat']['anxe_ghichu']:
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+        else:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_AnXe_GhiChu.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_AnXe_GhiChu.png")
+
+        if var.driver.find_element(By.XPATH, var.capnhatxe_antrengiamsat).is_selected() == False:
+            var.driver.find_element(By.XPATH, var.capnhatxe_antrengiamsat).click()
+        time.sleep(0.5)
+        var.driver.find_element(By.XPATH, var.luuvadungtruyen).click()
+        time.sleep(1.5)
+
+
+    def chuotphaixe_anxe_angiamsat(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(4)
+        check_danhsachxedangan_trangthai = var.driver.find_element(By.XPATH, var.check_danhsachxedangan_trangthai).text
+        logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Ẩn xe")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        if check_danhsachxedangan_trangthai == "Ẩn giám sát":
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+        else:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_AnXe_AnGiamSat.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_AnXe_AnGiamSat.png")
+
+
+    def chuotphaixe_anxe_dungtruyen(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(2)
+        logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Ẩn xe")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+
+        try:
+            check_danhsachxedangan_truyentcdb = var.driver.find_element(By.XPATH, var.check_danhsachxedangan_truyentcdb).is_displayed()
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_AnXe_DungTruyen.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_AnXe_DungTruyen.png")
+        except NoSuchElementException:
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+
+
+    def chuotphaixe_anxe_xoaxean(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(4)
+        var.driver.find_element(By.XPATH, var.icon_danhsachxedangan_x).click()
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.icon_danhsachxedangan_x_tichtruyen).click()
+        # var.driver.switch_to.alert.accept()
+        logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Ẩn xe")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        time.sleep(2)
+        var.driver.implicitly_wait(2)
+        try:
+            check_xoaxedanhsachan = var.driver.find_element(By.XPATH, var.check_danhsachxedangan_tenphuongtien).is_displayed()
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_AnXe_XoaXeAn.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_AnXe_XoaXeAn.png")
+        except NoSuchElementException:
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+
+
+    def chuotphaixe_thongtinthietbi(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(4)
+        login.login.login_v2(self, "viconshipdanang1", "12341234")
         danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
 
         var.driver.find_element(By.XPATH, var.thongtinthietbi).click()
         time.sleep(2)
-        check_danhsachxe_thongtinthietbi = var.driver.find_element(By.XPATH,
-                                                                   var.check_danhsachxe_thongtinthietbi).is_displayed()
-        var.driver.find_element(By.XPATH, var.thongtinthietbi_x).click()
+        logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Thông tin thiết bị")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            check_danhsachxe_thongtinthietbi = var.driver.find_element(By.XPATH,var.check_danhsachxe_thongtinthietbi).text
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+        except NoSuchElementException:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_ThongTinThietBi.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_ThongTinThietBi.png")
 
-    def chuotphaixe_xemhinhanhnhanh(self):  # dùng tk quản trị
-        var.driver.implicitly_wait(10)
+
+    def chuotphaixe_thongtinthietbi_x(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(2)
+        try:
+            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
+        time.sleep(1)
+        try:
+            var.driver.find_element(By.XPATH, var.thongtinthietbi_x).click()
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            time.sleep(1)
+            danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
+            var.driver.find_element(By.XPATH, var.thongtinthietbi).click()
+            time.sleep(2)
+        time.sleep(1)
+        logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Thông tin thiết bị")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            var.driver.find_element(By.XPATH, var.thongtinthietbi_x).click()
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_ThongTinThietBi.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_ThongTinThietBi.png")
+        except:
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+
+
+    def chuotphaixe_xemhinhanhnhanh(self, ma, tensukien, ketqua):  # dùng tk quản trị
+        var.driver.implicitly_wait(5)
+        login.login.login_v2(self, "truongtq@bagroup.vn", "atgmj123")
+
+        var.driver.find_element(By.XPATH, var.danhsachcongty).click()
+        time.sleep(1.5)
+        var.driver.find_element(By.XPATH, var.danhsachcongty_loai).click()
+        time.sleep(0.5)
+        var.driver.find_element(By.XPATH, var.danhsachcongty_loai_tencongty).click()
+        var.driver.find_element(By.XPATH, var.danhsachcongty_noidung).send_keys("Viconship Đà Nẵng")
+        var.driver.find_element(By.XPATH, var.danhsachcongty_timkiem).click()
+        time.sleep(3.5)
+        check_timkiem_congty = var.driver.find_element(By.XPATH, var.check_timkiem_congty).text
+        print(check_timkiem_congty)
+        if check_timkiem_congty == "950":
+            var.driver.find_element(By.XPATH, var.danhsachcongty_icondencongty).click()
+            time.sleep(3)
+            try:
+                var.driver.find_element(By.XPATH, var.danhsachxe_dungtat).is_displayed()
+            except:
+                var.driver.find_element(By.XPATH, var.giamsat).click()
+                time.sleep(3)
+            time.sleep(2)
         danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
-
         var.driver.find_element(By.XPATH, var.xemhinhanhnhanh).click()
         time.sleep(2)
-        var.driver.find_element(By.XPATH, var.ok).click()
-        time.sleep(0.5)
+        logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Xem hình ảnh nhanh")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            check_xemhinhanhnhanh = var.driver.find_element(By.XPATH, var.check_xemhinhanhnhanh).is_displayed()
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+        except NoSuchElementException:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_XemHinhAnhNhanh.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_XemHinhAnhNhanh.png")
 
-    def chuotphaixe_xemhanhcamera(self):  # dùng tk quản trị
-        var.driver.implicitly_wait(10)
+
+    def chuotphaixe_xemhinhanhcamera(self, ma, tensukien, ketqua):  # dùng tk quản trị
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.goto_vinconshipdanang)
+            var.driver.refresh()
+            time.sleep(3.5)
+        except:
+            login.login.login_v2(self, "truongtq@bagroup.vn", "atgmj123")
+            var.driver.find_element(By.XPATH, var.danhsachcongty).click()
+            time.sleep(1.5)
+            var.driver.find_element(By.XPATH, var.danhsachcongty_loai).click()
+            time.sleep(0.5)
+            var.driver.find_element(By.XPATH, var.danhsachcongty_loai_tencongty).click()
+            var.driver.find_element(By.XPATH, var.danhsachcongty_noidung).send_keys("Viconship Đà Nẵng")
+            var.driver.find_element(By.XPATH, var.danhsachcongty_timkiem).click()
+            time.sleep(3.5)
+            check_timkiem_congty = var.driver.find_element(By.XPATH, var.check_timkiem_congty).text
+            print(check_timkiem_congty)
+            if check_timkiem_congty == "Viconship Đà Nẵng":
+                var.driver.find_element(By.XPATH, var.danhsachcongty_icondencongty).click()
+                time.sleep(2)
+
         danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
 
         var.driver.find_element(By.XPATH, var.xemanhcamera).click()
@@ -761,11 +2268,35 @@ class danhsachxe:
         tab_id = var.driver.window_handles
         tab_1 = tab_id[1]
         var.driver.switch_to_window(tab_1)
-        check_xemanhcamera_tuchoitruycap = var.driver.find_element(By.XPATH, var.check_xemanhcamera_tuchoitruycap).text
-        print(check_xemanhcamera_tuchoitruycap)
+        logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Xem hình ảnh camera")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        check_xemanhcamera = var.driver.find_element(By.XPATH, var.check_xemanhcamera).text
+        logging.info(check_xemanhcamera)
+        if check_xemanhcamera == "QUẢN LÝ HÌNH ẢNH TỪ CARMERA":
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+        else:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_XemHinhAnhCarmera.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_XemHinhAnhCarmera.png")
         time.sleep(0.5)
         login.linklienket.linklienket_dongtab(self)
         time.sleep(0.5)
+
+
+
+
+
+
+
+
+
+
+
+
 
     def chuotphaixe_xemhanhcamera_nd10(self):
         var.driver.implicitly_wait(10)

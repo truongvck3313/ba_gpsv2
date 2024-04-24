@@ -16,32 +16,115 @@ class Test(unittest.TestCase):
     def test_run1(self):
         chucnangkhac.clearData(var.path_baocao, "Checklist", "", "")
         chucnangkhac.delete_image()
-        mucdo.modetest(self)
-        # chucnangkhac.notification_telegram()
+
+        # caseid.caseid_giamsat01(self)
+        # caseid.caseid_giamsat02(self)
+        # caseid.caseid_giamsat03(self)
+        # caseid.caseid_giamsat04(self)
+        # caseid.caseid_giamsat05(self)
+        # caseid.caseid_giamsat06(self)
+        # caseid.caseid_giamsat07(self)
+
+        # caseid.caseid_giamsat08(self)
+        # caseid.caseid_giamsat09(self)
+        # caseid.caseid_giamsat10(self)
+        # caseid.caseid_giamsat11(self)
+        # caseid.caseid_giamsat12(self)
+        # caseid.caseid_giamsat13(self)
+        # caseid.caseid_giamsat14(self)
+        # caseid.caseid_giamsat15(self)
+        # caseid.caseid_giamsat16(self)
+        #
+        # caseid.caseid_giamsat17(self)
+        # caseid.caseid_giamsat18(self)
+        # caseid.caseid_giamsat19(self)
+        # caseid.caseid_giamsat20(self)
+        # caseid.caseid_giamsat21(self)
+        # caseid.caseid_giamsat21(self)
+        # caseid.caseid_giamsat22(self)
+        # caseid.caseid_giamsat23(self)
+        # caseid.caseid_giamsat24(self)
+        # caseid.caseid_giamsat25(self)
+
+        # caseid.caseid_giamsat26(self)
+        # caseid.caseid_giamsat27(self)
+        # caseid.caseid_giamsat28(self)
+        # caseid.caseid_giamsat29(self)
+        # caseid.caseid_giamsat30(self)
+        # caseid.caseid_giamsat31(self)
+        # caseid.caseid_giamsat32(self)
+        # caseid.caseid_giamsat33(self)
+        # caseid.caseid_giamsat34(self)
+
+        # caseid.caseid_giamsat35(self)
+        # caseid.caseid_giamsat36(self)
+        # caseid.caseid_giamsat37(self)
+        # caseid.caseid_giamsat38(self)
+        # caseid.caseid_giamsat39(self)
+        # caseid.caseid_giamsat40(self)
+        # caseid.caseid_giamsat41(self)
+        # caseid.caseid_giamsat42(self)
+        # caseid.caseid_giamsat43(self)
+
+        # caseid.caseid_giamsat44(self)
+        # caseid.caseid_giamsat45(self)
+        # caseid.caseid_giamsat46(self)
+        # caseid.caseid_giamsat47(self)
+        # caseid.caseid_giamsat48(self)
+
+        # caseid.caseid_giamsat49(self)
+        # caseid.caseid_giamsat50(self)
+        # caseid.caseid_giamsat51(self)
+        # caseid.caseid_giamsat52(self)
+        # caseid.caseid_giamsat53(self)
+
+        # caseid.caseid_giamsat54(self)
+        # caseid.caseid_giamsat55(self)
+        # caseid.caseid_giamsat56(self)
+        # caseid.caseid_giamsat57(self)
+        # caseid.caseid_giamsat58(self)
+        # caseid.caseid_giamsat59(self)
+        # caseid.caseid_giamsat60(self)
+        # caseid.caseid_giamsat61(self)
+
+        # caseid.caseid_giamsat62(self)
+        # caseid.caseid_giamsat63(self)
+        # caseid.caseid_giamsat64(self)
+        # caseid.caseid_giamsat65(self)
+        # caseid.caseid_giamsat66(self)
+
+        # caseid.caseid_giamsat67(self)
+        # caseid.caseid_giamsat68(self)
+
+        # caseid.caseid_giamsat69(self)     #nhóm xe đặc biệt
+
+        # caseid.caseid_giamsat70(self)       #ẩn xe
+        # caseid.caseid_giamsat71(self)
+        # caseid.caseid_giamsat72(self)
+        # caseid.caseid_giamsat73(self)
+        # caseid.caseid_giamsat74(self)
+        # caseid.caseid_giamsat75(self)
+        # caseid.caseid_giamsat76(self)
+        # caseid.caseid_giamsat77(self)
+        # caseid.caseid_giamsat78(self)
+        # caseid.caseid_giamsat79(self)
+        # caseid.caseid_giamsat80(self)
+
+        # caseid.caseid_giamsat81(self)   #Thông tin thiết bị
+        # caseid.caseid_giamsat82(self)
+
+        caseid.caseid_giamsat83(self)   #Xem hình ảnh nhanh
+        caseid.caseid_giamsat84(self)   #Xem ảnh carmera
 
 
-    # def test_run2(self):
-    #     chucnangkhac.clearData(var.path_baocao, "Checklist", "", "")
-    #     chucnangkhac.delete_image()
-    #     # chucnangkhac.notification_telegram()
-    #
-    #     # login.login.login_v2(self, "viconshipdanang1", "12341234")
-    #     caseid.caseid_giamsat01(self)
-    #     caseid.caseid_giamsat02(self)
-    #     caseid.caseid_giamsat03(self)
-    #     caseid.caseid_giamsat04(self)
-    #     caseid.caseid_login21(self)
 
 
-# giamsat.danhsachxe.nhomxe(self)
-        # giamsat.danhsachxe.trangthai(self)
-        # giamsat.danhsachxe.check_onlinehandler(self)
 
-        # giamsat.danhsachxe.icon_khac(self)
-        # giamsat.danhsachxe.chuotphaixe_xemlailotrinh(self)
-        # giamsat.danhsachxe.chuotphaixe_xemlotrinhnhieuxe(self)
-        # giamsat.danhsachxe.chuotphaixe_gannhomxedacbiet(self)
-        # giamsat.danhsachxe.chuotphaixe_anxe(self)
+
+
+
+
+
         # giamsat.danhsachxe.chuotphaixe_thongtinthietbi(self)
         # giamsat.danhsachxe.chuotphaixe_xemhinhanhnhanh(self)
         # giamsat.danhsachxe.chuotphaixe_xemhanhcamera(self)

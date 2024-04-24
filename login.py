@@ -47,7 +47,7 @@ class login:
         var.driver.find_element(By.XPATH, var.dangnhap).click()
         # time.sleep(3)
         # var.driver.find_element(By.XPATH, var.iconngonngu_tienganh)
-        time.sleep(5)
+        time.sleep(10)
         giamsat.xoacanhbao()
 
 

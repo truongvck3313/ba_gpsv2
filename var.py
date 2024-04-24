@@ -55,8 +55,8 @@ for x in f:
          uploadpath = x[15:-2]
      if x[0:23] == "- LuuDuLieuTamThoiPath:":
          luudulieutamthoipath = x[25:-2]
-
-
+     if x[0:12] == "- ExcelPath:":
+         excelpath = x[14:-1]       #C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/excel
 
 
 
@@ -166,9 +166,10 @@ xemchitiettrencuasomoi = "/html/body/div[17]/div[2]/div[2]/div[2]"
 # trongngay = "//*[text()='Trong ngày']"
 trongngay = "/html/body/div[18]/div[2]/div[2]/div[9]"
 tuychon = "/html/body/div[18]/div[2]/div[2]/div[10]"
-nhapthongtinxe = "//*[text()='Nhập thông tin xe']"
+nhapthongtinxe = "/html/body/div[20]/div[2]/div[2]/div[2]"
+# nhapthongtinxe = "//*[text()='Nhập thông tin xe']"
 popupthongtinxe_trongtaiinput = "//*[@id='vehicleInfomation']/div[2]/table/tbody/tr[6]/td[2]/input"
-popupthongtinxe_capnhat = "//*[@id='vehicleInfomation']//*[@class='close']"
+popupthongtinxe_capnhat = "//*[@id='ctl00_MainContent_vehicleInfoBGT_BtnUpdate']"
 capnhatthanhcong = "//*[text()='Cập nhật thành công']"
 ok = "//*[text()='OK']"
 huy = "//*[@id='vehicleInfomation']//*[text()='Hủy']"
@@ -186,10 +187,10 @@ anxe_nguyennhan_xetainan = "//*[@id='panelHideVehicle']/div/div[2]/div[5]/div[2]
 anxe_ghichu = "//*[@id='panelHideVehicle']/div/div[2]/div[6]/div[2]/textarea"
 luu = "//*[@id='panelHideVehicle']//*[text()='Lưu']"
 icon_danhsachxedangan = "//*[@title='Danh sách xe đang ẩn']"
-check_danhsachxedangan_tenphuongtien     = "//*[@id='panelFavourite']/div/div[8]/table/tbody/tr[1]/td[2]"
+check_danhsachxedangan_tenphuongtien = "//*[@id='panelFavourite']/div/div[8]/table/tbody/tr[1]/td[2]"
 icon_danhsachxedangan_x = "//*[@id='panelFavourite']/div/div[8]/table/tbody/tr[1]//*[@src='/Images/delete_item.png']"
 thongtinthietbi = "/html/body/div[20]/div[2]/div[2]/div[7]"
-check_danhsachxe_thongtinthietbi = "//*[@id='divDeviceInfo']"
+check_danhsachxe_thongtinthietbi = "//*[@id='ui-dialog-title-divDeviceInfo']"
 thongtinthietbi_x = "//*[@class='ui-icon ui-icon-closethick']"
 xemhinhanhnhanh = "/html/body/div[20]/div[2]/div[2]/div[8]"
 xemanhcamera = "/html/body/div[20]/div[2]/div[2]/div[9]"
@@ -385,12 +386,51 @@ check_gs_mauxe = "//*[@id='idClearOnline']/table/tbody/tr[1]"
 check_gs_tendiem = "//*[@class='leaflet-popup-content-wrapper']/div/div/div[2]"
 check_gs_timtoado_kinhdo = "//*[@class='leaflet-popup-content-wrapper']/div/div/div[5]"
 check_gs_timtoado_vido = "//*[@class='leaflet-popup-content-wrapper']/div/div/div[8]"
-
-
-
-
-
-
+vinconshipdanang1 = "//*[text()='VICONSHIPDANANG1 [950]']"
+tongsoxe_duoi = "//*[@id='display_allsumvehicle']"
+ungroup = "//*[text()='Không nhóm đội [1010]']"
+ungroup_1 = "//*[text()='ungroup_1 [1010]']"
+e43E02743 = "//*[text()='43E02743 [950]']"
+trangthai_tatca = "//*[@id='ddlVehicleState']//*[@selected='selected']"
+check_popup_hientranghethong = "//*[@id='panelStatus']/div/div[2]/b"
+check_popup_ynghiabieutuongxe = "//*[@id='popUpBox_theMeaningOfIcon']//*[@class='float_left Header']"
+nhapthongtinxe_x = "//*[@id='vehicleInfomation']//*[@id='imgClosevehicleInfo']"
+popupthongtinxe_loaihinhvantai_vantaihanghoa = "//*[@id='vehicleInfomation']//*[@value='500']"
+popupthongtinxe_vantaidangkychaynoithanh = "//*[@id='ctl00_MainContent_vehicleInfoBGT_ckCustomerInBGT']"
+check_popupthongtinxe_loaihinhvantai = ""
+popupthongtinxe_chopheptichtruyendulieu = "//*[@id='ctl00_MainContent_vehicleInfoBGT_ckBGTForward']"
+check_popupthongtinxe_congty = "//*[@id='ctl00_MainContent_vehicleInfoBGT_ddlBranch_ddlBranch']/option[1]"
+check_popupthongtinxe_trongtai = "//*[@id='ctl00_MainContent_vehicleInfoBGT_txtWeightBGT']"
+popupthongtinxe_loaihinhvantai_xekhachtuyencodinh = "//*[@id='vehicleInfomation']//*[@value='100']"
+danhsachxe_xe1 = "//*[@id='idClearOnline']/table/tbody/tr[1]"
+popupthongtinxe_capnhat1 = "//*[@id='ctl00_MainContent_vehicleInfoBGT_BtnUpdate']"
+check_giamsatnhieuxe_xe1 = "//*[@id='boxRight']/div[1]"
+check_giamsatnhieuxe_xe3 = "//*[@id='boxRight']/div[3]"
+hover_giamsat = "//*[@id='boxRight']/div[1]/div[6]"
+hover_giamsat_phongto = "//*[@id='boxRight']/div[1]/div[6]/ul/li[2]"
+check_giamsat_iconphongto = "//*[@class='c leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom']"
+hover_giamsat_phongto_x = "//*[@class='dZoom']//*[@src='/icons/onlines/close.png']"
+giamsatnhieuxe_iconx3 = "//*[@id='boxRight']/div[3]/div[5]"
+giamsatnhieuxe_iconx2 = "//*[@id='boxRight']/div[2]/div[5]"
+giamsatnhieuxe_iconx1 = "//*[@id='boxRight']/div[1]/div[5]"
+check_danhsachxe_thongtinxe = "//*[@pid='panelTabNormal1']"
+check_danhsachxe_hientrang_x = "//*[@class='leaflet-popup-close-button']"
+hientrang_goicuoc = "//*[@pid='panelTabBacam1']"
+check_popup_anxe = "//*[@id='panelHideVehicle']//*[@class='header-title']"
+giamsat_anxe_dong = "//*[@id='panelHideVehicle']//*[text()='Đóng']"
+danhsachxe_tenphuongtien1 = "//*[@id='idClearOnline']/table/tbody/tr[1]/td[2]/div[2]"
+check_danhsachxedangan_trangthai = "//*[@id='panelFavourite']/div/div[8]/table/tbody/tr[1]/td[3]"
+check_danhsachxedangan_truyentcdb = "//*[@id='panelFavourite']/div/div[8]/table/tbody/tr[1]/td[4]//*[@src='/Images/tick.gif']"
+icon_danhsachxedangan_nguyennhan = "//*[@id='ddlErrorType']//*[@value='3']"
+icon_danhsachxedangan_timkiem = "//*[@id='imgSearchVehicleInterest']"
+check_capnhatxe_ghichu = "//*[@id='txtNoteErrorDetail']"
+capnhatxe_antrengiamsat = "//*[@id='radHideTracking']"
+luuvadungtruyen = "//*[@id='btnErrorSaveAndStopTransfer']"
+icon_danhsachxedangan_x_tichtruyen = "//*[@class='btn btn-primary btn-transfer']"
+check_xemhinhanhnhanh = "//*[@class='pp_content_container']"
+xemhinhanhnhanh_dong = "//*[@class='pp_overlay']"
+goto_vinconshipdanang = "//*[text()='Viconship Đà Nẵng [950]']"
+check_xemanhcamera = "//*[@class='tableBoxHeader']"
 
 
 
