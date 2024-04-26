@@ -147,8 +147,8 @@ class Test(unittest.TestCase):
         # caseid.caseid_giamsat108(self)
         # caseid.caseid_giamsat109(self)
 
-        caseid.caseid_giamsat124(self)
-        caseid.caseid_giamsat125(self)
+        caseid.caseid_giamsat110(self)
+        caseid.caseid_giamsat111(self)
 
 
 
