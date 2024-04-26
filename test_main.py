@@ -113,8 +113,42 @@ class Test(unittest.TestCase):
         # caseid.caseid_giamsat81(self)   #Thông tin thiết bị
         # caseid.caseid_giamsat82(self)
 
-        caseid.caseid_giamsat83(self)   #Xem hình ảnh nhanh
-        caseid.caseid_giamsat84(self)   #Xem ảnh carmera
+        # caseid.caseid_giamsat83(self)
+        # caseid.caseid_giamsat84(self)
+
+        # caseid.caseid_giamsat85(self)    #Biểu đồ nguyên liệu
+        # caseid.caseid_giamsat86(self)
+
+        # caseid.caseid_giamsat87(self)     #Biểu đồ nguyên liệu mới
+        # caseid.caseid_giamsat88(self)
+
+        # caseid.caseid_giamsat89(self)
+        # caseid.caseid_giamsat90(self)
+
+        # caseid.caseid_giamsat91(self)
+
+        # caseid.caseid_giamsat92(self)
+        # caseid.caseid_giamsat93(self)
+
+        # caseid.caseid_giamsat94(self)
+        # caseid.caseid_giamsat95(self)
+        # caseid.caseid_giamsat96(self)
+        # caseid.caseid_giamsat97(self)
+        # caseid.caseid_giamsat98(self)
+        # caseid.caseid_giamsat99(self)
+
+        # caseid.caseid_giamsat100(self)
+        # caseid.caseid_giamsat101(self)
+        # caseid.caseid_giamsat102(self)
+        # caseid.caseid_giamsat103(self)
+        # caseid.caseid_giamsat104(self)
+        # caseid.caseid_giamsat107(self)
+
+        # caseid.caseid_giamsat108(self)
+        # caseid.caseid_giamsat109(self)
+
+        caseid.caseid_giamsat124(self)
+        caseid.caseid_giamsat125(self)
 
 
 
@@ -125,19 +159,8 @@ class Test(unittest.TestCase):
 
 
 
-        # giamsat.danhsachxe.chuotphaixe_thongtinthietbi(self)
-        # giamsat.danhsachxe.chuotphaixe_xemhinhanhnhanh(self)
-        # giamsat.danhsachxe.chuotphaixe_xemhanhcamera(self)
-        # giamsat.danhsachxe.chuotphaixe_xemhanhcamera_nd10(self)
-        # giamsat.danhsachxe.chuotphaixe_giamsatcamera_nd10(self)
-        # giamsat.danhsachxe.chuotphaixe_bieudonhienlieu(self)
-        # giamsat.danhsachxe.chuotphaixe_bieudonhienlieumoi(self)
-        # giamsat.danhsachxe.chuotphaixe_bieudonhietdo(self)
-        # giamsat.danhsachxe.chuotphaixe_khoangcachdencacxe(self)
-        # giamsat.danhsachxe.chuotphaixe_khoangcachdencacdiem(self)
+
         # giamsat.danhsachxe.hientranghethong(self)
-
-
         # login.login.login_v2(self, "ungroup", "12341234")
         # giamsat.chuotphaimap.phongto_thunho(self)
         # giamsat.chuotphaimap.trungtamoday(self)

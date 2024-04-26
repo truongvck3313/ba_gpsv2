@@ -431,6 +431,26 @@ check_xemhinhanhnhanh = "//*[@class='pp_content_container']"
 xemhinhanhnhanh_dong = "//*[@class='pp_overlay']"
 goto_vinconshipdanang = "//*[text()='Viconship Đà Nẵng [950]']"
 check_xemanhcamera = "//*[@class='tableBoxHeader']"
+check_popup_khoangcachdencacxe = "//*[@id='panelMeasureDistance']/div/div[2]/table/tbody/tr[1]/td[1]"
+check_khoangcach = "//*[@class='float-left;']/table/tbody/tr[1]/td[2]/div[2]"
+khoangcachdencacxe_tenxe1 = "//*[@class='searchMeasureContent']/tr[1]/td[2]/div"
+khoangcachdencacxe_teninput = "//*[@id='filter_name']"
+bieudoluuluong = "/html/body/div[20]/div[2]/div[2]/div[14]"
+check_popup_bieudoluuluong = "//*[@id='popUpBoxFlow']//*[@class='float_left Header']"
+bieudoluuluong_iconx = "//*[@id='popUpBoxFlow']//*[@id='btnCloseFlowChart']"
+gstheotuyenmau = "/html/body/div[20]/div[2]/div[2]/div[18]"
+gstheotuyenmau_iconx = "//*[@id='btnCloseVTWRForm']"
+goto_nhapmaxninput = "//*[@placeholder='Nhập mã XN']"
+goto_dencongty = "//*[@class='blog-info']//*[text()='Đến công ty']"
+taonhanhdonhang = "/html/body/div[20]/div[2]/div[2]/div[19]"
+check_popuptaonhanhdonhang = "//*[@class='modal_content popUpBox']/table[1]/tbody/tr[1]/td/div"
+taonhanhdonhang_dong = "//*[@class='btn btn-primary btnCloseAddOrder']"
+goto_1010congtykhongconhomdoi = "//*[text()='1010_Công ty không có nhóm đội [1010]']"
+nhaplichchuyenxe = "/html/body/div[20]/div[2]/div[2]/div[20]"
+check_popup_themmoichuyen = "//*[@id='divTripAdd']/div[1]/div/div/span"
+nhaplichchuyenxe_dong = "//*[@id='divTripAdd']/div[3]/div/div/input[1]"
+
+
 
 
 

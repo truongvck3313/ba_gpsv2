@@ -650,13 +650,189 @@ def caseid_giamsat83(self):
     get_datachecklist("GiamSat83")
     tensukien = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 42, 2))
     ketqua = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 43, 2))
-    giamsat.danhsachxe.chuotphaixe_xemhinhanhnhanh(self, "GiamSat83", tensukien, ketqua)
+    giamsat.danhsachxe.chuotphaixe_xemhanhcamera_nd10(self, "GiamSat83", tensukien, ketqua)
 
 def caseid_giamsat84(self):
     get_datachecklist("GiamSat84")
     tensukien = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 42, 2))
     ketqua = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 43, 2))
-    giamsat.danhsachxe.chuotphaixe_xemhinhanhcamera(self, "GiamSat84", tensukien, ketqua)
+    giamsat.danhsachxe.chuotphaixe_giamsatcamera_nd10(self, "GiamSat84", tensukien, ketqua)
+
+
+def caseid_giamsat85(self):
+    get_datachecklist("GiamSat85")
+    tensukien = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 43, 2))
+    giamsat.danhsachxe.chuotphaixe_bieudonhienlieu(self, "GiamSat85", tensukien, ketqua)
+
+
+def caseid_giamsat86(self):
+    get_datachecklist("GiamSat86")
+    tensukien = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 43, 2))
+    giamsat.danhsachxe.chuotphaixe_bieudonhienlieu_iconx(self, "GiamSat86", tensukien, ketqua)
+
+def caseid_giamsat87(self):
+    get_datachecklist("GiamSat87")
+    tensukien = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 43, 2))
+    giamsat.danhsachxe.chuotphaixe_bieudonhienlieumoi(self, "GiamSat87", tensukien, ketqua)
+
+def caseid_giamsat88(self):
+    get_datachecklist("GiamSat88")
+    tensukien = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 43, 2))
+    giamsat.danhsachxe.chuotphaixe_bieudonhienlieumoi_iconx(self, "GiamSat88", tensukien, ketqua)
+
+
+def caseid_giamsat89(self):
+    get_datachecklist("GiamSat89")
+    tensukien = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 43, 2))
+    giamsat.danhsachxe.chuotphaixe_bieudonhietdo(self, "GiamSat89", tensukien, ketqua)
+
+
+def caseid_giamsat90(self):
+    get_datachecklist("GiamSat90")
+    tensukien = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 43, 2))
+    giamsat.danhsachxe.chuotphaixe_khoangcachdencacxe(self, "GiamSat90", tensukien, ketqua)
+
+
+def caseid_giamsat91(self):
+    get_datachecklist("GiamSat91")
+    tensukien = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 43, 2))
+    giamsat.danhsachxe.chuotphaixe_khoangcachdencacxe_khoangcachngan(self, "GiamSat91", tensukien, ketqua)
+
+
+def caseid_giamsat92(self):
+    get_datachecklist("GiamSat92")
+    tensukien = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 43, 2))
+    giamsat.danhsachxe.chuotphaixe_khoangcachdencacxe_khoangcachdai(self, "GiamSat92", tensukien, ketqua)
+
+
+def caseid_giamsat93(self):
+    get_datachecklist("GiamSat93")
+    tensukien = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 43, 2))
+    giamsat.danhsachxe.chuotphaixe_khoangcachdencacxe_ten(self, "GiamSat93", tensukien, ketqua)
+
+
+
+
+def caseid_giamsat94(self):
+    get_datachecklist("GiamSat94")
+    tensukien = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 43, 2))
+    giamsat.danhsachxe.chuotphaixe_khoangcachdencacxe_iconx(self, "GiamSat94", tensukien, ketqua)
+
+
+def caseid_giamsat95(self):
+    get_datachecklist("GiamSat95")
+    tensukien = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 43, 2))
+    giamsat.danhsachxe.chuotphaixe_khoangcachdencacdiem(self, "GiamSat95", tensukien, ketqua)
+
+
+def caseid_giamsat96(self):
+    get_datachecklist("GiamSat96")
+    tensukien = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 43, 2))
+    giamsat.danhsachxe.chuotphaixe_khoangcachdencacdiem_khoangcachngan(self, "GiamSat96", tensukien, ketqua)
+
+
+def caseid_giamsat97(self):
+    get_datachecklist("GiamSat97")
+    tensukien = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 43, 2))
+    giamsat.danhsachxe.chuotphaixe_khoangcachdencacdiem_khoangcachdai(self, "GiamSat97", tensukien, ketqua)
+
+
+def caseid_giamsat98(self):
+    get_datachecklist("GiamSat98")
+    tensukien = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 43, 2))
+    giamsat.danhsachxe.chuotphaixe_khoangcachdencacdiem_ten(self, "GiamSat98", tensukien, ketqua)
+
+def caseid_giamsat99(self):
+    get_datachecklist("GiamSat99")
+    tensukien = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 43, 2))
+    giamsat.danhsachxe.chuotphaixe_khoangcachdencacdiem_iconx(self, "GiamSat99", tensukien, ketqua)
+
+
+def caseid_giamsat100(self):
+    get_datachecklist("GiamSat100")
+    tensukien = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 43, 2))
+    giamsat.danhsachxe.chuotphaixe_xemhinhanhnhanh(self, "GiamSat100", tensukien, ketqua)
+
+
+def caseid_giamsat101(self):
+    get_datachecklist("GiamSat101")
+    tensukien = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 43, 2))
+    giamsat.danhsachxe.chuotphaixe_xemhinhanhcamera(self, "GiamSat101", tensukien, ketqua)
+
+
+def caseid_giamsat102(self):
+    get_datachecklist("GiamSat102")
+    tensukien = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 43, 2))
+    giamsat.danhsachxe.chuotphaixe_bieudoluuluong(self, "GiamSat102", tensukien, ketqua)
+
+def caseid_giamsat103(self):
+    get_datachecklist("GiamSat103")
+    tensukien = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 43, 2))
+    giamsat.danhsachxe.chuotphaixe_bieudoluuluong_iconx(self, "GiamSat103", tensukien, ketqua)
+
+
+def caseid_giamsat104(self):
+    get_datachecklist("GiamSat104")
+    tensukien = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 43, 2))
+    giamsat.danhsachxe.chuotphaixe_gstheotuyenmau(self, "GiamSat104", tensukien, ketqua)
+
+
+def caseid_giamsat107(self):
+    get_datachecklist("GiamSat107")
+    tensukien = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 43, 2))
+    giamsat.danhsachxe.chuotphaixe_gstheotuyenmau_iconx(self, "GiamSat107", tensukien, ketqua)
+
+
+def caseid_giamsat108(self):
+    get_datachecklist("GiamSat108")
+    tensukien = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 43, 2))
+    giamsat.danhsachxe.chuotphaixe_taonhanhdonhang(self, "GiamSat108", tensukien, ketqua)
+
+
+def caseid_giamsat109(self):
+    get_datachecklist("GiamSat109")
+    tensukien = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 43, 2))
+    giamsat.danhsachxe.chuotphaixe_taonhanhdonhang_dong(self, "GiamSat109", tensukien, ketqua)
+
+
+def caseid_giamsat110(self):
+    get_datachecklist("GiamSat110")
+    tensukien = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 43, 2))
+    giamsat.danhsachxe.chuotphaixe_nhaplichchuyenxe(self, "GiamSat110", tensukien, ketqua)
+
+
+def caseid_giamsat111(self):
+    get_datachecklist("GiamSat111")
+    tensukien = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 43, 2))
+    giamsat.danhsachxe.chuotphaixe_nhaplichchuyenxe_dong(self, "GiamSat111", tensukien, ketqua)
+
+
+
 
 
 
