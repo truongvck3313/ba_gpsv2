@@ -143,24 +143,53 @@ class Test(unittest.TestCase):
         # caseid.caseid_giamsat103(self)
         # caseid.caseid_giamsat104(self)
         # caseid.caseid_giamsat107(self)
-
+        #
         # caseid.caseid_giamsat108(self)
         # caseid.caseid_giamsat109(self)
-
-        caseid.caseid_giamsat110(self)
-        caseid.caseid_giamsat111(self)
-
-
+        #
+        # caseid.caseid_giamsat110(self)
+        # caseid.caseid_giamsat111(self)
 
 
 
+        # caseid.caseid_giamsat112(self)      #Phương tiện thiếu thông tin tích truyền
+        #
+        # caseid.caseid_giamsat113(self)      #Theo dõi chuyến hàng
+        # caseid.caseid_giamsat114(self)
+        #
+        # caseid.caseid_giamsat115(self)      #Xem ảnh camera
+        #
+        # caseid.caseid_giamsat116(self)      #Hien trạng hệ thống
+        # caseid.caseid_giamsat117(self)
+        #
+        # caseid.caseid_giamsat118(self)      #Danh sách xe đang ẩn
+        # caseid.caseid_giamsat119(self)
+        #
+        # caseid.caseid_giamsat120(self)       #Danh sách xe 2g
+        # caseid.caseid_giamsat121(self)
+        #
+        # caseid.caseid_giamsat122(self)       #Cảnh báo timeline
+        # caseid.caseid_giamsat123(self)
+        #
+        # caseid.caseid_giamsat124(self)      #Thông tin xe tới hạn đi vào phố cấm
+        #
+        # caseid.caseid_giamsat125(self)      # Cảnh báo xe chưa tới điểm
+        # caseid.caseid_giamsat126(self)
+        #
+        # caseid.caseid_giamsat127(self)      # Cảnh báo
+        # caseid.caseid_giamsat128(self)
+
+
+
+        caseid.caseid_giamsat129(self)
+        caseid.caseid_giamsat130(self)
 
 
 
 
 
 
-        # giamsat.danhsachxe.hientranghethong(self)
+
         # login.login.login_v2(self, "ungroup", "12341234")
         # giamsat.chuotphaimap.phongto_thunho(self)
         # giamsat.chuotphaimap.trungtamoday(self)

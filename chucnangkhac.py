@@ -40,6 +40,21 @@ def clearData(file,sheetName,ketqua, tenanh):
     wordbook.save(file)
 
 
+def clearData_luutamthoi(file,sheetName, api, web, popup):
+    wordbook = openpyxl.load_workbook(file)
+    sheet = wordbook.get_sheet_by_name(sheetName)
+    i = 6
+    while (i < 37):
+        i += 1
+        i = str(i)
+        sheet["B"+i] = api
+        sheet["C"+i] = web
+        sheet["D"+i] = popup
+        i = int(i)
+    wordbook.save(file)
+
+
+
 
 def getRowCount(file, sheetName):
     wordbook = openpyxl.load_workbook(file)
