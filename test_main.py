@@ -180,26 +180,95 @@ class Test(unittest.TestCase):
         # caseid.caseid_giamsat128(self)
 
 
+        # caseid.caseid_giamsat129(self)      #Check thông tin xe
+        #
+        # caseid.caseid_giamsat130(self)
+        # caseid.caseid_giamsat131(self)
+        # caseid.caseid_giamsat132(self)
+        # caseid.caseid_giamsat133(self)
+        # caseid.caseid_giamsat134(self)
+        # caseid.caseid_giamsat135(self)
+        # caseid.caseid_giamsat136(self)
+        # caseid.caseid_giamsat137(self)
+        # caseid.caseid_giamsat138(self)
+        # caseid.caseid_giamsat139(self)
+        # caseid.caseid_giamsat140(self)
+        # caseid.caseid_giamsat141(self)
+        # caseid.caseid_giamsat142(self)
+        # caseid.caseid_giamsat143(self)
+        # caseid.caseid_giamsat144(self)
+        # caseid.caseid_giamsat145(self)
+        # caseid.caseid_giamsat146(self)
+        # caseid.caseid_giamsat147(self)
+        # caseid.caseid_giamsat148(self)
+        # caseid.caseid_giamsat149(self)
+        # caseid.caseid_giamsat150(self)
+        # caseid.caseid_giamsat151(self)
+        # caseid.caseid_giamsat152(self)
+        # caseid.caseid_giamsat153(self)
+        # caseid.caseid_giamsat154(self)
+        # caseid.caseid_giamsat155(self)
+        # caseid.caseid_giamsat156(self)
+        #
+        # caseid.caseid_giamsat157(self)    #Phóng to
+        # caseid.caseid_giamsat158(self)    #Thu nhỏ
+        # caseid.caseid_giamsat159(self)    #Trung tâm ở đây
+        # caseid.caseid_giamsat160(self)    #Xem địa chỉ
+        #
+        # caseid.caseid_giamsat161(self)    #Đo khoảng cách
+        # caseid.caseid_giamsat162(self)
+        # caseid.caseid_giamsat163(self)
+        # caseid.caseid_giamsat164(self)
+        #
+        #
+        # caseid.caseid_giamsat165(self)    #Chỉ hướng
+        # caseid.caseid_giamsat166(self)
+        # caseid.caseid_giamsat167(self)
+        # caseid.caseid_giamsat168(self)
+        # caseid.caseid_giamsat169(self)
+        # caseid.caseid_giamsat170(self)
+        # caseid.caseid_giamsat171(self)
+        # caseid.caseid_giamsat172(self)
 
-        caseid.caseid_giamsat129(self)
-        caseid.caseid_giamsat130(self)
+
+        caseid.caseid_giamsat173(self)      #Chi dan duong
+        caseid.caseid_giamsat174(self)
+        caseid.caseid_giamsat175(self)
+        caseid.caseid_giamsat176(self)
+        caseid.caseid_giamsat177(self)
+        caseid.caseid_giamsat178(self)
+        caseid.caseid_giamsat179(self)
+        caseid.caseid_giamsat180(self)
+
+        caseid.caseid_giamsat181(self)
+        caseid.caseid_giamsat182(self)
+        caseid.caseid_giamsat183(self)
+        caseid.caseid_giamsat184(self)
+        caseid.caseid_giamsat185(self)
+        caseid.caseid_giamsat186(self)
+
+        caseid.caseid_giamsat187(self)      #Tao điểm
+        caseid.caseid_giamsat188(self)
+        caseid.caseid_giamsat189(self)
+        caseid.caseid_giamsat190(self)
+        caseid.caseid_giamsat191(self)
+        caseid.caseid_giamsat192(self)
+
+        caseid.caseid_giamsat193(self)      #Tạo vùng lộ trình
+        caseid.caseid_giamsat194(self)
+
+        caseid.caseid_giamsat195(self)    #Tìm xe trong vùng
+        caseid.caseid_giamsat196(self)
+        caseid.caseid_giamsat197(self)
+        caseid.caseid_giamsat198(self)
+
+        caseid.caseid_giamsat199(self)      #Tìm xe gần nhất
+        caseid.caseid_giamsat200(self)
 
 
 
 
 
-
-
-        # login.login.login_v2(self, "ungroup", "12341234")
-        # giamsat.chuotphaimap.phongto_thunho(self)
-        # giamsat.chuotphaimap.trungtamoday(self)
-        # giamsat.chuotphaimap.xemdiachi(self)
-        # giamsat.chuotphaimap.dokhoangcach(self)
-        # giamsat.chuotphaimap.chihuong(self)
-        # giamsat.chuotphaimap.chidanduong(self)
-        # giamsat.chuotphaimap.taodiembando(self)
-        # giamsat.chuotphaimap.taovunglotrinh(self)
-        # giamsat.chuotphaimap.timxetrongvung(self)
         # giamsat.chuotphaimap.timxegannhat(self)
         # giamsat.chuotphaimap.cauhinhhienthinhomdiem(self)
         # giamsat.chuotphaimap.cauhinhkhoidong(self)
