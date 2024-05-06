@@ -264,6 +264,7 @@ class linklienket:
         var.driver.switch_to_window(tab_1)
         print(var.driver.title)
 
+
     def linklienket_trangchu(self, ma, tensukien):
         var.driver.implicitly_wait(5)
         try:
