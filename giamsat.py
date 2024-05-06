@@ -2,6 +2,7 @@ import logging
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 import var
+import lotrinh
 import time
 import json
 from retry import retry
@@ -51,6 +52,11 @@ def xoacanhbao():
     except:
         pass
 
+    try:
+        var.driver.find_element(By.XPATH, var.canhbaotimeline_x).click()
+    except:
+        pass
+
 
 def zoom_map(loai, solanzoom):
     var.driver.implicitly_wait(5)
@@ -93,23 +99,28 @@ class danhsachxe:
         time.sleep(1)
         var.driver.find_element(By.XPATH, var.timkiem_iconsearch).click()
         time.sleep(1.5)
-        check_gs_timkiem_timxe = var.driver.find_element(By.XPATH, var.check_gs_timkiem_timxe).text
-        check_gs_mauxe = var.driver.find_element(By.XPATH, var.check_gs_mauxe).value_of_css_property("background-color")    #rgba(51, 153, 255, 1)
         logging.info("Giám sát - Tìm kiếm - Biển kiểm soát/Tìm xe")
         logging.info("check font-end: Tìm kiếm xe: "+ tenphuongtien)
         logging.info("check font-end: Màu xe khi được chọn: rgba(51, 153, 255, 1)")
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)
         logging.info("Kết quả - " + ketqua)
-        if check_gs_timkiem_timxe == tenphuongtien and check_gs_mauxe == "rgba(51, 153, 255, 1)":
-            logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
-        else:
+        try:
+            check_gs_timkiem_timxe = var.driver.find_element(By.XPATH, var.check_gs_timkiem_timxe).text
+            check_gs_mauxe = var.driver.find_element(By.XPATH, var.check_gs_mauxe).value_of_css_property("background-color")    #rgba(51, 153, 255, 1)
+            if check_gs_timkiem_timxe == tenphuongtien and check_gs_mauxe == "rgba(51, 153, 255, 1)":
+                logging.info("True")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+            else:
+                logging.info("False")
+                var.driver.save_screenshot(var.imagepath + ma + "_TimKiem_TimXe.png")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_TimKiem_TimXe.png")
+        except:
             logging.info("False")
             var.driver.save_screenshot(var.imagepath + ma + "_TimKiem_TimXe.png")
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_TimKiem_TimXe.png")
-
 
     def timkiem_timdiachi(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
@@ -1156,7 +1167,7 @@ class danhsachxe:
         actions.context_click(button).perform()
         time.sleep(1)
 
-
+    @retry(tries=3, delay=2, backoff=1, jitter=5)
     def danhsachxe_chuotphaixedangdichuyen(self):
         var.driver.implicitly_wait(5)
         time.sleep(1)
@@ -1394,9 +1405,9 @@ class danhsachxe:
             var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_XemLaiLoTrinh_TuyChon.png")
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_XemLaiLoTrinh_TuyChon.png")
-        var.driver.switch_to_window(tab_0)
         login.linklienket.linklienket_dongtab(self)
-
+        var.driver.switch_to_window(tab_0)
+        time.sleep(1)
 
     def chuotphaixe_nhapthongtinxe(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(4)
@@ -1684,7 +1695,11 @@ class danhsachxe:
         danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
         var.driver.find_element(By.XPATH, var.xemlotrinhnhieuxe).click()
         time.sleep(3)
-        var.driver.find_element(By.XPATH, var.trangthai_dichuyen).click()
+        try:
+            var.driver.find_element(By.XPATH, var.trangthai_dichuyen).click()
+        except:
+            var.driver.refresh()
+            var.driver.find_element(By.XPATH, var.trangthai_dichuyen).click()
         time.sleep(1.5)
         n = 0
         m = 0
@@ -1784,7 +1799,8 @@ class danhsachxe:
             var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_GiamSatNhieuXe_IconX.png")
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_GiamSatNhieuXe_IconX.png")
-
+        var.driver.find_element(By.XPATH, var.giamsat).click()
+        time.sleep(6)
 
     def chuotphaixe_hientrang_thongtinxe(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(4)
@@ -1793,6 +1809,8 @@ class danhsachxe:
         except:
             login.login.login_v2(self, "viconshipdanang1", "12341234")
 
+        var.driver.find_element(By.XPATH, var.giamsat).click()
+        time.sleep(5)
         danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
 
         var.driver.find_element(By.XPATH, var.hientrang).click()
@@ -1870,27 +1888,36 @@ class danhsachxe:
         actions.move_to_element(gannhomdacbiet_hover).perform()
         time.sleep(0.5)
         var.driver.find_element(By.XPATH, var.themnhomdacbiet).click()
-        time.sleep(2)
+        time.sleep(3)
         tab_id = var.driver.window_handles
         tab_1 = tab_id[1]
+        tab_0 = tab_id[0]
         var.driver.switch_to_window(tab_1)
         logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Gán nhóm xe đặc biệt")
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)
         logging.info("Kết quả - " + ketqua)
-        check_themnhomdacbiet = var.driver.find_element(By.XPATH, var.check_themnhomdacbiet).text
-        print(check_themnhomdacbiet)  # QUẢN LÝ NHÓM XE
-        if check_themnhomdacbiet == "QUẢN LÝ NHÓM XE":
-            logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
-        else:
+        try:
+            check_themnhomdacbiet = var.driver.find_element(By.XPATH, var.check_themnhomdacbiet).text
+            print(check_themnhomdacbiet)  # QUẢN LÝ NHÓM XE
+            if check_themnhomdacbiet == "QUẢN LÝ NHÓM XE":
+                logging.info("True")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+            else:
+                logging.info("False")
+                var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_GanNhomDacBiet.png")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_GanNhomDacBiet.png")
+        except:
             logging.info("False")
             var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_GanNhomDacBiet.png")
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_GanNhomDacBiet.png")
-
         login.linklienket.linklienket_dongtab(self)
-        time.sleep(1)
+        time.sleep(0.5)
+        var.driver.switch_to_window(tab_0)
+        time.sleep(0.5)
+
 
 
     def chuotphaixe_anxe(self, ma, tensukien, ketqua):
@@ -2076,6 +2103,10 @@ class danhsachxe:
         action = ActionChains(var.driver)
         action.double_click(button).perform()
         time.sleep(1)
+        button = var.driver.find_element(By.XPATH, var.check_danhsachxedangan_tenphuongtien)
+        action = ActionChains(var.driver)
+        action.double_click(button).perform()
+        time.sleep(1)
         logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Ẩn xe")
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)
@@ -2094,8 +2125,11 @@ class danhsachxe:
         if var.driver.find_element(By.XPATH, var.capnhatxe_antrengiamsat).is_selected() == False:
             var.driver.find_element(By.XPATH, var.capnhatxe_antrengiamsat).click()
         time.sleep(0.5)
-        var.driver.find_element(By.XPATH, var.luuvadungtruyen).click()
+        # var.driver.find_element(By.XPATH, var.luuvadungtruyen).click()
+        button = var.driver.find_element(By.XPATH, var.luuvadungtruyen)
+        var.driver.execute_script("arguments[0].click();", button)
         time.sleep(1.5)
+        xoacanhbao()
 
 
     def chuotphaixe_anxe_angiamsat(self, ma, tensukien, ketqua):
@@ -2218,9 +2252,12 @@ class danhsachxe:
         var.driver.find_element(By.XPATH, var.xemanhcamera_nd10).click()
         time.sleep(2)
         tab_id = var.driver.window_handles
-        tab_1 = tab_id[1]
         tab_0 = tab_id[0]
-        var.driver.switch_to_window(tab_1)
+        try:
+            tab_1 = tab_id[1]
+            var.driver.switch_to_window(tab_1)
+        except:
+            var.driver.find_element(By.XPATH, var.ok).click()
         time.sleep(1)
         logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Xem ảnh camera - NĐ10")
         logging.info("Mã - " + ma)
@@ -2241,7 +2278,17 @@ class danhsachxe:
             var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_XemAnhCameraND10.png")
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_XemAnhCameraND10.png")
-        # print(check_xemanhcamera_nd10)  # QUẢN LÝ ẢNH CAMERA
+
+        var.driver.implicitly_wait(1)
+        try:
+            check_khongcocamera = var.driver.find_element(By.XPATH, var.khongcocamera).text
+            if check_khongcocamera == "Phương tiện không sử dụng camera video giám sát.":
+                logging.info("True")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, " ")
+        except:
+            pass
+
         time.sleep(0.5)
         login.linklienket.linklienket_dongtab(self)
         var.driver.switch_to_window(tab_0)
@@ -2284,6 +2331,16 @@ class danhsachxe:
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_GiamSatCameraND10.png")
         # print(check_giamsatcamera_nd10)  # GIÁM SÁT VIDEO
+
+        var.driver.implicitly_wait(1)
+        try:
+            check_khongcocamera = var.driver.find_element(By.XPATH, var.khongcocamera).text
+            if check_khongcocamera == "Phương tiện không sử dụng camera video giám sát.":
+                logging.info("True")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, " ")
+        except:
+            pass
         time.sleep(0.5)
         login.linklienket.linklienket_dongtab(self)
         var.driver.switch_to_window(tab_0)
@@ -2341,13 +2398,19 @@ class danhsachxe:
 
 
     def chuotphaixe_bieudonhienlieumoi(self, ma, tensukien, ketqua):
-        var.driver.implicitly_wait(5)
+        var.driver.implicitly_wait(3)
         try:
             var.driver.find_element(By.XPATH, var.vinconshipdanang1)
         except:
             login.login.login_v2(self, "viconshipdanang1", "12341234")
-        danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
 
+        var.driver.implicitly_wait(1)
+        try:
+            var.driver.find_element(By.XPATH, var.ok).click()
+        except:
+            pass
+        var.driver.implicitly_wait(5)
+        danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
         var.driver.find_element(By.XPATH, var.bieudonhienlieumoi).click()
         time.sleep(2)
         logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Biểu đồ nguyên liệu mới")
@@ -2396,6 +2459,13 @@ class danhsachxe:
             var.driver.find_element(By.XPATH, var.vinconshipdanang1)
         except:
             login.login.login_v2(self, "viconshipdanang1", "12341234")
+
+        var.driver.implicitly_wait(1)
+        try:
+            var.driver.find_element(By.XPATH, var.ok).click()
+        except:
+            pass
+        var.driver.implicitly_wait(5)
         danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
 
         var.driver.find_element(By.XPATH, var.bieudonhietdo).click()
@@ -2731,6 +2801,7 @@ class danhsachxe:
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
 
 
+    @retry(tries=2, delay=2, backoff=1, jitter=5)
     def goto_congty(self, tencongty, macongty):
         var.driver.implicitly_wait(10)
         login.login.login_v2(self, "truongtq@bagroup.vn", "atgmj123")
@@ -2765,7 +2836,7 @@ class danhsachxe:
 
 
     def chuotphaixe_xemhinhanhnhanh(self, ma, tensukien, ketqua):  # dùng tk quản trị
-        var.driver.implicitly_wait(10)
+        var.driver.implicitly_wait(5)
         danhsachxe.goto_congty(self, "Viconship Đà Nẵng", "950")
 
         danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
@@ -2784,6 +2855,15 @@ class danhsachxe:
             var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_XemHinhAnhNhanh.png")
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_XemHinhAnhNhanh.png")
+        var.driver.implicitly_wait(1)
+        try:
+            check_khongcocamera = var.driver.find_element(By.XPATH, var.khongcocamera).text
+            if check_khongcocamera == "Phương tiện không sử dụng camera video giám sát.":
+                logging.info("True")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, " ")
+        except:
+            pass
         var.driver.refresh()
         time.sleep(4)
 
@@ -2801,24 +2881,35 @@ class danhsachxe:
         time.sleep(2)
         tab_id = var.driver.window_handles
         tab_0 = tab_id[0]
-        tab_1 = tab_id[1]
-        var.driver.switch_to_window(tab_1)
-        time.sleep(1.5)
         logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Xem hình ảnh camera")
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)
         logging.info("Kết quả - " + ketqua)
-        check_xemanhcamera = var.driver.find_element(By.XPATH, var.check_xemanhcamera).text
-        logging.info(check_xemanhcamera)
-        if check_xemanhcamera == "QUẢN LÝ HÌNH ẢNH TỪ CARMERA":
-            logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
-        else:
-            logging.info("False")
-            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_XemHinhAnhCarmera.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_XemHinhAnhCarmera.png")
-        time.sleep(0.5)
+        try:
+            tab_1 = tab_id[1]
+            var.driver.switch_to_window(tab_1)
+            time.sleep(1.5)
+            check_xemanhcamera = var.driver.find_element(By.XPATH, var.check_xemanhcamera).text
+            logging.info(check_xemanhcamera)
+            if check_xemanhcamera == "QUẢN LÝ HÌNH ẢNH TỪ CARMERA":
+                logging.info("True")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+            else:
+                logging.info("False")
+                var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_XemHinhAnhCarmera.png")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiXe_XemHinhAnhCarmera.png")
+            time.sleep(0.5)
+        except:
+            var.driver.implicitly_wait(1)
+            try:
+                check_khongcocamera = var.driver.find_element(By.XPATH, var.khongcocamera).text
+                if check_khongcocamera == "Phương tiện không sử dụng camera video giám sát.":
+                    logging.info("True")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+                    chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, " ")
+            except:
+                pass
         login.linklienket.linklienket_dongtab(self)
         var.driver.switch_to_window(tab_0)
         time.sleep(0.5)
@@ -3043,8 +3134,8 @@ class danhsachxe:
         tab_id = var.driver.window_handles
         tab_1 = tab_id[1]
         tab_0 = tab_id[0]
-        var.driver.switch_to_window(tab_0)
         login.linklienket.linklienket_dongtab(self)
+        var.driver.switch_to_window(tab_0)
         time.sleep(1)
 
 
@@ -3059,6 +3150,11 @@ class canhbao:
             var.driver.find_element(By.XPATH, var.goto_vinconshipdanang)
         except:
             danhsachxe.goto_congty(self, "Viconship Đà Nẵng", "950")
+
+        tab_id = var.driver.window_handles
+        tab_0 = tab_id[0]
+        var.driver.switch_to_window(tab_0)
+        time.sleep(1)
         xoacanhbao()
         var.driver.find_element(By.XPATH, var.iconphuongtienthieuthongtintichtruyen).click()
         # check_phuongtienthieuthongtintichtruyen = var.driver.find_element(By.XPATH, var.check_phuongtienthieuthongtintichtruyen)
@@ -4489,7 +4585,7 @@ class chuotphaimap:
 
 
     def timdiachi(self, toado):
-        var.driver.implicitly_wait(10)
+        var.driver.implicitly_wait(5)
         try:
             button = var.driver.find_element(By.XPATH, var.timkiem_icon2)
             var.driver.execute_script("arguments[0].click();", button)
@@ -4534,6 +4630,7 @@ class chuotphaimap:
             logging.info("Địa chỉ - " + check_xemdiachi)
             logging.info("True")
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+            var.driver.find_element(By.XPATH, var.ok).click()
         except NoSuchElementException:
             logging.info("False")
             var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_XemDiaChi.png")
@@ -4636,7 +4733,7 @@ class chuotphaimap:
 
 
     def chihuong(self, ma, tensukien, ketqua):     #Thiếu lộ trình r, Chỉ hướng không hoạt động, tài liệu chị hương gửi
-        var.driver.implicitly_wait(5)
+        var.driver.implicitly_wait(3)
         try:
             var.driver.find_element(By.XPATH, var.ungroup)
         except:
@@ -4644,12 +4741,13 @@ class chuotphaimap:
         xoacanhbao()
         # chuotphaimap.timdiachi(self, data['giamsat']['timkiem_toado1'])
         # zoom_map("thu nhỏ", 4)
-
+        var.driver.find_element(By.XPATH, var.danhsachxe_dichuyen).click()
+        time.sleep(1)
         mouse.move("800", "800")
         mouse.click(button='right')
         time.sleep(1)
         var.driver.find_element(By.XPATH, var.chuotphaimap_chihuong).click()
-        time.sleep(1)
+        time.sleep(1.5)
         xoacanhbao()
         logging.info("Giám sát - Chuột phải map - Chỉ hướng")
         logging.info("Mã - " + ma)
@@ -4687,15 +4785,14 @@ class chuotphaimap:
 
 
     def chihuong_diema(self, ma, tensukien, ketqua):
-        var.driver.implicitly_wait(5)
+        var.driver.implicitly_wait(3)
         # chuotphaimap.timdiachi(self, data['giamsat']['timkiem_toado1'])
         # zoom_map("thu nhỏ", 4)
-
         mouse.move("800", "800")
         mouse.click(button='right')
         time.sleep(1)
         var.driver.find_element(By.XPATH, var.chuotphaimap_chihuong).click()
-        time.sleep(1)
+        time.sleep(2)
         # location a
         var.driver.find_element(By.XPATH, var.chihuong_diema).click()
         mouse.move("600", "800")
@@ -4722,7 +4819,7 @@ class chuotphaimap:
         var.driver.find_element(By.XPATH, var.chihuong_diemb).click()
         mouse.move("1100", "800")
         mouse.click(button='left')
-        time.sleep(1.5)
+        time.sleep(1)
         logging.info("Giám sát - Chuột phải map - Chỉ hướng")
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)
@@ -4808,6 +4905,1057 @@ class chuotphaimap:
         var.driver.find_element(By.XPATH, var.chihuong_thoat).click()
 
 
+    def taodiembando(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(5)
+        login.login.login_v2(self, "ungroup", "12341234")
+
+        chuotphaimap.timdiachi(self, data['giamsat']['timkiem_toado8'])
+        mouse.move("500", "800")
+        mouse.click(button='right')
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.chuotphaimap_taodiembando).click()
+        time.sleep(1)
+        xoacanhbao()
+        check_popuptaodiem = var.driver.find_element(By.XPATH, var.check_popuptaodiem).text
+        logging.info("Giám sát - Chuột phải map - Tạo điểm bản đồ")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        logging.info(check_popuptaodiem)
+        if check_popuptaodiem != "Tạo điểm":
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+        else:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_TaoDiem.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_TaoDiem.png")
+
+
+    def taodiembando_huy(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(5)
+        var.driver.find_element(By.XPATH, var.taodiem_huy).click()
+        time.sleep(1)
+        logging.info("Giám sát - Chuột phải map - Tạo điểm bản đồ")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            var.driver.find_element(By.XPATH, var.taodiem_huy).click()
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_TaoDiem_Huy.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_TaoDiem_Huy.png")
+        except:
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+
+
+    def taodiembando_nhapthongtindiem(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.ungroup)
+        except:
+            login.login.login_v2(self, "ungroup", "12341234")
+            time.sleep(1)
+            mouse.move("500", "800")
+            mouse.click(button='right')
+            time.sleep(1)
+            var.driver.find_element(By.XPATH, var.chuotphaimap_taodiembando).click()
+            time.sleep(2)
+            xoacanhbao()
+        xoacanhbao()
+
+        mouse.move("500", "800")
+        mouse.click(button='right')
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.chuotphaimap_taodiembando).click()
+        time.sleep(2)
+
+        var.driver.find_element(By.XPATH, var.taodiem_tendiem).send_keys(data['giamsat']['taodiem_tendiem1'])
+        if var.driver.find_element(By.XPATH, var.taodiem_laydiachibando).is_selected() == False:
+            var.driver.find_element(By.XPATH, var.taodiem_laydiachibando).click()
+        if var.driver.find_element(By.XPATH, var.taodiem_nhaptoado).is_selected() == False:
+            var.driver.find_element(By.XPATH, var.taodiem_nhaptoado).click()
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.taodiem_kinhdo).send_keys(data['giamsat']['taodiem_kinhdo'])
+        var.driver.find_element(By.XPATH, var.taodiem_vido).send_keys(data['giamsat']['taodiem_vido'])
+        var.driver.find_element(By.XPATH, var.taodiem_loaidiem).click()
+        var.driver.find_element(By.XPATH, var.taodiem_loaidiem).send_keys(Keys.DOWN)
+        var.driver.find_element(By.XPATH, var.taodiem_loaidiem).send_keys(Keys.ENTER)
+        var.driver.find_element(By.XPATH, var.taodiem_tenrieng).send_keys(data['giamsat']['taodiem_tenrieng'])
+        var.driver.find_element(By.XPATH, var.taodiem_mota).send_keys(data['giamsat']['taodiem_mota'])
+        var.driver.find_element(By.XPATH, var.taodiem_sophutdungdo).send_keys(data['giamsat']['taodiem_sophutdungdo'])
+        xoacanhbao()
+
+        if var.driver.find_element(By.XPATH, var.taodiem_diemkiemsoat).is_selected() == False:
+            var.driver.find_element(By.XPATH, var.taodiem_diemkiemsoat).click()
+        if var.driver.find_element(By.XPATH, var.taodiem_hienthidiem).is_selected() == False:
+            var.driver.find_element(By.XPATH, var.taodiem_hienthidiem).click()
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.taodiem_bankinh).clear()
+        var.driver.find_element(By.XPATH, var.taodiem_bankinh).send_keys(data['giamsat']['taodiem_bankinh1'])
+        time.sleep(2)
+        logging.info("Giám sát - Chuột phải map - Tạo điểm bản đồ")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        logging.info("True")
+        chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+
+
+    def taodiembando_luu(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(5)
+        var.driver.find_element(By.XPATH, var.taodiem_luu).click()
+        time.sleep(1)
+        logging.info("Giám sát - Chuột phải map - Tạo điểm bản đồ")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            check_message_taodiem = var.driver.find_element(By.XPATH, var.check_message_taodiem1)
+            if check_message_taodiem.text == "Cập nhật thành công":
+                logging.info("True")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+            else:
+                logging.info("False")
+                var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_TaoDiem_Luu.png")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_TaoDiem_Luu.png")
+        except:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_TaoDiem_Luu.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_TaoDiem_Luu.png")
+
+
+    def taodiembando_capnhat(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(5)
+        #Cập nhật
+        var.driver.refresh()
+        time.sleep(5)
+        chuotphaimap.timdiachi(self, data['giamsat']['timkiem_toado8'])
+        button = var.driver.find_element(By.XPATH, var.taodiem_chon)
+        action = ActionChains(var.driver)
+        action.double_click(button).perform()
+        time.sleep(3)
+        xoacanhbao()
+        var.driver.find_element(By.XPATH, var.taodiem_tendiem).clear()
+        var.driver.find_element(By.XPATH, var.taodiem_tendiem).send_keys(data['giamsat']['taodiem_tendiem2'])
+        time.sleep(0.5)
+        button = var.driver.find_element(By.XPATH, var.taodiem_capnhat)
+        var.driver.execute_script("arguments[0].click();", button)
+        # var.driver.find_element(By.XPATH, var.taodiem_capnhat).click()
+        time.sleep(1)
+        logging.info("Giám sát - Chuột phải map - Tạo điểm bản đồ")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            check_message_capnhatdiem = var.driver.find_element(By.XPATH, var.check_message_taodiem1)
+            if check_message_capnhatdiem.text == "Cập nhật thành công":
+                logging.info("True")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+            else:
+                logging.info("False")
+                var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_TaoDiem_CapNhatDiem.png")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_TaoDiem_CapNhatDiem.png")
+        except:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_TaoDiem_CapNhatDiem.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_TaoDiem_CapNhatDiem.png")
+
+
+    def taodiembando_xoadiem(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(5)
+        #Xóa điểm
+        var.driver.refresh()
+        time.sleep(5)
+        xoacanhbao()
+        chuotphaimap.timdiachi(self, data['giamsat']['timkiem_toado8'])
+        # check_capnhatdiem = var.driver.find_element(By.XPATH,"//*[text()='" + data['giamsat']['taodiem_tendiem2'] + "']").text
+        # print(check_capnhatdiem)
+        button = var.driver.find_element(By.XPATH, var.taodiem_chon)
+        action = ActionChains(var.driver)
+        action.double_click(button).perform()
+        time.sleep(3)
+        xoacanhbao()
+        # var.driver.find_element(By.XPATH, var.taodiem_xoa).click()
+        button = var.driver.find_element(By.XPATH, var.taodiem_xoa)
+        var.driver.execute_script("arguments[0].click();", button)
+        time.sleep(1)
+        var.driver.switch_to.alert.accept()
+        time.sleep(1)
+        logging.info("Giám sát - Chuột phải map - Tạo điểm bản đồ")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            check_message_xoadiem = var.driver.find_element(By.XPATH, var.check_message_xoadiem).text
+            logging.info(check_message_xoadiem)
+            if check_message_xoadiem == "Xóa thành công":
+                var.driver.find_element(By.XPATH, var.ok)
+                logging.info("True")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+            else:
+                logging.info("False")
+                var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_TaoDiem_CapNhatDiem.png")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_TaoDiem_CapNhatDiem.png")
+        except:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_TaoDiem_CapNhatDiem.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_TaoDiem_CapNhatDiem.png")
+        time.sleep(5)
+
+
+    def taovunglotrinh(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.ungroup)
+        except:
+            login.login.login_v2(self, "ungroup", "12341234")
+
+        var.driver.refresh()
+        time.sleep(5)
+        chuotphaimap.timdiachi(self, data['giamsat']['timkiem_toado9'])
+        mouse.move("800", "800")
+        mouse.click(button='right')
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.chuotphaimap_taovunglotrinh).click()
+        time.sleep(2)
+        logging.info("Giám sát - Chuột phải map - Tạo vùng lộ trình")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            checkpopup_taovunglotrinh = var.driver.find_element(By.XPATH, var.checkpopup_taovunglotrinh).text
+            logging.info(checkpopup_taovunglotrinh)
+            if checkpopup_taovunglotrinh == "TẠO VÙNG LỘ TRÌNH":
+                logging.info("True")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+            else:
+                logging.info("False")
+                var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_TaoVungLoTrinh.png")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_TaoVungLoTrinh.png")
+        except:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_TaoVungLoTrinh.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_TaoVungLoTrinh.png")
+
+
+    def taovunglotrinh_huy(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(2.5)
+        var.driver.find_element(By.XPATH, var.taovunglotrinh_huy).click()
+        time.sleep(1)
+        logging.info("Giám sát - Chuột phải map - Tạo vùng lộ trình")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            var.driver.find_element(By.XPATH, var.taovunglotrinh_huy).click()
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_TaoVungLoTrinh_Huy.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_TaoVungLoTrinh_Huy.png")
+        except:
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+
+
+    def timxetrongvung(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.ungroup)
+        except:
+            login.login.login_v2(self, "ungroup", "12341234")
+
+        try:
+            var.driver.find_element(By.XPATH, var.timkiem_timtoado_input).clear()
+            var.driver.find_element(By.XPATH, var.timkiem_timtoado_input).send_keys(data['giamsat']['timkiem_toado13'])
+            time.sleep(0.5)
+            var.driver.find_element(By.XPATH, var.timkiem_iconsearch).click()
+            time.sleep(1.5)
+        except:
+            chuotphaimap.timdiachi(self, data['giamsat']['timkiem_toado13'])
+        var.driver.find_element(By.XPATH, var.close).click()
+
+        zoom_map("thu nhỏ", 10)
+        time.sleep(2)
+        xoacanhbao()
+        mouse.move("1000", "800")
+        mouse.click(button='right')
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.chuotphaimap_timxetrongvung).click()
+        time.sleep(1)
+        #điểm 1
+        var.driver.find_element(By.XPATH, var.giamsat_diem1).click()
+        time.sleep(2)
+        #điểm 2
+        var.driver.find_element(By.XPATH, var.giamsat_diem2).click()
+        time.sleep(2)
+        # #điểm 3
+        var.driver.find_element(By.XPATH, var.giamsat_diem3).click()
+        button = var.driver.find_element(By.XPATH, var.giamsat_diem3)
+        action = ActionChains(var.driver)
+        action.double_click(button).perform()
+        action.double_click(button).perform()
+        time.sleep(2)
+        logging.info("Giám sát - Chuột phải map - Tìm xe trong vùng")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            check_timxetrongvung = var.driver.find_element(By.XPATH, var.check_timxetrongvung).text
+            logging.info(check_timxetrongvung)
+            if check_timxetrongvung == "Tìm xe trong vùng":
+                logging.info("True")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+            else:
+                logging.info("False")
+                var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_TimXeTrongVung.png")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_TimXeTrongVung.png")
+        except:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_TimXeTrongVung.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_TimXeTrongVung.png")
+
+
+    def timxetrongvung_capnhatmoidulieu(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(5)
+        logging.info("Giám sát - Chuột phải map - Tìm xe trong vùng")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        var.driver.find_element(By.XPATH, var.timxetrongvung_capnhatmoidulieu).click()
+        logging.info("True")
+        chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+
+
+    def timxetrongvung_ketxuat(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(5)
+        logging.info("Giám sát - Chuột phải map - Tìm xe trong vùng")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        var.driver.find_element(By.XPATH, var.timxetrongvung_ketxuat).click()
+        logging.info("True")
+        chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+
+
+    def timxetrongvung_iconx(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(2.5)
+        var.driver.find_element(By.XPATH, var.timxetrongvung_iconx).click()
+        time.sleep(1)
+        logging.info("Giám sát - Chuột phải map - Tìm xe trong vùng")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            var.driver.find_element(By.XPATH, var.timxetrongvung_iconx).click()
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_TimXeTrongVung_IconX.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_TimXeTrongVung_IconX.png")
+        except:
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+
+
+    def timxegannhat(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.ungroup)
+        except:
+            login.login.login_v2(self, "ungroup", "12341234")
+
+        try:
+            var.driver.find_element(By.XPATH, var.timkiem_timtoado_input).clear()
+            var.driver.find_element(By.XPATH, var.timkiem_timtoado_input).send_keys(data['giamsat']['timkiem_toado9'])
+            time.sleep(0.5)
+            var.driver.find_element(By.XPATH, var.timkiem_iconsearch).click()
+            time.sleep(1.5)
+        except:
+            chuotphaimap.timdiachi(self, data['giamsat']['timkiem_toado9'])
+        mouse.move("800", "800")
+        mouse.click(button='right')
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.chuotphaimap_timxegannhat).click()
+        time.sleep(1.5)
+        xoacanhbao()
+        logging.info("Giám sát - Chuột phải map - Tìm xe trong vùng")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            checkpopup_timxegannhat = var.driver.find_element(By.XPATH, var.checkpopup_timxegannhat).text
+            if checkpopup_timxegannhat == "Tìm xe gần nhất":
+                logging.info("True")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+            else:
+                logging.info("False")
+                var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_TimXeGanNhat.png")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_TimXeGanNhat.png")
+        except:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_TimXeGanNhat.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_TimXeGanNhat.png")
+
+
+    def timxegannhat_iconx(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(2.5)
+        # var.driver.find_element(By.XPATH, var.timxegannhat_iconx).click()
+        button = var.driver.find_element(By.XPATH, var.timxegannhat_iconx)
+        var.driver.execute_script("arguments[0].click();", button)
+        logging.info("Giám sát - Chuột phải map - Tìm xe trong vùng")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            var.driver.find_element(By.XPATH, var.timxegannhat_iconx).click()
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_TimXeGanNhat_IconX.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_TimXeGanNhat_IconX.png")
+        except:
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+
+
+    def cauhinhhienthinhomdiem(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.ungroup)
+        except:
+            login.login.login_v2(self, "ungroup", "12341234")
+
+        try:
+            var.driver.find_element(By.XPATH, var.timkiem_timtoado_input).clear()
+            var.driver.find_element(By.XPATH, var.timkiem_timtoado_input).send_keys(data['giamsat']['timkiem_toado10'])
+            time.sleep(0.5)
+            var.driver.find_element(By.XPATH, var.timkiem_iconsearch).click()
+            time.sleep(1.5)
+        except:
+            chuotphaimap.timdiachi(self, data['giamsat']['timkiem_toado10'])
+
+        zoom_map("thu nhỏ", 2)
+        mouse.move("800", "800")
+        mouse.click(button='right')
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.chuotphaimap_cauhinhhienthinhomdiem).click()
+        time.sleep(1.7)
+        logging.info("Giám sát - Chuột phải map - Cấu hình hiển thị nhóm điểm")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            check_popupcauhinhhienthinhomdiem = var.driver.find_element(By.XPATH, var.check_popupcauhinhhienthinhomdiem).text
+            if check_popupcauhinhhienthinhomdiem == "CẤU HÌNH HIỂN THỊ NHÓM ĐIỂM":
+                logging.info("True")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+            else:
+                logging.info("False")
+                var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_CauHinhHienThiNhomDiem.png")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_CauHinhHienThiNhomDiem.png")
+        except:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_CauHinhHienThiNhomDiem.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_CauHinhHienThiNhomDiem.png")
+
+
+    def cauhinhhienthinhomdiem_iconx(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(3)
+        var.driver.find_element(By.XPATH, var.chuotphaimap_cauhinhhienthinhomdiem_iconx1).click()
+        logging.info("Giám sát - Chuột phải map - Cấu hình hiển thị nhóm điểm")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            var.driver.find_element(By.XPATH, var.chuotphaimap_cauhinhhienthinhomdiem_iconx1).click()
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_CauHinhHienThiNhomDiem.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_CauHinhHienThiNhomDiem.png")
+        except:
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+
+
+    def cauhinhhienthinhomdiem_tramthuphi_tatvungbao(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(2)
+        xoacanhbao()
+        #Trạm thu phi - Tắt hiển thị
+        try:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_chuachonnhom).click()
+        except:
+            mouse.move("800", "800")
+            mouse.click(button='right')
+            time.sleep(1)
+            var.driver.find_element(By.XPATH, var.chuotphaimap_cauhinhhienthinhomdiem).click()
+            time.sleep(1)
+        xoacanhbao()
+        var.driver.implicitly_wait(3)
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_chuachonnhom).is_selected() == True:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_chuachonnhom).click()
+
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_tramthuphi).is_selected() == True:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_tramthuphi).click()
+
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthivungbao).is_selected() == True:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthivungbao).click()
+
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthitendiem).is_selected() == True:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthitendiem).click()
+
+        var.driver.find_element(By.XPATH, var.chuotphaimap_luuthongtinhienthi).click()
+        time.sleep(1.5)
+        check_message_luucauhinhhienthi = var.driver.find_element(By.XPATH, var.check_message_luucauhinhhienthi).text
+        print(check_message_luucauhinhhienthi)
+        var.driver.find_element(By.XPATH, var.chuotphaimap_luuthongtinhienthi_ok).click()
+        time.sleep(1)
+        logging.info("Giám sát - Chuột phải map - Cấu hình hiển thị nhóm điểm")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        var.driver.implicitly_wait(1)
+        try:
+            check_tramthuphi_vungbao = var.driver.find_element(By.XPATH, var.check_tramthuphi_vungbao).is_displayed()
+            print("Tắt vùng bao - trạm thu phi: False")
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_CauHinhHienThiNhomDiem_TramThuPhi_TatVungBao.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_CauHinhHienThiNhomDiem_TramThuPhi_TatVungBao.png")
+        except:
+            print("Tắt vùng bao - trạm thu phi: True")
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+
+
+    def cauhinhhienthinhomdiem_tramthuphi_tattendiem(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(2)
+        logging.info("Giám sát - Chuột phải map - Cấu hình hiển thị nhóm điểm")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            check_tramthuphi_tendiem = var.driver.find_element(By.XPATH, var.check_tramthuphi_tendiem).is_displayed()
+            print("Tắt tên điểm - trạm thu phi: False")
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_CauHinhHienThiNhomDiem_TramThuPhi_TatTenDiem.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_CauHinhHienThiNhomDiem_TramThuPhi_TatTenDiem.png")
+        except:
+            print("Tắt tên điểm - trạm thu phi: True")
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+        time.sleep(1)
+
+
+    def cauhinhhienthinhomdiem_tramthuphi_batvungbao(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(3)
+        #Trạm thu phi - Bật hiển thị
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_chuachonnhom).is_selected() == False:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_chuachonnhom).click()
+
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_tramthuphi).is_selected() == False:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_tramthuphi).click()
+
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthivungbao).is_selected() == False:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthivungbao).click()
+
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthitendiem).is_selected() == False:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthitendiem).click()
+        var.driver.find_element(By.XPATH, var.chuotphaimap_luuthongtinhienthi).click()
+        time.sleep(1.5)
+        var.driver.find_element(By.XPATH, var.chuotphaimap_luuthongtinhienthi_ok).click()
+        time.sleep(1)
+        logging.info("Giám sát - Chuột phải map - Cấu hình hiển thị nhóm điểm")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        var.driver.implicitly_wait(1)
+        try:
+            check_tramthuphi_vungbao = var.driver.find_element(By.XPATH, var.check_tramthuphi_vungbao).is_displayed()
+            print("Bật vùng bao - trạm thu phi: True")
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+        except:
+            print("Bật vùng bao - trạm thu phi: False")
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_CauHinhHienThiNhomDiem_TramThuPhi_BatVungBao.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_CauHinhHienThiNhomDiem_TramThuPhi_BatVungBao.png")
+
+
+    def cauhinhhienthinhomdiem_tramthuphi_battendiem(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(2)
+        logging.info("Giám sát - Chuột phải map - Cấu hình hiển thị nhóm điểm")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            check_tramthuphi_tendiem = var.driver.find_element(By.XPATH, var.check_tramthuphi_tendiem).is_displayed()
+            print("Bật tên điểm - trạm thu phi: True")
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+        except:
+            print("Bật tên điểm - trạm thu phi: False")
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_CauHinhHienThiNhomDiem_TramThuPhi_BatTenDiem.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_CauHinhHienThiNhomDiem_TramThuPhi_BatTenDiem.png")
+        time.sleep(1)
+
+
+    def cauhinhhienthinhomdiem_chuachonnhom_tatvungbao(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(3)
+        #Chưa chọn nhóm - Tắt hiển thị
+        try:
+            var.driver.find_element(By.XPATH, var.timkiem_timtoado_input).clear()
+        except:
+            mouse.move("800", "800")
+            mouse.click(button='right')
+            time.sleep(1)
+            var.driver.find_element(By.XPATH, var.chuotphaimap_cauhinhhienthinhomdiem).click()
+            time.sleep(1)
+        var.driver.find_element(By.XPATH, var.timkiem_timtoado_input).send_keys(data['giamsat']['timkiem_toado11'])
+        time.sleep(0.5)
+        var.driver.find_element(By.XPATH, var.timkiem_iconsearch).click()
+        time.sleep(1.5)
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_chuachonnhom).is_selected() == True:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_chuachonnhom).click()
+
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_tramthuphi).is_selected() == True:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_tramthuphi).click()
+
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthivungbao).is_selected() == True:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthivungbao).click()
+
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthitendiem).is_selected() == True:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthitendiem).click()
+        var.driver.find_element(By.XPATH, var.chuotphaimap_luuthongtinhienthi).click()
+        time.sleep(1.5)
+        var.driver.find_element(By.XPATH, var.chuotphaimap_luuthongtinhienthi_ok).click()
+        time.sleep(1)
+        logging.info("Giám sát - Chuột phải map - Cấu hình hiển thị nhóm điểm")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        var.driver.implicitly_wait(1)
+        try:
+            check_chuachonnhom_vungbao = var.driver.find_element(By.XPATH, var.check_chuachonnhom_vungbao).is_displayed()
+            print("Tắt vùng bao - Chưa chọn nhóm: False")
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_CauHinhHienThiNhomDiem_ChuaChonNhom_TatVungBao.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_CauHinhHienThiNhomDiem_ChuaChonNhom_TatVungBao.png")
+        except:
+            print("Tắt vùng bao - Chưa chọn nhóm: True")
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+
+
+    def cauhinhhienthinhomdiem_chuachonnhom_tattendiem(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(2)
+        logging.info("Giám sát - Chuột phải map - Cấu hình hiển thị nhóm điểm")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            check_chuachonnhom_tendiem = var.driver.find_element(By.XPATH, var.check_chuachonnhom_tendiem).is_displayed()
+            print("Tắt tên điểm - Chưa chọn nhóm: False")
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_CauHinhHienThiNhomDiem_ChuaChonNhom_TatTenDiem.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_CauHinhHienThiNhomDiem_ChuaChonNhom_TatTenDiem.png")
+        except:
+            print("Tắt tên điểm - Chưa chọn nhóm: True")
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+        time.sleep(1)
+
+
+    def cauhinhhienthinhomdiem_chuachonnhom_batvungbao(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(3)
+        #Chưa chọn nhóm - Bật hiển thị
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_chuachonnhom).is_selected() == False:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_chuachonnhom).click()
+
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_tramthuphi).is_selected() == False:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_tramthuphi).click()
+
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthivungbao).is_selected() == False:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthivungbao).click()
+
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthitendiem).is_selected() == False:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthitendiem).click()
+        var.driver.find_element(By.XPATH, var.chuotphaimap_luuthongtinhienthi).click()
+        time.sleep(1.5)
+        var.driver.find_element(By.XPATH, var.chuotphaimap_luuthongtinhienthi_ok).click()
+        time.sleep(1)
+        var.driver.implicitly_wait(1)
+        logging.info("Giám sát - Chuột phải map - Cấu hình hiển thị nhóm điểm")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            check_chuachonnhom_vungbao = var.driver.find_element(By.XPATH, var.check_chuachonnhom_vungbao).is_displayed()
+            print("Bật vùng bao - Chưa chọn nhóm: True")
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+        except:
+            print("Bật vùng bao - Chưa chọn nhóm: False")
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_CauHinhHienThiNhomDiem_ChuaChonNhom_BatVungBao.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_CauHinhHienThiNhomDiem_ChuaChonNhom_BatVungBao.png")
+
+
+    def cauhinhhienthinhomdiem_chuachonnhom_battendiem(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(2)
+        logging.info("Giám sát - Chuột phải map - Cấu hình hiển thị nhóm điểm")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            check_chuachonnhom_tendiem = var.driver.find_element(By.XPATH, var.check_chuachonnhom_tendiem).is_displayed()
+            print("Bật tên điểm - Chưa chọn nhóm: True")
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+        except:
+            print("Bật tên điểm - Chưa chọn nhóm: False")
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_CauHinhHienThiNhomDiem_ChuaChonNhom_BatTenDiem.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_CauHinhHienThiNhomDiem_ChuaChonNhom_BatTenDiem.png")
+        time.sleep(1)
+
+
+    def cauhinhhienthinhomdiem_tattatca(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(5)
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_chuachonnhom).is_selected() == True:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_chuachonnhom).click()
+
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_tramthuphi).is_selected() == True:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_tramthuphi).click()
+
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthivungbao).is_selected() == True:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthivungbao).click()
+
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthitendiem).is_selected() == True:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthitendiem).click()
+        var.driver.find_element(By.XPATH, var.chuotphaimap_luuthongtinhienthi).click()
+        time.sleep(1.5)
+        check_messagetattatca = var.driver.find_element(By.XPATH, var.check_messagetattatca).text
+        var.driver.find_element(By.XPATH, var.chuotphaimap_luuthongtinhienthi_ok).click()
+        time.sleep(1)
+        logging.info("Giám sát - Chuột phải map - Cấu hình hiển thị nhóm điểm")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        if check_messagetattatca == "Lưu thông tin cấu hình nhóm điểm thành công":
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+        else:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_CauHinhHienThiNhomDiem_TatTatCa.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_CauHinhHienThiNhomDiem_TatTatCa.png")
+
+
+    def cauhinhhienthinhomdiem_battatca(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(5)
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_chuachonnhom).is_selected() == False:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_chuachonnhom).click()
+
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_tramthuphi).is_selected() == False:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_tramthuphi).click()
+
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthivungbao).is_selected() == False:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthivungbao).click()
+
+        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthitendiem).is_selected() == False:
+            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthitendiem).click()
+        var.driver.find_element(By.XPATH, var.chuotphaimap_luuthongtinhienthi).click()
+        time.sleep(1.5)
+        check_messagetattatca = var.driver.find_element(By.XPATH, var.check_messagetattatca).text
+        var.driver.find_element(By.XPATH, var.chuotphaimap_luuthongtinhienthi_ok).click()
+        time.sleep(1)
+        logging.info("Giám sát - Chuột phải map - Cấu hình hiển thị nhóm điểm")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        if check_messagetattatca == "Lưu thông tin cấu hình nhóm điểm thành công":
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+        else:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_CauHinhHienThiNhomDiem_BatTatCa.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_CauHinhHienThiNhomDiem_BatTatCa.png")
+        try:
+            var.driver.find_element(By.XPATH, var.chuotphaimap_cauhinhhienthinhomdiem_iconx1).click()
+            time.sleep(1)
+        except:
+            pass
+
+
+    def cauhinhkhoidong(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.ungroup)
+        except:
+            login.login.login_v2(self, "ungroup", "12341234")
+        # chuotphaimap.timdiachi(self, data['giamsat']['timkiem_toado12'])
+        mouse.move("800", "800")
+        mouse.click(button='right')
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.chuotphaimap_cauhinhkhoidong).click()
+        time.sleep(1.5)
+        logging.info("Giám sát - Chuột phải map - Cấu hình khởi động")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            check_popupcauhinhhienthibando = var.driver.find_element(By.XPATH, var.check_popupcauhinhhienthibando).text
+            logging.info(check_popupcauhinhhienthibando)
+            if check_popupcauhinhhienthibando == "CẤU HÌNH HIỂN THỊ BẢN ĐỒ":
+                logging.info("True")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+            else:
+                logging.info("False")
+                var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_CauHinhKhoiDong.png")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_CauHinhKhoiDong.png")
+        except:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_CauHinhKhoiDong.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_CauHinhKhoiDong.png")
+
+
+    def cauhinhkhoidong_huy(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(5)
+        var.driver.find_element(By.XPATH, var.cauhinhienthi_huy).click()
+        time.sleep(1)
+        logging.info("Giám sát - Chuột phải map - Cấu hình khởi động")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            var.driver.find_element(By.XPATH, var.cauhinhienthi_huy).click()
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_CauHinhKhoiDong_Huy.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_CauHinhKhoiDong_Huy.png")
+        except:
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+
+
+    def cauhinhkhoidong_thaydoi1(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(2)
+        try:
+            var.driver.find_element(By.XPATH, var.cauhinhienthi_loaibando).click()
+        except:
+            mouse.move("800", "800")
+            mouse.click(button='right')
+            time.sleep(1)
+            var.driver.find_element(By.XPATH, var.chuotphaimap_cauhinhkhoidong).click()
+            time.sleep(1.5)
+        var.driver.implicitly_wait(5)
+        time.sleep(0.5)
+        var.driver.find_element(By.XPATH, var.cauhinhienthi_loaibando_vetinhbinhanh).click()
+        var.driver.find_element(By.XPATH, var.cauhinhienthi_kinhdo).clear()
+        var.driver.find_element(By.XPATH, var.cauhinhienthi_kinhdo).send_keys(data['giamsat']['cauhinhkhoidong_kinhdo'])
+        var.driver.find_element(By.XPATH, var.cauhinhienthi_vido).clear()
+        var.driver.find_element(By.XPATH, var.cauhinhienthi_vido).send_keys(data['giamsat']['cauhinhkhoidong_vido'])
+        var.driver.find_element(By.XPATH, var.cauhinhienthi_muczoombando).clear()
+        var.driver.find_element(By.XPATH, var.cauhinhienthi_muczoombando).send_keys(data['giamsat']['cauhinhkhoidong_muczoombando'])
+        var.driver.find_element(By.XPATH, var.cauhinhienthi_luu).click()
+        time.sleep(1)
+        logging.info("Giám sát - Chuột phải map - Cấu hình khởi động")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            check_message_cauhinhkhoidong = var.driver.find_element(By.XPATH, var.capnhatthanhcong).text
+            if check_message_cauhinhkhoidong == "Cập nhật thành công":
+                var.driver.find_element(By.XPATH, var.ok).click()
+                logging.info("True")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+            else:
+                logging.info("False")
+                var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_CauHinhKhoiDong_ThayDoi1.png")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_CauHinhKhoiDong_ThayDoi1.png")
+        except:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_CauHinhKhoiDong_ThayDoi1.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9,  ma + "_ChuotPhaiVaoMap_CauHinhKhoiDong_ThayDoi1.png")
+
+
+    def cauhinhkhoidong_thaydoi2(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(5)
+        #Setup lại
+        var.driver.refresh()
+        time.sleep(5)
+        var.driver.find_element(By.XPATH, var.ungroup)
+        time.sleep(1)
+        mouse.move("800", "800")
+        mouse.click(button='right')
+        time.sleep(1)
+        try:
+            var.driver.find_element(By.XPATH, var.chuotphaimap_cauhinhkhoidong).click()
+        except:
+            mouse.move("800", "800")
+            mouse.click(button='right')
+            time.sleep(1)
+            var.driver.find_element(By.XPATH, var.chuotphaimap_cauhinhkhoidong).click()
+        time.sleep(1.5)
+        var.driver.find_element(By.XPATH, var.cauhinhienthi_loaibando).click()
+        time.sleep(0.5)
+        var.driver.find_element(By.XPATH, var.cauhinhienthi_loaibando_bando).click()
+        var.driver.find_element(By.XPATH, var.cauhinhienthi_kinhdo).clear()
+        var.driver.find_element(By.XPATH, var.cauhinhienthi_kinhdo).send_keys(data['giamsat']['cauhinhkhoidong_kinhdo1'])
+        var.driver.find_element(By.XPATH, var.cauhinhienthi_vido).clear()
+        var.driver.find_element(By.XPATH, var.cauhinhienthi_vido).send_keys(data['giamsat']['cauhinhkhoidong_vido1'])
+        var.driver.find_element(By.XPATH, var.cauhinhienthi_muczoombando).clear()
+        var.driver.find_element(By.XPATH, var.cauhinhienthi_muczoombando).send_keys(data['giamsat']['cauhinhkhoidong_muczoombando'])
+        var.driver.find_element(By.XPATH, var.cauhinhienthi_luu).click()
+        time.sleep(1)
+        logging.info("Giám sát - Chuột phải map - Cấu hình khởi động")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            check_message_cauhinhkhoidong = var.driver.find_element(By.XPATH, var.capnhatthanhcong).text
+            if check_message_cauhinhkhoidong == "Cập nhật thành công":
+                var.driver.find_element(By.XPATH, var.ok).click()
+                logging.info("True")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+            else:
+                logging.info("False")
+                var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_CauHinhKhoiDong_ThayDoi2.png")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_CauHinhKhoiDong_ThayDoi2.png")
+        except:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_CauHinhKhoiDong_ThayDoi2.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9,  ma + "_ChuotPhaiVaoMap_CauHinhKhoiDong_ThayDoi2.png")
+        var.driver.refresh()
+        time.sleep(4)
+        var.driver.find_element(By.XPATH, var.ungroup)
+        time.sleep(1.5)
+
+
+    def bieudonhienlieumoi(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(3)
+        try:
+            var.driver.find_element(By.XPATH, var.ungroup)
+        except:
+            login.login.login_v2(self, "ungroup", "12341234")
+
+        try:
+            mouse.move("800", "800")
+            mouse.click(button='right')
+            time.sleep(1)
+            var.driver.find_element(By.XPATH, var.chuotphaimap_bieudonhienlieumoi).click()
+        except:
+            var.driver.refresh()
+            time.sleep(5)
+            mouse.move("800", "800")
+            mouse.click(button='right')
+            time.sleep(1)
+            var.driver.find_element(By.XPATH, var.chuotphaimap_bieudonhienlieumoi).click()
+
+        time.sleep(1.5)
+        logging.info("Giám sát - Chuột phải map - Biểu đồ nguyên liệu mới")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            check_popup_bieudonhienlieumoi = var.driver.find_element(By.XPATH, var.check_popup_bieudonhienlieumoi).text
+            if check_popup_bieudonhienlieumoi == "Có lỗi trong quá trình lấy dữ liệu!":
+                logging.info("False")
+                var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_BieuDoNguyenLieuMoi.png")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_BieuDoNguyenLieuMoi.png")
+                var.driver.find_element(By.XPATH, var.ok).click()
+                time.sleep(1)
+            else:
+                logging.info("True")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+        except:
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+
+
+    def gstheotuyenmau(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.ungroup)
+        except:
+            login.login.login_v2(self, "ungroup", "12341234")
+        mouse.move("800", "800")
+        mouse.click(button='right')
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.chuotphaimap_gstheotuyenmau).click()
+        time.sleep(1.5)
+        logging.info("Giám sát - Chuột phải map - Gs theo tuyến mẫu")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            check_popup_gstheotuyenmau = var.driver.find_element(By.XPATH, var.check_popup_gstheotuyenmau).text
+            logging.info(check_popup_gstheotuyenmau)
+            if check_popup_gstheotuyenmau == "GS THEO TUYẾN MẪU":
+                logging.info("True")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+            else:
+                logging.info("False")
+                var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_GsTheoTuyenMau.png")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_GsTheoTuyenMau.png")
+        except:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_GsTheoTuyenMau.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_GsTheoTuyenMau.png")
+
+
+    def gstheotuyenmau_iconx(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(2)
+        var.driver.find_element(By.XPATH, var.chuotphaimap_gstheotuyenmau_iconx).click()
+        time.sleep(1)
+        logging.info("Giám sát - Chuột phải map - Gs theo tuyến mẫu")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            var.driver.find_element(By.XPATH, var.chuotphaimap_gstheotuyenmau_iconx).click()
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_GsTheoTuyenMau_IconX.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_GsTheoTuyenMau_IconX.png")
+        except:
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+
+
     def chidanduong(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
@@ -4815,7 +5963,12 @@ class chuotphaimap:
         except:
             login.login.login_v2(self, "ungroup", "12341234")
         #TÌM THEO ĐIỂM
-        chuotphaimap.timdiachi(self, data['giamsat']['timkiem_toado2'])
+        try:
+            chuotphaimap.timdiachi(self, data['giamsat']['timkiem_toado2'])
+        except:
+            var.driver.refresh()
+            time.sleep(5)
+            chuotphaimap.timdiachi(self, data['giamsat']['timkiem_toado2'])
         # zoom_map("thu nhỏ", 6)
         mouse.move("800", "800")
         mouse.click(button='right')
@@ -4967,10 +6120,11 @@ class chuotphaimap:
     def chidanduong_timtheodiem_timxe(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         # Chi tiết chi phí dự kiến
+        xoacanhbao()
         var.driver.find_element(By.XPATH, var.chidanduong_loaixe).click()
         time.sleep(0.5)
         var.driver.find_element(By.XPATH, var.chidanduong_loaixe).click()
-
+        xoacanhbao()
         var.driver.find_element(By.XPATH, var.chidanduong_chiphicauduong).click()
         time.sleep(0.5)
         var.driver.find_element(By.XPATH, var.chidanduong_chiphicauduong).click()
@@ -5253,700 +6407,109 @@ class chuotphaimap:
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_ChiDanDuong_Timtheolotrinh_ChiPhiDuKien.png")
 
 
-    def taodiembando(self, ma, tensukien, ketqua):
+    def bieudonhienlieu(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        login.login.login_v2(self, "ungroup", "12341234")
-
-        chuotphaimap.timdiachi(self, data['giamsat']['timkiem_toado8'])
-        mouse.move("500", "800")
+        danhsachxe.goto_congty(self, "Viconship Đà Nẵng", "950")
+        mouse.move("800", "800")
         mouse.click(button='right')
         time.sleep(1)
-        var.driver.find_element(By.XPATH, var.chuotphaimap_taodiembando).click()
-        time.sleep(1)
-        xoacanhbao()
-        check_popuptaodiem = var.driver.find_element(By.XPATH, var.check_popuptaodiem).text
-        logging.info("Giám sát - Chuột phải map - Tạo điểm bản đồ")
-        logging.info("Mã - " + ma)
-        logging.info("Tên sự kiện - " + tensukien)
-        logging.info("Kết quả - " + ketqua)
-        logging.info(check_popuptaodiem)
-        if check_popuptaodiem != "Tạo điểm":
-            logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
-        else:
-            logging.info("False")
-            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_TaoDiem.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_TaoDiem.png")
-
-
-    def taodiembando_huy(self, ma, tensukien, ketqua):
-        var.driver.implicitly_wait(5)
-        var.driver.find_element(By.XPATH, var.taodiem_huy).click()
-        time.sleep(1)
-        logging.info("Giám sát - Chuột phải map - Tạo điểm bản đồ")
+        var.driver.find_element(By.XPATH, var.chuotphaimap_bieudonhienlieu).click()
+        time.sleep(1.5)
+        logging.info("Giám sát - Chuột phải map - Biểu đồ nguyên liệu")
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)
         logging.info("Kết quả - " + ketqua)
         try:
-            var.driver.find_element(By.XPATH, var.taodiem_huy).click()
-            logging.info("False")
-            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_TaoDiem_Huy.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_TaoDiem_Huy.png")
+            check_popup_bieudonhienlieu = var.driver.find_element(By.XPATH, var.check_popup_bieudonhienlieumoi).text
+            if check_popup_bieudonhienlieu == "Có lỗi trong quá trình lấy dữ liệu!":
+                logging.info("False")
+                var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_BieuDoNguyenLieu.png")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_BieuDoNguyenLieu.png")
+                var.driver.find_element(By.XPATH, var.ok).click()
+                time.sleep(1)
+            else:
+                logging.info("True")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
         except:
             logging.info("True")
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
 
 
-    def taodiembando_nhapthongtindiem(self, ma, tensukien, ketqua):
+    def dieuxedituyen(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.ungroup)
+            var.driver.find_element(By.XPATH, var.goto_vinconshipdanang)
         except:
-            login.login.login_v2(self, "ungroup", "12341234")
+            danhsachxe.goto_congty(self, "Viconship Đà Nẵng", "950")
+        mouse.move("800", "800")
+        mouse.click(button='right')
+        time.sleep(1)
+        try:
+            var.driver.find_element(By.XPATH, var.chuotphaimap_dieuxedituyen).click()
+        except:
+            var.driver.refresh()
+            time.sleep(4)
+            var.driver.find_element(By.XPATH, var.goto_vinconshipdanang)
             time.sleep(1)
-            mouse.move("500", "800")
-            mouse.click(button='right')
-            time.sleep(1)
-            var.driver.find_element(By.XPATH, var.chuotphaimap_taodiembando).click()
-            time.sleep(2)
-            xoacanhbao()
-        xoacanhbao()
-
-        mouse.move("500", "800")
-        mouse.click(button='right')
-        time.sleep(1)
-        var.driver.find_element(By.XPATH, var.chuotphaimap_taodiembando).click()
-        time.sleep(2)
-
-        var.driver.find_element(By.XPATH, var.taodiem_tendiem).send_keys(data['giamsat']['taodiem_tendiem1'])
-        if var.driver.find_element(By.XPATH, var.taodiem_laydiachibando).is_selected() == False:
-            var.driver.find_element(By.XPATH, var.taodiem_laydiachibando).click()
-        if var.driver.find_element(By.XPATH, var.taodiem_nhaptoado).is_selected() == False:
-            var.driver.find_element(By.XPATH, var.taodiem_nhaptoado).click()
-        time.sleep(1)
-        var.driver.find_element(By.XPATH, var.taodiem_kinhdo).send_keys(data['giamsat']['taodiem_kinhdo'])
-        var.driver.find_element(By.XPATH, var.taodiem_vido).send_keys(data['giamsat']['taodiem_vido'])
-        var.driver.find_element(By.XPATH, var.taodiem_loaidiem).click()
-        var.driver.find_element(By.XPATH, var.taodiem_loaidiem).send_keys(Keys.DOWN)
-        var.driver.find_element(By.XPATH, var.taodiem_loaidiem).send_keys(Keys.ENTER)
-        var.driver.find_element(By.XPATH, var.taodiem_tenrieng).send_keys(data['giamsat']['taodiem_tenrieng'])
-        var.driver.find_element(By.XPATH, var.taodiem_mota).send_keys(data['giamsat']['taodiem_mota'])
-        var.driver.find_element(By.XPATH, var.taodiem_sophutdungdo).send_keys(data['giamsat']['taodiem_sophutdungdo'])
-
-        if var.driver.find_element(By.XPATH, var.taodiem_diemkiemsoat).is_selected() == False:
-            var.driver.find_element(By.XPATH, var.taodiem_diemkiemsoat).click()
-        if var.driver.find_element(By.XPATH, var.taodiem_hienthidiem).is_selected() == False:
-            var.driver.find_element(By.XPATH, var.taodiem_hienthidiem).click()
-        time.sleep(1)
-        var.driver.find_element(By.XPATH, var.taodiem_bankinh).clear()
-        var.driver.find_element(By.XPATH, var.taodiem_bankinh).send_keys(data['giamsat']['taodiem_bankinh1'])
-        time.sleep(2)
-        logging.info("Giám sát - Chuột phải map - Tạo điểm bản đồ")
-        logging.info("Mã - " + ma)
-        logging.info("Tên sự kiện - " + tensukien)
-        logging.info("Kết quả - " + ketqua)
-        logging.info("True")
-        chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
-
-
-    def taodiembando_luu(self, ma, tensukien, ketqua):
-        var.driver.implicitly_wait(5)
-        var.driver.find_element(By.XPATH, var.taodiem_luu).click()
-        time.sleep(1)
-        logging.info("Giám sát - Chuột phải map - Tạo điểm bản đồ")
-        logging.info("Mã - " + ma)
-        logging.info("Tên sự kiện - " + tensukien)
-        logging.info("Kết quả - " + ketqua)
-        try:
-            check_message_taodiem = var.driver.find_element(By.XPATH, var.check_message_taodiem1)
-            if check_message_taodiem.text == "Cập nhật thành công":
-                logging.info("True")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
-            else:
-                logging.info("False")
-                var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_TaoDiem_Luu.png")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_TaoDiem_Luu.png")
-        except:
-            logging.info("False")
-            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_TaoDiem_Luu.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_TaoDiem_Luu.png")
-
-
-    def taodiembando_capnhat(self, ma, tensukien, ketqua):
-        var.driver.implicitly_wait(5)
-        #Cập nhật
-        var.driver.refresh()
-        time.sleep(5)
-        chuotphaimap.timdiachi(self, data['giamsat']['timkiem_toado8'])
-        button = var.driver.find_element(By.XPATH, var.taodiem_chon)
-        action = ActionChains(var.driver)
-        action.double_click(button).perform()
-        time.sleep(3)
-        xoacanhbao()
-        var.driver.find_element(By.XPATH, var.taodiem_tendiem).clear()
-        var.driver.find_element(By.XPATH, var.taodiem_tendiem).send_keys(data['giamsat']['taodiem_tendiem2'])
-        time.sleep(0.5)
-        button = var.driver.find_element(By.XPATH, var.taodiem_capnhat)
-        var.driver.execute_script("arguments[0].click();", button)
-        # var.driver.find_element(By.XPATH, var.taodiem_capnhat).click()
-        time.sleep(1)
-        logging.info("Giám sát - Chuột phải map - Tạo điểm bản đồ")
-        logging.info("Mã - " + ma)
-        logging.info("Tên sự kiện - " + tensukien)
-        logging.info("Kết quả - " + ketqua)
-        try:
-            check_message_capnhatdiem = var.driver.find_element(By.XPATH, var.check_message_taodiem1)
-            if check_message_capnhatdiem.text == "Cập nhật thành công":
-                logging.info("True")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
-            else:
-                logging.info("False")
-                var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_TaoDiem_CapNhatDiem.png")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_TaoDiem_CapNhatDiem.png")
-        except:
-            logging.info("False")
-            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_TaoDiem_CapNhatDiem.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_TaoDiem_CapNhatDiem.png")
-
-
-    def taodiembando_xoadiem(self, ma, tensukien, ketqua):
-        var.driver.implicitly_wait(5)
-        #Xóa điểm
-        var.driver.refresh()
-        time.sleep(5)
-        xoacanhbao()
-        chuotphaimap.timdiachi(self, data['giamsat']['timkiem_toado8'])
-        # check_capnhatdiem = var.driver.find_element(By.XPATH,"//*[text()='" + data['giamsat']['taodiem_tendiem2'] + "']").text
-        # print(check_capnhatdiem)
-        button = var.driver.find_element(By.XPATH, var.taodiem_chon)
-        action = ActionChains(var.driver)
-        action.double_click(button).perform()
-        time.sleep(3)
-        xoacanhbao()
-        # var.driver.find_element(By.XPATH, var.taodiem_xoa).click()
-        button = var.driver.find_element(By.XPATH, var.taodiem_xoa)
-        var.driver.execute_script("arguments[0].click();", button)
-        time.sleep(1)
-        var.driver.switch_to.alert.accept()
-        time.sleep(1)
-        logging.info("Giám sát - Chuột phải map - Tạo điểm bản đồ")
-        logging.info("Mã - " + ma)
-        logging.info("Tên sự kiện - " + tensukien)
-        logging.info("Kết quả - " + ketqua)
-        try:
-            check_message_xoadiem = var.driver.find_element(By.XPATH, var.check_message_xoadiem).text
-            logging.info(check_message_xoadiem)
-            if check_message_xoadiem == "Xóa thành công":
-                var.driver.find_element(By.XPATH, var.ok)
-                logging.info("True")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
-            else:
-                logging.info("False")
-                var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_TaoDiem_CapNhatDiem.png")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_TaoDiem_CapNhatDiem.png")
-        except:
-            logging.info("False")
-            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_TaoDiem_CapNhatDiem.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_TaoDiem_CapNhatDiem.png")
-        time.sleep(5)
-
-
-    def taovunglotrinh(self, ma, tensukien, ketqua):
-        var.driver.implicitly_wait(5)
-        try:
-            var.driver.find_element(By.XPATH, var.ungroup)
-        except:
-            login.login.login_v2(self, "ungroup", "12341234")
-
-        chuotphaimap.timdiachi(self, data['giamsat']['timkiem_toado9'])
-        mouse.move("800", "800")
-        mouse.click(button='right')
-        time.sleep(1)
-        var.driver.find_element(By.XPATH, var.chuotphaimap_taovunglotrinh).click()
-        time.sleep(2)
-        logging.info("Giám sát - Chuột phải map - Tạo vùng lộ trình")
-        logging.info("Mã - " + ma)
-        logging.info("Tên sự kiện - " + tensukien)
-        logging.info("Kết quả - " + ketqua)
-        try:
-            checkpopup_taovunglotrinh = var.driver.find_element(By.XPATH, var.checkpopup_taovunglotrinh).text
-            logging.info(checkpopup_taovunglotrinh)
-            if checkpopup_taovunglotrinh == "TẠO VÙNG LỘ TRÌNH":
-                logging.info("True")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
-            else:
-                logging.info("False")
-                var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_TaoVungLoTrinh.png")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_TaoVungLoTrinh.png")
-        except:
-            logging.info("False")
-            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_TaoVungLoTrinh.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_TaoVungLoTrinh.png")
-
-
-    def taovunglotrinh_huy(self, ma, tensukien, ketqua):
-        var.driver.implicitly_wait(2.5)
-        var.driver.find_element(By.XPATH, var.taovunglotrinh_huy).click()
-        time.sleep(1)
-        logging.info("Giám sát - Chuột phải map - Tạo vùng lộ trình")
-        logging.info("Mã - " + ma)
-        logging.info("Tên sự kiện - " + tensukien)
-        logging.info("Kết quả - " + ketqua)
-        try:
-            var.driver.find_element(By.XPATH, var.taovunglotrinh_huy).click()
-            logging.info("False")
-            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_TaoVungLoTrinh_Huy.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_TaoVungLoTrinh_Huy.png")
-        except:
-            logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
-
-
-    def timxetrongvung(self, ma, tensukien, ketqua):
-        var.driver.implicitly_wait(5)
-        try:
-            var.driver.find_element(By.XPATH, var.ungroup)
-        except:
-            login.login.login_v2(self, "ungroup", "12341234")
-
-        try:
-            var.driver.find_element(By.XPATH, var.timkiem_timtoado_input).clear()
-            var.driver.find_element(By.XPATH, var.timkiem_timtoado_input).send_keys(data['giamsat']['timkiem_toado13'])
-            time.sleep(0.5)
-            var.driver.find_element(By.XPATH, var.timkiem_iconsearch).click()
-            time.sleep(1.5)
-        except:
-            chuotphaimap.timdiachi(self, data['giamsat']['timkiem_toado13'])
-        var.driver.find_element(By.XPATH, var.close).click()
-
-        zoom_map("thu nhỏ", 10)
-        time.sleep(2)
-        xoacanhbao()
-        mouse.move("1000", "800")
-        mouse.click(button='right')
-        time.sleep(1)
-        var.driver.find_element(By.XPATH, var.chuotphaimap_timxetrongvung).click()
-        time.sleep(1)
-        #điểm 1
-        var.driver.find_element(By.XPATH, var.giamsat_diem1).click()
-        time.sleep(2)
-        #điểm 2
-        var.driver.find_element(By.XPATH, var.giamsat_diem2).click()
-        time.sleep(2)
-        # #điểm 3
-        var.driver.find_element(By.XPATH, var.giamsat_diem3).click()
-        button = var.driver.find_element(By.XPATH, var.giamsat_diem3)
-        action = ActionChains(var.driver)
-        action.double_click(button).perform()
-        action.double_click(button).perform()
-        time.sleep(2)
-        logging.info("Giám sát - Chuột phải map - Tìm xe trong vùng")
-        logging.info("Mã - " + ma)
-        logging.info("Tên sự kiện - " + tensukien)
-        logging.info("Kết quả - " + ketqua)
-        try:
-            check_timxetrongvung = var.driver.find_element(By.XPATH, var.check_timxetrongvung).text
-            logging.info(check_timxetrongvung)
-            if check_timxetrongvung == "Tìm xe trong vùng":
-                logging.info("True")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
-            else:
-                logging.info("False")
-                var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_TimXeTrongVung.png")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_TimXeTrongVung.png")
-        except:
-            logging.info("False")
-            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_TimXeTrongVung.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_TimXeTrongVung.png")
-
-
-    def timxetrongvung_capnhatmoidulieu(self, ma, tensukien, ketqua):
-        var.driver.implicitly_wait(5)
-        logging.info("Giám sát - Chuột phải map - Tìm xe trong vùng")
-        logging.info("Mã - " + ma)
-        logging.info("Tên sự kiện - " + tensukien)
-        logging.info("Kết quả - " + ketqua)
-        var.driver.find_element(By.XPATH, var.timxetrongvung_capnhatmoidulieu).click()
-        logging.info("True")
-        chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
-
-
-    def timxetrongvung_ketxuat(self, ma, tensukien, ketqua):
-        var.driver.implicitly_wait(5)
-        logging.info("Giám sát - Chuột phải map - Tìm xe trong vùng")
-        logging.info("Mã - " + ma)
-        logging.info("Tên sự kiện - " + tensukien)
-        logging.info("Kết quả - " + ketqua)
-        var.driver.find_element(By.XPATH, var.timxetrongvung_ketxuat).click()
-        logging.info("True")
-        chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
-
-
-    def timxetrongvung_iconx(self, ma, tensukien, ketqua):
-        var.driver.implicitly_wait(2.5)
-        var.driver.find_element(By.XPATH, var.timxetrongvung_iconx).click()
-        time.sleep(1)
-        logging.info("Giám sát - Chuột phải map - Tìm xe trong vùng")
-        logging.info("Mã - " + ma)
-        logging.info("Tên sự kiện - " + tensukien)
-        logging.info("Kết quả - " + ketqua)
-        try:
-            var.driver.find_element(By.XPATH, var.timxetrongvung_iconx).click()
-            logging.info("False")
-            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_TimXeTrongVung_IconX.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_TimXeTrongVung_IconX.png")
-        except:
-            logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
-
-
-    def timxegannhat(self, ma, tensukien, ketqua):
-        var.driver.implicitly_wait(5)
-        try:
-            var.driver.find_element(By.XPATH, var.ungroup)
-        except:
-            login.login.login_v2(self, "ungroup", "12341234")
-        chuotphaimap.timdiachi(self, data['giamsat']['timkiem_toado9'])
-        mouse.move("800", "800")
-        mouse.click(button='right')
-        time.sleep(1)
-        var.driver.find_element(By.XPATH, var.chuotphaimap_timxegannhat).click()
-        time.sleep(1.5)
-        xoacanhbao()
-        logging.info("Giám sát - Chuột phải map - Tìm xe trong vùng")
-        logging.info("Mã - " + ma)
-        logging.info("Tên sự kiện - " + tensukien)
-        logging.info("Kết quả - " + ketqua)
-        try:
-            checkpopup_timxegannhat = var.driver.find_element(By.XPATH, var.checkpopup_timxegannhat).text
-            if checkpopup_timxegannhat == "Tìm xe gần nhất":
-                logging.info("True")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
-            else:
-                logging.info("False")
-                var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_TimXeGanNhat.png")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_TimXeGanNhat.png")
-        except:
-            logging.info("False")
-            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_TimXeGanNhat.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_TimXeGanNhat.png")
-
-
-    def timxegannhat_iconx(self, ma, tensukien, ketqua):
-        var.driver.implicitly_wait(2.5)
-        # var.driver.find_element(By.XPATH, var.timxegannhat_iconx).click()
-        button = var.driver.find_element(By.XPATH, var.timxegannhat_iconx)
-        var.driver.execute_script("arguments[0].click();", button)
-        logging.info("Giám sát - Chuột phải map - Tìm xe trong vùng")
-        logging.info("Mã - " + ma)
-        logging.info("Tên sự kiện - " + tensukien)
-        logging.info("Kết quả - " + ketqua)
-        try:
-            var.driver.find_element(By.XPATH, var.timxegannhat_iconx).click()
-            logging.info("False")
-            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_TimXeGanNhat_IconX.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_TimXeGanNhat_IconX.png")
-        except:
-            logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    def cauhinhhienthinhomdiem(self):
-        var.driver.implicitly_wait(5)
-        chuotphaimap.timdiachi(self, data['giamsat']['timkiem_toado10'])
-        zoom_map("thu nhỏ", 2)
-        mouse.move("800", "800")
-        mouse.click(button='right')
-        time.sleep(1)
-        var.driver.find_element(By.XPATH, var.chuotphaimap_cauhinhhienthinhomdiem).click()
-        time.sleep(1)
-        xoacanhbao()
-        #Trạm thu phi - Tắt hiển thị
-        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_chuachonnhom).is_selected() == True:
-            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_chuachonnhom).click()
-
-        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_tramthuphi).is_selected() == True:
-            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_tramthuphi).click()
-
-        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthivungbao).is_selected() == True:
-            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthivungbao).click()
-
-        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthitendiem).is_selected() == True:
-            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthitendiem).click()
-
-        var.driver.find_element(By.XPATH, var.chuotphaimap_luuthongtinhienthi).click()
-        time.sleep(1.5)
-        check_message_luucauhinhhienthi = var.driver.find_element(By.XPATH, var.check_message_luucauhinhhienthi).text
-        print(check_message_luucauhinhhienthi)
-        var.driver.find_element(By.XPATH, var.chuotphaimap_luuthongtinhienthi_ok).click()
-        var.driver.implicitly_wait(1)
-        try:
-            check_tramthuphi_vungbao = var.driver.find_element(By.XPATH, var.check_tramthuphi_vungbao).is_displayed()
-            print("Tắt vùng bao - trạm thu phi: False")
-        except:
-            print("Tắt vùng bao - trạm thu phi: True")
-
-        try:
-            check_tramthuphi_tendiem = var.driver.find_element(By.XPATH, var.check_tramthuphi_tendiem).is_displayed()
-            print("Tắt tên điểm - trạm thu phi: False")
-        except:
-            print("Tắt tên điểm - trạm thu phi: True")
-        time.sleep(1)
-
-
-        var.driver.implicitly_wait(5)
-        #Trạm thu phi - Bật hiển thị
-        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_chuachonnhom).is_selected() == False:
-            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_chuachonnhom).click()
-
-        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_tramthuphi).is_selected() == False:
-            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_tramthuphi).click()
-
-        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthivungbao).is_selected() == False:
-            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthivungbao).click()
-
-        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthitendiem).is_selected() == False:
-            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthitendiem).click()
-        var.driver.find_element(By.XPATH, var.chuotphaimap_luuthongtinhienthi).click()
-        time.sleep(1.5)
-        var.driver.find_element(By.XPATH, var.chuotphaimap_luuthongtinhienthi_ok).click()
-        try:
-            check_tramthuphi_vungbao = var.driver.find_element(By.XPATH, var.check_tramthuphi_vungbao).is_displayed()
-            print("Bật vùng bao - trạm thu phi: True")
-        except:
-            print("Bật vùng bao - trạm thu phi: False")
-        try:
-            check_tramthuphi_tendiem = var.driver.find_element(By.XPATH, var.check_tramthuphi_tendiem).is_displayed()
-            print("Bật tên điểm - trạm thu phi: True")
-        except:
-            print("Bật tên điểm - trạm thu phi: False")
-        time.sleep(1)
-
-        #Chưa chọn nhóm - Tắt hiển thị
-        var.driver.implicitly_wait(1)
-        var.driver.find_element(By.XPATH, var.timkiem_timtoado_input).clear()
-        var.driver.find_element(By.XPATH, var.timkiem_timtoado_input).send_keys(data['giamsat']['timkiem_toado11'])
-        time.sleep(0.5)
-        var.driver.find_element(By.XPATH, var.timkiem_iconsearch).click()
-        time.sleep(1.5)
-        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_chuachonnhom).is_selected() == True:
-            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_chuachonnhom).click()
-
-        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_tramthuphi).is_selected() == True:
-            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_tramthuphi).click()
-
-        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthivungbao).is_selected() == True:
-            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthivungbao).click()
-
-        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthitendiem).is_selected() == True:
-            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthitendiem).click()
-        var.driver.find_element(By.XPATH, var.chuotphaimap_luuthongtinhienthi).click()
-        time.sleep(1.5)
-        var.driver.find_element(By.XPATH, var.chuotphaimap_luuthongtinhienthi_ok).click()
-        var.driver.implicitly_wait(1)
-        try:
-            check_chuachonnhom_vungbao = var.driver.find_element(By.XPATH, var.check_chuachonnhom_vungbao).is_displayed()
-            print("Tắt vùng bao - Chưa chọn nhóm: False")
-        except:
-            print("Tắt vùng bao - Chưa chọn nhóm: True")
-
-        try:
-            check_chuachonnhom_tendiem = var.driver.find_element(By.XPATH, var.check_chuachonnhom_tendiem).is_displayed()
-            print("Tắt tên điểm - Chưa chọn nhóm: False")
-        except:
-            print("Tắt tên điểm - Chưa chọn nhóm: True")
-        time.sleep(1)
-
-        var.driver.implicitly_wait(3)
-        #Chưa chọn nhóm - Bật hiển thị
-        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_chuachonnhom).is_selected() == False:
-            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_chuachonnhom).click()
-
-        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_tramthuphi).is_selected() == False:
-            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_tramthuphi).click()
-
-        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthivungbao).is_selected() == False:
-            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthivungbao).click()
-
-        if var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthitendiem).is_selected() == False:
-            var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_hienthitendiem).click()
-        var.driver.find_element(By.XPATH, var.chuotphaimap_luuthongtinhienthi).click()
-        time.sleep(1.5)
-        var.driver.find_element(By.XPATH, var.chuotphaimap_luuthongtinhienthi_ok).click()
-        try:
-            check_chuachonnhom_vungbao = var.driver.find_element(By.XPATH, var.check_chuachonnhom_vungbao).is_displayed()
-            print("Bật vùng bao - Chưa chọn nhóm: True")
-        except:
-            print("Bật vùng bao - Chưa chọn nhóm: False")
-
-        try:
-            check_chuachonnhom_tendiem = var.driver.find_element(By.XPATH, var.check_chuachonnhom_tendiem).is_displayed()
-            print("Bật tên điểm - Chưa chọn nhóm: True")
-        except:
-            print("Bật tên điểm - Chưa chọn nhóm: False")
-        time.sleep(1)
-
-
-    def cauhinhkhoidong(self):
-        var.driver.implicitly_wait(5)
-        # chuotphaimap.timdiachi(self, data['giamsat']['timkiem_toado12'])
-        mouse.move("800", "800")
-        mouse.click(button='right')
-        time.sleep(1)
-        var.driver.find_element(By.XPATH, var.chuotphaimap_cauhinhkhoidong).click()
-        time.sleep(1)
-        var.driver.find_element(By.XPATH, var.cauhinhienthi_huy).click()
-        time.sleep(1)
-
-        mouse.move("800", "800")
-        mouse.click(button='right')
-        time.sleep(1)
-        var.driver.find_element(By.XPATH, var.chuotphaimap_cauhinhkhoidong).click()
-        time.sleep(1)
-        var.driver.find_element(By.XPATH, var.cauhinhienthi_loaibando).click()
-        time.sleep(0.5)
-        var.driver.find_element(By.XPATH, var.cauhinhienthi_loaibando_vetinhbinhanh).click()
-        var.driver.find_element(By.XPATH, var.cauhinhienthi_kinhdo).clear()
-        var.driver.find_element(By.XPATH, var.cauhinhienthi_kinhdo).send_keys(data['giamsat']['cauhinhkhoidong_kinhdo'])
-        var.driver.find_element(By.XPATH, var.cauhinhienthi_vido).clear()
-        var.driver.find_element(By.XPATH, var.cauhinhienthi_vido).send_keys(data['giamsat']['cauhinhkhoidong_vido'])
-        var.driver.find_element(By.XPATH, var.cauhinhienthi_muczoombando).clear()
-        var.driver.find_element(By.XPATH, var.cauhinhienthi_muczoombando).send_keys(data['giamsat']['cauhinhkhoidong_muczoombando'])
-        var.driver.find_element(By.XPATH, var.cauhinhienthi_luu).click()
-        time.sleep(1)
-        check_message_cauhinhkhoidong = var.driver.find_element(By.XPATH, var.capnhatthanhcong).text
-        print(check_message_cauhinhkhoidong)
-        var.driver.find_element(By.XPATH, var.ok).click()
-
-        #Setup lại
-        var.driver.refresh()
-        time.sleep(4)
-        mouse.move("800", "800")
-        mouse.click(button='right')
-        time.sleep(1)
-        var.driver.find_element(By.XPATH, var.chuotphaimap_cauhinhkhoidong).click()
-        time.sleep(1)
-        var.driver.find_element(By.XPATH, var.cauhinhienthi_loaibando).click()
-        time.sleep(0.5)
-        var.driver.find_element(By.XPATH, var.cauhinhienthi_loaibando_bando).click()
-        var.driver.find_element(By.XPATH, var.cauhinhienthi_kinhdo).clear()
-        var.driver.find_element(By.XPATH, var.cauhinhienthi_kinhdo).send_keys(data['giamsat']['cauhinhkhoidong_kinhdo1'])
-        var.driver.find_element(By.XPATH, var.cauhinhienthi_vido).clear()
-        var.driver.find_element(By.XPATH, var.cauhinhienthi_vido).send_keys(data['giamsat']['cauhinhkhoidong_vido1'])
-        var.driver.find_element(By.XPATH, var.cauhinhienthi_muczoombando).clear()
-        var.driver.find_element(By.XPATH, var.cauhinhienthi_muczoombando).send_keys(data['giamsat']['cauhinhkhoidong_muczoombando'])
-        var.driver.find_element(By.XPATH, var.cauhinhienthi_luu).click()
-        time.sleep(1)
-        check_message_cauhinhkhoidong = var.driver.find_element(By.XPATH, var.capnhatthanhcong).text
-        var.driver.refresh()
-        time.sleep(5)
-
-
-    def bieudonhienlieumoi(self):
-        var.driver.implicitly_wait(5)
-        mouse.move("800", "800")
-        mouse.click(button='right')
-        time.sleep(1)
-        var.driver.find_element(By.XPATH, var.chuotphaimap_bieudonhienlieumoi).click()
-        time.sleep(1)
-        check_popup_bieudonhienlieumoi = var.driver.find_element(By.XPATH, var.check_popup_bieudonhienlieumoi).text
-        print(check_popup_bieudonhienlieumoi)
-        var.driver.find_element(By.XPATH, var.ok).click()
-        time.sleep(1)
-
-
-
-    def gstheotuyenmau(self):
-        var.driver.implicitly_wait(5)
-        mouse.move("800", "800")
-        mouse.click(button='right')
-        time.sleep(1)
-        var.driver.find_element(By.XPATH, var.chuotphaimap_gstheotuyenmau).click()
-        time.sleep(1)
-        check_popup_gstheotuyenmau = var.driver.find_element(By.XPATH, var.check_popup_gstheotuyenmau).text
-        print(check_popup_gstheotuyenmau)
-        time.sleep(1)
-        var.driver.find_element(By.XPATH, var.chuotphaimap_gstheotuyenmau_iconx).click()
-        time.sleep(1)
-
-
-    def dieuxedituyen(self):
-        var.driver.implicitly_wait(5)
-        var.driver.find_element(By.XPATH, var.danhsachcongty).click()
-        time.sleep(1.5)
-        var.driver.find_element(By.XPATH, var.danhsachcongty_loai).click()
-        time.sleep(0.5)
-        var.driver.find_element(By.XPATH, var.danhsachcongty_loai_tencongty).click()
-        var.driver.find_element(By.XPATH, var.danhsachcongty_noidung).send_keys("1010_Công ty không có nhóm đội")
-        var.driver.find_element(By.XPATH, var.danhsachcongty_timkiem).click()
-        time.sleep(3.5)
-        check_timkiem_congty = var.driver.find_element(By.XPATH, var.check_timkiem_congty).text
-        print(check_timkiem_congty)
-        if check_timkiem_congty == "1010_87":
-            var.driver.find_element(By.XPATH, var.danhsachcongty_icondencongty).click()
-            time.sleep(2)
-            try:
-                var.driver.find_element(By.XPATH, var.danhsachxe_dungtat).is_displayed()
-            except:
-                var.driver.find_element(By.XPATH, var.giamsat).click()
-                time.sleep(3)
-            time.sleep(2)
             mouse.move("800", "800")
             mouse.click(button='right')
             time.sleep(1)
             var.driver.find_element(By.XPATH, var.chuotphaimap_dieuxedituyen).click()
-            time.sleep(1)
-            check_popup_dieuxedituyen = var.driver.find_element(By.XPATH, var.check_popup_dieuxedituyen).text
-            print(check_popup_dieuxedituyen)
-            var.driver.find_element(By.XPATH, var.dieuxedituyen_tuyendichuyen).click()
+        time.sleep(1.5)
+        check_popup_dieuxedituyen = var.driver.find_element(By.XPATH, var.check_popup_dieuxedituyen).text
+        print(check_popup_dieuxedituyen)
+        var.driver.find_element(By.XPATH, var.dieuxedituyen_tuyendichuyen).click()
 
-            var.driver.find_element(By.XPATH, var.dieuxedituyen_diemnhanhang).click()
-            var.driver.find_element(By.XPATH, var.dieuxedituyen_diemnhanhang).send_keys(Keys.DOWN)
-            var.driver.find_element(By.XPATH, var.dieuxedituyen_diemnhanhang).send_keys(Keys.ENTER)
+        var.driver.find_element(By.XPATH, var.dieuxedituyen_diemnhanhang).click()
+        var.driver.find_element(By.XPATH, var.dieuxedituyen_diemnhanhang).send_keys(Keys.DOWN)
+        var.driver.find_element(By.XPATH, var.dieuxedituyen_diemnhanhang).send_keys(Keys.ENTER)
 
-            var.driver.find_element(By.XPATH, var.dieuxedituyen_bienkiemsoat).send_keys(data['giamsat']['dieuxedituyen_bienkiemsoat'])
-            var.driver.find_element(By.XPATH, var.dieuxedituyen_laixe).click()
-            var.driver.find_element(By.XPATH, var.dieuxedituyen_laixe).send_keys(Keys.DOWN)
-            var.driver.find_element(By.XPATH, var.dieuxedituyen_laixe).send_keys(Keys.ENTER)
+        var.driver.find_element(By.XPATH, var.dieuxedituyen_bienkiemsoat).send_keys(data['giamsat']['dieuxedituyen_bienkiemsoat'])
+        var.driver.find_element(By.XPATH, var.dieuxedituyen_laixe).click()
+        var.driver.find_element(By.XPATH, var.dieuxedituyen_laixe).send_keys(Keys.DOWN)
+        var.driver.find_element(By.XPATH, var.dieuxedituyen_laixe).send_keys(Keys.ENTER)
 
-            var.driver.find_element(By.XPATH, var.dieuxedituyen_sdtlaixe).send_keys(data['giamsat']['dieuxedituyen_sdtlaixe'])
-            var.driver.find_element(By.XPATH, var.dieuxedituyen_ghichu).send_keys(data['giamsat']['dieuxedituyen_ghichu'])
+        var.driver.find_element(By.XPATH, var.dieuxedituyen_sdtlaixe).send_keys(data['giamsat']['dieuxedituyen_sdtlaixe'])
+        var.driver.find_element(By.XPATH, var.dieuxedituyen_ghichu).send_keys(data['giamsat']['dieuxedituyen_ghichu'])
+        # var.driver.find_element(By.XPATH, var.dieuxedituyen_luuvatieptuc).click()
+        # time.sleep(1)
+        # var.driver.find_element(By.XPATH, var.dieuxedituyen_themmoi).click()
+        # time.sleep(1)
+        logging.info("Giám sát - Chuột phải map - Điều xe đi tuyến")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
+            check_popupdieuxedituyen = var.driver.find_element(By.XPATH, var.dieuxedicheck_popupdieuxedituyentuyen_thoat).text
+            if check_popupdieuxedituyen == "ĐIỀU XE ĐI TUYẾN":
+                logging.info("True")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+        except:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_DieuXeDiTuyen.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_DieuXeDiTuyen.png")
 
-            var.driver.find_element(By.XPATH, var.dieuxedituyen_luuvatieptuc).click()
-            time.sleep(1)
-            var.driver.find_element(By.XPATH, var.dieuxedituyen_themmoi).click()
-            time.sleep(1)
+
+    def dieuxedituyen_thoat(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(1.5)
+        var.driver.find_element(By.XPATH, var.dieuxedituyen_thoat).click()
+        time.sleep(1)
+        logging.info("Giám sát - Chuột phải map - Điều xe đi tuyến")
+        logging.info("Mã - " + ma)
+        logging.info("Tên sự kiện - " + tensukien)
+        logging.info("Kết quả - " + ketqua)
+        try:
             var.driver.find_element(By.XPATH, var.dieuxedituyen_thoat).click()
-            time.sleep(1)
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiVaoMap_DieuXeDiTuyen_Huy.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_DieuXeDiTuyen_Huy.png")
+        except:
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+
 
 
 

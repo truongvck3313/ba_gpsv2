@@ -31,7 +31,7 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=['C:\\Users\\truongtq.BA\\PycharmProjects\\pythonProject\\icon_ba.ico'],
+    icon=['C:\\Users\\truongtq.BA\\PycharmProjects\\pythonProject\\ba_v2\\icon_ba.ico'],
 )
 coll = COLLECT(
     exe,

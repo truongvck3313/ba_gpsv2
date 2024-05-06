@@ -348,6 +348,7 @@ check_message_luucauhinhhienthi = "//*[@class='bootbox modal fade bootbox-alert 
 check_chuachonnhom_vungbao = "/html/body/div[3]/form/div[3]/div[3]/div[8]/div[2]/div[3]//*[@fill-opacity='0.5']"
 check_chuachonnhom_tendiem = "//*[@class='leaflet-marker-icon custom-marker-leaflet leaflet-zoom-animated leaflet-interactive']//*[text()='Nhà của Trường1']"
 chuotphaimap_cauhinhkhoidong = "/html/body/div[21]/div[2]/div[2]/div[15]"
+check_popupcauhinhhienthibando = "//*[@id='frmConfigMap']//*[@class='float_left Header']"
 cauhinhienthi_loaibando = "//*[@id='ddlMapType']"
 cauhinhienthi_loaibando_vetinhbinhanh = "//*[@id='ddlMapType']//*[@value='5']"
 cauhinhienthi_kinhdo = "//*[@id='txtLongitude']"
@@ -504,6 +505,54 @@ timxetrongvung_iconx = "//*[@id='imageClose']"
 giamsat_diem1 = "//*[@src='https://gps.binhanh.vn/icons/point/concrete_station.png']"
 giamsat_diem3 = "//*[@src='https://gps.binhanh.vn/icons/point/recycle_bin_3.png']"
 timxegannhat_iconx = "//*[@id='panelSearchNearest']//*[@title='Đóng']"
+check_popupcauhinhhienthinhomdiem = "//*[@class='quantri-box popUpBox']//*[@class='float_left Header']"
+chuotphaimap_cauhinhhienthinhomdiem_iconx = "//*[@class='quantri-box popUpBox']//*[@src='/Images/s_icon_x.png']"
+chuotphaimap_cauhinhhienthinhomdiem_iconx1 = "//*[@id='frmConfigGroupLandmark']//*[@src='/Images/s_icon_x.png']"
+check_messagetattatca = "//*[@class='bootbox-body']"
+chuotphaimap_bieudonhienlieu = "/html/body/div[21]/div[2]/div[2]/div[16]"
+dieuxedicheck_popupdieuxedituyentuyen_thoat = "//*[@id='divVehicleOperator']/div[1]/div/div"
+vehicle = "//*[@id='ModuleRoute']"
+check_popup_route = "//*[@id='signinPanel']//*[@class='active']/a"
+license_plates = "//*[@placeholder='Biển số']"
+km_move = "//*[@id='TongKM']"
+route_icondownloaddata = "//*[@id='btnGetData']"
+check_iconprintroute = "//*[@id='btnPrint']"
+check_printroute_licenseplate = "//*[@id='lblInfo']"
+icon_downloadexcel = "//*[@id='btnExportExcel']"
+khongcocamera = "//*[text()='Phương tiện không sử dụng camera video giám sát.']"
+check_popuproute_loaddata = "//*[@id='list']/div[2]"
+icon_runroute = "//*[@id='ViewRoute']"
+check_timeroute = "//*[@id='idthoigian0']"
+icon_dataconfig = "//*[@id='columnOption']"
+checkpopup_dataconfig = "//*[@id='trVgps']/td[2]"
+dataconfig_vgps = "//*[@id='chkVgps']"
+dataconfig_vco = "//*[@id='chkCo']"
+dataconfig_vbgt = "//*[@id='chkVbgt']"
+dataconfig_km = "//*[@id='chkKm']"
+dataconfig_displayfuel = "//*[@id='chkFuel']"
+dataconfig_doorstatus = "//*[@id='chkCua']"
+dataconfig_harmonicstatus = "//*[@id='chkDieuHoa']"
+dataconfig_machinestatus = "//*[@id='chkMay']"
+dataconfig_longitude_latitude = "//*[@id='chkLngLat']"
+dataconfig_displayadress = "//*[@id='chkAddress']"
+check_namecolumn_vgps = "//*[@id='idvantocgps']"
+check_namecolumn_vco = "//*[@id='idvantocco']"
+check_namecolumn_vbgt = "//*[@id='idvattocbgt']"
+check_namecolumn_fuel = "//*[@id='idfuel']"
+check_namecolumn_km = "//*[@id='idkm']"
+check_namecolumn_door = "//*[@id='idcua']"
+check_namecolumn_harmonic = "//*[@id='iddieuhoa']"
+check_namecolumn_machine = "//*[@id='idmay']"
+check_namecolumn_longitude_latitude = "//*[@id='idLngLat']"
+check_namecolumn_adress = "//*[@id='idAddr']"
+
+
+
+
+
+
+
+
 
 
 

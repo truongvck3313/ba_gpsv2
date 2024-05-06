@@ -20,6 +20,13 @@ def timerun():
         timerun = time.strftime("%H:%M:%S", time.localtime())
         print("Thời gian hiện tại:", timerun)
         print("Thời gian chạy tool:", var.timerun)
+        var.writeData(var.path_luutamthoi, "Sheet1", 47, 2, timerun)
+        if var.timerun == "":
+            var.writeData(var.path_luutamthoi, "Sheet1", 47, 2, timerun)
+        else:
+            var.writeData(var.path_luutamthoi, "Sheet1", 47, 2, var.timerun)
+
+
         if var.timerun == time.strftime("%H:%M", time.localtime()):
             break
         if var.timerun == "":
@@ -110,6 +117,8 @@ def notification_telegram():
         rownum = int(rownum)
     print("số lượng case Pass", case_pass)
     print("số lượng case Fail", case_fail)
+    thoigianbatdauchay = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 47, 2))
+
     if case_fail >= 1:
         driver2.get("https://web.telegram.org/a/")
         time.sleep(2)
@@ -117,9 +126,11 @@ def notification_telegram():
         case_fail = str(case_fail)
         driver2.ele(var.hopthoai).click()
         time.sleep(0.5)
-        time_string = time.strftime("%m/%d/%Y, %H:%M", time.localtime())
-        time_string = str(time_string)
-        driver2.ele(var.hopthoai_input).input("- DateTest : "+time_string+
+        time_string1 = time.strftime("%m/%d/%Y, ", time.localtime())
+        time_string1 = str(time_string1)
+        time_string2 = time.strftime("%H:%M", time.localtime())
+        time_string2 = str(time_string2)
+        driver2.ele(var.hopthoai_input).input("- DateTest : "+time_string1+""+thoigianbatdauchay+" - "+time_string2+
                                                   "\n- LinkTest: " + var.linktest+
                                                   "\n- ModeTest: " + var.modetest+
                                                   "\n- Số case Pass: " + case_pass+
@@ -176,4 +187,39 @@ def get_datachecklist(ma):
                 print(tensukien)
                 print(ketqua)
             rownum = int(rownum)
+
+
+
+# def write_caseif():
+#     n = 51
+#     while (n < 220):
+#         var.driver.implicitly_wait(1)
+#         n += 1
+#         n = str(n)
+#         print("if case == 'GiamSat"+n+"':" + "\ncaseid.caseid_giamsat"+n+"(self)")
+#         n = int(n)
+
+
+def write_caseif():
+    n = 9
+    while (n < 223):
+        var.driver.implicitly_wait(1)
+        n += 1
+        n = str(n)
+        print("try:\n   if case == 'GiamSat"+n+"':\n       caseid.caseid_giamsat"+n+"(self)\nexcept:\n    pass")
+        n = int(n)
+
+
+
+
+def write_caseif1():
+    n = 9
+    while (n < 223):
+        var.driver.implicitly_wait(1)
+        n += 1
+        n = str(n)
+        print("try:\n   caseid.caseid_giamsat"+n+"(self)\nexcept:\n     pass")
+        n = int(n)
+
+
 

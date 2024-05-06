@@ -76,7 +76,7 @@ class login:
 
 
     def login_v2_tkbinhanh(self, user, password, ma, tensukien):
-        var.driver.implicitly_wait(5)
+        var.driver.implicitly_wait(3)
         login.login_v2(self, user, password)
         try:
             check_login_khac = var.driver.find_element(By.XPATH, var.check_login_khac).is_displayed()
@@ -263,6 +263,7 @@ class linklienket:
         tab_1 = tab_id[1]
         var.driver.switch_to_window(tab_1)
         print(var.driver.title)
+
 
     def linklienket_trangchu(self, ma, tensukien):
         var.driver.implicitly_wait(5)
