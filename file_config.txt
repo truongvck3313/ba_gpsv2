@@ -1,4 +1,5 @@
-- ModeTest: "5"
+- ModeTest: "4"
+- ModuleTest: "2,3"
 - LinkTest: "https://gps.binhanh.vn"
 - TimeRun: ""
 - LogPath: "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/ba.log"
@@ -8,3 +9,5 @@
 - UploadPath: "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/file/"
 - LuuDuLieuTamThoiPath: "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/bangluudulieu_tamthoi.xlsx"
 - ExcelPath: "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/excel"
+- PathDriver: "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/chromedriver.exe"
+

@@ -1,22 +1,22 @@
-import caseid
-import array
 import openpyxl
 import var
 import re
-import module_gpsv2
+import caseid
 
 
 
-def modetest(self):
+
+
+#1
+def login(self):        #0
     list_mucdo1 = []
     list_mucdo2 = []
     list_mucdo3 = []
     list_mucdo4 = []
-
     wordbook = openpyxl.load_workbook(var.checklistpath)
     sheet = wordbook.get_sheet_by_name("Checklist")
     rownum = 9
-    while (rownum < 2000):
+    while (rownum < 33):
         rownum += 1
         rownum = str(rownum)
         if sheet["D"+rownum].value == "x":
@@ -32,7 +32,7 @@ def modetest(self):
             muc4 = sheet["A"+rownum].value
             list_mucdo4.append(muc4)
         rownum = int(rownum)
-
+    print(list_mucdo2)
 
     modetest = ''.join(re.findall(r'\d+', var.modetest))
     for i in modetest:
@@ -143,6 +143,360 @@ def modetest(self):
                         caseid.caseid_login21(self)
                 except:
                     pass
+        if i == "2":
+            for case in list_mucdo1:
+                try:
+                    if case == 'Login01':
+                        caseid.caseid_login01(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login02':
+                        caseid.caseid_login02(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login03':
+                        caseid.caseid_login03(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login04':
+                        caseid.caseid_login04(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login05':
+                        caseid.caseid_login05(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login06':
+                        caseid.caseid_login06(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login07':
+                        caseid.caseid_login07(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login08':
+                        caseid.caseid_login08(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login09':
+                        caseid.caseid_login09(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login10':
+                        caseid.caseid_login10(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login11':
+                        caseid.caseid_login11(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login12':
+                        caseid.caseid_login12(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login13':
+                        caseid.caseid_login13(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login14':
+                        caseid.caseid_login14(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login15':
+                        caseid.caseid_login15(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login16':
+                        caseid.caseid_login16(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login17':
+                        caseid.caseid_login17(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login18':
+                        caseid.caseid_login18(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login19':
+                        caseid.caseid_login19(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login20':
+                        caseid.caseid_login20(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login21':
+                        caseid.caseid_login21(self)
+                except:
+                    pass
+        if i == "3":
+            for case in list_mucdo1:
+                try:
+                    if case == 'Login01':
+                        caseid.caseid_login01(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login02':
+                        caseid.caseid_login02(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login03':
+                        caseid.caseid_login03(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login04':
+                        caseid.caseid_login04(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login05':
+                        caseid.caseid_login05(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login06':
+                        caseid.caseid_login06(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login07':
+                        caseid.caseid_login07(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login08':
+                        caseid.caseid_login08(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login09':
+                        caseid.caseid_login09(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login10':
+                        caseid.caseid_login10(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login11':
+                        caseid.caseid_login11(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login12':
+                        caseid.caseid_login12(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login13':
+                        caseid.caseid_login13(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login14':
+                        caseid.caseid_login14(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login15':
+                        caseid.caseid_login15(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login16':
+                        caseid.caseid_login16(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login17':
+                        caseid.caseid_login17(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login18':
+                        caseid.caseid_login18(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login19':
+                        caseid.caseid_login19(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login20':
+                        caseid.caseid_login20(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login21':
+                        caseid.caseid_login21(self)
+                except:
+                    pass
+        if i == "4":
+            for case in list_mucdo1:
+                try:
+                    if case == 'Login01':
+                        caseid.caseid_login01(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login02':
+                        caseid.caseid_login02(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login03':
+                        caseid.caseid_login03(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login04':
+                        caseid.caseid_login04(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login05':
+                        caseid.caseid_login05(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login06':
+                        caseid.caseid_login06(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login07':
+                        caseid.caseid_login07(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login08':
+                        caseid.caseid_login08(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login09':
+                        caseid.caseid_login09(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login10':
+                        caseid.caseid_login10(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login11':
+                        caseid.caseid_login11(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login12':
+                        caseid.caseid_login12(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login13':
+                        caseid.caseid_login13(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login14':
+                        caseid.caseid_login14(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login15':
+                        caseid.caseid_login15(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login16':
+                        caseid.caseid_login16(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login17':
+                        caseid.caseid_login17(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login18':
+                        caseid.caseid_login18(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login19':
+                        caseid.caseid_login19(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login20':
+                        caseid.caseid_login20(self)
+                except:
+                    pass
+                try:
+                    if case == 'Login21':
+                        caseid.caseid_login21(self)
+                except:
+                    pass        #0
+
+
+#2
+def monitor(self):
+    list_mucdo1 = []
+    list_mucdo2 = []
+    list_mucdo3 = []
+    list_mucdo4 = []
+    wordbook = openpyxl.load_workbook(var.checklistpath)
+    sheet = wordbook.get_sheet_by_name("Checklist")
+    rownum = 36
+    while (rownum < 374):
+        rownum += 1
+        rownum = str(rownum)
+        if sheet["D"+rownum].value == "x":
+            muc1 = sheet["A"+rownum].value
+            list_mucdo1.append(muc1)
+        if sheet["E"+rownum].value == "x":
+            muc2 = sheet["A"+rownum].value
+            list_mucdo2.append(muc2)
+        if sheet["F"+rownum].value == "x":
+            muc3 = sheet["A"+rownum].value
+            list_mucdo3.append(muc3)
+        if sheet["G"+rownum].value == "x":
+            muc4 = sheet["A"+rownum].value
+            list_mucdo4.append(muc4)
+        rownum = int(rownum)
+    print(list_mucdo2)
+
+    modetest = ''.join(re.findall(r'\d+', var.modetest))
+    for i in modetest:
+        if i == "1":
+            for case in list_mucdo1:
                 try:
                     if case == 'GiamSat01':
                         caseid.caseid_giamsat01(self)
@@ -1243,140 +1597,9 @@ def modetest(self):
                         caseid.caseid_giamsat222(self)
                 except:
                     pass
-                try:
-                    if case == 'Route01':
-                        caseid.caseid_route01(self)
-                except:
-                    pass
-                try:
-                    if case == 'Route02':
-                        caseid.caseid_route02(self)
-                except:
-                    pass
-                try:
-                    if case == 'Route03':
-                        caseid.caseid_route03(self)
-                except:
-                    pass
-                try:
-                    if case == 'Route04':
-                        caseid.caseid_route04(self)
-                except:
-                    pass
-                try:
-                    if case == 'Route05':
-                        caseid.caseid_route05(self)
-                except:
-                    pass
-
 
         if i == "2":
-            for case in list_mucdo2:
-                try:
-                    if case == 'Login01':
-                        caseid.caseid_login01(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login02':
-                        caseid.caseid_login02(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login03':
-                        caseid.caseid_login03(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login04':
-                        caseid.caseid_login04(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login05':
-                        caseid.caseid_login05(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login06':
-                        caseid.caseid_login06(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login07':
-                        caseid.caseid_login07(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login08':
-                        caseid.caseid_login08(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login09':
-                        caseid.caseid_login09(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login10':
-                        caseid.caseid_login10(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login11':
-                        caseid.caseid_login11(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login12':
-                        caseid.caseid_login12(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login13':
-                        caseid.caseid_login13(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login14':
-                        caseid.caseid_login14(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login15':
-                        caseid.caseid_login15(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login16':
-                        caseid.caseid_login16(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login17':
-                        caseid.caseid_login17(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login18':
-                        caseid.caseid_login18(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login19':
-                        caseid.caseid_login19(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login20':
-                        caseid.caseid_login20(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login21':
-                        caseid.caseid_login21(self)
-                except:
-                    pass
+            for case in list_mucdo1:
                 try:
                     if case == 'GiamSat01':
                         caseid.caseid_giamsat01(self)
@@ -2477,141 +2700,9 @@ def modetest(self):
                         caseid.caseid_giamsat222(self)
                 except:
                     pass
-                try:
-                    if case == 'Route01':
-                        caseid.caseid_route01(self)
-                except:
-                    pass
-                try:
-                    if case == 'Route02':
-                        caseid.caseid_route02(self)
-                except:
-                    pass
-                try:
-                    if case == 'Route03':
-                        caseid.caseid_route03(self)
-                except:
-                    pass
-                try:
-                    if case == 'Route04':
-                        caseid.caseid_route04(self)
-                except:
-                    pass
-                try:
-                    if case == 'Route05':
-                        caseid.caseid_route05(self)
-                except:
-                    pass
-
-
 
         if i == "3":
-            for case in list_mucdo3:
-                try:
-                    if case == 'Login01':
-                        caseid.caseid_login01(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login02':
-                        caseid.caseid_login02(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login03':
-                        caseid.caseid_login03(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login04':
-                        caseid.caseid_login04(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login05':
-                        caseid.caseid_login05(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login06':
-                        caseid.caseid_login06(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login07':
-                        caseid.caseid_login07(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login08':
-                        caseid.caseid_login08(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login09':
-                        caseid.caseid_login09(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login10':
-                        caseid.caseid_login10(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login11':
-                        caseid.caseid_login11(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login12':
-                        caseid.caseid_login12(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login13':
-                        caseid.caseid_login13(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login14':
-                        caseid.caseid_login14(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login15':
-                        caseid.caseid_login15(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login16':
-                        caseid.caseid_login16(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login17':
-                        caseid.caseid_login17(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login18':
-                        caseid.caseid_login18(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login19':
-                        caseid.caseid_login19(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login20':
-                        caseid.caseid_login20(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login21':
-                        caseid.caseid_login21(self)
-                except:
-                    pass
+            for case in list_mucdo1:
                 try:
                     if case == 'GiamSat01':
                         caseid.caseid_giamsat01(self)
@@ -3712,141 +3803,9 @@ def modetest(self):
                         caseid.caseid_giamsat222(self)
                 except:
                     pass
-                try:
-                    if case == 'Route01':
-                        caseid.caseid_route01(self)
-                except:
-                    pass
-                try:
-                    if case == 'Route02':
-                        caseid.caseid_route02(self)
-                except:
-                    pass
-                try:
-                    if case == 'Route03':
-                        caseid.caseid_route03(self)
-                except:
-                    pass
-                try:
-                    if case == 'Route04':
-                        caseid.caseid_route04(self)
-                except:
-                    pass
-                try:
-                    if case == 'Route05':
-                        caseid.caseid_route05(self)
-                except:
-                    pass
-
-
 
         if i == "4":
-            for case in list_mucdo4:
-                try:
-                    if case == 'Login01':
-                        caseid.caseid_login01(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login02':
-                        caseid.caseid_login02(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login03':
-                        caseid.caseid_login03(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login04':
-                        caseid.caseid_login04(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login05':
-                        caseid.caseid_login05(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login06':
-                        caseid.caseid_login06(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login07':
-                        caseid.caseid_login07(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login08':
-                        caseid.caseid_login08(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login09':
-                        caseid.caseid_login09(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login10':
-                        caseid.caseid_login10(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login11':
-                        caseid.caseid_login11(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login12':
-                        caseid.caseid_login12(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login13':
-                        caseid.caseid_login13(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login14':
-                        caseid.caseid_login14(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login15':
-                        caseid.caseid_login15(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login16':
-                        caseid.caseid_login16(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login17':
-                        caseid.caseid_login17(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login18':
-                        caseid.caseid_login18(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login19':
-                        caseid.caseid_login19(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login20':
-                        caseid.caseid_login20(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login21':
-                        caseid.caseid_login21(self)
-                except:
-                    pass
+            for case in list_mucdo1:
                 try:
                     if case == 'GiamSat01':
                         caseid.caseid_giamsat01(self)
@@ -4947,6 +4906,40 @@ def modetest(self):
                         caseid.caseid_giamsat222(self)
                 except:
                     pass
+
+
+
+#3
+def route(self):
+    list_mucdo1 = []
+    list_mucdo2 = []
+    list_mucdo3 = []
+    list_mucdo4 = []
+    wordbook = openpyxl.load_workbook(var.checklistpath)
+    sheet = wordbook.get_sheet_by_name("Checklist")
+    rownum = 376
+    while (rownum < 402):
+        rownum += 1
+        rownum = str(rownum)
+        if sheet["D"+rownum].value == "x":
+            muc1 = sheet["A"+rownum].value
+            list_mucdo1.append(muc1)
+        if sheet["E"+rownum].value == "x":
+            muc2 = sheet["A"+rownum].value
+            list_mucdo2.append(muc2)
+        if sheet["F"+rownum].value == "x":
+            muc3 = sheet["A"+rownum].value
+            list_mucdo3.append(muc3)
+        if sheet["G"+rownum].value == "x":
+            muc4 = sheet["A"+rownum].value
+            list_mucdo4.append(muc4)
+        rownum = int(rownum)
+    print(list_mucdo1)
+
+    modetest = ''.join(re.findall(r'\d+', var.modetest))
+    for i in modetest:
+        if i == "1":
+            for case in list_mucdo1:
                 try:
                     if case == 'Route01':
                         caseid.caseid_route01(self)
@@ -4972,994 +4965,1508 @@ def modetest(self):
                         caseid.caseid_route05(self)
                 except:
                     pass
+                try:
+                    if case == 'Route06':
+                        caseid.caseid_route06(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route07':
+                        caseid.caseid_route07(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route08':
+                        caseid.caseid_route08(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route09':
+                        caseid.caseid_route09(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route10':
+                        caseid.caseid_route10(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route11':
+                        caseid.caseid_route11(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route12':
+                        caseid.caseid_route12(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route13':
+                        caseid.caseid_route13(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route14':
+                        caseid.caseid_route14(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route15':
+                        caseid.caseid_route15(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route16':
+                        caseid.caseid_route16(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route17':
+                        caseid.caseid_route17(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route18':
+                        caseid.caseid_route18(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route19':
+                        caseid.caseid_route19(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route20':
+                        caseid.caseid_route20(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route21':
+                        caseid.caseid_route21(self)
+                except:
+                    pass
+
+        if i == "2":
+            for case in list_mucdo1:
+                try:
+                    if case == 'Route01':
+                        caseid.caseid_route01(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route02':
+                        caseid.caseid_route02(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route03':
+                        caseid.caseid_route03(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route04':
+                        caseid.caseid_route04(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route05':
+                        caseid.caseid_route05(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route06':
+                        caseid.caseid_route06(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route07':
+                        caseid.caseid_route07(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route08':
+                        caseid.caseid_route08(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route09':
+                        caseid.caseid_route09(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route10':
+                        caseid.caseid_route10(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route11':
+                        caseid.caseid_route11(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route12':
+                        caseid.caseid_route12(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route13':
+                        caseid.caseid_route13(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route14':
+                        caseid.caseid_route14(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route15':
+                        caseid.caseid_route15(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route16':
+                        caseid.caseid_route16(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route17':
+                        caseid.caseid_route17(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route18':
+                        caseid.caseid_route18(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route19':
+                        caseid.caseid_route19(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route20':
+                        caseid.caseid_route20(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route21':
+                        caseid.caseid_route21(self)
+                except:
+                    pass
+
+        if i == "3":
+            for case in list_mucdo1:
+                try:
+                    if case == 'Route01':
+                        caseid.caseid_route01(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route02':
+                        caseid.caseid_route02(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route03':
+                        caseid.caseid_route03(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route04':
+                        caseid.caseid_route04(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route05':
+                        caseid.caseid_route05(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route06':
+                        caseid.caseid_route06(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route07':
+                        caseid.caseid_route07(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route08':
+                        caseid.caseid_route08(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route09':
+                        caseid.caseid_route09(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route10':
+                        caseid.caseid_route10(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route11':
+                        caseid.caseid_route11(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route12':
+                        caseid.caseid_route12(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route13':
+                        caseid.caseid_route13(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route14':
+                        caseid.caseid_route14(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route15':
+                        caseid.caseid_route15(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route16':
+                        caseid.caseid_route16(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route17':
+                        caseid.caseid_route17(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route18':
+                        caseid.caseid_route18(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route19':
+                        caseid.caseid_route19(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route20':
+                        caseid.caseid_route20(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route21':
+                        caseid.caseid_route21(self)
+                except:
+                    pass
+
+        if i == "4":
+            for case in list_mucdo1:
+                try:
+                    if case == 'Route01':
+                        caseid.caseid_route01(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route02':
+                        caseid.caseid_route02(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route03':
+                        caseid.caseid_route03(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route04':
+                        caseid.caseid_route04(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route05':
+                        caseid.caseid_route05(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route06':
+                        caseid.caseid_route06(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route07':
+                        caseid.caseid_route07(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route08':
+                        caseid.caseid_route08(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route09':
+                        caseid.caseid_route09(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route10':
+                        caseid.caseid_route10(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route11':
+                        caseid.caseid_route11(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route12':
+                        caseid.caseid_route12(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route13':
+                        caseid.caseid_route13(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route14':
+                        caseid.caseid_route14(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route15':
+                        caseid.caseid_route15(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route16':
+                        caseid.caseid_route16(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route17':
+                        caseid.caseid_route17(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route18':
+                        caseid.caseid_route18(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route19':
+                        caseid.caseid_route19(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route20':
+                        caseid.caseid_route20(self)
+                except:
+                    pass
+                try:
+                    if case == 'Route21':
+                        caseid.caseid_route21(self)
+                except:
+                    pass
 
 
 
-        if i == "5":
-            try:
-                caseid.caseid_login01(self)
-            except:
-                pass
-            try:
-                caseid.caseid_login02(self)
-            except:
-                pass
-            try:
-                caseid.caseid_login03(self)
-            except:
-                pass
-            try:
-                caseid.caseid_login04(self)
-            except:
-                pass
-            try:
-                caseid.caseid_login05(self)
-            except:
-                pass
-            try:
-                caseid.caseid_login06(self)
-            except:
-                pass
-            try:
-                caseid.caseid_login07(self)
-            except:
-                pass
-            try:
-                caseid.caseid_login08(self)
-            except:
-                pass
-            try:
-                caseid.caseid_login09(self)
-            except:
-                pass
-            try:
-                caseid.caseid_login10(self)
-            except:
-                pass
-            try:
-                caseid.caseid_login11(self)
-            except:
-                pass
-            try:
-                caseid.caseid_login12(self)
-            except:
-                pass
-            try:
-                caseid.caseid_login13(self)
-            except:
-                pass
-            try:
-                caseid.caseid_login14(self)
-            except:
-                pass
-            try:
-                caseid.caseid_login15(self)
-            except:
-                pass
-            try:
-                caseid.caseid_login16(self)
-            except:
-                pass
-            try:
-                caseid.caseid_login17(self)
-            except:
-                pass
-            try:
-                caseid.caseid_login18(self)
-            except:
-                pass
-            try:
-                caseid.caseid_login19(self)
-            except:
-                pass
-            try:
-                caseid.caseid_login20(self)
-            except:
-                pass
-            try:
-                caseid.caseid_login21(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat01(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat02(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat03(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat04(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat05(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat06(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat07(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat08(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat09(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat10(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat11(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat12(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat13(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat14(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat15(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat16(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat17(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat18(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat19(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat20(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat21(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat22(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat23(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat24(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat25(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat26(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat27(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat28(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat29(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat30(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat31(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat32(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat33(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat34(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat35(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat36(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat37(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat38(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat39(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat40(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat41(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat42(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat43(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat44(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat45(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat46(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat47(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat48(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat49(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat50(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat51(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat52(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat53(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat54(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat55(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat56(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat57(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat58(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat59(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat60(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat61(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat62(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat63(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat64(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat65(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat66(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat67(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat68(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat69(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat70(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat71(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat72(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat73(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat74(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat75(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat76(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat77(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat78(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat79(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat80(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat81(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat82(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat83(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat84(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat85(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat86(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat87(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat88(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat89(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat90(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat91(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat92(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat93(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat94(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat95(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat96(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat97(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat98(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat99(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat100(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat101(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat102(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat103(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat104(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat107(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat108(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat109(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat110(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat111(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat112(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat113(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat114(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat115(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat116(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat117(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat118(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat119(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat120(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat121(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat122(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat123(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat124(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat125(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat126(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat127(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat128(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat129(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat130(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat131(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat132(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat133(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat134(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat135(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat136(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat137(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat138(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat139(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat140(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat141(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat142(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat143(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat144(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat145(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat146(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat147(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat148(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat149(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat150(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat151(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat152(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat153(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat154(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat155(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat156(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat157(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat158(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat159(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat160(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat161(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat162(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat163(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat164(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat165(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat166(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat167(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat168(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat169(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat170(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat171(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat172(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat173(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat174(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat175(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat176(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat177(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat178(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat179(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat180(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat181(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat182(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat183(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat184(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat185(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat186(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat187(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat188(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat189(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat190(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat191(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat192(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat193(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat194(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat195(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat196(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat197(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat198(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat199(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat200(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat201(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat202(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat203(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat204(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat205(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat206(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat207(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat208(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat209(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat210(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat211(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat212(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat213(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat214(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat215(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat216(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat217(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat218(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat219(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat220(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat221(self)
-            except:
-                pass
-            try:
-                caseid.caseid_giamsat222(self)
-            except:
-                pass
-            try:
-                caseid.caseid_route01(self)
-            except:
-                pass
-            try:
-                caseid.caseid_route02(self)
-            except:
-                pass
-            try:
-                caseid.caseid_route03(self)
-            except:
-                pass
-            try:
-                caseid.caseid_route04(self)
-            except:
-                pass
-            try:
-                caseid.caseid_route05(self)
-            except:
-                pass
+#0
+def run_all(self):
+    try:
+        caseid.caseid_login01(self)
+    except:
+        pass
+    try:
+        caseid.caseid_login02(self)
+    except:
+        pass
+    try:
+        caseid.caseid_login03(self)
+    except:
+        pass
+    try:
+        caseid.caseid_login04(self)
+    except:
+        pass
+    try:
+        caseid.caseid_login05(self)
+    except:
+        pass
+    try:
+        caseid.caseid_login06(self)
+    except:
+        pass
+    try:
+        caseid.caseid_login07(self)
+    except:
+        pass
+    try:
+        caseid.caseid_login08(self)
+    except:
+        pass
+    try:
+        caseid.caseid_login09(self)
+    except:
+        pass
+    try:
+        caseid.caseid_login10(self)
+    except:
+        pass
+    try:
+        caseid.caseid_login11(self)
+    except:
+        pass
+    try:
+        caseid.caseid_login12(self)
+    except:
+        pass
+    try:
+        caseid.caseid_login13(self)
+    except:
+        pass
+    try:
+        caseid.caseid_login14(self)
+    except:
+        pass
+    try:
+        caseid.caseid_login15(self)
+    except:
+        pass
+    try:
+        caseid.caseid_login16(self)
+    except:
+        pass
+    try:
+        caseid.caseid_login17(self)
+    except:
+        pass
+    try:
+        caseid.caseid_login18(self)
+    except:
+        pass
+    try:
+        caseid.caseid_login19(self)
+    except:
+        pass
+    try:
+        caseid.caseid_login20(self)
+    except:
+        pass
+    try:
+        caseid.caseid_login21(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat01(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat02(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat03(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat04(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat05(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat06(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat07(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat08(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat09(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat10(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat11(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat12(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat13(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat14(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat15(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat16(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat17(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat18(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat19(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat20(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat21(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat22(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat23(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat24(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat25(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat26(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat27(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat28(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat29(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat30(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat31(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat32(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat33(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat34(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat35(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat36(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat37(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat38(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat39(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat40(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat41(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat42(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat43(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat44(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat45(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat46(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat47(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat48(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat49(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat50(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat51(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat52(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat53(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat54(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat55(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat56(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat57(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat58(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat59(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat60(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat61(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat62(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat63(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat64(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat65(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat66(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat67(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat68(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat69(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat70(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat71(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat72(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat73(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat74(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat75(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat76(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat77(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat78(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat79(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat80(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat81(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat82(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat83(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat84(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat85(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat86(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat87(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat88(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat89(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat90(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat91(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat92(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat93(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat94(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat95(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat96(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat97(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat98(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat99(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat100(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat101(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat102(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat103(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat104(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat107(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat108(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat109(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat110(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat111(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat112(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat113(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat114(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat115(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat116(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat117(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat118(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat119(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat120(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat121(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat122(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat123(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat124(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat125(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat126(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat127(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat128(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat129(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat130(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat131(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat132(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat133(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat134(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat135(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat136(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat137(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat138(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat139(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat140(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat141(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat142(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat143(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat144(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat145(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat146(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat147(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat148(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat149(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat150(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat151(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat152(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat153(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat154(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat155(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat156(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat157(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat158(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat159(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat160(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat161(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat162(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat163(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat164(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat165(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat166(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat167(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat168(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat169(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat170(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat171(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat172(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat173(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat174(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat175(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat176(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat177(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat178(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat179(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat180(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat181(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat182(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat183(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat184(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat185(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat186(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat187(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat188(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat189(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat190(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat191(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat192(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat193(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat194(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat195(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat196(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat197(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat198(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat199(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat200(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat201(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat202(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat203(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat204(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat205(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat206(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat207(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat208(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat209(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat210(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat211(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat212(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat213(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat214(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat215(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat216(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat217(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat218(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat219(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat220(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat221(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat222(self)
+    except:
+        pass
+    try:
+        caseid.caseid_route01(self)
+    except:
+        pass
+    try:
+        caseid.caseid_route02(self)
+    except:
+        pass
+    try:
+        caseid.caseid_route03(self)
+    except:
+        pass
+    try:
+        caseid.caseid_route04(self)
+    except:
+        pass
+    try:
+        caseid.caseid_route05(self)
+    except:
+        pass
+    try:
+        caseid.caseid_route06(self)
+    except:
+        pass
+    try:
+        caseid.caseid_route07(self)
+    except:
+        pass
+    try:
+        caseid.caseid_route08(self)
+    except:
+        pass
+    try:
+        caseid.caseid_route09(self)
+    except:
+        pass
+    try:
+        caseid.caseid_route10(self)
+    except:
+        pass
+    try:
+        caseid.caseid_route11(self)
+    except:
+        pass
+    try:
+        caseid.caseid_route12(self)
+    except:
+        pass
+    try:
+        caseid.caseid_route13(self)
+    except:
+        pass
+    try:
+        caseid.caseid_route14(self)
+    except:
+        pass
+    try:
+        caseid.caseid_route15(self)
+    except:
+        pass
+    try:
+        caseid.caseid_route16(self)
+    except:
+        pass
+    try:
+        caseid.caseid_route17(self)
+    except:
+        pass
+    try:
+        caseid.caseid_route18(self)
+    except:
+        pass
+    try:
+        caseid.caseid_route19(self)
+    except:
+        pass
+    try:
+        caseid.caseid_route20(self)
+    except:
+        pass
+    try:
+        caseid.caseid_route21(self)
+    except:
+        pass
+    try:
+        caseid.caseid_route22(self)
+    except:
+        pass
+
+
+
+
+def modetest():
+    moduletest = ''.join(re.findall(r'\d+', var.moduletest))
+    print(type(moduletest))
+    print(moduletest)
+    for i in moduletest:
+        print("so", i)
+        if i == "0":
+            run_all(self='')
+        if i == "1":
+            login(self='')
+        if i == "2":
+            monitor(self='')
+        if i == "3":
+            route(self='')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

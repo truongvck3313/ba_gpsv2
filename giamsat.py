@@ -360,7 +360,7 @@ class danhsachxe:
                 break
             n = int(n)
 
-        tenphuongtien = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 2, 2))
+        tenphuongtien = str(var.readData(var.path_luutamthoi , 'Sheet1', 2, 2))
         button = var.driver.find_element(By.XPATH,"//*[@id='idClearOnline']/table/tbody//*[text()='" + tenphuongtien + "']")
         action = ActionChains(var.driver)
         action.double_click(button).perform()
@@ -833,8 +833,8 @@ class danhsachxe:
 
         # Tổng số xe fe
         tongsoxe_duoi = var.driver.find_element(By.XPATH, var.tongsoxe_duoi).text
-        tongsoxe_be = var.readData(var.luudulieutamthoipath, 'Sheet1', 3, 2)
-        tongsoxe_dangan = var.readData(var.luudulieutamthoipath, 'Sheet1', 44, 2)
+        tongsoxe_be = var.readData(var.path_luutamthoi , 'Sheet1', 3, 2)
+        tongsoxe_dangan = var.readData(var.path_luutamthoi , 'Sheet1', 44, 2)
         logging.info("Giám sát - Check tổng danh sách xe")
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)
@@ -871,7 +871,7 @@ class danhsachxe:
                 res = json.loads(data1)
                 print("File path: ", res['filePath'])
                 req = requests.get(res['filePath'])
-                var.writeData(var.luudulieutamthoipath, "Sheet1", 45, 2, res['filePath'])
+                var.writeData(var.path_luutamthoi , "Sheet1", 45, 2, res['filePath'])
                 path = var.excelpath+"/hien_trang_he_thong.xlsx"
                 with open(path, 'wb') as f:
                     f.write(req.content)
@@ -886,7 +886,7 @@ class danhsachxe:
             wordbook = openpyxl.load_workbook(var.excelpath+"/hien_trang_he_thong.xlsx")
             sheet = wordbook.get_sheet_by_name("Data")
         except:
-            linkexcel_hientranghethong = var.readData(var.luudulieutamthoipath, 'Sheet1', 45, 2)
+            linkexcel_hientranghethong = var.readData(var.path_luutamthoi , 'Sheet1', 45, 2)
             path = var.excelpath + "/hien_trang_he_thong.xlsx"
             with open(path, 'wb') as f:
                 req = requests.get(linkexcel_hientranghethong)
@@ -1184,14 +1184,14 @@ class danhsachxe:
                 if tenphuongtien.get_attribute("style") != "display: none;":
                     print("Tên phương tiện", n, tenphuongtien.text)
                     tenphuongtien1 = var.driver.find_element(By.XPATH,"//*[@id='idClearOnline']/table/tbody/tr[" + n + "]/td[2]/div[2]").text
-                    var.writeData(var.luudulieutamthoipath, "Sheet1", 2, 2, tenphuongtien1)
+                    var.writeData(var.path_luutamthoi , "Sheet1", 2, 2, tenphuongtien1)
             except:
                 print("số n cuối", n)
                 break
             n = int(n)
 
         # Chuột phải vào xe đầu tiên
-        tenphuongtien1 = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 2, 2))
+        tenphuongtien1 = str(var.readData(var.path_luutamthoi , 'Sheet1', 2, 2))
         button = var.driver.find_element(By.XPATH,"//*[@id='idClearOnline']/table/tbody//*[text()='" + tenphuongtien1 + "']")
         actions = ActionChains(var.driver)
         actions.context_click(button).perform()
@@ -1275,7 +1275,7 @@ class danhsachxe:
         time.sleep(2)
         var.driver.find_element(By.XPATH, var.trangthai_dichuyen).click()
         time.sleep(1)
-        tenphuongtien1 = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 2, 2))
+        tenphuongtien1 = str(var.readData(var.path_luutamthoi , 'Sheet1', 2, 2))
         button = var.driver.find_element(By.XPATH,"//*[@id='idClearOnline']/table/tbody//*[text()='" + tenphuongtien1 + "']")
         button.click()
         time.sleep(0.5)
@@ -1326,7 +1326,7 @@ class danhsachxe:
 
         # Xem lại lộ trình - Trong ngay
         time.sleep(1)
-        tenphuongtien1 = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 2, 2))
+        tenphuongtien1 = str(var.readData(var.path_luutamthoi , 'Sheet1', 2, 2))
         button = var.driver.find_element(By.XPATH,"//*[@id='idClearOnline']/table/tbody//*[text()='" + tenphuongtien1 + "']")
         button.click()
         time.sleep(0.5)
@@ -1371,7 +1371,7 @@ class danhsachxe:
             login.login.login_v2(self, "viconshipdanang1", "12341234")
         # Xem lại lộ trình - Tùy chọn
         time.sleep(1)
-        tenphuongtien1 = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 2, 2))
+        tenphuongtien1 = str(var.readData(var.path_luutamthoi , 'Sheet1', 2, 2))
         button = var.driver.find_element(By.XPATH,"//*[@id='idClearOnline']/table/tbody//*[text()='" + tenphuongtien1 + "']")
         button.click()
         time.sleep(0.5)
@@ -2020,7 +2020,7 @@ class danhsachxe:
             login.login.login_v2(self, "ungroup", "12341234")
 
         xoacanhbao()
-        tenphuongtien = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 46, 2))
+        tenphuongtien = str(var.readData(var.path_luutamthoi , 'Sheet1', 46, 2))
         # Bỏ ẩn phương tiện
         var.driver.find_element(By.XPATH, var.icon_danhsachxedangan).click()
         time.sleep(1.5)
@@ -3803,7 +3803,7 @@ class checkthongtinxe:
 
         del var.driver.requests
         # CHECK THÔNG TIN XE TỪ API 2            thông tin xe
-        tenphuongtien = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 2, 2))
+        tenphuongtien = str(var.readData(var.path_luutamthoi , 'Sheet1', 2, 2))
         button = var.driver.find_element(By.XPATH,"//*[@id='idClearOnline']/table/tbody//*[text()='" + tenphuongtien + "']")
         action = ActionChains(var.driver)
         action.double_click(button).perform()
@@ -3903,9 +3903,9 @@ class checkthongtinxe:
 
     def checkthongtinxe_bienso(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        checkthongtinxe_bienso_api = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 6, 2))
-        checkthongtinxe_bienso_thongtinxe = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 6, 3))
-        checkthongtinxe_bienso_hientranghethong = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 6, 4))
+        checkthongtinxe_bienso_api = str(var.readData(var.path_luutamthoi , 'Sheet1', 6, 2))
+        checkthongtinxe_bienso_thongtinxe = str(var.readData(var.path_luutamthoi , 'Sheet1', 6, 3))
+        checkthongtinxe_bienso_hientranghethong = str(var.readData(var.path_luutamthoi , 'Sheet1', 6, 4))
         logging.info("Giám sát - Check thông tin xe")
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)
@@ -3925,9 +3925,9 @@ class checkthongtinxe:
 
     def checkthongtinxe_giocapnhat(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        checkthongtinxe_api = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 7, 2))
-        checkthongtinxe_thongtinxe = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 7, 3))
-        # checkthongtinxe_hientranghethong = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 7, 4))
+        checkthongtinxe_api = str(var.readData(var.path_luutamthoi , 'Sheet1', 7, 2))
+        checkthongtinxe_thongtinxe = str(var.readData(var.path_luutamthoi , 'Sheet1', 7, 3))
+        # checkthongtinxe_hientranghethong = str(var.readData(var.path_luutamthoi , 'Sheet1', 7, 4))
         logging.info("Giám sát - Check thông tin xe")
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)
@@ -3948,11 +3948,11 @@ class checkthongtinxe:
 
     def checkthongtinxe_vantocgps(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        checkthongtinxe_api = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 8, 2))
-        checkthongtinxe_thongtinxe = var.readData(var.luudulieutamthoipath, 'Sheet1', 8, 3)
+        checkthongtinxe_api = str(var.readData(var.path_luutamthoi , 'Sheet1', 8, 2))
+        checkthongtinxe_thongtinxe = var.readData(var.path_luutamthoi , 'Sheet1', 8, 3)
         checkthongtinxe_thongtinxe = ''.join(re.findall(r'\d+', checkthongtinxe_thongtinxe))
         checkthongtinxe_thongtinxe = str(checkthongtinxe_thongtinxe)
-        # checkthongtinxe_hientranghethong = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 8, 4))
+        # checkthongtinxe_hientranghethong = str(var.readData(var.path_luutamthoi , 'Sheet1', 8, 4))
 
         logging.info("Giám sát - Check thông tin xe")
         logging.info("Mã - " + ma)
@@ -3974,8 +3974,8 @@ class checkthongtinxe:
 
     def checkthongtinxe_vantocco(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        checkthongtinxe_api = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 9, 2))
-        checkthongtinxe_thongtinxe = var.readData(var.luudulieutamthoipath, 'Sheet1', 9, 3)
+        checkthongtinxe_api = str(var.readData(var.path_luutamthoi , 'Sheet1', 9, 2))
+        checkthongtinxe_thongtinxe = var.readData(var.path_luutamthoi , 'Sheet1', 9, 3)
         checkthongtinxe_thongtinxe = ''.join(re.findall(r'\d+', checkthongtinxe_thongtinxe))
         checkthongtinxe_thongtinxe = str(checkthongtinxe_thongtinxe)
 
@@ -3997,8 +3997,8 @@ class checkthongtinxe:
 
     def checkthongtinxe_dungdo(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        checkthongtinxe_api = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 11, 2))
-        checkthongtinxe_thongtinxe = var.readData(var.luudulieutamthoipath, 'Sheet1', 11, 3)
+        checkthongtinxe_api = str(var.readData(var.path_luutamthoi , 'Sheet1', 11, 2))
+        checkthongtinxe_thongtinxe = var.readData(var.path_luutamthoi , 'Sheet1', 11, 3)
         checkthongtinxe_thongtinxe = ''.join(re.findall(r'\d+', checkthongtinxe_thongtinxe))
         checkthongtinxe_thongtinxe = str(checkthongtinxe_thongtinxe)
 
@@ -4020,15 +4020,15 @@ class checkthongtinxe:
 
     def checkthongtinxe_kmtrongngay(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        checkthongtinxe_api = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 10, 2))
+        checkthongtinxe_api = str(var.readData(var.path_luutamthoi , 'Sheet1', 10, 2))
         checkthongtinxe_api = re.sub(r"[^a-zA-Z0-9]", "", checkthongtinxe_api)
         checkthongtinxe_api = str(checkthongtinxe_api)
 
-        checkthongtinxe_thongtinxe = var.readData(var.luudulieutamthoipath, 'Sheet1', 10, 3)
+        checkthongtinxe_thongtinxe = var.readData(var.path_luutamthoi , 'Sheet1', 10, 3)
         checkthongtinxe_thongtinxe = ''.join(re.findall(r'\d+', checkthongtinxe_thongtinxe))
         checkthongtinxe_thongtinxe = str(checkthongtinxe_thongtinxe)
 
-        # checkthongtinxe_hientranghethong = var.readData(var.luudulieutamthoipath, 'Sheet1', 10, 4)
+        # checkthongtinxe_hientranghethong = var.readData(var.path_luutamthoi , 'Sheet1', 10, 4)
         # checkthongtinxe_hientranghethong = ''.join(re.findall(r'\d+', checkthongtinxe_hientranghethong))
         # checkthongtinxe_hientranghethong = str(checkthongtinxe_hientranghethong)
 
@@ -4052,7 +4052,7 @@ class checkthongtinxe:
 
     def checkthongtinxe_may(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        checkthongtinxe_thongtinxe = var.readData(var.luudulieutamthoipath, 'Sheet1', 12, 3)
+        checkthongtinxe_thongtinxe = var.readData(var.path_luutamthoi , 'Sheet1', 12, 3)
 
         logging.info("Giám sát - Check thông tin xe")
         logging.info("Mã - " + ma)
@@ -4071,8 +4071,8 @@ class checkthongtinxe:
 
     def checkthongtinxe_dieuhoa(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        checkthongtinxe_thongtinxe = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 13, 3))
-        # checkthongtinxe_hientranghethong = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 13, 4))
+        checkthongtinxe_thongtinxe = str(var.readData(var.path_luutamthoi , 'Sheet1', 13, 3))
+        # checkthongtinxe_hientranghethong = str(var.readData(var.path_luutamthoi , 'Sheet1', 13, 4))
         logging.info("Giám sát - Check thông tin xe")
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)
@@ -4092,9 +4092,9 @@ class checkthongtinxe:
 
     def checkthongtinxe_diachi(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        checkthongtinxe_api = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 14, 2))
-        checkthongtinxe_thongtinxe = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 14, 3))
-        # checkthongtinxe_hientranghethong = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 14, 4))
+        checkthongtinxe_api = str(var.readData(var.path_luutamthoi , 'Sheet1', 14, 2))
+        checkthongtinxe_thongtinxe = str(var.readData(var.path_luutamthoi , 'Sheet1', 14, 3))
+        # checkthongtinxe_hientranghethong = str(var.readData(var.path_luutamthoi , 'Sheet1', 14, 4))
         logging.info("Giám sát - Check thông tin xe")
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)
@@ -4115,8 +4115,8 @@ class checkthongtinxe:
 
     def checkthongtinxe_nhienlieu(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        checkthongtinxe_api = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 16, 2))
-        checkthongtinxe_thongtinxe = var.readData(var.luudulieutamthoipath, 'Sheet1', 16, 3)
+        checkthongtinxe_api = str(var.readData(var.path_luutamthoi , 'Sheet1', 16, 2))
+        checkthongtinxe_thongtinxe = var.readData(var.path_luutamthoi , 'Sheet1', 16, 3)
         checkthongtinxe_thongtinxe = ''.join(re.findall(r'\d+', checkthongtinxe_thongtinxe))
         checkthongtinxe_thongtinxe = str(checkthongtinxe_thongtinxe)
 
@@ -4138,9 +4138,9 @@ class checkthongtinxe:
 
     def checkthongtinxe_laixe(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        checkthongtinxe_api = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 20, 2))
-        checkthongtinxe_thongtinxe = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 20, 3))
-        # checkthongtinxe_hientranghethong = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 20, 4))
+        checkthongtinxe_api = str(var.readData(var.path_luutamthoi , 'Sheet1', 20, 2))
+        checkthongtinxe_thongtinxe = str(var.readData(var.path_luutamthoi , 'Sheet1', 20, 3))
+        # checkthongtinxe_hientranghethong = str(var.readData(var.path_luutamthoi , 'Sheet1', 20, 4))
         logging.info("Giám sát - Check thông tin xe")
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)
@@ -4160,8 +4160,8 @@ class checkthongtinxe:
 
     def checkthongtinxe_sodienthoai(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        checkthongtinxe_api = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 19, 2))
-        checkthongtinxe_thongtinxe = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 19, 3))
+        checkthongtinxe_api = str(var.readData(var.path_luutamthoi , 'Sheet1', 19, 2))
+        checkthongtinxe_thongtinxe = str(var.readData(var.path_luutamthoi , 'Sheet1', 19, 3))
         logging.info("Giám sát - Check thông tin xe")
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)
@@ -4180,9 +4180,9 @@ class checkthongtinxe:
 
     def checkthongtinxe_giaypheplaixe(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        checkthongtinxe_api = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 21, 2))
-        checkthongtinxe_thongtinxe = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 21, 3))
-        # checkthongtinxe_hientranghethong = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 21, 4))
+        checkthongtinxe_api = str(var.readData(var.path_luutamthoi , 'Sheet1', 21, 2))
+        checkthongtinxe_thongtinxe = str(var.readData(var.path_luutamthoi , 'Sheet1', 21, 3))
+        # checkthongtinxe_hientranghethong = str(var.readData(var.path_luutamthoi , 'Sheet1', 21, 4))
         logging.info("Giám sát - Check thông tin xe")
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)
@@ -4203,8 +4203,8 @@ class checkthongtinxe:
 
     def checkthongtinxe_solanquatocdo(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        checkthongtinxe_api = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 24, 2))
-        checkthongtinxe_thongtinxe = var.readData(var.luudulieutamthoipath, 'Sheet1', 24, 3)
+        checkthongtinxe_api = str(var.readData(var.path_luutamthoi , 'Sheet1', 24, 2))
+        checkthongtinxe_thongtinxe = var.readData(var.path_luutamthoi , 'Sheet1', 24, 3)
         checkthongtinxe_thongtinxe = ''.join(re.findall(r'\d+', checkthongtinxe_thongtinxe))
         checkthongtinxe_thongtinxe = str(checkthongtinxe_thongtinxe)
 
@@ -4226,11 +4226,11 @@ class checkthongtinxe:
 
     def checkthongtinxe_thoigianlaixelientuc(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        checkthongtinxe_api = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 22, 2))
-        checkthongtinxe_thongtinxe = var.readData(var.luudulieutamthoipath, 'Sheet1', 22, 3)
+        checkthongtinxe_api = str(var.readData(var.path_luutamthoi , 'Sheet1', 22, 2))
+        checkthongtinxe_thongtinxe = var.readData(var.path_luutamthoi , 'Sheet1', 22, 3)
         checkthongtinxe_thongtinxe = ''.join(re.findall(r'\d+', checkthongtinxe_thongtinxe))
         checkthongtinxe_thongtinxe = str(checkthongtinxe_thongtinxe)
-        # checkthongtinxe_hientranghethong = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 22, 4))
+        # checkthongtinxe_hientranghethong = str(var.readData(var.path_luutamthoi , 'Sheet1', 22, 4))
         logging.info("Giám sát - Check thông tin xe")
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)
@@ -4251,11 +4251,11 @@ class checkthongtinxe:
 
     def checkthongtinxe_thoigianlaixetrongngay(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        checkthongtinxe_api = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 23, 2))
-        checkthongtinxe_thongtinxe = var.readData(var.luudulieutamthoipath, 'Sheet1', 23, 3)
+        checkthongtinxe_api = str(var.readData(var.path_luutamthoi , 'Sheet1', 23, 2))
+        checkthongtinxe_thongtinxe = var.readData(var.path_luutamthoi , 'Sheet1', 23, 3)
         checkthongtinxe_thongtinxe = ''.join(re.findall(r'\d+', checkthongtinxe_thongtinxe))
         checkthongtinxe_thongtinxe = str(checkthongtinxe_thongtinxe)
-        # checkthongtinxe_hientranghethong = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 23, 4))
+        # checkthongtinxe_hientranghethong = str(var.readData(var.path_luutamthoi , 'Sheet1', 23, 4))
         logging.info("Giám sát - Check thông tin xe")
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)
@@ -4276,8 +4276,8 @@ class checkthongtinxe:
 
     def checkthongtinxe_thongtinthenho(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        checkthongtinxe_api = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 26, 2))
-        checkthongtinxe_thongtinxe = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 26, 3))
+        checkthongtinxe_api = str(var.readData(var.path_luutamthoi , 'Sheet1', 26, 2))
+        checkthongtinxe_thongtinxe = str(var.readData(var.path_luutamthoi , 'Sheet1', 26, 3))
         logging.info("Giám sát - Check thông tin xe")
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)
@@ -4296,8 +4296,8 @@ class checkthongtinxe:
 
     def checkthongtinxe_soquanly(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        checkthongtinxe_api = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 25, 2))
-        checkthongtinxe_thongtinxe = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 25, 3))
+        checkthongtinxe_api = str(var.readData(var.path_luutamthoi , 'Sheet1', 25, 2))
+        checkthongtinxe_thongtinxe = str(var.readData(var.path_luutamthoi , 'Sheet1', 25, 3))
         logging.info("Giám sát - Check thông tin xe")
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)
@@ -4316,8 +4316,8 @@ class checkthongtinxe:
 
     def checkthongtinxe_thongtinphi(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        checkthongtinxe_api = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 28, 2))
-        checkthongtinxe_thongtinxe = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 28, 3))
+        checkthongtinxe_api = str(var.readData(var.path_luutamthoi , 'Sheet1', 28, 2))
+        checkthongtinxe_thongtinxe = str(var.readData(var.path_luutamthoi , 'Sheet1', 28, 3))
         logging.info("Giám sát - Check thông tin xe")
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)
@@ -4336,7 +4336,7 @@ class checkthongtinxe:
 
     def checkthongtinxe_goicuocdichvuvienthong(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        checkthongtinxe_thongtinxe = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 30, 3))
+        checkthongtinxe_thongtinxe = str(var.readData(var.path_luutamthoi , 'Sheet1', 30, 3))
         logging.info("Giám sát - Check thông tin xe")
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)
@@ -4354,7 +4354,7 @@ class checkthongtinxe:
 
     def checkthongtinxe_nhamang(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        checkthongtinxe_thongtinxe = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 31, 3))
+        checkthongtinxe_thongtinxe = str(var.readData(var.path_luutamthoi , 'Sheet1', 31, 3))
         logging.info("Giám sát - Check thông tin xe")
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)
@@ -4372,7 +4372,7 @@ class checkthongtinxe:
 
     def checkthongtinxe_dungluonggoicuoc(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        checkthongtinxe_thongtinxe = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 32, 3))
+        checkthongtinxe_thongtinxe = str(var.readData(var.path_luutamthoi , 'Sheet1', 32, 3))
         logging.info("Giám sát - Check thông tin xe")
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)
@@ -4390,7 +4390,7 @@ class checkthongtinxe:
 
     def checkthongtinxe_songayluutru(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        checkthongtinxe_thongtinxe = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 33, 3))
+        checkthongtinxe_thongtinxe = str(var.readData(var.path_luutamthoi , 'Sheet1', 33, 3))
         logging.info("Giám sát - Check thông tin xe")
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)
@@ -4408,7 +4408,7 @@ class checkthongtinxe:
 
     def checkthongtinxe_sokenhluutru(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        checkthongtinxe_thongtinxe = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 34, 3))
+        checkthongtinxe_thongtinxe = str(var.readData(var.path_luutamthoi , 'Sheet1', 34, 3))
         logging.info("Giám sát - Check thông tin xe")
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)
@@ -4426,7 +4426,7 @@ class checkthongtinxe:
 
     def checkthongtinxe_tinhnangdinhvi(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        checkthongtinxe_thongtinxe = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 35, 3))
+        checkthongtinxe_thongtinxe = str(var.readData(var.path_luutamthoi , 'Sheet1', 35, 3))
         logging.info("Giám sát - Check thông tin xe")
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)
@@ -4444,7 +4444,7 @@ class checkthongtinxe:
 
     def checkthongtinxe_tinhnanganh(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        checkthongtinxe_thongtinxe = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 36, 3))
+        checkthongtinxe_thongtinxe = str(var.readData(var.path_luutamthoi , 'Sheet1', 36, 3))
         logging.info("Giám sát - Check thông tin xe")
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)
@@ -4462,7 +4462,7 @@ class checkthongtinxe:
 
     def checkthongtinxe_tinhnangvideo(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        checkthongtinxe_thongtinxe = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 37, 3))
+        checkthongtinxe_thongtinxe = str(var.readData(var.path_luutamthoi , 'Sheet1', 37, 3))
         logging.info("Giám sát - Check thông tin xe")
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)

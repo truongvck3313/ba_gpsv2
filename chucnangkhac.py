@@ -1,4 +1,5 @@
 import logging
+from urllib import request
 
 import caseid
 import var
@@ -117,7 +118,7 @@ def notification_telegram():
         rownum = int(rownum)
     print("số lượng case Pass", case_pass)
     print("số lượng case Fail", case_fail)
-    thoigianbatdauchay = str(var.readData(var.luudulieutamthoipath, 'Sheet1', 47, 2))
+    thoigianbatdauchay = str(var.readData(var.path_luutamthoi , 'Sheet1', 47, 2))
 
     if case_fail >= 1:
         driver2.get("https://web.telegram.org/a/")
@@ -202,11 +203,11 @@ def get_datachecklist(ma):
 
 def write_caseif():
     n = 9
-    while (n < 223):
+    while (n < 21):
         var.driver.implicitly_wait(1)
         n += 1
         n = str(n)
-        print("try:\n   if case == 'GiamSat"+n+"':\n       caseid.caseid_giamsat"+n+"(self)\nexcept:\n    pass")
+        print("try:\n   if case == 'Route"+n+"':\n       caseid.caseid_route"+n+"(self)\nexcept:\n    pass")
         n = int(n)
 
 
@@ -214,12 +215,13 @@ def write_caseif():
 
 def write_caseif1():
     n = 9
-    while (n < 223):
+    while (n < 22):
         var.driver.implicitly_wait(1)
         n += 1
         n = str(n)
-        print("try:\n   caseid.caseid_giamsat"+n+"(self)\nexcept:\n     pass")
+        print("try:\n   caseid.caseid_route"+n+"(self)\nexcept:\n     pass")
         n = int(n)
+
 
 
 

@@ -8,20 +8,17 @@ import mucdo
 import giamsat
 from retry import retry
 import lotrinh
-
+import module_gpsv2
 
 chucnangkhac.timerun()
 
 
 class Test(unittest.TestCase):
     def test_run1(self):
-        chucnangkhac.clearData(var.path_baocao, "Checklist", "", "")
+        chucnangkhac.clearData(var.checklistpath, "Checklist", "", "")
         chucnangkhac.delete_image()
-        # mucdo.modetest(self)
+        # module_gpsv2.modetest()
         # chucnangkhac.notification_telegram()
-
-
-
 
         # caseid.caseid_login01(self)
         # caseid.caseid_login02(self)
@@ -320,28 +317,37 @@ class Test(unittest.TestCase):
         #
         # caseid.caseid_giamsat221(self)
         # caseid.caseid_giamsat222(self)
-        #
-        #
-        #
+
+
         # caseid.caseid_route01(self)
         # caseid.caseid_route02(self)
         # caseid.caseid_route03(self)
         # caseid.caseid_route04(self)
         # caseid.caseid_route05(self)
-        caseid.caseid_route06(self)
-        caseid.caseid_route07(self)
-        caseid.caseid_route08(self)
-        caseid.caseid_route09(self)
-        caseid.caseid_route10(self)
-        caseid.caseid_route11(self)
-        caseid.caseid_route12(self)
-        caseid.caseid_route13(self)
-        caseid.caseid_route14(self)
-        caseid.caseid_route15(self)
-        caseid.caseid_route16(self)
+        # caseid.caseid_route06(self)
+        # caseid.caseid_route07(self)
+        # caseid.caseid_route08(self)
+        # caseid.caseid_route09(self)
+        # caseid.caseid_route10(self)
+        # caseid.caseid_route11(self)
+        # caseid.caseid_route12(self)
+        # caseid.caseid_route13(self)
+        # caseid.caseid_route14(self)
+        # caseid.caseid_route15(self)
+        # caseid.caseid_route16(self)
+        #
+        # caseid.caseid_route17(self)
+        # caseid.caseid_route18(self)
+        # caseid.caseid_route19(self)
+        # caseid.caseid_route20(self)
+        # caseid.caseid_route21(self)
+        # caseid.caseid_route22(self)
 
 
-
+        caseid.caseid_typevehicle01(self)
+        caseid.caseid_typevehicle02(self)
+        caseid.caseid_typevehicle03(self)
+        caseid.caseid_typevehicle04(self)
 
 
 if __name__ == "__main__":

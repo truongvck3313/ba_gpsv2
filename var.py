@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 #trình duyệt 2
 import openpyxl
+import chucnangkhac
 
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 capa = DesiredCapabilities.CHROME
@@ -16,9 +17,9 @@ chrome_options.add_argument('window-size=1920x1480')
 
 
 
-PATH ="C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/chromedriver.exe"
-path_baocao = "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/GPS_ChecklistForAutoTest.xlsx"
-path_luutamthoi = "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/bangluudulieu_tamthoi.xlsx"
+# PATH ="C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/chromedriver.exe"
+# path_baocao = "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/GPS_ChecklistForAutoTest.xlsx"
+# path_luutamthoi = "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/bangluudulieu_tamthoi.xlsx"
 
 
 def readData(file,sheetName,rownum,columnno):
@@ -53,10 +54,15 @@ for x in f:
          datatestpath = x[17:-2]
      if x[0:13] == "- UploadPath:":     #C:/Users/truongtq.BA/PycharmProjects/pythonProject/file
          uploadpath = x[15:-2]
-     if x[0:23] == "- LuuDuLieuTamThoiPath:":
-         luudulieutamthoipath = x[25:-2]
-     if x[0:12] == "- ExcelPath:":
-         excelpath = x[14:-1]       #C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/excel
+     if x[0:23] == "- LuuDuLieuTamThoiPath:":   #C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/bangluudulieu_tamthoi.xlsx
+         path_luutamthoi = x[25:-2]
+     if x[0:12] == "- ExcelPath:":      #C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/excel
+         excelpath = x[14:-2]
+     if x[0:13] == "- PathDriver:":     #C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/chromedriver.exe
+         PATH = x[15:-2]
+     if x[0:13] == "- ModuleTest:":     #0,1,2,3,4
+         moduletest = x[15:-2]
+
 
 
 
@@ -545,15 +551,33 @@ check_namecolumn_harmonic = "//*[@id='iddieuhoa']"
 check_namecolumn_machine = "//*[@id='idmay']"
 check_namecolumn_longitude_latitude = "//*[@id='idLngLat']"
 check_namecolumn_adress = "//*[@id='idAddr']"
-
-
-
-
-
-
-
-
-
+check_totalkm = "//*[@id='TongKM']"
+icon_route_display_config = "//*[@title='Cấu hình hiển thị lộ trình']"
+checkpopup_routedisplayconfig = "//*[@id='divListConfigViewRoute']//*[@class='float_left Header']"
+icon_route_display_config_cancel = "//*[@id='divListConfigViewRoute']//*[@id='btCancel']"
+route_liscense_plate = "//*[@id='divListConfigViewRoute']//*[@id='txtVehiclePlate']"
+combined_parking = "//*[@id='chkGroupRecord']"
+note_lost_signal = "//*[@id='chkStateSignalLoss']"
+stoptime = "//*[@id='lblTimeStopOff']"
+lost_signal_time = "//*[@id='trTimeSignalLoss']/td[1]/label"
+defaultconfig = "//*[@id='divListConfigViewRoute']//*[@id='Button1']"
+routedisplayconfig_save = "//*[@id='divListConfigViewRoute']//*[@id='btnSave']"
+managerment = "//*[@id='ModuleAdmin']"
+type_vehicle = "//*[@id='column-right']//*[@id='VEHICLETYPEMANAGER']"
+name_typevehicle1 = "//*[@class='table table-bordered']/tbody/tr[2]/td[2]/span"
+typevehicle_search = "//*[@placeholder='Nhập loại phương tiện để tra cứu']"
+typevehicle_buttonsearch = "//*[@class='btn btn-primary cssBtnSearch']"
+check_page_type_vehicle = "//*[@class='tableBoxHeader']"
+managerment_typevehicle = "//*[@id='column-right']//*[@id='VEHICLETYPEMANAGER']"
+typevehicle_addnew = "//*[@id='column-right']//*[@class='btn btn-primary btnAdd']"
+typevehicle = "//*[@id='txtVhType']"
+number_of_seats = "//*[@id='txtWeightSeat']"
+km_maintenance = "//*[@id='txtQuotaKm']"
+addnew_license_plates = "//*[@id='txtVehicles']"
+addnew_infovehicle_buttonsave = "//*[@id='divInsertUpdate']//*[@value='Lưu']"
+save_successfully = "//*[text()='Thêm mới thành công']"
+check_typevehicle = "//*[@class='table table-bordered']/tbody/tr[6]/td[2]/span"
+check_typevehicle_icondelete = "//*[@class='table table-bordered']/tbody/tr[6]/td[7]"
 
 
 
