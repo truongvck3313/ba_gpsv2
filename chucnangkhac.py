@@ -1,6 +1,6 @@
 import logging
 from urllib import request
-
+from selenium.common.exceptions import NoSuchElementException
 import caseid
 import var
 import time
@@ -11,6 +11,7 @@ import mucdo
 from selenium.webdriver.common.keys import Keys
 import os
 import glob
+from selenium.webdriver.common.by import By
 
 
 
@@ -223,5 +224,51 @@ def write_caseif1():
         n = int(n)
 
 
+
+
+def write_result_text_try_if(code, eventname, result, path_module, path_text, check_result, name_image):
+    logging.info(path_module)
+    logging.info("Mã - " + code)
+    logging.info("Tên sự kiện - " + eventname)
+    logging.info("Kết quả - " + result)
+    try:
+        check_text = var.driver.find_element(By.XPATH, path_text).text
+        logging.info(check_text)
+        if check_text == check_result:
+            logging.info("True")
+            writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+        else:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + code + name_image)
+            writeData(var.checklistpath, "Checklist", code, 8, "Fail")
+            writeData(var.checklistpath, "Checklist", code, 9, code + name_image)
+    except:
+        logging.info("False")
+        var.driver.save_screenshot(var.imagepath + code + name_image)
+        writeData(var.checklistpath, "Checklist", code, 8, "Fail")
+        writeData(var.checklistpath, "Checklist", code, 9, code + name_image)
+    # chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Danh sách xe",
+    #                                       var.check_open_car_quickly, "Mở xe thành công", "_QuanTri_DsXe_MoXeNhanh.png")
+
+
+
+def write_result_displayed_try(code, eventname, result, path_module, path_text, name_image):
+    logging.info(path_module)
+    logging.info("Mã - " + code)
+    logging.info("Tên sự kiện - " + eventname)
+    logging.info("Kết quả - " + result)
+    try:
+        check_displayed = var.driver.find_element(By.XPATH, path_text).is_displayed()
+        logging.info("True")
+        writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+    except NoSuchElementException:
+        logging.info("False")
+        var.driver.save_screenshot(var.imagepath + code + name_image)
+        writeData(var.checklistpath, "Checklist", code, 8, "Fail")
+        writeData(var.checklistpath, "Checklist", code, 9, code + name_image)
+
+    # logging.info("Tìm biển kiểm soát - " + data['quantri']['bienkiemsoat'])
+    # chucnangkhac.write_result_displayed_try(code, eventname, result, "Quản trị - Danh sách xe",
+    #                                         var.check_hide_car, "_QuanTri_DsXe_AnXe.png")
 
 

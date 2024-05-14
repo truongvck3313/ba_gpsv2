@@ -189,7 +189,7 @@ class login:
         if var.driver.find_element(By.XPATH, var.login_ghinhodangnhap).is_selected() == True:
             var.driver.find_element(By.XPATH, var.login_ghinhodangnhap).click()
         var.driver.find_element(By.XPATH, var.dangnhap).click()
-        time.sleep(2.5)
+        time.sleep(5)
         var.driver.find_element(By.XPATH, var.iconngonngu_tienganh)
         time.sleep(1)
         var.driver.get(var.linktest)

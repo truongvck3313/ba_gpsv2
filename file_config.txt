@@ -1,5 +1,5 @@
 - ModeTest: "4"
-- ModuleTest: "2,3"
+- ModuleTest: "1,2,3"
 - LinkTest: "https://gps.binhanh.vn"
 - TimeRun: ""
 - LogPath: "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/ba.log"

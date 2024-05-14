@@ -2,6 +2,7 @@ import giamsat
 import login
 import lotrinh
 import administration
+
 import chucnangkhac
 import var
 import openpyxl
@@ -1779,31 +1780,170 @@ def caseid_route22(self):
     lotrinh.route.routedisplayconfig_save(self, "Route22", eventname, result)
 
 
-def caseid_typevehicle01(self):
-    get_datachecklist("TypeVehicle01")
+def caseid_admin01(self):
+    get_datachecklist("Admin01")
     eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
     result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
-    administration.vehicle_management.type_vehicle(self, "TypeVehicle01", eventname, result)
+    administration.vehicle_management.type_vehicle(self, "Admin01", eventname, result)
 
 
-def caseid_typevehicle02(self):
-    get_datachecklist("TypeVehicle02")
+def caseid_admin02(self):
+    get_datachecklist("Admin02")
     eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
     result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
-    administration.vehicle_management.type_vehicle_search(self, "TypeVehicle02", eventname, result)
+    administration.vehicle_management.type_vehicle_search(self, "Admin02", eventname, result)
 
-def caseid_typevehicle03(self):
-    get_datachecklist("TypeVehicle03")
+def caseid_admin03(self):
+    get_datachecklist("Admin03")
     eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
     result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
-    administration.vehicle_management.type_vehicle_addnew(self, "TypeVehicle03", eventname, result)
+    administration.vehicle_management.type_vehicle_addnew(self, "Admin03", eventname, result)
 
 
-def caseid_typevehicle04(self):
-    get_datachecklist("TypeVehicle04")
+def caseid_admin04(self):
+    get_datachecklist("Admin04")
     eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
     result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
-    administration.vehicle_management.type_vehicle_delete(self, "TypeVehicle04", eventname, result)
+    administration.vehicle_management.type_vehicle_delete(self, "Admin04", eventname, result)
+
+
+def caseid_admin05(self):
+    get_datachecklist("Admin05")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.vehicle_management.type_vehicle_edit(self, "Admin05", eventname, result)
+
+
+def caseid_admin06(self):
+    get_datachecklist("Admin06")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.vehicle_management.type_vehicle_iconprint(self, "Admin06", eventname, result)
+
+
+def caseid_admin07(self):
+    get_datachecklist("Admin07")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.vehicle_management.type_vehicle_downloadexcel(self, "Admin07", eventname, result)
+
+
+def caseid_admin08(self):
+    get_datachecklist("Admin08")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.vehicle_management.type_vehicle_downloadpdf(self, "Admin08", eventname, result)
+
+
+def caseid_admin09(self):
+    get_datachecklist("Admin09")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.vehicle_management.list_vehicle(self, "Admin09", eventname, result)
+
+def caseid_admin10(self):
+    get_datachecklist("Admin10")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.vehicle_management.list_vehicle_search(self, "Admin10", eventname, result)
+
+
+def caseid_admin11(self):
+    get_datachecklist("Admin11")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.vehicle_management.list_vehicle_write_info_vehicle(self, "Admin11", eventname, result)
+
+
+
+def caseid_admin12(self):
+    get_datachecklist("Admin12")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.vehicle_management.list_vehicle_search_information(self, "Admin12", eventname, result,
+                                                                      var.search_user_information,
+                                                                      "DANH SÁCH NGƯỜI DÙNG",
+                                                                      "_QuanTri_DsXe_TraCuuNguoiDung.png")
+
+
+def caseid_admin13(self):
+    get_datachecklist("Admin13")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.vehicle_management.list_vehicle_search_information(self, "Admin13", eventname, result,
+                                                                      var.search_user_information,
+                                                                      "DANH SÁCH CÔNG TY",
+                                                                      "_QuanTri_DsXe_TraCuuCongTy.png")
+
+
+def caseid_admin14(self):
+    get_datachecklist("Admin14")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.vehicle_management.list_vehiclegototo_company(self, "Admin14", eventname, result)
+
+
+def caseid_admin15(self):
+    get_datachecklist("Admin15")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.vehicle_management.list_vehicle_assign_car(self, "Admin15", eventname, result)
+
+
+def caseid_admin16(self):
+    get_datachecklist("Admin16")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.vehicle_management.list_vehicle_look_user_manage(self, "Admin16", eventname, result)
+
+
+def caseid_admin17(self):
+    get_datachecklist("Admin17")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.vehicle_management.list_vehicle_hide_car(self, "Admin17", eventname, result)
+
+
+def caseid_admin18(self):
+    get_datachecklist("Admin18")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.vehicle_management.list_vehicle_unhide_car(self, "Admin18", eventname, result)
+
+
+def caseid_admin19(self):
+    get_datachecklist("Admin19")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.vehicle_management.list_vehicle_open_car_quickly(self, "Admin19", eventname, result)
+
+def caseid_admin20(self):
+    get_datachecklist("Admin20")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.vehicle_management.list_vehicle_display_info_car(self, "Admin20", eventname, result)
+
+
+
+def caseid_admin21(self):
+    get_datachecklist("Admin21")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.vehicle_management.list_vehicle_advanced_search(self, "Admin21", eventname, result)
+
+
+def caseid_admin22(self):
+    get_datachecklist("Admin22")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.vehicle_management.admin_group(self, "Admin22", eventname, result)
+
+
+def caseid_admin23(self):
+    get_datachecklist("Admin23")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.vehicle_management.admin_group_search(self, "Admin23", eventname, result)
 
 
 

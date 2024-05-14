@@ -99,10 +99,11 @@ class route:
             time.sleep(1)
 
         vehiclename1 = str(var.readData(var.path_luutamthoi, 'Sheet1', 2, 2))
-
         var.driver.find_element(By.XPATH, var.license_plates).send_keys(vehiclename1)
         time.sleep(0.5)
-        var.driver.find_element(By.XPATH, var.route_icondownloaddata).click()
+        button = var.driver.find_element(By.XPATH, var.route_icondownloaddata)
+        var.driver.execute_script("arguments[0].click();", button)
+        # var.driver.find_element(By.XPATH, var.route_icondownloaddata).click()
         time.sleep(3)
         logging.info("Lộ trình - Trang lộ trnh")
         logging.info("Mã - " + code)
@@ -515,3 +516,4 @@ class route:
                 print("không có  response")
         var.driver.find_element(By.XPATH, var.icon_route_display_config_cancel).click()
         time.sleep(1)
+
