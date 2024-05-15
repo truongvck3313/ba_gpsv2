@@ -308,7 +308,7 @@ class Test(unittest.TestCase):
 
 
 
-        # # # quản trị - quản trị loại phương tiện
+        # quản trị - quản trị loại phương tiện
         # caseid.caseid_admin01(self)
         # caseid.caseid_admin02(self)
         # caseid.caseid_admin03(self)
@@ -333,10 +333,27 @@ class Test(unittest.TestCase):
         # caseid.caseid_admin19(self)
         # caseid.caseid_admin20(self)
         # caseid.caseid_admin21(self)
+        #
+        # #Quản trị nhóm
+        # caseid.caseid_admin22(self)
+        # caseid.caseid_admin23(self)
+        # caseid.caseid_admin24(self)
+        # caseid.caseid_admin25(self)
+        # caseid.caseid_admin26(self)
+        # caseid.caseid_admin27(self)
+        # caseid.caseid_admin28(self)
+        # caseid.caseid_admin29(self)
+        # caseid.caseid_admin30(self)
+        # caseid.caseid_admin31(self)
 
-        #Quản trị nhóm
-        caseid.caseid_admin22(self)
-        caseid.caseid_admin23(self)
+        # #Phân quyền nhóm xe
+        caseid.caseid_admin32(self)
+        caseid.caseid_admin33(self)
+        caseid.caseid_admin34(self)
+        caseid.caseid_admin35(self)
+
+
+
 
 
 

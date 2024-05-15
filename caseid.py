@@ -1946,6 +1946,89 @@ def caseid_admin23(self):
     administration.vehicle_management.admin_group_search(self, "Admin23", eventname, result)
 
 
+def caseid_admin24(self):
+    get_datachecklist("Admin24")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.vehicle_management.add_group_level1(self, "Admin24", eventname, result)
+
+
+def caseid_admin25(self):
+    get_datachecklist("Admin25")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.vehicle_management.add_group_leveln(self, "Admin25", eventname, result)
+
+
+def caseid_admin26(self):
+    get_datachecklist("Admin26")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.vehicle_management.rename_group(self, "Admin26", eventname, result)
+
+
+def caseid_admin27(self):
+    get_datachecklist("Admin27")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.vehicle_management.delete_group(self, "Admin27", eventname, result)
+
+
+def caseid_admin28(self):
+    get_datachecklist("Admin28")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.vehicle_management.mark_special_groups(self, "Admin28", eventname, result)
+
+
+
+def caseid_admin29(self):
+    get_datachecklist("Admin29")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.vehicle_management.un_mark_special_groups(self, "Admin29", eventname, result)
+
+
+def caseid_admin30(self):
+    get_datachecklist("Admin30")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.vehicle_management.assign_one_car(self, "Admin30", eventname, result)
+
+
+def caseid_admin31(self):
+    get_datachecklist("Admin31")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.vehicle_management.assign_many_car(self, "Admin31", eventname, result)
+
+
+def caseid_admin32(self):
+    get_datachecklist("Admin32")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.vehicle_management.vehicle_groups_administration(self, "Admin32", eventname, result)
+
+
+def caseid_admin33(self):
+    get_datachecklist("Admin33")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.vehicle_management.vehicle_groups_administration_search(self, "Admin33", eventname, result)
+
+
+def caseid_admin34(self):
+    get_datachecklist("Admin34")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.vehicle_management.vehicle_groups_administration_assign_1_group(self, "Admin34", eventname, result)
+
+
+def caseid_admin35(self):
+    get_datachecklist("Admin35")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.vehicle_management.vehicle_groups_administration_assign_many_group(self, "Admin35", eventname, result)
 
 
 

@@ -2801,7 +2801,7 @@ class danhsachxe:
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
 
 
-    @retry(tries=2, delay=2, backoff=1, jitter=5)
+    @retry(tries=3, delay=2, backoff=1, jitter=5)
     def goto_congty(self, tencongty, macongty):
         var.driver.implicitly_wait(10)
         login.login.login_v2(self, "truongtq@bagroup.vn", "atgmj123")
@@ -2811,12 +2811,6 @@ class danhsachxe:
             var.driver.refresh()
             time.sleep(4)
         time.sleep(4)
-        # try:
-        #     var.driver.find_element(By.XPATH, var.danhsachcongty_loai).click()
-        # except:
-        #     var.driver.refresh()
-        #     time.sleep(5)
-        #     var.driver.find_element(By.XPATH, var.danhsachcongty_loai).click()
         time.sleep(0.5)
         var.driver.find_element(By.XPATH, var.danhsachcongty_loai_tencongty).click()
         var.driver.find_element(By.XPATH, var.danhsachcongty_noidung).send_keys(tencongty)

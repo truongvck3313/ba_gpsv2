@@ -639,18 +639,37 @@ check_admin_group = "//*[@id='masterTwoColumnRight']//*[@class='tableBoxHeader']
 admin_group_buttonsearch = "//*[@id='masterTwoColumnRight']//*[@value='Tìm kiếm']"
 check_admin_group_search = "//*[@id='masterTwoColumnRight']//*[@class='table table-bordered']/tbody/tr[2]/td[2]"
 name_group = "//*[@id='masterTwoColumnRight']//*[@id='divCreateGroup']/table/tbody/tr[2]/td[1]/div[1]/div/ul/li[1]"
-
-
-
-
-
-
-
-
-
-
-
-
+icon_addgroup_level1 = "//*[@id='AddNewRootGroup']"
+namegroup_level1 = "//*[@id='divJsTree']//*[text()='nhóm bậc 1']"
+icon_addgroup_level1_input = "//*[@class='jstree-rename-input']"
+addgroup_addnew = "//*[@id='AddNewGroup']"
+namegroup_leveln = "//*[@id='divJsTree']//*[text()='nhóm bậc n']"
+delete_group = "//*[@id='DeleteGroup']"
+namegroup_editedgroup = "//*[@id='divJsTree']//*[text()='nhóm smile home']"
+namegroup_nhomtest = "//*[@id='divJsTree']//*[text()='nhóm test']"
+mark_special_groups = "//*[@id='btnmark']"
+check_icon_mark = "//*[@id='divJsTree']//*[@src='/Images/clock.png']"
+un_mark_special_groups = "//*[@id='btnunmark']"
+list_car_1 = "//*[@id='lstAllVehicle']/option[1]"
+icon_assign_car3 = "//*[@id='btnMoveLeft']"
+list_group_car_1 = "//*[@id='lstAssignedVehicle']/option[1]"
+icon_assign_car2 = "//*[@id='btnMoveRight']"
+icon_assign_car4 = "//*[@id='btnMoveAllLeft']"
+list_group_car_3 = "//*[@id='lstAssignedVehicle']/option[3]"
+icon_assign_car1 = "//*[@id='btnMoveAllRight']"
+vehicle_groups_administration = "//*[@class='leftMenuContainer']//*[@id='AdminPermissionUserVehicleGroups']"
+check_vehicle_groups_administration = "//*[@class='masterTwoColumnRight']//*[@class='tableBoxHeader']"
+vehicle_groups_administration_search = "//*[@placeholder='Nhập biển kiểm soát tìm kiếm']"
+check_vehicle_groups_administration_search = "//*[@id='lstUser']/option[1]"
+vehicle_groups_administration_buttonsearch = "//*[@id='btnSearch']"
+list_user_company_truongtest = "//*[@id='lstUser']//*[text()='truongtest1-TRẦN QUANG TRƯỜNG']"
+list_groupcar_company1 = "//*[@id='jtreeNoAssign']/ul/li[1]/a/ins[1]"
+icon_assign_group2 = "//*[@id='btnMoveRight']"
+list_group_user1 = "//*[@id='jtreeAssigned']/ul/li[1]/a/ins[1]"
+icon_assign_group3 = "//*[@id='btnMoveLeft']"
+icon_assign_group1 = "//*[@id='btnMoveRight_All']"
+list_group_user3 = "//*[@id='jtreeAssigned']/ul/li[3]/a/ins[1]"
+icon_assign_group4 = "//*[@id='btnMoveLeft_All']"
 
 
 

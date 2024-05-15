@@ -53,7 +53,7 @@ class vehicle_management:
         try:
             var.driver.find_element(By.XPATH, var.managerment).click()
         except:
-            var.driver.refesh()
+            var.driver.refresh()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.managerment).click()
         time.sleep(5)
@@ -63,25 +63,6 @@ class vehicle_management:
                                               var.check_page_type_vehicle, "DANH MỤC LOẠI PHƯƠNG TIỆN", "_QuanTri_DSLoaiPhuongTien.png")
 
 
-        # logging.info("Quản trị - Quản trị loại phương tiện")
-        # logging.info("Mã - " + code)
-        # logging.info("Tên sự kiện - " + eventname)
-        # logging.info("Kết quả - " + result)
-        # try:
-        #     check_page_type_vehicle = var.driver.find_element(By.XPATH, var.check_page_type_vehicle).text
-        #     if check_page_type_vehicle == "DANH MỤC LOẠI PHƯƠNG TIỆN":
-        #         logging.info("True")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
-        #     else:
-        #         logging.info("False")
-        #         var.driver.save_screenshot(var.imagepath + code + "_QuanTri_DSLoaiPhuongTien.png")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_QuanTri_DSLoaiPhuongTien.png")
-        # except:
-        #     logging.info("False")
-        #     var.driver.save_screenshot(var.imagepath + code + "_QuanTri_DSLoaiPhuongTien.png")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_QuanTri_DSLoaiPhuongTien.png")
 
 
     # quản trị loại phương tiện - tìm kiếm
@@ -107,30 +88,11 @@ class vehicle_management:
         check_search = var.driver.find_element(By.XPATH, var.name_typevehicle1).text
         chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Quản trị loại phương tiện",
                                               var.name_typevehicle1, check_search, "_QuanTri_DSLoaiPhuongTien_TimKiem.png")
-
-        # logging.info("Quản trị - Quản trị loại phương tiện")
-        # logging.info("Mã - " + code)
-        # logging.info("Tên sự kiện - " + eventname)
-        # logging.info("Kết quả - " + result)
-        # logging.info("Tìm kiếm xe - " + name_typevehicle1)
-        # try:
-        #     if name_typevehicle1 == check_search:
-        #         logging.info("True")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
-        #     else:
-        #         logging.info("False")
-        #         var.driver.save_screenshot(var.imagepath + code + "_QuanTri_DSLoaiPhuongTien_TimKiem.png")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_QuanTri_DSLoaiPhuongTien_TimKiem.png")
-        # except:
-        #     logging.info("False")
-        #     var.driver.save_screenshot(var.imagepath + code + "_QuanTri_DSLoaiPhuongTien_TimKiem.png")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_QuanTri_DSLoaiPhuongTien_TimKiem.png")
         var.driver.find_element(By.XPATH, var.typevehicle_search).clear()
         time.sleep(0.5)
         var.driver.find_element(By.XPATH, var.typevehicle_buttonsearch).click()
         time.sleep(1)
+
 
 
     # quản trị loại phương tiện - thêm mới
@@ -160,22 +122,8 @@ class vehicle_management:
         logging.info("Thêm mới loại xe - " + data['quantri']['loaiphuongtien'])
         chucnangkhac.write_result_displayed_try(code, eventname, result, "Quản trị - Quản trị loại phương tiện",
                                                 var.save_successfully, "_QuanTri_DSLoaiPhuongTien_ThemMoi.png")
-
-        # logging.info("Quản trị - Quản trị loại phương tiện")
-        # logging.info("Mã - " + code)
-        # logging.info("Tên sự kiện - " + eventname)
-        # logging.info("Kết quả - " + result)
-        # logging.info("Thêm mới loại xe - " + data['quantri']['loaiphuongtien'])
-        # try:
-        #     check_save = var.driver.find_element(By.XPATH, var.save_successfully).is_displayed()
-        #     logging.info("True")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
-        # except NoSuchElementException:
-        #     logging.info("False")
-        #     var.driver.save_screenshot(var.imagepath + code + "_QuanTri_DSLoaiPhuongTien_ThemMoi.png")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_QuanTri_DSLoaiPhuongTien_ThemMoi.png")
         time.sleep(1.5)
+
 
 
     # quản trị loại phương tiện - icon xóa
@@ -202,6 +150,7 @@ class vehicle_management:
         time.sleep(1.5)
 
 
+
     # quản trị loại phương tiện - icon chỉnh sửa
     def type_vehicle_edit(self, code, eventname, result):
         var.driver.implicitly_wait(5)
@@ -209,29 +158,12 @@ class vehicle_management:
         time.sleep(1.5)
         chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Quản trị loại phương tiện",
                                               var.check_edit, "NHẬP THÔNG TIN LOẠI PHƯƠNG TIỆN", "_QuanTri_DSLoaiPhuongTien_Sua.png")
+        try:
+            var.driver.find_element(By.XPATH, var.check_typevehicle_edit_exit).click()
+        except:
+            pass
+        time.sleep(1.5)
 
-        # logging.info("Quản trị - Quản trị loại phương tiện")
-        # logging.info("Mã - " + code)
-        # logging.info("Tên sự kiện - " + eventname)
-        # logging.info("Kết quả - " + result)
-        # try:
-        #     check_edit = var.driver.find_element(By.XPATH, var.check_edit).text
-        #     logging.info("Mở popup - " + check_edit)
-        #     if check_edit == "NHẬP THÔNG TIN LOẠI PHƯƠNG TIỆN":
-        #         logging.info("True")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
-        #         var.driver.find_element(By.XPATH, var.check_typevehicle_edit_exit).click()
-        #         time.sleep(0.5)
-        #     else:
-        #         logging.info("False")
-        #         var.driver.save_screenshot(var.imagepath + code + "_QuanTri_DSLoaiPhuongTien_Sua.png")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_QuanTri_DSLoaiPhuongTien_Sua.png")
-        # except:
-        #     logging.info("False")
-        #     var.driver.save_screenshot(var.imagepath + code + "_QuanTri_DSLoaiPhuongTien_Sua.png")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_QuanTri_DSLoaiPhuongTien_Sua.png")
 
 
     # quản trị loại phương tiện - icon in
@@ -241,25 +173,12 @@ class vehicle_management:
         time.sleep(2)
         chucnangkhac.write_result_displayed_try(code, eventname, result, "Quản trị - Quản trị loại phương tiện",
                                                 var.checkpopup_print, "_QuanTri_DSLoaiPhuongTien_In.png")
-
-        # logging.info("Quản trị - Quản trị loại phương tiện")
-        # logging.info("Mã - " + code)
-        # logging.info("Tên sự kiện - " + eventname)
-        # logging.info("Kết quả - " + result)
-        # try:
-        #     var.driver.find_element(By.XPATH, var.checkpopup_print).is_displayed()
-        #     logging.info("True")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
-        # except:
-        #     logging.info("False")
-        #     var.driver.save_screenshot(var.imagepath + code + "_QuanTri_DSLoaiPhuongTien_In.png")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_QuanTri_DSLoaiPhuongTien_In.png")
         try:
             var.driver.find_element(By.XPATH, var.type_vehicle_iconprint_x).click()
             time.sleep(2)
         except:
             pass
+
 
 
     # quản trị loại phương tiện - icon downdload excel
@@ -270,28 +189,6 @@ class vehicle_management:
         chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Quản trị loại phương tiện",
                                               var.check_downloadexcel, "Đang tiến hành tạo file Excel. Vui lòng không thoát trang, tìm kiếm lại... cho đến khi file được tải về máy", "_QuanTri_DSLoaiPhuongTien_Excel.png")
 
-
-
-        # logging.info("Quản trị - Quản trị loại phương tiện")
-        # logging.info("Mã - " + code)
-        # logging.info("Tên sự kiện - " + eventname)
-        # logging.info("Kết quả - " + result)
-        # try:
-        #     check_downloadexcel = var.driver.find_element(By.XPATH, var.check_downloadexcel).text
-        #     logging.info(check_downloadexcel)
-        #     if check_downloadexcel == "Đang tiến hành tạo file Excel. Vui lòng không thoát trang, tìm kiếm lại... cho đến khi file được tải về máy":
-        #         logging.info("True")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
-        #     else:
-        #         logging.info("False")
-        #         var.driver.save_screenshot(var.imagepath + code + "_QuanTri_DSLoaiPhuongTien_Excel.png")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_QuanTri_DSLoaiPhuongTien_Excel.png")
-        # except:
-        #     logging.info("False")
-        #     var.driver.save_screenshot(var.imagepath + code + "_QuanTri_DSLoaiPhuongTien_Excel.png")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_QuanTri_DSLoaiPhuongTien_Excel.png")
 
 
 
@@ -310,10 +207,6 @@ class vehicle_management:
 
 
 
-
-
-
-
     #Danh sách xe
     def list_vehicle(self, code, eventname, result):
         var.driver.implicitly_wait(5)
@@ -321,7 +214,7 @@ class vehicle_management:
         try:
             var.driver.find_element(By.XPATH, var.managerment).click()
         except:
-            var.driver.refesh()
+            var.driver.refresh()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.managerment).click()
         time.sleep(5)
@@ -331,26 +224,6 @@ class vehicle_management:
                                               var.check_listvehicle, "DANH SÁCH XE", "_QuanTri_DsXe.png")
 
 
-        # logging.info("Quản trị - Danh sách xe")
-        # logging.info("Mã - " + code)
-        # logging.info("Tên sự kiện - " + eventname)
-        # logging.info("Kết quả - " + result)
-        # try:
-        #     check_listvehicle = var.driver.find_element(By.XPATH, var.check_listvehicle).text
-        #     logging.info("Chuyển tới trang - " + check_listvehicle)
-        #     if check_listvehicle == "DANH SÁCH XE":
-        #         logging.info("True")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
-        #     else:
-        #         logging.info("False")
-        #         var.driver.save_screenshot(var.imagepath + code + "_QuanTri_DsXe.png")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_QuanTri_DsXe.png")
-        # except:
-        #     logging.info("False")
-        #     var.driver.save_screenshot(var.imagepath + code + "_QuanTri_DsXe.png")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_QuanTri_DsXe.png")
 
 
     #Danh sách xe - tìm kiếm
@@ -373,27 +246,6 @@ class vehicle_management:
         chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Danh sách xe",
                                               var.name_vehicle1, name_vehicle1, "_QuanTri_DsXe_TimKiem.png")
 
-
-        # logging.info("Quản trị - Danh sách xe")
-        # logging.info("Mã - " + code)
-        # logging.info("Tên sự kiện - " + eventname)
-        # logging.info("Kết quả - " + result)
-        # try:
-        #     check_search = var.driver.find_element(By.XPATH, var.name_vehicle1).text
-        #     logging.info("Biển số tìm kiếm- " + check_search)
-        #     if check_search == name_vehicle1:
-        #         logging.info("True")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
-        #     else:
-        #         logging.info("False")
-        #         var.driver.save_screenshot(var.imagepath + code + "_QuanTri_DsXe_TimKiem.png")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_QuanTri_DsXe_TimKiem.png")
-        # except:
-        #     logging.info("False")
-        #     var.driver.save_screenshot(var.imagepath + code + "_QuanTri_DsXe_TimKiem.png")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_QuanTri_DsXe_TimKiem.png")
 
 
 
@@ -426,29 +278,9 @@ class vehicle_management:
         time.sleep(1.5)
         chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Danh sách xe",
                                               var.check_write_info_vehicle, "Cập nhật thông tin xe thành công", "_QuanTri_DsXe_NhapNhanhThongTinXe.png")
-
-        # logging.info("Quản trị - Danh sách xe")
-        # logging.info("Mã - " + code)
-        # logging.info("Tên sự kiện - " + eventname)
-        # logging.info("Kết quả - " + result)
-        # try:
-        #     check_write_info_vehicle = var.driver.find_element(By.XPATH, var.check_write_info_vehicle).text
-        #     logging.info("Message - " + check_write_info_vehicle)
-        #     if check_write_info_vehicle == "Cập nhật thông tin xe thành công":
-        #         logging.info("True")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
-        #     else:
-        #         logging.info("False")
-        #         var.driver.save_screenshot(var.imagepath + code + "_QuanTri_DsXe_NhapNhanhThongTinXe.png")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_QuanTri_DsXe_NhapNhanhThongTinXe.png")
-        # except:
-        #     logging.info("False")
-        #     var.driver.save_screenshot(var.imagepath + code + "_QuanTri_DsXe_NhapNhanhThongTinXe.png")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_QuanTri_DsXe_NhapNhanhThongTinXe.png")
         var.driver.find_element(By.XPATH, var.button_back).click()
         time.sleep(2)
+
 
 
 
@@ -514,27 +346,6 @@ class vehicle_management:
             time.sleep(3)
         chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Danh sách xe",
                                               var.check_goto_company, "1010_Công ty không có nhóm đội [1010]", "_QuanTri_DsCongTy_GoTo.png")
-
-
-        # logging.info("Quản trị - Danh sách xe")
-        # logging.info("Mã - " + code)
-        # logging.info("Tên sự kiện - " + eventname)
-        # logging.info("Kết quả - " + result)
-        # try:
-        #     check_goto_company = var.driver.find_element(By.XPATH, var.check_goto_company).text
-        #     if check_goto_company == "1010_Công ty không có nhóm đội [1010]":
-        #         logging.info("True")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
-        #     else:
-        #         logging.info("False")
-        #         var.driver.save_screenshot(var.imagepath + code + "_QuanTri_DsCongTy_GoTo.png")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_QuanTri_DsCongTy_GoTo.png")
-        # except:
-        #     logging.info("False")
-        #     var.driver.save_screenshot(var.imagepath + code + "_QuanTri_DsCongTy_GoTo.png")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_QuanTri_DsCongTy_GoTo.png")
         var.driver.find_element(By.XPATH, var.gotocompany_exit).click()
         time.sleep(4)
 
@@ -558,16 +369,11 @@ class vehicle_management:
         time.sleep(1.5)
         var.driver.find_element(By.XPATH, var.icon_assign_car).click()
         time.sleep(3)
-
-
-
         var.driver.find_element(By.XPATH, var.assign_car_select_car).click()
         time.sleep(1)
         var.driver.find_element(By.XPATH, var.assign_car_select_input).send_keys("29")
         var.driver.find_element(By.XPATH, var.assign_car_select_input).send_keys(Keys.ENTER)
         time.sleep(1)
-
-
         var.driver.find_element(By.XPATH, var.assign_car_select_company).click()
         time.sleep(1)
         var.driver.find_element(By.XPATH, var.assign_car_select_input2).send_keys("970")
@@ -588,28 +394,6 @@ class vehicle_management:
         time.sleep(1)
         chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Danh sách xe",
                                               var.check_assign_car,"Lưu thành công", "_QuanTri_DsXe_GanXe.png")
-
-
-        # logging.info("Quản trị - Danh sách xe")
-        # logging.info("Mã - " + code)
-        # logging.info("Tên sự kiện - " + eventname)
-        # logging.info("Kết quả - " + result)
-        # var.driver.implicitly_wait(3)
-        # try:
-        #     check_assign_car = var.driver.find_element(By.XPATH, var.check_assign_car).text
-        #     if check_assign_car == "Lưu thành công":
-        #         logging.info("True")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
-        #     else:
-        #         logging.info("False")
-        #         var.driver.save_screenshot(var.imagepath + code + "_QuanTri_DsXe_GanXe.png")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_QuanTri_DsXe_GanXe.png")
-        # except:
-        #     logging.info("False")
-        #     var.driver.save_screenshot(var.imagepath + code + "_QuanTri_DsXe_GanXe.png")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_QuanTri_DsXe_GanXe.png")
         var.driver.find_element(By.XPATH, var.gotocompany_exit).click()
         time.sleep(4)
 
@@ -635,27 +419,6 @@ class vehicle_management:
         time.sleep(3)
         chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Danh sách xe",
                                               var.check_look_user_manage, "", "_QuanTri_DsXe_NguoiDung.png")
-
-        # logging.info("Quản trị - Danh sách xe")
-        # logging.info("Mã - " + code)
-        # logging.info("Tên sự kiện - " + eventname)
-        # logging.info("Kết quả - " + result)
-        # try:
-        #     check_look_user_manage = var.driver.find_element(By.XPATH, var.check_look_user_manage).text
-        #     logging.info("Người dùng quản lý xe - " + check_look_user_manage)
-        #     if check_look_user_manage != "":
-        #         logging.info("True")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
-        #     else:
-        #         logging.info("False")
-        #         var.driver.save_screenshot(var.imagepath + code + "_QuanTri_DsXe_NguoiDung.png")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_QuanTri_DsXe_NguoiDung.png")
-        # except:
-        #     logging.info("False")
-        #     var.driver.save_screenshot(var.imagepath + code + "_QuanTri_DsXe_NguoiDung.png")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_QuanTri_DsXe_NguoiDung.png")
         var.driver.back()
         time.sleep(3)
 
@@ -695,27 +458,9 @@ class vehicle_management:
         time.sleep(3)
         var.driver.switch_to.alert.accept()
         time.sleep(2)
-        logging.info("Tìm biển kiểm soát - "+ data['quantri']['bienkiemsoat'])
+        logging.info("Tìm biển kiểm soát - " + data['quantri']['bienkiemsoat'])
         chucnangkhac.write_result_displayed_try(code, eventname, result, "Quản trị - Danh sách xe",
                                               var.check_hide_car, "_QuanTri_DsXe_AnXe.png")
-
-
-
-        # logging.info("Quản trị - Danh sách xe")
-        # logging.info("Mã - " + code)
-        # logging.info("Tên sự kiện - " + eventname)
-        # logging.info("Kết quả - " + result)
-        # logging.info("Ẩn xe - " + data['quantri']['bienkiemsoat'])
-        # try:
-        #     check_hide_car = var.driver.find_element(By.XPATH, var.check_hide_car).is_displayed()
-        #     logging.info("True")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
-        # except NoSuchElementException:
-        #     logging.info("False")
-        #     var.driver.save_screenshot(var.imagepath + code + "_QuanTri_DsXe_AnXe.png")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_QuanTri_DsXe_AnXe.png")
-
 
 
 
@@ -757,23 +502,6 @@ class vehicle_management:
 
 
 
-        # logging.info("Quản trị - Danh sách xe")
-        # logging.info("Mã - " + code)
-        # logging.info("Tên sự kiện - " + eventname)
-        # logging.info("Kết quả - " + result)
-        # logging.info("Bỏ ẩn xe - " + data['quantri']['bienkiemsoat'])
-        # try:
-        #     check_unhide_car = var.driver.find_element(By.XPATH, var.icon_hide_car).is_displayed()
-        #     logging.info("True")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
-        # except NoSuchElementException:
-        #     logging.info("False")
-        #     var.driver.save_screenshot(var.imagepath + code + "_QuanTri_DsXe_BoAnXe.png")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_QuanTri_DsXe_BoAnXe.png")
-
-
-
     #Danh sách xe - mở xe nhanh
     def list_vehicle_open_car_quickly(self, code, eventname, result):
         var.driver.implicitly_wait(5)
@@ -800,27 +528,6 @@ class vehicle_management:
                                               var.check_open_car_quickly, "Mở xe thành công", "_QuanTri_DsXe_MoXeNhanh.png")
 
 
-        # logging.info("Quản trị - Danh sách xe")
-        # logging.info("Mã - " + code)
-        # logging.info("Tên sự kiện - " + eventname)
-        # logging.info("Kết quả - " + result)
-        # try:
-        #     check_open_car_quickly = var.driver.find_element(By.XPATH, var.check_open_car_quickly).text
-        #     if check_open_car_quickly == "Mở xe thành công":
-        #         logging.info("True")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
-        #     else:
-        #         logging.info("False")
-        #         var.driver.save_screenshot(var.imagepath + code + "_QuanTri_DsXe_MoXeNhanh.png")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_QuanTri_DsXe_MoXeNhanh.png")
-        # except:
-        #     logging.info("False")
-        #     var.driver.save_screenshot(var.imagepath + code + "_QuanTri_DsXe_MoXeNhanh.png")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_QuanTri_DsXe_MoXeNhanh.png")
-
-
 
     #Danh sách xe - thông tin xe
     def list_vehicle_display_info_car(self, code, eventname, result):
@@ -844,28 +551,6 @@ class vehicle_management:
         time.sleep(2)
         chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Danh sách xe",
                                               var.check_popup_display_info_car, "THÔNG TIN ĐỒNG BỘ DỮ LIỆU BAP", "_QuanTri_DsXe_ThongTinBAP.png")
-
-        # logging.info("Quản trị - Danh sách xe")
-        # logging.info("Mã - " + code)
-        # logging.info("Tên sự kiện - " + eventname)
-        # logging.info("Kết quả - " + result)
-        # try:
-        #     check_popup_display_info_car = var.driver.find_element(By.XPATH, var.check_popup_display_info_car).text
-        #     logging.info("Popup - " + check_popup_display_info_car)
-        #     if check_popup_display_info_car == "THÔNG TIN ĐỒNG BỘ DỮ LIỆU BAP":
-        #         logging.info("True")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
-        #     else:
-        #         logging.info("False")
-        #         var.driver.save_screenshot(var.imagepath + code + "_QuanTri_DsXe_ThongTinBAP.png")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_QuanTri_DsXe_ThongTinBAP.png")
-        # except:
-        #     logging.info("False")
-        #     var.driver.save_screenshot(var.imagepath + code + "_QuanTri_DsXe_ThongTinBAP.png")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_QuanTri_DsXe_ThongTinBAP.png")
-
         try:
             var.driver.find_element(By.XPATH, var.popup_display_info_car_close).click()
         except:
@@ -873,7 +558,6 @@ class vehicle_management:
         time.sleep(2)
         var.driver.execute_script("window.scrollBy(0, -1500)", "")
         time.sleep(1.5)
-
 
 
 
@@ -902,34 +586,15 @@ class vehicle_management:
                                               var.check_advanced_search, "Từ ngày", "_QuanTri_DsXe_TimKiemNangCao.png")
 
 
-        # logging.info("Quản trị - Danh sách xe")
-        # logging.info("Mã - " + code)
-        # logging.info("Tên sự kiện - " + eventname)
-        # logging.info("Kết quả - " + result)
-        # try:
-        #     check_advanced_search = var.driver.find_element(By.XPATH, var.check_advanced_search).text
-        #     logging.info(check_advanced_search)
-        #     if check_advanced_search == "Từ ngày":
-        #         logging.info("True")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
-        #     else:
-        #         logging.info("False")
-        #         var.driver.save_screenshot(var.imagepath + code + "_QuanTri_DsXe_TimKiemNangCao.png")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_QuanTri_DsXe_TimKiemNangCao.png")
-        # except:
-        #     logging.info("False")
-        #     var.driver.save_screenshot(var.imagepath + code + "_QuanTri_DsXe_TimKiemNangCao.png")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_QuanTri_DsXe_TimKiemNangCao.png")
 
-
-
-    #Quản trị nhóm - tìm kiếm
+    #Quản trị nhóm
     def admin_group(self, code, eventname, result):
         var.driver.implicitly_wait(5)
         giamsat.danhsachxe.goto_congty(self, "970", "970")
-        var.driver.find_element(By.XPATH, var.managerment).click()
+        try:
+            var.driver.find_element(By.XPATH, var.managerment).click()
+        except:
+            var.driver.get("https://gps.binhanh.vn/Administration/Vehicles/VehicleGroup.aspx")
         time.sleep(4)
         var.driver.find_element(By.XPATH, var.admin_group).click()
         time.sleep(4)
@@ -938,6 +603,7 @@ class vehicle_management:
 
 
 
+    #Quản trị nhóm - tìm kiếm
     def admin_group_search(self, code, eventname, result):
         var.driver.implicitly_wait(5)
         time.sleep(2)
@@ -965,7 +631,327 @@ class vehicle_management:
 
 
 
+    #Quản trị nhóm -Thêm nhóm bậc 1
+    def add_group_level1(self, code, eventname, result):
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.icon_addgroup_level1).click()
+        except:
+            giamsat.danhsachxe.goto_congty(self, "970", "970")
+            var.driver.find_element(By.XPATH, var.managerment).click()
+            time.sleep(4)
+            var.driver.find_element(By.XPATH, var.admin_group).click()
+            time.sleep(4)
+            var.driver.find_element(By.XPATH, var.icon_addgroup_level1).click()
+        time.sleep(2)
+        var.driver.find_element(By.XPATH, var.icon_addgroup_level1_input).send_keys(data['quantri']['add_group_level1'])
+        var.driver.find_element(By.XPATH, var.icon_addgroup_level1_input).send_keys(Keys.ENTER)
+        time.sleep(1.5)
+        try:
+            var.driver.switch_to.alert.accept()
+        except:
+            pass
+        time.sleep(3)
+        try:
+            var.driver.find_element(By.XPATH, var.namegroup_level1)
+        except:
+            var.driver.refresh()
+            time.sleep(5)
+        chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Quản trị nhóm",
+                                              var.namegroup_level1, " nhóm bậc 1", "_QuanTri_QuanLyNhomXe_ThemNhomBac1.png")
 
+
+
+    # Quản trị nhóm -Thêm nhóm bậc n
+    def add_group_leveln(self, code, eventname, result):
+        var.driver.implicitly_wait(5)
+        var.driver.find_element(By.XPATH, var.namegroup_level1).click()
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.addgroup_addnew).click()
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.icon_addgroup_level1_input).send_keys(data['quantri']['add_group_leveln'])
+        var.driver.find_element(By.XPATH, var.icon_addgroup_level1_input).send_keys(Keys.ENTER)
+        time.sleep(1.5)
+        try:
+            var.driver.switch_to.alert.accept()
+        except:
+            pass
+        time.sleep(3)
+        chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Quản trị nhóm",
+                                              var.namegroup_leveln, " nhóm bậc n", "_QuanTri_QuanLyNhomXe_ThemNhomBacn.png")
+
+
+
+    # Quản trị nhóm - đổi tên nhóm
+    def rename_group(self, code, eventname, result):
+        var.driver.implicitly_wait(5)
+
+        button = var.driver.find_element(By.XPATH, var.namegroup_leveln)
+        action = ActionChains(var.driver)
+        action.double_click(button).perform()
+        time.sleep(1.5)
+        var.driver.find_element(By.XPATH, var.icon_addgroup_level1_input).send_keys(data['quantri']['add_group_renameleveln'])
+        var.driver.find_element(By.XPATH, var.icon_addgroup_level1_input).send_keys(Keys.ENTER)
+        time.sleep(1.5)
+        try:
+            var.driver.switch_to.alert.accept()
+        except:
+            pass
+        time.sleep(2)
+        chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Quản trị nhóm",
+                                              var.namegroup_editedgroup, " nhóm smile home", "_QuanTri_QuanLyNhomXe_DoiTenNhom.png")
+
+
+
+    # Quản trị nhóm - xóa nhóm
+    def delete_group(self, code, eventname, result):
+        var.driver.implicitly_wait(3)
+        try:
+            var.driver.find_element(By.XPATH, var.namegroup_editedgroup).click()
+        except:
+            var.driver.refresh()
+            time.sleep(5)
+            var.driver.find_element(By.XPATH, var.namegroup_leveln).click()
+
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.delete_group).click()
+        time.sleep(1.5)
+        try:
+            var.driver.switch_to.alert.accept()
+        except:
+            pass
+        time.sleep(1.5)
+        try:
+            var.driver.switch_to.alert.accept()
+        except:
+            pass
+        time.sleep(1.5)
+        var.driver.find_element(By.XPATH, var.namegroup_level1).click()
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.delete_group).click()
+        time.sleep(1.5)
+        try:
+            var.driver.switch_to.alert.accept()
+        except:
+            pass
+        time.sleep(1.5)
+        try:
+            var.driver.switch_to.alert.accept()
+        except:
+            pass
+        time.sleep(1.5)
+        chucnangkhac.write_result_not_displayed_try(code, eventname, result, "Quản trị - Quản trị nhóm",
+                                                var.namegroup_editedgroup, "_QuanTri_QuanLyNhomXe_XoaNhom.png")
+
+
+
+    # Quản trị nhóm - đánh dấu nhóm đặc biệt
+    def mark_special_groups(self, code, eventname, result):
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.namegroup_nhomtest).click()
+        except:
+            giamsat.danhsachxe.goto_congty(self, "970", "970")
+            var.driver.find_element(By.XPATH, var.managerment).click()
+            time.sleep(4)
+            var.driver.find_element(By.XPATH, var.admin_group).click()
+            time.sleep(4)
+            var.driver.find_element(By.XPATH, var.namegroup_nhomtest).click()
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.mark_special_groups).click()
+        time.sleep(2)
+        chucnangkhac.write_result_displayed_try(code, eventname, result, "Quản trị - Quản trị nhóm",
+                                                var.check_icon_mark, "_QuanTri_QuanLyNhomXe_DanhDauNhomDacBiet.png")
+        time.sleep(1)
+
+
+    # Quản trị nhóm - bỏ đánh dấu nhóm đặc biệt
+    def un_mark_special_groups(self, code, eventname, result):
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.namegroup_nhomtest).click()
+        except:
+            var.driver.refresh()
+            time.sleep(5)
+            var.driver.find_element(By.XPATH, var.namegroup_nhomtest).click()
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.un_mark_special_groups).click()
+        time.sleep(2)
+        try:
+            var.driver.switch_to.alert.accept()
+        except:
+            pass
+        time.sleep(2)
+        chucnangkhac.write_result_not_displayed_try(code, eventname, result, "Quản trị - Quản trị nhóm",
+                                                var.check_icon_mark, "_QuanTri_QuanLyNhomXe_BoDanhDauNhomDacBiet.png")
+        var.driver.find_element(By.XPATH, var.namegroup_nhomtest).click()
+        time.sleep(1)
+
+
+
+
+    # Quản trị nhóm - gán 1 xe
+    def assign_one_car(self, code, eventname, result):
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.namegroup_nhomtest).click()
+        except:
+            giamsat.danhsachxe.goto_congty(self, "970", "970")
+            var.driver.find_element(By.XPATH, var.managerment).click()
+            time.sleep(4)
+            var.driver.find_element(By.XPATH, var.admin_group).click()
+            time.sleep(4)
+            var.driver.find_element(By.XPATH, var.namegroup_nhomtest).click()
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.list_car_1).click()
+        time.sleep(0.5)
+        var.driver.find_element(By.XPATH, var.icon_assign_car3).click()
+        time.sleep(1)
+        chucnangkhac.write_result_displayed_try(code, eventname, result, "Quản trị - Quản trị nhóm",
+                                                var.list_group_car_1, ")_QuanTri_QuanLyNhomXe_Gan1Xe.png")
+
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.list_group_car_1).click()
+        time.sleep(0.5)
+        var.driver.find_element(By.XPATH, var.icon_assign_car2).click()
+        time.sleep(2)
+
+
+
+    # Quản trị nhóm - gán nhiều xe
+    def assign_many_car(self, code, eventname, result):
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.namegroup_nhomtest).click()
+        except:
+            giamsat.danhsachxe.goto_congty(self, "970", "970")
+            var.driver.find_element(By.XPATH, var.managerment).click()
+            time.sleep(4)
+            var.driver.find_element(By.XPATH, var.admin_group).click()
+            time.sleep(4)
+            var.driver.find_element(By.XPATH, var.namegroup_nhomtest).click()
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.icon_assign_car4).click()
+        time.sleep(1.5)
+        try:
+            var.driver.switch_to.alert.accept()
+        except:
+            pass
+        chucnangkhac.write_result_displayed_try(code, eventname, result, "Quản trị - Quản trị nhóm",
+                                                var.list_group_car_3, ")_QuanTri_QuanLyNhomXe_Gan1Xe.png")
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.icon_assign_car1).click()
+        time.sleep(1.5)
+        try:
+            var.driver.switch_to.alert.accept()
+        except:
+            pass
+        time.sleep(1.5)
+
+
+
+
+    #Phân quyền nhóm xe
+    def vehicle_groups_administration(self, code, eventname, result):
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.check_goto_company).click()
+            var.driver.find_element(By.XPATH, var.vehicle_groups_administration).click()
+        except:
+            giamsat.danhsachxe.goto_congty(self, "970", "970")
+            var.driver.find_element(By.XPATH, var.managerment).click()
+            time.sleep(5)
+            var.driver.find_element(By.XPATH, var.vehicle_groups_administration).click()
+        time.sleep(4)
+        chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Phân quyền nhóm xe",
+                                              var.check_vehicle_groups_administration, "PHÂN QUYỀN NHÓM XE CHO NGƯỜI DÙNG", "_QuanTri_PhanQuyenNhomXe.png")
+
+
+
+    #Phân quyền nhóm xe - Tìm kiếm
+    def vehicle_groups_administration_search(self, code, eventname, result):
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.check_goto_company).click()
+            var.driver.find_element(By.XPATH, var.vehicle_groups_administration_search).send_keys(data['quantri']['bienkiemsoat1'])
+        except:
+            giamsat.danhsachxe.goto_congty(self, "970", "970")
+            var.driver.find_element(By.XPATH, var.managerment).click()
+            time.sleep(5)
+            var.driver.find_element(By.XPATH, var.vehicle_groups_administration).click()
+            time.sleep(4)
+            var.driver.find_element(By.XPATH, var.vehicle_groups_administration_search).send_keys(data['quantri']['bienkiemsoat1'])
+        time.sleep(0.5)
+        var.driver.find_element(By.XPATH, var.vehicle_groups_administration_buttonsearch).click()
+        chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Phân quyền nhóm xe",
+                                              var.check_vehicle_groups_administration_search, "29C14269A-29C14269A", "_QuanTri_PhanQuyenNhomXe_TìmKiem.png")
+
+        var.driver.find_element(By.XPATH, var.vehicle_groups_administration_search).clear()
+        time.sleep(0.5)
+        var.driver.find_element(By.XPATH, var.vehicle_groups_administration_buttonsearch).click()
+        time.sleep(1)
+
+
+
+
+    #Phân quyền nhóm xe - Gán 1 nhóm xe
+    def vehicle_groups_administration_assign_1_group(self, code, eventname, result):
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.list_user_company_truongtest).click()
+        except:
+            giamsat.danhsachxe.goto_congty(self, "970", "970")
+            var.driver.find_element(By.XPATH, var.managerment).click()
+            time.sleep(5)
+            var.driver.find_element(By.XPATH, var.vehicle_groups_administration).click()
+            time.sleep(4)
+            var.driver.find_element(By.XPATH, var.list_user_company_truongtest).click()
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.list_groupcar_company1).click()
+        time.sleep(0.5)
+        var.driver.find_element(By.XPATH, var.icon_assign_group2).click()
+        time.sleep(1)
+        chucnangkhac.write_result_displayed_try(code, eventname, result, "Quản trị - Phân quyền nhóm xe",
+                                                var.list_group_user1, "_QuanTri_PhanQuyenNhomXe_Gan1Nhom.png")
+
+        var.driver.find_element(By.XPATH, var.list_group_user1).click()
+        time.sleep(0.5)
+        var.driver.find_element(By.XPATH, var.icon_assign_group3).click()
+        time.sleep(1)
+
+
+
+
+    #Phân quyền nhóm xe - Gán tất cả nhóm xe
+    def vehicle_groups_administration_assign_many_group(self, code, eventname, result):
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.list_user_company_truongtest).click()
+        except:
+            giamsat.danhsachxe.goto_congty(self, "970", "970")
+            var.driver.find_element(By.XPATH, var.managerment).click()
+            time.sleep(5)
+            var.driver.find_element(By.XPATH, var.vehicle_groups_administration).click()
+            time.sleep(4)
+            var.driver.find_element(By.XPATH, var.list_user_company_truongtest).click()
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.icon_assign_group1).click()
+        time.sleep(1.5)
+        try:
+            var.driver.switch_to.alert.accept()
+        except:
+            pass
+        time.sleep(3)
+        chucnangkhac.write_result_displayed_try(code, eventname, result, "Quản trị - Phân quyền nhóm xe",
+                                                var.list_group_user3, "_QuanTri_PhanQuyenNhomXe_GanTatCaNhom.png")
+
+        var.driver.find_element(By.XPATH, var.icon_assign_group4).click()
+        time.sleep(1.5)
+        try:
+            var.driver.switch_to.alert.accept()
+        except:
+            pass
+        time.sleep(2)
 
 
 

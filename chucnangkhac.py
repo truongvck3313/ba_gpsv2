@@ -272,3 +272,27 @@ def write_result_displayed_try(code, eventname, result, path_module, path_text, 
     #                                         var.check_hide_car, "_QuanTri_DsXe_AnXe.png")
 
 
+
+def write_result_not_displayed_try(code, eventname, result, path_module, path_text, name_image):
+    var.driver.implicitly_wait(2)
+    logging.info(path_module)
+    logging.info("Mã - " + code)
+    logging.info("Tên sự kiện - " + eventname)
+    logging.info("Kết quả - " + result)
+    try:
+        check_not_displayed = var.driver.find_element(By.XPATH, path_text).is_displayed()
+        logging.info("False")
+        var.driver.save_screenshot(var.imagepath + code + name_image)
+        writeData(var.checklistpath, "Checklist", code, 8, "Fail")
+        writeData(var.checklistpath, "Checklist", code, 9, code + name_image)
+    except NoSuchElementException:
+        logging.info("True")
+        writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+    # chucnangkhac.write_result_displayed_try(code, eventname, result, "Quản trị - Danh sách xe",
+    #                                         var.check_hide_car, "_QuanTri_DsXe_AnXe.png")
+
+
+
+
+
+
