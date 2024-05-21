@@ -905,19 +905,26 @@ class vehicle_management:
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.vehicle_groups_administration).click()
             time.sleep(4)
-            var.driver.find_element(By.XPATH, var.list_user_company_truongtest).click()
-        time.sleep(1)
+            try:
+                var.driver.find_element(By.XPATH, var.list_user_company_truongtest).click()
+            except:
+                var.driver.refresh()
+                time.sleep(5)
+                var.driver.find_element(By.XPATH, var.list_user_company_truongtest).click()
+        time.sleep(1.5)
         var.driver.find_element(By.XPATH, var.list_groupcar_company1).click()
-        time.sleep(0.5)
+        time.sleep(2)
         var.driver.find_element(By.XPATH, var.icon_assign_group2).click()
-        time.sleep(1)
+        time.sleep(5)
         chucnangkhac.write_result_displayed_try(code, eventname, result, "Quản trị - Phân quyền nhóm xe",
                                                 var.list_group_user1, "_QuanTri_PhanQuyenNhomXe_Gan1Nhom.png")
 
+        var.driver.find_element(By.XPATH, var.list_user_company_truongtest).click()
+        time.sleep(2)
         var.driver.find_element(By.XPATH, var.list_group_user1).click()
-        time.sleep(0.5)
+        time.sleep(2)
         var.driver.find_element(By.XPATH, var.icon_assign_group3).click()
-        time.sleep(1)
+        time.sleep(5)
 
 
 
@@ -932,26 +939,97 @@ class vehicle_management:
             var.driver.find_element(By.XPATH, var.managerment).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.vehicle_groups_administration).click()
-            time.sleep(4)
-            var.driver.find_element(By.XPATH, var.list_user_company_truongtest).click()
-        time.sleep(1)
+            time.sleep(5)
+            try:
+                var.driver.find_element(By.XPATH, var.list_user_company_truongtest).click()
+            except:
+                var.driver.refresh()
+                time.sleep(5)
+                var.driver.find_element(By.XPATH, var.list_user_company_truongtest).click()
+        time.sleep(2)
         var.driver.find_element(By.XPATH, var.icon_assign_group1).click()
-        time.sleep(1.5)
-        try:
-            var.driver.switch_to.alert.accept()
-        except:
-            pass
         time.sleep(3)
+        var.driver.switch_to.alert.accept()
+
+        # try:
+        #     var.driver.switch_to.alert.accept()
+        # except:
+        #     pass
+        time.sleep(10)
         chucnangkhac.write_result_displayed_try(code, eventname, result, "Quản trị - Phân quyền nhóm xe",
                                                 var.list_group_user3, "_QuanTri_PhanQuyenNhomXe_GanTatCaNhom.png")
 
+        # var.driver.find_element(By.XPATH, var.list_user_company_truongtest).click()
+        # time.sleep(2)
         var.driver.find_element(By.XPATH, var.icon_assign_group4).click()
-        time.sleep(1.5)
+        time.sleep(5)
+        var.driver.switch_to.alert.accept()
+        # try:
+        #     var.driver.switch_to.alert.accept()
+        # except:
+        #     pass
+        time.sleep(10)
+
+
+
+
+
+class system_management:
+    def list_user(self, code, eventname, result):
+        var.driver.implicitly_wait(5)
+        login.login.login_v2(self, "viconshipdanang1", "12341234")
+        var.driver.find_element(By.XPATH, var.managerment).click()
+        time.sleep(5)
+        var.driver.find_element(By.XPATH, var.list_user).click()
+        time.sleep(5)
+        chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Danh sách người dùng",
+                                              var.check_page_type_vehicle, "DANH SÁCH NGƯỜI DÙNG", "_QuanTri_DSNguoiDung.png")
+
+
+
+
+    def list_user_search(self, code, eventname, result):
+        var.driver.implicitly_wait(5)
         try:
-            var.driver.switch_to.alert.accept()
+            nameuser = var.driver.find_element(By.XPATH, var.list_user_nameuser).text
+            var.driver.find_element(By.XPATH, var.list_user_search_input).send_keys(nameuser)
         except:
-            pass
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            var.driver.find_element(By.XPATH, var.managerment).click()
+            time.sleep(5)
+            var.driver.find_element(By.XPATH, var.list_user).click()
+            time.sleep(5)
+            nameuser = var.driver.find_element(By.XPATH, var.list_user_nameuser).text
+            var.driver.find_element(By.XPATH, var.list_user_search_input).send_keys(nameuser)
+        time.sleep(0.5)
+        var.driver.find_element(By.XPATH, var.list_user_search_input).click()
+        time.sleep(1.5)
+        chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Danh sách người dùng",
+                                              var.list_user_nameuser, nameuser, "_QuanTri_DSNguoiDung_Timkiem.png")
+
+
+
+
+    def list_user_downloadexcel(self, code, eventname, result):
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.list_user_icon_downloadexcel).click()
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            var.driver.find_element(By.XPATH, var.managerment).click()
+            time.sleep(5)
+            var.driver.find_element(By.XPATH, var.list_user).click()
+            time.sleep(5)
+            var.driver.find_element(By.XPATH, var.list_user_icon_downloadexcel).click()
         time.sleep(2)
+        chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Danh sách người dùng",
+                                              var.check_downloadexcel, "Đang tiến hành tạo file Excel. Vui lòng không thoát trang, tìm kiếm lại... cho đến khi file được tải về máy", "_QuanTri_DSNguoiDung_TaiFileExcel.png")
+        time.sleep(2)
+
+
+
+
+
 
 
 

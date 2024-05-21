@@ -2820,7 +2820,7 @@ class danhsachxe:
         print(check_timkiem_congty)
         if check_timkiem_congty == macongty:
             var.driver.find_element(By.XPATH, var.danhsachcongty_icondencongty).click()
-            time.sleep(5)
+            time.sleep(8)
             try:
                 var.driver.find_element(By.XPATH, var.danhsachxe_dungtat).is_displayed()
             except:

@@ -2,17 +2,44 @@ from selenium.webdriver.common.by import By
 #trình duyệt 2
 import openpyxl
 import chucnangkhac
-
+from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 capa = DesiredCapabilities.CHROME
 capa["pageLoadStrategy"] = "none"
 from seleniumwire import webdriver
-driver = webdriver.Chrome(desired_capabilities=capa)
+from selenium.webdriver.chrome.options import Options
+import requests
+
+
 chrome_options = webdriver.ChromeOptions()
+
 chrome_options.add_argument('--headless')
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-dev-shm-usage')
 chrome_options.add_argument('window-size=1920x1480')
+# driver = webdriver.Chrome(desired_capabilities=capa)
+
+
+
+
+
+
+options = webdriver.ChromeOptions()
+options.add_argument("--start-maximized")
+prefs = {"profile.default_content_settings.popups": 0,
+             "download.default_directory":
+                        r"C:\Users\truongtq.BA\PycharmProjects\pythonProject\ba_v2\excel",
+             "directory_upgrade": True}
+options.add_experimental_option("prefs", prefs)
+driver = webdriver.Chrome(options=options, desired_capabilities=capa)
+
+
+
+
+
+
+
+
 
 
 
@@ -670,6 +697,42 @@ icon_assign_group3 = "//*[@id='btnMoveLeft']"
 icon_assign_group1 = "//*[@id='btnMoveRight_All']"
 list_group_user3 = "//*[@id='jtreeAssigned']/ul/li[3]/a/ins[1]"
 icon_assign_group4 = "//*[@id='btnMoveLeft_All']"
+list_user = "//*[@class='leftMenu']//*[@id='AdminListOfUser']"
+list_user_nameuser = "//*[@class='table table-bordered']/tbody/tr[2]/td[2]/a"
+list_user_search_input = "//*[@placeholder='Nhập nội dung cần tìm']"
+list_user_icon_downloadexcel = "//*[@title='Xuất Excel']"
+managerment_report = "//*[@id='ModuleReports']"
+activity_synthesis_report = "//*[@class='masterTwoColumnRight']//*[@id='ReportActivitySummaryNew']"
+check_activity_synthesis_report = "//*[@class='tableBoxHeader']"
+activity_synthesis_report_search = "//*[@id='ctl00_ctl00_MainContent_Content_btnSearch']"
+check_activity_synthesis_report_search = "//*[@id='ctl00_ctl00_MainContent_Content_ScrollPanel']/div/table/tbody/tr[2]"
+downloadexcel = "//*[@title='Xuất Excel']"
+detailed_activity_report = "//*[@class='leftMenu']//*[@id='ReportActivityDetail']"
+check_detailed_activity_report = "//*[@class='column-right']//*[@class='tableBoxHeader']"
+detailed_activity_report_mergeminute = "//*[@class='column-right']//*[@id='ctl00_ctl00_MainContent_Content_cbGroup']"
+check_detailed_activity_report_mergeminute = "//*[@class='column-right']//*[text()='Số phút giới hạn']"
+detailed_activity_report_timeslot = "//*[@class='column-right']//*[@id='chkKhungGio']"
+check_detailed_activity_report_timeslot = "//*[@class='column-right']//*[text()='Khung giờ xuất báo cáo']"
+detailed_activity_report_search = "//*[@class='column-right']//*[@id='ctl00_ctl00_MainContent_Content_btnSearch']"
+check_detailed_activity_report_search = "//*[@class='column-right']//*[text()='STT']"
+detailed_activity_report_from_date = "//*[@id='ctl00_ctl00_MainContent_Content_dtFromDate_txtDate']"
+report_km_activity_summary = "//*[@class='leftMenu']//*[@id='REPORTACTIVITYSUMMARYKM']"
+check_report_km_activity_summary = "//*[@class='column-right']//*[@class='tableBoxHeader']"
+report_km_activity_summary_detail = "//*[@id='ctl00_ctl00_MainContent_Content_rblSummaryDetail_0']"
+report_km_activity_summary_search = "//*[@id='ctl00_ctl00_MainContent_Content_btnSearch']"
+check_report_km_activity_summary_detail = "//*[@class='table-report']/tbody/tr[1]/th[1]"
+report_km_activity_summary_summary = "//*[@id='ctl00_ctl00_MainContent_Content_rblSummaryDetail_1']"
+stop_report = "//*[@class='leftMenu']//*[@id='ReportStop']"
+stop_report_fromdate_input = "//*[@id='column-right']//*[@id='ctl00_ctl00_MainContent_Content_dtFromDate_txtDate']"
+
+
+
+
+
+
+
+
+
 
 
 

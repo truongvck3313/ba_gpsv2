@@ -15,7 +15,6 @@ from selenium.webdriver.common.by import By
 
 
 
-
 def timerun():
     while True:
         time.sleep(3)
@@ -226,6 +225,7 @@ def write_caseif1():
 
 
 
+
 def write_result_text_try_if(code, eventname, result, path_module, path_text, check_result, name_image):
     logging.info(path_module)
     logging.info("Mã - " + code)
@@ -290,6 +290,21 @@ def write_result_not_displayed_try(code, eventname, result, path_module, path_te
         writeData(var.checklistpath, "Checklist", code, 8, "Pass")
     # chucnangkhac.write_result_displayed_try(code, eventname, result, "Quản trị - Danh sách xe",
     #                                         var.check_hide_car, "_QuanTri_DsXe_AnXe.png")
+
+
+
+def write_result_excelreport(code, sheet, column, name_sheet, number_column, number_row, output):
+    if str(sheet[column + number_column]) == "<Cell '"+name_sheet+"'." + number_row + ">":
+        logging.info("Check vị trí "+number_row+":  "+output+"")
+        if str(sheet[column + number_column].value) == output:
+            logging.info("True")
+            # writeData(var.checklistpath, "Checklist", code, 12, " ")
+            writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+        else:
+            logging.info("False")
+            writeData(var.checklistpath, "Checklist", code, 8, "Fail")
+            writeData(var.checklistpath, "Checklist", code, 12, "File Báo cáo tổng hợp hoạt động sai ô " + number_row)
+    # chucnangkhac.write_result_excelreport(code, sheet, column, 'BC Tổng hợp', "5", "C5", "STT")
 
 
 

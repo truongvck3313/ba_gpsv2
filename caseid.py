@@ -2,6 +2,8 @@ import giamsat
 import login
 import lotrinh
 import administration
+import report
+
 
 import chucnangkhac
 import var
@@ -2031,4 +2033,134 @@ def caseid_admin35(self):
     administration.vehicle_management.vehicle_groups_administration_assign_many_group(self, "Admin35", eventname, result)
 
 
+def caseid_user01(self):
+    get_datachecklist("User01")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.system_management.list_user(self, "User01", eventname, result)
+
+
+def caseid_user02(self):
+    get_datachecklist("User02")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.system_management.list_user_search(self, "User02", eventname, result)
+
+def caseid_user03(self):
+    get_datachecklist("User03")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.system_management.list_user_downloadexcel(self, "User03", eventname, result)
+
+
+def caseid_report01(self):
+    get_datachecklist("Report01")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    report.synthesis_report.activity_synthesis_group_report(self, "Report01", eventname, result)
+
+
+def caseid_report02(self):
+    get_datachecklist("Report02")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    report.synthesis_report.activity_synthesis_group_report_search(self, "Report02", eventname, result)
+
+
+def caseid_report03(self):
+    get_datachecklist("Report03")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    report.synthesis_report.activity_synthesis_group_report_downloadexcel(self, "Report03", eventname, result)
+
+
+def caseid_report04(self):
+    get_datachecklist("Report04")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    report.synthesis_report.detailed_activity_report(self, "Report04", eventname, result)
+
+
+
+def caseid_report05(self):
+    get_datachecklist("Report05")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    report.synthesis_report.detailed_activity_report_checkbox(self, "Report05", eventname, result,
+                                                                      var.detailed_activity_report_mergeminute,
+                                                                      var.check_detailed_activity_report_mergeminute,
+                                                                      "Báo cáo doanh nghiệp - Báo cáo chi tiết hoạt động",
+                                                                      "Số phút giới hạn",
+                                                                      "_BaoCaoDoanhNghiep_BaoCaoChiTietHoatDong_GopSoPhut.png")
+
+def caseid_report06(self):
+    get_datachecklist("Report06")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    report.synthesis_report.detailed_activity_report_checkbox(self, "Report06", eventname, result,
+                                                                      var.detailed_activity_report_timeslot,
+                                                                      var.check_detailed_activity_report_timeslot,
+                                                                      "Báo cáo doanh nghiệp - Báo cáo chi tiết hoạt động",
+                                                                      "Khung giờ xuất báo cáo",
+                                                                      "_BaoCaoDoanhNghiep_BaoCaoChiTietHoatDong_KhungGio.png")
+
+
+def caseid_report07(self):
+    get_datachecklist("Report07")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    report.synthesis_report.detailed_activity_report_search(self, "Report07", eventname, result)
+
+
+
+def caseid_report08(self):
+    get_datachecklist("Report08")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    report.synthesis_report.detailed_activity_report_downloadexcel(self, "Report08", eventname, result)
+
+
+
+def caseid_report09(self):
+    get_datachecklist("Report09")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    report.synthesis_report.report_km_activity_summary(self, "Report09", eventname, result)
+
+
+
+def caseid_report10(self):
+    get_datachecklist("Report10")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    report.synthesis_report.report_km_activity_summary_search(self, "Report10", eventname, result,
+                                                              var.report_km_activity_summary_detail,
+                                                              var.check_report_km_activity_summary_detail,
+                                                              "STT", "_BaoCaoDoanhNghiep_BaoCaoTongHopKmHoatDong_TimKiemKichXung.png")
+
+
+def caseid_report11(self):
+    get_datachecklist("Report11")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    report.synthesis_report.report_km_activity_summary_downloadexcel1(self, "Report11", eventname, result)
+
+
+
+def caseid_report12(self):
+    get_datachecklist("Report12")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    report.synthesis_report.report_km_activity_summary_search(self, "Report12", eventname, result,
+                                                              var.report_km_activity_summary_summary,
+                                                              var.check_report_km_activity_summary_detail,
+                                                              "STT", "_BaoCaoDoanhNghiep_BaoCaoTongHopKmHoatDong_TimKiemTongHop.png")
+
+
+
+def caseid_report13(self):
+    get_datachecklist("Report13")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    report.synthesis_report.report_km_activity_summary_downloadexcel2(self, "Report13", eventname, result)
 
