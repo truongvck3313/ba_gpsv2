@@ -298,7 +298,6 @@ def write_result_excelreport(code, sheet, column, name_sheet, number_column, num
         logging.info("Check vị trí "+number_row+":  "+output+"")
         if str(sheet[column + number_column].value) == output:
             logging.info("True")
-            # writeData(var.checklistpath, "Checklist", code, 12, " ")
             writeData(var.checklistpath, "Checklist", code, 8, "Pass")
         else:
             logging.info("False")
@@ -306,6 +305,20 @@ def write_result_excelreport(code, sheet, column, name_sheet, number_column, num
             writeData(var.checklistpath, "Checklist", code, 12, "File Báo cáo tổng hợp hoạt động sai ô " + number_row)
     # chucnangkhac.write_result_excelreport(code, sheet, column, 'BC Tổng hợp', "5", "C5", "STT")
 
+
+
+def write_result_excelreport_clear_data(code, sheet, column, name_sheet, number_column, number_row, output):
+    if str(sheet[column + number_column]) == "<Cell '"+name_sheet+"'." + number_row + ">":
+        logging.info("Check vị trí "+number_row+":  "+output+"")
+        if str(sheet[column + number_column].value) == output:
+            logging.info("True")
+            writeData(var.checklistpath, "Checklist", code, 12, " ")
+            writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+        else:
+            logging.info("False")
+            writeData(var.checklistpath, "Checklist", code, 8, "Fail")
+            writeData(var.checklistpath, "Checklist", code, 12, "File Báo cáo tổng hợp hoạt động sai ô " + number_row)
+    # chucnangkhac.write_result_excelreport(code, sheet, column, 'BC Tổng hợp', "5", "C5", "STT")
 
 
 

@@ -724,14 +724,20 @@ check_report_km_activity_summary_detail = "//*[@class='table-report']/tbody/tr[1
 report_km_activity_summary_summary = "//*[@id='ctl00_ctl00_MainContent_Content_rblSummaryDetail_1']"
 stop_report = "//*[@class='leftMenu']//*[@id='ReportStop']"
 stop_report_fromdate_input = "//*[@id='column-right']//*[@id='ctl00_ctl00_MainContent_Content_dtFromDate_txtDate']"
-
-
-
-
-
-
-
-
+activity_synthesis_group_report_fromdate_input = "//*[@id='ctl00_ctl00_MainContent_Content_dtFromDate_txtDate']"
+report_km_activity_summary_from_date = "//*[@id='ctl00_ctl00_MainContent_Content_dtFromDate_txtDate']"
+report_search = "//*[@id='ctl00_ctl00_MainContent_Content_btnSearch']"
+fromdate_input = "//*[@id='ctl00_ctl00_MainContent_Content_dtFromDate_txtDate']"
+report_business_trip = "//*[@class='leftMenuContainer']//*[@id='ReportBusinessTrip']"
+station_report = "//*[@class='leftMenu']//*[@id='ReportStation']"
+report_air_conditioner_summaries = "//*[@class='leftMenu']//*[@id='ReportAirConditionerSummaries']"
+machine_report = "//*[@class='leftMenu']//*[@id='REPORTMACHINE']"
+position_history = "//*[@class='leftMenu']//*[@id='ReportItinerary']"
+check_position_history_time_slot = "//*[@id='ctl00_ctl00_MainContent_Content_lblKhungGioXuat']"
+position_history_choose_car3rd = "//*[@id='ctl00_ctl00_MainContent_Content_vehicleAutoComplete_ddlVehiclePlate_chzn']//*[@class='chzn-results']/li[3]"
+position_history_time_slot = "//*[@id='chkKhungGio']"
+position_history_choose_car = "//*[@id='ctl00_ctl00_MainContent_Content_vehicleAutoComplete_ddlVehiclePlate_chzn']//*[@class='chzn-single']"
+check_position_history_search = "//*[@id='divItinerary']"
 
 
 

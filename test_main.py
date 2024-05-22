@@ -359,27 +359,55 @@ class Test(unittest.TestCase):
         # caseid.caseid_user02(self)
         # caseid.caseid_user03(self)
 
-        # # Báo cáo doanh nghiep - Báo cáo tổng hợp hoạt động (theo nhóm)
+        # Báo cáo doanh nghiep - Báo cáo tổng hợp hoạt động (theo nhóm)
         # caseid.caseid_report01(self)
         # caseid.caseid_report02(self)
         # caseid.caseid_report03(self)
 
-        # Báo cáo doanh nghiep - Báo cáo tổng hợp hoạt động (theo nhóm)
+        # Báo cáo doanh nghiep - Báo cáo chi tiết họat động
         # caseid.caseid_report04(self)
         # caseid.caseid_report05(self)
         # caseid.caseid_report06(self)
         # caseid.caseid_report07(self)
         # caseid.caseid_report08(self)
+        #
+        # #Báo cáo tổng hợp km xe hoạt động
+        # caseid.caseid_report09(self)
+        # caseid.caseid_report10(self)
+        # caseid.caseid_report11(self)
+        # caseid.caseid_report12(self)
+        # caseid.caseid_report13(self)
+        #
+        # #Báo cáo dừng đỗ
+        # caseid.caseid_report14(self)
+        # caseid.caseid_report15(self)
+        # caseid.caseid_report16(self)
 
-        #Báo cáo tổng hợp km xe hoạt động
-        caseid.caseid_report09(self)
-        caseid.caseid_report10(self)
-        caseid.caseid_report11(self)
-        caseid.caseid_report12(self)
-        caseid.caseid_report13(self)
+        # #Báo cáo chuyến kinh doanh
+        # caseid.caseid_report17(self)
+        # caseid.caseid_report18(self)
+        # caseid.caseid_report19(self)
 
+        #Báo cáo ra vào trạm
+        # caseid.caseid_report20(self)
+        # caseid.caseid_report21(self)
+        # caseid.caseid_report22(self)
 
+        # #Báo cáo tổng hợp điều hòa
+        # caseid.caseid_report23(self)
+        # caseid.caseid_report24(self)
+        # caseid.caseid_report25(self)
 
+        # #Báo cáo động cơ
+        # caseid.caseid_report26(self)
+        # caseid.caseid_report27(self)
+        # caseid.caseid_report28(self)
+
+        #Báo cáo hành trình
+        # caseid.caseid_report29(self)
+        # caseid.caseid_report30(self)
+        # caseid.caseid_report31(self)
+        caseid.caseid_report32(self)
 
 
 
