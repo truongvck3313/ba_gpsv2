@@ -309,7 +309,7 @@ def write_result_excelreport(code, sheet, column, name_sheet, number_column, num
 
 def write_result_excelreport_clear_data(code, sheet, column, name_sheet, number_column, number_row, output):
     if str(sheet[column + number_column]) == "<Cell '"+name_sheet+"'." + number_row + ">":
-        logging.info("Check vị trí "+number_row+":  "+output+"")
+        logging.info("Check vị trí "+number_row+": "+output+"")
         if str(sheet[column + number_column].value) == output:
             logging.info("True")
             writeData(var.checklistpath, "Checklist", code, 12, " ")

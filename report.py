@@ -40,6 +40,7 @@ import shutil
 
 
 
+
 file_name = var.datatestpath
 with open(file_name, 'r', encoding='utf-8') as f:
     data = json.load(f, strict=False)
@@ -130,7 +131,8 @@ class synthesis_report:     #báo cáo tổng hợp
         var.driver.implicitly_wait(4)
         chucnangkhac.delete_excel()
         try:
-            var.driver.find_element(By.XPATH, var.activity_synthesis_report_search).click()
+            # var.driver.find_element(By.XPATH, var.activity_synthesis_report_search).click()
+            var.driver.find_element(By.XPATH, var.check_report_search)
         except:
             login.login.login_v2(self, "viconshipdanang1", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
@@ -138,10 +140,10 @@ class synthesis_report:     #báo cáo tổng hợp
             var.driver.find_element(By.XPATH, var.activity_synthesis_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.activity_synthesis_report_search).click()
-        time.sleep(5)
+            time.sleep(5)
         del var.driver.requests
         var.driver.find_element(By.XPATH, var.downloadexcel).click()
-        time.sleep(4)
+        time.sleep(7)
         x2x = XLS2XLSX(var.excelpath + "/ActivitySummaryNew_viconshipdanang1.xls")
         x2x.to_xlsx(var.excelpath + "/ActivitySummaryNew_viconshipdanang1.xlsx")
 
@@ -277,7 +279,7 @@ class synthesis_report:     #báo cáo tổng hợp
         chucnangkhac.delete_excel()
         time.sleep(1)
         try:
-            var.driver.find_element(By.XPATH, var.downloadexcel).click()
+            var.driver.find_element(By.XPATH, var.check_report_search)
         except:
             login.login.login_v2(self, "viconshipdanang1", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
@@ -286,7 +288,7 @@ class synthesis_report:     #báo cáo tổng hợp
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.detailed_activity_report_search).click()
             time.sleep(5)
-            var.driver.find_element(By.XPATH, var.downloadexcel).click()
+        var.driver.find_element(By.XPATH, var.downloadexcel).click()
         time.sleep(16)
         filename = max([var.excelpath + "\\" + f for f in os.listdir(var.excelpath)], key=os.path.getctime)
         shutil.move(filename, os.path.join(var.excelpath, r"baocaochitiethoatdong.xlsx"))
@@ -376,7 +378,7 @@ class synthesis_report:     #báo cáo tổng hợp
         var.driver.find_element(By.XPATH, var.report_km_activity_summary_search).click()
         time.sleep(6)
         var.driver.find_element(By.XPATH, var.downloadexcel).click()
-        time.sleep(10)
+        time.sleep(15)
         filename = max([var.excelpath + "\\" + f for f in os.listdir(var.excelpath)], key=os.path.getctime)
         shutil.move(filename, os.path.join(var.excelpath, r"baocaotonghopkmhoatdong_chitietkichxung.xlsx"))
         # #Đọc check file excel
@@ -419,7 +421,7 @@ class synthesis_report:     #báo cáo tổng hợp
         var.driver.find_element(By.XPATH, var.report_km_activity_summary_search).click()
         time.sleep(6)
         var.driver.find_element(By.XPATH, var.downloadexcel).click()
-        time.sleep(10)
+        time.sleep(15)
         filename = max([var.excelpath + "\\" + f for f in os.listdir(var.excelpath)], key=os.path.getctime)
         shutil.move(filename, os.path.join(var.excelpath, r"baocaotonghopkmhoatdong_tonghop.xlsx"))
         # #Đọc check file excel
@@ -441,6 +443,92 @@ class synthesis_report:     #báo cáo tổng hợp
             chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "E5", "Km cơ")
             chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "F5", "Thời gian kích xung")
             chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "G5", "Thời gian ngắt xung")
+
+
+
+
+
+
+
+
+
+
+
+    def report_checkin_checkout(self, code, eventname, result):          #Báo cáo tổng hợp lái xe đăng nhập đăng xuất
+        var.driver.implicitly_wait(10)
+        try:
+            var.driver.find_element(By.XPATH, var.report_checkin_checkout).click()
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            var.driver.find_element(By.XPATH, var.managerment_report).click()
+            time.sleep(5)
+            var.driver.find_element(By.XPATH, var.report_checkin_checkout).click()
+        time.sleep(5)
+        chucnangkhac.write_result_text_try_if(code, eventname, result, "Báo cáo doanh nghiệp - Báo cáo doanh nghiệp - Báo cáo tổng hợp lái xe đăng nhập đăng xuất",
+                                              var.check_report_km_activity_summary, "BÁO CÁO TỔNG HỢP LÁI XE ĐĂNG NHẬP ĐĂNG XUẤT", "_BaoCaoDoanhNghiep_BaoCaoTongHopLaiXeDangNhapDangXuat.png")
+
+
+    def report_checkin_checkout_search(self, code, eventname,result):  #Báo cáo tổng hợp lái xe đăng nhập đăng xuất - tìm kiếm
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.fromdate_input)
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            var.driver.find_element(By.XPATH, var.managerment_report).click()
+            time.sleep(4)
+            var.driver.find_element(By.XPATH, var.report_checkin_checkout).click()
+            time.sleep(5)
+        write_from_date(var.stop_report_fromdate_input)
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.report_search).click()
+        time.sleep(5)
+
+        chucnangkhac.write_result_displayed_try(code, eventname, result,
+                                                "Báo cáo doanh nghiệp - Báo cáo tổng hợp lái xe đăng nhập đăng xuất",
+                                                var.check_activity_synthesis_report_search,
+                                                "_BaoCaoDoanhNghiep_BaoCaoTongHopLaiXeDangNhapDangXuat_TimKiem.png")
+
+
+    def report_checkin_checkout_downloadexcel(self, code, eventname, result):    #Báo cáo tổng hợp lái xe đăng nhập đăng xuất -  checkdownload
+        var.driver.implicitly_wait(5)
+        chucnangkhac.delete_excel()
+        try:
+            var.driver.find_element(By.XPATH, var.check_report_search)
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            var.driver.find_element(By.XPATH, var.managerment_report).click()
+            time.sleep(4)
+            var.driver.find_element(By.XPATH, var.report_checkin_checkout).click()
+            time.sleep(5)
+            write_from_date(var.stop_report_fromdate_input)
+            time.sleep(1)
+            var.driver.find_element(By.XPATH, var.report_search).click()
+            time.sleep(6)
+        var.driver.find_element(By.XPATH, var.downloadexcel).click()
+        time.sleep(15)
+        filename = max([var.excelpath + "\\" + f for f in os.listdir(var.excelpath)], key=os.path.getctime)
+        shutil.move(filename, os.path.join(var.excelpath, r"baocaotonghoplaixedangnhapdangxuat.xlsx"))
+        #Đọc check file excel
+        bangchucai = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
+        wordbook = openpyxl.load_workbook(var.excelpath+"/baocaotonghoplaixedangnhapdangxuat.xlsX")
+        sheet = wordbook.get_sheet_by_name("Data")
+
+        logging.info("Báo cáo doanh nghiệp - Báo cáo tổng hợp lái xe đăng nhập đăng xuất")
+        logging.info("Mã - " + code)
+        logging.info("Tên sự kiện - " + eventname)
+        logging.info("Kết quả - " + result)
+        for column in bangchucai:
+            print(sheet[column + "6"].value)
+            print(sheet[column + "6"])
+            chucnangkhac.write_result_excelreport_clear_data(code, sheet, column, 'Data', "6", "A6", "STT")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "B6", "Lái xe")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "C6", "GPLX")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "D6", "Biển kiểm soát")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "E6", "Đăng nhập")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "F6", "Đăng xuất")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "G6", "Số lần đăng nhập")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "H6", "Số lần đăng xuất")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "I6", "Tổng số lần")
 
 
 
@@ -488,7 +576,8 @@ class activity_report:      #Báo cáo hoạt động
         var.driver.implicitly_wait(5)
         chucnangkhac.delete_excel()
         try:
-            var.driver.find_element(By.XPATH, var.report_search).click()
+            # var.driver.find_element(By.XPATH, var.report_search).click()
+            var.driver.find_element(By.XPATH, var.check_report_search)
         except:
             login.login.login_v2(self, "viconshipdanang1", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
@@ -497,15 +586,31 @@ class activity_report:      #Báo cáo hoạt động
             time.sleep(5)
             write_from_date(var.stop_report_fromdate_input)
             var.driver.find_element(By.XPATH, var.report_search).click()
-        time.sleep(6)
+            time.sleep(6)
         var.driver.find_element(By.XPATH, var.downloadexcel).click()
-        time.sleep(10)
-        filename = max([var.excelpath + "\\" + f for f in os.listdir(var.excelpath)], key=os.path.getctime)
-        shutil.move(filename, os.path.join(var.excelpath, r"baocaodungdo.xlsx"))
+        time.sleep(15)
+        try:
+            filename = max([var.excelpath + "\\" + f for f in os.listdir(var.excelpath)], key=os.path.getctime)
+            shutil.move(filename, os.path.join(var.excelpath, r"baocaodungdo.xlsx"))
+        except:
+            var.driver.find_element(By.XPATH, var.downloadexcel).click()
+            time.sleep(15)
+            filename = max([var.excelpath + "\\" + f for f in os.listdir(var.excelpath)], key=os.path.getctime)
+            shutil.move(filename, os.path.join(var.excelpath, r"baocaodungdo.xlsx"))
+
         # #Đọc check file excel
         bangchucai = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P']
-        wordbook = openpyxl.load_workbook(var.excelpath+"/baocaodungdo.xlsX")
-        sheet = wordbook.get_sheet_by_name("Data")
+
+        try:
+            wordbook = openpyxl.load_workbook(var.excelpath+"/baocaodungdo.xlsX")
+            sheet = wordbook.get_sheet_by_name("Data")
+        except:
+            var.driver.find_element(By.XPATH, var.downloadexcel).click()
+            time.sleep(15)
+            filename = max([var.excelpath + "\\" + f for f in os.listdir(var.excelpath)], key=os.path.getctime)
+            shutil.move(filename, os.path.join(var.excelpath, r"baocaodungdo.xlsx"))
+            wordbook = openpyxl.load_workbook(var.excelpath+"/baocaodungdo.xlsX")
+            sheet = wordbook.get_sheet_by_name("Data")
 
         logging.info("Báo cáo doanh nghiệp - Báo cáo dừng đỗ")
         logging.info("Mã - " + code)
@@ -575,7 +680,8 @@ class activity_report:      #Báo cáo hoạt động
         var.driver.implicitly_wait(5)
         chucnangkhac.delete_excel()
         try:
-            var.driver.find_element(By.XPATH, var.report_search).click()
+            # var.driver.find_element(By.XPATH, var.report_search).click()
+            var.driver.find_element(By.XPATH, var.check_report_search)
         except:
             login.login.login_v2(self, "viconshipdanang1", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
@@ -584,9 +690,9 @@ class activity_report:      #Báo cáo hoạt động
             time.sleep(5)
             write_from_date(var.fromdate_input)
             var.driver.find_element(By.XPATH, var.report_search).click()
-        time.sleep(6)
+            time.sleep(6)
         var.driver.find_element(By.XPATH, var.downloadexcel).click()
-        time.sleep(10)
+        time.sleep(15)
         filename = max([var.excelpath + "\\" + f for f in os.listdir(var.excelpath)], key=os.path.getctime)
         shutil.move(filename, os.path.join(var.excelpath, r"baocaochuyenkinhdoanh.xlsx"))
         #Đọc check file excel
@@ -668,7 +774,8 @@ class activity_report:      #Báo cáo hoạt động
         var.driver.implicitly_wait(5)
         chucnangkhac.delete_excel()
         try:
-            var.driver.find_element(By.XPATH, var.report_search).click()
+            # var.driver.find_element(By.XPATH, var.report_search).click()
+            var.driver.find_element(By.XPATH, var.check_report_search)
         except:
             login.login.login_v2(self, "viconshipdanang1", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
@@ -677,9 +784,9 @@ class activity_report:      #Báo cáo hoạt động
             time.sleep(5)
             write_from_date(var.fromdate_input)
             var.driver.find_element(By.XPATH, var.report_search).click()
-        time.sleep(6)
+            time.sleep(6)
         var.driver.find_element(By.XPATH, var.downloadexcel).click()
-        time.sleep(10)
+        time.sleep(15)
         filename = max([var.excelpath + "\\" + f for f in os.listdir(var.excelpath)], key=os.path.getctime)
         shutil.move(filename, os.path.join(var.excelpath, r"baocaoravaotram.xlsx"))
         #Đọc check file excel
@@ -746,7 +853,8 @@ class activity_report:      #Báo cáo hoạt động
         var.driver.implicitly_wait(5)
         chucnangkhac.delete_excel()
         try:
-            var.driver.find_element(By.XPATH, var.report_search).click()
+            # var.driver.find_element(By.XPATH, var.report_search).click()
+            var.driver.find_element(By.XPATH, var.check_report_search)
         except:
             login.login.login_v2(self, "viconshipdanang1", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
@@ -755,9 +863,9 @@ class activity_report:      #Báo cáo hoạt động
             time.sleep(5)
             write_from_date(var.fromdate_input)
             var.driver.find_element(By.XPATH, var.report_search).click()
-        time.sleep(6)
+            time.sleep(6)
         var.driver.find_element(By.XPATH, var.downloadexcel).click()
-        time.sleep(10)
+        time.sleep(15)
         filename = max([var.excelpath + "\\" + f for f in os.listdir(var.excelpath)], key=os.path.getctime)
         shutil.move(filename, os.path.join(var.excelpath, r"baocaotonghopbattatdieuhoa.xlsx"))
         #Đọc check file excel
@@ -824,7 +932,8 @@ class activity_report:      #Báo cáo hoạt động
         var.driver.implicitly_wait(5)
         chucnangkhac.delete_excel()
         try:
-            var.driver.find_element(By.XPATH, var.report_search).click()
+            # var.driver.find_element(By.XPATH, var.report_search).click()
+            var.driver.find_element(By.XPATH, var.check_report_search)
         except:
             login.login.login_v2(self, "viconshipdanang1", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
@@ -833,9 +942,9 @@ class activity_report:      #Báo cáo hoạt động
             time.sleep(5)
             write_from_date(var.fromdate_input)
             var.driver.find_element(By.XPATH, var.report_search).click()
-        time.sleep(6)
+            time.sleep(6)
         var.driver.find_element(By.XPATH, var.downloadexcel).click()
-        time.sleep(10)
+        time.sleep(15)
         filename = max([var.excelpath + "\\" + f for f in os.listdir(var.excelpath)], key=os.path.getctime)
         shutil.move(filename, os.path.join(var.excelpath, r"baocaodongco.xlsx"))
         #Đọc check file excel
@@ -859,6 +968,160 @@ class activity_report:      #Báo cáo hoạt động
             chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "G6", "Địa điểm bắt đầu")
 
 
+
+
+
+
+
+
+
+    def report_speed_over(self, code, eventname, result):        #Báo cáo quá tốc độ
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.report_speed_over).click()
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            var.driver.find_element(By.XPATH, var.managerment_report).click()
+            time.sleep(5)
+            var.driver.find_element(By.XPATH, var.report_speed_over).click()
+        time.sleep(5)
+        chucnangkhac.write_result_text_try_if(code, eventname, result, "Báo cáo doanh nghiệp - Báo cáo quá tốc độ",
+                                              var.check_report_km_activity_summary, "BÁO CÁO QUÁ TỐC ĐỘ", "_BaoCaoDoanhNghiep_BaoCaoQuaTocDo.png")
+
+
+    def report_speed_over_search(self, code, eventname, result):    #Báo cáo quá tốc độ - tìm kiếm
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.fromdate_input)
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            var.driver.find_element(By.XPATH, var.managerment_report).click()
+            time.sleep(4)
+            var.driver.find_element(By.XPATH, var.report_speed_over).click()
+            time.sleep(5)
+
+        from_date = var.driver.find_element(By.XPATH, var.fromdate_input).get_attribute('value')
+        print(from_date)
+        from_date_day = from_date[0:2]
+        print(from_date_day)
+        from_date_month = from_date[3:5]
+        print(from_date_month)
+        from_date_year = from_date[6::]
+        print(from_date_year)
+        from_date_month = int(from_date_month) - 1
+        print(from_date_month)
+        if from_date_month == 9:
+            from_date_month = "09"
+        if from_date_month == 8:
+            from_date_month = "08"
+        if from_date_month == 7:
+            from_date_month = "07"
+        if from_date_month == 6:
+            from_date_month = "06"
+        if from_date_month == 5:
+            from_date_month = "05"
+        if from_date_month == 4:
+            from_date_month = "04"
+        if from_date_month == 3:
+            from_date_month = "03"
+        if from_date_month == 2:
+            from_date_month = "02"
+        if from_date_month == 1:
+            from_date_month = "01"
+        if from_date_month == 0:
+            from_date_month = "01"
+        from_date = from_date_day + str(from_date_month) + from_date_year
+        print(from_date)
+        xoa = var.driver.find_element(By.XPATH, var.fromdate_input)
+        xoa.send_keys(Keys.CONTROL, "a")
+        var.driver.find_element(By.XPATH, var.fromdate_input).send_keys(from_date)
+        write_from_date(var.fromdate_input)
+        var.driver.find_element(By.XPATH, var.report_search).click()
+        time.sleep(30)
+        print("aaaa")
+        chucnangkhac.write_result_displayed_try(code, eventname, result,
+                                                "Báo cáo quá tốc độ",
+                                                var.check_activity_synthesis_report_search,
+                                                "_BaoCaoDoanhNghiep_BaoCaoQuaTocDo_TimKiem.png")
+
+
+    def report_speed_over_downloadexcel(self, code, eventname, result):    #Báo cáo quá tốc độ -  checkdownload
+        var.driver.implicitly_wait(5)
+        chucnangkhac.delete_excel()
+        try:
+            # var.driver.find_element(By.XPATH, var.report_search).click()
+            var.driver.find_element(By.XPATH, var.check_report_search)
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            var.driver.find_element(By.XPATH, var.managerment_report).click()
+            time.sleep(4)
+            var.driver.find_element(By.XPATH, var.report_speed_over).click()
+            time.sleep(5)
+            from_date = var.driver.find_element(By.XPATH, var.fromdate_input).get_attribute('value')
+            print(from_date)
+            from_date_day = from_date[0:2]
+            print(from_date_day)
+            from_date_month = from_date[3:5]
+            print(from_date_month)
+            from_date_year = from_date[6::]
+            print(from_date_year)
+            from_date_month = int(from_date_month) - 1
+            print(from_date_month)
+            if from_date_month == 9:
+                from_date_month = "09"
+            if from_date_month == 8:
+                from_date_month = "08"
+            if from_date_month == 7:
+                from_date_month = "07"
+            if from_date_month == 6:
+                from_date_month = "06"
+            if from_date_month == 5:
+                from_date_month = "05"
+            if from_date_month == 4:
+                from_date_month = "04"
+            if from_date_month == 3:
+                from_date_month = "03"
+            if from_date_month == 2:
+                from_date_month = "02"
+            if from_date_month == 1:
+                from_date_month = "01"
+            if from_date_month == 0:
+                from_date_month = "01"
+            from_date = from_date_day + str(from_date_month) + from_date_year
+            print(from_date)
+            xoa = var.driver.find_element(By.XPATH, var.fromdate_input)
+            xoa.send_keys(Keys.CONTROL, "a")
+            var.driver.find_element(By.XPATH, var.fromdate_input).send_keys(from_date)
+            write_from_date(var.fromdate_input)
+            var.driver.find_element(By.XPATH, var.report_search).click()
+            time.sleep(30)
+
+        var.driver.find_element(By.XPATH, var.downloadexcel).click()
+        time.sleep(60)
+        filename = max([var.excelpath + "\\" + f for f in os.listdir(var.excelpath)], key=os.path.getctime)
+        shutil.move(filename, os.path.join(var.excelpath, r"baocaoquatocdo.xlsx"))
+
+        #Đọc check file excel
+        bangchucai = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
+        wordbook = openpyxl.load_workbook(var.excelpath+"/baocaoquatocdo.xlsX")
+        sheet = wordbook.get_sheet_by_name("Data")
+
+        logging.info("Báo cáo doanh nghiệp - Báo cáo quá tốc độ")
+        logging.info("Mã - " + code)
+        logging.info("Tên sự kiện - " + eventname)
+        logging.info("Kết quả - " + result)
+        for column in bangchucai:
+            print(sheet[column + "6"].value)
+            print(sheet[column + "6"])
+            chucnangkhac.write_result_excelreport_clear_data(code, sheet, column, 'Data', "6", "A6", "STT")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "B6", "Biển kiểm soát")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "C6", "Thời điểm")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "D6", "Thời gian (s)")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "E6", "Quãng đường (m)")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "F6", "Tốc độ cực đại ≥")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "G6", "Địa điểm bắt đầu")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "H6", "Địa điểm kết thúc")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "I6", "Ghi chú")
 
 
 
@@ -920,43 +1183,414 @@ class report_schedule:  #Báo cáo lịch trình
 
 
     def position_history_downloadexcel1(self, code, eventname, result):    #Báo cáo hành trình -  checkdownload
-        # var.driver.implicitly_wait(5)
-        # chucnangkhac.delete_excel()
-        # try:
-        #     var.driver.find_element(By.XPATH, var.check_position_history_search)
-        # except:
-        #     login.login.login_v2(self, "viconshipdanang1", "12341234")
-        #     var.driver.find_element(By.XPATH, var.managerment_report).click()
-        #     time.sleep(4)
-        #     var.driver.find_element(By.XPATH, var.position_history).click()
-        #     time.sleep(5)
-        #     var.driver.find_element(By.XPATH, var.position_history_choose_car).click()
-        #     time.sleep(1)
-        #     var.driver.find_element(By.XPATH, var.position_history_choose_car3rd).click()
-        #     var.driver.find_element(By.XPATH, var.report_search).click()
-        #     time.sleep(8)
-        # time.sleep(1)
-        # var.driver.find_element(By.XPATH, var.downloadexcel).click()
-        # time.sleep(10)
-        # filename = max([var.excelpath + "\\" + f for f in os.listdir(var.excelpath)], key=os.path.getctime)
-        # shutil.move(filename, os.path.join(var.excelpath, r"baocaohanhtrinh.xls"))
+        var.driver.implicitly_wait(5)
+        chucnangkhac.delete_excel()
+        try:
+            # var.driver.find_element(By.XPATH, var.check_position_history_search)
+            var.driver.find_element(By.XPATH, var.check_report_search)
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            var.driver.find_element(By.XPATH, var.managerment_report).click()
+            time.sleep(4)
+            var.driver.find_element(By.XPATH, var.position_history).click()
+            time.sleep(5)
+            var.driver.find_element(By.XPATH, var.position_history_choose_car).click()
+            time.sleep(1)
+            var.driver.find_element(By.XPATH, var.position_history_choose_car3rd).click()
+            var.driver.find_element(By.XPATH, var.report_search).click()
+            time.sleep(8)
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.downloadexcel).click()
+        time.sleep(15)
+        filename = max([var.excelpath + "\\" + f for f in os.listdir(var.excelpath)], key=os.path.getctime)
+        shutil.move(filename, os.path.join(var.excelpath, r"baocaohanhtrinh.xls"))
 
 
-        x2x = XLS2XLSX(var.excelpath + "/baocaohanhtrinh.xls")
-        x2x.to_xlsx(var.excelpath + "/baocaohanhtrinh.xlsx")
-
+        # x2x = XLS2XLSX(var.excelpath + "/ActivitySummaryNew_viconshipdanang1.xls")
+        # x2x.to_xlsx(var.excelpath + "/ActivitySummaryNew_viconshipdanang1.xlsx")
+        # #
         # #Đọc check file excel
-        bangchucai = ['A']
-        wordbook = openpyxl.load_workbook(var.excelpath+"/baocaohanhtrinh.xlsx")
-        sheet = wordbook.get_sheet_by_name("Data")
+        # bangchucai = ['A']
+        # wordbook = openpyxl.load_workbook(var.excelpath+"/baocaohanhtrinh.xls")
+        # sheet = wordbook.get_sheet_by_name("Data")
+        # for column in bangchucai:
+        #     print(sheet[column + "1"].value)
+        #     print(sheet[column + "1"])
+        #     chucnangkhac.write_result_excelreport_clear_data(code, sheet, column, 'Data', "1", "A1", "BÁO CÁO HÀNH TRÌNH")
 
         logging.info("Báo cáo doanh nghiệp - Báo cáo hành trình")
         logging.info("Mã - " + code)
         logging.info("Tên sự kiện - " + eventname)
         logging.info("Kết quả - " + result)
+        chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+
+
+
+
+
+class fuel_report:
+    def fuel_consumption_summary_report(self, code, eventname, result):     #Báo cáo tổng hợp tiêu hao nhiên liệu
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.fuel_consumption_summary_report).click()
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            var.driver.find_element(By.XPATH, var.managerment_report).click()
+            time.sleep(5)
+            var.driver.find_element(By.XPATH, var.fuel_consumption_summary_report).click()
+        time.sleep(5)
+        chucnangkhac.write_result_text_try_if(code, eventname, result, "Báo cáo doanh nghiệp - Báo cáo tổng hợp tiêu hao nhiên liệu",
+                                              var.check_report_km_activity_summary, "BÁO CÁO TỔNG HỢP TIÊU HAO NHIÊN LIỆU", "_BaoCaoDoanhNghiep_BaoCaoTongHopTieuHaoNhienLieu.png")
+
+    def fuel_consumption_summary_report_search(self, code, eventname,result):  #Báo cáo tổng hợp tiêu hao nhiên liệu - tìm kiếm
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.fromdate_input)
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            var.driver.find_element(By.XPATH, var.managerment_report).click()
+            time.sleep(4)
+            var.driver.find_element(By.XPATH, var.fuel_consumption_summary_report).click()
+            time.sleep(5)
+        # write_from_date(var.stop_report_fromdate_input)
+        # time.sleep(1)
+        var.driver.find_element(By.XPATH, var.activity_synthesis_report_search).click()
+        time.sleep(5)
+
+        chucnangkhac.write_result_displayed_try(code, eventname, result,
+                                                "Báo cáo doanh nghiệp - Báo cáo tổng hợp tiêu hao nhiên liệu",
+                                                var.check_activity_synthesis_report_search,
+                                                "_BaoCaoDoanhNghiep_BaoCaoTongHopTieuHaoNhienLieu_TimKiem.png")
+
+    def fuel_consumption_summary_report_downloadexcel(self, code, eventname, result):    #Báo cáo tổng hợp tiêu hao nhiên liệu -  checkdownload
+        var.driver.implicitly_wait(5)
+        chucnangkhac.delete_excel()
+        try:
+            # var.driver.find_element(By.XPATH, var.report_search).click()
+            var.driver.find_element(By.XPATH, var.check_report_search)
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            var.driver.find_element(By.XPATH, var.managerment_report).click()
+            time.sleep(4)
+            var.driver.find_element(By.XPATH, var.fuel_consumption_summary_report).click()
+            time.sleep(5)
+            write_from_date(var.stop_report_fromdate_input)
+            time.sleep(1)
+            var.driver.find_element(By.XPATH, var.report_search).click()
+            time.sleep(6)
+        var.driver.find_element(By.XPATH, var.downloadexcel).click()
+        time.sleep(15)
+        try:
+            filename = max([var.excelpath + "\\" + f for f in os.listdir(var.excelpath)], key=os.path.getctime)
+            shutil.move(filename, os.path.join(var.excelpath, r"baocaotonghoptieuhaonhienlieu.xlsx"))
+        except:
+            var.driver.find_element(By.XPATH, var.downloadexcel).click()
+            time.sleep(15)
+            filename = max([var.excelpath + "\\" + f for f in os.listdir(var.excelpath)], key=os.path.getctime)
+            shutil.move(filename, os.path.join(var.excelpath, r"baocaotonghoptieuhaonhienlieu.xlsx"))
+
+        #Đọc check file excel
+        bangchucai = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T']
+        wordbook = openpyxl.load_workbook(var.excelpath+"/baocaotonghoptieuhaonhienlieu.xlsX")
+        sheet = wordbook.get_sheet_by_name("Data")
+
+        logging.info("Báo cáo doanh nghiệp - Báo cáo tổng hợp tiêu hao nhiên liệu")
+        logging.info("Mã - " + code)
+        logging.info("Tên sự kiện - " + eventname)
+        logging.info("Kết quả - " + result)
         for column in bangchucai:
-            print(sheet[column + "1"].value)
-            print(sheet[column + "1"])
-            chucnangkhac.write_result_excelreport_clear_data(code, sheet, column, 'Data', "1", "A1", "BÁO CÁO HÀNH TRÌNH")
+            print(sheet[column + "6"].value)
+            print(sheet[column + "6"])
+            chucnangkhac.write_result_excelreport_clear_data(code, sheet, column, 'Data', "6", "A6", "STT")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "B6", "Nhóm xe")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "C6", "Biển kiểm soát")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "D6", "Loại phương tiện")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "E6", "Thời gian bật máy")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "F6", "Thời gian bật máy (Giờ:Phút)")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "G6", "Số lần đổ")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "H6", "Số lần hút")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "I6", "Số lít đầu kỳ")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "J6", "Số lít đổ")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "K6", "Số lít hút")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "L6", "Số lít cuối kỳ")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "M6", "Nhiên liệu tiêu thụ định mức")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "N6", "Nhiên liệu tiêu thụ thực tế")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "O6", "Định mức quy định")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "P6", "Định mức thực tế")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "Q6", "Tổng km")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "R6", "Km cơ")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "S6", "Ghi chú 1")
+
+
+
+
+
+
+    def fuel_consumption_daily_report(self, code, eventname, result):     #Báo cáo tiêu hao nhiên liệu
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.fuel_consumption_daily_report).click()
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            var.driver.find_element(By.XPATH, var.managerment_report).click()
+            time.sleep(5)
+            var.driver.find_element(By.XPATH, var.fuel_consumption_daily_report).click()
+        time.sleep(5)
+        chucnangkhac.write_result_text_try_if(code, eventname, result, "Báo cáo doanh nghiệp - Báo cáo tiêu hao nhiên liệu",
+                                              var.check_report_km_activity_summary, "BÁO CÁO TIÊU HAO NHIÊN LIỆU", "_BaoCaoDoanhNghiep_BaoCaoTieuHaoNhienLieu.png")
+
+
+    def fuel_consumption_daily_report_search(self, code, eventname,result):  #Báo cáo tiêu hao nhiên liệu - tìm kiếm
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.fromdate_input)
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            var.driver.find_element(By.XPATH, var.managerment_report).click()
+            time.sleep(4)
+            var.driver.find_element(By.XPATH, var.fuel_consumption_daily_report).click()
+            time.sleep(5)
+        write_from_date(var.stop_report_fromdate_input)
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.report_search).click()
+        time.sleep(5)
+
+        chucnangkhac.write_result_displayed_try(code, eventname, result,
+                                                "Báo cáo doanh nghiệp - Báo cáo tiêu hao nhiên liệu",
+                                                var.check_activity_synthesis_report_search,
+                                                "_BaoCaoDoanhNghiep_BaoCaoTieuHaoNhienLieu_TimKiem.png")
+
+
+    def fuel_consumption_daily_report_downloadexcel(self, code, eventname, result):    #Báo cáo tiêu hao nhiên liệu -  checkdownload
+        var.driver.implicitly_wait(5)
+        chucnangkhac.delete_excel()
+        try:
+            # var.driver.find_element(By.XPATH, var.report_search).click()
+            var.driver.find_element(By.XPATH, var.check_report_search)
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            var.driver.find_element(By.XPATH, var.managerment_report).click()
+            time.sleep(4)
+            var.driver.find_element(By.XPATH, var.fuel_consumption_daily_report).click()
+            time.sleep(5)
+            write_from_date(var.stop_report_fromdate_input)
+            time.sleep(1)
+            var.driver.find_element(By.XPATH, var.report_search).click()
+            time.sleep(6)
+        var.driver.find_element(By.XPATH, var.downloadexcel).click()
+        time.sleep(15)
+        filename = max([var.excelpath + "\\" + f for f in os.listdir(var.excelpath)], key=os.path.getctime)
+        shutil.move(filename, os.path.join(var.excelpath, r"baocaotieuhaonhienlieu.xlsx"))
+        #Đọc check file excel
+        bangchucai = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R']
+        wordbook = openpyxl.load_workbook(var.excelpath+"/baocaotieuhaonhienlieu.xlsX")
+        sheet = wordbook.get_sheet_by_name("Data")
+
+        logging.info("Báo cáo doanh nghiệp - Báo cáo tiêu hao nhiên liệu")
+        logging.info("Mã - " + code)
+        logging.info("Tên sự kiện - " + eventname)
+        logging.info("Kết quả - " + result)
+        for column in bangchucai:
+            print(sheet[column + "5"].value)
+            print(sheet[column + "5"])
+            chucnangkhac.write_result_excelreport_clear_data(code, sheet, column, 'Data', "5", "A5", "STT")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "B5", "Ngày tháng")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "C5", "Biển kiểm soát")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "D5", "Loại phương tiện")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "E5", "Bắt đầu di chuyển")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "F5", "Kết thúc di chuyển")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "G5", "Thời gian lăn bánh (phút)")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "H5", "Số lần đổ")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "I5", "Số lần hút")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "J5", "Số lít đầu ngày")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "K5", "Số lít đổ")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "L5", "Số lít hút")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "M5", "Số lít tồn")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "N5", "Nhiên liệu tiêu hao")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "O5", "Định mức quy định")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "P5", "Định mức thực tế")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "Q5", "Số tiền")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "R5", "Km GPS")
+
+
+
+
+
+
+    def report_pour_fuel(self, code, eventname, result):     #Báo cáo đổ hút nhiên liệu
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.report_pour_fuel).click()
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            var.driver.find_element(By.XPATH, var.managerment_report).click()
+            time.sleep(5)
+            var.driver.find_element(By.XPATH, var.report_pour_fuel).click()
+        time.sleep(5)
+        chucnangkhac.write_result_text_try_if(code, eventname, result, "Báo cáo doanh nghiệp - Báo cáo đổ hút nhiên liệu",
+                                              var.check_report_km_activity_summary, "BÁO CÁO ĐỔ HÚT NHIÊN LIỆU", "_BaoCaoDoanhNghiep_BaoCaoDoHutNhienLieu.png")
+
+
+    def report_pour_fuel_search(self, code, eventname,result):  #Báo cáo đổ hút nhiên liệu - tìm kiếm
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.fromdate_input)
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            var.driver.find_element(By.XPATH, var.managerment_report).click()
+            time.sleep(4)
+            var.driver.find_element(By.XPATH, var.report_pour_fuel).click()
+            time.sleep(5)
+        write_from_date(var.stop_report_fromdate_input)
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.report_search).click()
+        time.sleep(5)
+
+        chucnangkhac.write_result_displayed_try(code, eventname, result,
+                                                "Báo cáo doanh nghiệp - Báo cáo đổ hút nhiên liệu",
+                                                var.check_activity_synthesis_report_search,
+                                                "_BaoCaoDoanhNghiep_BaoCaoDoHutNhienLieu_TimKiem.png")
+
+
+    def report_pour_fuel_downloadexcel(self, code, eventname, result):    #Báo cáo đổ hút nhiên liệu -  checkdownload
+        var.driver.implicitly_wait(5)
+        chucnangkhac.delete_excel()
+        try:
+            # var.driver.find_element(By.XPATH, var.report_search).click()
+            var.driver.find_element(By.XPATH, var.check_report_search)
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            var.driver.find_element(By.XPATH, var.managerment_report).click()
+            time.sleep(4)
+            var.driver.find_element(By.XPATH, var.report_pour_fuel).click()
+            time.sleep(5)
+            write_from_date(var.stop_report_fromdate_input)
+            time.sleep(1)
+            var.driver.find_element(By.XPATH, var.report_search).click()
+            time.sleep(6)
+        var.driver.find_element(By.XPATH, var.downloadexcel).click()
+        time.sleep(15)
+        filename = max([var.excelpath + "\\" + f for f in os.listdir(var.excelpath)], key=os.path.getctime)
+        shutil.move(filename, os.path.join(var.excelpath, r"baocaodohutnhienlieu.xlsx"))
+
+        #Đọc check file excel
+        bangchucai = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
+        wordbook = openpyxl.load_workbook(var.excelpath+"/baocaodohutnhienlieu.xlsX")
+        sheet = wordbook.get_sheet_by_name("Data")
+
+        logging.info("Báo cáo doanh nghiệp - Báo cáo đổ hút nhiên liệu")
+        logging.info("Mã - " + code)
+        logging.info("Tên sự kiện - " + eventname)
+        logging.info("Kết quả - " + result)
+        for column in bangchucai:
+            print(sheet[column + "6"].value)
+            print(sheet[column + "6"])
+            chucnangkhac.write_result_excelreport_clear_data(code, sheet, column, 'Data', "6", "A6", "STT")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "B6", "Biển kiểm soát")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "C6", "Thời gian")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "D6", "Số lít trước")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "E6", "Số lít")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "F6", "Số lít sau")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "G6", "Số tiền")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "H6", "Địa chỉ")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "I6", "Ghi chú")
+
+
+
+
+
+class system_report:
+
+    def device_singnal_report(self, code, eventname, result):     #Báo cáo mất tín hiệu
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.device_singnal_report).click()
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            var.driver.find_element(By.XPATH, var.managerment_report).click()
+            time.sleep(5)
+            var.driver.find_element(By.XPATH, var.device_singnal_report).click()
+        time.sleep(5)
+        chucnangkhac.write_result_text_try_if(code, eventname, result, "Báo cáo doanh nghiệp - Báo cáo mất tín hiệu",
+                                              var.check_report_km_activity_summary, "BÁO CÁO MẤT TÍN HIỆU", "_BaoCaoDoanhNghiep_BaoCaoMatTinHieu.png")
+
+
+    def device_singnal_report_search(self, code, eventname,result):  #Báo cáo mất tín hiệu - tìm kiếm
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.fromdate_input)
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            var.driver.find_element(By.XPATH, var.managerment_report).click()
+            time.sleep(4)
+            var.driver.find_element(By.XPATH, var.device_singnal_report).click()
+            time.sleep(5)
+        write_from_date(var.stop_report_fromdate_input)
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.report_search).click()
+        time.sleep(5)
+
+        chucnangkhac.write_result_displayed_try(code, eventname, result,
+                                                "Báo cáo doanh nghiệp - Báo cáo mất tín hiệu",
+                                                var.check_activity_synthesis_report_search,
+                                                "_BaoCaoDoanhNghiep_BaoCaoMatTinHieu_TimKiem.png")
+
+
+
+    def device_singnal_report_downloadexcel(self, code, eventname, result):    #Báo cáo mất tín hiệu -  checkdownload
+        var.driver.implicitly_wait(5)
+        chucnangkhac.delete_excel()
+        try:
+            # var.driver.find_element(By.XPATH, var.report_search).click()
+            var.driver.find_element(By.XPATH, var.check_report_search)
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            var.driver.find_element(By.XPATH, var.managerment_report).click()
+            time.sleep(4)
+            var.driver.find_element(By.XPATH, var.device_singnal_report).click()
+            time.sleep(5)
+            write_from_date(var.stop_report_fromdate_input)
+            time.sleep(1)
+            var.driver.find_element(By.XPATH, var.report_search).click()
+            time.sleep(6)
+        var.driver.find_element(By.XPATH, var.downloadexcel).click()
+        time.sleep(15)
+        filename = max([var.excelpath + "\\" + f for f in os.listdir(var.excelpath)], key=os.path.getctime)
+        shutil.move(filename, os.path.join(var.excelpath, r"baocaomatinhieu.xlsx"))
+
+        #Đọc check file excel
+        bangchucai = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
+        wordbook = openpyxl.load_workbook(var.excelpath+"/baocaomatinhieu.xlsX")
+        sheet = wordbook.get_sheet_by_name("Data")
+
+        logging.info("Báo cáo doanh nghiệp - Báo cáo mất tín hiệu")
+        logging.info("Mã - " + code)
+        logging.info("Tên sự kiện - " + eventname)
+        logging.info("Kết quả - " + result)
+        for column in bangchucai:
+            print(sheet[column + "5"].value)
+            print(sheet[column + "5"])
+            chucnangkhac.write_result_excelreport_clear_data(code, sheet, column, 'Data', "5", "A5", "STT")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "B5", "Biển kiểm soát")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "C5", "Nhóm")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "D5", "Thời điểm bắt đầu")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "E5", "Thời điểm kết thúc")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "F5", "Thời gian")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "G5", "Địa điểm bắt đầu")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "H5", "Địa điểm kết thúc")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "I5", "Trạng thái")
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

@@ -2305,3 +2305,138 @@ def caseid_report32(self):
 
 
 
+def caseid_report33(self):
+    get_datachecklist("Report33")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    report.fuel_report.fuel_consumption_summary_report(self, "Report33", eventname, result)
+
+
+def caseid_report34(self):
+    get_datachecklist("Report34")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    report.fuel_report.fuel_consumption_summary_report_search(self, "Report34", eventname, result)
+
+
+def caseid_report35(self):
+    get_datachecklist("Report35")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    report.fuel_report.fuel_consumption_summary_report_downloadexcel(self, "Report35", eventname, result)
+
+
+def caseid_report36(self):
+    get_datachecklist("Report36")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    report.fuel_report.fuel_consumption_daily_report(self, "Report36", eventname, result)
+
+
+
+def caseid_report37(self):
+    get_datachecklist("Report37")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    report.fuel_report.fuel_consumption_daily_report_search(self, "Report37", eventname, result)
+
+
+def caseid_report38(self):
+    get_datachecklist("Report38")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    report.fuel_report.fuel_consumption_daily_report_downloadexcel(self, "Report38", eventname, result)
+
+
+def caseid_report39(self):
+    get_datachecklist("Report39")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    report.fuel_report.report_pour_fuel(self, "Report39", eventname, result)
+
+
+def caseid_report40(self):
+    get_datachecklist("Report40")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    report.fuel_report.report_pour_fuel_search(self, "Report40", eventname, result)
+
+
+def caseid_report41(self):
+    get_datachecklist("Report41")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    report.fuel_report.report_pour_fuel_downloadexcel(self, "Report41", eventname, result)
+
+
+def caseid_report42(self):
+    get_datachecklist("Report42")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    report.system_report.device_singnal_report(self, "Report42", eventname, result)
+
+
+def caseid_report43(self):
+    get_datachecklist("Report43")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    report.system_report.device_singnal_report_search(self, "Report43", eventname, result)
+
+
+def caseid_report44(self):
+    get_datachecklist("Report44")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    report.system_report.device_singnal_report_downloadexcel(self, "Report44", eventname, result)
+
+
+def caseid_report45(self):
+    get_datachecklist("Report45")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    report.activity_report.report_speed_over(self, "Report45", eventname, result)
+
+
+def caseid_report46(self):
+    get_datachecklist("Report46")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    report.activity_report.report_speed_over_search(self, "Report46", eventname, result)
+
+
+def caseid_report47(self):
+    get_datachecklist("Report47")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    report.activity_report.report_speed_over_downloadexcel(self, "Report47", eventname, result)
+
+
+
+def caseid_report48(self):
+    get_datachecklist("Report48")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    report.synthesis_report.report_checkin_checkout(self, "Report48", eventname, result)
+
+
+def caseid_report49(self):
+    get_datachecklist("Report49")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    report.synthesis_report.report_checkin_checkout_search(self, "Report49", eventname, result)
+
+
+def caseid_report50(self):
+    get_datachecklist("Report50")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    report.synthesis_report.report_checkin_checkout_downloadexcel(self, "Report50", eventname, result)
+
+
+
+
+
+
+
+
+

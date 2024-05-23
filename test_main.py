@@ -359,12 +359,12 @@ class Test(unittest.TestCase):
         # caseid.caseid_user02(self)
         # caseid.caseid_user03(self)
 
-        # Báo cáo doanh nghiep - Báo cáo tổng hợp hoạt động (theo nhóm)
+        # # Báo cáo doanh nghiep - Báo cáo tổng hợp hoạt động (theo nhóm)
         # caseid.caseid_report01(self)
         # caseid.caseid_report02(self)
         # caseid.caseid_report03(self)
-
-        # Báo cáo doanh nghiep - Báo cáo chi tiết họat động
+        #
+        # # Báo cáo doanh nghiep - Báo cáo chi tiết họat động
         # caseid.caseid_report04(self)
         # caseid.caseid_report05(self)
         # caseid.caseid_report06(self)
@@ -382,32 +382,62 @@ class Test(unittest.TestCase):
         # caseid.caseid_report14(self)
         # caseid.caseid_report15(self)
         # caseid.caseid_report16(self)
-
+        #
         # #Báo cáo chuyến kinh doanh
         # caseid.caseid_report17(self)
         # caseid.caseid_report18(self)
         # caseid.caseid_report19(self)
-
-        #Báo cáo ra vào trạm
+        #
+        # # Báo cáo ra vào trạm
         # caseid.caseid_report20(self)
         # caseid.caseid_report21(self)
         # caseid.caseid_report22(self)
-
+        #
         # #Báo cáo tổng hợp điều hòa
         # caseid.caseid_report23(self)
         # caseid.caseid_report24(self)
         # caseid.caseid_report25(self)
-
+        #
         # #Báo cáo động cơ
         # caseid.caseid_report26(self)
         # caseid.caseid_report27(self)
         # caseid.caseid_report28(self)
-
-        #Báo cáo hành trình
+        #
+        # #Báo cáo hành trình
         # caseid.caseid_report29(self)
         # caseid.caseid_report30(self)
         # caseid.caseid_report31(self)
-        caseid.caseid_report32(self)
+        # caseid.caseid_report32(self)
+        #
+        # #Báo cáo tổng hợp nhiên liệu
+        # caseid.caseid_report33(self)
+        # caseid.caseid_report34(self)
+        # caseid.caseid_report35(self)
+        #
+        # #Báo cáo nhiên liệu
+        # caseid.caseid_report36(self)
+        # caseid.caseid_report37(self)
+        # caseid.caseid_report38(self)
+        #
+        # #Báo cáo đổ hút nhiên liệu
+        # caseid.caseid_report39(self)
+        # caseid.caseid_report40(self)
+        # caseid.caseid_report41(self)
+        #
+        #Báo cáo mất tín hiệu
+        caseid.caseid_report42(self)
+        caseid.caseid_report43(self)
+        caseid.caseid_report44(self)
+
+        # # #Báo cáo quá tốc độ
+        caseid.caseid_report45(self)
+        caseid.caseid_report46(self)
+        caseid.caseid_report47(self)
+
+        # Báo cáo tổng hợp lái xe đăng nhập đăng xuất
+        caseid.caseid_report48(self)
+        caseid.caseid_report49(self)
+        caseid.caseid_report50(self)
 
 
 

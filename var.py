@@ -738,6 +738,24 @@ position_history_choose_car3rd = "//*[@id='ctl00_ctl00_MainContent_Content_vehic
 position_history_time_slot = "//*[@id='chkKhungGio']"
 position_history_choose_car = "//*[@id='ctl00_ctl00_MainContent_Content_vehicleAutoComplete_ddlVehiclePlate_chzn']//*[@class='chzn-single']"
 check_position_history_search = "//*[@id='divItinerary']"
+fuel_consumption_summary_report = "//*[@class='leftMenu']//*[@id='FuelConsumptionSummary']"
+fuel_consumption_daily_report = "//*[@class='leftMenu']//*[@id='FUELCONSUMPTIONDAILY']"
+report_pour_fuel = "//*[@class='leftMenu']//*[@id='ReportPourFuel']"
+device_singnal_report = "//*[@class='leftMenu']//*[@id='ReportSignalLoss']"
+check_report_search = "//*[@id='ctl00_ctl00_MainContent_Content_ScrollPanel']/div/table/tbody/tr[2]"
+report_speed_over = "//*[@class='leftMenu']//*[@id='ReportSpeedOver']"
+report_checkin_checkout = "//*[@class='leftMenu']//*[@id='CheckInCheckOutSummaries']"
+
+
+
+
+
+
+
+
+
+
+
 
 
 
