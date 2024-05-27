@@ -6,8 +6,6 @@ import var
 import lotrinh
 import time
 import json
-from retry import retry
-# import retry
 from selenium.webdriver.common.by import By
 import chucnangkhac
 import login
@@ -23,8 +21,6 @@ import openpyxl
 import re
 import subprocess
 import xlrd
-# options = webdriver.ChromeOptions()
-# options.add_argument("download.default_directory=C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/excel")
 
 from xls2xlsx import XLS2XLSX
 
@@ -88,6 +84,43 @@ def write_from_date(fromdate_input):
     xoa.send_keys(Keys.CONTROL, "a")
     var.driver.find_element(By.XPATH, fromdate_input).send_keys(from_date1)
 
+def write_from_date_month(fromdate_month_input):
+    var.driver.implicitly_wait(5)
+    from_date = var.driver.find_element(By.XPATH, fromdate_month_input).get_attribute('value')
+    print(from_date)
+    from_date_day = from_date[0:2]
+    print(from_date_day)
+    from_date_month = from_date[3:5]
+    print(from_date_month)
+    from_date_year = from_date[6::]
+    print(from_date_year)
+    from_date_month = int(from_date_month) - 1
+    print(from_date_month)
+    if from_date_month == 9:
+        from_date_month = "09"
+    if from_date_month == 8:
+        from_date_month = "08"
+    if from_date_month == 7:
+        from_date_month = "07"
+    if from_date_month == 6:
+        from_date_month = "06"
+    if from_date_month == 5:
+        from_date_month = "05"
+    if from_date_month == 4:
+        from_date_month = "04"
+    if from_date_month == 3:
+        from_date_month = "03"
+    if from_date_month == 2:
+        from_date_month = "02"
+    if from_date_month == 1:
+        from_date_month = "01"
+    if from_date_month == 0:
+        from_date_month = "01"
+    from_date = from_date_day + str(from_date_month) + from_date_year
+    print(from_date)
+    xoa = var.driver.find_element(By.XPATH, fromdate_month_input)
+    xoa.send_keys(Keys.CONTROL, "a")
+    var.driver.find_element(By.XPATH, fromdate_month_input).send_keys(from_date)
 
 
 
@@ -1000,42 +1033,7 @@ class activity_report:      #Báo cáo hoạt động
             var.driver.find_element(By.XPATH, var.report_speed_over).click()
             time.sleep(5)
 
-        from_date = var.driver.find_element(By.XPATH, var.fromdate_input).get_attribute('value')
-        print(from_date)
-        from_date_day = from_date[0:2]
-        print(from_date_day)
-        from_date_month = from_date[3:5]
-        print(from_date_month)
-        from_date_year = from_date[6::]
-        print(from_date_year)
-        from_date_month = int(from_date_month) - 1
-        print(from_date_month)
-        if from_date_month == 9:
-            from_date_month = "09"
-        if from_date_month == 8:
-            from_date_month = "08"
-        if from_date_month == 7:
-            from_date_month = "07"
-        if from_date_month == 6:
-            from_date_month = "06"
-        if from_date_month == 5:
-            from_date_month = "05"
-        if from_date_month == 4:
-            from_date_month = "04"
-        if from_date_month == 3:
-            from_date_month = "03"
-        if from_date_month == 2:
-            from_date_month = "02"
-        if from_date_month == 1:
-            from_date_month = "01"
-        if from_date_month == 0:
-            from_date_month = "01"
-        from_date = from_date_day + str(from_date_month) + from_date_year
-        print(from_date)
-        xoa = var.driver.find_element(By.XPATH, var.fromdate_input)
-        xoa.send_keys(Keys.CONTROL, "a")
-        var.driver.find_element(By.XPATH, var.fromdate_input).send_keys(from_date)
-        write_from_date(var.fromdate_input)
+        write_from_date_month(var.fromdate_input)
         var.driver.find_element(By.XPATH, var.report_search).click()
         time.sleep(30)
         print("aaaa")
@@ -1057,42 +1055,8 @@ class activity_report:      #Báo cáo hoạt động
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.report_speed_over).click()
             time.sleep(5)
-            from_date = var.driver.find_element(By.XPATH, var.fromdate_input).get_attribute('value')
-            print(from_date)
-            from_date_day = from_date[0:2]
-            print(from_date_day)
-            from_date_month = from_date[3:5]
-            print(from_date_month)
-            from_date_year = from_date[6::]
-            print(from_date_year)
-            from_date_month = int(from_date_month) - 1
-            print(from_date_month)
-            if from_date_month == 9:
-                from_date_month = "09"
-            if from_date_month == 8:
-                from_date_month = "08"
-            if from_date_month == 7:
-                from_date_month = "07"
-            if from_date_month == 6:
-                from_date_month = "06"
-            if from_date_month == 5:
-                from_date_month = "05"
-            if from_date_month == 4:
-                from_date_month = "04"
-            if from_date_month == 3:
-                from_date_month = "03"
-            if from_date_month == 2:
-                from_date_month = "02"
-            if from_date_month == 1:
-                from_date_month = "01"
-            if from_date_month == 0:
-                from_date_month = "01"
-            from_date = from_date_day + str(from_date_month) + from_date_year
-            print(from_date)
-            xoa = var.driver.find_element(By.XPATH, var.fromdate_input)
-            xoa.send_keys(Keys.CONTROL, "a")
-            var.driver.find_element(By.XPATH, var.fromdate_input).send_keys(from_date)
-            write_from_date(var.fromdate_input)
+
+            write_from_date_month(var.fromdate_input)
             var.driver.find_element(By.XPATH, var.report_search).click()
             time.sleep(30)
 
@@ -1584,13 +1548,86 @@ class system_report:
 
 
 
+class report_BGT:
+
+    def speed_over_report(self, code, eventname, result):       #Quá tốc độ giới hạn
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.report_BGT).click()
+            time.sleep(4)
+            var.driver.find_element(By.XPATH, var.speed_over_report).click()
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            var.driver.find_element(By.XPATH, var.report_BGT).click()
+            time.sleep(5)
+            var.driver.find_element(By.XPATH, var.speed_over_report).click()
+        time.sleep(5)
+        chucnangkhac.write_result_text_try_if(code, eventname, result, "Báo cáo BGT -   Quá tốc độ giới hạn",
+                                              var.check_report_km_activity_summary, "QUÁ TỐC ĐỘ GIỚI HẠN", "_BaoCaoBGT_QuaTocDoGioiHan.png")
 
 
+    def speed_over_report_search(self, code, eventname,result):  #Quá tốc độ giới hạn - tìm kiếm
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.fromdate_input)
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            var.driver.find_element(By.XPATH, var.report_BGT).click()
+            time.sleep(4)
+            var.driver.find_element(By.XPATH, var.speed_over_report).click()
+            time.sleep(5)
+        write_from_date_month(var.fromdate_input)
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.report_search).click()
+        time.sleep(5)
+
+        chucnangkhac.write_result_displayed_try(code, eventname, result,
+                                                "Báo cáo BGT -   Quá tốc độ giới hạn",
+                                                var.check_activity_synthesis_report_search,
+                                                "_BaoCaoBGT_QuaTocDoGioiHan_TimKiem.png")
 
 
+    def speed_over_report_downloadexcel(self, code, eventname, result):    #Quá tốc độ giới hạn -  checkdownload
+        var.driver.implicitly_wait(5)
+        chucnangkhac.delete_excel()
+        try:
+            var.driver.find_element(By.XPATH, var.check_report_search)
+        except:
+            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            var.driver.find_element(By.XPATH, var.report_BGT).click()
+            time.sleep(4)
+            var.driver.find_element(By.XPATH, var.speed_over_report).click()
+            time.sleep(5)
+            write_from_date_month(var.stop_report_fromdate_input)
+            time.sleep(1)
+            var.driver.find_element(By.XPATH, var.report_search).click()
+            time.sleep(6)
+        var.driver.find_element(By.XPATH, var.downloadexcel).click()
+        time.sleep(15)
+        filename = max([var.excelpath + "\\" + f for f in os.listdir(var.excelpath)], key=os.path.getctime)
+        shutil.move(filename, os.path.join(var.excelpath, r"quatocdogioihan.xlsx"))
 
+        #Đọc check file excel
+        bangchucai = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
+        wordbook = openpyxl.load_workbook(var.excelpath+"/quatocdogioihan.xlsX")
+        sheet = wordbook.get_sheet_by_name("Data")
 
-
+        logging.info("Báo cáo BGT -   Quá tốc độ giới hạn")
+        logging.info("Mã - " + code)
+        logging.info("Tên sự kiện - " + eventname)
+        logging.info("Kết quả - " + result)
+        for column in bangchucai:
+            print(sheet[column + "6"].value)
+            print(sheet[column + "6"])
+            chucnangkhac.write_result_excelreport_clear_data(code, sheet, column, 'Data', "6", "A6", "TT")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "B6", "Biến số xe")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "C6", "Họ tên lái xe")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "D6", "Số giấy phép lái xe")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "E6", "Loại hình hoạt động")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "F6", "Thời điểm")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "G6", "Tốc độ trung bình khi quá tốc độ giới hạn (km/h)")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "H6", "Tốc độ giới hạn (km/h)")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "I6", "Tọa độ quá tốc độ giới hạn")
 
 
 

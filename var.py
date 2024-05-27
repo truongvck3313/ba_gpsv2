@@ -745,18 +745,52 @@ device_singnal_report = "//*[@class='leftMenu']//*[@id='ReportSignalLoss']"
 check_report_search = "//*[@id='ctl00_ctl00_MainContent_Content_ScrollPanel']/div/table/tbody/tr[2]"
 report_speed_over = "//*[@class='leftMenu']//*[@id='ReportSpeedOver']"
 report_checkin_checkout = "//*[@class='leftMenu']//*[@id='CheckInCheckOutSummaries']"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+speed_over_report = "//*[@class='leftMenu']//*[@id='ReportQCVN31SpeedOver']"
+report_BGT = "//*[@id='ModuleBGTReports']"
+videoclip = "//*[@id='CameraImage']"
+playbackvideo_overview = "//*[@class='leftMenuContainer']//*[@id='VideoReviewOverview']"
+check_playbackvideo_overview = "//*[@class='vr-tbl-tt-tt']"
+playbackvideo_selecgroup = "//*[@id='videoReviewWrapper']/table[1]/tbody/tr[3]/td/div/div[1]/button"
+playbackvideo_namegroup = "//*[@id='videoReviewWrapper']/table[1]/tbody/tr[3]/td/div/div[1]/div/ul/li[2]/label"
+playbackvideo_selecgroup_input = "//*[@id='videoReviewWrapper']/table[1]/tbody/tr[3]/td/div/div[1]/div/div/input"
+playbackvideo_selecgroup1 = "//*[@id='videoReviewWrapper']/table[1]/tbody/tr[3]/td/div/div[1]/div/ul/li[2]/label/input"
+playbackvideo_findvehicle = "//*[@id='videoReviewWrapper']/table[1]/tbody/tr[3]/td/div/div[2]/button"
+playbackvideo_findvehicle1 = "//*[@id='videoReviewWrapper']/table[1]/tbody/tr[3]/td/div/div[2]/div/ul/li[2]/label/input"
+playbackvideo_buttonsearch = "//*[@class='btnButton btn btn-search btn-primary vr-tbl-sr-btnSearch']"
+name_vehicle = "//*[@id='videoReviewWrapper']/table[1]/tbody/tr[3]/td/div/div[1]/div/ul/li[2]/label"
+check_playbackvideo_overview_search = "//*[@class='vr-timeline-tbl-div-w']/div/table/tbody/tr[3]/td[2]"
+playbackvideo_detail = "//*[@class='leftMenuContainer']//*[@id='VIDEOREVIEWDETAIL2']"
+playbackvideo_detail_selectgroup = "//*[@class='tblVehicleVideo-body-center-search']/div[1]/div/button"
+playbackvideo_detail_selectgroup1 = "//*[@class='tblVehicleVideo-body-center-search']/div[1]/div/div/ul/li[2]/label/input"
+playbackvideo_detail_selectvehicle = "//*[@class='tblVehicleVideo-body-center-search']/div[2]/div/button"
+playbackvideo_detail_selectvehicle1 = "//*[@class='tblVehicleVideo-body-center-search']/div[2]/div/div/ul/li[2]/label/input"
+playbackvideo_detail_search = "//*[@value='Tìm kiếm']"
+playbackvideo_detail_name_vehicle = "//*[@class='tblVehicleVideo-body-center-search']/div[1]/div/div/ul/li[2]/label"
+check_playbackvideo_detail_search = "//*[@class='vr-timeline-tr vr-timeline-tr-content-vehicle vr-timeline-tr-content']/td[1]"
+playbackvideo_detail_view_multi_chanel = "//*[text()='Xem nhiều kênh']"
+check_playbackvideo_detail_view_multi_chanel = "//*[@id='divMessageVideo2']"
+check_cam_tracking = "//*[@class='tv-fs-tblv1-title']"
+cam_tracking = "//*[@class='leftMenu']//*[@id='TrackingVideo']"
+cam_tracking_icon_watch_vehicle1 = "//*[@class='tv-fs-tblv1-lm-listVehicle']/div[3]/div[1]/div[2]/img"
+cam_tracking_icon_watch_vehicle2 = "//*[@class='tv-fs-tblv1-lm-listVehicle']/div[3]/div[2]/div[2]/img"
+cam_tracking_icon_watch_vehicle3 = "//*[@class='tv-fs-tblv1-lm-listVehicle']/div[3]/div[3]/div[2]/img"
+check_cam_tracking_icon_watch_vehicle = "//*[@id='video-panel-9']"
+cam_tracking_downloadexcel = "//*[@title='Xuất excel danh sách xe']"
+cam_tracking_select_group = "//*[@class='panel-left panel-left-show']/table/tbody/tr[2]/td/div/button"
+cam_tracking_select_group1 = "//*[@class='panel-left panel-left-show']/table/tbody/tr[2]/td/div/div/ul/li[2]/label/input"
+cam_tracking_find_vehicle = "//*[@class='panel-left panel-left-show']/table/tbody/tr[3]/td/div/button"
+cam_tracking_find_vehicle1 = "//*[@class='panel-left panel-left-show']/table/tbody/tr[3]/td/div/div/ul/li[2]/label/input"
+cam_tracking_status = "//*[@class='panel-left panel-left-show']/table/tbody/tr[4]/td/select"
+cam_tracking_status1 = "//*[@class='panel-left panel-left-show']/table/tbody/tr[4]/td/select/option[2]"
+cam_tracking_select_place = "//*[@class='panel-left panel-left-show']/table/tbody/tr[5]/td/div/button"
+cam_tracking_select_place1 = "//*[@class='panel-left panel-left-show']/table/tbody/tr[5]/td/div/div/ul/li[1]/label/input"
+cam_tracking_status_chanel = "//*[@class='panel-left panel-left-show']/table/tbody/tr[6]/td/select"
+cam_tracking_status_chanel1 = "//*[@class='panel-left panel-left-show']/table/tbody/tr[6]/td/select/option[2]"
+name_cam_tracking_find_vehicle = "//*[@class='panel-left panel-left-show']/table/tbody/tr[3]/td/div/button/span"
+check_cam_tracking_search = "//*[@class='panel-left panel-left-show']/table/tbody/tr[8]/td/div/div/div[3]/div[1]/div[1]/label"
+image = "//*[@id='ImageND10']"
+tracking_by_images = "//*[@class='leftMenuContainer']//*[@id='TrackingVehiclesByImage']"
+check_tracking_by_images = "//*[@class='pageTitle']"
+tracking_by_images_watch_image = "//*[@id='vehicles']/div[1]/div[2]/div[1]/div[1]/img"
+check_tracking_by_images_watch_image = "//*[@id='vehicleDetail']/div[1]/div/div/div/img"
+tracking_by_images_watch_image_iconx = "//*[@class='close1']"

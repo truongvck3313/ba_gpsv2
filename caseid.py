@@ -3,6 +3,8 @@ import login
 import lotrinh
 import administration
 import report
+import video_clip
+import image
 
 
 import chucnangkhac
@@ -2431,6 +2433,132 @@ def caseid_report50(self):
     eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
     result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
     report.synthesis_report.report_checkin_checkout_downloadexcel(self, "Report50", eventname, result)
+
+
+
+def caseid_report51(self):
+    get_datachecklist("Report51")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    report.report_BGT.speed_over_report(self, "Report51", eventname, result)
+
+
+
+def caseid_report52(self):
+    get_datachecklist("Report52")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    report.report_BGT.speed_over_report_search(self, "Report52", eventname, result)
+
+
+
+def caseid_report53(self):
+    get_datachecklist("Report53")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    report.report_BGT.speed_over_report_downloadexcel(self, "Report53", eventname, result)
+
+
+def caseid_video01(self):
+    get_datachecklist("Video01")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    video_clip.video_clip.playbackvideo_overview(self, "Video01", eventname, result)
+
+
+def caseid_video02(self):
+    get_datachecklist("Video02")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    video_clip.video_clip.playbackvideo_overview_search(self, "Video02", eventname, result)
+
+
+def caseid_video03(self):
+    get_datachecklist("Video03")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    video_clip.video_clip.playbackvideo_overview_checkapi(self, "Video03", eventname, result)
+
+
+
+def caseid_video04(self):
+    get_datachecklist("Video04")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    video_clip.video_clip.playbackvideo_detail(self, "Video04", eventname, result)
+
+
+def caseid_video05(self):
+    get_datachecklist("Video05")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    video_clip.video_clip.playbackvideo_detail_search(self, "Video05", eventname, result)
+
+
+def caseid_video06(self):
+    get_datachecklist("Video06")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    video_clip.video_clip.playbackvideo_detail_checkapi(self, "Video06", eventname, result)
+
+
+
+def caseid_video07(self):
+    get_datachecklist("Video07")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    video_clip.video_clip.playbackvideo_detail_view_multi_chanel(self, "Video07", eventname, result)
+
+
+def caseid_video08(self):
+    get_datachecklist("Video08")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    video_clip.video_clip.cam_tracking(self, "Video08", eventname, result)
+
+
+def caseid_video09(self):
+    get_datachecklist("Video09")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    video_clip.video_clip.cam_tracking_icon_watch_vehicle(self, "Video09", eventname, result)
+
+
+def caseid_video10(self):
+    get_datachecklist("Video10")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    video_clip.video_clip.cam_tracking_downloadexcel(self, "Video10", eventname, result)
+
+
+def caseid_video11(self):
+    get_datachecklist("Video11")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    video_clip.video_clip.cam_tracking_search(self, "Video11", eventname, result)
+
+def caseid_video12(self):
+    get_datachecklist("Video12")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    video_clip.video_clip.cam_tracking_checkapi(self, "Video12", eventname, result)
+
+
+
+def caseid_image01(self):
+    get_datachecklist("Image01")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    image.images.tracking_by_images(self, "Image01", eventname, result)
+
+
+def caseid_image02(self):
+    get_datachecklist("Image02")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    image.images.tracking_by_images_watch_image(self, "Image02", eventname, result)
+
+
 
 
 
