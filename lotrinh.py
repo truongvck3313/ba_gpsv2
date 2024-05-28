@@ -44,7 +44,7 @@ class route:
 
     def openroute(self, code, eventname, result):
         var.driver.implicitly_wait(5)
-        login.login.login_v2(self, "viconshipdanang1", "12341234")
+        login.login.login_v2(self, "43E02740", "12341234")
         var.driver.find_element(By.XPATH, var.trangthai_dichuyen).click()
         time.sleep(1)
         n = 0
@@ -92,7 +92,7 @@ class route:
             var.driver.find_element(By.XPATH, var.check_popup_route)
             var.driver.find_element(By.XPATH, var.vinconshipdanang1)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.vehicle).click()
             time.sleep(2)
             var.driver.find_element(By.XPATH, var.check_popup_route)
@@ -134,7 +134,7 @@ class route:
             var.driver.find_element(By.XPATH, var.check_popup_route)
             var.driver.find_element(By.XPATH, var.vinconshipdanang1)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.vehicle).click()
             time.sleep(2)
             var.driver.find_element(By.XPATH, var.check_popup_route)
@@ -178,7 +178,7 @@ class route:
             var.driver.find_element(By.XPATH, var.check_popup_route)
             var.driver.find_element(By.XPATH, var.vinconshipdanang1)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.vehicle).click()
             time.sleep(2)
             var.driver.find_element(By.XPATH, var.check_popup_route)
@@ -233,7 +233,7 @@ class route:
 
     def loaddata(self):
         var.driver.implicitly_wait(5)
-        login.login.login_v2(self, "viconshipdanang1", "12341234")
+        login.login.login_v2(self, "43E02740", "12341234")
         var.driver.find_element(By.XPATH, var.trangthai_dichuyen).click()
         time.sleep(1)
         n = 0

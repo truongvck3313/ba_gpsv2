@@ -131,9 +131,10 @@ class synthesis_report:     #báo cáo tổng hợp
     def activity_synthesis_group_report(self, code, eventname, result):         #báo cáo doanh nghiệp - Báo cáo tổng hợp hoạt động (theo nhóm)
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.goto_vinconshipdanang).click()
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
+            # var.driver.find_element(By.XPATH, var.goto_vinconshipdanang).click()
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
         var.driver.find_element(By.XPATH, var.managerment_report).click()
         time.sleep(4)
         var.driver.find_element(By.XPATH, var.activity_synthesis_report).click()
@@ -148,7 +149,7 @@ class synthesis_report:     #báo cáo tổng hợp
             write_from_date(var.activity_synthesis_group_report_fromdate_input)
             var.driver.find_element(By.XPATH, var.activity_synthesis_report_search).click()
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.activity_synthesis_report).click()
@@ -167,7 +168,7 @@ class synthesis_report:     #báo cáo tổng hợp
             # var.driver.find_element(By.XPATH, var.activity_synthesis_report_search).click()
             var.driver.find_element(By.XPATH, var.check_report_search)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.activity_synthesis_report).click()
@@ -177,13 +178,13 @@ class synthesis_report:     #báo cáo tổng hợp
         del var.driver.requests
         var.driver.find_element(By.XPATH, var.downloadexcel).click()
         time.sleep(7)
-        x2x = XLS2XLSX(var.excelpath + "/ActivitySummaryNew_viconshipdanang1.xls")
-        x2x.to_xlsx(var.excelpath + "/ActivitySummaryNew_viconshipdanang1.xlsx")
+        x2x = XLS2XLSX(var.excelpath + "/ActivitySummaryNew_43E02740.xls")
+        x2x.to_xlsx(var.excelpath + "/ActivitySummaryNew_43E02740.xlsx")
 
 
         # #Đọc check file excel
         bangchucai = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W']
-        wordbook = openpyxl.load_workbook(var.excelpath+"/ActivitySummaryNew_viconshipdanang1.xlsX")
+        wordbook = openpyxl.load_workbook(var.excelpath+"/ActivitySummaryNew_43E02740.xlsX")
         sheet = wordbook.get_sheet_by_name("BC Tổng hợp")
 
         logging.info("Báo cáo doanh nghiệp - Báo cáo tổng hợp hoạt động (theo nhóm)")
@@ -225,7 +226,7 @@ class synthesis_report:     #báo cáo tổng hợp
         try:
             var.driver.find_element(By.XPATH, var.detailed_activity_report).click()
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.detailed_activity_report).click()
@@ -239,7 +240,7 @@ class synthesis_report:     #báo cáo tổng hợp
         try:
             var.driver.find_element(By.XPATH, path_checkbox).click()
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.detailed_activity_report).click()
@@ -259,7 +260,7 @@ class synthesis_report:     #báo cáo tổng hợp
         try:
             var.driver.find_element(By.XPATH, var.detailed_activity_report_from_date)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.detailed_activity_report).click()
@@ -314,7 +315,7 @@ class synthesis_report:     #báo cáo tổng hợp
         try:
             var.driver.find_element(By.XPATH, var.check_report_search)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.detailed_activity_report).click()
@@ -368,7 +369,7 @@ class synthesis_report:     #báo cáo tổng hợp
         try:
             var.driver.find_element(By.XPATH, var.report_km_activity_summary).click()
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.report_km_activity_summary).click()
@@ -382,7 +383,7 @@ class synthesis_report:     #báo cáo tổng hợp
         try:
             var.driver.find_element(By.XPATH, checkbox).click()
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.report_km_activity_summary).click()
@@ -401,7 +402,7 @@ class synthesis_report:     #báo cáo tổng hợp
         try:
             var.driver.find_element(By.XPATH, var.report_km_activity_summary_detail).click()
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.report_km_activity_summary).click()
@@ -444,7 +445,7 @@ class synthesis_report:     #báo cáo tổng hợp
         try:
             var.driver.find_element(By.XPATH, var.report_km_activity_summary_summary).click()
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.report_km_activity_summary).click()
@@ -492,7 +493,7 @@ class synthesis_report:     #báo cáo tổng hợp
         try:
             var.driver.find_element(By.XPATH, var.report_checkin_checkout).click()
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.report_checkin_checkout).click()
@@ -506,7 +507,7 @@ class synthesis_report:     #báo cáo tổng hợp
         try:
             var.driver.find_element(By.XPATH, var.fromdate_input)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.report_checkin_checkout).click()
@@ -528,7 +529,7 @@ class synthesis_report:     #báo cáo tổng hợp
         try:
             var.driver.find_element(By.XPATH, var.check_report_search)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.report_checkin_checkout).click()
@@ -575,7 +576,7 @@ class activity_report:      #Báo cáo hoạt động
         try:
             var.driver.find_element(By.XPATH, var.stop_report).click()
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.stop_report).click()
@@ -589,7 +590,7 @@ class activity_report:      #Báo cáo hoạt động
         try:
             var.driver.find_element(By.XPATH, var.stop_report_fromdate_input)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.stop_report).click()
@@ -612,7 +613,7 @@ class activity_report:      #Báo cáo hoạt động
             # var.driver.find_element(By.XPATH, var.report_search).click()
             var.driver.find_element(By.XPATH, var.check_report_search)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.stop_report).click()
@@ -680,7 +681,7 @@ class activity_report:      #Báo cáo hoạt động
         try:
             var.driver.find_element(By.XPATH, var.report_business_trip).click()
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.report_business_trip).click()
@@ -694,7 +695,7 @@ class activity_report:      #Báo cáo hoạt động
         try:
             var.driver.find_element(By.XPATH, var.fromdate_input)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.report_business_trip).click()
@@ -716,7 +717,7 @@ class activity_report:      #Báo cáo hoạt động
             # var.driver.find_element(By.XPATH, var.report_search).click()
             var.driver.find_element(By.XPATH, var.check_report_search)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.report_business_trip).click()
@@ -774,7 +775,7 @@ class activity_report:      #Báo cáo hoạt động
         try:
             var.driver.find_element(By.XPATH, var.station_report).click()
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.station_report).click()
@@ -788,7 +789,7 @@ class activity_report:      #Báo cáo hoạt động
         try:
             var.driver.find_element(By.XPATH, var.fromdate_input)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.station_report).click()
@@ -810,7 +811,7 @@ class activity_report:      #Báo cáo hoạt động
             # var.driver.find_element(By.XPATH, var.report_search).click()
             var.driver.find_element(By.XPATH, var.check_report_search)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.station_report).click()
@@ -853,7 +854,7 @@ class activity_report:      #Báo cáo hoạt động
         try:
             var.driver.find_element(By.XPATH, var.report_air_conditioner_summaries).click()
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.report_air_conditioner_summaries).click()
@@ -867,7 +868,7 @@ class activity_report:      #Báo cáo hoạt động
         try:
             var.driver.find_element(By.XPATH, var.fromdate_input)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.report_air_conditioner_summaries).click()
@@ -889,7 +890,7 @@ class activity_report:      #Báo cáo hoạt động
             # var.driver.find_element(By.XPATH, var.report_search).click()
             var.driver.find_element(By.XPATH, var.check_report_search)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.report_air_conditioner_summaries).click()
@@ -932,7 +933,7 @@ class activity_report:      #Báo cáo hoạt động
         try:
             var.driver.find_element(By.XPATH, var.machine_report).click()
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.machine_report).click()
@@ -946,7 +947,7 @@ class activity_report:      #Báo cáo hoạt động
         try:
             var.driver.find_element(By.XPATH, var.fromdate_input)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.machine_report).click()
@@ -968,7 +969,7 @@ class activity_report:      #Báo cáo hoạt động
             # var.driver.find_element(By.XPATH, var.report_search).click()
             var.driver.find_element(By.XPATH, var.check_report_search)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.machine_report).click()
@@ -1013,7 +1014,7 @@ class activity_report:      #Báo cáo hoạt động
         try:
             var.driver.find_element(By.XPATH, var.report_speed_over).click()
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.report_speed_over).click()
@@ -1027,7 +1028,7 @@ class activity_report:      #Báo cáo hoạt động
         try:
             var.driver.find_element(By.XPATH, var.fromdate_input)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.report_speed_over).click()
@@ -1050,7 +1051,7 @@ class activity_report:      #Báo cáo hoạt động
             # var.driver.find_element(By.XPATH, var.report_search).click()
             var.driver.find_element(By.XPATH, var.check_report_search)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.report_speed_over).click()
@@ -1096,7 +1097,7 @@ class report_schedule:  #Báo cáo lịch trình
         try:
             var.driver.find_element(By.XPATH, var.position_history).click()
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.position_history).click()
@@ -1110,7 +1111,7 @@ class report_schedule:  #Báo cáo lịch trình
         try:
             var.driver.find_element(By.XPATH, var.position_history_time_slot).click()
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.position_history).click()
@@ -1131,7 +1132,7 @@ class report_schedule:  #Báo cáo lịch trình
             time.sleep(1)
             var.driver.find_element(By.XPATH, var.position_history_choose_car3rd).click()
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.position_history).click()
@@ -1153,7 +1154,7 @@ class report_schedule:  #Báo cáo lịch trình
             # var.driver.find_element(By.XPATH, var.check_position_history_search)
             var.driver.find_element(By.XPATH, var.check_report_search)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.position_history).click()
@@ -1170,8 +1171,8 @@ class report_schedule:  #Báo cáo lịch trình
         shutil.move(filename, os.path.join(var.excelpath, r"baocaohanhtrinh.xls"))
 
 
-        # x2x = XLS2XLSX(var.excelpath + "/ActivitySummaryNew_viconshipdanang1.xls")
-        # x2x.to_xlsx(var.excelpath + "/ActivitySummaryNew_viconshipdanang1.xlsx")
+        # x2x = XLS2XLSX(var.excelpath + "/ActivitySummaryNew_43E02740.xls")
+        # x2x.to_xlsx(var.excelpath + "/ActivitySummaryNew_43E02740.xlsx")
         # #
         # #Đọc check file excel
         # bangchucai = ['A']
@@ -1198,7 +1199,7 @@ class fuel_report:
         try:
             var.driver.find_element(By.XPATH, var.fuel_consumption_summary_report).click()
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.fuel_consumption_summary_report).click()
@@ -1211,7 +1212,7 @@ class fuel_report:
         try:
             var.driver.find_element(By.XPATH, var.fromdate_input)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.fuel_consumption_summary_report).click()
@@ -1233,7 +1234,7 @@ class fuel_report:
             # var.driver.find_element(By.XPATH, var.report_search).click()
             var.driver.find_element(By.XPATH, var.check_report_search)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.fuel_consumption_summary_report).click()
@@ -1295,7 +1296,7 @@ class fuel_report:
         try:
             var.driver.find_element(By.XPATH, var.fuel_consumption_daily_report).click()
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.fuel_consumption_daily_report).click()
@@ -1309,7 +1310,7 @@ class fuel_report:
         try:
             var.driver.find_element(By.XPATH, var.fromdate_input)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.fuel_consumption_daily_report).click()
@@ -1332,7 +1333,7 @@ class fuel_report:
             # var.driver.find_element(By.XPATH, var.report_search).click()
             var.driver.find_element(By.XPATH, var.check_report_search)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.fuel_consumption_daily_report).click()
@@ -1386,7 +1387,7 @@ class fuel_report:
         try:
             var.driver.find_element(By.XPATH, var.report_pour_fuel).click()
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.report_pour_fuel).click()
@@ -1400,7 +1401,7 @@ class fuel_report:
         try:
             var.driver.find_element(By.XPATH, var.fromdate_input)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.report_pour_fuel).click()
@@ -1423,7 +1424,7 @@ class fuel_report:
             # var.driver.find_element(By.XPATH, var.report_search).click()
             var.driver.find_element(By.XPATH, var.check_report_search)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.report_pour_fuel).click()
@@ -1470,7 +1471,7 @@ class system_report:
         try:
             var.driver.find_element(By.XPATH, var.device_singnal_report).click()
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.device_singnal_report).click()
@@ -1484,7 +1485,7 @@ class system_report:
         try:
             var.driver.find_element(By.XPATH, var.fromdate_input)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.device_singnal_report).click()
@@ -1508,7 +1509,7 @@ class system_report:
             # var.driver.find_element(By.XPATH, var.report_search).click()
             var.driver.find_element(By.XPATH, var.check_report_search)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.device_singnal_report).click()
@@ -1557,7 +1558,7 @@ class report_BGT:
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.speed_over_report).click()
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.report_BGT).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.speed_over_report).click()
@@ -1571,7 +1572,7 @@ class report_BGT:
         try:
             var.driver.find_element(By.XPATH, var.fromdate_input)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.report_BGT).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.speed_over_report).click()
@@ -1593,7 +1594,7 @@ class report_BGT:
         try:
             var.driver.find_element(By.XPATH, var.check_report_search)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.report_BGT).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.speed_over_report).click()

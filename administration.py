@@ -383,8 +383,8 @@ class vehicle_management:
         button = var.driver.find_element(By.XPATH, var.assign_car_user1)
         var.driver.execute_script("arguments[0].click();", button)
         time.sleep(1)
-        button = var.driver.find_element(By.XPATH, var.assign_car_group1)
-        var.driver.execute_script("arguments[0].click();", button)
+        # button = var.driver.find_element(By.XPATH, var.assign_car_group1)
+        # var.driver.execute_script("arguments[0].click();", button)
 
         button = var.driver.find_element(By.XPATH, var.history_imei)
         var.driver.execute_script("arguments[0].click();", button)
@@ -393,7 +393,7 @@ class vehicle_management:
         var.driver.execute_script("arguments[0].click();", button)
         time.sleep(1)
         chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Danh sách xe",
-                                              var.check_assign_car,"Lưu thành công", "_QuanTri_DsXe_GanXe.png")
+                                              var.check_assign_car, "Lưu thành công", "_QuanTri_DsXe_GanXe.png")
         var.driver.find_element(By.XPATH, var.gotocompany_exit).click()
         time.sleep(4)
 
@@ -418,7 +418,7 @@ class vehicle_management:
         var.driver.find_element(By.XPATH, var.icon_look_user_manage).click()
         time.sleep(3)
         chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Danh sách xe",
-                                              var.check_look_user_manage, "", "_QuanTri_DsXe_NguoiDung.png")
+                                              var.check_look_user_manage, "Không nhóm đội", "_QuanTri_DsXe_NguoiDung.png")
         var.driver.back()
         time.sleep(3)
 
@@ -977,7 +977,7 @@ class vehicle_management:
 class system_management:
     def list_user(self, code, eventname, result):
         var.driver.implicitly_wait(5)
-        login.login.login_v2(self, "viconshipdanang1", "12341234")
+        login.login.login_v2(self, "43E02740", "12341234")
         var.driver.find_element(By.XPATH, var.managerment).click()
         time.sleep(5)
         var.driver.find_element(By.XPATH, var.list_user).click()
@@ -994,7 +994,7 @@ class system_management:
             nameuser = var.driver.find_element(By.XPATH, var.list_user_nameuser).text
             var.driver.find_element(By.XPATH, var.list_user_search_input).send_keys(nameuser)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.list_user).click()
@@ -1015,7 +1015,7 @@ class system_management:
         try:
             var.driver.find_element(By.XPATH, var.list_user_icon_downloadexcel).click()
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.managerment).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.list_user).click()

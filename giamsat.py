@@ -88,10 +88,10 @@ class danhsachxe:
     def timkiem_timxe(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
             var.driver.find_element(By.XPATH, var.danhsachxe_tenphuongtien)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
         # Tim xe
         tenphuongtien = var.driver.find_element(By.XPATH, var.danhsachxe_tenphuongtien).text
         print(tenphuongtien)
@@ -125,10 +125,10 @@ class danhsachxe:
     def timkiem_timdiachi(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
             var.driver.find_element(By.XPATH, var.danhsachxe_tenphuongtien)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
         # Tìm địa chỉ
         var.driver.find_element(By.XPATH, var.timkiem_icon2).click()
         time.sleep(0.5)
@@ -167,10 +167,10 @@ class danhsachxe:
     def timkiem_tendiem(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
             var.driver.find_element(By.XPATH, var.danhsachxe_tenphuongtien)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
         # Tên điểm
         var.driver.find_element(By.XPATH, var.timkiem_icon2).click()
         time.sleep(0.5)
@@ -208,10 +208,10 @@ class danhsachxe:
     def timkiem_timtoado(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
             var.driver.find_element(By.XPATH, var.danhsachxe_tenphuongtien)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
         # Tìm tọa độ
         try:
             var.driver.find_element(By.XPATH, var.timkiem_icon2).click()
@@ -255,10 +255,10 @@ class danhsachxe:
         var.driver.implicitly_wait(5)
         # Chọn nhóm xe 1
         try:
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
             var.driver.find_element(By.XPATH, var.nhomxe).click()
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
 
             var.driver.find_element(By.XPATH, var.nhomxe).click()
 
@@ -290,10 +290,10 @@ class danhsachxe:
         var.driver.implicitly_wait(5)
         # Chọn nhóm xe 1
         try:
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
             # var.driver.find_element(By.XPATH, var.nhomxe).click()
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
         # Tất cả nhóm xe
         time.sleep(0.5)
         var.driver.find_element(By.XPATH, var.tatcanhomxe).click()
@@ -332,10 +332,10 @@ class danhsachxe:
         var.driver.implicitly_wait(5)
         try:
             del var.driver.requests
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
             var.driver.find_element(By.XPATH, var.trangthai_dichuyen).click()
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             del var.driver.requests
             var.driver.find_element(By.XPATH, var.trangthai_dichuyen).click()
         time.sleep(2)
@@ -440,9 +440,9 @@ class danhsachxe:
 
         if quyen == "quyền quản trị" and nhomdoi == "công ty có nhóm":
             try:
-                var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+                var.driver.find_element(By.XPATH, var.goto_43e02740)
             except:
-                login.login.login_v2(self, "viconshipdanang1", "12341234")
+                login.login.login_v2(self, "43E02740", "12341234")
 
         if quyen == "quyền thường" and nhomdoi == "công ty có nhóm":
             try:
@@ -791,8 +791,8 @@ class danhsachxe:
 
     def check_onlinehandler_soluongxe(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        login.login.login_v2(self, "viconshipdanang1", "12341234")
-        var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+        login.login.login_v2(self, "43E02740", "12341234")
+        var.driver.find_element(By.XPATH, var.goto_43e02740)
         time.sleep(2)
         var.driver.find_element(By.XPATH, var.icon_danhsachxedangan).click()
         time.sleep(1)
@@ -857,9 +857,9 @@ class danhsachxe:
         var.driver.implicitly_wait(4)
         del var.driver.requests
         try:
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
         chucnangkhac.delete_excel()
         # Xuất excel
         var.driver.find_element(By.XPATH, var.icon_xuatexcel).click()
@@ -1059,9 +1059,9 @@ class danhsachxe:
     def icon_capnhatmoidulieu(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(4)
         try:
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
         del var.driver.requests
         time.sleep(0.5)
         # Cập nhật dữ liệu
@@ -1092,9 +1092,9 @@ class danhsachxe:
     def icon_hientranghethong(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(4)
         try:
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
         del var.driver.requests
         time.sleep(0.5)
         # Hiện trạng hệ thống
@@ -1126,9 +1126,9 @@ class danhsachxe:
     def icon_ynghiabieutuongxe(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(4)
         try:
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
         # Ý nghĩa biểu tượng xe
         var.driver.find_element(By.XPATH, var.icon_ynghiabieutuongxe).click()
         time.sleep(2)
@@ -1201,9 +1201,9 @@ class danhsachxe:
     def chuotphaixe_xemlailotrinh(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(4)
         try:
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
 
         danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
         logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Xem lộ trình")
@@ -1227,9 +1227,9 @@ class danhsachxe:
     def chuotphaixe_xemlailotrinh_8hganday(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(4)
         try:
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
 
         # 8h gần đây
         xemlailotrinh_hover = var.driver.find_element(By.XPATH, var.xemlailotrinh)
@@ -1267,9 +1267,9 @@ class danhsachxe:
     def chuotphaixe_xemlailotrinh_chitiettrencuasomoi(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(4)
         try:
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
         # Xem lại lộ trình - Xem chi tiết trên cửa sổ mới
         var.driver.refresh()
         time.sleep(5)
@@ -1320,9 +1320,9 @@ class danhsachxe:
     def chuotphaixe_xemlailotrinh_trongngay(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(4)
         try:
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
 
         # Xem lại lộ trình - Trong ngay
         time.sleep(1)
@@ -1366,9 +1366,9 @@ class danhsachxe:
     def chuotphaixe_xemlailotrinh_tuychon(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(4)
         try:
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
         # Xem lại lộ trình - Tùy chọn
         time.sleep(1)
         tenphuongtien1 = str(var.readData(var.path_luutamthoi , 'Sheet1', 2, 2))
@@ -1661,9 +1661,9 @@ class danhsachxe:
     def chuotphaixe_giamsatnhieuxe(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(4)
         try:
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
 
         danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
         var.driver.find_element(By.XPATH, var.xemlotrinhnhieuxe).click()
@@ -1686,9 +1686,9 @@ class danhsachxe:
     def chuotphaixe_giamsatnhieuxe_xem1(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(4)
         try:
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
 
         var.driver.find_element(By.XPATH, var.giamsat).click()
         time.sleep(2)
@@ -1805,9 +1805,9 @@ class danhsachxe:
     def chuotphaixe_hientrang_thongtinxe(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(4)
         try:
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
 
         var.driver.find_element(By.XPATH, var.giamsat).click()
         time.sleep(5)
@@ -1842,9 +1842,9 @@ class danhsachxe:
     def chuotphaixe_hientrang_goicuoc(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(4)
         try:
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
 
         danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
         var.driver.find_element(By.XPATH, var.hientrang).click()
@@ -1878,9 +1878,9 @@ class danhsachxe:
     def chuotphaixe_gannhomxedacbiet(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(4)
         try:
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
         danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
 
         gannhomdacbiet_hover = var.driver.find_element(By.XPATH, var.gannhomdacbiet_hover)
@@ -2192,7 +2192,7 @@ class danhsachxe:
 
     def chuotphaixe_thongtinthietbi(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(4)
-        login.login.login_v2(self, "viconshipdanang1", "12341234")
+        login.login.login_v2(self, "43E02740", "12341234")
         danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
 
         var.driver.find_element(By.XPATH, var.thongtinthietbi).click()
@@ -2215,14 +2215,14 @@ class danhsachxe:
     def chuotphaixe_thongtinthietbi_x(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(2)
         try:
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
         time.sleep(1)
         try:
             var.driver.find_element(By.XPATH, var.thongtinthietbi_x).click()
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             time.sleep(1)
             danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
             var.driver.find_element(By.XPATH, var.thongtinthietbi).click()
@@ -2245,7 +2245,7 @@ class danhsachxe:
 
     def chuotphaixe_xemhanhcamera_nd10(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        login.login.login_v2(self, "viconshipdanang1", "12341234")
+        login.login.login_v2(self, "43E02740", "12341234")
 
         danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
 
@@ -2298,9 +2298,9 @@ class danhsachxe:
     def chuotphaixe_giamsatcamera_nd10(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
 
         danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
 
@@ -2350,9 +2350,9 @@ class danhsachxe:
     def chuotphaixe_bieudonhienlieu(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
 
         danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
 
@@ -2400,9 +2400,9 @@ class danhsachxe:
     def chuotphaixe_bieudonhienlieumoi(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(3)
         try:
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
 
         var.driver.implicitly_wait(1)
         try:
@@ -2456,9 +2456,9 @@ class danhsachxe:
     def chuotphaixe_bieudonhietdo(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
 
         var.driver.implicitly_wait(1)
         try:
@@ -2500,9 +2500,9 @@ class danhsachxe:
     def chuotphaixe_khoangcachdencacxe(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
         danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
 
         var.driver.find_element(By.XPATH, var.khoangcachdencacxe).click()
@@ -2533,9 +2533,9 @@ class danhsachxe:
     def chuotphaixe_khoangcachdencacxe_khoangcachngan(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
         danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
 
         var.driver.find_element(By.XPATH, var.khoangcachdencacxe).click()
@@ -2564,9 +2564,9 @@ class danhsachxe:
     def chuotphaixe_khoangcachdencacxe_khoangcachdai(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
             var.driver.find_element(By.XPATH, var.khoangcachdencacxe).click()
             time.sleep(2)
@@ -2595,9 +2595,9 @@ class danhsachxe:
     def chuotphaixe_khoangcachdencacxe_ten(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
             var.driver.find_element(By.XPATH, var.khoangcachdencacxe).click()
             time.sleep(2)
@@ -2626,9 +2626,9 @@ class danhsachxe:
     def chuotphaixe_khoangcachdencacxe_iconx(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(3)
         try:
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
             var.driver.find_element(By.XPATH, var.khoangcachdencacxe).click()
             time.sleep(2)
@@ -2652,9 +2652,9 @@ class danhsachxe:
     def chuotphaixe_khoangcachdencacdiem(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
         danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
 
         var.driver.find_element(By.XPATH, var.khoangcachdencacdiem).click()
@@ -2685,9 +2685,9 @@ class danhsachxe:
     def chuotphaixe_khoangcachdencacdiem_khoangcachngan(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
         danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
 
         var.driver.find_element(By.XPATH, var.khoangcachdencacdiem).click()
@@ -2716,9 +2716,9 @@ class danhsachxe:
     def chuotphaixe_khoangcachdencacdiem_khoangcachdai(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
             var.driver.find_element(By.XPATH, var.khoangcachdencacdiem).click()
             time.sleep(2)
@@ -2747,9 +2747,9 @@ class danhsachxe:
     def chuotphaixe_khoangcachdencacdiem_ten(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
             var.driver.find_element(By.XPATH, var.khoangcachdencacdiem).click()
             time.sleep(2)
@@ -2778,9 +2778,9 @@ class danhsachxe:
     def chuotphaixe_khoangcachdencacdiem_iconx(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(3)
         try:
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
             var.driver.find_element(By.XPATH, var.khoangcachdencacdiem).click()
             time.sleep(2)
@@ -2865,7 +2865,7 @@ class danhsachxe:
     def chuotphaixe_xemhinhanhcamera(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.goto_vinconshipdanang)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
             danhsachxe.goto_congty(self, "Viconship Đà Nẵng", "950")
 
@@ -2912,7 +2912,7 @@ class danhsachxe:
     def chuotphaixe_bieudoluuluong(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.goto_vinconshipdanang)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
             danhsachxe.goto_congty(self, "Viconship Đà Nẵng", "950")
 
@@ -2958,7 +2958,7 @@ class danhsachxe:
     def chuotphaixe_gstheotuyenmau(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.goto_vinconshipdanang)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
             danhsachxe.goto_congty(self, "Viconship Đà Nẵng", "950")
 
@@ -3008,7 +3008,7 @@ class danhsachxe:
     def chuotphaixe_taonhanhdonhang(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         # try:
-        #     var.driver.find_element(By.XPATH, var.goto_vinconshipdanang)
+        #     var.driver.find_element(By.XPATH, var.goto_43e02740)
         #     var.driver.find_element(By.XPATH, var.goto_nhapmaxninput).send_keys("1010_87")
         #     time.sleep(0.5)
         #     var.driver.find_element(By.XPATH, var.goto_nhapmaxninput).click()
@@ -3018,7 +3018,7 @@ class danhsachxe:
         #     danhsachxe.goto_congty(self, "1010_Công ty không có nhóm đội", "1010_87")
 
         try:
-            var.driver.find_element(By.XPATH, var.goto_vinconshipdanang)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
             danhsachxe.goto_congty(self, "Viconship Đà Nẵng", "950")
 
@@ -3073,7 +3073,7 @@ class danhsachxe:
         # except:
         #     danhsachxe.goto_congty(self, "1010_Công ty không có nhóm đội", "1010_87")
         try:
-            var.driver.find_element(By.XPATH, var.goto_vinconshipdanang)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
             danhsachxe.goto_congty(self, "Viconship Đà Nẵng", "950")
 
@@ -3141,7 +3141,7 @@ class canhbao:
     def phuongtienthieuthongtintichtruyen(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.goto_vinconshipdanang)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
             danhsachxe.goto_congty(self, "Viconship Đà Nẵng", "950")
 
@@ -3165,7 +3165,7 @@ class canhbao:
     def theodoichuyenhang(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.goto_vinconshipdanang)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
             danhsachxe.goto_congty(self, "Viconship Đà Nẵng", "950")
         var.driver.find_element(By.XPATH, var.icontheodoichuyenhang).click()
@@ -3218,7 +3218,7 @@ class canhbao:
     def xemanhcamera(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.goto_vinconshipdanang)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
             danhsachxe.goto_congty(self, "Viconship Đà Nẵng", "950")
         xoacanhbao()
@@ -3236,7 +3236,7 @@ class canhbao:
     def hientranghethong(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.goto_vinconshipdanang)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
             danhsachxe.goto_congty(self, "Viconship Đà Nẵng", "950")
         var.driver.find_element(By.XPATH, var.icon_hientranghethong1).click()
@@ -3285,7 +3285,7 @@ class canhbao:
     def danhsachxedangan(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.goto_vinconshipdanang)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
             danhsachxe.goto_congty(self, "Viconship Đà Nẵng", "950")
         var.driver.find_element(By.XPATH, var.icon_danhsachxedangan).click()
@@ -3334,7 +3334,7 @@ class canhbao:
     def danhsachxe2g(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.goto_vinconshipdanang)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
             danhsachxe.goto_congty(self, "Viconship Đà Nẵng", "950")
         var.driver.find_element(By.XPATH, var.icon_danhsachxe2g).click()
@@ -3383,7 +3383,7 @@ class canhbao:
     def canhbaotimeline(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.goto_vinconshipdanang)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
             danhsachxe.goto_congty(self, "Viconship Đà Nẵng", "950")
         # xoacanhbao()
@@ -3433,7 +3433,7 @@ class canhbao:
     def thongtinxetoihandivaophocam(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.goto_vinconshipdanang)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
             danhsachxe.goto_congty(self, "Viconship Đà Nẵng", "950")
         xoacanhbao()
@@ -3451,7 +3451,7 @@ class canhbao:
     def canhbaoxechuatoidiem(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.goto_vinconshipdanang)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
             danhsachxe.goto_congty(self, "Viconship Đà Nẵng", "950")
         # xoacanhbao()
@@ -3507,7 +3507,7 @@ class canhbao:
     def canhbao(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.goto_vinconshipdanang)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
             danhsachxe.goto_congty(self, "Viconship Đà Nẵng", "950")
         xoacanhbao()
@@ -3565,7 +3565,7 @@ class checkthongtinxe:
         var.driver.implicitly_wait(5)
         chucnangkhac.clearData_luutamthoi(var.path_luutamthoi, "Sheet1", "", "", "")
 
-        login.login.login_v2(self, "viconshipdanang1", "12341234")
+        login.login.login_v2(self, "43E02740", "12341234")
         var.driver.find_element(By.XPATH, var.trangthai_dichuyen).click()
         time.sleep(2)
         n = 0
@@ -6239,7 +6239,7 @@ class chuotphaimap:
     def chidanduong_timtheolotrinh(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         # TÌM THEO LỘ TRÌNH
-        login.login.login_v2(self, "viconshipdanang1", "12341234")
+        login.login.login_v2(self, "43E02740", "12341234")
         time.sleep(2)
         mouse.move("800", "800")
         mouse.click(button='right')
@@ -6272,9 +6272,9 @@ class chuotphaimap:
     def chidanduong_timtheolotrinh_quangduong(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             time.sleep(2)
             mouse.move("800", "800")
             mouse.click(button='right')
@@ -6287,7 +6287,7 @@ class chuotphaimap:
         try:
             var.driver.find_element(By.XPATH, var.chidanduong_nhomphuongtien).click()
         except:
-            login.login.login_v2(self, "viconshipdanang1", "12341234")
+            login.login.login_v2(self, "43E02740", "12341234")
             time.sleep(2)
             mouse.move("800", "800")
             mouse.click(button='right')
@@ -6439,7 +6439,7 @@ class chuotphaimap:
     def dieuxedituyen(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.goto_vinconshipdanang)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
             danhsachxe.goto_congty(self, "Viconship Đà Nẵng", "950")
         mouse.move("800", "800")
@@ -6450,7 +6450,7 @@ class chuotphaimap:
         except:
             var.driver.refresh()
             time.sleep(4)
-            var.driver.find_element(By.XPATH, var.goto_vinconshipdanang)
+            var.driver.find_element(By.XPATH, var.goto_43e02740)
             time.sleep(1)
             mouse.move("800", "800")
             mouse.click(button='right')

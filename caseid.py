@@ -37,7 +37,7 @@ def caseid_login02(self):
     login.login.login_v2_tkbinhanh(self, "truongtq@bagroup.vn", "atgmj123", "Login02", "Đăng nhập với tài khoản bình anh")
 
 def caseid_login03(self):
-    login.login.login_v2_tkdaily(self, "viconshipdanang1", "12341234", "Login03", "Đăng nhập với tài khoản đại lý")
+    login.login.login_v2_tkdaily(self, "43E02740", "12341234", "Login03", "Đăng nhập với tài khoản đại lý")
 
 def caseid_login04(self):
     login.login.login_v2_tkkhongcoquyengiamsat(self, "truongvck1", "12341234", "Login04", "Đăng nhập với tài khoản khách hàng không có quyền giám sát")
@@ -2559,11 +2559,136 @@ def caseid_image02(self):
     image.images.tracking_by_images_watch_image(self, "Image02", eventname, result)
 
 
+def caseid_image03(self):
+    get_datachecklist("Image03")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    image.images.tracking_by_images_search(self, "Image03", eventname, result)
 
 
 
 
+def caseid_image04(self):
+    get_datachecklist("Image04")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    image.images.tracking_by_images_checkapi(self, "Image04", eventname, result)
 
+
+def caseid_image05(self):
+    get_datachecklist("Image05")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    image.images.tracking_vehicle_by_images_online(self, "Image05", eventname, result)
+
+
+def caseid_image06(self):
+    get_datachecklist("Image06")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    image.images.tracking_vehicle_by_images_online_watch_image(self, "Image06", eventname, result)
+
+
+
+def caseid_image07(self):
+    get_datachecklist("Image07")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    image.images.tracking_vehicle_by_images_online_downloadexcel(self, "Image07", eventname, result)
+
+
+
+def caseid_image08(self):
+    get_datachecklist("Image08")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    image.images.tracking_vehicle_by_images_online_search(self, "Image08", eventname, result)
+
+
+def caseid_image09(self):
+    get_datachecklist("Image09")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    image.images.tracking_vehicle_by_images_online_checkapi(self, "Image09", eventname, result)
+
+
+
+def caseid_image10(self):
+    get_datachecklist("Image10")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    image.images.tracking_single_vehicle(self, "Image10", eventname, result)
+
+
+def caseid_image11(self):
+    get_datachecklist("Image11")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    image.images.tracking_single_vehicle_search(self, "Image11", eventname, result)
+
+
+def caseid_image12(self):
+    get_datachecklist("Image12")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    image.images.tracking_single_vehicle_watch_image(self, "Image12", eventname, result)
+
+def caseid_image13(self):
+    get_datachecklist("Image13")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    image.images.tracking_single_vehicle_checkapi(self, "Image13", eventname, result)
+
+
+def caseid_image14(self):
+    get_datachecklist("Image14")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    image.images.camera_image_management(self, "Image14", eventname, result)
+
+
+
+def caseid_image15(self):
+    get_datachecklist("Image15")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    image.images.camera_image_management_search(self, "Image15", eventname, result)
+
+
+def caseid_image16(self):
+    get_datachecklist("Image16")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    image.images.camera_image_management_watch_image(self, "Image16", eventname, result)
+
+
+def caseid_image17(self):
+    get_datachecklist("Image17")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    image.images.camera_image_management_checkapi(self, "Image17", eventname, result)
+
+
+def caseid_image18(self):
+    get_datachecklist("Image18")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    image.images.view_camera_photos(self, "Image18", eventname, result)
+
+
+
+def caseid_image19(self):
+    get_datachecklist("Image19")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    image.images.view_camera_photos_search(self, "Image19", eventname, result)
+
+
+def caseid_image20(self):
+    get_datachecklist("Image20")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    image.images.view_camera_photos_checkapi(self, "Image20", eventname, result)
 
 
 

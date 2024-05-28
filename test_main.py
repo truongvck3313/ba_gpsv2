@@ -308,160 +308,188 @@ class Test(unittest.TestCase):
 # #
 # #
 # #
-# #
-# #         # quản trị - quản trị loại phương tiện
-# #         # caseid.caseid_admin01(self)
-# #         # caseid.caseid_admin02(self)
-# #         # caseid.caseid_admin03(self)
-# #         # caseid.caseid_admin04(self)
-# #         # caseid.caseid_admin05(self)
-# #         # caseid.caseid_admin06(self)
-# #         # caseid.caseid_admin07(self)
-# #         # caseid.caseid_admin08(self)
-# #         #
-# #         #
-# #         # # quản trị - danh sách xe
-# #         # caseid.caseid_admin09(self)
-# #         # caseid.caseid_admin10(self)
-# #         # caseid.caseid_admin11(self)
-# #         # caseid.caseid_admin12(self)
-# #         # caseid.caseid_admin13(self)
-# #         # caseid.caseid_admin14(self)
-# #         # caseid.caseid_admin15(self)
-# #         # caseid.caseid_admin16(self)
-# #         # caseid.caseid_admin17(self)
-# #         # caseid.caseid_admin18(self)
-# #         # caseid.caseid_admin19(self)
-# #         # caseid.caseid_admin20(self)
-# #         # caseid.caseid_admin21(self)
-# #         #
-# #         # #Quản trị nhóm
-# #         # caseid.caseid_admin22(self)
-# #         # caseid.caseid_admin23(self)
-# #         # caseid.caseid_admin24(self)
-# #         # caseid.caseid_admin25(self)
-# #         # caseid.caseid_admin26(self)
-# #         # caseid.caseid_admin27(self)
-# #         # caseid.caseid_admin28(self)
-# #         # caseid.caseid_admin29(self)
-# #         # caseid.caseid_admin30(self)
-# #         # caseid.caseid_admin31(self)
-# #
-#         # #Phân quyền nhóm xe
-#         # caseid.caseid_admin32(self)
-#         # caseid.caseid_admin33(self)
-#         # caseid.caseid_admin34(self)
-#         # caseid.caseid_admin35(self)
-#
-#         # # danh sách người dùng
-#         # caseid.caseid_user01(self)
-#         # caseid.caseid_user02(self)
-#         # caseid.caseid_user03(self)
-#
-#         # # Báo cáo doanh nghiep - Báo cáo tổng hợp hoạt động (theo nhóm)
-#         # caseid.caseid_report01(self)
-#         # caseid.caseid_report02(self)
-#         # caseid.caseid_report03(self)
-#         #
-#         # # Báo cáo doanh nghiep - Báo cáo chi tiết họat động
-#         # caseid.caseid_report04(self)
-#         # caseid.caseid_report05(self)
-#         # caseid.caseid_report06(self)
-#         # caseid.caseid_report07(self)
-#         # caseid.caseid_report08(self)
-#         #
-#         # #Báo cáo tổng hợp km xe hoạt động
-#         # caseid.caseid_report09(self)
-#         # caseid.caseid_report10(self)
-#         # caseid.caseid_report11(self)
-#         # caseid.caseid_report12(self)
-#         # caseid.caseid_report13(self)
-#         #
-#         # #Báo cáo dừng đỗ
-#         # caseid.caseid_report14(self)
-#         # caseid.caseid_report15(self)
-#         # caseid.caseid_report16(self)
-#         #
-#         # #Báo cáo chuyến kinh doanh
-#         # caseid.caseid_report17(self)
-#         # caseid.caseid_report18(self)
-#         # caseid.caseid_report19(self)
-#         #
-#         # # Báo cáo ra vào trạm
-#         # caseid.caseid_report20(self)
-#         # caseid.caseid_report21(self)
-#         # caseid.caseid_report22(self)
-#         #
-#         # #Báo cáo tổng hợp điều hòa
-#         # caseid.caseid_report23(self)
-#         # caseid.caseid_report24(self)
-#         # caseid.caseid_report25(self)
-#         #
-#         # #Báo cáo động cơ
-#         # caseid.caseid_report26(self)
-#         # caseid.caseid_report27(self)
-#         # caseid.caseid_report28(self)
-#         #
-#         # #Báo cáo hành trình
-#         # caseid.caseid_report29(self)
-#         # caseid.caseid_report30(self)
-#         # caseid.caseid_report31(self)
-#         # caseid.caseid_report32(self)
-#         #
-#         # #Báo cáo tổng hợp nhiên liệu
-#         # caseid.caseid_report33(self)
-#         # caseid.caseid_report34(self)
-#         # caseid.caseid_report35(self)
-#         #
-#         # #Báo cáo nhiên liệu
-#         # caseid.caseid_report36(self)
-#         # caseid.caseid_report37(self)
-#         # caseid.caseid_report38(self)
-#         #
-#         # #Báo cáo đổ hút nhiên liệu
-#         # caseid.caseid_report39(self)
-#         # caseid.caseid_report40(self)
-#         # caseid.caseid_report41(self)
-#         #
-#         # #Báo cáo mất tín hiệu
-#         # caseid.caseid_report42(self)
-#         # caseid.caseid_report43(self)
-#         # caseid.caseid_report44(self)
-#         #
-#         # # #Báo cáo quá tốc độ
-#         # caseid.caseid_report45(self)
-#         # caseid.caseid_report46(self)
-#         # caseid.caseid_report47(self)
-#
-#         # Báo cáo tổng hợp lái xe đăng nhập đăng xuất
-#         # caseid.caseid_report48(self)
-#         # caseid.caseid_report49(self)
-#         # caseid.caseid_report50(self)
-#
-#         # # Quá tốc độ - BGT
-#         # caseid.caseid_report51(self)
-#         # caseid.caseid_report52(self)
-#         # caseid.caseid_report53(self)
-#
-#         # Video clip - Xem dữ liệu video - Tổng quan
-#         caseid.caseid_video01(self)
-#         caseid.caseid_video02(self)
-#         caseid.caseid_video03(self)
-#
-#         # # Video clip - Xem dữ liệu video - Chi tiết
-#         caseid.caseid_video04(self)
-#         caseid.caseid_video05(self)
-#         caseid.caseid_video06(self)
-#         caseid.caseid_video07(self)
+# # #
+#         # quản trị - quản trị loại phương tiện
+#         caseid.caseid_admin01(self)
+#         caseid.caseid_admin02(self)
+#         caseid.caseid_admin03(self)
+#         caseid.caseid_admin04(self)
+#         caseid.caseid_admin05(self)
+#         caseid.caseid_admin06(self)
+#         caseid.caseid_admin07(self)
+#         caseid.caseid_admin08(self)
 
+
+        # quản trị - danh sách xe
+        # caseid.caseid_admin09(self)
+        # caseid.caseid_admin10(self)
+        # caseid.caseid_admin11(self)
+        # caseid.caseid_admin12(self)
+        # caseid.caseid_admin13(self)
+        # caseid.caseid_admin14(self)
+        # caseid.caseid_admin15(self)
+        # caseid.caseid_admin16(self)
+        # caseid.caseid_admin17(self)
+        # caseid.caseid_admin18(self)
+        # caseid.caseid_admin19(self)
+        # caseid.caseid_admin20(self)
+        # caseid.caseid_admin21(self)
+
+        #Quản trị nhóm
+        # caseid.caseid_admin22(self)
+        # caseid.caseid_admin23(self)
+        # caseid.caseid_admin24(self)
+        # caseid.caseid_admin25(self)
+        # caseid.caseid_admin26(self)
+        # caseid.caseid_admin27(self)
+        # caseid.caseid_admin28(self)
+        # caseid.caseid_admin29(self)
+        # caseid.caseid_admin30(self)
+        # caseid.caseid_admin31(self)
+        #
+        # #Phân quyền nhóm xe
+        # caseid.caseid_admin32(self)
+        # caseid.caseid_admin33(self)
+        # caseid.caseid_admin34(self)
+        # caseid.caseid_admin35(self)
+
+        # danh sách người dùng
+        # caseid.caseid_user01(self)
+        # caseid.caseid_user02(self)
+        # caseid.caseid_user03(self)
+#
+        # # Báo cáo doanh nghiep - Báo cáo tổng hợp hoạt động (theo nhóm)
+        # caseid.caseid_report01(self)
+        # caseid.caseid_report02(self)
+        # caseid.caseid_report03(self)
+        #
+        # # Báo cáo doanh nghiep - Báo cáo chi tiết họat động
+        # caseid.caseid_report04(self)
+        # caseid.caseid_report05(self)
+        # caseid.caseid_report06(self)
+        # caseid.caseid_report07(self)
+        # caseid.caseid_report08(self)
+        #
+        # #Báo cáo tổng hợp km xe hoạt động
+        # caseid.caseid_report09(self)
+        # caseid.caseid_report10(self)
+        # caseid.caseid_report11(self)
+        # caseid.caseid_report12(self)
+        # caseid.caseid_report13(self)
+
+        #Báo cáo dừng đỗ
+        # caseid.caseid_report14(self)
+        # caseid.caseid_report15(self)
+        # caseid.caseid_report16(self)
+        #
+        # #Báo cáo chuyến kinh doanh
+        # caseid.caseid_report17(self)
+        # caseid.caseid_report18(self)
+        # caseid.caseid_report19(self)
+        #
+        # # Báo cáo ra vào trạm
+        # caseid.caseid_report20(self)
+        # caseid.caseid_report21(self)
+        # caseid.caseid_report22(self)
+        #
+        # #Báo cáo tổng hợp điều hòa
+        # caseid.caseid_report23(self)
+        # caseid.caseid_report24(self)
+        # caseid.caseid_report25(self)
+
+        #Báo cáo động cơ
+        # caseid.caseid_report26(self)
+        # caseid.caseid_report27(self)
+        # caseid.caseid_report28(self)
+        #
+        # #Báo cáo hành trình
+        # caseid.caseid_report29(self)
+        # caseid.caseid_report30(self)
+        # caseid.caseid_report31(self)
+        # caseid.caseid_report32(self)
+        #
+        # #Báo cáo tổng hợp nhiên liệu
+        # caseid.caseid_report33(self)
+        # caseid.caseid_report34(self)
+        # caseid.caseid_report35(self)
+        #
+        # #Báo cáo nhiên liệu
+        # caseid.caseid_report36(self)
+        # caseid.caseid_report37(self)
+        # caseid.caseid_report38(self)
+        #
+        # #Báo cáo đổ hút nhiên liệu
+        # caseid.caseid_report39(self)
+        # caseid.caseid_report40(self)
+        # caseid.caseid_report41(self)
+
+        #Báo cáo mất tín hiệu
+        # caseid.caseid_report42(self)
+        # caseid.caseid_report43(self)
+        # caseid.caseid_report44(self)
+        #
+        # # #Báo cáo quá tốc độ
+        # caseid.caseid_report45(self)
+        # caseid.caseid_report46(self)
+        # caseid.caseid_report47(self)
+        #
+        # # Báo cáo tổng hợp lái xe đăng nhập đăng xuất
+        # caseid.caseid_report48(self)
+        # caseid.caseid_report49(self)
+        # caseid.caseid_report50(self)
+
+        # # Quá tốc độ - BGT
+        # caseid.caseid_report51(self)
+        # caseid.caseid_report52(self)
+        # caseid.caseid_report53(self)
+#
+        # # Video clip - Xem dữ liệu video - Tổng quan
+        # caseid.caseid_video01(self)
+        # caseid.caseid_video02(self)
+        # caseid.caseid_video03(self)
+        #
+        # # # Video clip - Xem dữ liệu video - Chi tiết
+        # caseid.caseid_video04(self)
+        # caseid.caseid_video05(self)
+        # caseid.caseid_video06(self)
+        # caseid.caseid_video07(self)
+        #
         # # Video clip - Giám sát camera
-        caseid.caseid_video08(self)
-        caseid.caseid_video09(self)
-        caseid.caseid_video10(self)
-        caseid.caseid_video11(self)
-        caseid.caseid_video12(self)
+        # caseid.caseid_video08(self)
+        # caseid.caseid_video09(self)
+        # caseid.caseid_video10(self)
+        # caseid.caseid_video11(self)
+        # caseid.caseid_video12(self)
 
-
+        # # Hình ảnh - Giám sát bằng hình ảnh
+        # caseid.caseid_image01(self)
+        # caseid.caseid_image02(self)
+        # caseid.caseid_image03(self)
+        # caseid.caseid_image04(self)
+        #
+        # # Hình ảnh - Giám sát hình ảnh trực tuyến
+        # caseid.caseid_image05(self)
+        # caseid.caseid_image06(self)
+        # caseid.caseid_image07(self)
+        # caseid.caseid_image08(self)
+        # caseid.caseid_image09(self)
+        #
+        # # Hình ảnh - Giám sát bằng hình ảnh 1 xe (thư viện ảnh)
+        # caseid.caseid_image10(self)
+        # caseid.caseid_image11(self)
+        # caseid.caseid_image12(self)
+        # caseid.caseid_image13(self)
+        #
+        # # Hình ảnh - Quản lý ảnh camera
+        # caseid.caseid_image14(self)
+        # caseid.caseid_image15(self)
+        # caseid.caseid_image16(self)
+        # caseid.caseid_image17(self)
+        #
+        # # Hình ảnh - Xem ảnh Camera
+        # caseid.caseid_image18(self)
+        # caseid.caseid_image19(self)
+        # caseid.caseid_image20(self)
 
 
 if __name__ == "__main__":
