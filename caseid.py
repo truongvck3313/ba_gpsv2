@@ -930,7 +930,7 @@ def caseid_giamsat124(self):
     get_datachecklist("GiamSat124")
     tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
     ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
-    giamsat.canhbao.canhbaoxechuatoidiem(self, "GiamSat124", tensukien, ketqua)
+    giamsat.canhbao.thongtinxetoihandivaophocam(self, "GiamSat124", tensukien, ketqua)
 
 
 def caseid_giamsat125(self):

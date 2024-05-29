@@ -202,24 +202,24 @@ def get_datachecklist(ma):
 
 
 def write_caseif():
-    n = 9
-    while (n < 21):
+    n = 0
+    while (n < 20):
         var.driver.implicitly_wait(1)
         n += 1
         n = str(n)
-        print("try:\n   if case == 'Route"+n+"':\n       caseid.caseid_route"+n+"(self)\nexcept:\n    pass")
+        print("try:\n   if case == 'Image"+n+"':\n       caseid.caseid_image"+n+"(self)\nexcept:\n    pass")
         n = int(n)
 
 
 
 
 def write_caseif1():
-    n = 9
-    while (n < 22):
+    n = 0
+    while (n < 20):
         var.driver.implicitly_wait(1)
         n += 1
         n = str(n)
-        print("try:\n   caseid.caseid_route"+n+"(self)\nexcept:\n     pass")
+        print("try:\n   caseid.caseid_image"+n+"(self)\nexcept:\n     pass")
         n = int(n)
 
 

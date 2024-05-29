@@ -90,7 +90,6 @@ class route:
         var.driver.implicitly_wait(5)
         try:
             var.driver.find_element(By.XPATH, var.check_popup_route)
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
         except:
             login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.vehicle).click()
@@ -132,7 +131,6 @@ class route:
         var.driver.implicitly_wait(5)
         try:
             var.driver.find_element(By.XPATH, var.check_popup_route)
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
         except:
             login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.vehicle).click()
@@ -176,7 +174,6 @@ class route:
         var.driver.implicitly_wait(5)
         try:
             var.driver.find_element(By.XPATH, var.check_popup_route)
-            var.driver.find_element(By.XPATH, var.vinconshipdanang1)
         except:
             login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.vehicle).click()
