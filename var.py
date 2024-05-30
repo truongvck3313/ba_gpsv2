@@ -1,25 +1,17 @@
 from selenium.webdriver.common.by import By
-#trình duyệt 2
 import openpyxl
-import chucnangkhac
-from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 capa = DesiredCapabilities.CHROME
 capa["pageLoadStrategy"] = "none"
 from seleniumwire import webdriver
-from selenium.webdriver.chrome.options import Options
-import requests
+import chucnangkhac
 
 
 chrome_options = webdriver.ChromeOptions()
-
 chrome_options.add_argument('--headless')
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-dev-shm-usage')
 chrome_options.add_argument('window-size=1920x1480')
-# driver = webdriver.Chrome(desired_capabilities=capa)
-
-
 
 
 
@@ -28,25 +20,12 @@ options = webdriver.ChromeOptions()
 options.add_argument("--start-maximized")
 prefs = {"profile.default_content_settings.popups": 0,
              "download.default_directory":
-                        r"C:\Users\truongtq.BA\PycharmProjects\pythonProject\ba_v2\excel",
+                        r""+str(chucnangkhac.excelpathdownload),
              "directory_upgrade": True}
 options.add_experimental_option("prefs", prefs)
 driver = webdriver.Chrome(options=options, desired_capabilities=capa)
 
 
-
-
-
-
-
-
-
-
-
-
-# PATH ="C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/chromedriver.exe"
-# path_baocao = "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/GPS_ChecklistForAutoTest.xlsx"
-# path_luutamthoi = "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/bangluudulieu_tamthoi.xlsx"
 
 
 def readData(file,sheetName,rownum,columnno):
@@ -89,6 +68,12 @@ for x in f:
          PATH = x[15:-2]
      if x[0:13] == "- ModuleTest:":     #0,1,2,3,4
          moduletest = x[15:-2]
+
+
+
+
+
+
 
 
 

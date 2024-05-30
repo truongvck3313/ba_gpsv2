@@ -1,0 +1,25 @@
+
+
+
+- ModeTest: mức độ cần test 1,2,3,4 như file excel, 0 là chạy tất cả
+- ModuleTest: "Phân hệ test 
+0.chạy tất cả phân hệ
+1.đăng nhập,  
+2.giám sát,     
+3.lộ trình    
+4.quản trị
+5.báo cáo
+6.video clip
+7.hinh ảnh
+
+- LinkTest: "https://gps.binhanh.vn"
+- TimeRun: cài tự động chạy 
+- LogPath: "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/ba.log"
+- CheckListPath: "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/GPS_ChecklistForAutoTest.xlsx"
+- ImagePath: "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/anhchup/"
+- DataTestPath: "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/data_ba.json"
+- UploadPath: "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/file/"
+- LuuDuLieuTamThoiPath: "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/bangluudulieu_tamthoi.xlsx"
+- ExcelPath: "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/excel"
+- PathDriver: "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/chromedriver.exe"
+- ExcelPathDownload: "C:\Users\truongtq.BA\PycharmProjects\pythonProject\ba_v2\excel"

@@ -1,17 +1,18 @@
-import caseid
-import login
 import chucnangkhac
 import var
-import time
 import unittest
-import mucdo
-import giamsat
-from retry import retry
-import lotrinh
 import module_gpsv2
-import report
 
 chucnangkhac.timerun()
+
+
+
+
+
+
+
+
+
 
 
 class Test(unittest.TestCase):
@@ -358,7 +359,7 @@ class Test(unittest.TestCase):
 #         caseid.caseid_user02(self)
 #         caseid.caseid_user03(self)
 #
-        # # Báo cáo doanh nghiep - Báo cáo tổng hợp hoạt động (theo nhóm)
+        # Báo cáo doanh nghiep - Báo cáo tổng hợp hoạt động (theo nhóm)
         # caseid.caseid_report01(self)
         # caseid.caseid_report02(self)
         # caseid.caseid_report03(self)
@@ -497,7 +498,6 @@ if __name__ == "__main__":
 
 
 # pyinstaller.exe --icon=C:\Users\truongtq.BA\PycharmProjects\pythonProject\ba_v2\icon_ba.ico .\test_main.py
-# pyinstaller.exe --icon=C:\Users\truongtq.BA\PycharmProjects\pythonProject\icon_ba.ico .\test_main.py
 
 
 

@@ -1,18 +1,19 @@
 import logging
-from urllib import request
 from selenium.common.exceptions import NoSuchElementException
-import caseid
 import var
 import time
 import openpyxl
-import re
 import subprocess
-import mucdo
 from selenium.webdriver.common.keys import Keys
 import os
-import glob
 from selenium.webdriver.common.by import By
 
+
+
+f = open("file_config.txt", 'r')
+for x in f:
+    if x[0:20] == "- ExcelPathDownload:":      #C:\Users\truongtq.BA\PycharmProjects\pythonProject\ba_v2\excel
+        excelpathdownload = x[22:-2]
 
 
 def timerun():
@@ -97,6 +98,27 @@ def writeData(file,sheetName,caseid,columnno,data):
             break
         i = int(i)
     wordbook.save(file)
+
+
+
+
+
+
+# def whatsapp_QR():
+#     options = webdriver.ChromeOptions()
+#     options.add_argument('--user-data-dir=C:/Users/truongtq.BA/AppData/Local/Google/Chrome/User Data/Default')
+#     driver = webdriver.Chrome(chrome_options=options)
+#     driver.get('https://web.telegram.org/a/')
+#     # var.driver.get("https://web.telegram.org/a/")
+#     print("Scan QR Code, And then Enter")
+#     input()
+#     print("Logged In")
+#     var.driver.close()
+
+
+
+
+
 
 
 def notification_telegram():

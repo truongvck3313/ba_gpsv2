@@ -1,16 +1,11 @@
 import logging
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.common.keys import Keys
-
 import giamsat
 import var
 import time
-import openpyxl
 import json
 from selenium.webdriver.common.by import By
 import chucnangkhac
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import WebDriverWait
+
 
 file_name = var.datatestpath
 with open(file_name, 'r', encoding='utf-8') as f:
@@ -73,7 +68,6 @@ class login:
             var.driver.save_screenshot(var.imagepath + ma+".png")
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma+".png")
-
 
     def login_v2_tkbinhanh(self, user, password, ma, tensukien):
         var.driver.implicitly_wait(3)

@@ -2,11 +2,9 @@ import logging
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 import var
-import lotrinh
 import time
 import json
 from retry import retry
-# import retry
 from selenium.webdriver.common.by import By
 import chucnangkhac
 import login
@@ -15,8 +13,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 import mouse
 from selenium.common.exceptions import NoSuchElementException
-from urllib.request import urlretrieve
-import urllib.request
 import requests
 import openpyxl
 import re
@@ -2740,7 +2736,7 @@ class danhsachxe:
     def chuotphaixe_xemhinhanhcamera(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.goto_43e02740)
+            var.driver.find_element(By.XPATH, var.check_goto_company)
         except:
             danhsachxe.goto_congty(self, "Viconship Đà Nẵng", "950")
 
@@ -2787,7 +2783,7 @@ class danhsachxe:
     def chuotphaixe_bieudoluuluong(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.goto_43e02740)
+            var.driver.find_element(By.XPATH, var.check_goto_company)
         except:
             danhsachxe.goto_congty(self, "Viconship Đà Nẵng", "950")
 
@@ -2833,7 +2829,7 @@ class danhsachxe:
     def chuotphaixe_gstheotuyenmau(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.goto_43e02740)
+            var.driver.find_element(By.XPATH, var.check_goto_company)
         except:
             danhsachxe.goto_congty(self, "Viconship Đà Nẵng", "950")
 
@@ -2893,7 +2889,7 @@ class danhsachxe:
         #     danhsachxe.goto_congty(self, "1010_Công ty không có nhóm đội", "1010_87")
 
         try:
-            var.driver.find_element(By.XPATH, var.goto_43e02740)
+            var.driver.find_element(By.XPATH, var.check_goto_company)
         except:
             danhsachxe.goto_congty(self, "Viconship Đà Nẵng", "950")
 
@@ -2948,7 +2944,7 @@ class danhsachxe:
         # except:
         #     danhsachxe.goto_congty(self, "1010_Công ty không có nhóm đội", "1010_87")
         try:
-            var.driver.find_element(By.XPATH, var.goto_43e02740)
+            var.driver.find_element(By.XPATH, var.check_goto_company)
         except:
             danhsachxe.goto_congty(self, "Viconship Đà Nẵng", "950")
 
@@ -3776,7 +3772,7 @@ class checkthongtinxe:
                         var.writeData(var.path_luutamthoi, "Sheet1", 28, 2, thongtinxeapi_thongtinphi)
                         break
                     except:
-                        print("Không tìm thấy phương tiện: ", tenphuongtien)
+                        print("Không tìm thấy phương tiện: ", )
                         break
                 i += 1
             else:
@@ -4385,7 +4381,16 @@ class chuotphaimap:
         time.sleep(0.5)
         var.driver.find_element(By.XPATH, var.timkiem_icon_timtoado).click()
         time.sleep(1)
-        var.driver.find_element(By.XPATH, var.timkiem_timtoado_input).send_keys(data['giamsat']['timkiem_toado1'])
+        try:
+            var.driver.find_element(By.XPATH, var.timkiem_timtoado_input).send_keys(data['giamsat']['timkiem_toado1'])
+        except:
+            login.login.login_v2(self, "ungroup", "12341234")
+            var.driver.find_element(By.XPATH, var.timkiem_icon2).click()
+            time.sleep(0.5)
+            var.driver.find_element(By.XPATH, var.timkiem_icon_timtoado).click()
+            time.sleep(1)
+            var.driver.find_element(By.XPATH, var.timkiem_timtoado_input).send_keys(data['giamsat']['timkiem_toado1'])
+
         time.sleep(0.5)
         var.driver.find_element(By.XPATH, var.timkiem_iconsearch).click()
         time.sleep(1.5)
@@ -4412,7 +4417,14 @@ class chuotphaimap:
         mouse.move("850", "750")
         mouse.click(button='right')
         time.sleep(1)
-        var.driver.find_element(By.XPATH, var.chuotphaimap_thunho).click()
+        try:
+            var.driver.find_element(By.XPATH, var.chuotphaimap_thunho).click()
+        except:
+            login.login.login_v2(self, "ungroup", "12341234")
+            mouse.move("850", "750")
+            mouse.click(button='right')
+            time.sleep(1)
+            var.driver.find_element(By.XPATH, var.chuotphaimap_thunho).click()
         time.sleep(1)
         try:
             var.driver.find_element(By.XPATH, var.canhbaoquatocdo_x).click()
@@ -6345,7 +6357,7 @@ class chuotphaimap:
     def dieuxedituyen(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.goto_43e02740)
+            var.driver.find_element(By.XPATH, var.check_goto_company)
         except:
             danhsachxe.goto_congty(self, "Viconship Đà Nẵng", "950")
         mouse.move("800", "800")

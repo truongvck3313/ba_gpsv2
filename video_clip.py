@@ -1,24 +1,14 @@
-import caseid
-import login
 from selenium.webdriver.common.by import By
 import chucnangkhac
 import login
 import var
 import time
-import mucdo
-import giamsat
-import lotrinh
-import module_gpsv2
-import report
 import json
-from urllib.request import urlretrieve
-import urllib.request
 import requests
 import logging
 import os
 import shutil
 import openpyxl
-from selenium.webdriver.common.keys import Keys
 
 
 

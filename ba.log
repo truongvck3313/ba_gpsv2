@@ -1,22 +1,2 @@
-2024-05-29 Wednesday 17:28:35 seleniumwire.handler:INFO:Capturing request: https://accounts.google.com/ListAccounts?gpsia=1&source=ChromiumBrowser&json=standard
-2024-05-29 Wednesday 17:28:35 seleniumwire.handler:INFO:Capturing response: https://accounts.google.com/ListAccounts?gpsia=1&source=ChromiumBrowser&json=standard 200 
-2024-05-29 Wednesday 17:28:44 seleniumwire.handler:INFO:Capturing request: https://optimizationguide-pa.googleapis.com/v1:GetModels?key=AIzaSyBOti4mM-6x9WDnZIjIeyEU21OpBXqWBgw
-2024-05-29 Wednesday 17:28:45 seleniumwire.handler:INFO:Capturing response: https://optimizationguide-pa.googleapis.com/v1:GetModels?key=AIzaSyBOti4mM-6x9WDnZIjIeyEU21OpBXqWBgw 200 
-2024-05-29 Wednesday 17:28:45 seleniumwire.handler:INFO:Capturing request: https://optimizationguide-pa.googleapis.com/downloads?name=1679317318&target=OPTIMIZATION_TARGET_LANGUAGE_DETECTION
-2024-05-29 Wednesday 17:28:45 seleniumwire.handler:INFO:Capturing request: https://optimizationguide-pa.googleapis.com/downloads?name=1715612677&target=OPTIMIZATION_TARGET_NOTIFICATION_PERMISSION_PREDICTIONS
-2024-05-29 Wednesday 17:28:46 seleniumwire.handler:INFO:Capturing response: https://optimizationguide-pa.googleapis.com/downloads?name=1679317318&target=OPTIMIZATION_TARGET_LANGUAGE_DETECTION 200 
-2024-05-29 Wednesday 17:28:46 seleniumwire.handler:INFO:Capturing response: https://optimizationguide-pa.googleapis.com/downloads?name=1715612677&target=OPTIMIZATION_TARGET_NOTIFICATION_PERMISSION_PREDICTIONS 200 
-2024-05-29 Wednesday 17:28:46 seleniumwire.handler:INFO:Capturing request: https://optimizationguide-pa.googleapis.com/downloads?name=1673999601&target=OPTIMIZATION_TARGET_PAGE_VISIBILITY
-2024-05-29 Wednesday 17:28:46 seleniumwire.handler:INFO:Capturing request: https://optimizationguide-pa.googleapis.com/downloads?name=5&target=OPTIMIZATION_TARGET_PAGE_TOPICS_V2
-2024-05-29 Wednesday 17:28:47 seleniumwire.handler:INFO:Capturing response: https://optimizationguide-pa.googleapis.com/downloads?name=1673999601&target=OPTIMIZATION_TARGET_PAGE_VISIBILITY 200 
-2024-05-29 Wednesday 17:28:47 seleniumwire.handler:INFO:Capturing request: https://optimizationguide-pa.googleapis.com/downloads?name=1715612659&target=OPTIMIZATION_TARGET_GEOLOCATION_PERMISSION_PREDICTIONS
-2024-05-29 Wednesday 17:28:48 seleniumwire.handler:INFO:Capturing response: https://optimizationguide-pa.googleapis.com/downloads?name=1715612659&target=OPTIMIZATION_TARGET_GEOLOCATION_PERMISSION_PREDICTIONS 200 
-2024-05-29 Wednesday 17:28:48 seleniumwire.handler:INFO:Capturing request: https://optimizationguide-pa.googleapis.com/downloads?name=1715612644&target=OPTIMIZATION_TARGET_CLIENT_SIDE_PHISHING
-2024-05-29 Wednesday 17:28:48 seleniumwire.handler:INFO:Capturing response: https://optimizationguide-pa.googleapis.com/downloads?name=5&target=OPTIMIZATION_TARGET_PAGE_TOPICS_V2 200 
-2024-05-29 Wednesday 17:28:49 seleniumwire.handler:INFO:Capturing request: https://optimizationguide-pa.googleapis.com/downloads?name=1696267841&target=OPTIMIZATION_TARGET_OMNIBOX_URL_SCORING
-2024-05-29 Wednesday 17:28:49 seleniumwire.handler:INFO:Capturing response: https://optimizationguide-pa.googleapis.com/downloads?name=1696267841&target=OPTIMIZATION_TARGET_OMNIBOX_URL_SCORING 200 
-2024-05-29 Wednesday 17:28:49 seleniumwire.handler:INFO:Capturing request: https://optimizationguide-pa.googleapis.com/downloads?name=1691042511&target=OPTIMIZATION_TARGET_NEW_TAB_PAGE_HISTORY_CLUSTERS_MODULE_RANKING
-2024-05-29 Wednesday 17:28:50 seleniumwire.handler:INFO:Capturing response: https://optimizationguide-pa.googleapis.com/downloads?name=1715612644&target=OPTIMIZATION_TARGET_CLIENT_SIDE_PHISHING 200 
-2024-05-29 Wednesday 17:28:50 seleniumwire.handler:INFO:Capturing request: https://optimizationguide-pa.googleapis.com/downloads?name=1689043206&target=OPTIMIZATION_TARGET_VISUAL_SEARCH_CLASSIFICATION
-2024-05-29 Wednesday 17:28:52 seleniumwire.handler:INFO:Capturing response: https://optimizationguide-pa.googleapis.com/downloads?name=1691042511&target=OPTIMIZATION_TARGET_NEW_TAB_PAGE_HISTORY_CLUSTERS_MODULE_RANKING 200 
-2024-05-29 Wednesday 17:28:54 seleniumwire.handler:INFO:Capturing response: https://optimizationguide-pa.googleapis.com/downloads?name=1689043206&target=OPTIMIZATION_TARGET_VISUAL_SEARCH_CLASSIFICATION 200 
+2024-05-30 Thursday 17:27:54 seleniumwire.handler:INFO:Capturing request: https://accounts.google.com/ListAccounts?gpsia=1&source=ChromiumBrowser&json=standard
+2024-05-30 Thursday 17:27:54 seleniumwire.handler:INFO:Capturing response: https://accounts.google.com/ListAccounts?gpsia=1&source=ChromiumBrowser&json=standard 200 
