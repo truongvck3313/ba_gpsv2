@@ -2,7 +2,7 @@ import chucnangkhac
 import var
 import unittest
 import module_gpsv2
-
+import caseid
 chucnangkhac.timerun()
 
 
@@ -19,8 +19,8 @@ class Test(unittest.TestCase):
     def test_run1(self):
         chucnangkhac.clearData(var.checklistpath, "Checklist", "", "")
         chucnangkhac.delete_image()
-        module_gpsv2.ModuleTest()
-        chucnangkhac.notification_telegram()
+        # module_gpsv2.ModuleTest()
+        # chucnangkhac.notification_telegram()
 
         #1
         # caseid.caseid_login01(self)
@@ -498,6 +498,7 @@ if __name__ == "__main__":
 
 
 # pyinstaller.exe --icon=C:\Users\truongtq.BA\PycharmProjects\pythonProject\ba_v2\icon_ba.ico .\test_main.py
+# pyinstaller.exe --icon=C:\Users\truongtq.BA\PycharmProjects\pythonProject\ba_v2\tele.ico .\test_main.py
 
 
 

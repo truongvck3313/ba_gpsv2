@@ -252,7 +252,7 @@ class linklienket:
         if link == var.login_icontrangchu:
             time.sleep(3)
         var.driver.find_element(By.XPATH, link).click()
-        time.sleep(1)
+        time.sleep(2)
         tab_id = var.driver.window_handles
         tab_1 = tab_id[1]
         var.driver.switch_to_window(tab_1)

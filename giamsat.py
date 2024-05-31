@@ -2121,7 +2121,7 @@ class danhsachxe:
         danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
 
         var.driver.find_element(By.XPATH, var.xemanhcamera_nd10).click()
-        time.sleep(2)
+        time.sleep(5)
         tab_id = var.driver.window_handles
         tab_0 = tab_id[0]
         try:

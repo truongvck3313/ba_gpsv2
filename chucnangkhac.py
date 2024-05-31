@@ -10,10 +10,6 @@ from selenium.webdriver.common.by import By
 
 
 
-f = open("file_config.txt", 'r')
-for x in f:
-    if x[0:20] == "- ExcelPathDownload:":      #C:\Users\truongtq.BA\PycharmProjects\pythonProject\ba_v2\excel
-        excelpathdownload = x[22:-2]
 
 
 def timerun():
@@ -121,6 +117,11 @@ def writeData(file,sheetName,caseid,columnno,data):
 
 
 
+
+
+
+
+
 def notification_telegram():
     # from DrissionPage import *
     from DrissionPage import ChromiumPage
@@ -176,6 +177,13 @@ def notification_telegram():
         time.sleep(1)
         driver2.ele(var.hopthoai_send).click()
         time.sleep(1)
+
+
+
+
+
+
+
 
 
 def delete_image():

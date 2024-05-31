@@ -4,7 +4,6 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 capa = DesiredCapabilities.CHROME
 capa["pageLoadStrategy"] = "none"
 from seleniumwire import webdriver
-import chucnangkhac
 
 
 chrome_options = webdriver.ChromeOptions()
@@ -16,15 +15,16 @@ chrome_options.add_argument('window-size=1920x1480')
 
 
 
-options = webdriver.ChromeOptions()
-options.add_argument("--start-maximized")
-prefs = {"profile.default_content_settings.popups": 0,
-             "download.default_directory":
-                        r""+str(chucnangkhac.excelpathdownload),
-             "directory_upgrade": True}
-options.add_experimental_option("prefs", prefs)
-driver = webdriver.Chrome(options=options, desired_capabilities=capa)
 
+
+# options = webdriver.ChromeOptions()
+# options.add_argument("--start-maximized")
+# prefs = {"profile.default_content_settings.popups": 0,
+#              "download.default_directory":
+#                         r"C:\Users\truongtq.BA\PycharmProjects\pythonProject\ba_v2\excel",
+#              "directory_upgrade": True}
+# options.add_experimental_option("prefs", prefs)
+# driver = webdriver.Chrome(options=options, desired_capabilities=capa)
 
 
 
@@ -68,10 +68,16 @@ for x in f:
          PATH = x[15:-2]
      if x[0:13] == "- ModuleTest:":     #0,1,2,3,4
          moduletest = x[15:-2]
-
-
-
-
+     if x[0:20] == "- ExcelPathDownload:":      #C:\Users\truongtq.BA\PycharmProjects\pythonProject\ba_v2\excel
+        excelpathdownload = x[22:-2]
+        options = webdriver.ChromeOptions()
+        options.add_argument("--start-maximized")
+        prefs = {"profile.default_content_settings.popups": 0,
+                     "download.default_directory":
+                                r""+str(excelpathdownload),
+                     "directory_upgrade": True}
+        options.add_experimental_option("prefs", prefs)
+        driver = webdriver.Chrome(options=options, desired_capabilities=capa)
 
 
 
