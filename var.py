@@ -822,16 +822,16 @@ view_camera_photos = "//*[@class='leftMenuContainer']//*[@id='ImageViewMND10']"
 check_view_camera_photos_search = "//*[@id='tableContainer']/tbody/tr[7]/td/table/tbody/tr[1]/td[1]/table/tbody/tr[1]/td[1]/div/div/div[1]/img"
 view_camera_photos_search1 = "//*[@class='lstImage']/table/tbody/tr[1]"
 view_camera_photos_search2 = "//*[@class='lstImage']/table/tbody/tr[2]"
-
-
-
-
-
-
-
-
-
-
+check_canhbao_xemanhcamera = "//*[@id='panelImageOnline']//*[@class='text']/b"
+iconxemanhcamera_x = "//*[@id='panelImageOnline']//*[@src='/Images/s_icon_x.png']"
+admin_utility = "//*[@id='ModuleUtilities']"
+device_info = "//*[@class='leftMenu']//*[@id='AdminUtilityDeviceInfo']"
+check_device_info = "//*[@id='column-right']//*[@class='tableBoxHeader']"
+device_info_name_liscense2 = "//*[@id='ctl00_ctl00_MainContent_Content_grvDeviceInfo']/tbody/tr[2]/td[2]"
+device_info_input = "//*[@placeholder='Nhập nội dung cần tìm']"
+device_info_buttonsearch = "//*[@id='ctl00_ctl00_MainContent_Content_btnSearch']"
+check_device_info_search = "//*[@id='ctl00_ctl00_MainContent_Content_grvDeviceInfo']/tbody/tr[1]/td[2]/div"
+device_info_device_info = "//*[@id='idDeviceInfo']"
 
 
 

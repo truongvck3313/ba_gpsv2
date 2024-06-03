@@ -3095,14 +3095,34 @@ class canhbao:
             danhsachxe.goto_congty(self, "Viconship Đà Nẵng", "950")
         xoacanhbao()
         var.driver.find_element(By.XPATH, var.iconxemanhcamera).click()
+        time.sleep(3)
+        chucnangkhac.write_result_text_try_if(ma, tensukien, ketqua, "Giám sát - Cảnh báo - Xem ảnh camera",
+                                              var.check_canhbao_xemanhcamera, "XEM ẢNH CAMERA", "_CanhBao_XemAnhCamera.png")
+
+
+    def xemanhcamera_x(self, ma, tensukien, ketqua):
+        var.driver.implicitly_wait(3)
+        var.driver.find_element(By.XPATH, var.iconxemanhcamera_x).click()
+        time.sleep(1)
         logging.info("Giám sát - Cảnh báo - Xem ảnh camera")
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)
         logging.info("Kết quả - " + ketqua)
-        logging.info("False")
-        var.driver.save_screenshot(var.imagepath + ma + "_CanhBao_XemAnhCamera.png")
-        chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-        chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_CanhBao_XemAnhCamera.png")
+        try:
+            var.driver.find_element(By.XPATH, var.iconxemanhcamera_x).click()
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + ma + "_CanhBao_XemAnhCamera_IconX.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_CanhBao_XemAnhCamera_IconX.png")
+        except:
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+
+
+
+
+
+
 
 
     def hientranghethong(self, ma, tensukien, ketqua):

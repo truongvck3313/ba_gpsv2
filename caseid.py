@@ -5,6 +5,8 @@ import administration
 import report
 import video_clip
 import image
+import utility
+
 
 
 import chucnangkhac
@@ -868,6 +870,15 @@ def caseid_giamsat115(self):
     tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
     ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
     giamsat.canhbao.xemanhcamera(self, "GiamSat115", tensukien, ketqua)
+
+
+def caseid_giamsat115_1(self):
+    get_datachecklist("GiamSat115_1")
+    tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    giamsat.canhbao.xemanhcamera_x(self, "GiamSat115_1", tensukien, ketqua)
+
+
 
 
 def caseid_giamsat116(self):
@@ -2692,4 +2703,25 @@ def caseid_image20(self):
 
 
 
+
+def caseid_utility01(self):
+    get_datachecklist("Utility01")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    utility.utility.device_info(self, "Utility01", eventname, result)
+
+
+def caseid_utility02(self):
+    get_datachecklist("Utility02")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    utility.utility.device_info_search(self, "Utility02", eventname, result)
+
+
+
+def caseid_utility03(self):
+    get_datachecklist("Utility03")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    utility.utility.device_info_device_info(self, "Utility03", eventname, result)
 

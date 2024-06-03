@@ -46,26 +46,28 @@ def write_from_date(fromdate_input):
     from_date_month_year = from_date[2::]
     from_date_day1 = int(from_date_day) - 1
     print(from_date_day1)
-    if from_date_day == 10:
-        from_date_day = "09"
-    if from_date_day == 9:
-        from_date_day = "08"
-    if from_date_day == 8:
-        from_date_day = "07"
-    if from_date_day == 7:
-        from_date_day = "06"
-    if from_date_day == 6:
-        from_date_day = "05"
-    if from_date_day == 5:
-        from_date_day = "04"
-    if from_date_day == 4:
-        from_date_day = "03"
-    if from_date_day == 3:
-        from_date_day = "02"
-    if from_date_day == 2 or 1:
-        from_date_day = "01"
-    from_date_day2 = str(from_date_day1)
-    from_date1 = from_date_day2 + from_date_month_year
+    if from_date_day1 == 10:
+        from_date_day1 = "09"
+    if from_date_day1 == 9:
+        from_date_day1 = "08"
+    if from_date_day1 == 8:
+        from_date_day1 = "07"
+    if from_date_day1 == 7:
+        from_date_day1 = "06"
+    if from_date_day1 == 6:
+        from_date_day1 = "05"
+    if from_date_day1 == 5:
+        from_date_day1 = "04"
+    if from_date_day1 == 4:
+        from_date_day1 = "03"
+    if from_date_day1 == 3:
+        from_date_day1 = "02"
+    if from_date_day1 == 2:
+        from_date_day1 = "01"
+    if from_date_day1 == 1:
+        from_date_day1 = "01"
+    # from_date_day2 = str(from_date_day1)
+    from_date1 = from_date_day1 + from_date_month_year
     print(from_date1)
     xoa = var.driver.find_element(By.XPATH, fromdate_input)
     xoa.send_keys(Keys.CONTROL, "a")
