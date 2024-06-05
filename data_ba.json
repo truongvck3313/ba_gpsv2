@@ -58,5 +58,13 @@
     "timkiem_toado4": "21.002708, 105.865113",
     "timkiem_toado5": "21.048376, 105.780825",
     "timkiem_toado6": "21.048376, 105.780825"
+  },
+  "tienich": {
+    "diem": "12, Nguyễn Trãi, Thanh Xuân, Hà Nội",
+    "quantridiem_timkiem1": "Trạm",
+    "quantridiem_timkiem2": "xe",
+    "quanlynhomdiem_themmoi": "nhom diem z",
+    "quanlynhomdiem_update": "nhom diem z da sua",
+    "timkiem_toado6": "21.048376, 105.780825"
   }
 }

@@ -410,7 +410,7 @@ class danhsachxe:
                             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_TimeUpdateAPI120s.png")
                         break
                     except:
-                        print("Không tìm thấy phương tiện: ", tenphuongtien)
+                        print("Không tìm thấy phương tiện: ")
                         break
                 i += 1
             else:

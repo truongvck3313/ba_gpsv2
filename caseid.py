@@ -2725,3 +2725,145 @@ def caseid_utility03(self):
     result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
     utility.utility.device_info_device_info(self, "Utility03", eventname, result)
 
+
+def caseid_utility04(self):
+    get_datachecklist("Utility04")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    utility.landmark_administraintion.landmark_administraintion(self, "Utility04", eventname, result)
+
+
+def caseid_utility05(self):
+    get_datachecklist("Utility05")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    utility.landmark_administraintion.landmark_administraintion_place_search(self, "Utility05", eventname, result)
+
+
+def caseid_utility06(self):
+    get_datachecklist("Utility06")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    utility.landmark_administraintion.landmark_administraintion_search_nameplace(self, "Utility06", eventname, result)
+
+
+def caseid_utility07(self):
+    get_datachecklist("Utility07")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    utility.landmark_administraintion.landmark_administraintion_search_adressplace(self, "Utility07", eventname, result)
+
+
+def caseid_utility08(self):
+    get_datachecklist("Utility08")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    utility.landmark_administraintion.landmark_group(self, "Utility08", eventname, result)
+
+
+def caseid_utility09(self):
+    get_datachecklist("Utility09")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    utility.landmark_administraintion.landmark_group_search(self, "Utility09", eventname, result)
+
+def caseid_utility10(self):
+    get_datachecklist("Utility10")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    utility.landmark_administraintion.landmark_group_addnewplace(self, "Utility10", eventname, result)
+
+
+def caseid_utility11(self):
+    get_datachecklist("Utility11")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    utility.landmark_administraintion.landmark_group_update(self, "Utility11", eventname, result)
+
+
+def caseid_utility12(self):
+    get_datachecklist("Utility12")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    utility.landmark_administraintion.landmark_group_delete(self, "Utility12", eventname, result)
+
+def caseid_utility13(self):
+    get_datachecklist("Utility13")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    utility.landmark_administraintion.landmark_group_assign(self, "Utility13", eventname, result)
+
+
+
+def caseid_utility14(self):
+    get_datachecklist("Utility14")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    utility.landmark_administraintion.landmark_group_administration(self, "Utility14", eventname, result)
+
+
+def caseid_utility15(self):
+    get_datachecklist("Utility15")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    utility.landmark_administraintion.landmark_group_administration_create_user(self, "Utility15", eventname, result)
+
+
+def caseid_utility16(self):
+    get_datachecklist("Utility16")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    utility.landmark_administraintion.landmark_group_administration_create_landmarks_group(self, "Utility16", eventname, result)
+
+
+
+def caseid_utility17(self):
+    get_datachecklist("Utility17")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    utility.landmark_administraintion.landmark_group_administration_assign_1group(self, "Utility17", eventname, result)
+
+
+def caseid_utility18(self):
+    get_datachecklist("Utility18")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    utility.landmark_administraintion.landmark_group_administration_assign_many_group(self, "Utility18", eventname, result)
+
+
+def caseid_utility19(self):
+    get_datachecklist("Utility19")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    utility.landmark_administraintion.landmark_group_administration_downloadexcel(self, "Utility19", eventname, result)
+
+
+def caseid_utility20(self):
+    get_datachecklist("Utility20")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    utility.landmark_administraintion.add_landmarks_quickly(self, "Utility20", eventname, result)
+
+
+def caseid_utility21(self):
+    get_datachecklist("Utility21")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    utility.landmark_administraintion.add_landmarks_quickly_downloadexcel(self, "Utility21", eventname, result)
+
+
+def caseid_utility22(self):
+    get_datachecklist("Utility22")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    utility.landmark_administraintion.add_landmarks_quickly_uploadfile(self, "Utility22", eventname, result)
+
+
+def caseid_utility23(self):
+    get_datachecklist("Utility23")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    utility.landmark_administraintion.add_landmarks_quickly_add_quickly(self, "Utility23", eventname, result)
+
+
+
