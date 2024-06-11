@@ -1036,6 +1036,7 @@ class activity_report:      #Báo cáo hoạt động
     def report_speed_over_downloadexcel(self, code, eventname, result):    #Báo cáo quá tốc độ -  checkdownload
         var.driver.implicitly_wait(5)
         chucnangkhac.delete_excel()
+
         try:
             # var.driver.find_element(By.XPATH, var.report_search).click()
             var.driver.find_element(By.XPATH, var.check_report_search)
@@ -1049,33 +1050,39 @@ class activity_report:      #Báo cáo hoạt động
             write_from_date_month(var.fromdate_input)
             var.driver.find_element(By.XPATH, var.report_search).click()
             time.sleep(30)
+            print("n1")
 
-        var.driver.find_element(By.XPATH, var.downloadexcel).click()
-        time.sleep(60)
-        filename = max([var.excelpath + "\\" + f for f in os.listdir(var.excelpath)], key=os.path.getctime)
-        shutil.move(filename, os.path.join(var.excelpath, r"baocaoquatocdo.xlsx"))
+        try:
+            var.driver.find_element(By.XPATH, var.nodata).is_displayed()
+            print("n2")
+        except:
+            print("n3")
+            var.driver.find_element(By.XPATH, var.downloadexcel).click()
+            time.sleep(60)
+            filename = max([var.excelpath + "\\" + f for f in os.listdir(var.excelpath)], key=os.path.getctime)
+            shutil.move(filename, os.path.join(var.excelpath, r"baocaoquatocdo.xlsx"))
 
-        #Đọc check file excel
-        bangchucai = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
-        wordbook = openpyxl.load_workbook(var.excelpath+"/baocaoquatocdo.xlsX")
-        sheet = wordbook.get_sheet_by_name("Data")
+            #Đọc check file excel
+            bangchucai = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
+            wordbook = openpyxl.load_workbook(var.excelpath+"/baocaoquatocdo.xlsX")
+            sheet = wordbook.get_sheet_by_name("Data")
 
-        logging.info("Báo cáo doanh nghiệp - Báo cáo quá tốc độ")
-        logging.info("Mã - " + code)
-        logging.info("Tên sự kiện - " + eventname)
-        logging.info("Kết quả - " + result)
-        for column in bangchucai:
-            print(sheet[column + "6"].value)
-            print(sheet[column + "6"])
-            chucnangkhac.write_result_excelreport_clear_data(code, sheet, column, 'Data', "6", "A6", "STT")
-            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "B6", "Biển kiểm soát")
-            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "C6", "Thời điểm")
-            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "D6", "Thời gian (s)")
-            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "E6", "Quãng đường (m)")
-            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "F6", "Tốc độ cực đại ≥")
-            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "G6", "Địa điểm bắt đầu")
-            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "H6", "Địa điểm kết thúc")
-            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "I6", "Ghi chú")
+            logging.info("Báo cáo doanh nghiệp - Báo cáo quá tốc độ")
+            logging.info("Mã - " + code)
+            logging.info("Tên sự kiện - " + eventname)
+            logging.info("Kết quả - " + result)
+            for column in bangchucai:
+                print(sheet[column + "6"].value)
+                print(sheet[column + "6"])
+                chucnangkhac.write_result_excelreport_clear_data(code, sheet, column, 'Data', "6", "A6", "STT")
+                chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "B6", "Biển kiểm soát")
+                chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "C6", "Thời điểm")
+                chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "D6", "Thời gian (s)")
+                chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "E6", "Quãng đường (m)")
+                chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "F6", "Tốc độ cực đại ≥")
+                chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "G6", "Địa điểm bắt đầu")
+                chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "H6", "Địa điểm kết thúc")
+                chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "I6", "Ghi chú")
 
 
 

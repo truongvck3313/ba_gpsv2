@@ -313,8 +313,8 @@ class danhsachxe:
         logging.info("Tên sự kiện - " + tensukien)
         logging.info("Kết quả - " + ketqua)
         if tongsoxecactrangthai == tongsoxe_tren == tongsoxe_duoi:
-                logging.info("True")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
         else:
             logging.info("False")
             var.driver.save_screenshot(var.imagepath + ma + "_ChonNhom_TatCa.png")
@@ -1333,6 +1333,8 @@ class danhsachxe:
         if var.driver.find_element(By.XPATH, var.popupthongtinxe_chopheptichtruyendulieu).is_selected() == True:
             var.driver.find_element(By.XPATH, var.popupthongtinxe_chopheptichtruyendulieu).click()
 
+
+        var.driver.find_element(By.XPATH, var.popupthongtinxe_trongtaiinput).clear()
         JS_ADD_TEXT_TO_INPUT = """
           elm = arguments[0], txt = arguments[1];
           elm.value += txt;
@@ -1365,6 +1367,9 @@ class danhsachxe:
             var.driver.save_screenshot(var.imagepath + ma + "_ChuotPhaiXe_NhapThongTinXe_CapNhat.png")
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "ChuotPhaiXe_NhapThongTinXe_CapNhat.png")
+
+
+
 
 
     def chuotphaixe_nhapthongtinxe_checkthongtinxe_Congty(self, ma, tensukien, ketqua):
@@ -4472,8 +4477,18 @@ class chuotphaimap:
         # time.sleep(0.5)
         # var.driver.find_element(By.XPATH, var.timkiem_icon_timtoado).click()
         # time.sleep(1)
-        var.driver.find_element(By.XPATH, var.timkiem_timtoado_input).clear()
-        var.driver.find_element(By.XPATH, var.timkiem_timtoado_input).send_keys(data['giamsat']['timkiem_toado5'])
+
+
+        try:
+            var.driver.find_element(By.XPATH, var.timkiem_timtoado_input).clear()
+            var.driver.find_element(By.XPATH, var.timkiem_timtoado_input).send_keys(data['giamsat']['timkiem_toado5'])
+        except:
+            var.driver.find_element(By.XPATH, var.timkiem_icon2).click()
+            time.sleep(0.5)
+            var.driver.find_element(By.XPATH, var.timkiem_icon_timtoado).click()
+            time.sleep(1)
+            var.driver.find_element(By.XPATH, var.timkiem_timtoado_input).clear()
+            var.driver.find_element(By.XPATH, var.timkiem_timtoado_input).send_keys(data['giamsat']['timkiem_toado5'])
         time.sleep(0.5)
         var.driver.find_element(By.XPATH, var.timkiem_iconsearch).click()
         time.sleep(1.5)
@@ -5288,7 +5303,7 @@ class chuotphaimap:
             mouse.click(button='right')
             time.sleep(1)
             var.driver.find_element(By.XPATH, var.chuotphaimap_cauhinhhienthinhomdiem).click()
-        time.sleep(1.7)
+        time.sleep(2)
 
         logging.info("Giám sát - Chuột phải map - Cấu hình hiển thị nhóm điểm")
         logging.info("Mã - " + ma)

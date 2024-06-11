@@ -31,7 +31,10 @@ def ModuleTest():
             videoclip(self='')
         if i == "7":
             image(self='')
-
+        if i == "8":
+            utility(self='')
+        if i == "9":
+            ai(self='')
 
 
 
@@ -1244,6 +1247,62 @@ def run_all(self):      #Chạy tất cả
     except:
         pass
     try:
+        caseid.caseid_user04(self)
+    except:
+        pass
+    try:
+        caseid.caseid_user05(self)
+    except:
+        pass
+    try:
+        caseid.caseid_user06(self)
+    except:
+        pass
+    try:
+        caseid.caseid_user07(self)
+    except:
+        pass
+    try:
+        caseid.caseid_user08(self)
+    except:
+        pass
+    try:
+        caseid.caseid_user09(self)
+    except:
+        pass
+    try:
+        caseid.caseid_user10(self)
+    except:
+        pass
+    try:
+        caseid.caseid_user11(self)
+    except:
+        pass
+    try:
+        caseid.caseid_user12(self)
+    except:
+        pass
+    try:
+        caseid.caseid_user13(self)
+    except:
+        pass
+    try:
+        caseid.caseid_user14(self)
+    except:
+        pass
+    try:
+        caseid.caseid_user15(self)
+    except:
+        pass
+    try:
+        caseid.caseid_user16(self)
+    except:
+        pass
+    try:
+        caseid.caseid_user17(self)
+    except:
+        pass
+    try:
         caseid.caseid_report01(self)
     except:
         pass
@@ -1583,6 +1642,110 @@ def run_all(self):      #Chạy tất cả
         caseid.caseid_image20(self)
     except:
         pass
+    try:
+        caseid.caseid_utility01(self)
+    except:
+        pass
+    try:
+        caseid.caseid_utility02(self)
+    except:
+        pass
+    try:
+        caseid.caseid_utility03(self)
+    except:
+        pass
+    try:
+        caseid.caseid_utility04(self)
+    except:
+        pass
+    try:
+        caseid.caseid_utility05(self)
+    except:
+        pass
+    try:
+        caseid.caseid_utility06(self)
+    except:
+        pass
+    try:
+        caseid.caseid_utility07(self)
+    except:
+        pass
+    try:
+        caseid.caseid_utility08(self)
+    except:
+        pass
+    try:
+        caseid.caseid_utility09(self)
+    except:
+        pass
+    try:
+        caseid.caseid_utility10(self)
+    except:
+        pass
+    try:
+        caseid.caseid_utility11(self)
+    except:
+        pass
+    try:
+        caseid.caseid_utility12(self)
+    except:
+        pass
+    try:
+        caseid.caseid_utility13(self)
+    except:
+        pass
+    try:
+        caseid.caseid_utility14(self)
+    except:
+        pass
+    try:
+        caseid.caseid_utility15(self)
+    except:
+        pass
+    try:
+        caseid.caseid_utility16(self)
+    except:
+        pass
+    try:
+        caseid.caseid_utility17(self)
+    except:
+        pass
+    try:
+        caseid.caseid_utility18(self)
+    except:
+        pass
+    try:
+        caseid.caseid_utility19(self)
+    except:
+        pass
+    try:
+        caseid.caseid_utility20(self)
+    except:
+        pass
+    try:
+        caseid.caseid_utility21(self)
+    except:
+        pass
+    try:
+        caseid.caseid_utility22(self)
+    except:
+        pass
+    try:
+        caseid.caseid_utility23(self)
+    except:
+        pass
+    try:
+        caseid.caseid_ai01(self)
+    except:
+        pass
+    try:
+        caseid.caseid_ai02(self)
+    except:
+        pass
+    try:
+        caseid.caseid_ai03(self)
+    except:
+        pass
 
 
 #1 đăng nhập
@@ -1593,8 +1756,8 @@ def login(self):
     list_mucdo4 = []
     wordbook = openpyxl.load_workbook(var.checklistpath)
     sheet = wordbook.get_sheet_by_name("Checklist")
-    rownum = 9
-    while (rownum < 33):
+    rownum = 10
+    while (rownum < 34):
         rownum += 1
         rownum = str(rownum)
         if sheet["D"+rownum].value == "x":
@@ -2054,7 +2217,7 @@ def monitor(self):
     wordbook = openpyxl.load_workbook(var.checklistpath)
     sheet = wordbook.get_sheet_by_name("Checklist")
     rownum = 36
-    while (rownum < 373):
+    while (rownum < 375):
         rownum += 1
         rownum = str(rownum)
         if sheet["D"+rownum].value == "x":
@@ -6496,8 +6659,8 @@ def route(self):
     list_mucdo4 = []
     wordbook = openpyxl.load_workbook(var.checklistpath)
     sheet = wordbook.get_sheet_by_name("Checklist")
-    rownum = 375
-    while (rownum < 402):
+    rownum = 376
+    while (rownum < 403):
         rownum += 1
         rownum = str(rownum)
         if sheet["D"+rownum].value == "x":
@@ -6959,8 +7122,8 @@ def administration(self):
     list_mucdo4 = []
     wordbook = openpyxl.load_workbook(var.checklistpath)
     sheet = wordbook.get_sheet_by_name("Checklist")
-    rownum = 405
-    while (rownum < 462):
+    rownum = 406
+    while (rownum < 469):
         rownum += 1
         rownum = str(rownum)
         if sheet["D"+rownum].value == "x":
@@ -7172,51 +7335,81 @@ def administration(self):
                         caseid.caseid_user03(self)
                 except:
                     pass
-                # try:
-                #     if case == 'User04':
-                #         caseid.caseid_user04(self)
-                # except:
-                #     pass
-                # try:
-                #     if case == 'User05':
-                #         caseid.caseid_user05(self)
-                # except:
-                #     pass
-                # try:
-                #     if case == 'User06':
-                #         caseid.caseid_user06(self)
-                # except:
-                #     pass
-                # try:
-                #     if case == 'User07':
-                #         caseid.caseid_user07(self)
-                # except:
-                #     pass
-                # try:
-                #     if case == 'User08':
-                #         caseid.caseid_user08(self)
-                # except:
-                #     pass
-                # try:
-                #     if case == 'User09':
-                #         caseid.caseid_user09(self)
-                # except:
-                #     pass
-                # try:
-                #     if case == 'User10':
-                #         caseid.caseid_user10(self)
-                # except:
-                #     pass
-                # try:
-                #     if case == 'User11':
-                #         caseid.caseid_user11(self)
-                # except:
-                #     pass
-                # try:
-                #     if case == 'User12':
-                #         caseid.caseid_user12(self)
-                # except:
-                #     pass
+                try:
+                    if case == 'User04':
+                        caseid.caseid_user04(self)
+                except:
+                    pass
+                try:
+                    if case == 'User05':
+                        caseid.caseid_user05(self)
+                except:
+                    pass
+                try:
+                    if case == 'User06':
+                        caseid.caseid_user06(self)
+                except:
+                    pass
+                try:
+                    if case == 'User07':
+                        caseid.caseid_user07(self)
+                except:
+                    pass
+                try:
+                    if case == 'User08':
+                        caseid.caseid_user08(self)
+                except:
+                    pass
+                try:
+                    if case == 'User09':
+                        caseid.caseid_user09(self)
+                except:
+                    pass
+                try:
+                    if case == 'User10':
+                        caseid.caseid_user10(self)
+                except:
+                    pass
+                try:
+                    if case == 'User11':
+                        caseid.caseid_user11(self)
+                except:
+                    pass
+                try:
+                    if case == 'User12':
+                        caseid.caseid_user12(self)
+                except:
+                    pass
+                try:
+                    if case == 'User12':
+                        caseid.caseid_user12(self)
+                except:
+                    pass
+                try:
+                    if case == 'User13':
+                        caseid.caseid_user13(self)
+                except:
+                    pass
+                try:
+                    if case == 'User14':
+                        caseid.caseid_user14(self)
+                except:
+                    pass
+                try:
+                    if case == 'User15':
+                        caseid.caseid_user15(self)
+                except:
+                    pass
+                try:
+                    if case == 'User16':
+                        caseid.caseid_user16(self)
+                except:
+                    pass
+                try:
+                    if case == 'User17':
+                        caseid.caseid_user17(self)
+                except:
+                    pass
 
         if i == "2":
             for case in list_mucdo2:
@@ -7410,51 +7603,76 @@ def administration(self):
                         caseid.caseid_user03(self)
                 except:
                     pass
-                # try:
-                #     if case == 'User04':
-                #         caseid.caseid_user04(self)
-                # except:
-                #     pass
-                # try:
-                #     if case == 'User05':
-                #         caseid.caseid_user05(self)
-                # except:
-                #     pass
-                # try:
-                #     if case == 'User06':
-                #         caseid.caseid_user06(self)
-                # except:
-                #     pass
-                # try:
-                #     if case == 'User07':
-                #         caseid.caseid_user07(self)
-                # except:
-                #     pass
-                # try:
-                #     if case == 'User08':
-                #         caseid.caseid_user08(self)
-                # except:
-                #     pass
-                # try:
-                #     if case == 'User09':
-                #         caseid.caseid_user09(self)
-                # except:
-                #     pass
-                # try:
-                #     if case == 'User10':
-                #         caseid.caseid_user10(self)
-                # except:
-                #     pass
-                # try:
-                #     if case == 'User11':
-                #         caseid.caseid_user11(self)
-                # except:
-                #     pass
-                # try:
-                #     if case == 'User12':
-                #         caseid.caseid_user12(self)
-                # except:
-                #     pass
+                try:
+                    if case == 'User04':
+                        caseid.caseid_user04(self)
+                except:
+                    pass
+                try:
+                    if case == 'User05':
+                        caseid.caseid_user05(self)
+                except:
+                    pass
+                try:
+                    if case == 'User06':
+                        caseid.caseid_user06(self)
+                except:
+                    pass
+                try:
+                    if case == 'User07':
+                        caseid.caseid_user07(self)
+                except:
+                    pass
+                try:
+                    if case == 'User08':
+                        caseid.caseid_user08(self)
+                except:
+                    pass
+                try:
+                    if case == 'User09':
+                        caseid.caseid_user09(self)
+                except:
+                    pass
+                try:
+                    if case == 'User10':
+                        caseid.caseid_user10(self)
+                except:
+                    pass
+                try:
+                    if case == 'User11':
+                        caseid.caseid_user11(self)
+                except:
+                    pass
+                try:
+                    if case == 'User12':
+                        caseid.caseid_user12(self)
+                except:
+                    pass
+                try:
+                    if case == 'User13':
+                        caseid.caseid_user13(self)
+                except:
+                    pass
+                try:
+                    if case == 'User14':
+                        caseid.caseid_user14(self)
+                except:
+                    pass
+                try:
+                    if case == 'User15':
+                        caseid.caseid_user15(self)
+                except:
+                    pass
+                try:
+                    if case == 'User16':
+                        caseid.caseid_user16(self)
+                except:
+                    pass
+                try:
+                    if case == 'User17':
+                        caseid.caseid_user17(self)
+                except:
+                    pass
 
         if i == "3":
             for case in list_mucdo3:
@@ -7648,51 +7866,76 @@ def administration(self):
                         caseid.caseid_user03(self)
                 except:
                     pass
-                # try:
-                #     if case == 'User04':
-                #         caseid.caseid_user04(self)
-                # except:
-                #     pass
-                # try:
-                #     if case == 'User05':
-                #         caseid.caseid_user05(self)
-                # except:
-                #     pass
-                # try:
-                #     if case == 'User06':
-                #         caseid.caseid_user06(self)
-                # except:
-                #     pass
-                # try:
-                #     if case == 'User07':
-                #         caseid.caseid_user07(self)
-                # except:
-                #     pass
-                # try:
-                #     if case == 'User08':
-                #         caseid.caseid_user08(self)
-                # except:
-                #     pass
-                # try:
-                #     if case == 'User09':
-                #         caseid.caseid_user09(self)
-                # except:
-                #     pass
-                # try:
-                #     if case == 'User10':
-                #         caseid.caseid_user10(self)
-                # except:
-                #     pass
-                # try:
-                #     if case == 'User11':
-                #         caseid.caseid_user11(self)
-                # except:
-                #     pass
-                # try:
-                #     if case == 'User12':
-                #         caseid.caseid_user12(self)
-                # except:
-                #     pass
+                try:
+                    if case == 'User04':
+                        caseid.caseid_user04(self)
+                except:
+                    pass
+                try:
+                    if case == 'User05':
+                        caseid.caseid_user05(self)
+                except:
+                    pass
+                try:
+                    if case == 'User06':
+                        caseid.caseid_user06(self)
+                except:
+                    pass
+                try:
+                    if case == 'User07':
+                        caseid.caseid_user07(self)
+                except:
+                    pass
+                try:
+                    if case == 'User08':
+                        caseid.caseid_user08(self)
+                except:
+                    pass
+                try:
+                    if case == 'User09':
+                        caseid.caseid_user09(self)
+                except:
+                    pass
+                try:
+                    if case == 'User10':
+                        caseid.caseid_user10(self)
+                except:
+                    pass
+                try:
+                    if case == 'User11':
+                        caseid.caseid_user11(self)
+                except:
+                    pass
+                try:
+                    if case == 'User12':
+                        caseid.caseid_user12(self)
+                except:
+                    pass
+                try:
+                    if case == 'User13':
+                        caseid.caseid_user13(self)
+                except:
+                    pass
+                try:
+                    if case == 'User14':
+                        caseid.caseid_user14(self)
+                except:
+                    pass
+                try:
+                    if case == 'User15':
+                        caseid.caseid_user15(self)
+                except:
+                    pass
+                try:
+                    if case == 'User16':
+                        caseid.caseid_user16(self)
+                except:
+                    pass
+                try:
+                    if case == 'User17':
+                        caseid.caseid_user17(self)
+                except:
+                    pass
 
         if i == "4":
             for case in list_mucdo4:
@@ -7886,51 +8129,76 @@ def administration(self):
                         caseid.caseid_user03(self)
                 except:
                     pass
-                # try:
-                #     if case == 'User04':
-                #         caseid.caseid_user04(self)
-                # except:
-                #     pass
-                # try:
-                #     if case == 'User05':
-                #         caseid.caseid_user05(self)
-                # except:
-                #     pass
-                # try:
-                #     if case == 'User06':
-                #         caseid.caseid_user06(self)
-                # except:
-                #     pass
-                # try:
-                #     if case == 'User07':
-                #         caseid.caseid_user07(self)
-                # except:
-                #     pass
-                # try:
-                #     if case == 'User08':
-                #         caseid.caseid_user08(self)
-                # except:
-                #     pass
-                # try:
-                #     if case == 'User09':
-                #         caseid.caseid_user09(self)
-                # except:
-                #     pass
-                # try:
-                #     if case == 'User10':
-                #         caseid.caseid_user10(self)
-                # except:
-                #     pass
-                # try:
-                #     if case == 'User11':
-                #         caseid.caseid_user11(self)
-                # except:
-                #     pass
-                # try:
-                #     if case == 'User12':
-                #         caseid.caseid_user12(self)
-                # except:
-                #     pass
+                try:
+                    if case == 'User04':
+                        caseid.caseid_user04(self)
+                except:
+                    pass
+                try:
+                    if case == 'User05':
+                        caseid.caseid_user05(self)
+                except:
+                    pass
+                try:
+                    if case == 'User06':
+                        caseid.caseid_user06(self)
+                except:
+                    pass
+                try:
+                    if case == 'User07':
+                        caseid.caseid_user07(self)
+                except:
+                    pass
+                try:
+                    if case == 'User08':
+                        caseid.caseid_user08(self)
+                except:
+                    pass
+                try:
+                    if case == 'User09':
+                        caseid.caseid_user09(self)
+                except:
+                    pass
+                try:
+                    if case == 'User10':
+                        caseid.caseid_user10(self)
+                except:
+                    pass
+                try:
+                    if case == 'User11':
+                        caseid.caseid_user11(self)
+                except:
+                    pass
+                try:
+                    if case == 'User12':
+                        caseid.caseid_user12(self)
+                except:
+                    pass
+                try:
+                    if case == 'User13':
+                        caseid.caseid_user13(self)
+                except:
+                    pass
+                try:
+                    if case == 'User14':
+                        caseid.caseid_user14(self)
+                except:
+                    pass
+                try:
+                    if case == 'User15':
+                        caseid.caseid_user15(self)
+                except:
+                    pass
+                try:
+                    if case == 'User16':
+                        caseid.caseid_user16(self)
+                except:
+                    pass
+                try:
+                    if case == 'User17':
+                        caseid.caseid_user17(self)
+                except:
+                    pass
 
 
 
@@ -7942,8 +8210,8 @@ def report(self):
     list_mucdo4 = []
     wordbook = openpyxl.load_workbook(var.checklistpath)
     sheet = wordbook.get_sheet_by_name("Checklist")
-    rownum = 466
-    while (rownum < 548):
+    rownum = 473
+    while (rownum < 556):
         rownum += 1
         rownum = str(rownum)
         if sheet["D"+rownum].value == "x":
@@ -9046,8 +9314,8 @@ def videoclip(self):
     list_mucdo4 = []
     wordbook = openpyxl.load_workbook(var.checklistpath)
     sheet = wordbook.get_sheet_by_name("Checklist")
-    rownum = 551
-    while (rownum < 567):
+    rownum = 558
+    while (rownum < 575):
         rownum += 1
         rownum = str(rownum)
         if sheet["D"+rownum].value == "x":
@@ -9330,8 +9598,8 @@ def image(self):
     list_mucdo4 = []
     wordbook = openpyxl.load_workbook(var.checklistpath)
     sheet = wordbook.get_sheet_by_name("Checklist")
-    rownum = 570
-    while (rownum < 598):
+    rownum = 577
+    while (rownum < 606):
         rownum += 1
         rownum = str(rownum)
         if sheet["D"+rownum].value == "x":
@@ -9770,11 +10038,616 @@ def image(self):
 
 
 
+#8 tien ích
+def utility(self):
+    list_mucdo1 = []
+    list_mucdo2 = []
+    list_mucdo3 = []
+    list_mucdo4 = []
+    wordbook = openpyxl.load_workbook(var.checklistpath)
+    sheet = wordbook.get_sheet_by_name("Checklist")
+    rownum = 608
+    while (rownum < 640):
+        rownum += 1
+        rownum = str(rownum)
+        if sheet["D"+rownum].value == "x":
+            muc1 = sheet["A"+rownum].value
+            list_mucdo1.append(muc1)
+        if sheet["E"+rownum].value == "x":
+            muc2 = sheet["A"+rownum].value
+            list_mucdo2.append(muc2)
+        if sheet["F"+rownum].value == "x":
+            muc3 = sheet["A"+rownum].value
+            list_mucdo3.append(muc3)
+        if sheet["G"+rownum].value == "x":
+            muc4 = sheet["A"+rownum].value
+            list_mucdo4.append(muc4)
+        rownum = int(rownum)
+    print("muc do 1", list_mucdo1)
+    print("muc do 2", list_mucdo2)
+    print("muc do 3", list_mucdo3)
+    print("muc do 4", list_mucdo4)
+
+
+    modetest = ''.join(re.findall(r'\d+', var.modetest))
+    for i in modetest:
+
+        if i == "1":
+            for case in list_mucdo1:
+                try:
+                    if case == 'Utility01':
+                        caseid.caseid_utility01(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility02':
+                        caseid.caseid_utility02(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility03':
+                        caseid.caseid_utility03(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility04':
+                        caseid.caseid_utility04(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility05':
+                        caseid.caseid_utility05(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility06':
+                        caseid.caseid_utility06(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility07':
+                        caseid.caseid_utility07(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility08':
+                        caseid.caseid_utility08(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility09':
+                        caseid.caseid_utility09(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility10':
+                        caseid.caseid_utility10(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility11':
+                        caseid.caseid_utility11(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility12':
+                        caseid.caseid_utility12(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility13':
+                        caseid.caseid_utility13(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility14':
+                        caseid.caseid_utility14(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility15':
+                        caseid.caseid_utility15(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility16':
+                        caseid.caseid_utility16(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility17':
+                        caseid.caseid_utility17(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility18':
+                        caseid.caseid_utility18(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility19':
+                        caseid.caseid_utility19(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility20':
+                        caseid.caseid_utility20(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility21':
+                        caseid.caseid_utility21(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility22':
+                        caseid.caseid_utility22(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility23':
+                        caseid.caseid_utility23(self)
+                except:
+                    pass
+
+        if i == "2":
+            for case in list_mucdo2:
+                try:
+                    if case == 'Utility01':
+                        caseid.caseid_utility01(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility02':
+                        caseid.caseid_utility02(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility03':
+                        caseid.caseid_utility03(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility04':
+                        caseid.caseid_utility04(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility05':
+                        caseid.caseid_utility05(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility06':
+                        caseid.caseid_utility06(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility07':
+                        caseid.caseid_utility07(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility08':
+                        caseid.caseid_utility08(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility09':
+                        caseid.caseid_utility09(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility10':
+                        caseid.caseid_utility10(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility11':
+                        caseid.caseid_utility11(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility12':
+                        caseid.caseid_utility12(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility13':
+                        caseid.caseid_utility13(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility14':
+                        caseid.caseid_utility14(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility15':
+                        caseid.caseid_utility15(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility16':
+                        caseid.caseid_utility16(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility17':
+                        caseid.caseid_utility17(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility18':
+                        caseid.caseid_utility18(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility19':
+                        caseid.caseid_utility19(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility20':
+                        caseid.caseid_utility20(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility21':
+                        caseid.caseid_utility21(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility22':
+                        caseid.caseid_utility22(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility23':
+                        caseid.caseid_utility23(self)
+                except:
+                    pass
+
+        if i == "3":
+            for case in list_mucdo3:
+                try:
+                    if case == 'Utility01':
+                        caseid.caseid_utility01(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility02':
+                        caseid.caseid_utility02(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility03':
+                        caseid.caseid_utility03(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility04':
+                        caseid.caseid_utility04(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility05':
+                        caseid.caseid_utility05(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility06':
+                        caseid.caseid_utility06(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility07':
+                        caseid.caseid_utility07(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility08':
+                        caseid.caseid_utility08(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility09':
+                        caseid.caseid_utility09(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility10':
+                        caseid.caseid_utility10(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility11':
+                        caseid.caseid_utility11(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility12':
+                        caseid.caseid_utility12(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility13':
+                        caseid.caseid_utility13(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility14':
+                        caseid.caseid_utility14(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility15':
+                        caseid.caseid_utility15(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility16':
+                        caseid.caseid_utility16(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility17':
+                        caseid.caseid_utility17(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility18':
+                        caseid.caseid_utility18(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility19':
+                        caseid.caseid_utility19(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility20':
+                        caseid.caseid_utility20(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility21':
+                        caseid.caseid_utility21(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility22':
+                        caseid.caseid_utility22(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility23':
+                        caseid.caseid_utility23(self)
+                except:
+                    pass
+
+        if i == "4":
+            for case in list_mucdo4:
+                try:
+                    if case == 'Utility01':
+                        caseid.caseid_utility01(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility02':
+                        caseid.caseid_utility02(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility03':
+                        caseid.caseid_utility03(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility04':
+                        caseid.caseid_utility04(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility05':
+                        caseid.caseid_utility05(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility06':
+                        caseid.caseid_utility06(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility07':
+                        caseid.caseid_utility07(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility08':
+                        caseid.caseid_utility08(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility09':
+                        caseid.caseid_utility09(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility10':
+                        caseid.caseid_utility10(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility11':
+                        caseid.caseid_utility11(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility12':
+                        caseid.caseid_utility12(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility13':
+                        caseid.caseid_utility13(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility14':
+                        caseid.caseid_utility14(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility15':
+                        caseid.caseid_utility15(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility16':
+                        caseid.caseid_utility16(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility17':
+                        caseid.caseid_utility17(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility18':
+                        caseid.caseid_utility18(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility19':
+                        caseid.caseid_utility19(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility20':
+                        caseid.caseid_utility20(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility21':
+                        caseid.caseid_utility21(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility22':
+                        caseid.caseid_utility22(self)
+                except:
+                    pass
+                try:
+                    if case == 'Utility23':
+                        caseid.caseid_utility23(self)
+                except:
+                    pass
 
 
 
 
 
+#9 AI
+def ai(self):
+    list_mucdo1 = []
+    list_mucdo2 = []
+    list_mucdo3 = []
+    list_mucdo4 = []
+    wordbook = openpyxl.load_workbook(var.checklistpath)
+    sheet = wordbook.get_sheet_by_name("Checklist")
+    rownum = 642
+    while (rownum < 650):
+        rownum += 1
+        rownum = str(rownum)
+        if sheet["D"+rownum].value == "x":
+            muc1 = sheet["A"+rownum].value
+            list_mucdo1.append(muc1)
+        if sheet["E"+rownum].value == "x":
+            muc2 = sheet["A"+rownum].value
+            list_mucdo2.append(muc2)
+        if sheet["F"+rownum].value == "x":
+            muc3 = sheet["A"+rownum].value
+            list_mucdo3.append(muc3)
+        if sheet["G"+rownum].value == "x":
+            muc4 = sheet["A"+rownum].value
+            list_mucdo4.append(muc4)
+        rownum = int(rownum)
+
+    modetest = ''.join(re.findall(r'\d+', var.modetest))
+    for i in modetest:
+
+        if i == "1":
+            for case in list_mucdo1:
+                try:
+                    if case == 'Ai01':
+                        caseid.caseid_ai01(self)
+                except:
+                    pass
+                try:
+                    if case == 'Ai02':
+                        caseid.caseid_ai02(self)
+                except:
+                    pass
+                try:
+                    if case == 'Ai03':
+                        caseid.caseid_ai03(self)
+                except:
+                    pass
+
+        if i == "2":
+            for case in list_mucdo2:
+                try:
+                    if case == 'Ai01':
+                        caseid.caseid_ai01(self)
+                except:
+                    pass
+                try:
+                    if case == 'Ai02':
+                        caseid.caseid_ai02(self)
+                except:
+                    pass
+                try:
+                    if case == 'Ai03':
+                        caseid.caseid_ai03(self)
+                except:
+                    pass
+
+        if i == "3":
+            for case in list_mucdo3:
+                try:
+                    if case == 'Ai01':
+                        caseid.caseid_ai01(self)
+                except:
+                    pass
+                try:
+                    if case == 'Ai02':
+                        caseid.caseid_ai02(self)
+                except:
+                    pass
+                try:
+                    if case == 'Ai03':
+                        caseid.caseid_ai03(self)
+                except:
+                    pass
+
+        if i == "4":
+            for case in list_mucdo4:
+                try:
+                    if case == 'Ai01':
+                        caseid.caseid_ai01(self)
+                except:
+                    pass
+                try:
+                    if case == 'Ai02':
+                        caseid.caseid_ai02(self)
+                except:
+                    pass
+                try:
+                    if case == 'Ai03':
+                        caseid.caseid_ai03(self)
+                except:
+                    pass
 
 
 

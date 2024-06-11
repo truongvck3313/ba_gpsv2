@@ -6,7 +6,7 @@ import report
 import video_clip
 import image
 import utility
-
+import ai
 
 
 import chucnangkhac
@@ -2066,6 +2066,113 @@ def caseid_user03(self):
     administration.system_management.list_user_downloadexcel(self, "User03", eventname, result)
 
 
+def caseid_user04(self):
+    get_datachecklist("User04")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.system_management.list_user_download_pdf(self, "User04", eventname, result)
+
+def caseid_user05(self):
+    get_datachecklist("User05")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.system_management.list_user_print(self, "User05", eventname, result)
+
+
+def caseid_user06(self):
+    get_datachecklist("User06")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.system_management.list_user_column(self, "User06", eventname, result)
+
+
+
+def caseid_user07(self):
+    get_datachecklist("User07")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.system_management.list_user_create(self, "User07", eventname, result)
+
+def caseid_user08(self):
+    get_datachecklist("User08")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.system_management.list_user_permission(self, "User08", eventname, result)
+
+
+def caseid_user09(self):
+    get_datachecklist("User09")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.system_management.list_user_lock(self, "User09", eventname, result)
+
+
+def caseid_user10(self):
+    get_datachecklist("User10")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.system_management.list_user_unlock(self, "User10", eventname, result)
+
+
+
+def caseid_user11(self):
+    get_datachecklist("User11")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.system_management.list_user_reset_password(self, "User11", eventname, result)
+
+
+def caseid_user12(self):
+    get_datachecklist("User12")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.system_management.list_user_reset_change_password(self, "User12", eventname, result)
+
+
+
+
+def caseid_user13(self):
+    get_datachecklist("User13")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.system_management.list_user_reset_copy_acount(self, "User13", eventname, result)
+
+
+
+def caseid_user14(self):
+    get_datachecklist("User14")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.system_management.list_user_delete(self, "User14", eventname, result)
+
+
+
+def caseid_user15(self):
+    get_datachecklist("User15")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.system_management.list_user_permanently_deleted(self, "User15", eventname, result)
+
+
+def caseid_user16(self):
+    get_datachecklist("User16")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.system_management.list_user_unlock_login(self, "User16", eventname, result)
+
+
+def caseid_user17(self):
+    get_datachecklist("User17")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    administration.system_management.list_user_logout_account(self, "User17", eventname, result)
+
+
+
+
+
+
+
 def caseid_report01(self):
     get_datachecklist("Report01")
     eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
@@ -2864,6 +2971,35 @@ def caseid_utility23(self):
     eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
     result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
     utility.landmark_administraintion.add_landmarks_quickly_add_quickly(self, "Utility23", eventname, result)
+
+
+
+def caseid_ai01(self):
+    get_datachecklist("Ai01")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    ai.report_ai_cam.summary_report_of_driving_behavior(self, "Ai01", eventname, result)
+
+
+
+def caseid_ai02(self):
+    get_datachecklist("Ai02")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    ai.report_ai_cam.report_driving_violations(self, "Ai02", eventname, result)
+
+
+def caseid_ai03(self):
+    get_datachecklist("Ai03")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    ai.report_ai_cam.driving_rating_report(self, "Ai03", eventname, result)
+
+
+
+
+
+
 
 
 

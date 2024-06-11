@@ -43,7 +43,7 @@
     "dieuxedituyen_sdtlaixe": "0359667693",
     "dieuxedituyen_ghichu": "Trường test điều xe đi tuyến",
     "anxe_ghichu": "Test ẩn xe",
-    "popupthongtinxe_trongtai": 500
+    "popupthongtinxe_trongtai": "1440"
   },
   "quantri": {
     "loaiphuongtien": "Xe ô tô điện",
@@ -57,7 +57,15 @@
     "add_group_renameleveln": "nhóm smile home",
     "timkiem_toado4": "21.002708, 105.865113",
     "timkiem_toado5": "21.048376, 105.780825",
-    "timkiem_toado6": "21.048376, 105.780825"
+    "timkiem_toado6": "21.048376, 105.780825",
+    "timkiem_danhsachnguoidung": "truongvck1",
+    "timkiem_danhsachnguoidung2": "truongvck2",
+    "copyaccount_user": "truongtest01",
+    "copyaccount_user2": "truongtest02",
+    "copyaccount_name": "tran quang trung",
+    "copyaccount_phonenumber": "0359667888",
+    "copyaccount_email": "trungvck22@gmail.com",
+    "copyaccount_password": "atgmj123"
   },
   "tienich": {
     "diem": "12, Nguyễn Trãi, Thanh Xuân, Hà Nội",

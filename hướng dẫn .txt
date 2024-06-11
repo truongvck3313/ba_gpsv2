@@ -11,6 +11,7 @@
 5.báo cáo
 6.video clip
 7.hinh ảnh
+8.Tiện ích
 
 - LinkTest: "https://gps.binhanh.vn"
 - TimeRun: cài tự động chạy 

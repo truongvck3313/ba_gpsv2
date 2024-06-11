@@ -9,7 +9,6 @@ import shutil
 import openpyxl
 import video_clip
 
-
 # from faker import Faker
 # from faker.providers import internet
 # fake = Faker()

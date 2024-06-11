@@ -9,11 +9,11 @@ import logging
 import os
 import shutil
 import openpyxl
+from retry import retry
 
 
 
-
-
+@retry(tries=3, delay=2, backoff=1, jitter=5, )
 def check_bacam(xncode, lstplate):
     api_url = "http://api.gps.binhanh.vn/api/bacam/getpackagebyxnplate"
     todo = {
@@ -26,6 +26,7 @@ def check_bacam(xncode, lstplate):
     response = requests.post(api_url, json=todo)
     response.json()
     res = json.loads(response.text)
+    print(res)
     print("Định vị: ", res['Data'][0]['ServerServiceInfoEnt']['IncludeQcvn31'])
     var.writeData(var.path_luutamthoi, "Sheet1", 35, 2, res['Data'][0]['ServerServiceInfoEnt']['IncludeQcvn31'])
     print("Ảnh: ", res['Data'][0]['ServerServiceInfoEnt']['HasImageCapture'])
@@ -35,6 +36,14 @@ def check_bacam(xncode, lstplate):
 
     # check_bacam(950, "43C01340_C")
 
+# def check_bacam1():
+#     api_url = "hhttp://g7bak.staxi.vn:12619/api/StaxiArticle/CreateArticle"
+#     body = {"Title": "Chính sách ABC APP LONGPV", "SendArticleType": 1, "SendType": 0, "SendList": "batonnt", "SendHour": "string", "Content": "THONGBAO MOI", "ContentApp": "ALO APP APOAS", "EmployeeId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "CompanyId": 209, "ArticleType": 1, "ParentArticleType": 1, "ChildArticleType": 1 }
+#     response = requests.post(api_url, json=body)
+#     response.json()
+#     res = json.loads(response.text)
+#     print(res)
+# check_bacam1()
 
 
 
@@ -294,6 +303,9 @@ class video_clip:
         try:
             var.driver.find_element(By.XPATH, var.cam_tracking_select_group).click()
             time.sleep(1)
+            var.driver.find_element(By.XPATH, var.cam_tracking_select_group1).click()
+            # var.driver.find_element(By.XPATH, var.cam_tracking_select_group).click()
+            # time.sleep(1)
         except:
             login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.videoclip).click()
@@ -302,20 +314,16 @@ class video_clip:
             time.sleep(7)
             var.driver.find_element(By.XPATH, var.cam_tracking_select_group).click()
             time.sleep(1)
-        try:
             var.driver.find_element(By.XPATH, var.cam_tracking_select_group1).click()
-        except:
-            var.driver.find_element(By.XPATH, var.cam_tracking_select_group).click()
-            time.sleep(1)
-            var.driver.find_element(By.XPATH, var.cam_tracking_select_group1).click()
+            # time.sleep(1)
+            # var.driver.find_element(By.XPATH, var.cam_tracking_select_group).click()
         time.sleep(1)
-
-
         var.driver.find_element(By.XPATH, var.cam_tracking_find_vehicle).click()
         time.sleep(1)
         var.driver.find_element(By.XPATH, var.cam_tracking_find_vehicle1).click()
         time.sleep(1)
-
+        # var.driver.find_element(By.XPATH, var.cam_tracking_find_vehicle).click()
+        # time.sleep(1)
         var.driver.find_element(By.XPATH, var.cam_tracking_status).click()
         time.sleep(1)
         # var.driver.find_element(By.XPATH, var.cam_tracking_status1).click()

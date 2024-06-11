@@ -884,5 +884,61 @@ add_landmarks_quickly_uploadfile = "//*[@id='ctl00_ctl00_MainContent_Content_fil
 check_add_landmarks_quickly_uploadfile = "//*[@class='table table-bordered']/tbody/tr[2]/td[2]"
 add_landmarks_quickly_add_quickly = "//*[@id='ctl00_ctl00_MainContent_Content_btnImportInfoSIM']"
 check_add_landmarks_quickly_add_quickly = "//*[text()='Dòng 1: Tên điểm đã trùng']"
+point_in_displayed_place = "//*[@id='chkLableInfoPoint']"
+ai = "//*[@id='AiCam']"
+summary_report_of_driving_behavior = "//*[@class='overView']//*[@id='AiReportDriverActivitySummary']"
+check_summary_report_of_driving_behavior = "//*[@class='content-right-header text-primary']"
+summary_report_of_driving_behavior_checkgotocompnay = "//*[text()=' Công ty: CÔNG TY TNHH ĐIỀN LINH - 2415 - ctydienlinh ']"
+check_report_driving_violations = "//*[@class='form-title']"
+report_driving_violations = "//*[@class='leftMenuContainer']//*[@id='AICamReportDriver']"
+driving_rating_report = "//*[@class='leftMenuContainer']//*[@id='AiReportDriverRankMonth']"
+list_user_icon_pdf = "//*[@id='ReportExportPDF']"
+list_user_print = "//*[@id='ReportPrintReport']"
+check_list_user_print = "/html/body/div[1]/div[3]"
+list_user_print_iconx = "//*[@title='Đóng']"
+list_user_column = "//*[@id='ReportAddRemoveColumns']"
+list_user_column_cancel = "//*[@id='ctl00_ctl00_MainContent_Content_btnCancel']"
+list_user_create = "//*[@class='tableBoxBordered']//*[text()='Thêm mới']"
+check_list_user_create = "//*[@id='column-right']//*[@class='tableBoxHeader']"
+list_user_permission = "//*[@class='table table-bordered']/tbody/tr[2]/td[7]//*[@src='/Images/s_icon_editRolePermission.png']"
+check_list_user_permission = "//*[@id='column-right']//*[@class='tableBoxHeader']"
+list_user_lock = "//*[@class='table table-bordered']/tbody/tr[2]//*[@src='/Images/unlock.png']"
+check_list_user_lock = "//*[text()='Khóa tài khoản thành công']"
+check_list_user_unlock = "//*[text()='Mở khóa tài khoản thành công']"
+list_user_unlock = "//*[@class='table table-bordered']/tbody/tr[2]//*[@src='/Images/lock.png']"
+list_user_search = "//*[@id='ctl00_ctl00_MainContent_Content_btnSearch']"
+list_user_reset_password = "//*[@class='table table-bordered']/tbody/tr[2]//*[@src='../../Images/edit_item.png']"
+check_list_user_reset_password = "//*[text()='Khởi tạo lại mật khẩu thành công']"
+list_user_reset_change_password = "//*[@class='table table-bordered']/tbody/tr[2]//*[@src='../../Images/s_icon_editUserPermission.png']"
+check_list_user_reset_change_password = "//*[@id='column-right']//*[@class='tableBoxHeader']"
+nodata = "//*[@id='ctl00_ctl00_MainContent_Content_grvReport_NoDataImage']"
+list_user_reset_copy_acount = "//*[@class='table table-bordered']/tbody/tr[2]//*[@src='../../Images/copy_item.png']"
+copy_acount_user = "//*[@id='ctl00_ctl00_MainContent_Content_frmCopy_modal_ctl06_txtUserName']"
+copy_acount_name = "//*[@id='ctl00_ctl00_MainContent_Content_frmCopy_modal_ctl06_txtFullName']"
+copy_acount_phonenumber = "//*[@id='ctl00_ctl00_MainContent_Content_frmCopy_modal_ctl06_txtPhoneNumberUserAdd']"
+copy_acount_email = "//*[@id='ctl00_ctl00_MainContent_Content_frmCopy_modal_ctl06_txtEmail']"
+copy_acount_password = "//*[@id='ctl00_ctl00_MainContent_Content_frmCopy_modal_ctl06_txtPassword']"
+copy_acount_repeatpassword = "//*[@id='ctl00_ctl00_MainContent_Content_frmCopy_modal_ctl06_txtRePassword']"
+copy_acount_typeaccount = "//*[@id='cbkUserType_1']"
+copy_acount_save = "//*[@id='ctl00_ctl00_MainContent_Content_frmCopy_modal_ctl07_btnSaveCreate']"
+check_list_user_reset_copy_acount = "//*[text()='Lưu thành công']"
+list_user_reset_delete = "//*[@class='table table-bordered']/tbody/tr[2]//*[@src='/Images/delete_item.png']"
+check_list_user_reset_delete = "//*[text()='Xóa tài khoản thành công']"
+list_user_permanently_deleted = "//*[@class='table table-bordered']/tbody/tr[2]//*[@src='/icons/Point/recycle_bin_1.png']"
+check_list_user_list_user_permanently_deleted = "//*[text()='Xóa tài khoản thành công']"
+list_user_unlock_login = "//*[@class='table table-bordered']/tbody/tr[2]//*[@src='/Images/user_unlock.png']"
+check_list_user_unlock_login = "//*[@id='ctl00_ctl00_MainContent_Content_MessageContainer_MessageContainer']"
+list_user_logout_account = "//*[@class='table table-bordered']/tbody/tr[2]//*[@src='/Images/s_icon_GotoCompany.png']"
+check_list_user_logout_account = "//*[text()='Đăng xuất tất cả thiết bị thành công']"
+list_user_name1 = "//*[@class='table table-bordered']/tbody/tr[2]/td[2]/a"
+
+
+
+
+
+
+
+
+
 
 

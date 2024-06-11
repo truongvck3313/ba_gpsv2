@@ -9,6 +9,10 @@ from selenium.webdriver.common.by import By
 import chucnangkhac
 import login
 import subprocess
+import os
+import shutil
+import utility
+import random
 
 
 file_name = var.datatestpath
@@ -989,7 +993,7 @@ class system_management:
             nameuser = var.driver.find_element(By.XPATH, var.list_user_nameuser).text
             var.driver.find_element(By.XPATH, var.list_user_search_input).send_keys(nameuser)
         time.sleep(0.5)
-        var.driver.find_element(By.XPATH, var.list_user_search_input).click()
+        var.driver.find_element(By.XPATH, var.list_user_search).click()
         time.sleep(1.5)
         chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Danh sách người dùng",
                                               var.list_user_nameuser, nameuser, "_QuanTri_DSNguoiDung_Timkiem.png")
@@ -1015,6 +1019,362 @@ class system_management:
 
 
 
+    def list_user_download_pdf(self, code, eventname, result):
+        var.driver.implicitly_wait(5)
+        chucnangkhac.delete_excel()
+        utility.move_module.move_module_detail1(self, var.managerment, var.list_user)
+        var.driver.find_element(By.XPATH, var.list_user_icon_pdf).click()
+        time.sleep(5)
+        logging.info("Quản trị - Danh sách người dùng")
+        logging.info("Mã - " + code)
+        logging.info("Tên sự kiện - " + eventname)
+        logging.info("Kết quả - " + result)
+        try:
+            filename = max([var.excelpath + "\\" + f for f in os.listdir(var.excelpath)], key=os.path.getctime)
+            shutil.move(filename, os.path.join(var.excelpath, r"danhsachnguoidung.pdf"))
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+        except:
+            logging.info("False")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
+
+
+
+
+
+    def list_user_print(self, code, eventname, result):
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.list_user_print).click()
+        except:
+            utility.move_module.move_module_detail1(self, var.managerment, var.list_user)
+            var.driver.find_element(By.XPATH, var.list_user_print).click()
+        time.sleep(5)
+        chucnangkhac.write_result_displayed_try(code, eventname, result, "Quản trị - Danh sách người dùng",
+                                                var.list_user_print_iconx, "_QuanTri_DSNguoiDung_In.png")
+        time.sleep(1)
+        try:
+            var.driver.find_element(By.XPATH, var.list_user_print_iconx).click()
+        except:
+            pass
+        time.sleep(1.5)
+
+
+
+
+    def list_user_column(self, code, eventname, result):
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.list_user_column).click()
+        except:
+            utility.move_module.move_module_detail1(self, var.managerment, var.list_user)
+            var.driver.find_element(By.XPATH, var.list_user_column).click()
+        time.sleep(2.5)
+        logging.info("Quản trị - Danh sách người dùng")
+        logging.info("Mã - " + code)
+        logging.info("Tên sự kiện - " + eventname)
+        logging.info("Kết quả - " + result)
+        logging.info("False")
+        var.driver.save_screenshot(var.imagepath + code + "_QuanTri_DSNguoiDung_AnHienCot.png")
+        chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
+        chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_QuanTri_DSNguoiDung_AnHienCot.png")
+        time.sleep(0.5)
+        try:
+            var.driver.find_element(By.XPATH, var.list_user_column_cancel).click()
+        except:
+            pass
+        time.sleep(1)
+
+
+
+    def list_user_create(self, code, eventname, result):
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.list_user_create).click()
+        except:
+            utility.move_module.move_module_detail1(self, var.managerment, var.list_user)
+            var.driver.find_element(By.XPATH, var.list_user_create).click()
+        time.sleep(3)
+        chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Danh sách người dùng",
+                                              var.check_list_user_create, "TẠO MỚI NGƯỜI DÙNG", "_QuanTri_DSNguoiDung_ThemMoi.png")
+        print(var.driver.title)
+        if var.driver.title == "TẠO MỚI NGƯỜI DÙNG":
+            var.driver.back()
+            time.sleep(3)
+
+
+
+    def list_user_permission(self, code, eventname, result):        #Danh sách người dùng - phân quyền
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.list_user_search_input).clear()
+            var.driver.find_element(By.XPATH, var.list_user_search_input).send_keys(giamsat.data['quantri']['timkiem_danhsachnguoidung'])
+        except:
+            utility.move_module.move_module_detail1(self, var.managerment, var.list_user)
+            var.driver.find_element(By.XPATH, var.list_user_search_input).send_keys(giamsat.data['quantri']['timkiem_danhsachnguoidung'])
+        time.sleep(0.5)
+        var.driver.find_element(By.XPATH, var.list_user_search).click()
+        time.sleep(1.5)
+        var.driver.find_element(By.XPATH, var.list_user_permission).click()
+        time.sleep(6)
+        chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Danh sách người dùng",
+                                              var.check_list_user_permission, "PHÂN QUYỀN CHO NGƯỜI DÙNG", "_QuanTri_DSNguoiDung_PhanQuyen.png")
+
+        print(var.driver.title)
+        if var.driver.title == "Hệ thống quản lý xe trực tuyến BA-WebGPS":
+            var.driver.back()
+            time.sleep(3)
+
+
+
+    def list_user_lock(self, code, eventname, result):        #Danh sách người dùng - khóa tài khoản
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.list_user_search_input).clear()
+            var.driver.find_element(By.XPATH, var.list_user_search_input).send_keys(giamsat.data['quantri']['timkiem_danhsachnguoidung'])
+        except:
+            utility.move_module.move_module_detail1(self, var.managerment, var.list_user)
+            var.driver.find_element(By.XPATH, var.list_user_search_input).send_keys(giamsat.data['quantri']['timkiem_danhsachnguoidung'])
+        time.sleep(0.5)
+        var.driver.find_element(By.XPATH, var.list_user_search).click()
+        time.sleep(2.5)
+        try:
+            var.driver.find_element(By.XPATH, var.list_user_lock).click()
+            time.sleep(2)
+            var.driver.switch_to.alert.accept()
+            time.sleep(0.5)
+        except:
+            pass
+        chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Danh sách người dùng",
+                                              var.check_list_user_lock, "Khóa tài khoản thành công", "_QuanTri_DSNguoiDung_KhoaTaiKhoan.png")
+        time.sleep(3)
+
+
+
+    def list_user_unlock(self, code, eventname, result):  # Danh sách người dùng - mở khóa tài khoản
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.list_user_search_input).clear()
+            var.driver.find_element(By.XPATH, var.list_user_search_input).send_keys(giamsat.data['quantri']['timkiem_danhsachnguoidung'])
+        except:
+            utility.move_module.move_module_detail1(self, var.managerment, var.list_user)
+            var.driver.find_element(By.XPATH, var.list_user_search_input).send_keys(giamsat.data['quantri']['timkiem_danhsachnguoidung'])
+        time.sleep(0.5)
+        var.driver.find_element(By.XPATH, var.list_user_search).click()
+        time.sleep(2.5)
+        var.driver.find_element(By.XPATH, var.list_user_unlock).click()
+        time.sleep(2)
+        var.driver.switch_to.alert.accept()
+        time.sleep(1.5)
+        chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Danh sách người dùng",
+                                              var.check_list_user_unlock, "Mở khóa tài khoản thành công",
+                                              "_QuanTri_DSNguoiDung_MoKhoaTaiKhoan.png")
+        time.sleep(2)
+
+
+
+    def list_user_reset_password(self, code, eventname, result):        #Danh sách người dùng -
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.list_user_search_input).clear()
+            var.driver.find_element(By.XPATH, var.list_user_search_input).send_keys(giamsat.data['quantri']['timkiem_danhsachnguoidung2'])
+        except:
+            utility.move_module.move_module_detail1(self, var.managerment, var.list_user)
+            var.driver.find_element(By.XPATH, var.list_user_search_input).send_keys(giamsat.data['quantri']['timkiem_danhsachnguoidung2'])
+        time.sleep(0.5)
+        var.driver.find_element(By.XPATH, var.list_user_search).click()
+        time.sleep(1.5)
+        var.driver.find_element(By.XPATH, var.list_user_reset_password).click()
+        time.sleep(1.5)
+        var.driver.switch_to.alert.accept()
+        time.sleep(0.2)
+        chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Danh sách người dùng",
+                                              var.check_list_user_reset_password, "Khởi tạo lại mật khẩu thành công",
+                                              "_QuanTri_DSNguoiDung_ThietLapMatKhau.png")
+        time.sleep(1)
+
+
+
+    def list_user_reset_change_password(self, code, eventname, result):        #Danh sách người dùng - đổi mật khẩu
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.list_user_search_input).clear()
+            var.driver.find_element(By.XPATH, var.list_user_search_input).send_keys(giamsat.data['quantri']['timkiem_danhsachnguoidung2'])
+        except:
+            utility.move_module.move_module_detail1(self, var.managerment, var.list_user)
+            var.driver.find_element(By.XPATH, var.list_user_search_input).send_keys(giamsat.data['quantri']['timkiem_danhsachnguoidung2'])
+        time.sleep(0.5)
+        var.driver.find_element(By.XPATH, var.list_user_search).click()
+        time.sleep(1.5)
+        var.driver.find_element(By.XPATH, var.list_user_reset_change_password).click()
+        time.sleep(3)
+
+        tab_id = var.driver.window_handles
+        tab_0 = tab_id[0]
+        tab_1 = tab_id[1]
+        var.driver.switch_to_window(tab_1)
+        print(var.driver.title)
+        chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Danh sách người dùng",
+                                              var.check_list_user_reset_change_password, "CẬP NHẬT NGƯỜI DÙNG",
+                                              "_QuanTri_DSNguoiDung_DoiMatKhau.png")
+        login.linklienket.linklienket_dongtab(self)
+        var.driver.switch_to_window(tab_0)
+        time.sleep(0.5)
+
+
+
+    def list_user_reset_copy_acount(self, code, eventname, result):        #Danh sách người dùng - coppy tài khoản
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.list_user_search_input).clear()
+            var.driver.find_element(By.XPATH, var.list_user_search_input).send_keys(giamsat.data['quantri']['timkiem_danhsachnguoidung2'])
+        except:
+            utility.move_module.move_module_detail1(self, var.managerment, var.list_user)
+            var.driver.find_element(By.XPATH, var.list_user_search_input).send_keys(giamsat.data['quantri']['timkiem_danhsachnguoidung2'])
+        time.sleep(0.5)
+        var.driver.find_element(By.XPATH, var.list_user_search).click()
+        time.sleep(2)
+        var.driver.find_element(By.XPATH, var.list_user_reset_copy_acount).click()
+        time.sleep(2)
+        number = random.randint(1, 99999999)
+        copyaccount_user = "truongtest" + str(number)
+        var.driver.find_element(By.XPATH, var.copy_acount_user).send_keys(copyaccount_user)
+        var.driver.find_element(By.XPATH, var.copy_acount_name).send_keys(giamsat.data['quantri']['copyaccount_name'])
+        var.driver.find_element(By.XPATH, var.copy_acount_phonenumber).send_keys(giamsat.data['quantri']['copyaccount_phonenumber'])
+        var.driver.find_element(By.XPATH, var.copy_acount_email).send_keys(giamsat.data['quantri']['copyaccount_email'])
+        var.driver.find_element(By.XPATH, var.copy_acount_password).send_keys(giamsat.data['quantri']['copyaccount_password'])
+        var.driver.find_element(By.XPATH, var.copy_acount_repeatpassword).send_keys(giamsat.data['quantri']['copyaccount_password'])
+        var.driver.find_element(By.XPATH, var.copy_acount_typeaccount).click()
+        var.driver.find_element(By.XPATH, var.copy_acount_save).click()
+        time.sleep(3)
+        var.writeData(var.path_luutamthoi, "Sheet1", 49, 2, copyaccount_user)
+        chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Danh sách người dùng",
+                                              var.check_list_user_reset_copy_acount, "Lưu thành công",
+                                              "_QuanTri_DSNguoiDung_CopyTaiKhoan.png")
+
+
+
+    def list_user_delete(self, code, eventname, result):        #Danh sách người dùng - Xóa
+        var.driver.implicitly_wait(5)
+        nameuser = str(var.readData(var.path_luutamthoi, 'Sheet1', 49, 2))
+
+        try:
+            var.driver.find_element(By.XPATH, var.list_user_search_input).clear()
+            var.driver.find_element(By.XPATH, var.list_user_search_input).send_keys(nameuser)
+        except:
+            utility.move_module.move_module_detail1(self, var.managerment, var.list_user)
+            var.driver.find_element(By.XPATH, var.list_user_search_input).send_keys(nameuser)
+        time.sleep(0.5)
+        var.driver.find_element(By.XPATH, var.list_user_search).click()
+        time.sleep(2)
+
+        name1 = var.driver.find_element(By.XPATH, var.list_user_name1).text
+        if name1 == nameuser:
+            var.driver.find_element(By.XPATH, var.list_user_reset_delete).click()
+        else:
+            number = random.randint(1, 99999999)
+            copyaccount_user = "truongtest" + str(number)
+            var.driver.find_element(By.XPATH, var.list_user_reset_copy_acount).click()
+            time.sleep(2)
+            var.driver.find_element(By.XPATH, var.copy_acount_user).send_keys(copyaccount_user)
+            var.driver.find_element(By.XPATH, var.copy_acount_name).send_keys(giamsat.data['quantri']['copyaccount_name'])
+            var.driver.find_element(By.XPATH, var.copy_acount_phonenumber).send_keys(giamsat.data['quantri']['copyaccount_phonenumber'])
+            var.driver.find_element(By.XPATH, var.copy_acount_email).send_keys(giamsat.data['quantri']['copyaccount_email'])
+            var.driver.find_element(By.XPATH, var.copy_acount_password).send_keys(giamsat.data['quantri']['copyaccount_password'])
+            var.driver.find_element(By.XPATH, var.copy_acount_repeatpassword).send_keys(giamsat.data['quantri']['copyaccount_password'])
+            var.driver.find_element(By.XPATH, var.copy_acount_typeaccount).click()
+            var.driver.find_element(By.XPATH, var.copy_acount_save).click()
+            time.sleep(2)
+            var.writeData(var.path_luutamthoi, "Sheet1", 49, 2, copyaccount_user)
+            var.driver.find_element(By.XPATH, var.list_user_search_input).clear()
+            var.driver.find_element(By.XPATH, var.list_user_search_input).send_keys(copyaccount_user)
+            time.sleep(0.5)
+            var.driver.find_element(By.XPATH, var.list_user_search).click()
+            time.sleep(1.5)
+            var.driver.find_element(By.XPATH, var.list_user_reset_delete).click()
+        time.sleep(2)
+        var.driver.switch_to.alert.accept()
+        time.sleep(0.3)
+        logging.info("Xóa tài khoản: "+ nameuser)
+        chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Danh sách người dùng",
+                                              var.check_list_user_reset_delete, "Xóa tài khoản thành công",
+                                              "_QuanTri_DSNguoiDung_Xoa.png")
+        time.sleep(2)
+
+
+    def list_user_permanently_deleted(self, code, eventname, result):        #Danh sách người dùng - xóa hẳn
+        var.driver.implicitly_wait(5)
+        number = random.randint(1, 99999999)
+        copyaccount_user = "truongtest" + str(number)
+        utility.move_module.move_module_detail1(self, var.managerment, var.list_user)
+        var.driver.find_element(By.XPATH, var.list_user_reset_copy_acount).click()
+
+        time.sleep(2)
+        var.driver.find_element(By.XPATH, var.copy_acount_user).send_keys(copyaccount_user)
+        var.driver.find_element(By.XPATH, var.copy_acount_name).send_keys(giamsat.data['quantri']['copyaccount_name'])
+        var.driver.find_element(By.XPATH, var.copy_acount_phonenumber).send_keys(giamsat.data['quantri']['copyaccount_phonenumber'])
+        var.driver.find_element(By.XPATH, var.copy_acount_email).send_keys(giamsat.data['quantri']['copyaccount_email'])
+        var.driver.find_element(By.XPATH, var.copy_acount_password).send_keys(giamsat.data['quantri']['copyaccount_password'])
+        var.driver.find_element(By.XPATH, var.copy_acount_repeatpassword).send_keys(giamsat.data['quantri']['copyaccount_password'])
+        var.driver.find_element(By.XPATH, var.copy_acount_typeaccount).click()
+        var.driver.find_element(By.XPATH, var.copy_acount_save).click()
+        time.sleep(2.5)
+        var.driver.find_element(By.XPATH, var.list_user_search_input).clear()
+        var.driver.find_element(By.XPATH, var.list_user_search_input).send_keys(copyaccount_user)
+        var.driver.find_element(By.XPATH, var.list_user_search).click()
+        time.sleep(2)
+        var.driver.find_element(By.XPATH, var.list_user_permanently_deleted).click()
+        time.sleep(2)
+        var.driver.switch_to.alert.accept()
+        time.sleep(0.3)
+        logging.info("Xóa vĩnh viễn tài khoản: " + copyaccount_user)
+        chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Danh sách người dùng",
+                                              var.check_list_user_list_user_permanently_deleted, "Xóa tài khoản thành công",
+                                              "_QuanTri_DSNguoiDung_XoaVinhVien.png")
+        time.sleep(2)
+
+
+
+    def list_user_unlock_login(self, code, eventname, result):        #Danh sách người dùng - mở khóa đăng nhập
+        var.driver.implicitly_wait(5)
+        utility.move_module.move_module_detail1(self, var.managerment, var.list_user)
+        var.driver.find_element(By.XPATH, var.list_user_search_input).send_keys(giamsat.data['quantri']['timkiem_danhsachnguoidung2'])
+        time.sleep(0.5)
+        var.driver.find_element(By.XPATH, var.list_user_search).click()
+        time.sleep(2)
+        var.driver.find_element(By.XPATH, var.list_user_unlock_login).click()
+        time.sleep(2)
+        var.driver.switch_to.alert.accept()
+        time.sleep(2)
+        chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Danh sách người dùng",
+                                              var.check_list_user_unlock_login, "Mở khóa đăng nhập cho " + giamsat.data['quantri']['timkiem_danhsachnguoidung2'] + " thành công",
+                                              "_QuanTri_DSNguoiDung_MoKhoaDangNhap.png")
+        check = var.driver.find_element(By.XPATH, var.check_list_user_unlock_login).text
+        logging.info(check)
+        logging.info("Mở khóa đăng nhập cho " + giamsat.data['quantri']['timkiem_danhsachnguoidung2'] + " thành công")
+
+
+
+
+    def list_user_logout_account(self, code, eventname, result):        #Danh sách người dùng - đăng xuất tài khoản
+        var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.list_user_search_input).clear()
+            var.driver.find_element(By.XPATH, var.list_user_search_input).send_keys(giamsat.data['quantri']['timkiem_danhsachnguoidung2'])
+        except:
+            utility.move_module.move_module_detail1(self, var.managerment, var.list_user)
+            var.driver.find_element(By.XPATH, var.list_user_search_input).send_keys(giamsat.data['quantri']['timkiem_danhsachnguoidung2'])
+        time.sleep(0.5)
+        var.driver.find_element(By.XPATH, var.list_user_search).click()
+        time.sleep(2)
+        var.driver.find_element(By.XPATH, var.list_user_logout_account).click()
+        time.sleep(2)
+        var.driver.switch_to.alert.accept()
+        time.sleep(0.3)
+        chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Danh sách người dùng",
+                                              var.check_list_user_logout_account, "Đăng xuất tất cả thiết bị thành công",
+                                              "_QuanTri_DSNguoiDung_DangXuatTaiKhoan.png")
+        time.sleep(2)
 
 
 

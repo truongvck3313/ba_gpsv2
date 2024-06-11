@@ -237,6 +237,15 @@ class landmark_administraintion:      #quản trị điểm
         name_place = var.driver.find_element(By.XPATH, var.landmark_group_name_place2).text
         var.driver.find_element(By.XPATH, var.landmark_group_input).send_keys(name_place)
         time.sleep(0.5)
+        if var.driver.find_element(By.XPATH, var.point_do_not_assigned).is_selected() == False:
+            var.driver.find_element(By.XPATH, var.point_do_not_assigned).click()
+
+        if var.driver.find_element(By.XPATH, var.point_in_landmarks_group).is_selected() == False:
+            var.driver.find_element(By.XPATH, var.point_in_landmarks_group).click()
+
+        if var.driver.find_element(By.XPATH, var.point_in_displayed_place).is_selected() == False:
+            var.driver.find_element(By.XPATH, var.point_in_displayed_place).click()
+
         var.driver.find_element(By.XPATH, var.landmark_group_buttonsearch).click()
         time.sleep(2)
         try:
@@ -503,7 +512,12 @@ class landmark_administraintion:      #quản trị điểm
         for column in bangchucai:
             print(sheet[column + "1"].value)
             print(sheet[column + "1"])
-            chucnangkhac.write_result_excelreport_clear_data(code, sheet, column, 'danh_sach_diem', "1", "A1", "Tên điểm")
+            chucnangkhac.write_result_excelreport_clear_data(code, sheet, column, 'Landmarks', "1", "A1", "Tên điểm")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Landmarks', "1", "B1", "Địa chỉ")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Landmarks', "1", "C1", "Kinh độ")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Landmarks', "1", "D1", "Vĩ độ")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Landmarks', "1", "E1", "Hình tròn")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Landmarks', "1", "F1", "Bán kính")
 
 
 
