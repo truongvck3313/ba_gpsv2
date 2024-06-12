@@ -45,7 +45,7 @@ def caseid_login04(self):
     login.login.login_v2_tkkhongcoquyengiamsat(self, "truongvck1", "12341234", "Login04", "Đăng nhập với tài khoản khách hàng không có quyền giám sát")
 
 def caseid_login05(self):
-    login.login.login_v2sai(self, "truongtq@bagroup.vn", "11111", "Login05","Tài khoản và mật khẩu không đúng")
+    login.login.login_v2sai(self, "truongtq@bagroup.vn", "11111", "Login05", "Tài khoản và mật khẩu không đúng")
 
 
 def caseid_login06(self):

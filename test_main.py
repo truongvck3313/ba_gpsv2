@@ -136,9 +136,9 @@ chucnangkhac.timerun()
 
 class Test(unittest.TestCase):
     def test_run1(self):
-        chucnangkhac.clearData(var.checklistpath, "Checklist", "", "")
-        chucnangkhac.delete_image()
-        module_gpsv2.ModuleTest()
+        # chucnangkhac.clearData(var.checklistpath, "Checklist", "", "")
+        # chucnangkhac.delete_image()
+        # module_gpsv2.ModuleTest()
         chucnangkhac.notification_telegram()
 
         # 1
@@ -456,7 +456,7 @@ class Test(unittest.TestCase):
 #         caseid.caseid_admin20(self)
 #         caseid.caseid_admin21(self)
 #
-#         # Quản trị nhóm
+# #         # Quản trị nhóm
 #         caseid.caseid_admin22(self)
 #         caseid.caseid_admin23(self)
 #         caseid.caseid_admin24(self)
@@ -494,17 +494,7 @@ class Test(unittest.TestCase):
         # caseid.caseid_user17(self)
 
 
-
-
-
-
-
-
-
-
-
-#
-        # Báo cáo doanh nghiep - Báo cáo tổng hợp hoạt động (theo nhóm)
+        # # Báo cáo doanh nghiep - Báo cáo tổng hợp hoạt động (theo nhóm)
         # caseid.caseid_report01(self)
         # caseid.caseid_report02(self)
         # caseid.caseid_report03(self)
@@ -522,8 +512,8 @@ class Test(unittest.TestCase):
         # caseid.caseid_report11(self)
         # caseid.caseid_report12(self)
         # caseid.caseid_report13(self)
-
-        #Báo cáo dừng đỗ
+        #
+        # # Báo cáo dừng đỗ
         # caseid.caseid_report14(self)
         # caseid.caseid_report15(self)
         # caseid.caseid_report16(self)
@@ -542,8 +532,8 @@ class Test(unittest.TestCase):
         # caseid.caseid_report23(self)
         # caseid.caseid_report24(self)
         # caseid.caseid_report25(self)
-
-        #Báo cáo động cơ
+        #
+        # # Báo cáo động cơ
         # caseid.caseid_report26(self)
         # caseid.caseid_report27(self)
         # caseid.caseid_report28(self)
@@ -568,8 +558,8 @@ class Test(unittest.TestCase):
         # caseid.caseid_report39(self)
         # caseid.caseid_report40(self)
         # caseid.caseid_report41(self)
-
-        #Báo cáo mất tín hiệu
+        #
+        # # Báo cáo mất tín hiệu
         # caseid.caseid_report42(self)
         # caseid.caseid_report43(self)
         # caseid.caseid_report44(self)
@@ -578,36 +568,36 @@ class Test(unittest.TestCase):
         # caseid.caseid_report45(self)
         # caseid.caseid_report46(self)
         # caseid.caseid_report47(self)
-
-        # Báo cáo tổng hợp lái xe đăng nhập đăng xuất
+        #
+        # # Báo cáo tổng hợp lái xe đăng nhập đăng xuất
         # caseid.caseid_report48(self)
         # caseid.caseid_report49(self)
         # caseid.caseid_report50(self)
-
+        #
         # # Quá tốc độ - BGT
         # caseid.caseid_report51(self)
         # caseid.caseid_report52(self)
         # caseid.caseid_report53(self)
 #
-        # Video clip - Xem dữ liệu video - Tổng quan
+        # # Video clip - Xem dữ liệu video - Tổng quan
         # caseid.caseid_video01(self)
         # caseid.caseid_video02(self)
         # caseid.caseid_video03(self)
-
+        #
         # # Video clip - Xem dữ liệu video - Chi tiết
         # caseid.caseid_video04(self)
         # caseid.caseid_video05(self)
         # caseid.caseid_video06(self)
         # caseid.caseid_video07(self)
-        #
-        # Video clip - Giám sát camera
+
+        # # Video clip - Giám sát camera
         # caseid.caseid_video08(self)
         # caseid.caseid_video09(self)
         # caseid.caseid_video10(self)
         # caseid.caseid_video11(self)
         # caseid.caseid_video12(self)
 
-        # # # Hình ảnh - Giám sát bằng hình ảnh
+        # # Hình ảnh - Giám sát bằng hình ảnh
         # caseid.caseid_image01(self)
         # caseid.caseid_image02(self)
         # caseid.caseid_image03(self)
@@ -637,7 +627,7 @@ class Test(unittest.TestCase):
         # caseid.caseid_image19(self)
         # caseid.caseid_image20(self)
 
-        # Tiện ích - thông tin thiết bị
+        # # Tiện ích - thông tin thiết bị
         # caseid.caseid_utility01(self)
         # caseid.caseid_utility02(self)
         # caseid.caseid_utility03(self)
@@ -655,7 +645,7 @@ class Test(unittest.TestCase):
         # caseid.caseid_utility11(self)
         # caseid.caseid_utility12(self)
         # caseid.caseid_utility13(self)
-        #
+
         # # Tiện ích - phân quyền nhóm điểm
         # caseid.caseid_utility14(self)
         # caseid.caseid_utility15(self)
@@ -670,7 +660,7 @@ class Test(unittest.TestCase):
         # caseid.caseid_utility22(self)
         # caseid.caseid_utility23(self)
 
-        # Ai - Báo cáo tổng hợp hành vi lái xe
+        # # Ai - Báo cáo tổng hợp hành vi lái xe
         # caseid.caseid_ai01(self)
         # caseid.caseid_ai02(self)
         # caseid.caseid_ai03(self)

@@ -9,6 +9,8 @@ import shutil
 import openpyxl
 import video_clip
 
+from retry import retry
+
 # from faker import Faker
 # from faker.providers import internet
 # fake = Faker()
@@ -269,18 +271,29 @@ class images:
         time.sleep(1)
         # var.driver.find_element(By.XPATH, var.tracking_by_images_selecgroup).click()
 
-        var.driver.find_element(By.XPATH, var.tracking_single_vehicle_chosevehicle).click()
-        time.sleep(0.5)
-        var.driver.find_element(By.XPATH, var.tracking_single_vehicle_chosevehicle1).click()
-        time.sleep(0.5)
-        var.driver.find_element(By.XPATH, var.tracking_single_vehicle_chosevehicle).click()
-        time.sleep(0.5)
+        n = 1
+        while (n < 10):
+            var.driver.implicitly_wait(2)
+            n += 1
+            n = str(n)
+            pathtenphuongtien = "//*[@id='ddlVehicles_chzn']/div/ul/li[" + n + "]"
+            var.driver.find_element(By.XPATH, var.tracking_single_vehicle_chosevehicle).click()
+            time.sleep(1)
+
+            var.driver.find_element(By.XPATH, pathtenphuongtien).click()
+            time.sleep(1)
+
+            var.driver.find_element(By.XPATH, var.tracking_single_vehicle_search).click()
+            time.sleep(2.5)
+
+            try:
+                var.driver.find_element(By.XPATH, "//*[text()='OK']").click()
+                time.sleep(1)
+            except:
+                break
+            n = int(n)
         name_vehicle = var.driver.find_element(By.XPATH, var.tracking_single_vehicle_name_vehicle).text
         time.sleep(1)
-
-        var.driver.find_element(By.XPATH, var.tracking_single_vehicle_search).click()
-        time.sleep(2.5)
-
         logging.info("Tìm kiếm biển số - " + name_vehicle)
         var.writeData(var.path_luutamthoi, "Sheet1", 2, 2, name_vehicle)
         chucnangkhac.write_result_displayed_try(code, eventname, result, "Hình ảnh - Giám sát bằng hình ảnh 1 xe (thư viện ảnh)",
@@ -360,7 +373,7 @@ class images:
         chucnangkhac.write_result_text_try_if(code, eventname, result, "Hình ảnh - Quản lý ảnh camera",
                                               var.check_camera_image_management, "QUẢN LÝ ẢNH CAMERA", "_HinhAnh_QuanLyAnhCamera.png")
 
-
+    @retry(tries=3, delay=2, backoff=1, jitter=5, )
     def camera_image_management_search(self, code, eventname, result):       #Quản lý ảnh camera - Tìm kiếm
         var.driver.implicitly_wait(5)
         try:
@@ -381,20 +394,28 @@ class images:
         var.driver.find_element(By.XPATH, var.camera_image_management_chanel1).click()
         time.sleep(1)
         var.driver.find_element(By.XPATH, var.camera_image_management_chanel).click()
-
-
-        var.driver.find_element(By.XPATH, var.camera_image_management_chosevehicle).click()
-        time.sleep(0.5)
-        var.driver.find_element(By.XPATH, var.camera_image_management_chosevehicle1).click()
-        time.sleep(0.5)
-        var.driver.find_element(By.XPATH, var.camera_image_management_chosevehicle).click()
-        time.sleep(0.5)
-        name_vehicle = var.driver.find_element(By.XPATH, var.camera_image_management_name_vehicle).text
         time.sleep(1)
 
-        var.driver.find_element(By.XPATH, var.camera_image_management_search).click()
-        time.sleep(5)
+        n = 1
+        while (n < 10):
+            var.driver.implicitly_wait(2)
+            n += 1
+            n = str(n)
+            pathtenphuongtien = "//*[@id='ctl00_ctl00_MainContent_Content_vehicleAutoComplete_ddlVehiclePlate_chzn']/div/ul/li[" + n + "]"
+            var.driver.find_element(By.XPATH, var.camera_image_management_chosevehicle).click()
+            time.sleep(1)
+            var.driver.find_element(By.XPATH, pathtenphuongtien).click()
+            time.sleep(1)
+            var.driver.find_element(By.XPATH, var.camera_image_management_search).click()
+            time.sleep(10)
+            try:
+                var.driver.find_element(By.XPATH, "//*[text()='OK']").click()
+            except:
+                break
+            n = int(n)
 
+        name_vehicle = var.driver.find_element(By.XPATH, var.camera_image_management_name_vehicle).text
+        time.sleep(1)
         logging.info("Tìm kiếm biển số - " + name_vehicle)
         var.writeData(var.path_luutamthoi, "Sheet1", 2, 2, name_vehicle)
         chucnangkhac.write_result_displayed_try(code, eventname, result, "Hình ảnh - Quản lý ảnh camera",
@@ -489,21 +510,40 @@ class images:
             login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.image).click()
             time.sleep(4)
-            var.driver.find_element(By.XPATH, var.camera_image_management).click()
+            var.driver.find_element(By.XPATH, var.view_camera_photos).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.camera_image_management_selecgroup).click()
         time.sleep(0.5)
         var.driver.find_element(By.XPATH, var.camera_image_management_selecgroup1).click()
         time.sleep(1)
 
-        var.driver.find_element(By.XPATH, var.camera_image_management_chosevehicle).click()
-        time.sleep(0.5)
-        var.driver.find_element(By.XPATH, var.camera_image_management_chosevehicle1).click()
-        time.sleep(0.5)
+        n = 1
+        while (n < 10):
+            var.driver.implicitly_wait(2)
+            n += 1
+            n = str(n)
+            pathtenphuongtien = "//*[@id='ctl00_ctl00_MainContent_Content_vehicleAutoComplete_ddlVehiclePlate_chzn']/div/ul/li[" + n + "]"
+            var.driver.find_element(By.XPATH, var.camera_image_management_chosevehicle).click()
+            time.sleep(1)
+            var.driver.find_element(By.XPATH, pathtenphuongtien).click()
+            time.sleep(1)
+            var.driver.find_element(By.XPATH, var.camera_image_management_search).click()
+            time.sleep(10)
+            try:
+                var.driver.find_element(By.XPATH, "//*[text()='OK']").click()
+            except:
+                break
+            n = int(n)
+
+
+        # var.driver.find_element(By.XPATH, var.camera_image_management_chosevehicle).click()
+        # time.sleep(0.5)
+        # var.driver.find_element(By.XPATH, var.camera_image_management_chosevehicle1).click()
+        # time.sleep(0.5)
         name_vehicle = var.driver.find_element(By.XPATH, var.camera_image_management_name_vehicle).text
-        time.sleep(1)
-        var.driver.find_element(By.XPATH, var.camera_image_management_search).click()
-        time.sleep(5)
+        # time.sleep(1)
+        # var.driver.find_element(By.XPATH, var.camera_image_management_search).click()
+        # time.sleep(5)
 
         logging.info("Tìm kiếm biển số - " + name_vehicle)
         var.writeData(var.path_luutamthoi, "Sheet1", 2, 2, name_vehicle)

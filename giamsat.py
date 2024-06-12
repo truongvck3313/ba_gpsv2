@@ -4790,7 +4790,7 @@ class chuotphaimap:
         var.driver.implicitly_wait(5)
         # Google map
         var.driver.find_element(By.XPATH, var.chihuong_googlemap).click()
-        time.sleep(3)
+        time.sleep(5)
         tab_id = var.driver.window_handles
         tab_1 = tab_id[1]
         var.driver.switch_to_window(tab_1)
@@ -5303,7 +5303,7 @@ class chuotphaimap:
             mouse.click(button='right')
             time.sleep(1)
             var.driver.find_element(By.XPATH, var.chuotphaimap_cauhinhhienthinhomdiem).click()
-        time.sleep(2)
+        time.sleep(3)
 
         logging.info("Giám sát - Chuột phải map - Cấu hình hiển thị nhóm điểm")
         logging.info("Mã - " + ma)

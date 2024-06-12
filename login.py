@@ -150,7 +150,7 @@ class login:
         var.driver.find_element(By.XPATH, var.login_password).send_keys(password)
         var.driver.find_element(By.XPATH, var.login_ghinhodangnhap).click()
         var.driver.find_element(By.XPATH, var.dangnhap).click()
-        time.sleep(0.5)
+        time.sleep(1.5)
         try:
             check_loginsai = var.driver.find_element(By.XPATH, var.check_loginsai).is_displayed()
             logging.info("Login - Đằng nhập sai mật khẩu- Tên đăng nhập hoặc mật khẩu không hợp lệ.")
@@ -624,14 +624,22 @@ class linklienket:
 
     def linklienket_huongdansudung(self, ma, tensukien):
         var.driver.implicitly_wait(5)
-        try:
-            linklienket.linklienket(self, var.login_huongdansudung)
-        except:
-            var.driver.maximize_window()
-            var.driver.get(var.linktest)
-            time.sleep(3)
-            linklienket.linklienket(self, var.login_huongdansudung)
-        time.sleep(1)
+        tab_id = var.driver.window_handles
+        tab_0 = tab_id[0]
+        var.driver.switch_to_window(tab_0)
+        var.driver.get(var.linktest)
+        var.driver.maximize_window()
+        time.sleep(5)
+        print("n1")
+
+        var.driver.find_element(By.XPATH, var.login_huongdansudung).click()
+        time.sleep(5)
+        tab_id = var.driver.window_handles
+        tab_1 = tab_id[1]
+        var.driver.switch_to_window(tab_1)
+        print("n2")
+
+
         try:
             check_login_huongdansudung = var.driver.find_element(By.XPATH,var.check_login_huongdansudung).text
             logging.info("Login - Link liên kết - Hướng dẫn sử dụng")

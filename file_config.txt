@@ -1,7 +1,7 @@
 - ModeTest: "0"
 - ModuleTest: "0"
 - LinkTest: "https://gps.binhanh.vn"
-- TimeRun: "04:00"
+- TimeRun: ""
 - LogPath: "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/ba.log"
 - CheckListPath: "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/GPS_ChecklistForAutoTest.xlsx"
 - ImagePath: "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/anhchup/"

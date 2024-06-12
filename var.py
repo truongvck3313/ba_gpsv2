@@ -793,7 +793,7 @@ tracking_by_images_selecgroup1 = "//*[@class='tv-fs-tblv1-lm']/tbody/tr[2]/td/di
 tracking_by_images_findvehicle = "//*[@class='tv-fs-tblv1-lm']/tbody/tr[3]/td/div/button"
 tracking_by_images_findvehicle1 = "//*[@class='tv-fs-tblv1-lm']/tbody/tr[3]/td/div/div/ul/li[2]/label/input"
 tracking_by_images_name_vehicle = "//*[@class='tv-fs-tblv1-lm']/tbody/tr[3]/td/div/button/span"
-check_tracking_by_images_search = "//*[@class='tv-fs-tblv1-lm-listVehicle']/tbody/tr[2]/td[2]/div"
+check_tracking_by_images_search = "//*[@class='tv-fs-tblv1-lm-listVehicle']/tbody/tr[1]/td[2]/div"
 tracking_vehicle_by_images_online = "//*[@class='leftMenuContainer']//*[@id='TrackingVehiclesByImageOnline']"
 tracking_vehicle_by_images_online_watch_image = "//*[@id='vehicles']/div[1]/div[1]/div[2]/img"
 check_tracking_vehicle_by_images_online_search = "//*[@class='tv-fs-tblv1-lm-listVehicle']/div[3]/div/div[1]/label"
@@ -819,7 +819,7 @@ camera_image_management_search = "//*[@id='ctl00_ctl00_MainContent_Content_btnSe
 check_camera_image_management_search = "//*[@class='tableBoxBordered']/tbody/tr[7]/td/table/tbody/tr[1]/td/div/div[1]/div/a/img"
 camera_image_management_watch_image_iconx = "//*[@id='lightbox-secNav-btnClose']"
 view_camera_photos = "//*[@class='leftMenuContainer']//*[@id='ImageViewMND10']"
-check_view_camera_photos_search = "//*[@id='tableContainer']/tbody/tr[7]/td/table/tbody/tr[1]/td[1]/table/tbody/tr[1]/td[1]/div/div/div[1]/img"
+check_view_camera_photos_search = "//*[@id='tableContainer']/tbody/tr[7]/td/table/tbody/tr[1]/td[1]/table/tbody/tr/td[2]/div/table/tbody/tr[2]/td/div/table/tbody/tr[1]/td[1]"
 view_camera_photos_search1 = "//*[@class='lstImage']/table/tbody/tr[1]"
 view_camera_photos_search2 = "//*[@class='lstImage']/table/tbody/tr[2]"
 check_canhbao_xemanhcamera = "//*[@id='panelImageOnline']//*[@class='text']/b"
@@ -931,12 +931,12 @@ check_list_user_unlock_login = "//*[@id='ctl00_ctl00_MainContent_Content_Message
 list_user_logout_account = "//*[@class='table table-bordered']/tbody/tr[2]//*[@src='/Images/s_icon_GotoCompany.png']"
 check_list_user_logout_account = "//*[text()='Đăng xuất tất cả thiết bị thành công']"
 list_user_name1 = "//*[@class='table table-bordered']/tbody/tr[2]/td[2]/a"
-
-
-
-
-
-
+playbackvideo_detail_nodata = "//*[@id='capturOutputImg']"
+playbackvideo_detail_selectvehicle2 = "//*[@class='tblVehicleVideo-body-center-search']/div[2]/div/div/ul/li[3]/label/input"
+playbackvideo_detail_selectvehicle3 = "//*[@class='tblVehicleVideo-body-center-search']/div[2]/div/div/ul/li[4]/label/input"
+playbackvideo_detail_selectvehicle4 = "//*[@class='tblVehicleVideo-body-center-search']/div[2]/div/div/ul/li[5]/label/input"
+playbackvideo_detail_selectvehicle_span = "//*[@class='tblVehicleVideo-body-center-search']/div[2]/div/button/span"
+check_playbackvideo_detail = "//*[@class='customtab-list-video-panel-1 customtab-list-video-panel customtab-list-video-panel-active']/div[1]"
 
 
 

@@ -155,10 +155,24 @@ class video_clip:
         time.sleep(0.5)
         var.driver.find_element(By.XPATH, var.playbackvideo_detail_selectgroup1).click()
         time.sleep(1)
-        var.driver.find_element(By.XPATH, var.playbackvideo_detail_selectvehicle).click()
-        time.sleep(0.5)
-        var.driver.find_element(By.XPATH, var.playbackvideo_detail_selectvehicle1).click()
-        time.sleep(1)
+        n = 1
+        while (n < 10):
+            var.driver.implicitly_wait(2)
+            n += 1
+            n = str(n)
+            pathtenphuongtien = "//*[@class='tblVehicleVideo-body-center-search']/div[2]/div/div/ul/li[" + n + "]/label/input"
+            var.driver.find_element(By.XPATH, var.playbackvideo_detail_selectvehicle).click()
+            time.sleep(1)
+            var.driver.find_element(By.XPATH, pathtenphuongtien).click()
+            time.sleep(2)
+            try:
+                var.driver.find_element(By.XPATH, var.check_playbackvideo_detail).is_displayed()
+                break
+            except:
+                pass
+            n = int(n)
+
+        var.driver.implicitly_wait(5)
         name_vehicle = var.driver.find_element(By.XPATH, var.playbackvideo_detail_name_vehicle).text
         var.writeData(var.path_luutamthoi, "Sheet1", 2, 2, name_vehicle)
         time.sleep(4)
@@ -204,10 +218,23 @@ class video_clip:
             time.sleep(0.5)
             var.driver.find_element(By.XPATH, var.playbackvideo_detail_selectgroup1).click()
             time.sleep(1)
-            var.driver.find_element(By.XPATH, var.playbackvideo_detail_selectvehicle).click()
-            time.sleep(0.5)
-            var.driver.find_element(By.XPATH, var.playbackvideo_detail_selectvehicle1).click()
-            time.sleep(3)
+            n = 1
+            while (n < 10):
+                var.driver.implicitly_wait(2)
+                n += 1
+                n = str(n)
+                pathtenphuongtien = "//*[@class='tblVehicleVideo-body-center-search']/div[2]/div/div/ul/li[" + n + "]/label/input"
+                var.driver.find_element(By.XPATH, var.playbackvideo_detail_selectvehicle).click()
+                time.sleep(1)
+                var.driver.find_element(By.XPATH, pathtenphuongtien).click()
+                time.sleep(2)
+                try:
+                    var.driver.find_element(By.XPATH, var.check_playbackvideo_detail).is_displayed()
+                    break
+                except:
+                    pass
+                n = int(n)
+
             var.driver.find_element(By.XPATH, var.playbackvideo_detail_search).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.playbackvideo_detail_view_multi_chanel).click()
@@ -304,8 +331,8 @@ class video_clip:
             var.driver.find_element(By.XPATH, var.cam_tracking_select_group).click()
             time.sleep(1)
             var.driver.find_element(By.XPATH, var.cam_tracking_select_group1).click()
-            # var.driver.find_element(By.XPATH, var.cam_tracking_select_group).click()
-            # time.sleep(1)
+            var.driver.find_element(By.XPATH, var.cam_tracking_select_group).click()
+            time.sleep(1)
         except:
             login.login.login_v2(self, "43E02740", "12341234")
             var.driver.find_element(By.XPATH, var.videoclip).click()
@@ -314,9 +341,11 @@ class video_clip:
             time.sleep(7)
             var.driver.find_element(By.XPATH, var.cam_tracking_select_group).click()
             time.sleep(1)
+            var.driver.find_element(By.XPATH, var.cam_tracking_select_group).click()
+            time.sleep(1)
             var.driver.find_element(By.XPATH, var.cam_tracking_select_group1).click()
-            # time.sleep(1)
-            # var.driver.find_element(By.XPATH, var.cam_tracking_select_group).click()
+            time.sleep(1)
+            var.driver.find_element(By.XPATH, var.cam_tracking_select_group).click()
         time.sleep(1)
         var.driver.find_element(By.XPATH, var.cam_tracking_find_vehicle).click()
         time.sleep(1)
@@ -354,21 +383,25 @@ class video_clip:
 
     def cam_tracking_checkapi(self, code, eventname, result):       #Giám sát camera - check api trường HasVideoStream
         var.driver.implicitly_wait(5)
-        check_bacam(950, video_clip.video)
-        video_api = str(var.readData(var.path_luutamthoi, 'Sheet1', 37, 2))
-        print(video_api)
-        logging.info("Video clip - Giám sát camera")
-        logging.info("Mã - " + code)
-        logging.info("Tên sự kiện - " + eventname)
-        logging.info("Kết quả - " + result)
-        logging.info("Phương tiện có đăng ký Video không: " + video_api)
-        logging.info("Tên phương tiện : " + video_clip.video)
-        if video_api == "True":
-            logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
-        else:
-            logging.info("False")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
+        try:
+            check_bacam(950, video_clip.video)
+            video_api = str(var.readData(var.path_luutamthoi, 'Sheet1', 37, 2))
+            print(video_api)
+            logging.info("Video clip - Giám sát camera")
+            logging.info("Mã - " + code)
+            logging.info("Tên sự kiện - " + eventname)
+            logging.info("Kết quả - " + result)
+            logging.info("Phương tiện có đăng ký Video không: " + video_api)
+            logging.info("Tên phương tiện : " + video_clip.video)
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 12, "")
+            if video_api == "True":
+                logging.info("True")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+            else:
+                logging.info("False")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
+        except:
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 12, "Xe "+video_clip.video+" đang mất tín hiệu nến không gọi được API")
 
 
 

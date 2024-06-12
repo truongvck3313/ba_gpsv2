@@ -67,7 +67,7 @@ def write_from_date(fromdate_input):
     if from_date_day1 == 1:
         from_date_day1 = "01"
     # from_date_day2 = str(from_date_day1)
-    from_date1 = from_date_day1 + from_date_month_year
+    from_date1 = str(from_date_day1) + str(from_date_month_year)
     print(from_date1)
     xoa = var.driver.find_element(By.XPATH, fromdate_input)
     xoa.send_keys(Keys.CONTROL, "a")
@@ -105,7 +105,7 @@ def write_from_date_month(fromdate_month_input):
         from_date_month = "01"
     if from_date_month == 0:
         from_date_month = "01"
-    from_date = from_date_day + str(from_date_month) + from_date_year
+    from_date = from_date_day + str(from_date_month) + str(from_date_year)
     print(from_date)
     xoa = var.driver.find_element(By.XPATH, fromdate_month_input)
     xoa.send_keys(Keys.CONTROL, "a")
