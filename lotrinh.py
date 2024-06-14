@@ -476,7 +476,7 @@ class route:
         var.driver.execute_script("arguments[0].click();", button)
         time.sleep(0.5)
         var.driver.find_element(By.XPATH, var.routedisplayconfig_save).click()
-        time.sleep(1)
+        time.sleep(2.5)
         var.driver.switch_to.alert.accept()
         time.sleep(1)
         logging.info("Lộ trình - Trang lộ trình - Cấu hình hiển thị lộ trình")

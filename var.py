@@ -937,8 +937,9 @@ playbackvideo_detail_selectvehicle3 = "//*[@class='tblVehicleVideo-body-center-s
 playbackvideo_detail_selectvehicle4 = "//*[@class='tblVehicleVideo-body-center-search']/div[2]/div/div/ul/li[5]/label/input"
 playbackvideo_detail_selectvehicle_span = "//*[@class='tblVehicleVideo-body-center-search']/div[2]/div/button/span"
 check_playbackvideo_detail = "//*[@class='customtab-list-video-panel-1 customtab-list-video-panel customtab-list-video-panel-active']/div[1]"
-
-
-
-
-
+exit = "//*[@id='ctl00_ctl00_MainContent_Content__frmInsertUpdate_modal_ctl07_btnClose']"
+save_already_exist = "//*[text()='Loại phương tiện đã tồn tại']"
+check_login_v2sai = "//*[text()='Trần Quang Trường PQA']"
+todate_input = "//*[@id='ctl00_ctl00_MainContent_Content_dtToDate_txtDate']"
+admin_group_nhombacn = "//*[@id='divCreateGroup']//*[text()='nhóm bậc n']"
+admin_group_nhombac1 = "//*[@id='divCreateGroup']//*[text()='nhóm bậc 1']"

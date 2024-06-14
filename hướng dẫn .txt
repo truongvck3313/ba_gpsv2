@@ -1,7 +1,7 @@
 
 
 
-- ModeTest: mức độ cần test 1,2,3,4 như file excel, 0 là chạy tất cả
+- ModeTest: mức độ cần test 1,2,3,4 như file check_list
 - ModuleTest: "Phân hệ test 
 0.chạy tất cả phân hệ
 1.đăng nhập,  
@@ -12,15 +12,18 @@
 6.video clip
 7.hinh ảnh
 8.Tiện ích
+9.Ai
+
+
+
 
 - LinkTest: "https://gps.binhanh.vn"
 - TimeRun: cài tự động chạy 
-- LogPath: "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/ba.log"
-- CheckListPath: "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/GPS_ChecklistForAutoTest.xlsx"
-- ImagePath: "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/anhchup/"
-- DataTestPath: "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/data_ba.json"
-- UploadPath: "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/file/"
-- LuuDuLieuTamThoiPath: "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/bangluudulieu_tamthoi.xlsx"
-- ExcelPath: "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/excel"
-- PathDriver: "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/chromedriver.exe"
-- ExcelPathDownload: "C:\Users\truongtq.BA\PycharmProjects\pythonProject\ba_v2\excel"
+- LogPath: "Đường dẫn file log"
+- CheckListPath: "Đường dẫn lưu ảnh"
+- DataTestPath: "Đường dẫn file Json"
+- UploadPath: "Đường dẫn các file Upload"
+- LuuDuLieuTamThoiPath: "Đường dẫn file lưu dữ liệu tạm thời"
+- ExcelPath: "Đường dẫn file excel tải về"
+- PathDriver: "Đường dẫn trình duyệt chromedriver.exe"
+- ExcelPathDownload: "Đường dẫn file excel tải về"

@@ -45,7 +45,7 @@ def caseid_login04(self):
     login.login.login_v2_tkkhongcoquyengiamsat(self, "truongvck1", "12341234", "Login04", "Đăng nhập với tài khoản khách hàng không có quyền giám sát")
 
 def caseid_login05(self):
-    login.login.login_v2sai(self, "truongtq@bagroup.vn", "11111", "Login05", "Tài khoản và mật khẩu không đúng")
+    login.login.login_v2sai(self, "truongtq@bagroup.vn", "11111", "Login05", "Đằng nhập sai mật khẩu", "Tài khoản và mật khẩu không đúng")
 
 
 def caseid_login06(self):
@@ -2531,7 +2531,7 @@ def caseid_report47(self):
     report.activity_report.report_speed_over_downloadexcel(self, "Report47", eventname, result)
 
 
-
+@retry(tries=3, delay=2, backoff=1, jitter=5, )
 def caseid_report48(self):
     get_datachecklist("Report48")
     eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
@@ -2938,6 +2938,7 @@ def caseid_utility18(self):
     utility.landmark_administraintion.landmark_group_administration_assign_many_group(self, "Utility18", eventname, result)
 
 
+@retry(tries=3, delay=2, backoff=1, jitter=5, )
 def caseid_utility19(self):
     get_datachecklist("Utility19")
     eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))

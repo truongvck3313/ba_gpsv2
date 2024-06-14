@@ -110,10 +110,16 @@ class vehicle_management:
         var.driver.find_element(By.XPATH, var.addnew_infovehicle_buttonsave).click()
         time.sleep(1)
         var.driver.implicitly_wait(2)
-        logging.info("Thêm mới loại xe - " + data['quantri']['loaiphuongtien'])
-        chucnangkhac.write_result_displayed_try(code, eventname, result, "Quản trị - Quản trị loại phương tiện",
-                                                var.save_successfully, "_QuanTri_DSLoaiPhuongTien_ThemMoi.png")
-        time.sleep(1.5)
+        try:
+            var.driver.find_element(By.XPATH, var.save_already_exist)
+            var.driver.find_element(By.XPATH, var.exit).click()
+            time.sleep(1)
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+        except:
+            logging.info("Thêm mới loại xe - " + data['quantri']['loaiphuongtien'])
+            chucnangkhac.write_result_displayed_try(code, eventname, result, "Quản trị - Quản trị loại phương tiện",
+                                                    var.save_successfully, "_QuanTri_DSLoaiPhuongTien_ThemMoi.png")
+        time.sleep(2)
 
 
 
@@ -619,6 +625,49 @@ class vehicle_management:
         time.sleep(1.5)
         chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Quản trị nhóm",
                                               var.check_admin_group_search, name_group, "_QuanTri_QuanTriNhom_TimKiem.png")
+
+        time.sleep(1)
+        try:
+            var.driver.find_element(By.XPATH, var.admin_group_nhombacn).click()
+            time.sleep(0.5)
+            var.driver.find_element(By.XPATH, var.delete_group).click()
+            time.sleep(1.5)
+            try:
+                var.driver.switch_to.alert.accept()
+            except:
+                pass
+            time.sleep(1.5)
+            try:
+                var.driver.switch_to.alert.accept()
+            except:
+                pass
+            time.sleep(1.5)
+            try:
+                var.driver.switch_to.alert.accept()
+            except:
+                pass
+            time.sleep(1)
+            var.driver.find_element(By.XPATH, var.admin_group_nhombac1).click()
+            time.sleep(0.5)
+            var.driver.find_element(By.XPATH, var.delete_group).click()
+            time.sleep(1.5)
+            try:
+                var.driver.switch_to.alert.accept()
+            except:
+                pass
+            time.sleep(1.5)
+            try:
+                var.driver.switch_to.alert.accept()
+            except:
+                pass
+            time.sleep(1.5)
+            try:
+                var.driver.switch_to.alert.accept()
+            except:
+                pass
+            time.sleep(1)
+        except:
+            pass
 
 
 

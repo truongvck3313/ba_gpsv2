@@ -1,2 +1,60 @@
-2024-06-12 Wednesday 17:42:52 seleniumwire.handler:INFO:Capturing request: https://accounts.google.com/ListAccounts?gpsia=1&source=ChromiumBrowser&json=standard
-2024-06-12 Wednesday 17:42:52 seleniumwire.handler:INFO:Capturing response: https://accounts.google.com/ListAccounts?gpsia=1&source=ChromiumBrowser&json=standard 200 
+2024-06-14 Friday 16:36:05 seleniumwire.handler:INFO:Capturing request: https://accounts.google.com/ListAccounts?gpsia=1&source=ChromiumBrowser&json=standard
+2024-06-14 Friday 16:36:05 seleniumwire.handler:INFO:Capturing response: https://accounts.google.com/ListAccounts?gpsia=1&source=ChromiumBrowser&json=standard 200 
+2024-06-14 Friday 16:36:07 seleniumwire.handler:INFO:Capturing request: https://accounts.google.com/ListAccounts?gpsia=1&source=ChromiumBrowser&json=standard
+2024-06-14 Friday 16:36:07 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/watch?v=dzQVbezoTv4
+2024-06-14 Friday 16:36:07 seleniumwire.handler:INFO:Capturing response: https://accounts.google.com/ListAccounts?gpsia=1&source=ChromiumBrowser&json=standard 200 
+2024-06-14 Friday 16:36:07 seleniumwire.server:INFO:127.0.0.1:49361: ProtocolException("Error in HTTP connection: Http2ZombieException('Connection or stream already dead: 1718357767.839039, False')")
+2024-06-14 Friday 16:36:08 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/watch?v=dzQVbezoTv4
+2024-06-14 Friday 16:36:08 seleniumwire.handler:INFO:Capturing response: https://www.youtube.com/watch?v=dzQVbezoTv4 200 
+2024-06-14 Friday 16:36:08 urllib3.connectionpool:WARNING:Connection pool is full, discarding connection: 127.0.0.1. Connection pool size: 1
+2024-06-14 Friday 16:36:08 urllib3.connectionpool:WARNING:Connection pool is full, discarding connection: 127.0.0.1. Connection pool size: 1
+2024-06-14 Friday 16:36:09 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/watch?v=dzQVbezoTv4
+2024-06-14 Friday 16:36:09 seleniumwire.handler:INFO:Capturing response: https://www.youtube.com/watch?v=dzQVbezoTv4 200 
+2024-06-14 Friday 16:36:09 seleniumwire.handler:INFO:Capturing request: https://www.google.co.in/
+2024-06-14 Friday 16:36:10 seleniumwire.handler:INFO:Capturing response: https://www.google.co.in/ 200 
+2024-06-14 Friday 16:36:10 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/watch?v=dzQVbezoTv4
+2024-06-14 Friday 16:36:11 seleniumwire.handler:INFO:Capturing response: https://www.youtube.com/watch?v=dzQVbezoTv4 200 
+2024-06-14 Friday 16:36:11 urllib3.connectionpool:WARNING:Connection pool is full, discarding connection: 127.0.0.1. Connection pool size: 1
+2024-06-14 Friday 16:36:11 seleniumwire.handler:INFO:Capturing request: https://rr4---sn-8qj-i5olz.googlevideo.com/generate_204?conn2
+2024-06-14 Friday 16:36:11 seleniumwire.handler:INFO:Capturing response: https://rr4---sn-8qj-i5olz.googlevideo.com/generate_204?conn2 204 No Content
+2024-06-14 Friday 16:36:11 seleniumwire.handler:INFO:Capturing request: https://rr4---sn-8qj-i5olz.googlevideo.com/generate_204
+2024-06-14 Friday 16:36:11 seleniumwire.handler:INFO:Capturing response: https://rr4---sn-8qj-i5olz.googlevideo.com/generate_204 204 No Content
+2024-06-14 Friday 16:36:11 urllib3.connectionpool:WARNING:Connection pool is full, discarding connection: 127.0.0.1. Connection pool size: 1
+2024-06-14 Friday 16:36:11 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/watch?v=dzQVbezoTv4
+2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing response: https://www.youtube.com/watch?v=dzQVbezoTv4 200 
+2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://i.ytimg.com/vi/dzQVbezoTv4/hqdefault.jpg
+2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/s/player/74204f6c/player_ias.vflset/en_US/base.js
+2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://i.ytimg.com/generate_204
+2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=YouTube+Sans:wght@300..900&display=swap
+2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/s/desktop/e0d7e13a/jsbin/webcomponents-sd.vflset/webcomponents-sd.js
+2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/s/desktop/e0d7e13a/jsbin/intersection-observer.min.vflset/intersection-observer.min.js
+2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/s/desktop/e0d7e13a/jsbin/scheduler.vflset/scheduler.js
+2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/s/desktop/e0d7e13a/jsbin/web-animations-next-lite.min.vflset/web-animations-next-lite.min.js
+2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/s/desktop/e0d7e13a/jsbin/desktop_polymer.vflset/desktop_polymer.js
+2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/s/desktop/e0d7e13a/jsbin/custom-elements-es5-adapter.vflset/custom-elements-es5-adapter.js
+2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/s/desktop/e0d7e13a/jsbin/www-i18n-constants-en_US.vflset/www-i18n-constants.js
+2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/s/player/74204f6c/www-player.css
+2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/s/_/ytmainappweb/_/ss/k=ytmainappweb.kevlar_base.ocg3XVqiihE.L.B1.O/am=AIAALQ/d=0/br=1/rs=AGKMywFCX8ROlwT0qG_CQw_YKDaVye181w
+2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/s/desktop/e0d7e13a/cssbin/www-main-desktop-player-skeleton.css
+2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/s/desktop/e0d7e13a/cssbin/www-main-desktop-watch-page-skeleton.css
+2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/s/desktop/e0d7e13a/jsbin/spf.vflset/spf.js
+2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/s/desktop/e0d7e13a/jsbin/network.vflset/network.js
+2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/s/desktop/e0d7e13a/cssbin/www-onepick.css
+2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing response: https://i.ytimg.com/vi/dzQVbezoTv4/hqdefault.jpg 200 
+2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing response: https://i.ytimg.com/generate_204 204 
+2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing response: https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=YouTube+Sans:wght@300..900&display=swap 200 
+2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://rr4---sn-8qj-i5olz.googlevideo.com/generate_204
+2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://rr4---sn-8qj-i5olz.googlevideo.com/generate_204?conn2
+2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing response: https://rr4---sn-8qj-i5olz.googlevideo.com/generate_204 204 No Content
+2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing response: https://rr4---sn-8qj-i5olz.googlevideo.com/generate_204?conn2 204 No Content
+2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing response: https://www.youtube.com/s/desktop/e0d7e13a/jsbin/web-animations-next-lite.min.vflset/web-animations-next-lite.min.js 200 
+2024-06-14 Friday 16:36:13 seleniumwire.handler:INFO:Capturing response: https://www.youtube.com/s/desktop/e0d7e13a/jsbin/scheduler.vflset/scheduler.js 200 
+2024-06-14 Friday 16:36:13 seleniumwire.handler:INFO:Capturing response: https://www.youtube.com/s/desktop/e0d7e13a/jsbin/intersection-observer.min.vflset/intersection-observer.min.js 200 
+2024-06-14 Friday 16:36:13 seleniumwire.handler:INFO:Capturing response: https://www.youtube.com/s/desktop/e0d7e13a/jsbin/custom-elements-es5-adapter.vflset/custom-elements-es5-adapter.js 200 
+2024-06-14 Friday 16:36:13 seleniumwire.handler:INFO:Capturing response: https://www.youtube.com/s/desktop/e0d7e13a/jsbin/www-i18n-constants-en_US.vflset/www-i18n-constants.js 200 
+2024-06-14 Friday 16:36:13 seleniumwire.handler:INFO:Capturing response: https://www.youtube.com/s/desktop/e0d7e13a/cssbin/www-main-desktop-player-skeleton.css 200 
+2024-06-14 Friday 16:36:13 seleniumwire.handler:INFO:Capturing response: https://www.youtube.com/s/desktop/e0d7e13a/cssbin/www-main-desktop-watch-page-skeleton.css 200 
+2024-06-14 Friday 16:36:13 seleniumwire.handler:INFO:Capturing response: https://www.youtube.com/s/desktop/e0d7e13a/cssbin/www-onepick.css 200 
+2024-06-14 Friday 16:36:13 seleniumwire.handler:INFO:Capturing response: https://www.youtube.com/s/desktop/e0d7e13a/jsbin/network.vflset/network.js 200 
+2024-06-14 Friday 16:36:13 seleniumwire.handler:INFO:Capturing response: https://www.youtube.com/s/desktop/e0d7e13a/jsbin/spf.vflset/spf.js 200 
+2024-06-14 Friday 16:36:13 seleniumwire.handler:INFO:Capturing response: https://www.youtube.com/s/desktop/e0d7e13a/jsbin/webcomponents-sd.vflset/webcomponents-sd.js 200 

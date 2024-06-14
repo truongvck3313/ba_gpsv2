@@ -141,7 +141,7 @@ class login:
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
 
 
-    def login_v2sai(self, user, password, ma, tensukien):
+    def login_v2sai(self, user, password, code, eventname, result):
         var.driver.implicitly_wait(15)
         var.driver.maximize_window()
         var.driver.get(var.linktest)
@@ -151,26 +151,34 @@ class login:
         var.driver.find_element(By.XPATH, var.login_ghinhodangnhap).click()
         var.driver.find_element(By.XPATH, var.dangnhap).click()
         time.sleep(1.5)
-        try:
-            check_loginsai = var.driver.find_element(By.XPATH, var.check_loginsai).is_displayed()
-            logging.info("Login - Đằng nhập sai mật khẩu- Tên đăng nhập hoặc mật khẩu không hợp lệ.")
-            logging.info("Tài khoản - " + user)
-            logging.info("Tài khoản - " + password)
-            logging.info("Mã - " +ma)
-            logging.info("Tên sự kiện - " +tensukien)
-            logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
-        except:
-            logging.info("Login - Đằng nhập sai mật khẩu- Tên đăng nhập hoặc mật khẩu không hợp lệ.")
-            logging.info("Tài khoản - " + user)
-            logging.info("Tài khoản - " + password)
-            logging.info("Mã - " +ma)
-            logging.info("Tên sự kiện - " +tensukien)
-            logging.info("False")
-            var.driver.save_screenshot(var.imagepath + ma+".png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma+".png")
-        time.sleep(1)
+        logging.info("Tài khoản - " + user)
+        logging.info("Tài khoản - " + password)
+        chucnangkhac.write_result_not_displayed_try(code, eventname, result, "Login - Đằng nhập sai mật khẩu- Tên đăng nhập hoặc mật khẩu không hợp lệ.",
+                                                var.check_login_v2sai, code+".png")
+
+
+
+
+        # try:
+        #     check_loginsai = var.driver.find_element(By.XPATH, var.check_loginsai).is_displayed()
+        #     logging.info("Login - Đằng nhập sai mật khẩu- Tên đăng nhập hoặc mật khẩu không hợp lệ.")
+        #     logging.info("Tài khoản - " + user)
+        #     logging.info("Tài khoản - " + password)
+        #     logging.info("Mã - " +ma)
+        #     logging.info("Tên sự kiện - " +tensukien)
+        #     logging.info("True")
+        #     chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+        # except:
+        #     logging.info("Login - Đằng nhập sai mật khẩu- Tên đăng nhập hoặc mật khẩu không hợp lệ.")
+        #     logging.info("Tài khoản - " + user)
+        #     logging.info("Tài khoản - " + password)
+        #     logging.info("Mã - " +ma)
+        #     logging.info("Tên sự kiện - " +tensukien)
+        #     logging.info("False")
+        #     var.driver.save_screenshot(var.imagepath + ma+".png")
+        #     chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+        #     chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma+".png")
+        # time.sleep(1)
 
     def login_ghinhodangnhap1(self, ma, tensukien):
         var.driver.implicitly_wait(5)

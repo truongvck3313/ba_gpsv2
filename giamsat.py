@@ -392,8 +392,10 @@ class danhsachxe:
                         print("Tổng số giây hiện tại: ", tongsogiay_hientai)
                         thoigiantre = tongsogiay_hientai - tongsogiay_api
                         print("Thời gian trễ: ", thoigiantre)
+                        tenphuongtien = str(var.readData(var.path_luutamthoi , 'Sheet1', 2, 2))
 
                         logging.info("Giám sát - Check thời gian gửi api danh sách xe(dưới 120s)")
+                        logging.info("Tên phương tiện: "+ tenphuongtien)
                         logging.info("check font-end: Thời gian hiện tại:: " + str(timerun))
                         logging.info("check font-end: Thời gian cập nhật api:: " + thongtinxeapi_giocapnhat[:8])
                         logging.info("check font-end: Thời gian trễ: " + str(thoigiantre))
@@ -402,11 +404,13 @@ class danhsachxe:
                         logging.info("Kết quả - " + ketqua)
                         if thoigiantre <= 120:
                             logging.info("True")
+                            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 12, "")
                             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
                         else:
                             logging.info("False")
                             var.driver.save_screenshot(var.imagepath + ma + "_TimeUpdateAPI120s.png")
                             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
+                            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 12, tenphuongtien)
                             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_TimeUpdateAPI120s.png")
                         break
                     except:
@@ -5275,12 +5279,12 @@ class chuotphaimap:
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
         time.sleep(1)
 
+
+
+    @retry(tries=3, delay=2, backoff=1, jitter=5, )
     def cauhinhhienthinhomdiem(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        try:
-            var.driver.find_element(By.XPATH, var.ungroup)
-        except:
-            login.login.login_v2(self, "ungroup", "12341234")
+        login.login.login_v2(self, "ungroup", "12341234")
 
         try:
             var.driver.find_element(By.XPATH, var.timkiem_timtoado_input).clear()
@@ -5305,6 +5309,7 @@ class chuotphaimap:
             var.driver.find_element(By.XPATH, var.chuotphaimap_cauhinhhienthinhomdiem).click()
         time.sleep(3)
 
+        var.driver.find_element(By.XPATH, var.check_popupcauhinhhienthinhomdiem).is_displayed()
         logging.info("Giám sát - Chuột phải map - Cấu hình hiển thị nhóm điểm")
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)

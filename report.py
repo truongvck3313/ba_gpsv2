@@ -10,7 +10,7 @@ import openpyxl
 from xls2xlsx import XLS2XLSX
 import os
 import shutil
-
+import giamsat
 
 
 
@@ -166,10 +166,9 @@ class synthesis_report:     #báo cáo tổng hợp
             time.sleep(5)
         del var.driver.requests
         var.driver.find_element(By.XPATH, var.downloadexcel).click()
-        time.sleep(7)
+        time.sleep(10)
         x2x = XLS2XLSX(var.excelpath + "/ActivitySummaryNew_43E02740.xls")
         x2x.to_xlsx(var.excelpath + "/ActivitySummaryNew_43E02740.xlsx")
-
 
         # #Đọc check file excel
         bangchucai = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W']
@@ -1022,10 +1021,26 @@ class activity_report:      #Báo cáo hoạt động
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.report_speed_over).click()
             time.sleep(5)
+        # write_from_date_month(var.fromdate_input)   #hàm nhập trừ 1 tháng so với hiện tại
 
-        write_from_date_month(var.fromdate_input)
+        JS_ADD_TEXT_TO_INPUT = """
+          elm = arguments[0], txt = arguments[1];
+          elm.value += txt;
+          elm.dispatchEvent(new Event('change'));
+          """
+
+        var.driver.find_element(By.XPATH, var.fromdate_input).clear()
+        elm = var.driver.find_element(By.XPATH, var.fromdate_input)
+        var.driver.execute_script(JS_ADD_TEXT_TO_INPUT, elm, giamsat.data['baocao']['quatocdo_tungay'])
+        time.sleep(1)
+
+        var.driver.find_element(By.XPATH, var.todate_input).clear()
+        elm = var.driver.find_element(By.XPATH, var.todate_input)
+        var.driver.execute_script(JS_ADD_TEXT_TO_INPUT, elm, giamsat.data['baocao']['quatocdo_denngay'])
+        time.sleep(1)
+
         var.driver.find_element(By.XPATH, var.report_search).click()
-        time.sleep(30)
+        time.sleep(40)
         print("aaaa")
         chucnangkhac.write_result_displayed_try(code, eventname, result,
                                                 "Báo cáo quá tốc độ",
