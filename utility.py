@@ -246,6 +246,9 @@ class landmark_administraintion:      #quản trị điểm
         if var.driver.find_element(By.XPATH, var.point_in_displayed_place).is_selected() == False:
             var.driver.find_element(By.XPATH, var.point_in_displayed_place).click()
 
+        # var.driver.find_element(By.XPATH, var.group_d).click()
+        # time.sleep(0.5)
+
         var.driver.find_element(By.XPATH, var.landmark_group_buttonsearch).click()
         time.sleep(2)
         try:

@@ -1,60 +1,903 @@
-2024-06-14 Friday 16:36:05 seleniumwire.handler:INFO:Capturing request: https://accounts.google.com/ListAccounts?gpsia=1&source=ChromiumBrowser&json=standard
-2024-06-14 Friday 16:36:05 seleniumwire.handler:INFO:Capturing response: https://accounts.google.com/ListAccounts?gpsia=1&source=ChromiumBrowser&json=standard 200 
-2024-06-14 Friday 16:36:07 seleniumwire.handler:INFO:Capturing request: https://accounts.google.com/ListAccounts?gpsia=1&source=ChromiumBrowser&json=standard
-2024-06-14 Friday 16:36:07 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/watch?v=dzQVbezoTv4
-2024-06-14 Friday 16:36:07 seleniumwire.handler:INFO:Capturing response: https://accounts.google.com/ListAccounts?gpsia=1&source=ChromiumBrowser&json=standard 200 
-2024-06-14 Friday 16:36:07 seleniumwire.server:INFO:127.0.0.1:49361: ProtocolException("Error in HTTP connection: Http2ZombieException('Connection or stream already dead: 1718357767.839039, False')")
-2024-06-14 Friday 16:36:08 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/watch?v=dzQVbezoTv4
-2024-06-14 Friday 16:36:08 seleniumwire.handler:INFO:Capturing response: https://www.youtube.com/watch?v=dzQVbezoTv4 200 
-2024-06-14 Friday 16:36:08 urllib3.connectionpool:WARNING:Connection pool is full, discarding connection: 127.0.0.1. Connection pool size: 1
-2024-06-14 Friday 16:36:08 urllib3.connectionpool:WARNING:Connection pool is full, discarding connection: 127.0.0.1. Connection pool size: 1
-2024-06-14 Friday 16:36:09 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/watch?v=dzQVbezoTv4
-2024-06-14 Friday 16:36:09 seleniumwire.handler:INFO:Capturing response: https://www.youtube.com/watch?v=dzQVbezoTv4 200 
-2024-06-14 Friday 16:36:09 seleniumwire.handler:INFO:Capturing request: https://www.google.co.in/
-2024-06-14 Friday 16:36:10 seleniumwire.handler:INFO:Capturing response: https://www.google.co.in/ 200 
-2024-06-14 Friday 16:36:10 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/watch?v=dzQVbezoTv4
-2024-06-14 Friday 16:36:11 seleniumwire.handler:INFO:Capturing response: https://www.youtube.com/watch?v=dzQVbezoTv4 200 
-2024-06-14 Friday 16:36:11 urllib3.connectionpool:WARNING:Connection pool is full, discarding connection: 127.0.0.1. Connection pool size: 1
-2024-06-14 Friday 16:36:11 seleniumwire.handler:INFO:Capturing request: https://rr4---sn-8qj-i5olz.googlevideo.com/generate_204?conn2
-2024-06-14 Friday 16:36:11 seleniumwire.handler:INFO:Capturing response: https://rr4---sn-8qj-i5olz.googlevideo.com/generate_204?conn2 204 No Content
-2024-06-14 Friday 16:36:11 seleniumwire.handler:INFO:Capturing request: https://rr4---sn-8qj-i5olz.googlevideo.com/generate_204
-2024-06-14 Friday 16:36:11 seleniumwire.handler:INFO:Capturing response: https://rr4---sn-8qj-i5olz.googlevideo.com/generate_204 204 No Content
-2024-06-14 Friday 16:36:11 urllib3.connectionpool:WARNING:Connection pool is full, discarding connection: 127.0.0.1. Connection pool size: 1
-2024-06-14 Friday 16:36:11 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/watch?v=dzQVbezoTv4
-2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing response: https://www.youtube.com/watch?v=dzQVbezoTv4 200 
-2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://i.ytimg.com/vi/dzQVbezoTv4/hqdefault.jpg
-2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/s/player/74204f6c/player_ias.vflset/en_US/base.js
-2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://i.ytimg.com/generate_204
-2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=YouTube+Sans:wght@300..900&display=swap
-2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/s/desktop/e0d7e13a/jsbin/webcomponents-sd.vflset/webcomponents-sd.js
-2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/s/desktop/e0d7e13a/jsbin/intersection-observer.min.vflset/intersection-observer.min.js
-2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/s/desktop/e0d7e13a/jsbin/scheduler.vflset/scheduler.js
-2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/s/desktop/e0d7e13a/jsbin/web-animations-next-lite.min.vflset/web-animations-next-lite.min.js
-2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/s/desktop/e0d7e13a/jsbin/desktop_polymer.vflset/desktop_polymer.js
-2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/s/desktop/e0d7e13a/jsbin/custom-elements-es5-adapter.vflset/custom-elements-es5-adapter.js
-2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/s/desktop/e0d7e13a/jsbin/www-i18n-constants-en_US.vflset/www-i18n-constants.js
-2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/s/player/74204f6c/www-player.css
-2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/s/_/ytmainappweb/_/ss/k=ytmainappweb.kevlar_base.ocg3XVqiihE.L.B1.O/am=AIAALQ/d=0/br=1/rs=AGKMywFCX8ROlwT0qG_CQw_YKDaVye181w
-2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/s/desktop/e0d7e13a/cssbin/www-main-desktop-player-skeleton.css
-2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/s/desktop/e0d7e13a/cssbin/www-main-desktop-watch-page-skeleton.css
-2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/s/desktop/e0d7e13a/jsbin/spf.vflset/spf.js
-2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/s/desktop/e0d7e13a/jsbin/network.vflset/network.js
-2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://www.youtube.com/s/desktop/e0d7e13a/cssbin/www-onepick.css
-2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing response: https://i.ytimg.com/vi/dzQVbezoTv4/hqdefault.jpg 200 
-2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing response: https://i.ytimg.com/generate_204 204 
-2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing response: https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=YouTube+Sans:wght@300..900&display=swap 200 
-2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://rr4---sn-8qj-i5olz.googlevideo.com/generate_204
-2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing request: https://rr4---sn-8qj-i5olz.googlevideo.com/generate_204?conn2
-2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing response: https://rr4---sn-8qj-i5olz.googlevideo.com/generate_204 204 No Content
-2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing response: https://rr4---sn-8qj-i5olz.googlevideo.com/generate_204?conn2 204 No Content
-2024-06-14 Friday 16:36:12 seleniumwire.handler:INFO:Capturing response: https://www.youtube.com/s/desktop/e0d7e13a/jsbin/web-animations-next-lite.min.vflset/web-animations-next-lite.min.js 200 
-2024-06-14 Friday 16:36:13 seleniumwire.handler:INFO:Capturing response: https://www.youtube.com/s/desktop/e0d7e13a/jsbin/scheduler.vflset/scheduler.js 200 
-2024-06-14 Friday 16:36:13 seleniumwire.handler:INFO:Capturing response: https://www.youtube.com/s/desktop/e0d7e13a/jsbin/intersection-observer.min.vflset/intersection-observer.min.js 200 
-2024-06-14 Friday 16:36:13 seleniumwire.handler:INFO:Capturing response: https://www.youtube.com/s/desktop/e0d7e13a/jsbin/custom-elements-es5-adapter.vflset/custom-elements-es5-adapter.js 200 
-2024-06-14 Friday 16:36:13 seleniumwire.handler:INFO:Capturing response: https://www.youtube.com/s/desktop/e0d7e13a/jsbin/www-i18n-constants-en_US.vflset/www-i18n-constants.js 200 
-2024-06-14 Friday 16:36:13 seleniumwire.handler:INFO:Capturing response: https://www.youtube.com/s/desktop/e0d7e13a/cssbin/www-main-desktop-player-skeleton.css 200 
-2024-06-14 Friday 16:36:13 seleniumwire.handler:INFO:Capturing response: https://www.youtube.com/s/desktop/e0d7e13a/cssbin/www-main-desktop-watch-page-skeleton.css 200 
-2024-06-14 Friday 16:36:13 seleniumwire.handler:INFO:Capturing response: https://www.youtube.com/s/desktop/e0d7e13a/cssbin/www-onepick.css 200 
-2024-06-14 Friday 16:36:13 seleniumwire.handler:INFO:Capturing response: https://www.youtube.com/s/desktop/e0d7e13a/jsbin/network.vflset/network.js 200 
-2024-06-14 Friday 16:36:13 seleniumwire.handler:INFO:Capturing response: https://www.youtube.com/s/desktop/e0d7e13a/jsbin/spf.vflset/spf.js 200 
-2024-06-14 Friday 16:36:13 seleniumwire.handler:INFO:Capturing response: https://www.youtube.com/s/desktop/e0d7e13a/jsbin/webcomponents-sd.vflset/webcomponents-sd.js 200 
+2024-07-02 Tuesday 10:50:40 seleniumwire.handler:INFO:Capturing request: https://accounts.google.com/ListAccounts?gpsia=1&source=ChromiumBrowser&json=standard
+2024-07-02 Tuesday 10:50:40 seleniumwire.handler:INFO:Capturing response: https://accounts.google.com/ListAccounts?gpsia=1&source=ChromiumBrowser&json=standard 200 
+2024-07-02 Tuesday 10:50:48 seleniumwire.handler:INFO:Capturing request: https://optimizationguide-pa.googleapis.com/v1:GetModels?key=AIzaSyBOti4mM-6x9WDnZIjIeyEU21OpBXqWBgw
+2024-07-02 Tuesday 10:50:48 seleniumwire.handler:INFO:Capturing response: https://optimizationguide-pa.googleapis.com/v1:GetModels?key=AIzaSyBOti4mM-6x9WDnZIjIeyEU21OpBXqWBgw 200 
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/ 200 
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/css/Default.css?v=20240702v1
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/css/Site.css?v=20240702v1
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/WebResource.axd?d=JReq1rIVu2iDRbJ45uhgVA2&t=638460076569584809
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/WebResource.axd?d=wsSiqxrG7HaYBWLFGP0o9w2&t=638460076569584809
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Scripts/common/common.ext.newbrowser.js?v=20240702v1
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/UserLoginNew/bundles/styles?v=20240702v1
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Default/bundles/scripts?v=20240702v1
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Scripts/bootstrap/css/bootstrap.css?v=20240702v1
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Default/bundles/styles?v=20240702v1
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/css/Default.css?v=20240702v1 200 
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/UserLoginNew/bundles/scripts?v=20240702v1
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/Login/iconLogin/SVG/ic_ThongTinGiaiPhap.svg
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/Login/iconLogin/SVG/ic_TextB.svg
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/WebResource.axd?d=JReq1rIVu2iDRbJ45uhgVA2&t=638460076569584809 200 
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/WebResource.axd?d=wsSiqxrG7HaYBWLFGP0o9w2&t=638460076569584809 200 
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing request: https://optimizationguide-pa.googleapis.com/downloads?name=1718031757&target=OPTIMIZATION_TARGET_NOTIFICATION_PERMISSION_PREDICTIONS
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing request: https://optimizationguide-pa.googleapis.com/downloads?name=1679317318&target=OPTIMIZATION_TARGET_LANGUAGE_DETECTION
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/Login/iconLogin/SVG/ic_ThongTinGiaiPhap.svg 200 
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Scripts/bootstrap/css/bootstrap.css?v=20240702v1 200 
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/Login/iconLogin/SVG/ic_TextB.svg 200 
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/UserLoginNew/bundles/scripts?v=20240702v1 200 
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/css/Site.css?v=20240702v1 200 
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Scripts/common/common.ext.newbrowser.js?v=20240702v1 200 
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/Login/iconLogin/SVG/ic_HDSD.svg
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Default/bundles/scripts?v=20240702v1 200 
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Default/bundles/styles?v=20240702v1 200 
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/UserLoginNew/bundles/styles?v=20240702v1 200 
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/Login/iconLogin/SVG/ic_HDSD.svg 200 
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/HttpHandlers/LogBrowsersHandler.ashx?method=getAllBrowsers
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/HttpHandlers/LogBrowsersHandler.ashx?method=getAllBrowsers 200 
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/Login/iconLogin/SVG/ic_home.svg
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/Login/iconLogin/callzalo.png
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/Login/iconLogin/icon-global-white.png
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/Login/iconLogin/SVG/logo_BA.svg
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/Login/iconLogin/SVG/ic_key.svg
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/Login/iconLogin/SVG/ic_user.svg
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/Login/iconLogin/SVG/ic_TinTucNganhGTVT.svg
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/Login/iconLogin/png-phone-icon-13.jpg
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/Login/iconLogin/SVG/photo_logo-IOS.svg
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/Login/iconLogin/zalo/call-zalo1.png
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/Login/iconLogin/zalo/home-zalo1.png
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/X.png
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/themes/fonts/roboto/Roboto-Bold.ttf
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/themes/fonts/roboto/Roboto-Medium.ttf
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/Login/iconLogin/SVG/photo_logo-android.svg
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/Login/iconLogin/zalo/qr-zalo1.png
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/Login/iconLogin/zalo/setting-zalo.png
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/Login/iconLogin/SVG/ic_home.svg 200 
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/Login/iconLogin/SVG/logo_BA.svg 200 
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/themes/fonts/roboto/Roboto-Italic.ttf
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/Login/iconLogin/icon-global-white.png 200 
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/Login/iconLogin/SVG/ic_key.svg 200 
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/Login/iconLogin/callzalo.png 200 
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/Login/iconLogin/SVG/ic_user.svg 200 
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing request: https://sp.zalo.me/plugins/sdk.js
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/X.png 200 
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/Login/iconLogin/SVG/ic_TinTucNganhGTVT.svg 200 
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/Login/iconLogin/png-phone-icon-13.jpg 200 
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/Login/iconLogin/SVG/photo_logo-IOS.svg 200 
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/Login/iconLogin/zalo/call-zalo1.png 200 
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/Login/iconLogin/zalo/home-zalo1.png 200 
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing response: https://sp.zalo.me/plugins/sdk.js 200 
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/themes/fonts/roboto/Roboto-Medium.ttf 200 
+2024-07-02 Tuesday 10:50:49 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/Login/iconLogin/SVG/photo_logo-android.svg 200 
+2024-07-02 Tuesday 10:50:50 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/themes/fonts/roboto/Roboto-Bold.ttf 200 
+2024-07-02 Tuesday 10:50:50 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/Login/iconLogin/zalo/setting-zalo.png 200 
+2024-07-02 Tuesday 10:50:50 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/themes/fonts/roboto/Roboto-Italic.ttf 200 
+2024-07-02 Tuesday 10:50:50 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/Login/QRCode/QRZalo.jpg
+2024-07-02 Tuesday 10:50:50 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/Login/iconLogin/SVG/Background_box-login.svg
+2024-07-02 Tuesday 10:50:50 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/Login/QRCode/QRZalo.jpg 200 
+2024-07-02 Tuesday 10:50:50 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/Login/iconLogin/SVG/Background_box-login.svg 200 
+2024-07-02 Tuesday 10:50:50 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/Login/iconLogin/zalo/qr-zalo1.png 200 
+2024-07-02 Tuesday 10:50:50 seleniumwire.handler:INFO:Capturing request: https://www.googletagmanager.com/gtag/js?id=G-02FC5P5V42
+2024-07-02 Tuesday 10:50:50 seleniumwire.handler:INFO:Capturing request: https://api.ipify.org/?format=json
+2024-07-02 Tuesday 10:50:50 seleniumwire.handler:INFO:Capturing response: https://api.ipify.org/?format=json 200 
+2024-07-02 Tuesday 10:50:50 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/HttpHandlers/LogBrowsersHandler.ashx?method=getLogBrowserByIP&ip=14.224.140.77&name=Chrome
+2024-07-02 Tuesday 10:50:50 seleniumwire.handler:INFO:Capturing response: https://www.googletagmanager.com/gtag/js?id=G-02FC5P5V42 200 
+2024-07-02 Tuesday 10:50:50 seleniumwire.handler:INFO:Capturing request: https://page.widget.zalo.me/?position=null&oaid=1958838581480438876&welcomemessage=Xin%20ch%C3%A0o%2C%20BA%20GPS%20r%E1%BA%A5t%20vui%20khi%20%C4%91%C6%B0%E1%BB%A3c%20h%E1%BB%97%20tr%E1%BB%A3%20b%E1%BA%A1n!&autopopup=0&leftside=true&width=440&height=813&style=2&id=8f6a9450-5350-4409-81bd-c0ab0f9da643&domain=gps.binhanh.vn&android=false&ios=false
+2024-07-02 Tuesday 10:50:50 seleniumwire.handler:INFO:Capturing request: https://taxi.binhanhcorp.com/PublicAll/GPS/GPS_BA.png
+2024-07-02 Tuesday 10:50:50 seleniumwire.handler:INFO:Capturing response: https://taxi.binhanhcorp.com/PublicAll/GPS/GPS_BA.png 200 
+2024-07-02 Tuesday 10:50:50 seleniumwire.handler:INFO:Capturing response: https://page.widget.zalo.me/?position=null&oaid=1958838581480438876&welcomemessage=Xin%20ch%C3%A0o%2C%20BA%20GPS%20r%E1%BA%A5t%20vui%20khi%20%C4%91%C6%B0%E1%BB%A3c%20h%E1%BB%97%20tr%E1%BB%A3%20b%E1%BA%A1n!&autopopup=0&leftside=true&width=440&height=813&style=2&id=8f6a9450-5350-4409-81bd-c0ab0f9da643&domain=gps.binhanh.vn&android=false&ios=false 200 
+2024-07-02 Tuesday 10:50:50 seleniumwire.handler:INFO:Capturing request: https://taxi.binhanhcorp.com/PublicAll/2023/Gps/ba/ba_zalo_2023.jpg
+2024-07-02 Tuesday 10:50:50 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/HttpHandlers/LogBrowsersHandler.ashx?method=getLogBrowserByIP&ip=14.224.140.77&name=Chrome 200 
+2024-07-02 Tuesday 10:50:50 seleniumwire.handler:INFO:Capturing request: https://taxi.binhanhcorp.com/PublicAll/2021/TetAmLich/chuc_mung_nam_moi.png
+2024-07-02 Tuesday 10:50:50 seleniumwire.handler:INFO:Capturing request: https://taxi.binhanhcorp.com/PublicAll/2020/NghiDinh10/BANNER_1.jpg
+2024-07-02 Tuesday 10:50:50 seleniumwire.handler:INFO:Capturing request: https://taxi.binhanhcorp.com/PublicAll/2021/baexpress.jpg
+2024-07-02 Tuesday 10:50:50 seleniumwire.handler:INFO:Capturing request: https://za.zdn.vn/v3/za.js?19906
+2024-07-02 Tuesday 10:50:51 seleniumwire.handler:INFO:Capturing request: https://page.widget.zalo.me/static/static/js/zinit.js?v4
+2024-07-02 Tuesday 10:50:51 seleniumwire.handler:INFO:Capturing request: https://page.widget.zalo.me/static/css/fa/css/all.min.css
+2024-07-02 Tuesday 10:50:51 seleniumwire.handler:INFO:Capturing request: https://page.widget.zalo.me/static/static/js/cphandler.js
+2024-07-02 Tuesday 10:50:51 seleniumwire.handler:INFO:Capturing request: https://page.widget.zalo.me/static/static/js/2.17bbab3c.chunk.js
+2024-07-02 Tuesday 10:50:51 seleniumwire.handler:INFO:Capturing request: https://page.widget.zalo.me/static/static/js/main.fdb0f5d4.chunk.js
+2024-07-02 Tuesday 10:50:51 seleniumwire.handler:INFO:Capturing request: https://page.widget.zalo.me/static/static/css/main.02e85093.chunk.css
+2024-07-02 Tuesday 10:50:51 seleniumwire.handler:INFO:Capturing response: https://za.zdn.vn/v3/za.js?19906 200 
+2024-07-02 Tuesday 10:50:51 seleniumwire.handler:INFO:Capturing request: https://content-autofill.googleapis.com/v1/pages/ChVDaHJvbWUvMTI2LjAuNjQ3OC4xMjcSLgkdv8GylQC9ahIFDckbh7USBQ1BvKUKEgUNqxU1WRIFDewCnWghZmJhewv2DRE=?alt=proto
+2024-07-02 Tuesday 10:50:51 seleniumwire.handler:INFO:Capturing response: https://page.widget.zalo.me/static/static/js/cphandler.js 200 
+2024-07-02 Tuesday 10:50:51 seleniumwire.handler:INFO:Capturing response: https://page.widget.zalo.me/static/static/css/main.02e85093.chunk.css 200 
+2024-07-02 Tuesday 10:50:51 seleniumwire.handler:INFO:Capturing response: https://taxi.binhanhcorp.com/PublicAll/2021/TetAmLich/chuc_mung_nam_moi.png 200 
+2024-07-02 Tuesday 10:50:51 seleniumwire.handler:INFO:Capturing response: https://page.widget.zalo.me/static/css/fa/css/all.min.css 200 
+2024-07-02 Tuesday 10:50:51 seleniumwire.handler:INFO:Capturing response: https://page.widget.zalo.me/static/static/js/zinit.js?v4 200 
+2024-07-02 Tuesday 10:50:51 seleniumwire.handler:INFO:Capturing response: https://content-autofill.googleapis.com/v1/pages/ChVDaHJvbWUvMTI2LjAuNjQ3OC4xMjcSLgkdv8GylQC9ahIFDckbh7USBQ1BvKUKEgUNqxU1WRIFDewCnWghZmJhewv2DRE=?alt=proto 200 
+2024-07-02 Tuesday 10:50:51 seleniumwire.handler:INFO:Capturing response: https://taxi.binhanhcorp.com/PublicAll/2023/Gps/ba/ba_zalo_2023.jpg 200 
+2024-07-02 Tuesday 10:50:51 seleniumwire.handler:INFO:Capturing response: https://taxi.binhanhcorp.com/PublicAll/2021/baexpress.jpg 200 
+2024-07-02 Tuesday 10:50:51 seleniumwire.handler:INFO:Capturing response: https://taxi.binhanhcorp.com/PublicAll/2020/NghiDinh10/BANNER_1.jpg 200 
+2024-07-02 Tuesday 10:50:51 seleniumwire.handler:INFO:Capturing response: https://page.widget.zalo.me/static/static/js/main.fdb0f5d4.chunk.js 200 
+2024-07-02 Tuesday 10:50:51 seleniumwire.handler:INFO:Capturing response: https://page.widget.zalo.me/static/static/js/2.17bbab3c.chunk.js 200 
+2024-07-02 Tuesday 10:50:51 seleniumwire.handler:INFO:Capturing request: https://za.zdn.vn/v3/za.js
+2024-07-02 Tuesday 10:50:51 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/
+2024-07-02 Tuesday 10:50:51 seleniumwire.handler:INFO:Capturing request: https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700;900&display=swap
+2024-07-02 Tuesday 10:50:51 seleniumwire.handler:INFO:Capturing request: https://sp-zp.zdn.vn/sdk-server-1.0.0.js
+2024-07-02 Tuesday 10:50:51 seleniumwire.handler:INFO:Capturing request: https://za.zalo.me/v3/w/t
+2024-07-02 Tuesday 10:50:51 seleniumwire.handler:INFO:Capturing response: https://za.zdn.vn/v3/za.js 200 
+2024-07-02 Tuesday 10:50:51 seleniumwire.handler:INFO:Capturing response: https://za.zalo.me/v3/w/t 200 
+2024-07-02 Tuesday 10:50:51 seleniumwire.handler:INFO:Capturing response: https://sp-zp.zdn.vn/sdk-server-1.0.0.js 200 
+2024-07-02 Tuesday 10:50:51 seleniumwire.handler:INFO:Capturing response: https://optimizationguide-pa.googleapis.com/downloads?name=1718031757&target=OPTIMIZATION_TARGET_NOTIFICATION_PERMISSION_PREDICTIONS 200 
+2024-07-02 Tuesday 10:50:51 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/ 302 
+2024-07-02 Tuesday 10:50:52 seleniumwire.handler:INFO:Capturing request: https://www.google-analytics.com/g/collect?v=2&tid=G-02FC5P5V42&gtm=45je46q0v9115700722za200&_p=1719892249533&gcd=13l3l3l3l1&npa=0&dma=0&tag_exp=0&cid=768294860.1719892251&ul=en-us&sr=1920x1080&ir=1&uaa=x86&uab=64&uafvl=Not%252FA)Brand%3B8.0.0.0%7CChromium%3B126.0.6478.127%7CGoogle%2520Chrome%3B126.0.6478.127&uamb=0&uam=&uap=Windows&uapv=10.0.0&uaw=0&are=1&frm=0&pscdl=noapi&_eu=EA&_s=1&sid=1719892250&sct=1&seg=0&dl=https%3A%2F%2Fgps.binhanh.vn%2F&dt=Thi%E1%BA%BFt%20B%E1%BB%8B%20Gi%C3%A1m%20S%C3%A1t%20H%C3%A0nh%20Tr%C3%ACnh%20%E2%80%93%20Thi%E1%BA%BFt%20b%E1%BB%8B%20%C4%90%E1%BB%8Bnh%20V%E1%BB%8B%20Xe%20%C3%94%20T%C3%B4%20B%C3%ACnh%20Anh&en=page_view&_fv=1&_nsi=1&_ss=1&_ee=1&tfd=2463&_z=fetch
+2024-07-02 Tuesday 10:50:52 seleniumwire.handler:INFO:Capturing response: https://www.google-analytics.com/g/collect?v=2&tid=G-02FC5P5V42&gtm=45je46q0v9115700722za200&_p=1719892249533&gcd=13l3l3l3l1&npa=0&dma=0&tag_exp=0&cid=768294860.1719892251&ul=en-us&sr=1920x1080&ir=1&uaa=x86&uab=64&uafvl=Not%252FA)Brand%3B8.0.0.0%7CChromium%3B126.0.6478.127%7CGoogle%2520Chrome%3B126.0.6478.127&uamb=0&uam=&uap=Windows&uapv=10.0.0&uaw=0&are=1&frm=0&pscdl=noapi&_eu=EA&_s=1&sid=1719892250&sct=1&seg=0&dl=https%3A%2F%2Fgps.binhanh.vn%2F&dt=Thi%E1%BA%BFt%20B%E1%BB%8B%20Gi%C3%A1m%20S%C3%A1t%20H%C3%A0nh%20Tr%C3%ACnh%20%E2%80%93%20Thi%E1%BA%BFt%20b%E1%BB%8B%20%C4%90%E1%BB%8Bnh%20V%E1%BB%8B%20Xe%20%C3%94%20T%C3%B4%20B%C3%ACnh%20Anh&en=page_view&_fv=1&_nsi=1&_ss=1&_ee=1&tfd=2463&_z=fetch 204 
+2024-07-02 Tuesday 10:50:52 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/OnlineM.aspx
+2024-07-02 Tuesday 10:50:52 seleniumwire.handler:INFO:Capturing response: https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700;900&display=swap 200 
+2024-07-02 Tuesday 10:50:52 seleniumwire.handler:INFO:Capturing request: https://page.widget.zalo.me/static/locales/vi/translation.json
+2024-07-02 Tuesday 10:50:52 seleniumwire.handler:INFO:Capturing response: https://page.widget.zalo.me/static/locales/vi/translation.json 200 
+2024-07-02 Tuesday 10:50:52 seleniumwire.handler:INFO:Capturing request: https://za.zalo.me/v3/w/t
+2024-07-02 Tuesday 10:50:52 seleniumwire.handler:INFO:Capturing response: https://za.zalo.me/v3/w/t 200 
+2024-07-02 Tuesday 10:50:52 seleniumwire.handler:INFO:Capturing request: https://px.dmp.zaloapp.com/static/zdmp_tr_px.js
+2024-07-02 Tuesday 10:50:52 seleniumwire.handler:INFO:Capturing response: https://px.dmp.zaloapp.com/static/zdmp_tr_px.js 200 
+2024-07-02 Tuesday 10:50:52 seleniumwire.handler:INFO:Capturing request: https://optimizationguide-pa.googleapis.com/downloads?name=1673999601&target=OPTIMIZATION_TARGET_PAGE_VISIBILITY
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/OnlineM.aspx 200 
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing request: https://www.google-analytics.com/g/collect?v=2&tid=G-02FC5P5V42&gtm=45je46q0v9115700722za200&_p=1719892249533&gcd=13l3l3l3l1&npa=0&dma=0&tag_exp=0&cid=768294860.1719892251&ul=en-us&sr=1920x1080&ir=1&uaa=x86&uab=64&uafvl=Not%252FA)Brand%3B8.0.0.0%7CChromium%3B126.0.6478.127%7CGoogle%2520Chrome%3B126.0.6478.127&uamb=0&uam=&uap=Windows&uapv=10.0.0&uaw=0&are=1&frm=0&pscdl=noapi&_eu=EA&_s=2&sid=1719892250&sct=1&seg=0&dl=https%3A%2F%2Fgps.binhanh.vn%2F&dt=Thi%E1%BA%BFt%20B%E1%BB%8B%20Gi%C3%A1m%20S%C3%A1t%20H%C3%A0nh%20Tr%C3%ACnh%20%E2%80%93%20Thi%E1%BA%BFt%20b%E1%BB%8B%20%C4%90%E1%BB%8Bnh%20V%E1%BB%8B%20Xe%20%C3%94%20T%C3%B4%20B%C3%ACnh%20Anh&en=user_engagement&_et=2179&tfd=4644&_z=fetch
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing response: https://optimizationguide-pa.googleapis.com/downloads?name=1679317318&target=OPTIMIZATION_TARGET_LANGUAGE_DETECTION 200 
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/SharedSiteMaster/bundles/scripts?v=20240702v1
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/OnlineM/bundles/styles?v=20240702v1
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/SharedSiteMaster/bundles/styles?v=20240702v1
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Scripts/bootstrap/css/bootstrap.css
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Scripts/SignalRCenterHub/SignalRCenterHub.min.js?v=20240702v1
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/themes/default.css
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/ScriptResource.axd?d=poGRL6SsZCl4OuIdbI2ukguctKqvktBrw08SMY4I-xOtRiIbw96PeAhAzPrCYHpjgxhVl_Ezw40wpt7L6ClNBBY2J_v550vPued09cksiXk1&t=74258c30
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Scripts/mapStraction/gps/online/online.vehicle.ext.newbrowser.js?v=20240702v1
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/OnlineM/bundles/scripts?v=20240702v1
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/ScriptResource.axd?d=poGRL6SsZCl4OuIdbI2ukguctKqvktBrw08SMY4I-xOtRiIbw96PeAhAzPrCYHpjbM8ruMjaT_s7IwOlKNdR6P_0b_Q9o7jMn3rNhF9Lqgc1&t=74258c30
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/WebServices/GpsServices.asmx/js
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/flags/194-laos.png
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/Logos/Logo_white_2019.png
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing response: https://www.google-analytics.com/g/collect?v=2&tid=G-02FC5P5V42&gtm=45je46q0v9115700722za200&_p=1719892249533&gcd=13l3l3l3l1&npa=0&dma=0&tag_exp=0&cid=768294860.1719892251&ul=en-us&sr=1920x1080&ir=1&uaa=x86&uab=64&uafvl=Not%252FA)Brand%3B8.0.0.0%7CChromium%3B126.0.6478.127%7CGoogle%2520Chrome%3B126.0.6478.127&uamb=0&uam=&uap=Windows&uapv=10.0.0&uaw=0&are=1&frm=0&pscdl=noapi&_eu=EA&_s=2&sid=1719892250&sct=1&seg=0&dl=https%3A%2F%2Fgps.binhanh.vn%2F&dt=Thi%E1%BA%BFt%20B%E1%BB%8B%20Gi%C3%A1m%20S%C3%A1t%20H%C3%A0nh%20Tr%C3%ACnh%20%E2%80%93%20Thi%E1%BA%BFt%20b%E1%BB%8B%20%C4%90%E1%BB%8Bnh%20V%E1%BB%8B%20Xe%20%C3%94%20T%C3%B4%20B%C3%ACnh%20Anh&en=user_engagement&_et=2179&tfd=4644&_z=fetch 204 
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/SharedSiteMaster/bundles/scripts?v=20240702v1 200 
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Scripts/bootstrap/css/bootstrap.css 200 
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/themes/default.css 200 
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/ScriptResource.axd?d=poGRL6SsZCl4OuIdbI2ukguctKqvktBrw08SMY4I-xOtRiIbw96PeAhAzPrCYHpjgxhVl_Ezw40wpt7L6ClNBBY2J_v550vPued09cksiXk1&t=74258c30 200 
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Scripts/mapStraction/gps/online/online.vehicle.ext.newbrowser.js?v=20240702v1 200 
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/SharedSiteMaster/bundles/styles?v=20240702v1 200 
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/OnlineM/bundles/styles?v=20240702v1 200 
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Scripts/SignalRCenterHub/SignalRCenterHub.min.js?v=20240702v1 200 
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/OnlineM/bundles/scripts?v=20240702v1 200 
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/flags/194-laos.png 200 
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing request: https://optimizationguide-pa.googleapis.com/downloads?name=5&target=OPTIMIZATION_TARGET_PAGE_TOPICS_V2
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/WebServices/GpsServices.asmx/js 200 
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/ScriptResource.axd?d=poGRL6SsZCl4OuIdbI2ukguctKqvktBrw08SMY4I-xOtRiIbw96PeAhAzPrCYHpjbM8ruMjaT_s7IwOlKNdR6P_0b_Q9o7jMn3rNhF9Lqgc1&t=74258c30 200 
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/Logos/Logo_white_2019.png 200 
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/languages/vietnam.xml?v=20240702v1
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing request: https://api.binhanh.vn/Scripts/MapAPI.v1/leaflet.1.2.0/leaflet.css?v=20240702v1
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing request: https://api.binhanh.vn/Scripts/MapAPI.v1/leaflet.draw/leaflet.draw.css?v=20240702v1
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/languages/vietnam.xml?v=20240702v1 200 
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing response: https://api.binhanh.vn/Scripts/MapAPI.v1/leaflet.1.2.0/leaflet.css?v=20240702v1 200 
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing response: https://api.binhanh.vn/Scripts/MapAPI.v1/leaflet.draw/leaflet.draw.css?v=20240702v1 200 
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing request: https://api.binhanh.vn/Scripts/MapAPI.v1/mapcore/ConfigMapstraction.js?v=20240702v1
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing request: https://api.binhanh.vn/Scripts/MapAPI.v1/leaflet.1.2.0/leaflet.js?v=20240702v1
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing request: https://api.binhanh.vn/Scripts/MapAPI.v1/leaflet.markercluster-1.4.1/MarkerCluster.Default.css?v=20240702v1
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing request: https://api.binhanh.vn/Scripts/MapAPI.v1/mapcore/mxn.js?(leafletbamap)&v=20171226_v1657?v=20240702v1
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing request: https://api.binhanh.vn/Scripts/MapAPI.v1/leaflet.markercluster-1.4.1/MarkerCluster.css?v=20240702v1
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing request: https://api.binhanh.vn/Scripts/MapAPI.v1/leaflet.fullscreen/leaflet.fullscreen.css?v=20240702v1
+2024-07-02 Tuesday 10:50:53 seleniumwire.handler:INFO:Capturing request: https://api.binhanh.vn/Scripts/MapAPI.v1/leaflet.draw/leaflet.draw.js?v=20240702v1
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://api.binhanh.vn/Scripts/MapAPI.v1/leaflet.draw/Path.drag.js?v=20240702v1
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://api.binhanh.vn/Scripts/MapAPI.v1/leaflet.fullscreen/Leaflet.fullscreen.js?v=20240702v1
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing response: https://api.binhanh.vn/Scripts/MapAPI.v1/mapcore/ConfigMapstraction.js?v=20240702v1 200 
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://api.widget.zalo.me/v1/zuser
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://api.binhanh.vn/Scripts/MapAPI.v1/leaflet.draw/leaflet.editing.js?v=20240702v1
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://api.binhanh.vn/Scripts/MapAPI.v1/leaflet.markercluster-1.4.1/leaflet.markercluster-src.js?v=20240702v1
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing response: https://api.binhanh.vn/Scripts/MapAPI.v1/leaflet.1.2.0/leaflet.js?v=20240702v1 200 
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://api.widget.zalo.me/v1/oa?oaid=1958838581480438876
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing response: https://api.binhanh.vn/Scripts/MapAPI.v1/leaflet.markercluster-1.4.1/MarkerCluster.Default.css?v=20240702v1 200 
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing response: https://api.binhanh.vn/Scripts/MapAPI.v1/mapcore/mxn.js?(leafletbamap)&v=20171226_v1657?v=20240702v1 200 
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing response: https://api.binhanh.vn/Scripts/MapAPI.v1/leaflet.fullscreen/leaflet.fullscreen.css?v=20240702v1 200 
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing response: https://api.binhanh.vn/Scripts/MapAPI.v1/leaflet.markercluster-1.4.1/MarkerCluster.css?v=20240702v1 200 
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing response: https://api.binhanh.vn/Scripts/MapAPI.v1/leaflet.draw/Path.drag.js?v=20240702v1 200 
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing response: https://api.binhanh.vn/Scripts/MapAPI.v1/leaflet.draw/leaflet.draw.js?v=20240702v1 200 
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing response: https://api.binhanh.vn/Scripts/MapAPI.v1/leaflet.draw/leaflet.editing.js?v=20240702v1 200 
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing response: https://api.binhanh.vn/Scripts/MapAPI.v1/leaflet.fullscreen/Leaflet.fullscreen.js?v=20240702v1 200 
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing response: https://api.binhanh.vn/Scripts/MapAPI.v1/leaflet.markercluster-1.4.1/leaflet.markercluster-src.js?v=20240702v1 200 
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing response: https://api.widget.zalo.me/v1/zuser 200 
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing response: https://api.widget.zalo.me/v1/oa?oaid=1958838581480438876 200 
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/flags/110-united%20kingdom.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/flags/110-united%20kingdom.png 200 
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/flags/109-vietnam.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://api.binhanh.vn/Scripts/MapAPI.v1/mapcore/mxn.leafletbamap.core.js?version=722024_105054
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://api.binhanh.vn/Scripts/MapAPI.v1/mapcore/mxn.core.js?version=722024_105054
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing response: https://api.binhanh.vn/Scripts/MapAPI.v1/mapcore/mxn.leafletbamap.core.js?version=722024_105054 200 
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing response: https://api.binhanh.vn/Scripts/MapAPI.v1/mapcore/mxn.core.js?version=722024_105054 200 
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/s_icon_manual.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/flags/109-vietnam.png 200 
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/HttpHandlers/VehicleHandler.ashx?method=getVehicleGroupSpecial
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/s_icon_manual.png 200 
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/HttpHandlers/VehicleHandler.ashx?method=getVehicleGroupSpecial 200 
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/HttpHandlers/HelperHandler.ashx?method=GetConfigForUser
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/HttpHandlers/HelperHandler.ashx?method=GetConfigForUser 200 
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/s_icon_user.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Scripts/gps/vehicle/deviceInfo.js?v=20240702v1
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/s_icon_logout.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/s_icon_noticeBA.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/vehicle_center_view.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/header_bar_div.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/s_icon_clock.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/active.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/icons8-traffic-jam-18.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/icons8-fiat-500-18.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/icons8-route-18.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/s_icon_question.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/xe/car/63.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/s_icon_refresh.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/images/searchCar.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/s_icon_excelExport.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/xe/car/43.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Scripts/gps/vehicle/deviceInfo.js?v=20240702v1 200 
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/xe/car/23.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/xe/car/13.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/xe/car/53.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/btn_rightPanel_dungDo.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/s_icon_baoCaoTHLichTrinhTuyen.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/btn_rightPanel_XeTrongTram.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/camera-icon-30.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/Car.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/s_icon_noticeBA.png 200 
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/s_icon_appointment.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/btn_rightPanel_region.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/btn_rightPanel_hienTrang.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/s_icon_alert.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/btn_rightPanel_div.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/btn_rightPanel_searchVehicle.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/Hide.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/alert_timline.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/bus.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/updown_btn.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/btn_rightPanel_bell.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/TB2G.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/s_icon_x.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/vehicle_center_view.png 200 
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/delete_item.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/ajax-loader.gif
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/arrow/fullscreen.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/header_bar_div.png 200 
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/GpsLost.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/xe/car/34.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/s_icon_pdf.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/edit_item.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/xe/car/24.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/xe/car/54.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/gmap3/help.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/xe/car/44.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/xe/car/64.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/xe/car/14.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/xe/car/4.png
+2024-07-02 Tuesday 10:50:54 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/btn_rightPanel_theoDoiXe.png
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/onlines/gps_image_online_icon.png
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/active.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/images/arrow/arrow_down.png
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/images/arrow/arrow_up.png
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/DeviceInfo/GPS_NO.png
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/s_icon_fastPlay.png
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/DeviceInfo/SIM_NO.png
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/s_icon_clock.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/s_icon_user.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/DeviceInfo/Nguon_NO.png
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/s_icon_logout.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/DeviceInfo/GPS_Ok.png
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/icons8-traffic-jam-18.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/DeviceInfo/SIM_OK.png
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/DeviceInfo/Nguon_OK.png
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/IconX.png
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/icons8-fiat-500-18.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/icons8-route-18.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/s_icon_question.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/xe/car/63.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/close.png
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/s_icon_excelExport.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/minimize.png
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/images/searchCar.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/s_icon_refresh.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/xe/car/43.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/xe/car/23.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/VideoCam/video-camera.png
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/xe/car/13.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/btn_rightPanel_dungDo.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/s_icon_baoCaoTHLichTrinhTuyen.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/maximize.png
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/vehicle/car/Orange0.png
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/btn_rightPanel_XeTrongTram.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/btn_rightPanel_region.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/TrackingOnline/SafeInfos/safe_info_location.png
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/TrackingOnline/time-icon.png
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/TrackingOnline/SafeInfos/safe_info_car.png
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/s_icon_alert.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/btn_rightPanel_searchVehicle.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/Hide.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/TrackingOnline/SafeInfos/safe_info_mask.png
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/TrackingOnline/SafeInfos/safe_info_no_mask.png
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/bus.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/updown_btn.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/TrackingOnline/SafeInfos/safe_info_no_dist.png
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/TrackingOnline/SafeInfos/safe_info_dist.png
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/images/header_bar_bg.png
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Scripts/bootstrap/img/glyphicons-halflings.png
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/TrackingOnline/SafeInfos/safe_info_people.png
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/images/menu_btn_bg.png
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/images/slider_btn_close.png
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/images/s_icon_searchBtn.png
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/images/bullet_arrow_down.png
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/images/btn_rightPanel_bg.png
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/xe/car/53.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/arrow/fullscreen.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/edit_item.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/camera-icon-30.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/Car.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/s_icon_appointment.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/btn_rightPanel_hienTrang.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/xe/car/24.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/gmap3/help.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/alert_timline.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/btn_rightPanel_div.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/btn_rightPanel_bell.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/DeviceInfo/SIM_OK.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/DeviceInfo/Nguon_OK.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/close.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/VideoCam/video-camera.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/maximize.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/TrackingOnline/SafeInfos/safe_info_location.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Content/themes/smoothness/images/ui-bg_flat_75_ffffff_40x100.png
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/TrackingOnline/SafeInfos/safe_info_no_mask.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Scripts/bootstrap/img/glyphicons-halflings.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/images/s_icon_searchBtn.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/HttpHandlers/CompanyHandler.ashx?method=GetVelocityBoundaryMoveStop
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Content/themes/smoothness/images/ui-bg_glass_75_e6e6e6_1x400.png
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Content/themes/smoothness/images/ui-bg_highlight-soft_75_cccccc_1x100.png
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Content/themes/smoothness/images/ui-bg_glass_65_ffffff_1x400.png
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/images/btn_rightPanel_bg.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/xe/car/34.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/GpsLost.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/s_icon_x.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/delete_item.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/TB2G.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/ajax-loader.gif 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/s_icon_pdf.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/btn_rightPanel_theoDoiXe.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/xe/car/4.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/xe/car/64.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/xe/car/54.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/xe/car/44.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/xe/car/14.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/images/arrow/arrow_down.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/DeviceInfo/GPS_Ok.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/DeviceInfo/GPS_NO.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/onlines/gps_image_online_icon.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/DeviceInfo/Nguon_NO.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/s_icon_fastPlay.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/DeviceInfo/SIM_NO.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/images/arrow/arrow_up.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/minimize.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/IconX.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Content/themes/smoothness/images/ui-bg_flat_75_ffffff_40x100.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Content/themes/smoothness/images/ui-bg_glass_65_ffffff_1x400.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Content/themes/smoothness/images/ui-bg_glass_75_e6e6e6_1x400.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/HttpHandlers/CompanyHandler.ashx?method=GetVelocityBoundaryMoveStop 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Content/themes/smoothness/images/ui-bg_highlight-soft_75_cccccc_1x100.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/TrackingOnline/time-icon.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/TrackingOnline/SafeInfos/safe_info_dist.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/TrackingOnline/SafeInfos/safe_info_no_dist.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/images/bullet_arrow_down.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/images/slider_btn_close.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/images/menu_btn_bg.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/images/header_bar_bg.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/TrackingOnline/SafeInfos/safe_info_mask.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/TrackingOnline/SafeInfos/safe_info_people.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/TrackingOnline/SafeInfos/safe_info_car.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/vehicle/car/Orange0.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/HttpHandlers/OnlineHandler.ashx?method=loadConfigMap
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/HttpHandlers/OnlineHandler.ashx?method=loadConfigMap 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://api.binhanh.vn/Scripts/MapAPI.v1/leaflet.draw/images/spritesheet.png
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://api.binhanh.vn/Scripts/MapAPI.v1/leaflet.1.2.0/images/layers.png
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/HttpHandlers/OnlineHandler.ashx?method=initGroup&_=1719892255673
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://api.binhanh.vn/Scripts/MapAPI.v1/leaflet.draw/images/spritesheet.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://api.binhanh.vn/Scripts/MapAPI.v1/leaflet.1.2.0/images/layers.png 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/HttpHandlers/OnlineHandler.ashx?method=initGroup&_=1719892255673 200 
+2024-07-02 Tuesday 10:50:55 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/HttpHandlers/OnlineHandler.ashx?method=GetConfigChangeColorStopParkingMachineOn
+2024-07-02 Tuesday 10:50:56 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/HttpHandlers/OnlineHandler.ashx?method=GetConfigChangeColorStopParkingMachineOn 200 
+2024-07-02 Tuesday 10:50:56 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/HttpHandlers/OnlineHandler.ashx?method=getVehicleList4Hidden
+2024-07-02 Tuesday 10:50:56 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/HttpHandlers/OnlineHandler.ashx?method=getVehicleList4Hidden 200 
+2024-07-02 Tuesday 10:50:56 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/HttpHandlers/OnlineHandler.ashx
+2024-07-02 Tuesday 10:50:56 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/HttpHandlers/OnlineHandler.ashx 200 
+2024-07-02 Tuesday 10:50:56 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/HttpHandlers/OnlineHandler.ashx?method=getErrorList
+2024-07-02 Tuesday 10:50:56 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/HttpHandlers/OnlineHandler.ashx?method=getErrorList 200 
+2024-07-02 Tuesday 10:50:56 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/HttpHandlers/OnlineHandler.ashx
+2024-07-02 Tuesday 10:50:56 seleniumwire.handler:INFO:Capturing request: https://content-autofill.googleapis.com/v1/pages/ChVDaHJvbWUvMTI2LjAuNjQ3OC4xMjcSqwUJZ78NpBBXtuASBQ2XrOXVEgUN9Fyg5BIFDVRPZtISBQ2rBU76EgUN53G9wRIFDbaPi08SBQ1FExAWEgUNtsFJfBIFDbU_2f0SBQ21P9n9EgUNOsB_XxIFDekRjvgSBQ2yICSuEgUNQV4h9BIFDfkywo4SBQ1sYfRVEgUNzdVIDRIFDX2Ic3USBQ2RYZVOEgUNgnXjNxIFDZSQkvoSBQ2RYZVOEgUNYK6A-xIFDfHrwlASBQ1q0PyfEgUNlJCS-hIFDRD2Z58SBQ2RYZVOEgUN1IljZRIFDYMMKZQSBQ1wrB-YEgUN_fa5mBIFDWkCn1gSBQ2RYZVOEgUNhBwN3xIFDXx4Ei8SBQ0XP1dNEgUNfZ24phIFDbZeWwgSBQ0TaFziEgUNlJCS-hIFDZSQkvoSBQ3SondFEgUNUs8kThIFDcbS1_0SBQ1X-QhUEgUNMB5BOxIFDcaJ0skSBQ3rhX4JEgUNRcn2tBIFDZeHmu4SBQ2XmdTsEgUNpUYmhRIFDTvY7zgSBQ3i0fxGEgUNA-UZlhIFDYscrOYSBQ3_wo2tEgUNFk7oHhIFDY0Igm0SBQ0OKYcsEgUN4JIBixIFDZF36pMSBQ06fy5REgUN50j7ghIFDejWb68SBQ2UkJL6EgUNlJCS-hIFDZSQkvoSBQ2UkJL6EgUNHm-VBhIFDXOivmMSBQ19CyQFEgUNlJCS-hIFDZrBpRASBQ1XehPPEgUNSyfsiBIFDSsr2ywSBQ129WKSEgUN09MRBBIFDZFhlU4SBQ2RYZVOEgUNIRA1khIFDeD4cccSBQ2Gb53GEgUN-k15oxIFDa2yY0sSBQ3ji1JZEgUNkRqEOxIFDZFhlU4SBQ2RYZVOEgUNr_piEhIFDZFhlU4SBQ2RYZVOEgUNr_piEiEDyDNY6ZR2YRIZCfDg04zKaZ0VEgUNLc4lriFz__pWYH4IbQ==?alt=proto
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://content-autofill.googleapis.com/v1/pages/ChVDaHJvbWUvMTI2LjAuNjQ3OC4xMjcSqwUJZ78NpBBXtuASBQ2XrOXVEgUN9Fyg5BIFDVRPZtISBQ2rBU76EgUN53G9wRIFDbaPi08SBQ1FExAWEgUNtsFJfBIFDbU_2f0SBQ21P9n9EgUNOsB_XxIFDekRjvgSBQ2yICSuEgUNQV4h9BIFDfkywo4SBQ1sYfRVEgUNzdVIDRIFDX2Ic3USBQ2RYZVOEgUNgnXjNxIFDZSQkvoSBQ2RYZVOEgUNYK6A-xIFDfHrwlASBQ1q0PyfEgUNlJCS-hIFDRD2Z58SBQ2RYZVOEgUN1IljZRIFDYMMKZQSBQ1wrB-YEgUN_fa5mBIFDWkCn1gSBQ2RYZVOEgUNhBwN3xIFDXx4Ei8SBQ0XP1dNEgUNfZ24phIFDbZeWwgSBQ0TaFziEgUNlJCS-hIFDZSQkvoSBQ3SondFEgUNUs8kThIFDcbS1_0SBQ1X-QhUEgUNMB5BOxIFDcaJ0skSBQ3rhX4JEgUNRcn2tBIFDZeHmu4SBQ2XmdTsEgUNpUYmhRIFDTvY7zgSBQ3i0fxGEgUNA-UZlhIFDYscrOYSBQ3_wo2tEgUNFk7oHhIFDY0Igm0SBQ0OKYcsEgUN4JIBixIFDZF36pMSBQ06fy5REgUN50j7ghIFDejWb68SBQ2UkJL6EgUNlJCS-hIFDZSQkvoSBQ2UkJL6EgUNHm-VBhIFDXOivmMSBQ19CyQFEgUNlJCS-hIFDZrBpRASBQ1XehPPEgUNSyfsiBIFDSsr2ywSBQ129WKSEgUN09MRBBIFDZFhlU4SBQ2RYZVOEgUNIRA1khIFDeD4cccSBQ2Gb53GEgUN-k15oxIFDa2yY0sSBQ3ji1JZEgUNkRqEOxIFDZFhlU4SBQ2RYZVOEgUNr_piEhIFDZFhlU4SBQ2RYZVOEgUNr_piEiEDyDNY6ZR2YRIZCfDg04zKaZ0VEgUNLc4lriFz__pWYH4IbQ==?alt=proto 200 
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/HttpHandlers/OnlineHandler.ashx 200 
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/HttpHandlers/OnlineHandler.ashx
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: wss://gps3.binhanh.vn/centerHub?PK_UserID=9e5ce94c-2304-4de7-a93d-361e18e22d7d&System=GpsBinhAnh
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://gps3.binhanh.vn/centerHub?PK_UserID=9e5ce94c-2304-4de7-a93d-361e18e22d7d&System=GpsBinhAnh 101 Switching Protocols
+2024-07-02 Tuesday 10:50:57 seleniumwire.server:INFO:Streaming WebSocket messages between 127.0.0.1:58564 and gps3.binhanh.vn:443
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7216&left=13006
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7217&left=13005
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7215&left=13011
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7217&left=13005 200 OK
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7216&left=13006 200 OK
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7215&left=13010
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7215&left=13011 200 OK
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7213&left=13011
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7214&left=13007
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7215&left=13010 200 OK
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7213&left=13011 200 OK
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7217&left=13008
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7215&left=13012
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7213&left=13010
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7214&left=13007 200 OK
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7214&left=13005
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7217&left=13008 200 OK
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7213&left=13010 200 OK
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7215&left=13012 200 OK
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7213&left=13009
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7214&left=13005 200 OK
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7214&left=13006
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7213&left=13012
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7213&left=13005
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7213&left=13009 200 OK
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/HttpHandlers/OnlineHandler.ashx 200 
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7213&left=13012 200 OK
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7214&left=13006 200 OK
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7215&left=13006
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7213&left=13007
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7213&left=13005 200 OK
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7217&left=13011
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7213&left=13008
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7216&left=13007
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7215&left=13006 200 OK
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7216&left=13012
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7213&left=13007 200 OK
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7217&left=13011 200 OK
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7217&left=13009
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7217&left=13007
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7213&left=13008 200 OK
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7216&left=13012 200 OK
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7216&left=13007 200 OK
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7213&left=13006
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7217&left=13006
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7217&left=13010
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7217&left=13007 200 OK
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7217&left=13009 200 OK
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7215&left=13007
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7214&left=13010
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7217&left=13006 200 OK
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7217&left=13010 200 OK
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7213&left=13006 200 OK
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7214&left=13012
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7216&left=13005
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7216&left=13011
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7214&left=13010 200 OK
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7215&left=13007 200 OK
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7216&left=13010
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7216&left=13011 200 OK
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7214&left=13012 200 OK
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7216&left=13005 200 OK
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7217&left=13012
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7214&left=13011
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7215&left=13005
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7215&left=13008
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7216&left=13010 200 OK
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7215&left=13009
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7217&left=13012 200 OK
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7214&left=13008
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7214&left=13011 200 OK
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7215&left=13009 200 OK
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7215&left=13005 200 OK
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7215&left=13008 200 OK
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/vehicle/car/Blue4.png
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/vehicle/car/Blue6.png
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7216&left=13008
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7214&left=13009
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7214&left=13008 200 OK
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7216&left=13009
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/vehicle/car/Warn0.png
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/vehicle/car/Gray5.png
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Icons/GpsLost.png
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/vehicle/car/Warn4.png
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/vehicle/car/Gray7.png
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/vehicle/car/Gray2.png
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/vehicle/car/Gray6.png
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/vehicle/car/Blue7.png
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/vehicle/car/Blue0.png
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7216&left=13008 200 OK
+2024-07-02 Tuesday 10:50:57 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7214&left=13009 200 OK
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/vehicle/car/Gray3.png
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/vehicle/car/Warn5.png
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/vehicle/car/Gray1.png
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/vehicle/car/Blue3.png
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/vehicle/car/Gray0.png
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/vehicle/car/Blue2.png
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/vehicle/car/Blue4.png 200 
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/vehicle/car/Blue6.png 200 
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7216&left=13009 200 OK
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/HttpHandlers/LandmarkListHandler.ashx?method=loadLandmarkGroup&categoryID=0&IsVisible=false
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/vehicle/car/Warn3.png
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/vehicle/car/Blue1.png
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/vehicle/car/Warn6.png
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/vehicle/car/Gray4.png
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/vehicle/car/Blue5.png
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/vehicle/car/Gray5.png 200 
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/vehicle/car/Gray6.png 200 
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Icons/GpsLost.png 200 
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/vehicle/car/Gray2.png 200 
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/vehicle/car/Warn4.png 200 
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/vehicle/car/Gray7.png 200 
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/vehicle/car/Blue0.png 200 
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/vehicle/car/Warn5.png 200 
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/vehicle/car/Blue3.png 200 
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/vehicle/car/Blue7.png 200 
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/vehicle/car/Warn0.png 200 
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/vehicle/car/Gray3.png 200 
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/vehicle/car/Gray0.png 200 
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/vehicle/car/Gray1.png 200 
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/vehicle/car/Gray4.png 200 
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/vehicle/car/Blue1.png 200 
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/vehicle/car/Warn6.png 200 
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/vehicle/car/Blue5.png 200 
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/vehicle/car/Blue2.png 200 
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/vehicle/car/Warn3.png 200 
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/HttpHandlers/LandmarkListHandler.ashx?method=loadLandmarkGroup&categoryID=0&IsVisible=false 200 
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/HttpHandlers/OnlineHandler.ashx
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/HttpHandlers/OnlineHandler.ashx 200 
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Audio/doorbell.mp3
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Audio/doorbell.mp3 206 
+2024-07-02 Tuesday 10:50:58 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/BinhAnh/logo.png
+2024-07-02 Tuesday 10:50:59 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/BinhAnh/logo.png 200 
+2024-07-02 Tuesday 10:50:59 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/BinhAnh/logo.png
+2024-07-02 Tuesday 10:50:59 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/BinhAnh/logo.png 200 
+2024-07-02 Tuesday 10:50:59 seleniumwire.handler:INFO:Capturing request: https://www.google-analytics.com/g/collect?v=2&tid=G-02FC5P5V42&gtm=45je46q0v9115700722za200&_p=1719892254738&gcd=13l3l3l3l1&npa=0&dma=0&tag_exp=0&cid=768294860.1719892251&ul=en-us&sr=1920x1080&ir=1&uaa=x86&uab=64&uafvl=Not%252FA)Brand%3B8.0.0.0%7CChromium%3B126.0.6478.127%7CGoogle%2520Chrome%3B126.0.6478.127&uamb=0&uam=&uap=Windows&uapv=10.0.0&uaw=0&are=1&frm=0&pscdl=noapi&_eu=EA&_s=1&sid=1719892250&sct=1&seg=1&dl=https%3A%2F%2Fgps.binhanh.vn%2FOnlineM.aspx&dr=https%3A%2F%2Fgps.binhanh.vn%2F&dt=Gi%C3%A1m%20s%C3%A1t%20-%20H%E1%BB%87%20th%E1%BB%91ng%20qu%E1%BA%A3n%20l%C3%BD%20xe%20tr%E1%BB%B1c%20tuy%E1%BA%BFn%20BA-WebGPS&en=page_view&_ee=1&tfd=8105&_z=fetch
+2024-07-02 Tuesday 10:51:00 seleniumwire.handler:INFO:Capturing response: https://www.google-analytics.com/g/collect?v=2&tid=G-02FC5P5V42&gtm=45je46q0v9115700722za200&_p=1719892254738&gcd=13l3l3l3l1&npa=0&dma=0&tag_exp=0&cid=768294860.1719892251&ul=en-us&sr=1920x1080&ir=1&uaa=x86&uab=64&uafvl=Not%252FA)Brand%3B8.0.0.0%7CChromium%3B126.0.6478.127%7CGoogle%2520Chrome%3B126.0.6478.127&uamb=0&uam=&uap=Windows&uapv=10.0.0&uaw=0&are=1&frm=0&pscdl=noapi&_eu=EA&_s=1&sid=1719892250&sct=1&seg=1&dl=https%3A%2F%2Fgps.binhanh.vn%2FOnlineM.aspx&dr=https%3A%2F%2Fgps.binhanh.vn%2F&dt=Gi%C3%A1m%20s%C3%A1t%20-%20H%E1%BB%87%20th%E1%BB%91ng%20qu%E1%BA%A3n%20l%C3%BD%20xe%20tr%E1%BB%B1c%20tuy%E1%BA%BFn%20BA-WebGPS&en=page_view&_ee=1&tfd=8105&_z=fetch 204 
+2024-07-02 Tuesday 10:51:00 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/HttpHandlers/OnlineHandler.ashx?method=getErrorList
+2024-07-02 Tuesday 10:51:00 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/HttpHandlers/OnlineHandler.ashx?method=getErrorList 200 
+2024-07-02 Tuesday 10:51:00 seleniumwire.handler:INFO:Capturing response: https://optimizationguide-pa.googleapis.com/downloads?name=1673999601&target=OPTIMIZATION_TARGET_PAGE_VISIBILITY 200 
+2024-07-02 Tuesday 10:51:01 seleniumwire.handler:INFO:Capturing request: https://optimizationguide-pa.googleapis.com/downloads?name=1718031739&target=OPTIMIZATION_TARGET_GEOLOCATION_PERMISSION_PREDICTIONS
+2024-07-02 Tuesday 10:51:03 seleniumwire.handler:INFO:Capturing response: https://optimizationguide-pa.googleapis.com/downloads?name=1718031739&target=OPTIMIZATION_TARGET_GEOLOCATION_PERMISSION_PREDICTIONS 200 
+2024-07-02 Tuesday 10:51:03 seleniumwire.handler:INFO:Capturing request: https://optimizationguide-pa.googleapis.com/downloads?name=1718031725&target=OPTIMIZATION_TARGET_CLIENT_SIDE_PHISHING
+2024-07-02 Tuesday 10:51:07 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/HttpHandlers/OnlineHandler.ashx?method=synVehicleListLite&_=1719892267798
+2024-07-02 Tuesday 10:51:08 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/HttpHandlers/OnlineHandler.ashx?method=synVehicleListLite&_=1719892267798 200 
+2024-07-02 Tuesday 10:51:08 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/vehicle/car/Blue2.png
+2024-07-02 Tuesday 10:51:08 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/vehicle/car/Gray4.png
+2024-07-02 Tuesday 10:51:08 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/vehicle/car/Blue1.png
+2024-07-02 Tuesday 10:51:08 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/vehicle/car/Blue6.png
+2024-07-02 Tuesday 10:51:08 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/vehicle/car/Blue4.png
+2024-07-02 Tuesday 10:51:08 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/vehicle/car/Gray6.png
+2024-07-02 Tuesday 10:51:08 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/vehicle/car/Blue5.png
+2024-07-02 Tuesday 10:51:08 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/vehicle/car/Blue7.png
+2024-07-02 Tuesday 10:51:08 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/vehicle/car/Blue2.png 200 
+2024-07-02 Tuesday 10:51:08 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/vehicle/car/Blue6.png 200 
+2024-07-02 Tuesday 10:51:08 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/vehicle/car/Gray6.png 200 
+2024-07-02 Tuesday 10:51:08 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/vehicle/car/Blue5.png 200 
+2024-07-02 Tuesday 10:51:08 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/vehicle/car/Blue4.png 200 
+2024-07-02 Tuesday 10:51:08 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/vehicle/car/Blue7.png 200 
+2024-07-02 Tuesday 10:51:08 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/vehicle/car/Blue1.png 200 
+2024-07-02 Tuesday 10:51:08 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/vehicle/car/Gray4.png 200 
+2024-07-02 Tuesday 10:51:08 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/vehicle/car/Blue3.png
+2024-07-02 Tuesday 10:51:08 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/vehicle/car/Gray1.png
+2024-07-02 Tuesday 10:51:08 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/vehicle/car/Blue3.png 200 
+2024-07-02 Tuesday 10:51:08 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/vehicle/car/Gray1.png 200 
+2024-07-02 Tuesday 10:51:09 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/RouteM.aspx
+2024-07-02 Tuesday 10:51:09 seleniumwire.handler:INFO:Capturing request: https://optimizationguide-pa.googleapis.com/downloads?name=5&target=OPTIMIZATION_TARGET_PAGE_TOPICS_V2
+2024-07-02 Tuesday 10:51:09 seleniumwire.handler:INFO:Capturing request: https://optimizationguide-pa.googleapis.com/downloads?name=1718031725&target=OPTIMIZATION_TARGET_CLIENT_SIDE_PHISHING
+2024-07-02 Tuesday 10:51:09 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/RouteM.aspx 200 
+2024-07-02 Tuesday 10:51:09 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/SharedSiteMaster/bundles/styles?v=20240702v1
+2024-07-02 Tuesday 10:51:09 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/RouteM/bundles/styles?v=20240702v1
+2024-07-02 Tuesday 10:51:09 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Scripts/mapStraction/gps/route/route.js?v=20240702v1
+2024-07-02 Tuesday 10:51:09 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/RouteM/bundles/scripts?v=20240702v1
+2024-07-02 Tuesday 10:51:09 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/WebServices/GpsServices.asmx/js
+2024-07-02 Tuesday 10:51:09 seleniumwire.handler:INFO:Capturing request: https://www.google-analytics.com/g/collect?v=2&tid=G-02FC5P5V42&gtm=45je46q0v9115700722za200&_p=1719892254738&gcd=13l3l3l3l1&npa=0&dma=0&tag_exp=0&cid=768294860.1719892251&ul=en-us&sr=1920x1080&ir=1&uaa=x86&uab=64&uafvl=Not%252FA)Brand%3B8.0.0.0%7CChromium%3B126.0.6478.127%7CGoogle%2520Chrome%3B126.0.6478.127&uamb=0&uam=&uap=Windows&uapv=10.0.0&uaw=0&are=1&frm=0&pscdl=noapi&_eu=EA&_s=2&sid=1719892250&sct=1&seg=1&dl=https%3A%2F%2Fgps.binhanh.vn%2FOnlineM.aspx&dr=https%3A%2F%2Fgps.binhanh.vn%2F&dt=Gi%C3%A1m%20s%C3%A1t%20-%20H%E1%BB%87%20th%E1%BB%91ng%20qu%E1%BA%A3n%20l%C3%BD%20xe%20tr%E1%BB%B1c%20tuy%E1%BA%BFn%20BA-WebGPS&en=user_engagement&_et=14741&tfd=17851&_z=fetch
+2024-07-02 Tuesday 10:51:09 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/SharedSiteMaster/bundles/scripts?v=20240702v1
+2024-07-02 Tuesday 10:51:09 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/SharedSiteMaster/bundles/styles?v=20240702v1 200 
+2024-07-02 Tuesday 10:51:09 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/RouteM/bundles/styles?v=20240702v1 200 
+2024-07-02 Tuesday 10:51:09 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/WebServices/GpsServices.asmx/js 304 
+2024-07-02 Tuesday 10:51:09 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Scripts/mapStraction/gps/route/route.js?v=20240702v1 200 
+2024-07-02 Tuesday 10:51:09 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/RouteM/bundles/scripts?v=20240702v1 200 
+2024-07-02 Tuesday 10:51:09 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/SharedSiteMaster/bundles/scripts?v=20240702v1 200 
+2024-07-02 Tuesday 10:51:09 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/s_icon_taiDuLieu.png
+2024-07-02 Tuesday 10:51:09 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/s_icon_taiDuLieu.png 200 
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing response: https://www.google-analytics.com/g/collect?v=2&tid=G-02FC5P5V42&gtm=45je46q0v9115700722za200&_p=1719892254738&gcd=13l3l3l3l1&npa=0&dma=0&tag_exp=0&cid=768294860.1719892251&ul=en-us&sr=1920x1080&ir=1&uaa=x86&uab=64&uafvl=Not%252FA)Brand%3B8.0.0.0%7CChromium%3B126.0.6478.127%7CGoogle%2520Chrome%3B126.0.6478.127&uamb=0&uam=&uap=Windows&uapv=10.0.0&uaw=0&are=1&frm=0&pscdl=noapi&_eu=EA&_s=2&sid=1719892250&sct=1&seg=1&dl=https%3A%2F%2Fgps.binhanh.vn%2FOnlineM.aspx&dr=https%3A%2F%2Fgps.binhanh.vn%2F&dt=Gi%C3%A1m%20s%C3%A1t%20-%20H%E1%BB%87%20th%E1%BB%91ng%20qu%E1%BA%A3n%20l%C3%BD%20xe%20tr%E1%BB%B1c%20tuy%E1%BA%BFn%20BA-WebGPS&en=user_engagement&_et=14741&tfd=17851&_z=fetch 204 
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/s_icon_fastPause.png
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/s_icon_fastPause.png 200 
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/s_icon_tool.png
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/images/loading.gif
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing request: https://api.binhanh.vn/Scripts/MapAPI.v1/mapcore/mxn.core.js?version=722024_105110
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing request: https://api.binhanh.vn/Scripts/MapAPI.v1/mapcore/mxn.leafletbamap.core.js?version=722024_105110
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/s_icon_tool.png 200 
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing response: https://api.binhanh.vn/Scripts/MapAPI.v1/mapcore/mxn.core.js?version=722024_105110 200 
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing response: https://api.binhanh.vn/Scripts/MapAPI.v1/mapcore/mxn.leafletbamap.core.js?version=722024_105110 200 
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/s_icon_cauHinhHienThi.png
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/s_icon_cauHinhHienThi.png 200 
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/HttpHandlers/HelperHandler.ashx?method=GetConfigForUser
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/images/loading.gif 200 
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/HttpHandlers/HelperHandler.ashx?method=GetConfigForUser 200 
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/HttpHandlers/VehicleHandler.ashx?method=getVehicleGroupSpecial
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/HttpHandlers/VehicleHandler.ashx?method=getVehicleGroupSpecial 200 
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/VLimited.png
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/VLimited.png 200 
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/s_icon_fastForward.png
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/btnBack.png
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/s_icon_print.png
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/s_icon_fastPreview.png
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/delete_item2.png
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/s_icon_fastStop.png
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/bt_search.png
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/s_icon_fastNext.png
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/Images/btnNext.png
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/s_icon_fastForward.png 200 
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/s_icon_fastPreview.png 200 
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/s_icon_print.png 200 
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/delete_item2.png 200 
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/bt_search.png 200 
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/btnNext.png 200 
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/s_icon_fastStop.png 200 
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/s_icon_fastNext.png 200 
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/HttpHandlers/AutoCompleteHandler.ashx?method=searchVehicleRoute
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing request: https://content-autofill.googleapis.com/v1/pages/ChVDaHJvbWUvMTI2LjAuNjQ3OC4xMjcSWAmQQAyvR1mZNxIFDZes5dUSBQ3pEY74EgUNsiAkrhIFDUFeIfQSBQ35MsKOEgUNAkgrfxIFDTGXaLQSBQ2RQQHgEgUN_fvvYhIFDQTKI58h9jDZieVJFvISGQnw4NOMymmdFRIFDS3OJa4htOtNLPcQeSM=?alt=proto
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/HttpHandlers/AutoCompleteHandler.ashx?method=searchVehicleRoute 200 
+2024-07-02 Tuesday 10:51:10 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/Images/btnBack.png 200 
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: wss://gps3.binhanh.vn/centerHub?PK_UserID=9e5ce94c-2304-4de7-a93d-361e18e22d7d&System=GpsBinhAnh
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://gps3.binhanh.vn/centerHub?PK_UserID=9e5ce94c-2304-4de7-a93d-361e18e22d7d&System=GpsBinhAnh 101 Switching Protocols
+2024-07-02 Tuesday 10:51:11 seleniumwire.server:INFO:Streaming WebSocket messages between 127.0.0.1:58581 and gps3.binhanh.vn:443
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/HttpHandlers/OnlineHandler.ashx?method=loadConfigMap
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/HttpHandlers/OnlineHandler.ashx?method=loadConfigMap 200 
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7215&left=13009
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7214&left=13008
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7216&left=13009
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7214&left=13009
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7215&left=13008
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7216&left=13008
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7215&left=13009 200 OK
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7214&left=13008 200 OK
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7215&left=13006
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7215&left=13008 200 OK
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7214&left=13009 200 OK
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7216&left=13008 200 OK
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7216&left=13009 200 OK
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7216&left=13010
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7213&left=13006
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7217&left=13010
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7217&left=13007
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7215&left=13006 200 OK
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7214&left=13007
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://content-autofill.googleapis.com/v1/pages/ChVDaHJvbWUvMTI2LjAuNjQ3OC4xMjcSWAmQQAyvR1mZNxIFDZes5dUSBQ3pEY74EgUNsiAkrhIFDUFeIfQSBQ35MsKOEgUNAkgrfxIFDTGXaLQSBQ2RQQHgEgUN_fvvYhIFDQTKI58h9jDZieVJFvISGQnw4NOMymmdFRIFDS3OJa4htOtNLPcQeSM=?alt=proto 200 
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7216&left=13010 200 OK
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7214&left=13005
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7217&left=13010 200 OK
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7213&left=13006 200 OK
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7214&left=13007 200 OK
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7217&left=13007 200 OK
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7213&left=13010
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7214&left=13006
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7214&left=13011
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7217&left=13009
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7214&left=13005 200 OK
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7215&left=13005
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7213&left=13010 200 OK
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/HttpHandlers/LandmarkListHandler.ashx?method=loadLandmarkGroup&categoryID=0&IsVisible=false
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://api.binhanh.vn/Scripts/MapAPI.v1/leaflet.fullscreen/fullscreen.png
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7215&left=13007
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7213&left=13009
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7214&left=13011 200 OK
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7217&left=13009 200 OK
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7215&left=13005 200 OK
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7214&left=13006 200 OK
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7217&left=13012
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7216&left=13012
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7213&left=13007
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://api.binhanh.vn/Scripts/MapAPI.v1/leaflet.fullscreen/fullscreen.png 200 
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7215&left=13007 200 OK
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7213&left=13009 200 OK
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7215&left=13010
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7213&left=13005
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7217&left=13012 200 OK
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7216&left=13012 200 OK
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7213&left=13007 200 OK
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7213&left=13011
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7216&left=13011
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7213&left=13008
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7213&left=13005 200 OK
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7215&left=13010 200 OK
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7217&left=13006
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7214&left=13012
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7213&left=13011 200 OK
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7214&left=13010
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7216&left=13011 200 OK
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7213&left=13008 200 OK
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7213&left=13012
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7215&left=13012
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7217&left=13006 200 OK
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7214&left=13012 200 OK
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7217&left=13008
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7216&left=13007
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7213&left=13012 200 OK
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7215&left=13011
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7215&left=13012 200 OK
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7217&left=13011
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7216&left=13007 200 OK
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7217&left=13008 200 OK
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7216&left=13006
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7216&left=13005
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7215&left=13011 200 OK
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/HttpHandlers/LandmarkListHandler.ashx?method=loadLandmarkGroup&categoryID=0&IsVisible=false 200 
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7217&left=13011 200 OK
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7217&left=13005
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7216&left=13005 200 OK
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7216&left=13006 200 OK
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7217&left=13005 200 OK
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing request: https://content-autofill.googleapis.com/v1/pages/ChVDaHJvbWUvMTI2LjAuNjQ3OC4xMjcSWAmQQAyvR1mZNxIFDZes5dUSBQ3pEY74EgUNsiAkrhIFDUFeIfQSBQ35MsKOEgUNAkgrfxIFDTGXaLQSBQ2RQQHgEgUN_fvvYhIFDQTKI58h9jDZieVJFvI=?alt=proto
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://content-autofill.googleapis.com/v1/pages/ChVDaHJvbWUvMTI2LjAuNjQ3OC4xMjcSWAmQQAyvR1mZNxIFDZes5dUSBQ3pEY74EgUNsiAkrhIFDUFeIfQSBQ35MsKOEgUNAkgrfxIFDTGXaLQSBQ2RQQHgEgUN_fvvYhIFDQTKI58h9jDZieVJFvI=?alt=proto 200 
+2024-07-02 Tuesday 10:51:11 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7214&left=13010 200 OK
+2024-07-02 Tuesday 10:51:14 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/HttpHandlers/OnlineHandler.ashx
+2024-07-02 Tuesday 10:51:14 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/HttpHandlers/OnlineHandler.ashx 200 
+2024-07-02 Tuesday 10:51:14 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/HttpHandlers/RouteHandler.ashx?method=getConfigView&privateCode=43H06592
+2024-07-02 Tuesday 10:51:14 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/HttpHandlers/RouteHandler.ashx?method=getConfigView&privateCode=43H06592 200 
+2024-07-02 Tuesday 10:51:15 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/HttpHandlers/RouteHandler.ashx?method=getConfigView&privateCode=43H06592
+2024-07-02 Tuesday 10:51:15 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/HttpHandlers/RouteHandler.ashx?method=getConfigView&privateCode=43H06592 200 
+2024-07-02 Tuesday 10:51:15 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/HttpHandlers/RouteHandler.ashx?method=GetConfigForStateConcrete&privateCode=43H06592
+2024-07-02 Tuesday 10:51:15 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/HttpHandlers/RouteHandler.ashx?method=GetConfigForStateConcrete&privateCode=43H06592 200 
+2024-07-02 Tuesday 10:51:15 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/HttpHandlers/RouteHandler.ashx?method=getRouterByCarNumberLite&carNumber=43H06592&fromDate=02/07/2024%2000:00&toDate=02/07/2024%2023:59&split=false&isItinerary=false
+2024-07-02 Tuesday 10:51:16 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/HttpHandlers/RouteHandler.ashx?method=getRouterByCarNumberLite&carNumber=43H06592&fromDate=02/07/2024%2000:00&toDate=02/07/2024%2023:59&split=false&isItinerary=false 200 
+2024-07-02 Tuesday 10:51:16 seleniumwire.handler:INFO:Capturing request: https://api.binhanh.vn/Scripts/MapAPI.v1/leaflet.1.2.0/images/marker-icon.png
+2024-07-02 Tuesday 10:51:16 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/HttpHandlers/PointHandler.ashx?method=getAddress&lat=15.828259&lng=108.259308
+2024-07-02 Tuesday 10:51:16 seleniumwire.handler:INFO:Capturing response: https://api.binhanh.vn/Scripts/MapAPI.v1/leaflet.1.2.0/images/marker-icon.png 200 
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/HttpHandlers/PointHandler.ashx?method=getAddress&lat=15.828259&lng=108.259308 200 
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7450&left=13118
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7449&left=13117
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7450&left=13118 200 OK
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7448&left=13117
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7449&left=13118
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7449&left=13117 200 OK
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7448&left=13118
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7449&left=13119
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7449&left=13120
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7448&left=13117 200 OK
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7449&left=13118 200 OK
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/stop.png
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7448&left=13118 200 OK
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7449&left=13120 200 OK
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=14&top=7449&left=13119 200 OK
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/Direction/Blue4.png
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/Direction/Blue5.png
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/Direction/Blue3.png
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/Direction/Blue6.png
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/Direction/Blue0.png
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/Direction/Blue2.png
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/Direction/Blue7.png
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/point/6.png
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/point/marker-shadow.png
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/Direction/Blue1.png
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/point/kho.png
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/point/96.png
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/point/22.png
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing request: https://www.google-analytics.com/g/collect?v=2&tid=G-02FC5P5V42&gtm=45je46q0v9115700722za200&_p=1719892270678&gcd=13l3l3l3l1&npa=0&dma=0&tag_exp=0&cid=768294860.1719892251&ul=en-us&sr=1920x1080&ir=1&uaa=x86&uab=64&uafvl=Not%252FA)Brand%3B8.0.0.0%7CChromium%3B126.0.6478.127%7CGoogle%2520Chrome%3B126.0.6478.127&uamb=0&uam=&uap=Windows&uapv=10.0.0&uaw=0&are=1&frm=0&pscdl=noapi&_eu=EA&_s=1&sid=1719892250&sct=1&seg=1&dl=https%3A%2F%2Fgps.binhanh.vn%2FRouteM.aspx&dr=https%3A%2F%2Fgps.binhanh.vn%2FOnlineM.aspx&dt=L%E1%BB%99%20tr%C3%ACnh&en=page_view&_ee=1&tfd=8074&_z=fetch
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/point/2.png
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/vehicle/car/Blue0.png
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/point/4.png
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/point/91.png
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/stop.png 200 
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/Direction/Blue3.png 200 
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/Direction/Blue4.png 200 
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/Direction/Blue0.png 200 
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/point/marker-shadow.png 200 
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/Direction/Blue1.png 200 
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing response: https://www.google-analytics.com/g/collect?v=2&tid=G-02FC5P5V42&gtm=45je46q0v9115700722za200&_p=1719892270678&gcd=13l3l3l3l1&npa=0&dma=0&tag_exp=0&cid=768294860.1719892251&ul=en-us&sr=1920x1080&ir=1&uaa=x86&uab=64&uafvl=Not%252FA)Brand%3B8.0.0.0%7CChromium%3B126.0.6478.127%7CGoogle%2520Chrome%3B126.0.6478.127&uamb=0&uam=&uap=Windows&uapv=10.0.0&uaw=0&are=1&frm=0&pscdl=noapi&_eu=EA&_s=1&sid=1719892250&sct=1&seg=1&dl=https%3A%2F%2Fgps.binhanh.vn%2FRouteM.aspx&dr=https%3A%2F%2Fgps.binhanh.vn%2FOnlineM.aspx&dt=L%E1%BB%99%20tr%C3%ACnh&en=page_view&_ee=1&tfd=8074&_z=fetch 204 
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/Direction/Blue5.png 200 
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/point/6.png 200 
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/point/kho.png 200 
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/point/22.png 200 
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/point/2.png 200 
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/vehicle/car/Blue0.png 200 
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/point/4.png 200 
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/point/91.png 200 
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/point/96.png 200 
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/Direction/Blue7.png 200 
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/Direction/Blue2.png 200 
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/Direction/Blue6.png 200 
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/point/92.png
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/point/89.png
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/point/1.png
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing request: https://gps.binhanh.vn/icons/point/lay_nhien_lieu.png
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/point/92.png 200 
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/point/89.png 200 
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/point/lay_nhien_lieu.png 200 
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing response: https://optimizationguide-pa.googleapis.com/downloads?name=5&target=OPTIMIZATION_TARGET_PAGE_TOPICS_V2 200 
+2024-07-02 Tuesday 10:51:17 seleniumwire.handler:INFO:Capturing response: https://gps.binhanh.vn/icons/point/1.png 200 
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=931&left=1636
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=931&left=1636 200 OK
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=933&left=1637
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=932&left=1643
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=933&left=1637 200 OK
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=932&left=1638
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=932&left=1643 200 OK
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=931&left=1638
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=932&left=1637
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=933&left=1638
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=932&left=1638 200 OK
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=930&left=1638
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=931&left=1638 200 OK
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=932&left=1637 200 OK
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=931&left=1639
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=930&left=1637
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=930&left=1638 200 OK
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=933&left=1638 200 OK
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=933&left=1643
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=932&left=1639
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=931&left=1639 200 OK
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=930&left=1637 200 OK
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=933&left=1643 200 OK
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=931&left=1642
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=932&left=1636
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=930&left=1643
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=932&left=1639 200 OK
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing request: https://optimizationguide-pa.googleapis.com/downloads?name=1696267841&target=OPTIMIZATION_TARGET_OMNIBOX_URL_SCORING
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=931&left=1640
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=931&left=1642 200 OK
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=932&left=1636 200 OK
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=930&left=1643 200 OK
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=930&left=1640
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=933&left=1641
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=931&left=1640 200 OK
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=931&left=1637
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=933&left=1642
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=933&left=1640
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=930&left=1640 200 OK
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=933&left=1636
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=933&left=1641 200 OK
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=931&left=1637 200 OK
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=933&left=1639
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=933&left=1642 200 OK
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=931&left=1643
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=933&left=1640 200 OK
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=933&left=1636 200 OK
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=931&left=1641
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=930&left=1636
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=930&left=1639
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=931&left=1643 200 OK
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=933&left=1639 200 OK
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=932&left=1640
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=931&left=1641 200 OK
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=930&left=1642
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=930&left=1641
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=930&left=1639 200 OK
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=930&left=1636 200 OK
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=932&left=1641
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=930&left=1641 200 OK
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing request: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=932&left=1642
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=930&left=1642 200 OK
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=932&left=1640 200 OK
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=932&left=1641 200 OK
+2024-07-02 Tuesday 10:51:18 seleniumwire.handler:INFO:Capturing response: https://map.binhanh.vn/titservice.ashx?typ=ba&lvl=11&top=932&left=1642 200 OK
+2024-07-02 Tuesday 10:51:18 root:INFO:Lộ trình - Trang lộ trình - Cấu hình dữ liệu
+2024-07-02 Tuesday 10:51:18 root:INFO:Mã - Route06
+2024-07-02 Tuesday 10:51:18 root:INFO:Tên sự kiện - Icon "Cấu hình dữ liệu"
+2024-07-02 Tuesday 10:51:18 root:INFO:Kết quả - Hiển thị Popup "Cấu hình dữ liệu"
+2024-07-02 Tuesday 10:51:18 root:INFO:True
+2024-07-02 Tuesday 10:51:19 seleniumwire.handler:INFO:Capturing response: https://optimizationguide-pa.googleapis.com/downloads?name=1696267841&target=OPTIMIZATION_TARGET_OMNIBOX_URL_SCORING 200 
+2024-07-02 Tuesday 10:51:19 seleniumwire.handler:INFO:Capturing request: https://optimizationguide-pa.googleapis.com/downloads?name=1691042511&target=OPTIMIZATION_TARGET_NEW_TAB_PAGE_HISTORY_CLUSTERS_MODULE_RANKING
+2024-07-02 Tuesday 10:51:20 root:INFO:Lộ trình - Trang lộ trình - Cấu hình dữ liệu
+2024-07-02 Tuesday 10:51:20 root:INFO:Mã - Route07
+2024-07-02 Tuesday 10:51:20 root:INFO:Tên sự kiện - Click vào checkbox "vận tốc Gps"
+2024-07-02 Tuesday 10:51:20 root:INFO:Kết quả - Hiển thị thêm trường "GPS" ở danh sách lộ trình
+2024-07-02 Tuesday 10:51:20 root:INFO:True
+2024-07-02 Tuesday 10:51:21 seleniumwire.handler:INFO:Capturing response: https://optimizationguide-pa.googleapis.com/downloads?name=1691042511&target=OPTIMIZATION_TARGET_NEW_TAB_PAGE_HISTORY_CLUSTERS_MODULE_RANKING 200 
+2024-07-02 Tuesday 10:51:21 root:INFO:Lộ trình - Trang lộ trình - Cấu hình dữ liệu
+2024-07-02 Tuesday 10:51:21 root:INFO:Mã - Route08
+2024-07-02 Tuesday 10:51:21 root:INFO:Tên sự kiện - Click vào checkbox "vận tốc cơ"
+2024-07-02 Tuesday 10:51:21 root:INFO:Kết quả - Hiển thị thêm trường "Cơ" ở danh sách lộ trình
+2024-07-02 Tuesday 10:51:21 root:INFO:True
+2024-07-02 Tuesday 10:51:21 seleniumwire.server:INFO:127.0.0.1:58535: HTTP/2 connection terminated by server: error code: 0, last stream id: 1, additional data: None
+2024-07-02 Tuesday 10:51:22 seleniumwire.handler:INFO:Capturing request: https://optimizationguide-pa.googleapis.com/downloads?name=1689043206&target=OPTIMIZATION_TARGET_VISUAL_SEARCH_CLASSIFICATION
+2024-07-02 Tuesday 10:51:22 seleniumwire.server:INFO:127.0.0.1:58509: HTTP/2 connection terminated by server: error code: 0, last stream id: 15, additional data: None
+2024-07-02 Tuesday 10:51:22 root:INFO:Lộ trình - Trang lộ trình - Cấu hình dữ liệu
+2024-07-02 Tuesday 10:51:22 root:INFO:Mã - Route09
+2024-07-02 Tuesday 10:51:22 root:INFO:Tên sự kiện - Click vào checkbox "vận tốc BGT"
+2024-07-02 Tuesday 10:51:22 root:INFO:Kết quả - Hiển thị thêm trường "BGT" ở danh sách lộ trình
+2024-07-02 Tuesday 10:51:22 root:INFO:True
+2024-07-02 Tuesday 10:51:22 seleniumwire.server:INFO:127.0.0.1:58540: HTTP/2 connection terminated by server: error code: 0, last stream id: 1, additional data: None
+2024-07-02 Tuesday 10:51:22 seleniumwire.server:INFO:127.0.0.1:58539: HTTP/2 connection terminated by server: error code: 0, last stream id: 1, additional data: None
+2024-07-02 Tuesday 10:51:23 seleniumwire.server:INFO:127.0.0.1:58543: HTTP/2 connection terminated by server: error code: 0, last stream id: 3, additional data: None
+2024-07-02 Tuesday 10:51:23 root:INFO:Lộ trình - Trang lộ trình - Cấu hình dữ liệu
+2024-07-02 Tuesday 10:51:23 root:INFO:Mã - Route10
+2024-07-02 Tuesday 10:51:23 root:INFO:Tên sự kiện - Click vào checkbox "Hiển thị km"
+2024-07-02 Tuesday 10:51:23 root:INFO:Kết quả - Hiển thị thêm trường "Km" ở danh sách lộ trình
+2024-07-02 Tuesday 10:51:23 root:INFO:True
+2024-07-02 Tuesday 10:51:24 seleniumwire.server:INFO:127.0.0.1:58559: HTTP/2 connection terminated by server: error code: 0, last stream id: 3, additional data: None

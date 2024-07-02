@@ -66,6 +66,8 @@ def write_from_date(fromdate_input):
         from_date_day1 = "01"
     if from_date_day1 == 1:
         from_date_day1 = "01"
+    if from_date_day1 == 0:
+        from_date_day1 = "01"
     # from_date_day2 = str(from_date_day1)
     from_date1 = str(from_date_day1) + str(from_date_month_year)
     print(from_date1)

@@ -32,7 +32,7 @@ def timerun():
 
 
 
-def clearData(file,sheetName,ketqua, tenanh):
+def clearData(file,sheetName,ketqua, tenanh, data):
     wordbook = openpyxl.load_workbook(file)
     sheet = wordbook.get_sheet_by_name(sheetName)
     i = 9
@@ -41,6 +41,7 @@ def clearData(file,sheetName,ketqua, tenanh):
         i = str(i)
         sheet["H"+i] = ketqua
         sheet["I"+i] = tenanh
+        sheet["K"+i] = data
         i = int(i)
     wordbook.save(file)
 
@@ -232,27 +233,35 @@ def get_datachecklist(ma):
 
 
 def write_caseif():
-    n = 0
-    while (n < 23):
+    n = 222
+    while (n < 260):
         var.driver.implicitly_wait(1)
         n += 1
         n = str(n)
-        print("try:\n   if case == 'Utility"+n+"':\n       caseid.caseid_utility"+n+"(self)\nexcept:\n    pass")
+        print("try:\n   if case == 'GiamSat"+n+"':\n       caseid.caseid_giamsat"+n+"(self)\nexcept:\n    pass")
         n = int(n)
 
 
 
 
 def write_caseif1():
-    n = 0
-    while (n < 23):
+    n = 222
+    while (n < 260):
         var.driver.implicitly_wait(1)
         n += 1
         n = str(n)
-        print("try:\n   caseid.caseid_utility"+n+"(self)\nexcept:\n     pass")
+        print("try:\n   caseid.caseid_giamsat"+n+"(self)\nexcept:\n     pass")
         n = int(n)
 
 
+def write_caseif2():
+    n = 0
+    while (n < 100):
+        var.driver.implicitly_wait(1)
+        n += 1
+        n = str(n)
+        print("caseid.caseid_giamsat"+n+"(self)")
+        n = int(n)
 
 
 
@@ -264,6 +273,8 @@ def write_result_text_try_if(code, eventname, result, path_module, path_text, ch
     try:
         check_text = var.driver.find_element(By.XPATH, path_text).text
         logging.info(check_text)
+        writeData(var.checklistpath, "Checklist", code, 11, check_text)
+
         if check_text == check_result:
             logging.info("True")
             writeData(var.checklistpath, "Checklist", code, 8, "Pass")

@@ -59,6 +59,8 @@ class route:
         logging.info("Kết quả - " + result)
         try:
             check_popup_route = var.driver.find_element(By.XPATH, var.check_popup_route).text
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 11, check_popup_route)
+
             if check_popup_route == "Lộ trình":
                 logging.info("True")
                 chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
@@ -99,6 +101,8 @@ class route:
         try:
             km_move = var.driver.find_element(By.XPATH, var.km_move).text
             logging.info(km_move)
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 11, km_move)
+
             if km_move != "0 km":
                 logging.info("True")
                 chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
@@ -140,6 +144,8 @@ class route:
         try:
             check_printroute_licenseplate = var.driver.find_element(By.XPATH, var.check_printroute_licenseplate).text
             logging.info(check_printroute_licenseplate)
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 11, check_printroute_licenseplate)
+
             if check_printroute_licenseplate[9::] == vehiclename1:
                 logging.info("True")
                 chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
@@ -371,6 +377,8 @@ class route:
         try:
             checkpopup_routedisplayconfig = var.driver.find_element(By.XPATH, var.checkpopup_routedisplayconfig).text
             logging.info(checkpopup_routedisplayconfig)
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 11, checkpopup_routedisplayconfig)
+
             if checkpopup_routedisplayconfig == "CẤU HÌNH HIỂN THỊ LỘ TRÌNH":
                 logging.info("True")
                 chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
@@ -451,6 +459,8 @@ class route:
         logging.info("Kết quả - " + result)
         try:
             check_defaultconfig = var.driver.find_element(By.XPATH, var.stoptime).text
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 11, check_defaultconfig)
+
             if check_defaultconfig == "Thời gian dừng đỗ":
                 logging.info("True")
                 chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
@@ -489,6 +499,8 @@ class route:
                 data1 = data1.decode("utf8")
                 res = json.loads(data1)
                 print(res['msg'])
+                chucnangkhac.writeData(var.checklistpath, "Checklist", code, 11, (res['msg']))
+
                 if res['msg'] == "Cập nhật thành công":
                     logging.info("True")
                     chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")

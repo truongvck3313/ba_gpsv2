@@ -1007,6 +1007,156 @@ def run_all(self):      #Chạy tất cả
     except:
         pass
     try:
+        caseid.caseid_giamsat223(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat224(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat225(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat226(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat227(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat228(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat229(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat230(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat231(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat232(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat233(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat234(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat235(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat236(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat237(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat238(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat239(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat240(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat241(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat242(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat243(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat244(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat245(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat246(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat247(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat248(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat249(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat250(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat251(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat252(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat253(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat254(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat255(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat256(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat257(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat258(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat259(self)
+    except:
+        pass
+
+
+    try:
         caseid.caseid_route01(self)
     except:
         pass
@@ -1773,10 +1923,15 @@ def login(self):
             muc4 = sheet["A"+rownum].value
             list_mucdo4.append(muc4)
         rownum = int(rownum)
-    print(list_mucdo2)
+    print("mcu do 1", list_mucdo1)
+    print("mcu do 2", list_mucdo2)
+    print("mcu do 3", list_mucdo3)
+    print("mcu do 4", list_mucdo4)
+
 
     modetest = ''.join(re.findall(r'\d+', var.modetest))
     for i in modetest:
+        print("i", i)
         if i == "1":
             for case in list_mucdo1:
                 try:
@@ -1885,7 +2040,7 @@ def login(self):
                 except:
                     pass
         if i == "2":
-            for case in list_mucdo1:
+            for case in list_mucdo2:
                 try:
                     if case == 'Login01':
                         caseid.caseid_login01(self)
@@ -1992,7 +2147,7 @@ def login(self):
                 except:
                     pass
         if i == "3":
-            for case in list_mucdo1:
+            for case in list_mucdo3:
                 try:
                     if case == 'Login01':
                         caseid.caseid_login01(self)
@@ -2099,7 +2254,7 @@ def login(self):
                 except:
                     pass
         if i == "4":
-            for case in list_mucdo1:
+            for case in list_mucdo4:
                 try:
                     if case == 'Login01':
                         caseid.caseid_login01(self)
@@ -2217,7 +2372,7 @@ def monitor(self):
     wordbook = openpyxl.load_workbook(var.checklistpath)
     sheet = wordbook.get_sheet_by_name("Checklist")
     rownum = 36
-    while (rownum < 375):
+    while (rownum < 420):
         rownum += 1
         rownum = str(rownum)
         if sheet["D"+rownum].value == "x":
@@ -2233,11 +2388,11 @@ def monitor(self):
             muc4 = sheet["A"+rownum].value
             list_mucdo4.append(muc4)
         rownum = int(rownum)
-    print(list_mucdo2)
 
     modetest = ''.join(re.findall(r'\d+', var.modetest))
     for i in modetest:
         if i == "1":
+            print(list_mucdo1)
             for case in list_mucdo1:
                 try:
                     if case == 'GiamSat01':
@@ -3337,11 +3492,197 @@ def monitor(self):
                 try:
                     if case == 'GiamSat222':
                         caseid.caseid_giamsat222(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat223':
+                        caseid.caseid_giamsat223(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat224':
+                        caseid.caseid_giamsat224(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat225':
+                        caseid.caseid_giamsat225(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat226':
+                        caseid.caseid_giamsat226(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat227':
+                        caseid.caseid_giamsat227(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat228':
+                        caseid.caseid_giamsat228(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat229':
+                        caseid.caseid_giamsat229(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat230':
+                        caseid.caseid_giamsat230(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat231':
+                        caseid.caseid_giamsat231(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat232':
+                        caseid.caseid_giamsat232(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat233':
+                        caseid.caseid_giamsat233(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat234':
+                        caseid.caseid_giamsat234(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat235':
+                        caseid.caseid_giamsat235(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat236':
+                        caseid.caseid_giamsat236(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat237':
+                        caseid.caseid_giamsat237(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat238':
+                        caseid.caseid_giamsat238(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat239':
+                        caseid.caseid_giamsat239(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat240':
+                        caseid.caseid_giamsat240(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat241':
+                        caseid.caseid_giamsat241(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat242':
+                        caseid.caseid_giamsat242(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat243':
+                        caseid.caseid_giamsat243(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat244':
+                        caseid.caseid_giamsat244(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat245':
+                        caseid.caseid_giamsat245(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat246':
+                        caseid.caseid_giamsat246(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat247':
+                        caseid.caseid_giamsat247(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat248':
+                        caseid.caseid_giamsat248(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat249':
+                        caseid.caseid_giamsat249(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat250':
+                        caseid.caseid_giamsat250(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat251':
+                        caseid.caseid_giamsat251(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat252':
+                        caseid.caseid_giamsat252(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat253':
+                        caseid.caseid_giamsat253(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat254':
+                        caseid.caseid_giamsat254(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat255':
+                        caseid.caseid_giamsat255(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat256':
+                        caseid.caseid_giamsat256(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat257':
+                        caseid.caseid_giamsat257(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat258':
+                        caseid.caseid_giamsat258(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat259':
+                        caseid.caseid_giamsat259(self)
                 except:
                     pass
 
         if i == "2":
-            for case in list_mucdo1:
+            print(list_mucdo2)
+            for case in list_mucdo2:
                 try:
                     if case == 'GiamSat01':
                         caseid.caseid_giamsat01(self)
@@ -4440,11 +4781,197 @@ def monitor(self):
                 try:
                     if case == 'GiamSat222':
                         caseid.caseid_giamsat222(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat223':
+                        caseid.caseid_giamsat223(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat224':
+                        caseid.caseid_giamsat224(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat225':
+                        caseid.caseid_giamsat225(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat226':
+                        caseid.caseid_giamsat226(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat227':
+                        caseid.caseid_giamsat227(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat228':
+                        caseid.caseid_giamsat228(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat229':
+                        caseid.caseid_giamsat229(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat230':
+                        caseid.caseid_giamsat230(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat231':
+                        caseid.caseid_giamsat231(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat232':
+                        caseid.caseid_giamsat232(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat233':
+                        caseid.caseid_giamsat233(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat234':
+                        caseid.caseid_giamsat234(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat235':
+                        caseid.caseid_giamsat235(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat236':
+                        caseid.caseid_giamsat236(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat237':
+                        caseid.caseid_giamsat237(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat238':
+                        caseid.caseid_giamsat238(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat239':
+                        caseid.caseid_giamsat239(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat240':
+                        caseid.caseid_giamsat240(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat241':
+                        caseid.caseid_giamsat241(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat242':
+                        caseid.caseid_giamsat242(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat243':
+                        caseid.caseid_giamsat243(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat244':
+                        caseid.caseid_giamsat244(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat245':
+                        caseid.caseid_giamsat245(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat246':
+                        caseid.caseid_giamsat246(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat247':
+                        caseid.caseid_giamsat247(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat248':
+                        caseid.caseid_giamsat248(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat249':
+                        caseid.caseid_giamsat249(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat250':
+                        caseid.caseid_giamsat250(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat251':
+                        caseid.caseid_giamsat251(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat252':
+                        caseid.caseid_giamsat252(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat253':
+                        caseid.caseid_giamsat253(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat254':
+                        caseid.caseid_giamsat254(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat255':
+                        caseid.caseid_giamsat255(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat256':
+                        caseid.caseid_giamsat256(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat257':
+                        caseid.caseid_giamsat257(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat258':
+                        caseid.caseid_giamsat258(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat259':
+                        caseid.caseid_giamsat259(self)
                 except:
                     pass
 
         if i == "3":
-            for case in list_mucdo1:
+            print(list_mucdo3)
+            for case in list_mucdo3:
                 try:
                     if case == 'GiamSat01':
                         caseid.caseid_giamsat01(self)
@@ -5543,11 +6070,197 @@ def monitor(self):
                 try:
                     if case == 'GiamSat222':
                         caseid.caseid_giamsat222(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat223':
+                        caseid.caseid_giamsat223(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat224':
+                        caseid.caseid_giamsat224(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat225':
+                        caseid.caseid_giamsat225(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat226':
+                        caseid.caseid_giamsat226(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat227':
+                        caseid.caseid_giamsat227(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat228':
+                        caseid.caseid_giamsat228(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat229':
+                        caseid.caseid_giamsat229(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat230':
+                        caseid.caseid_giamsat230(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat231':
+                        caseid.caseid_giamsat231(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat232':
+                        caseid.caseid_giamsat232(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat233':
+                        caseid.caseid_giamsat233(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat234':
+                        caseid.caseid_giamsat234(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat235':
+                        caseid.caseid_giamsat235(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat236':
+                        caseid.caseid_giamsat236(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat237':
+                        caseid.caseid_giamsat237(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat238':
+                        caseid.caseid_giamsat238(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat239':
+                        caseid.caseid_giamsat239(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat240':
+                        caseid.caseid_giamsat240(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat241':
+                        caseid.caseid_giamsat241(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat242':
+                        caseid.caseid_giamsat242(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat243':
+                        caseid.caseid_giamsat243(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat244':
+                        caseid.caseid_giamsat244(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat245':
+                        caseid.caseid_giamsat245(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat246':
+                        caseid.caseid_giamsat246(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat247':
+                        caseid.caseid_giamsat247(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat248':
+                        caseid.caseid_giamsat248(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat249':
+                        caseid.caseid_giamsat249(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat250':
+                        caseid.caseid_giamsat250(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat251':
+                        caseid.caseid_giamsat251(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat252':
+                        caseid.caseid_giamsat252(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat253':
+                        caseid.caseid_giamsat253(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat254':
+                        caseid.caseid_giamsat254(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat255':
+                        caseid.caseid_giamsat255(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat256':
+                        caseid.caseid_giamsat256(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat257':
+                        caseid.caseid_giamsat257(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat258':
+                        caseid.caseid_giamsat258(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat259':
+                        caseid.caseid_giamsat259(self)
                 except:
                     pass
 
         if i == "4":
-            for case in list_mucdo1:
+            print(list_mucdo4)
+            for case in list_mucdo4:
                 try:
                     if case == 'GiamSat01':
                         caseid.caseid_giamsat01(self)
@@ -6648,6 +7361,192 @@ def monitor(self):
                         caseid.caseid_giamsat222(self)
                 except:
                     pass
+                try:
+                    if case == 'GiamSat223':
+                        caseid.caseid_giamsat223(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat224':
+                        caseid.caseid_giamsat224(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat225':
+                        caseid.caseid_giamsat225(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat226':
+                        caseid.caseid_giamsat226(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat227':
+                        caseid.caseid_giamsat227(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat228':
+                        caseid.caseid_giamsat228(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat229':
+                        caseid.caseid_giamsat229(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat230':
+                        caseid.caseid_giamsat230(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat231':
+                        caseid.caseid_giamsat231(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat232':
+                        caseid.caseid_giamsat232(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat233':
+                        caseid.caseid_giamsat233(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat234':
+                        caseid.caseid_giamsat234(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat235':
+                        caseid.caseid_giamsat235(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat236':
+                        caseid.caseid_giamsat236(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat237':
+                        caseid.caseid_giamsat237(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat238':
+                        caseid.caseid_giamsat238(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat239':
+                        caseid.caseid_giamsat239(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat240':
+                        caseid.caseid_giamsat240(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat241':
+                        caseid.caseid_giamsat241(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat242':
+                        caseid.caseid_giamsat242(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat243':
+                        caseid.caseid_giamsat243(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat244':
+                        caseid.caseid_giamsat244(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat245':
+                        caseid.caseid_giamsat245(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat246':
+                        caseid.caseid_giamsat246(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat247':
+                        caseid.caseid_giamsat247(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat248':
+                        caseid.caseid_giamsat248(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat249':
+                        caseid.caseid_giamsat249(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat250':
+                        caseid.caseid_giamsat250(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat251':
+                        caseid.caseid_giamsat251(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat252':
+                        caseid.caseid_giamsat252(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat253':
+                        caseid.caseid_giamsat253(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat254':
+                        caseid.caseid_giamsat254(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat255':
+                        caseid.caseid_giamsat255(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat256':
+                        caseid.caseid_giamsat256(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat257':
+                        caseid.caseid_giamsat257(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat258':
+                        caseid.caseid_giamsat258(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat259':
+                        caseid.caseid_giamsat259(self)
+                except:
+                    pass
+
 
 
 
@@ -6659,8 +7558,8 @@ def route(self):
     list_mucdo4 = []
     wordbook = openpyxl.load_workbook(var.checklistpath)
     sheet = wordbook.get_sheet_by_name("Checklist")
-    rownum = 376
-    while (rownum < 403):
+    rownum = 421
+    while (rownum < 448):
         rownum += 1
         rownum = str(rownum)
         if sheet["D"+rownum].value == "x":
@@ -6789,7 +7688,7 @@ def route(self):
                     pass
 
         if i == "2":
-            for case in list_mucdo1:
+            for case in list_mucdo2:
                 try:
                     if case == 'Route01':
                         caseid.caseid_route01(self)
@@ -6897,7 +7796,7 @@ def route(self):
                     pass
 
         if i == "3":
-            for case in list_mucdo1:
+            for case in list_mucdo3:
                 try:
                     if case == 'Route01':
                         caseid.caseid_route01(self)
@@ -7005,7 +7904,7 @@ def route(self):
                     pass
 
         if i == "4":
-            for case in list_mucdo1:
+            for case in list_mucdo4:
                 try:
                     if case == 'Route01':
                         caseid.caseid_route01(self)
@@ -7122,8 +8021,8 @@ def administration(self):
     list_mucdo4 = []
     wordbook = openpyxl.load_workbook(var.checklistpath)
     sheet = wordbook.get_sheet_by_name("Checklist")
-    rownum = 406
-    while (rownum < 469):
+    rownum = 450
+    while (rownum < 516):
         rownum += 1
         rownum = str(rownum)
         if sheet["D"+rownum].value == "x":
@@ -8210,8 +9109,8 @@ def report(self):
     list_mucdo4 = []
     wordbook = openpyxl.load_workbook(var.checklistpath)
     sheet = wordbook.get_sheet_by_name("Checklist")
-    rownum = 473
-    while (rownum < 556):
+    rownum = 518
+    while (rownum < 601):
         rownum += 1
         rownum = str(rownum)
         if sheet["D"+rownum].value == "x":
@@ -9314,8 +10213,8 @@ def videoclip(self):
     list_mucdo4 = []
     wordbook = openpyxl.load_workbook(var.checklistpath)
     sheet = wordbook.get_sheet_by_name("Checklist")
-    rownum = 558
-    while (rownum < 575):
+    rownum = 603
+    while (rownum < 620):
         rownum += 1
         rownum = str(rownum)
         if sheet["D"+rownum].value == "x":
@@ -9598,8 +10497,8 @@ def image(self):
     list_mucdo4 = []
     wordbook = openpyxl.load_workbook(var.checklistpath)
     sheet = wordbook.get_sheet_by_name("Checklist")
-    rownum = 577
-    while (rownum < 606):
+    rownum = 622
+    while (rownum < 651):
         rownum += 1
         rownum = str(rownum)
         if sheet["D"+rownum].value == "x":
@@ -10046,8 +10945,8 @@ def utility(self):
     list_mucdo4 = []
     wordbook = openpyxl.load_workbook(var.checklistpath)
     sheet = wordbook.get_sheet_by_name("Checklist")
-    rownum = 608
-    while (rownum < 640):
+    rownum = 653
+    while (rownum < 685):
         rownum += 1
         rownum = str(rownum)
         if sheet["D"+rownum].value == "x":
@@ -10556,8 +11455,8 @@ def ai(self):
     list_mucdo4 = []
     wordbook = openpyxl.load_workbook(var.checklistpath)
     sheet = wordbook.get_sheet_by_name("Checklist")
-    rownum = 642
-    while (rownum < 650):
+    rownum = 687
+    while (rownum < 694):
         rownum += 1
         rownum = str(rownum)
         if sheet["D"+rownum].value == "x":

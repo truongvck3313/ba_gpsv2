@@ -943,3 +943,12 @@ check_login_v2sai = "//*[text()='Trần Quang Trường PQA']"
 todate_input = "//*[@id='ctl00_ctl00_MainContent_Content_dtToDate_txtDate']"
 admin_group_nhombacn = "//*[@id='divCreateGroup']//*[text()='nhóm bậc n']"
 admin_group_nhombac1 = "//*[@id='divCreateGroup']//*[text()='nhóm bậc 1']"
+ctyanhngocminh = "//*[text()='ctyanhngocminh [7669]']"
+truonganphat = "//*[text()='Công ty TNHH MTV XDTM và DVVT Trường An Phát [7669]']"
+cttoancau = "//*[text()='Công ty TNHH Dịch vụ Tiếp Vận Toàn Cầu (GLS) [71097]']"
+tranquocdungdn = "//*[text()='Trần Quốc Dũng [71097]']"
+group_d = "//*[@id='lstLandmarksGroup']//*[text()='nhom diem d']"
+
+
+
+
