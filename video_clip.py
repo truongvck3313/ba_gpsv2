@@ -102,7 +102,12 @@ class video_clip:
 
     def playbackvideo_overview_checkapi(self, code, eventname, result):       #Xem dữ liệu video Tổng quan - check api trường HasVideoStream
         var.driver.implicitly_wait(5)
-        check_bacam(950, video_clip.video)
+        try:
+            check_bacam(950, video_clip.video)
+        except:
+            video_clip.playbackvideo_overview_search(self, "", "", "")
+            check_bacam(950, video_clip.video)
+
         video_api = str(var.readData(var.path_luutamthoi, 'Sheet1', 37, 2))
         print(video_api)
         logging.info("Video clip - Xem dữ liệu video Tổng quan")
@@ -186,7 +191,13 @@ class video_clip:
 
     def playbackvideo_detail_checkapi(self, code, eventname, result):       #Xem dữ liệu video Chi tiết - check api trường HasVideoStream
         var.driver.implicitly_wait(5)
-        check_bacam(950, video_clip.video)
+        try:
+            check_bacam(950, video_clip.video)
+        except:
+            video_clip.playbackvideo_detail_search(self, "", "", "")
+            check_bacam(950, video_clip.video)
+
+
         video_api = str(var.readData(var.path_luutamthoi, 'Sheet1', 37, 2))
         print(video_api)
         logging.info("Video clip - Xem dữ liệu video Tổng quan")
@@ -384,7 +395,13 @@ class video_clip:
     def cam_tracking_checkapi(self, code, eventname, result):       #Giám sát camera - check api trường HasVideoStream
         var.driver.implicitly_wait(5)
         try:
-            check_bacam(950, video_clip.video)
+            try:
+                check_bacam(950, video_clip.video)
+            except:
+                video_clip.cam_tracking_search(self, "", "", "")
+                check_bacam(950, video_clip.video)
+
+
             video_api = str(var.readData(var.path_luutamthoi, 'Sheet1', 37, 2))
             print(video_api)
             logging.info("Video clip - Giám sát camera")
