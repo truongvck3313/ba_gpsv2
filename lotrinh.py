@@ -8,14 +8,17 @@ import chucnangkhac
 import login
 from seleniumwire.utils import decode as sw_decode
 from urllib.request import urlretrieve
-
+import openpyxl
+from xls2xlsx import XLS2XLSX
+import os
+import shutil
 
 file_name = var.datatestpath
 with open(file_name, 'r', encoding='utf-8') as f:
     data = json.load(f, strict=False)
 
 logging.basicConfig(handlers=[logging.FileHandler(filename=var.logpath,
-                                                  encoding='utf-8', mode='w')],  # mode='a+'
+                                                  encoding='utf-8', mode='a+')],  # mode='a+'
                     format="%(asctime)s %(name)s:%(levelname)s:%(message)s",
                     datefmt="%F %A %T",
                     level=logging.INFO)
@@ -202,24 +205,49 @@ class route:
         del var.driver.requests
         time.sleep(1)
         var.driver.find_element(By.XPATH, var.icon_downloadexcel).click()
-        time.sleep(10)
-        for request in var.driver.requests:
-            print("url:")
-            print(request.url)
-            logging.info("Lộ trình - Trang lộ trình")
-            logging.info("Mã - " + code)
-            logging.info("Tên sự kiện - " + eventname)
-            logging.info("Kết quả - " + result)
-            try:
-                urlretrieve(request.url, var.excelpath + "/lo_trinh.xlsx")
-                chucnangkhac.delete_excel()
-                logging.info("True")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
-            except:
-                logging.info("False")
-                var.driver.save_screenshot(var.imagepath + code + "_LoTrinh_DownloadExcel.png")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_LoTrinh_DownloadExcel.png")
+        time.sleep(12)
+        # for request in var.driver.requests:
+        #     print("url:")
+        #     print(request.url)
+        #     logging.info("Lộ trình - Trang lộ trình")
+        #     logging.info("Mã - " + code)
+        #     logging.info("Tên sự kiện - " + eventname)
+        #     logging.info("Kết quả - " + result)
+        #     try:
+        #         urlretrieve(request.url, var.excelpath + "/lo_trinh.xlsx")
+        #         chucnangkhac.delete_excel()
+        #         logging.info("True")
+        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+        #     except:
+        #         logging.info("False")
+        #         var.driver.save_screenshot(var.imagepath + code + "_LoTrinh_DownloadExcel.png")
+        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
+        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_LoTrinh_DownloadExcel.png")
+        filename = max([var.excelpath + "\\" + f for f in os.listdir(var.excelpath)], key=os.path.getctime)
+        shutil.move(filename, os.path.join(var.excelpath, r"lotrinh.xlsx"))
+        # #Đọc check file excel
+        bangchucai = ['A', 'B', 'C', 'D', 'E']
+        wordbook = openpyxl.load_workbook(var.excelpath+"/lotrinh.xlsX")
+        sheet = wordbook.get_sheet_by_name("Data")
+
+        logging.info("Lộ trình - download excel")
+        logging.info("Mã - " + code)
+        logging.info("Tên sự kiện - " + eventname)
+        logging.info("Kết quả - " + result)
+        for column in bangchucai:
+            print(sheet[column + "4"].value)
+            print(sheet[column + "4"])
+            chucnangkhac.write_result_excelreport_clear_data(code, sheet, column, 'Data', "4", "A4", "STT")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "4", "B4", "Ngày giờ")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "4", "C4", "Vận tốc GPS")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "4", "D4", "Km")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "4", "E4", "Địa chỉ")
+
+
+
+
+
+
 
 
     def loaddata(self):

@@ -29,7 +29,7 @@ with open(file_name, 'r', encoding='utf-8') as f:
     data = json.load(f, strict=False)
 
 logging.basicConfig(handlers=[logging.FileHandler(filename=var.logpath,
-                                                  encoding='utf-8', mode='w')],  # mode='a+'
+                                                  encoding='utf-8', mode='a+')],  # mode='a+'
                     format="%(asctime)s %(name)s:%(levelname)s:%(message)s",
                     datefmt="%F %A %T",
                     level=logging.INFO)
@@ -1044,8 +1044,7 @@ class activity_report:      #Báo cáo hoạt động
         var.driver.find_element(By.XPATH, var.report_search).click()
         time.sleep(40)
         print("aaaa")
-        chucnangkhac.write_result_displayed_try(code, eventname, result,
-                                                "Báo cáo quá tốc độ",
+        chucnangkhac.write_result_displayed_try(code, eventname, result,"Báo cáo quá tốc độ",
                                                 var.check_activity_synthesis_report_search,
                                                 "_BaoCaoDoanhNghiep_BaoCaoQuaTocDo_TimKiem.png")
 

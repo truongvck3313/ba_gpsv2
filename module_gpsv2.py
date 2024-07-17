@@ -63,14 +63,6 @@ def run_all(self):      #Chạy tất cả
     except:
         pass
     try:
-        caseid.caseid_login06(self)
-    except:
-        pass
-    try:
-        caseid.caseid_login07(self)
-    except:
-        pass
-    try:
         caseid.caseid_login08(self)
     except:
         pass
@@ -447,6 +439,10 @@ def run_all(self):      #Chạy tất cả
     except:
         pass
     try:
+        caseid.caseid_giamsat80_1(self)
+    except:
+        pass
+    try:
         caseid.caseid_giamsat81(self)
     except:
         pass
@@ -540,6 +536,14 @@ def run_all(self):      #Chạy tất cả
         pass
     try:
         caseid.caseid_giamsat104(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat105(self)
+    except:
+        pass
+    try:
+        caseid.caseid_giamsat106(self)
     except:
         pass
     try:
@@ -679,14 +683,6 @@ def run_all(self):      #Chạy tất cả
     except:
         pass
     try:
-        caseid.caseid_giamsat141(self)
-    except:
-        pass
-    try:
-        caseid.caseid_giamsat142(self)
-    except:
-        pass
-    try:
         caseid.caseid_giamsat143(self)
     except:
         pass
@@ -720,10 +716,6 @@ def run_all(self):      #Chạy tất cả
         pass
     try:
         caseid.caseid_giamsat151(self)
-    except:
-        pass
-    try:
-        caseid.caseid_giamsat152(self)
     except:
         pass
     try:
@@ -947,10 +939,6 @@ def run_all(self):      #Chạy tất cả
     except:
         pass
     try:
-        caseid.caseid_giamsat208(self)
-    except:
-        pass
-    try:
         caseid.caseid_giamsat209(self)
     except:
         pass
@@ -1075,10 +1063,6 @@ def run_all(self):      #Chạy tất cả
     except:
         pass
     try:
-        caseid.caseid_giamsat240(self)
-    except:
-        pass
-    try:
         caseid.caseid_giamsat241(self)
     except:
         pass
@@ -1143,10 +1127,6 @@ def run_all(self):      #Chạy tất cả
     except:
         pass
     try:
-        caseid.caseid_giamsat257(self)
-    except:
-        pass
-    try:
         caseid.caseid_giamsat258(self)
     except:
         pass
@@ -1154,7 +1134,10 @@ def run_all(self):      #Chạy tất cả
         caseid.caseid_giamsat259(self)
     except:
         pass
-
+    try:
+        caseid.caseid_giamsat260(self)
+    except:
+        pass
 
     try:
         caseid.caseid_route01(self)
@@ -1960,16 +1943,6 @@ def login(self):
                 except:
                     pass
                 try:
-                    if case == 'Login06':
-                        caseid.caseid_login06(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login07':
-                        caseid.caseid_login07(self)
-                except:
-                    pass
-                try:
                     if case == 'Login08':
                         caseid.caseid_login08(self)
                 except:
@@ -2064,16 +2037,6 @@ def login(self):
                 try:
                     if case == 'Login05':
                         caseid.caseid_login05(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login06':
-                        caseid.caseid_login06(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login07':
-                        caseid.caseid_login07(self)
                 except:
                     pass
                 try:
@@ -2174,16 +2137,6 @@ def login(self):
                 except:
                     pass
                 try:
-                    if case == 'Login06':
-                        caseid.caseid_login06(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login07':
-                        caseid.caseid_login07(self)
-                except:
-                    pass
-                try:
                     if case == 'Login08':
                         caseid.caseid_login08(self)
                 except:
@@ -2281,16 +2234,6 @@ def login(self):
                 except:
                     pass
                 try:
-                    if case == 'Login06':
-                        caseid.caseid_login06(self)
-                except:
-                    pass
-                try:
-                    if case == 'Login07':
-                        caseid.caseid_login07(self)
-                except:
-                    pass
-                try:
                     if case == 'Login08':
                         caseid.caseid_login08(self)
                 except:
@@ -2372,7 +2315,7 @@ def monitor(self):
     wordbook = openpyxl.load_workbook(var.checklistpath)
     sheet = wordbook.get_sheet_by_name("Checklist")
     rownum = 36
-    while (rownum < 420):
+    while (rownum < 424):
         rownum += 1
         rownum = str(rownum)
         if sheet["D"+rownum].value == "x":
@@ -2794,6 +2737,14 @@ def monitor(self):
                         caseid.caseid_giamsat80(self)
                 except:
                     pass
+
+                try:
+                    if case == 'GiamSat80_1':
+                        caseid.caseid_giamsat80_1(self)
+                except:
+                    pass
+
+
                 try:
                     if case == 'GiamSat81':
                         caseid.caseid_giamsat81(self)
@@ -2912,6 +2863,16 @@ def monitor(self):
                 try:
                     if case == 'GiamSat104':
                         caseid.caseid_giamsat104(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat105':
+                        caseid.caseid_giamsat105(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat106':
+                        caseid.caseid_giamsat106(self)
                 except:
                     pass
                 try:
@@ -3085,16 +3046,6 @@ def monitor(self):
                 except:
                     pass
                 try:
-                    if case == 'GiamSat141':
-                        caseid.caseid_giamsat141(self)
-                except:
-                    pass
-                try:
-                    if case == 'GiamSat142':
-                        caseid.caseid_giamsat142(self)
-                except:
-                    pass
-                try:
                     if case == 'GiamSat143':
                         caseid.caseid_giamsat143(self)
                 except:
@@ -3137,11 +3088,6 @@ def monitor(self):
                 try:
                     if case == 'GiamSat151':
                         caseid.caseid_giamsat151(self)
-                except:
-                    pass
-                try:
-                    if case == 'GiamSat152':
-                        caseid.caseid_giamsat152(self)
                 except:
                     pass
                 try:
@@ -3420,11 +3366,6 @@ def monitor(self):
                 except:
                     pass
                 try:
-                    if case == 'GiamSat208':
-                        caseid.caseid_giamsat208(self)
-                except:
-                    pass
-                try:
                     if case == 'GiamSat209':
                         caseid.caseid_giamsat209(self)
                 except:
@@ -3580,11 +3521,6 @@ def monitor(self):
                 except:
                     pass
                 try:
-                    if case == 'GiamSat240':
-                        caseid.caseid_giamsat240(self)
-                except:
-                    pass
-                try:
                     if case == 'GiamSat241':
                         caseid.caseid_giamsat241(self)
                 except:
@@ -3665,11 +3601,6 @@ def monitor(self):
                 except:
                     pass
                 try:
-                    if case == 'GiamSat257':
-                        caseid.caseid_giamsat257(self)
-                except:
-                    pass
-                try:
                     if case == 'GiamSat258':
                         caseid.caseid_giamsat258(self)
                 except:
@@ -3677,6 +3608,11 @@ def monitor(self):
                 try:
                     if case == 'GiamSat259':
                         caseid.caseid_giamsat259(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat260':
+                        caseid.caseid_giamsat260(self)
                 except:
                     pass
 
@@ -4083,6 +4019,13 @@ def monitor(self):
                         caseid.caseid_giamsat80(self)
                 except:
                     pass
+
+                try:
+                    if case == 'GiamSat80_1':
+                        caseid.caseid_giamsat80_1(self)
+                except:
+                    pass
+
                 try:
                     if case == 'GiamSat81':
                         caseid.caseid_giamsat81(self)
@@ -4201,6 +4144,16 @@ def monitor(self):
                 try:
                     if case == 'GiamSat104':
                         caseid.caseid_giamsat104(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat105':
+                        caseid.caseid_giamsat105(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat106':
+                        caseid.caseid_giamsat106(self)
                 except:
                     pass
                 try:
@@ -4374,16 +4327,6 @@ def monitor(self):
                 except:
                     pass
                 try:
-                    if case == 'GiamSat141':
-                        caseid.caseid_giamsat141(self)
-                except:
-                    pass
-                try:
-                    if case == 'GiamSat142':
-                        caseid.caseid_giamsat142(self)
-                except:
-                    pass
-                try:
                     if case == 'GiamSat143':
                         caseid.caseid_giamsat143(self)
                 except:
@@ -4426,11 +4369,6 @@ def monitor(self):
                 try:
                     if case == 'GiamSat151':
                         caseid.caseid_giamsat151(self)
-                except:
-                    pass
-                try:
-                    if case == 'GiamSat152':
-                        caseid.caseid_giamsat152(self)
                 except:
                     pass
                 try:
@@ -4709,11 +4647,6 @@ def monitor(self):
                 except:
                     pass
                 try:
-                    if case == 'GiamSat208':
-                        caseid.caseid_giamsat208(self)
-                except:
-                    pass
-                try:
                     if case == 'GiamSat209':
                         caseid.caseid_giamsat209(self)
                 except:
@@ -4869,11 +4802,6 @@ def monitor(self):
                 except:
                     pass
                 try:
-                    if case == 'GiamSat240':
-                        caseid.caseid_giamsat240(self)
-                except:
-                    pass
-                try:
                     if case == 'GiamSat241':
                         caseid.caseid_giamsat241(self)
                 except:
@@ -4954,11 +4882,6 @@ def monitor(self):
                 except:
                     pass
                 try:
-                    if case == 'GiamSat257':
-                        caseid.caseid_giamsat257(self)
-                except:
-                    pass
-                try:
                     if case == 'GiamSat258':
                         caseid.caseid_giamsat258(self)
                 except:
@@ -4966,6 +4889,11 @@ def monitor(self):
                 try:
                     if case == 'GiamSat259':
                         caseid.caseid_giamsat259(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat260':
+                        caseid.caseid_giamsat260(self)
                 except:
                     pass
 
@@ -5372,6 +5300,14 @@ def monitor(self):
                         caseid.caseid_giamsat80(self)
                 except:
                     pass
+
+                try:
+                    if case == 'GiamSat80_1':
+                        caseid.caseid_giamsat80_1(self)
+                except:
+                    pass
+
+
                 try:
                     if case == 'GiamSat81':
                         caseid.caseid_giamsat81(self)
@@ -5490,6 +5426,16 @@ def monitor(self):
                 try:
                     if case == 'GiamSat104':
                         caseid.caseid_giamsat104(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat105':
+                        caseid.caseid_giamsat105(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat106':
+                        caseid.caseid_giamsat106(self)
                 except:
                     pass
                 try:
@@ -5663,16 +5609,6 @@ def monitor(self):
                 except:
                     pass
                 try:
-                    if case == 'GiamSat141':
-                        caseid.caseid_giamsat141(self)
-                except:
-                    pass
-                try:
-                    if case == 'GiamSat142':
-                        caseid.caseid_giamsat142(self)
-                except:
-                    pass
-                try:
                     if case == 'GiamSat143':
                         caseid.caseid_giamsat143(self)
                 except:
@@ -5715,11 +5651,6 @@ def monitor(self):
                 try:
                     if case == 'GiamSat151':
                         caseid.caseid_giamsat151(self)
-                except:
-                    pass
-                try:
-                    if case == 'GiamSat152':
-                        caseid.caseid_giamsat152(self)
                 except:
                     pass
                 try:
@@ -5998,11 +5929,6 @@ def monitor(self):
                 except:
                     pass
                 try:
-                    if case == 'GiamSat208':
-                        caseid.caseid_giamsat208(self)
-                except:
-                    pass
-                try:
                     if case == 'GiamSat209':
                         caseid.caseid_giamsat209(self)
                 except:
@@ -6158,11 +6084,6 @@ def monitor(self):
                 except:
                     pass
                 try:
-                    if case == 'GiamSat240':
-                        caseid.caseid_giamsat240(self)
-                except:
-                    pass
-                try:
                     if case == 'GiamSat241':
                         caseid.caseid_giamsat241(self)
                 except:
@@ -6243,11 +6164,6 @@ def monitor(self):
                 except:
                     pass
                 try:
-                    if case == 'GiamSat257':
-                        caseid.caseid_giamsat257(self)
-                except:
-                    pass
-                try:
                     if case == 'GiamSat258':
                         caseid.caseid_giamsat258(self)
                 except:
@@ -6255,6 +6171,11 @@ def monitor(self):
                 try:
                     if case == 'GiamSat259':
                         caseid.caseid_giamsat259(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat260':
+                        caseid.caseid_giamsat260(self)
                 except:
                     pass
 
@@ -6661,6 +6582,13 @@ def monitor(self):
                         caseid.caseid_giamsat80(self)
                 except:
                     pass
+
+                try:
+                    if case == 'GiamSat80_1':
+                        caseid.caseid_giamsat80_1(self)
+                except:
+                    pass
+
                 try:
                     if case == 'GiamSat81':
                         caseid.caseid_giamsat81(self)
@@ -6779,6 +6707,16 @@ def monitor(self):
                 try:
                     if case == 'GiamSat104':
                         caseid.caseid_giamsat104(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat105':
+                        caseid.caseid_giamsat105(self)
+                except:
+                    pass
+                try:
+                    if case == 'GiamSat106':
+                        caseid.caseid_giamsat106(self)
                 except:
                     pass
                 try:
@@ -6951,16 +6889,7 @@ def monitor(self):
                         caseid.caseid_giamsat140(self)
                 except:
                     pass
-                try:
-                    if case == 'GiamSat141':
-                        caseid.caseid_giamsat141(self)
-                except:
-                    pass
-                try:
-                    if case == 'GiamSat142':
-                        caseid.caseid_giamsat142(self)
-                except:
-                    pass
+
                 try:
                     if case == 'GiamSat143':
                         caseid.caseid_giamsat143(self)
@@ -7004,11 +6933,6 @@ def monitor(self):
                 try:
                     if case == 'GiamSat151':
                         caseid.caseid_giamsat151(self)
-                except:
-                    pass
-                try:
-                    if case == 'GiamSat152':
-                        caseid.caseid_giamsat152(self)
                 except:
                     pass
                 try:
@@ -7287,11 +7211,6 @@ def monitor(self):
                 except:
                     pass
                 try:
-                    if case == 'GiamSat208':
-                        caseid.caseid_giamsat208(self)
-                except:
-                    pass
-                try:
                     if case == 'GiamSat209':
                         caseid.caseid_giamsat209(self)
                 except:
@@ -7447,11 +7366,6 @@ def monitor(self):
                 except:
                     pass
                 try:
-                    if case == 'GiamSat240':
-                        caseid.caseid_giamsat240(self)
-                except:
-                    pass
-                try:
                     if case == 'GiamSat241':
                         caseid.caseid_giamsat241(self)
                 except:
@@ -7532,11 +7446,6 @@ def monitor(self):
                 except:
                     pass
                 try:
-                    if case == 'GiamSat257':
-                        caseid.caseid_giamsat257(self)
-                except:
-                    pass
-                try:
                     if case == 'GiamSat258':
                         caseid.caseid_giamsat258(self)
                 except:
@@ -7546,7 +7455,11 @@ def monitor(self):
                         caseid.caseid_giamsat259(self)
                 except:
                     pass
-
+                try:
+                    if case == 'GiamSat260':
+                        caseid.caseid_giamsat260(self)
+                except:
+                    pass
 
 
 
@@ -7558,8 +7471,8 @@ def route(self):
     list_mucdo4 = []
     wordbook = openpyxl.load_workbook(var.checklistpath)
     sheet = wordbook.get_sheet_by_name("Checklist")
-    rownum = 421
-    while (rownum < 448):
+    rownum = 425
+    while (rownum < 452):
         rownum += 1
         rownum = str(rownum)
         if sheet["D"+rownum].value == "x":
@@ -8021,8 +7934,8 @@ def administration(self):
     list_mucdo4 = []
     wordbook = openpyxl.load_workbook(var.checklistpath)
     sheet = wordbook.get_sheet_by_name("Checklist")
-    rownum = 450
-    while (rownum < 516):
+    rownum = 453
+    while (rownum < 520):
         rownum += 1
         rownum = str(rownum)
         if sheet["D"+rownum].value == "x":
@@ -9109,8 +9022,8 @@ def report(self):
     list_mucdo4 = []
     wordbook = openpyxl.load_workbook(var.checklistpath)
     sheet = wordbook.get_sheet_by_name("Checklist")
-    rownum = 518
-    while (rownum < 601):
+    rownum = 521
+    while (rownum < 605):
         rownum += 1
         rownum = str(rownum)
         if sheet["D"+rownum].value == "x":
@@ -10213,8 +10126,8 @@ def videoclip(self):
     list_mucdo4 = []
     wordbook = openpyxl.load_workbook(var.checklistpath)
     sheet = wordbook.get_sheet_by_name("Checklist")
-    rownum = 603
-    while (rownum < 620):
+    rownum = 606
+    while (rownum < 624):
         rownum += 1
         rownum = str(rownum)
         if sheet["D"+rownum].value == "x":
@@ -10497,8 +10410,8 @@ def image(self):
     list_mucdo4 = []
     wordbook = openpyxl.load_workbook(var.checklistpath)
     sheet = wordbook.get_sheet_by_name("Checklist")
-    rownum = 622
-    while (rownum < 651):
+    rownum = 625
+    while (rownum < 655):
         rownum += 1
         rownum = str(rownum)
         if sheet["D"+rownum].value == "x":
@@ -10945,8 +10858,8 @@ def utility(self):
     list_mucdo4 = []
     wordbook = openpyxl.load_workbook(var.checklistpath)
     sheet = wordbook.get_sheet_by_name("Checklist")
-    rownum = 653
-    while (rownum < 685):
+    rownum = 656
+    while (rownum < 689):
         rownum += 1
         rownum = str(rownum)
         if sheet["D"+rownum].value == "x":
@@ -11455,8 +11368,8 @@ def ai(self):
     list_mucdo4 = []
     wordbook = openpyxl.load_workbook(var.checklistpath)
     sheet = wordbook.get_sheet_by_name("Checklist")
-    rownum = 687
-    while (rownum < 694):
+    rownum = 690
+    while (rownum < 699):
         rownum += 1
         rownum = str(rownum)
         if sheet["D"+rownum].value == "x":

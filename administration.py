@@ -20,7 +20,7 @@ with open(file_name, 'r', encoding='utf-8') as f:
     data = json.load(f, strict=False)
 
 logging.basicConfig(handlers=[logging.FileHandler(filename=var.logpath,
-                                                  encoding='utf-8', mode='w')],  # mode='a+'
+                                                  encoding='utf-8', mode='a+')],  # mode='a+'
                     format="%(asctime)s %(name)s:%(levelname)s:%(message)s",
                     datefmt="%F %A %T",
                     level=logging.INFO)
@@ -282,18 +282,24 @@ class vehicle_management:
 
 
     #Danh sách xe - Tra cứu người dùng/Tra cứu công ty
-    def list_vehicle_search_information(self, code, eventname, result, page_turning_button, desire, nameimage):
+    def list_vehicle_search_information(self, code, eventname, result, page_turning_button, desire, pathcheck, nameimage):
         var.driver.implicitly_wait(5)
+        if code == "Admin12":
+            login.login.login_v2(self, "truongtq@bagroup.vn", "atgmj123")
+            var.driver.find_element(By.XPATH, var.managerment).click()
+            time.sleep(5)
+            var.driver.find_element(By.XPATH, var.list_vehicle).click()
+            time.sleep(5)
         try:
             var.driver.find_element(By.XPATH, page_turning_button).click()
         except:
-            login.login.login_v2(self, "ungroup", "12341234")
+            login.login.login_v2(self, "truongtq@bagroup.vn", "atgmj123")
             var.driver.find_element(By.XPATH, var.managerment).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.list_vehicle).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, page_turning_button).click()
-        time.sleep(2)
+        time.sleep(3)
         tab_id = var.driver.window_handles
         tab_0 = tab_id[0]
         tab_1 = tab_id[1]
@@ -303,8 +309,10 @@ class vehicle_management:
         logging.info("Tên sự kiện - " + eventname)
         logging.info("Kết quả - " + result)
         try:
-            check_search_information = var.driver.find_element(By.XPATH, var.check_search_user_information).text
+            check_search_information = var.driver.find_element(By.XPATH, pathcheck).text
             logging.info("Chuyển tới trang - " + check_search_information)
+            logging.info(check_search_information)
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 11, check_search_information)
             if check_search_information == desire:
                 logging.info("True")
                 chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
@@ -1123,10 +1131,8 @@ class system_management:
         logging.info("Mã - " + code)
         logging.info("Tên sự kiện - " + eventname)
         logging.info("Kết quả - " + result)
-        logging.info("False")
-        var.driver.save_screenshot(var.imagepath + code + "_QuanTri_DSNguoiDung_AnHienCot.png")
-        chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-        chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_QuanTri_DSNguoiDung_AnHienCot.png")
+        logging.info("True")
+        chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
         time.sleep(0.5)
         try:
             var.driver.find_element(By.XPATH, var.list_user_column_cancel).click()

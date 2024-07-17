@@ -91,7 +91,12 @@ class images:
 
     def tracking_by_images_checkapi(self, code, eventname, result):       #Giám sát bằng hình ảnh - check api trường HasImageCapture
         var.driver.implicitly_wait(5)
-        video_clip.check_bacam(950, images.license_plate)
+        try:
+            video_clip.check_bacam(950, images.license_plate)
+        except:
+            images.tracking_by_images_search(self, "", "", "")
+            video_clip.check_bacam(950, images.license_plate)
+
         video_api = str(var.readData(var.path_luutamthoi, 'Sheet1', 36, 2))
         print(video_api)
         logging.info("Hình ảnh - Giám sát bằng hình ảnh")
@@ -217,7 +222,13 @@ class images:
 
     def tracking_vehicle_by_images_online_checkapi(self, code, eventname, result):       #Giám sát hình ảnh trực tuyến - check api trường HasImageCapture
         var.driver.implicitly_wait(5)
-        video_clip.check_bacam(950, images.license_plate)
+        try:
+            video_clip.check_bacam(950, images.license_plate)
+        except:
+            images.tracking_vehicle_by_images_online_search(self, "", "", "")
+            video_clip.check_bacam(950, images.license_plate)
+
+
         video_api = str(var.readData(var.path_luutamthoi, 'Sheet1', 36, 2))
         print(video_api)
         logging.info("Hình ảnh - Giám sát hình ảnh trực tuyến")
@@ -335,7 +346,12 @@ class images:
 
     def tracking_single_vehicle_checkapi(self, code, eventname, result):       #Giám sát bằng hình ảnh 1 xe (thư viện ảnh) - check api trường HasImageCapture
         var.driver.implicitly_wait(5)
-        video_clip.check_bacam(950, images.license_plate)
+        try:
+            video_clip.check_bacam(950, images.license_plate)
+        except:
+            images.tracking_single_vehicle_search(self, "", "", "")
+            video_clip.check_bacam(950, images.license_plate)
+
         video_api = str(var.readData(var.path_luutamthoi, 'Sheet1', 36, 2))
         print(video_api)
         logging.info("Hình ảnh - Giám sát bằng hình ảnh 1 xe (thư viện ảnh)")
@@ -464,7 +480,13 @@ class images:
 
     def camera_image_management_checkapi(self, code, eventname, result):       #Quản lý ảnh camera - check api trường HasImageCapture
         var.driver.implicitly_wait(5)
-        video_clip.check_bacam(950, images.license_plate)
+        try:
+            video_clip.check_bacam(950, images.license_plate)
+        except:
+            images.camera_image_management_search(self, "", "", "")
+            video_clip.check_bacam(950, images.license_plate)
+
+
         video_api = str(var.readData(var.path_luutamthoi, 'Sheet1', 36, 2))
         print(video_api)
         logging.info("Hình ảnh - Quản lý ảnh camera")
@@ -561,7 +583,12 @@ class images:
 
     def view_camera_photos_checkapi(self, code, eventname, result):       #Xem ảnh Camera - check api trường HasImageCapture
         var.driver.implicitly_wait(5)
-        video_clip.check_bacam(950, images.license_plate)
+        try:
+            video_clip.check_bacam(950, images.license_plate)
+        except:
+            images.view_camera_photos_search(self, "", "", "")
+            video_clip.check_bacam(950, images.license_plate)
+
         video_api = str(var.readData(var.path_luutamthoi, 'Sheet1', 36, 2))
         print(video_api)
         logging.info("Hình ảnh - Xem ảnh Camera")

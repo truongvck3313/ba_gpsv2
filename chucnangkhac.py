@@ -32,6 +32,14 @@ def timerun():
 
 
 
+def clear_log():
+    logging.basicConfig(handlers=[logging.FileHandler(filename=var.logpath,
+                                                      encoding='utf-8', mode='w')],  # mode='a+', w
+                        format="%(asctime)s %(name)s:%(levelname)s:%(message)s",
+                        datefmt="%F %A %T",
+                        level=logging.INFO)
+
+
 def clearData(file,sheetName,ketqua, tenanh, data):
     wordbook = openpyxl.load_workbook(file)
     sheet = wordbook.get_sheet_by_name(sheetName)

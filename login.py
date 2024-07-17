@@ -12,7 +12,7 @@ with open(file_name, 'r', encoding='utf-8') as f:
     data = json.load(f, strict=False)
 
 logging.basicConfig(handlers=[logging.FileHandler(filename= var.logpath,
-                                                 encoding='utf-8', mode='w')], #mode='a+'
+                                                 encoding='utf-8', mode='a+')], #mode='a+'
                     format="%(asctime)s %(name)s:%(levelname)s:%(message)s",
                     datefmt="%F %A %T",
                     level=logging.INFO)
@@ -36,9 +36,10 @@ class login:
         var.driver.maximize_window()
         var.driver.get(var.linktest)
         time.sleep(3)
+        var.driver.find_element(By.XPATH, var.login_user).clear()
         var.driver.find_element(By.XPATH, var.login_user).send_keys(user)
+        var.driver.find_element(By.XPATH, var.login_password).clear()
         var.driver.find_element(By.XPATH, var.login_password).send_keys(password)
-        var.driver.find_element(By.XPATH, var.login_ghinhodangnhap).click()
         var.driver.find_element(By.XPATH, var.dangnhap).click()
         # time.sleep(3)
         # var.driver.find_element(By.XPATH, var.iconngonngu_tienganh)
@@ -146,9 +147,10 @@ class login:
         var.driver.maximize_window()
         var.driver.get(var.linktest)
         time.sleep(2)
+        var.driver.find_element(By.XPATH, var.login_user).clear()
         var.driver.find_element(By.XPATH, var.login_user).send_keys(user)
+        var.driver.find_element(By.XPATH, var.login_password).clear()
         var.driver.find_element(By.XPATH, var.login_password).send_keys(password)
-        var.driver.find_element(By.XPATH, var.login_ghinhodangnhap).click()
         var.driver.find_element(By.XPATH, var.dangnhap).click()
         time.sleep(1.5)
         logging.info("Tài khoản - " + user)
