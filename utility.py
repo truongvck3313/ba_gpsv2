@@ -240,10 +240,10 @@ class landmark_administraintion:      #quản trị điểm
         if var.driver.find_element(By.XPATH, var.point_do_not_assigned).is_selected() == False:
             var.driver.find_element(By.XPATH, var.point_do_not_assigned).click()
 
-        if var.driver.find_element(By.XPATH, var.point_in_landmarks_group).is_selected() == False:
+        if var.driver.find_element(By.XPATH, var.point_in_landmarks_group).is_selected() == True:
             var.driver.find_element(By.XPATH, var.point_in_landmarks_group).click()
 
-        if var.driver.find_element(By.XPATH, var.point_in_displayed_place).is_selected() == False:
+        if var.driver.find_element(By.XPATH, var.point_in_displayed_place).is_selected() == True:
             var.driver.find_element(By.XPATH, var.point_in_displayed_place).click()
 
         # var.driver.find_element(By.XPATH, var.group_d).click()

@@ -127,6 +127,11 @@ class vehicle_management:
     def type_vehicle_delete(self, code, eventname, result):
         var.driver.implicitly_wait(5)
         time.sleep(1)
+        try:
+            var.driver.find_element(By.XPATH, var.check_typevehicle)
+        except:
+            vehicle_management.type_vehicle_addnew(self, "", "", "")
+
         check_typevehicle = var.driver.find_element(By.XPATH, var.check_typevehicle).text
         logging.info("Quản trị - Quản trị loại phương tiện")
         logging.info("Mã - " + code)
@@ -151,7 +156,11 @@ class vehicle_management:
     # quản trị loại phương tiện - icon chỉnh sửa
     def type_vehicle_edit(self, code, eventname, result):
         var.driver.implicitly_wait(5)
-        var.driver.find_element(By.XPATH, var.check_typevehicle_edit).click()
+        try:
+            var.driver.find_element(By.XPATH, var.check_typevehicle_edit).click()
+        except:
+            vehicle_management.type_vehicle(self, "", "", "")
+            var.driver.find_element(By.XPATH, var.check_typevehicle_edit).click()
         time.sleep(1.5)
         chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Quản trị loại phương tiện",
                                               var.check_edit, "NHẬP THÔNG TIN LOẠI PHƯƠNG TIỆN", "_QuanTri_DSLoaiPhuongTien_Sua.png")
@@ -166,7 +175,11 @@ class vehicle_management:
     # quản trị loại phương tiện - icon in
     def type_vehicle_iconprint(self, code, eventname, result):
         var.driver.implicitly_wait(5)
-        var.driver.find_element(By.XPATH, var.type_vehicle_iconprint).click()
+        try:
+            var.driver.find_element(By.XPATH, var.type_vehicle_iconprint).click()
+        except:
+            vehicle_management.type_vehicle(self, "", "", "")
+            var.driver.find_element(By.XPATH, var.type_vehicle_iconprint).click()
         time.sleep(2)
         chucnangkhac.write_result_displayed_try(code, eventname, result, "Quản trị - Quản trị loại phương tiện",
                                                 var.checkpopup_print, "_QuanTri_DSLoaiPhuongTien_In.png")
@@ -181,7 +194,11 @@ class vehicle_management:
     # quản trị loại phương tiện - icon downdload excel
     def type_vehicle_downloadexcel(self, code, eventname, result):
         var.driver.implicitly_wait(5)
-        var.driver.find_element(By.XPATH, var.type_vehicle_downloadexcel).click()
+        try:
+            var.driver.find_element(By.XPATH, var.type_vehicle_downloadexcel).click()
+        except:
+            vehicle_management.type_vehicle(self, "", "", "")
+            var.driver.find_element(By.XPATH, var.type_vehicle_downloadexcel).click()
         time.sleep(1)
         chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Quản trị loại phương tiện",
                                               var.check_downloadexcel, "Đang tiến hành tạo file Excel. Vui lòng không thoát trang, tìm kiếm lại... cho đến khi file được tải về máy", "_QuanTri_DSLoaiPhuongTien_Excel.png")
@@ -192,7 +209,12 @@ class vehicle_management:
     # quản trị loại phương tiện - icon downdload pdf
     def type_vehicle_downloadpdf(self, code, eventname, result):
         var.driver.implicitly_wait(5)
-        var.driver.find_element(By.XPATH, var.type_vehicle_downloadpdf).click()
+        try:
+            var.driver.find_element(By.XPATH, var.type_vehicle_downloadpdf).click()
+        except:
+            vehicle_management.type_vehicle(self, "", "", "")
+            var.driver.find_element(By.XPATH, var.type_vehicle_downloadpdf).click()
+
         time.sleep(1)
         logging.info("Quản trị - Quản trị loại phương tiện")
         logging.info("Mã - " + code)
@@ -219,7 +241,6 @@ class vehicle_management:
         time.sleep(5)
         chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Danh sách xe",
                                               var.check_listvehicle, "DANH SÁCH XE", "_QuanTri_DsXe.png")
-
 
 
 
@@ -511,6 +532,11 @@ class vehicle_management:
     def list_vehicle_open_car_quickly(self, code, eventname, result):
         var.driver.implicitly_wait(5)
         try:
+            var.driver.find_element(By.XPATH, var.liscense_plate)
+        except:
+            vehicle_management.list_vehicle_unhide_car(self, "", "", "")
+
+        try:
             var.driver.find_element(By.XPATH, var.liscense_plate).clear()
             var.driver.find_element(By.XPATH, var.liscense_plate).send_keys(data['quantri']['bienkiemsoat'])
             time.sleep(0.5)
@@ -713,7 +739,11 @@ class vehicle_management:
     # Quản trị nhóm -Thêm nhóm bậc n
     def add_group_leveln(self, code, eventname, result):
         var.driver.implicitly_wait(5)
-        var.driver.find_element(By.XPATH, var.namegroup_level1).click()
+        try:
+            var.driver.find_element(By.XPATH, var.namegroup_level1).click()
+        except:
+            vehicle_management.add_group_level1(self, "", "", "")
+            var.driver.find_element(By.XPATH, var.namegroup_level1).click()
         time.sleep(1)
         var.driver.find_element(By.XPATH, var.addgroup_addnew).click()
         time.sleep(1)
@@ -733,6 +763,10 @@ class vehicle_management:
     # Quản trị nhóm - đổi tên nhóm
     def rename_group(self, code, eventname, result):
         var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.namegroup_leveln)
+        except:
+            vehicle_management.add_group_leveln(self, "", "", "")
 
         button = var.driver.find_element(By.XPATH, var.namegroup_leveln)
         action = ActionChains(var.driver)
@@ -754,6 +788,11 @@ class vehicle_management:
     # Quản trị nhóm - xóa nhóm
     def delete_group(self, code, eventname, result):
         var.driver.implicitly_wait(3)
+        try:
+            var.driver.find_element(By.XPATH, var.namegroup_editedgroup)
+        except:
+            vehicle_management.rename_group(self, "", "", "")
+
         try:
             var.driver.find_element(By.XPATH, var.namegroup_editedgroup).click()
         except:
@@ -816,6 +855,11 @@ class vehicle_management:
     # Quản trị nhóm - bỏ đánh dấu nhóm đặc biệt
     def un_mark_special_groups(self, code, eventname, result):
         var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.namegroup_nhomtest)
+        except:
+            vehicle_management.mark_special_groups(self, "", "", "")
+
         try:
             var.driver.find_element(By.XPATH, var.namegroup_nhomtest).click()
         except:

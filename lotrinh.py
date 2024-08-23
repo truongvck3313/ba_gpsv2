@@ -195,6 +195,12 @@ class route:
     def route_downloadexcel(self, code, eventname, result):
         var.driver.implicitly_wait(5)
         try:
+            var.driver.find_element(By.XPATH, var.check_totalkm)
+        except:
+            route.route_runroute(self, "", "", "")
+
+
+        try:
             if var.driver.find_element(By.XPATH, var.check_totalkm).text != "0 km":
                 pass
             else:
@@ -206,23 +212,7 @@ class route:
         time.sleep(1)
         var.driver.find_element(By.XPATH, var.icon_downloadexcel).click()
         time.sleep(12)
-        # for request in var.driver.requests:
-        #     print("url:")
-        #     print(request.url)
-        #     logging.info("Lộ trình - Trang lộ trình")
-        #     logging.info("Mã - " + code)
-        #     logging.info("Tên sự kiện - " + eventname)
-        #     logging.info("Kết quả - " + result)
-        #     try:
-        #         urlretrieve(request.url, var.excelpath + "/lo_trinh.xlsx")
-        #         chucnangkhac.delete_excel()
-        #         logging.info("True")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
-        #     except:
-        #         logging.info("False")
-        #         var.driver.save_screenshot(var.imagepath + code + "_LoTrinh_DownloadExcel.png")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-        #         chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_LoTrinh_DownloadExcel.png")
+
         filename = max([var.excelpath + "\\" + f for f in os.listdir(var.excelpath)], key=os.path.getctime)
         shutil.move(filename, os.path.join(var.excelpath, r"lotrinh.xlsx"))
         # #Đọc check file excel
@@ -293,6 +283,11 @@ class route:
     def icon_dataconfig(self, code, eventname, result):
         var.driver.implicitly_wait(5)
         try:
+            var.driver.find_element(By.XPATH, var.check_totalkm)
+        except:
+            route.route_runroute(self, "", "", "")
+
+        try:
             if var.driver.find_element(By.XPATH, var.check_totalkm).text != "0 km":
                 pass
             else:
@@ -357,6 +352,12 @@ class route:
     def checknamecolumn_dataconfig(self, code, eventname, result, checkbox, namecolumn, desire, nameimage):
         var.driver.implicitly_wait(5)
 
+        try:
+            var.driver.find_element(By.XPATH, checkbox)
+        except:
+            route.icon_dataconfig(self, "", "", "")
+
+
         if var.driver.find_element(By.XPATH, checkbox).is_selected() == False:
             var.driver.find_element(By.XPATH, checkbox).click()
         logging.info("Lộ trình - Trang lộ trình - Cấu hình dữ liệu")
@@ -388,6 +389,12 @@ class route:
 
     def route_display_config(self, code, eventname, result):
         var.driver.implicitly_wait(5)
+        try:
+            var.driver.find_element(By.XPATH, var.check_totalkm)
+        except:
+            route.route_runroute(self, "", "", "")
+
+
         try:
             if var.driver.find_element(By.XPATH, var.check_totalkm).text != "0 km":
                 pass
@@ -424,7 +431,11 @@ class route:
 
     def route_display_config_cancel(self, code, eventname, result):
         var.driver.implicitly_wait(5)
-        var.driver.find_element(By.XPATH, var.icon_route_display_config_cancel).click()
+        try:
+            var.driver.find_element(By.XPATH, var.icon_route_display_config_cancel).click()
+        except:
+            route.route_display_config(self, "", "", "")
+            var.driver.find_element(By.XPATH, var.icon_route_display_config_cancel).click()
         time.sleep(1)
         logging.info("Lộ trình - Trang lộ trình - Cấu hình hiển thị lộ trình")
         logging.info("Mã - " + code)
@@ -443,6 +454,12 @@ class route:
 
     def route_display_config_fieldcheckbox(self, code, eventname, result, checkbox, pathdesire, desire, nameimage):
         var.driver.implicitly_wait(1.5)
+        try:
+            var.driver.find_element(By.XPATH, var.check_totalkm)
+        except:
+            route.route_runroute(self, "", "", "")
+
+
         try:
             var.driver.find_element(By.XPATH, var.route_liscense_plate).click()
         except:
@@ -479,7 +496,11 @@ class route:
 
     def routedisplayconfig_defaultconfig(self, code, eventname, result):
         var.driver.implicitly_wait(5)
-        var.driver.find_element(By.XPATH, var.defaultconfig).click()
+        try:
+            var.driver.find_element(By.XPATH, var.defaultconfig).click()
+        except:
+            route.route_display_config(self, "", "", "")
+
         time.sleep(1)
         logging.info("Lộ trình - Trang lộ trình - Cấu hình hiển thị lộ trình")
         logging.info("Mã - " + code)
@@ -508,7 +529,12 @@ class route:
     def routedisplayconfig_save(self, code, eventname, result):
         var.driver.implicitly_wait(5)
         del var.driver.requests
-        var.driver.find_element(By.XPATH, var.defaultconfig).click()
+        try:
+            var.driver.find_element(By.XPATH, var.defaultconfig).click()
+        except:
+            route.route_display_config(self, "", "", "")
+            del var.driver.requests
+            var.driver.find_element(By.XPATH, var.defaultconfig).click()
         time.sleep(0.5)
         button = var.driver.find_element(By.XPATH, var.defaultconfig)
         var.driver.execute_script("arguments[0].click();", button)

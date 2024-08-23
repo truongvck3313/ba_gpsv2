@@ -133,8 +133,15 @@ def writeData(file,sheetName,caseid,columnno,data):
 
 def notification_telegram():
     # from DrissionPage import *
-    from DrissionPage import ChromiumPage
-    driver2 = ChromiumPage()
+    # from DrissionPage import ChromiumPage
+    # driver2 = ChromiumPage()
+
+    from DrissionPage import ChromiumPage, ChromiumOptions
+    do1 = ChromiumOptions().set_paths(local_port=9201, user_data_path=r""+var.uploadpath+"Profile 30""")
+    driver2 = ChromiumPage(addr_or_opts=do1)
+
+
+
     wordbook = openpyxl.load_workbook(var.checklistpath)
     sheet = wordbook.get_sheet_by_name("Checklist")
     case_pass = 0
@@ -241,34 +248,34 @@ def get_datachecklist(ma):
 
 
 def write_caseif():
-    n = 222
-    while (n < 260):
+    n = 53
+    while (n < 70):
         var.driver.implicitly_wait(1)
         n += 1
         n = str(n)
-        print("try:\n   if case == 'GiamSat"+n+"':\n       caseid.caseid_giamsat"+n+"(self)\nexcept:\n    pass")
+        print("try:\n   if case == 'Report"+n+"':\n       caseid.caseid_report"+n+"(self)\nexcept:\n    pass")
         n = int(n)
 
 
 
 
 def write_caseif1():
-    n = 222
-    while (n < 260):
+    n = 53
+    while (n < 70):
         var.driver.implicitly_wait(1)
         n += 1
         n = str(n)
-        print("try:\n   caseid.caseid_giamsat"+n+"(self)\nexcept:\n     pass")
+        print("try:\n   caseid.caseid_report"+n+"(self)\nexcept:\n     pass")
         n = int(n)
 
 
 def write_caseif2():
-    n = 0
-    while (n < 100):
+    n = 53
+    while (n < 70):
         var.driver.implicitly_wait(1)
         n += 1
         n = str(n)
-        print("caseid.caseid_giamsat"+n+"(self)")
+        print("caseid.caseid_report"+n+"(self)")
         n = int(n)
 
 
@@ -344,29 +351,85 @@ def write_result_not_displayed_try(code, eventname, result, path_module, path_te
 
 def write_result_excelreport(code, sheet, column, name_sheet, number_column, number_row, output):
     if str(sheet[column + number_column]) == "<Cell '"+name_sheet+"'." + number_row + ">":
-        logging.info("Check vị trí "+number_row+":  "+output+"")
+        logging.info("Check vị trí: "+number_row+":  "+output+"")
         if str(sheet[column + number_column].value) == output:
             logging.info("True")
             writeData(var.checklistpath, "Checklist", code, 8, "Pass")
         else:
             logging.info("False")
             writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-            writeData(var.checklistpath, "Checklist", code, 12, "File Báo cáo tổng hợp hoạt động sai ô " + number_row)
+            writeData(var.checklistpath, "Checklist", code, 11, "File Báo cáo tổng hợp hoạt động sai ô " + number_row)
     # chucnangkhac.write_result_excelreport(code, sheet, column, 'BC Tổng hợp', "5", "C5", "STT")
+
+
+
+def write_result_excelreport1(code, sheet, column, name_sheet, number_column, number_row, output, number_row2, output2):
+    data_excel = str(sheet[number_row2].value)
+    output2 = str(output2)
+
+    print("Dữ liệu web: " +output2)
+    print("Dữ liệu excel: " +data_excel)
+    if str(sheet[column + number_column]) == "<Cell '"+name_sheet+"'." + number_row + ">":
+        logging.info("Check vị trí: "+number_row+":  "+output+"")
+        logging.info("Dữ liệu excel: "+ data_excel)
+        logging.info("Dữ liệu web: "+ output2)
+        if str(sheet[column + number_column].value) == output and data_excel == output2:
+            logging.info("True")
+            writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+        else:
+            logging.info("False")
+            writeData(var.checklistpath, "Checklist", code, 8, "Fail")
+            writeData(var.checklistpath, "Checklist", code, 11, "File Báo cáo tổng hợp hoạt động sai ô " + number_row2)
+    # chucnangkhac.write_result_excelreport1(code, sheet, column, 'BC Tổng hợp', "5", "D5", "Ngày tháng", "D10", activity_synthesis_group_report_day_month)
+
+
+def write_result_excelreport2(code, output_web, output_excel, name_output):
+    logging.info(name_output + " web: " + output_web)
+    logging.info(name_output + " excel: " + output_excel)
+    if output_web == output_excel:
+        logging.info("True")
+        writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+    else:
+        logging.info("False")
+        writeData(var.checklistpath, "Checklist", code, 8, "Fail")
+        writeData(var.checklistpath, "Checklist", code, 11, "File Báo cáo tổng hợp hoạt động sai trường " + output_web)
+
+
+
+
+
+
+
+
+def write_result_excel_checkweb(code, data_web, desire):
+    logging.info("Dữ liệu web: " + data_web)
+    logging.info("Dữ liệu mong muốn: " + desire)
+    if data_web == desire:
+        logging.info("True")
+        writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+    else:
+        logging.info("False")
+        writeData(var.checklistpath, "Checklist", code, 8, "Fail")
+        writeData(var.checklistpath, "Checklist", code, 11, "File Báo cáo tổng hợp hoạt động mất sai trường" + desire)
+
+
+
+
+
 
 
 
 def write_result_excelreport_clear_data(code, sheet, column, name_sheet, number_column, number_row, output):
     if str(sheet[column + number_column]) == "<Cell '"+name_sheet+"'." + number_row + ">":
-        logging.info("Check vị trí "+number_row+": "+output+"")
+        logging.info("Check vị trí: "+number_row+": "+output+"")
         if str(sheet[column + number_column].value) == output:
             logging.info("True")
-            writeData(var.checklistpath, "Checklist", code, 12, " ")
+            writeData(var.checklistpath, "Checklist", code, 11, " ")
             writeData(var.checklistpath, "Checklist", code, 8, "Pass")
         else:
             logging.info("False")
             writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-            writeData(var.checklistpath, "Checklist", code, 12, "File Báo cáo tổng hợp hoạt động sai ô " + number_row)
+            writeData(var.checklistpath, "Checklist", code, 11, "File Báo cáo tổng hợp hoạt động sai ô " + number_row)
     # chucnangkhac.write_result_excelreport(code, sheet, column, 'BC Tổng hợp', "5", "C5", "STT")
 
 
