@@ -231,8 +231,10 @@ def get_datachecklist(ma):
             if sheet["A"+rownum].value == ma:
                 tensukien = sheet["B"+rownum].value
                 ketqua = sheet["C"+rownum].value
+                print(ma)
                 print(tensukien)
                 print(ketqua)
+                logging.info("đang chạy case: " + ma)
             rownum = int(rownum)
 
 

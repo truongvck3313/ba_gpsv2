@@ -41,7 +41,6 @@ def ModuleTest():
 
 
 def retest_casefail(self):
-    var.driver.implicitly_wait(10)
     list_casefail = []
     wordbook = openpyxl.load_workbook(var.checklistpath)
     sheet = wordbook.get_sheet_by_name("Checklist")

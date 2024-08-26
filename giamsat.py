@@ -4932,8 +4932,8 @@ class chuotphaimap:
         xoacanhbao()
         chuotphaimap.timdiachi(self, data['giamsat']['timkiem_toado'])
 
-        # var.driver.find_element(By.XPATH, var.chuotphaimap_xemdiachi).click()
-        chuotphaimap.chuotphaimap_chon(self, "Xem địa chỉ", "850", "750", var.check_giamsat)
+        # chuotphaimap.chuotphaimap_chon(self, "Xem địa chỉ", "850", "750", var.check_giamsat)
+        chuotphaimap.chuotphaimap_chon(self, "Xem địa chỉ", "850", "750", var.ok)
         time.sleep(1.5)
         logging.info("Giám sát - Chuột phải map - Xem địa chỉ")
         logging.info("Mã - " + ma)
@@ -4952,28 +4952,49 @@ class chuotphaimap:
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChuotPhaiVaoMap_XemDiaChi.png")
 
-
+    @retry(tries=3, delay=2, backoff=1, jitter=5, )
     def dokhoangcach(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        # try:
-        #     var.driver.find_element(By.XPATH, var.ungroup)
-        #     var.driver.find_element(By.XPATH, var.check_giamsat)
-        # except:
-        #     login.login.login_v2(self, "ungroup", "12341234")
-        # var.driver.refresh()
-        # time.sleep(5)
-
 
         login.login.login_v2(self, "ungroup", "12341234")
         chuotphaimap.timdiachi(self, data['giamsat']['timkiem_toado1'])
-        xoacanhbao()
+        # xoacanhbao()
+        # chuotphaimap.chuotphaimap_chon(self, "Đo khoảng cách", "800", "800", var.check_dokhoangcach)
+        # time.sleep(1)
 
-        chuotphaimap.chuotphaimap_chon(self, "Đo khoảng cách", "800", "800", var.check_dokhoangcach)
-        time.sleep(1)
-        # location 1
+        xoacanhbao()
+        chuotphaimap.chuotphaimap_clearpopup(self)
+        var.driver.find_element(By.XPATH, var.tongsoxe_tren).click()
+        var.driver.implicitly_wait(2)
+        mouse.move("800", "800")
+        mouse.click(button='right')
+        time.sleep(1.5)
+
+        n = 0
+        while (n < 25):
+            n += 1
+            n = str(n)
+            pathcheck = "/html/body/div[21]/div[2]/div[2]/div[" + n + "]"
+            try:
+                tenphuongtien = var.driver.find_element(By.XPATH, pathcheck).text
+                print(tenphuongtien)
+                if tenphuongtien == "Đo khoảng cách":
+                    var.driver.find_element(By.XPATH, pathcheck).click()
+                    time.sleep(1.5)
+                    break
+            except:
+                pass
+            n = int(n)
+
         mouse.move("800", "800")
         mouse.click(button='left')
         time.sleep(1)
+        var.driver.find_element(By.XPATH, "//*[text()='0 km']")
+
+        # location 1
+        # mouse.move("800", "800")
+        # mouse.click(button='left')
+        # time.sleep(1)
         # location 2
         mouse.move("1000", "800")
         mouse.click(button='left')
@@ -4996,7 +5017,7 @@ class chuotphaimap:
     def dokhoangcach_tongchieudai(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.check_dokhoangcach_thongbao)
+            var.driver.find_element(By.XPATH, "//*[text()='Tổng chiều dài: 0.03 km']")
         except:
             chuotphaimap.dokhoangcach(self, "", "", "")
 
@@ -5063,23 +5084,46 @@ class chuotphaimap:
             logging.info("True")
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
 
-
+    @retry(tries=3, delay=2, backoff=1, jitter=5, )
     def chihuong(self, ma, tensukien, ketqua):     #Thiếu lộ trình r, Chỉ hướng không hoạt động, tài liệu chị hương gửi
         var.driver.implicitly_wait(3)
-        # try:
-        #     var.driver.find_element(By.XPATH, var.ungroup)
-        #     var.driver.find_element(By.XPATH, var.check_giamsat)
-        # except:
-        #     login.login.login_v2(self, "ungroup", "12341234")
+        login.login.login_v2(self, "ungroup", "12341234")
+        # var.driver.find_element(By.XPATH, var.danhsachxe_dichuyen).click()
+        # time.sleep(1)
         # xoacanhbao()
 
-
-        login.login.login_v2(self, "ungroup", "12341234")
-        var.driver.find_element(By.XPATH, var.danhsachxe_dichuyen).click()
-        time.sleep(1)
         xoacanhbao()
+        chuotphaimap.chuotphaimap_clearpopup(self)
+        var.driver.find_element(By.XPATH, var.tongsoxe_tren).click()
+        var.driver.implicitly_wait(2)
+        mouse.move(800, 800)
+        mouse.click(button='right')
+        time.sleep(1.5)
 
-        chuotphaimap.chuotphaimap_chon(self, "Chỉ hướng", "800", "800", var.check_popupchihuong)
+        n = 0
+        while (n < 25):
+            n += 1
+            n = str(n)
+            pathcheck = "/html/body/div[21]/div[2]/div[2]/div[" + n + "]"
+            try:
+                tenphuongtien = var.driver.find_element(By.XPATH, pathcheck).text
+                print(tenphuongtien)
+                if tenphuongtien == "Chỉ hướng":
+                    var.driver.find_element(By.XPATH, pathcheck).click()
+                    time.sleep(1.5)
+                    break
+            except:
+                pass
+            n = int(n)
+
+        var.driver.find_element(By.XPATH, var.chihuong_diema).click()
+        mouse.move("600", "800")
+        mouse.click(button='left')
+        time.sleep(1)
+        var.driver.find_element(By.XPATH, var.check_chihuong_diema)
+
+
+        # chuotphaimap.chuotphaimap_chon(self, "Chỉ hướng", "800", "800", "//*[text()='Google map']")
         time.sleep(1.5)
         xoacanhbao()
         logging.info("Giám sát - Chuột phải map - Chỉ hướng")
@@ -5123,13 +5167,10 @@ class chuotphaimap:
     def chihuong_diema(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(3)
         try:
-            var.driver.find_element(By.XPATH, var.check_giamsat)
+            var.driver.find_element(By.XPATH, var.check_chihuong_diema)
         except:
-            login.login.login_v2(self, "ungroup", "12341234")
+            chuotphaimap.chihuong(self, "", "", "")
 
-        xoacanhbao()
-
-        chuotphaimap.chuotphaimap_chon(self, "Chỉ hướng", "800", "800", var.check_popupchihuong)
         time.sleep(2)
         # location a
         var.driver.find_element(By.XPATH, var.chihuong_diema).click()
@@ -5154,9 +5195,9 @@ class chuotphaimap:
     def chihuong_diemb(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.check_giamsat)
+            var.driver.find_element(By.XPATH, var.check_chihuong_diema)
         except:
-            login.login.login_v2(self, "ungroup", "12341234")
+            chuotphaimap.chihuong(self, "", "", "")
         # location b
         xoacanhbao()
         var.driver.find_element(By.XPATH, var.chihuong_diemb).click()
@@ -5184,7 +5225,6 @@ class chuotphaimap:
         try:
             var.driver.find_element(By.XPATH, var.chihuong_icondoivitri2diem).click()
         except:
-            chuotphaimap.chihuong_diema(self, "", "", "")
             chuotphaimap.chihuong_diemb(self, "", "", "")
             var.driver.find_element(By.XPATH, var.chihuong_icondoivitri2diem).click()
         time.sleep(1)
@@ -5198,6 +5238,7 @@ class chuotphaimap:
 
     def chihuong_googlemap(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
+        xoacanhbao()
         # Google map
         try:
             var.driver.find_element(By.XPATH, var.chihuong_googlemap).click()
@@ -5258,15 +5299,39 @@ class chuotphaimap:
         # var.driver.find_element(By.XPATH, var.chihuong_thoat).click()
 
 
+    @retry(tries=3, delay=2, backoff=1, jitter=5, )
     def taodiembando(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         login.login.login_v2(self, "ungroup", "12341234")
 
         chuotphaimap.timdiachi(self, data['giamsat']['timkiem_toado8'])
 
-        chuotphaimap.chuotphaimap_chon(self, "Tạo điểm bản đồ", "500", "800", var.check_popuptaodiem)
-        time.sleep(1)
         xoacanhbao()
+        chuotphaimap.chuotphaimap_clearpopup(self)
+        var.driver.find_element(By.XPATH, var.tongsoxe_tren).click()
+        var.driver.implicitly_wait(2)
+        mouse.move("500", "800")
+        mouse.click(button='right')
+        time.sleep(1.5)
+
+        n = 0
+        while (n < 25):
+            n += 1
+            n = str(n)
+            pathcheck = "/html/body/div[21]/div[2]/div[2]/div[" + n + "]"
+            try:
+                tenphuongtien = var.driver.find_element(By.XPATH, pathcheck).text
+                print(tenphuongtien)
+                if tenphuongtien == "Tạo điểm bản đồ":
+                    var.driver.find_element(By.XPATH, pathcheck).click()
+                    time.sleep(1.5)
+                    break
+            except:
+                pass
+            n = int(n)
+        xoacanhbao()
+        var.driver.find_element(By.XPATH, var.taodiem_laydiachibando).click()
+        time.sleep(1)
         check_popuptaodiem = var.driver.find_element(By.XPATH, var.check_popuptaodiem).text
         logging.info("Giám sát - Chuột phải map - Tạo điểm bản đồ")
         logging.info("Mã - " + ma)
@@ -5311,28 +5376,21 @@ class chuotphaimap:
 
     def taodiembando_nhapthongtindiem(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        try:
-            var.driver.find_element(By.XPATH, var.ungroup)
-            var.driver.find_element(By.XPATH, var.check_giamsat)
-        except:
-            login.login.login_v2(self, "ungroup", "12341234")
-            time.sleep(1)
-            chuotphaimap.chuotphaimap_chon(self, "Tạo điểm bản đồ", "500", "800", var.check_popuptaodiem)
-            time.sleep(2)
-            xoacanhbao()
-        xoacanhbao()
-
-        chuotphaimap.chuotphaimap_chon(self, "Tạo điểm bản đồ", "500", "800", var.check_popuptaodiem)
+        chuotphaimap.taodiembando(self, "", "", "")
         time.sleep(2)
 
+        xoacanhbao()
         var.driver.find_element(By.XPATH, var.taodiem_tendiem).send_keys(data['giamsat']['taodiem_tendiem1'])
+        xoacanhbao()
         if var.driver.find_element(By.XPATH, var.taodiem_laydiachibando).is_selected() == False:
+            xoacanhbao()
             var.driver.find_element(By.XPATH, var.taodiem_laydiachibando).click()
         if var.driver.find_element(By.XPATH, var.taodiem_nhaptoado).is_selected() == False:
             var.driver.find_element(By.XPATH, var.taodiem_nhaptoado).click()
         time.sleep(1)
         var.driver.find_element(By.XPATH, var.taodiem_kinhdo).send_keys(data['giamsat']['taodiem_kinhdo'])
         var.driver.find_element(By.XPATH, var.taodiem_vido).send_keys(data['giamsat']['taodiem_vido'])
+        xoacanhbao()
         var.driver.find_element(By.XPATH, var.taodiem_loaidiem).click()
         var.driver.find_element(By.XPATH, var.taodiem_loaidiem).send_keys(Keys.DOWN)
         var.driver.find_element(By.XPATH, var.taodiem_loaidiem).send_keys(Keys.ENTER)
@@ -5359,10 +5417,13 @@ class chuotphaimap:
     def taodiembando_luu(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.taodiem_luu).click()
+            var.driver.find_element(By.XPATH, var.taodiem_luu)
+            button = var.driver.find_element(By.XPATH, var.taodiem_luu)
+            var.driver.execute_script("arguments[0].click();", button)
         except:
             chuotphaimap.taodiembando_nhapthongtindiem(self, "", "", "")
-            var.driver.find_element(By.XPATH, var.taodiem_luu).click()
+            button = var.driver.find_element(By.XPATH, var.taodiem_luu)
+            var.driver.execute_script("arguments[0].click();", button)
         time.sleep(0.5)
         logging.info("Giám sát - Chuột phải map - Tạo điểm bản đồ")
         logging.info("Mã - " + ma)
@@ -5395,6 +5456,7 @@ class chuotphaimap:
             login.login.login_v2(self, "ungroup", "12341234")
         #Cập nhật
         var.driver.refresh()
+        xoacanhbao()
         time.sleep(5)
         chuotphaimap.timdiachi(self, data['giamsat']['timkiem_toado8'])
         button = var.driver.find_element(By.XPATH, var.taodiem_chon)
@@ -5479,21 +5541,37 @@ class chuotphaimap:
         time.sleep(5)
 
 
+    @retry(tries=3, delay=2, backoff=1, jitter=5, )
     def taovunglotrinh(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        # try:
-        #     var.driver.find_element(By.XPATH, var.ungroup)
-        #     var.driver.find_element(By.XPATH, var.check_giamsat)
-        # except:
-        #     login.login.login_v2(self, "ungroup", "12341234")
-        #
-        # var.driver.refresh()
-        # time.sleep(5)
         login.login.login_v2(self, "ungroup", "12341234")
 
         chuotphaimap.timdiachi(self, data['giamsat']['timkiem_toado9'])
+        xoacanhbao()
+        chuotphaimap.chuotphaimap_clearpopup(self)
+        var.driver.find_element(By.XPATH, var.tongsoxe_tren).click()
+        var.driver.implicitly_wait(2)
+        mouse.move("800", "800")
+        mouse.click(button='right')
+        time.sleep(1.5)
 
-        chuotphaimap.chuotphaimap_chon(self, "Tạo vùng lộ trình", "800", "800", var.checkpopup_taovunglotrinh)
+        n = 0
+        while (n < 25):
+            n += 1
+            n = str(n)
+            pathcheck = "/html/body/div[21]/div[2]/div[2]/div[" + n + "]"
+            try:
+                tenphuongtien = var.driver.find_element(By.XPATH, pathcheck).text
+                print(tenphuongtien)
+                if tenphuongtien == "Tạo vùng lộ trình":
+                    var.driver.find_element(By.XPATH, pathcheck).click()
+                    time.sleep(1.5)
+                    break
+            except:
+                pass
+            n = int(n)
+        var.driver.find_element(By.XPATH, "//*[text()='Chọn']").click()
+
         time.sleep(2)
         logging.info("Giám sát - Chuột phải map - Tạo vùng lộ trình")
         logging.info("Mã - " + ma)
@@ -5541,14 +5619,10 @@ class chuotphaimap:
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
 
 
+
+    @retry(tries=3, delay=2, backoff=1, jitter=5, )
     def timxetrongvung(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        # try:
-        #     var.driver.find_element(By.XPATH, var.ungroup)
-        #     var.driver.find_element(By.XPATH, var.check_giamsat)
-        # except:
-        #     login.login.login_v2(self, "ungroup", "12341234")
-
         login.login.login_v2(self, "ungroup", "12341234")
 
         try:
@@ -5580,6 +5654,9 @@ class chuotphaimap:
         action.double_click(button).perform()
         action.double_click(button).perform()
         time.sleep(2)
+
+        var.driver.find_element(By.XPATH, "//*[text()='Tổng số phương tiện: 5']")
+
         logging.info("Giám sát - Chuột phải map - Tìm xe trong vùng")
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)
@@ -5658,16 +5735,10 @@ class chuotphaimap:
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
 
 
+
+    @retry(tries=3, delay=2, backoff=1, jitter=5, )
     def timxegannhat(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        # try:
-        #     var.driver.find_element(By.XPATH, var.ungroup)
-        #     var.driver.find_element(By.XPATH, var.check_giamsat)
-        # except:
-        #     login.login.login_v2(self, "ungroup", "12341234")
-
-
-
         login.login.login_v2(self, "ungroup", "12341234")
         try:
             var.driver.find_element(By.XPATH, var.timkiem_timtoado_input).clear()
@@ -5679,11 +5750,10 @@ class chuotphaimap:
             chuotphaimap.timdiachi(self, data['giamsat']['timkiem_toado9'])
         xoacanhbao()
 
-        try:
-            chuotphaimap.chuotphaimap_chon(self, "Tìm xe gần nhất", "800", "800", var.checkpopup_timxegannhat)
-        except:
-            chuotphaimap.chuotphaimap_chon(self, "Tìm xe gần nhất", "800", "800", var.checkpopup_timxegannhat)
+        chuotphaimap.chuotphaimap_chon(self, "Tìm xe gần nhất", "800", "800", var.checkpopup_timxegannhat)
         time.sleep(1.5)
+        var.driver.find_element(By.XPATH, var.timxegannhat_xe1).click()
+
         xoacanhbao()
         logging.info("Giám sát - Chuột phải map - Tìm xe gần nhất")
         logging.info("Mã - " + ma)
@@ -5755,11 +5825,13 @@ class chuotphaimap:
         zoom_map("thu nhỏ", 2)
         xoacanhbao()
 
-        try:
-            chuotphaimap.chuotphaimap_chon(self, "Cấu hình hiển thị nhóm điểm", "800", "800", var.check_popupcauhinhhienthinhomdiem)
-        except:
-            chuotphaimap.chuotphaimap_chon(self, "Cấu hình hiển thị nhóm điểm", "800", "800", var.check_popupcauhinhhienthinhomdiem)
+        chuotphaimap.chuotphaimap_chon(self, "Cấu hình hiển thị nhóm điểm", "800", "800", var.check_popupcauhinhhienthinhomdiem)
         time.sleep(3)
+        var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_chuachonnhom).click()
+        time.sleep(0.5)
+        var.driver.find_element(By.XPATH, var.cauhinhhienthinhomdiem_chuachonnhom).click()
+
+
 
         var.driver.find_element(By.XPATH, var.check_popupcauhinhhienthinhomdiem).is_displayed()
         logging.info("Giám sát - Chuột phải map - Cấu hình hiển thị nhóm điểm")
@@ -5939,8 +6011,9 @@ class chuotphaimap:
         try:
             var.driver.find_element(By.XPATH, var.timkiem_timtoado_input).clear()
         except:
-            chuotphaimap.chuotphaimap_chon(self, "Cấu hình hiển thị nhóm điểm", "800", "800", var.check_popupcauhinhhienthinhomdiem)
-            time.sleep(1)
+            chuotphaimap.cauhinhhienthinhomdiem(self, "", "", "")
+            # chuotphaimap.chuotphaimap_chon(self, "Cấu hình hiển thị nhóm điểm", "800", "800", var.check_popupcauhinhhienthinhomdiem)
+        time.sleep(1)
         var.driver.find_element(By.XPATH, var.timkiem_timtoado_input).send_keys(data['giamsat']['timkiem_toado11'])
         time.sleep(0.5)
         var.driver.find_element(By.XPATH, var.timkiem_iconsearch).click()
@@ -6127,20 +6200,16 @@ class chuotphaimap:
             pass
 
 
+    @retry(tries=3, delay=2, backoff=1, jitter=5, )
     def cauhinhkhoidong(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        # try:
-        #     var.driver.find_element(By.XPATH, var.ungroup)
-        #     var.driver.find_element(By.XPATH, var.check_giamsat)
-        # except:
-        #     login.login.login_v2(self, "ungroup", "12341234")
-        # xoacanhbao()
-
         login.login.login_v2(self, "ungroup", "12341234")
 
         chuotphaimap.chuotphaimap_chon(self, "Cấu hình khởi động", "800", "800", var.check_popupcauhinhhienthibando)
-
         time.sleep(1.5)
+        var.driver.find_element(By.XPATH, var.cauhinhienthi_loaibando).click()
+
+
         logging.info("Giám sát - Chuột phải map - Cấu hình khởi động")
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)
@@ -6315,21 +6384,21 @@ class chuotphaimap:
         #     chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
 
 
-
+    @retry(tries=3, delay=2, backoff=1, jitter=5, )
     def gstheotuyenmau(self, ma, tensukien, ketqua):
-        var.driver.implicitly_wait(5)
-        # try:
-        #     var.driver.find_element(By.XPATH, var.ungroup)
-        #     var.driver.find_element(By.XPATH, var.check_giamsat)
-        # except:
-        #     login.login.login_v2(self, "ungroup", "12341234")
-        # xoacanhbao()
+        var.driver.implicitly_wait(3)
 
         login.login.login_v2(self, "ungroup", "12341234")
 
         var.driver.find_element(By.XPATH, var.tongsoxe_duoi).click()
         chuotphaimap.chuotphaimap_chon(self, "GS theo tuyến mẫu", "800", "800", var.check_popup_gstheotuyenmau)
         time.sleep(1.5)
+
+        var.driver.find_element(By.XPATH, var.gstheotuyenmau_liscense_plate).send_keys("test")
+        var.driver.find_element(By.XPATH, var.gstheotuyenmau_liscense_plate).clear()
+
+
+
         logging.info("Giám sát - Chuột phải map - Gs theo tuyến mẫu")
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)
@@ -6377,16 +6446,9 @@ class chuotphaimap:
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
 
 
+    @retry(tries=3, delay=2, backoff=1, jitter=5, )
     def chidanduong(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        # try:
-        #     var.driver.find_element(By.XPATH, var.ungroup)
-        #     var.driver.find_element(By.XPATH, var.check_giamsat)
-        # except:
-        #     login.login.login_v2(self, "ungroup", "12341234")
-        # #TÌM THEO ĐIỂM
-        # xoacanhbao()
-
         login.login.login_v2(self, "ungroup", "12341234")
 
         try:
@@ -6397,7 +6459,14 @@ class chuotphaimap:
             chuotphaimap.timdiachi(self, data['giamsat']['timkiem_toado2'])
 
         chuotphaimap.chuotphaimap_chon(self, "Chỉ dẫn đường", "800", "800", var.check_popupchidanduong)
-        time.sleep(1)
+        time.sleep(1.5)
+
+        var.driver.find_element(By.XPATH, var.chidanduong_detail_fee).click()
+        time.sleep(0.5)
+        var.driver.find_element(By.XPATH, var.chidanduong_detail_fee).click()
+
+
+
         # xoacanhbao()
         logging.info("Giám sát - Chuột phải map - Chỉ dẫn đường")
         logging.info("Mã - " + ma)
@@ -6710,6 +6779,7 @@ class chuotphaimap:
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
 
 
+    @retry(tries=3, delay=2, backoff=1, jitter=5, )
     def chidanduong_timtheolotrinh(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
         # TÌM THEO LỘ TRÌNH
@@ -6854,7 +6924,7 @@ class chuotphaimap:
             var.driver.find_element(By.XPATH, var.check_timtheolotrinh_chiphidukien)
         except:
             chuotphaimap.chidanduong_timtheolotrinh_quangduong(self, "", "", "")
-
+        xoacanhbao()
         check_timtheolotrinh_chiphidukien = var.driver.find_element(By.XPATH, var.check_timtheolotrinh_chiphidukien).text
         logging.info("Giám sát - Chuột phải map - Chỉ dẫn đường - Tìm theo lộ trình")
         logging.info("Mã - " + ma)
@@ -7028,14 +7098,9 @@ class chuotphaimap:
 
 
 
+    @retry(tries=3, delay=2, backoff=1, jitter=5, )
     def dieuxedituyen(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        # try:
-        #     var.driver.find_element(By.XPATH, var.check_goto_company)
-        # except:
-        #     danhsachxe.goto_congty(self, "Viconship Đà Nẵng", "950")
-        # xoacanhbao()
-
         danhsachxe.goto_congty(self, "Viconship Đà Nẵng", "950")
         xoacanhbao()
         try:
@@ -7109,13 +7174,9 @@ class chuotphaimap:
 
 
 
+    @retry(tries=3, delay=2, backoff=1, jitter=5, )
     def battatnhomdiemgannhau(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        # try:
-        #     var.driver.find_element(By.XPATH, var.check_goto_company)
-        # except:
-        #     danhsachxe.goto_congty(self, "Viconship Đà Nẵng", "950")
-
         danhsachxe.goto_congty(self, "Viconship Đà Nẵng", "950")
         xoacanhbao()
         try:
@@ -7126,6 +7187,8 @@ class chuotphaimap:
             chuotphaimap.chuotphaimap_chon(self, "Bật/tắt gom xe gần nhau", "800", "800", var.check_popup_battatnhomdiemgannhau)
 
         time.sleep(1.5)
+        var.driver.find_element(By.XPATH, var.check_popup_battatnhomdiemgannhau)
+
         logging.info("Giám sát - Chuột phải map - Điều xe đi tuyến")
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)

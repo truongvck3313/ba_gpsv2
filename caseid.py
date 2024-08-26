@@ -1440,7 +1440,6 @@ def caseid_giamsat196(self):
     giamsat.chuotphaimap.trungtamoday(self, "GiamSat196", tensukien, ketqua)
 
 
-@retry(tries=3, delay=2, backoff=1, jitter=5, )
 def caseid_giamsat197(self):
     get_datachecklist("GiamSat197")
     tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
@@ -1448,7 +1447,6 @@ def caseid_giamsat197(self):
     giamsat.chuotphaimap.xemdiachi(self, "GiamSat197", tensukien, ketqua)
 
 
-@retry(tries=3, delay=2, backoff=1, jitter=5, )
 def caseid_giamsat198(self):
     get_datachecklist("GiamSat198")
     tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
@@ -1476,7 +1474,6 @@ def caseid_giamsat201(self):
     ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
     giamsat.chuotphaimap.dokhoangcach_iconx(self, "GiamSat201", tensukien, ketqua)
 
-@retry(tries=3, delay=2, backoff=1, jitter=5, )
 def caseid_giamsat202(self):
     get_datachecklist("GiamSat202")
     tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
@@ -1528,7 +1525,6 @@ def caseid_giamsat209(self):
     ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
     giamsat.chuotphaimap.chihuong_lotrinh(self, "GiamSat209", tensukien, ketqua)
 
-@retry(tries=3, delay=2, backoff=1, jitter=5, )
 def caseid_giamsat210(self):
     get_datachecklist("GiamSat210")
     tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
@@ -1570,7 +1566,6 @@ def caseid_giamsat215(self):
     giamsat.chuotphaimap.taodiembando_xoadiem(self, "GiamSat215", tensukien, ketqua)
 
 
-@retry(tries=3, delay=2, backoff=1, jitter=5, )
 def caseid_giamsat216(self):
     get_datachecklist("GiamSat216")
     tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
@@ -1584,7 +1579,6 @@ def caseid_giamsat217(self):
     ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
     giamsat.chuotphaimap.taovunglotrinh_huy(self, "GiamSat217", tensukien, ketqua)
 
-@retry(tries=3, delay=2, backoff=1, jitter=5, )
 def caseid_giamsat218(self):
     get_datachecklist("GiamSat218")
     tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
@@ -1610,7 +1604,6 @@ def caseid_giamsat221(self):
     ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
     giamsat.chuotphaimap.timxetrongvung_iconx(self, "GiamSat221", tensukien, ketqua)
 
-@retry(tries=3, delay=2, backoff=1, jitter=5, )
 def caseid_giamsat222(self):
     get_datachecklist("GiamSat222")
     tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
@@ -1623,7 +1616,6 @@ def caseid_giamsat223(self):
     ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
     giamsat.chuotphaimap.timxegannhat_iconx(self, "GiamSat223", tensukien, ketqua)
 
-@retry(tries=3, delay=2, backoff=1, jitter=5, )
 def caseid_giamsat224(self):
     get_datachecklist("GiamSat224")
     tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
@@ -1703,7 +1695,6 @@ def caseid_giamsat235(self):
     ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
     giamsat.chuotphaimap.cauhinhhienthinhomdiem_battatca(self, "GiamSat235", tensukien, ketqua)
 
-@retry(tries=3, delay=2, backoff=1, jitter=5, )
 def caseid_giamsat236(self):
     get_datachecklist("GiamSat236")
     tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
@@ -1738,7 +1729,6 @@ def caseid_giamsat240(self):
     # ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
     # giamsat.chuotphaimap.bieudonhienlieumoi(self, "GiamSat240", tensukien, ketqua)
 
-@retry(tries=3, delay=2, backoff=1, jitter=5, )
 def caseid_giamsat241(self):
     get_datachecklist("GiamSat241")
     tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
@@ -1753,7 +1743,6 @@ def caseid_giamsat242(self):
     giamsat.chuotphaimap.gstheotuyenmau_iconx(self, "GiamSat242", tensukien, ketqua)
 
 
-@retry(tries=3, delay=2, backoff=1, jitter=5, )
 def caseid_giamsat243(self):
     get_datachecklist("GiamSat243")
     tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
@@ -1809,7 +1798,6 @@ def caseid_giamsat250(self):
     giamsat.chuotphaimap.chidanduong_timtheodiem_tendiem(self, "GiamSat250", tensukien, ketqua)
 
 
-@retry(tries=3, delay=2, backoff=1, jitter=5, )
 def caseid_giamsat251(self):
     get_datachecklist("GiamSat251")
     tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
@@ -1860,7 +1848,6 @@ def caseid_giamsat257(self):
     # giamsat.chuotphaimap.bieudonhienlieu(self, "GiamSat257", tensukien, ketqua)
 
 
-@retry(tries=3, delay=2, backoff=1, jitter=5, )
 def caseid_giamsat258(self):
     get_datachecklist("GiamSat258")
     tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
@@ -1875,7 +1862,6 @@ def caseid_giamsat259(self):
     giamsat.chuotphaimap.dieuxedituyen_thoat(self, "GiamSat259", tensukien, ketqua)
 
 
-@retry(tries=3, delay=2, backoff=1, jitter=5, )
 def caseid_giamsat260(self):
     get_datachecklist("GiamSat260")
     tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
