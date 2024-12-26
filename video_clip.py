@@ -36,14 +36,7 @@ def check_bacam(xncode, lstplate):
 
     # check_bacam(950, "43C01340_C")
 
-# def check_bacam1():
-#     api_url = "hhttp://g7bak.staxi.vn:12619/api/StaxiArticle/CreateArticle"
-#     body = {"Title": "Chính sách ABC APP LONGPV", "SendArticleType": 1, "SendType": 0, "SendList": "batonnt", "SendHour": "string", "Content": "THONGBAO MOI", "ContentApp": "ALO APP APOAS", "EmployeeId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "CompanyId": 209, "ArticleType": 1, "ParentArticleType": 1, "ChildArticleType": 1 }
-#     response = requests.post(api_url, json=body)
-#     response.json()
-#     res = json.loads(response.text)
-#     print(res)
-# check_bacam1()
+
 
 
 
@@ -59,7 +52,7 @@ class video_clip:
         try:
             var.driver.find_element(By.XPATH, var.videoclip).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.videoclip).click()
         time.sleep(4)
         var.driver.find_element(By.XPATH, var.playbackvideo_overview).click()
@@ -74,7 +67,7 @@ class video_clip:
         try:
             var.driver.find_element(By.XPATH, var.playbackvideo_selecgroup).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.videoclip).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.playbackvideo_overview).click()
@@ -116,12 +109,13 @@ class video_clip:
         logging.info("Kết quả - " + result)
         logging.info("Phương tiện có đăng ký Video không: " + video_api)
         logging.info("Tên phương tiện : " + video_clip.video)
+        chucnangkhac.writeData(var.checklistpath, "Checklist", code, 6,"Phương tiện: {} có đăng ký Video không: {}".format(video_clip.video, video_api))
         if video_api == "True":
             logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Pass")
         else:
             logging.info("False")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Fail")
 
 
 
@@ -136,7 +130,7 @@ class video_clip:
         try:
             var.driver.find_element(By.XPATH, var.videoclip).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.videoclip).click()
         time.sleep(4)
         var.driver.find_element(By.XPATH, var.playbackvideo_detail).click()
@@ -151,7 +145,7 @@ class video_clip:
         try:
             var.driver.find_element(By.XPATH, var.playbackvideo_detail_selectgroup).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.videoclip).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.playbackvideo_detail).click()
@@ -206,12 +200,14 @@ class video_clip:
         logging.info("Kết quả - " + result)
         logging.info("Phương tiện có đăng ký Video không: " + video_api)
         logging.info("Tên phương tiện : " + video_clip.video)
+        chucnangkhac.writeData(var.checklistpath, "Checklist", code, 6, "Phương tiện: {} có đăng ký Video không: {}".format(video_clip.video, video_api))
         if video_api == "True":
             logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Pass")
         else:
             logging.info("False")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 6, "Phương tiện "+video_clip.video+" đang mất tín hiệu nến không gọi được API")
 
 
 
@@ -220,7 +216,7 @@ class video_clip:
         try:
             var.driver.find_element(By.XPATH, var.playbackvideo_detail_view_multi_chanel).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.videoclip).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.playbackvideo_detail).click()
@@ -268,7 +264,7 @@ class video_clip:
         try:
             var.driver.find_element(By.XPATH, var.videoclip).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.videoclip).click()
         time.sleep(4)
         var.driver.find_element(By.XPATH, var.cam_tracking).click()
@@ -283,7 +279,7 @@ class video_clip:
         try:
             var.driver.find_element(By.XPATH, var.cam_tracking_icon_watch_vehicle1).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.videoclip).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.cam_tracking).click()
@@ -305,7 +301,7 @@ class video_clip:
         try:
             var.driver.find_element(By.XPATH, var.cam_tracking_downloadexcel).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.videoclip).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.cam_tracking).click()
@@ -345,7 +341,7 @@ class video_clip:
             var.driver.find_element(By.XPATH, var.cam_tracking_select_group).click()
             time.sleep(1)
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.videoclip).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.cam_tracking).click()
@@ -410,15 +406,15 @@ class video_clip:
             logging.info("Kết quả - " + result)
             logging.info("Phương tiện có đăng ký Video không: " + video_api)
             logging.info("Tên phương tiện : " + video_clip.video)
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 12, "")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 6, "Phương tiện: {} có đăng ký Video không: {}".format(video_clip.video, video_api))
             if video_api == "True":
                 logging.info("True")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Pass")
             else:
                 logging.info("False")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Fail")
         except:
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 12, "Xe "+video_clip.video+" đang mất tín hiệu nến không gọi được API")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 6, "Phương tiện "+video_clip.video+" đang mất tín hiệu nến không gọi được API")
 
 
 

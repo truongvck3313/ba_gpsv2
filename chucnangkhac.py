@@ -7,6 +7,14 @@ import subprocess
 from selenium.webdriver.common.keys import Keys
 import os
 from selenium.webdriver.common.by import By
+from retry import retry
+import module_gpsv2
+
+
+
+
+
+
 
 
 
@@ -40,18 +48,22 @@ def clear_log():
                         level=logging.INFO)
 
 
-def clearData(file,sheetName,ketqua, tenanh, data):
+
+
+def clearData(file, sheetName, ketqua, trangthai, tenanh):
     wordbook = openpyxl.load_workbook(file)
     sheet = wordbook.get_sheet_by_name(sheetName)
     i = 9
     while (i < 1000):
         i += 1
         i = str(i)
-        sheet["H"+i] = ketqua
-        sheet["I"+i] = tenanh
-        sheet["K"+i] = data
+        sheet["F"+i] = ketqua
+        sheet["G"+i] = trangthai
+        sheet["M"+i] = tenanh
         i = int(i)
     wordbook.save(file)
+
+
 
 
 def clearData_luutamthoi(file,sheetName, api, web, popup):
@@ -130,41 +142,58 @@ def writeData(file,sheetName,caseid,columnno,data):
 
 
 
-
+@retry(tries=2, delay=2, backoff=1, jitter=5, )
 def notification_telegram():
-    # from DrissionPage import *
-    # from DrissionPage import ChromiumPage
-    # driver2 = ChromiumPage()
-
     from DrissionPage import ChromiumPage, ChromiumOptions
     do1 = ChromiumOptions().set_paths(local_port=9201, user_data_path=r""+var.uploadpath+"Profile 30""")
     driver2 = ChromiumPage(addr_or_opts=do1)
 
 
-
     wordbook = openpyxl.load_workbook(var.checklistpath)
     sheet = wordbook.get_sheet_by_name("Checklist")
-    case_pass = 0
-    case_fail = 0
-    rownum = 9
-    while (rownum < 1000):
-        rownum += 1
-        rownum = str(rownum)
-        if sheet["H"+rownum].value == "Pass":
-            case_pass = case_pass+1
-        if sheet["H"+rownum].value == "Fail":
-            case_fail = case_fail+1
-        rownum = int(rownum)
-    print("số lượng case Pass", case_pass)
-    print("số lượng case Fail", case_fail)
+    module_gpsv2.check_casenone()
+    module_gpsv2.check_casefail()
+    module_gpsv2.check_casepass()
+
+    mucnghiemtrong = str(var.readData(var.path_luutamthoi, 'Sheet1', 65, 2))
+    tong_case_trong = str(var.readData(var.path_luutamthoi, 'Sheet1', 66, 2))
+
+    case_fail = str(var.readData(var.path_luutamthoi, 'Sheet1', 77, 2))
+    case_pass = str(var.readData(var.path_luutamthoi, 'Sheet1', 87, 2))
+
+
     thoigianbatdauchay = str(var.readData(var.path_luutamthoi , 'Sheet1', 47, 2))
 
-    if case_fail >= 1:
+
+    # if case_fail >= 1:
+    time_string1 = time.strftime("%m/%d/%Y, ", time.localtime())
+    time_string1 = str(time_string1)
+    time_string2 = time.strftime("%H:%M", time.localtime())
+    time_string2 = str(time_string2)
+    print("- DateTest : "+time_string1+""+thoigianbatdauchay+" - "+time_string2+
+                                              "\n- LinkTest: " + var.linktest+
+                                              "\n- ModeTest: " + var.modetest+
+                                              "\n- Số case Pass: " + case_pass+
+                                              "\n- Số case False: "+ case_fail+
+                                              "\n- Số case trống: "+ tong_case_trong+
+                                              "\n- Số case False nghiêm trọng: "+ mucnghiemtrong)
+
+
+    if int(case_fail) >= 1 or int(tong_case_trong)>=1:
+        print("đã vào telegram")
         driver2.get("https://web.telegram.org/a/")
         time.sleep(2)
         case_pass = str(case_pass)
         case_fail = str(case_fail)
-        driver2.ele(var.hopthoai).click()
+        try:
+            driver2.ele("//*[text()='OK']").click()
+        except:
+            pass
+
+        if var.linktest[0:27] == "https://testgps2.binhanh.vn":
+            driver2.ele(var.hopthoai1).click()
+        else:
+            driver2.ele(var.hopthoai).click()
         time.sleep(0.5)
         time_string1 = time.strftime("%m/%d/%Y, ", time.localtime())
         time_string1 = str(time_string1)
@@ -174,7 +203,9 @@ def notification_telegram():
                                                   "\n- LinkTest: " + var.linktest+
                                                   "\n- ModeTest: " + var.modetest+
                                                   "\n- Số case Pass: " + case_pass+
-                                                  "\n- Số case False: "+ case_fail)
+                                                  "\n- Số case False: "+ case_fail+
+                                                  "\n- Số case trống: "+ tong_case_trong+
+                                                  "\n- Số case False nghiêm trọng: "+ mucnghiemtrong)
         driver2.ele(var.hopthoai_input).input(Keys.ENTER)
         time.sleep(1)
         driver2.ele(var.hopthoai_iconlink).click()
@@ -194,9 +225,8 @@ def notification_telegram():
         driver2.ele(var.hopthoai_send).click()
         time.sleep(1)
 
-
-
-
+        time.sleep(30)
+        driver2.close()
 
 
 
@@ -209,6 +239,8 @@ def delete_image():
     for i in l:
         print(os.path.join(path, i))
         os.remove(os.path.join(path, i))
+
+
 
 
 def delete_excel():
@@ -230,7 +262,7 @@ def get_datachecklist(ma):
             rownum = str(rownum)
             if sheet["A"+rownum].value == ma:
                 tensukien = sheet["B"+rownum].value
-                ketqua = sheet["C"+rownum].value
+                ketqua = sheet["E"+rownum].value
                 print(ma)
                 print(tensukien)
                 print(ketqua)
@@ -239,14 +271,84 @@ def get_datachecklist(ma):
 
 
 
-# def write_caseif():
-#     n = 51
-#     while (n < 220):
-#         var.driver.implicitly_wait(1)
-#         n += 1
-#         n = str(n)
-#         print("if case == 'GiamSat"+n+"':" + "\ncaseid.caseid_giamsat"+n+"(self)")
-#         n = int(n)
+@retry(tries=3, delay=2, backoff=1, jitter=5, )
+def swich_tab_0():
+    var.driver.implicitly_wait(15)
+
+    try:
+        var.driver.implicitly_wait(1)
+        var.driver.switch_to.alert.accept()
+        time.sleep(1)
+    except:
+        pass
+
+
+    try:
+        var.driver.implicitly_wait(1)
+        subprocess.Popen(var.uploadpath+"cancel.exe")
+    except:
+        pass
+
+
+    time.sleep(1)
+    try:
+        var.driver.switch_to.window(var.driver.window_handles[0])
+        time.sleep(1)
+        var.driver.execute_script("window.open('');")
+        time.sleep(2)
+        var.driver.switch_to.window(var.driver.window_handles[1])
+        var.driver.get("https://gps.binhanh.vn/Default.aspx")
+        time.sleep(5)
+    except:
+        var.driver.execute_script("window.open('');")
+        time.sleep(2)
+        var.driver.switch_to.window(var.driver.window_handles[1])
+        var.driver.get("https://gps.binhanh.vn/Default.aspx")
+        time.sleep(5)
+        var.driver.switch_to.window(var.driver.window_handles[0])
+
+
+
+    try:
+        var.driver.switch_to.window(var.driver.window_handles[0])
+        time.sleep(1)
+        var.driver.execute_script("window.open('');")
+        time.sleep(2)
+        var.driver.switch_to.window(var.driver.window_handles[1])
+        var.driver.get("https://gps.binhanh.vn/Default.aspx")
+        time.sleep(5)
+    except:
+        var.driver.execute_script("window.open('');")
+        time.sleep(2)
+        var.driver.switch_to.window(var.driver.window_handles[1])
+        var.driver.get("https://gps.binhanh.vn/Default.aspx")
+        time.sleep(5)
+        var.driver.switch_to.window(var.driver.window_handles[0])
+
+
+
+    try:
+        var.driver.switch_to.window(var.driver.window_handles[2])
+        curr = var.driver.current_window_handle
+        for handle in var.driver.window_handles:
+            if handle != curr:
+                var.driver.switch_to.window(handle)
+                var.driver.close()
+                time.sleep(1)
+        var.driver.switch_to.window(curr)
+        time.sleep(0.5)
+
+    except:
+        var.driver.execute_script("window.open('');")
+        var.driver.switch_to.window(var.driver.window_handles[-1])  # Chuyển đến tab mới nhất
+        var.driver.get("https://gps.binhanh.vn/Default.aspx")
+        time.sleep(5)
+        var.driver.switch_to.window(var.driver.window_handles[0])
+
+
+
+
+
 
 
 def write_caseif():
@@ -271,6 +373,7 @@ def write_caseif1():
         n = int(n)
 
 
+
 def write_caseif2():
     n = 53
     while (n < 70):
@@ -290,23 +393,138 @@ def write_result_text_try_if(code, eventname, result, path_module, path_text, ch
     try:
         check_text = var.driver.find_element(By.XPATH, path_text).text
         logging.info(check_text)
-        writeData(var.checklistpath, "Checklist", code, 11, check_text)
+        writeData(var.checklistpath, "Checklist", code, 6, check_text)
 
         if check_text == check_result:
             logging.info("True")
-            writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+            writeData(var.checklistpath, "Checklist", code, 7, "Pass")
         else:
             logging.info("False")
             var.driver.save_screenshot(var.imagepath + code + name_image)
-            writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-            writeData(var.checklistpath, "Checklist", code, 9, code + name_image)
+            writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+            writeData(var.checklistpath, "Checklist", code, 13, code + name_image)
     except:
         logging.info("False")
         var.driver.save_screenshot(var.imagepath + code + name_image)
-        writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-        writeData(var.checklistpath, "Checklist", code, 9, code + name_image)
+        writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+        writeData(var.checklistpath, "Checklist", code, 13, code + name_image)
     # chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Danh sách xe",
     #                                       var.check_open_car_quickly, "Mở xe thành công", "_QuanTri_DsXe_MoXeNhanh.png")
+
+
+
+def write_result_text_try_if_or(code, eventname, result, path_module, path_text, check_result, check_result2, name_image):
+    logging.info(path_module)
+    logging.info("Mã - " + code)
+    logging.info("Tên sự kiện - " + eventname)
+    logging.info("Kết quả - " + result)
+    try:
+        check_text = var.driver.find_element(By.XPATH, path_text).text
+        logging.info(check_text)
+        logging.info(check_result)
+        logging.info(check_result2)
+        writeData(var.checklistpath, "Checklist", code, 6, check_text)
+
+        if check_text == check_result or check_result2:
+            logging.info("True")
+            writeData(var.checklistpath, "Checklist", code, 7, "Pass")
+        else:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + code + name_image)
+            writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+            writeData(var.checklistpath, "Checklist", code, 13, code + name_image)
+    except:
+        logging.info("False")
+        var.driver.save_screenshot(var.imagepath + code + name_image)
+        writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+        writeData(var.checklistpath, "Checklist", code, 13, code + name_image)
+
+
+
+def write_result_text_try_if_url(code, eventname, result, path_module, desire, name_image):
+    logging.info(path_module)
+    logging.info("Mã - " + code)
+    logging.info("Tên sự kiện - " + eventname)
+    logging.info("Kết quả - " + result)
+    try:
+        check_url = var.driver.current_url
+        logging.info(check_url)
+        logging.info(desire)
+        writeData(var.checklistpath, "Checklist", code, 6, check_url)
+
+        if check_url == desire:
+            logging.info("True")
+            writeData(var.checklistpath, "Checklist", code, 7, "Pass")
+        else:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + code + name_image)
+            writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+            writeData(var.checklistpath, "Checklist", code, 13, code + name_image)
+    except:
+        logging.info("False")
+        var.driver.save_screenshot(var.imagepath + code + name_image)
+        writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+        writeData(var.checklistpath, "Checklist", code, 13, code + name_image)
+
+
+
+
+def write_result_text_try_if_title(code, eventname, result, path_module, desire, name_image):
+    logging.info(path_module)
+    logging.info("Mã - " + code)
+    logging.info("Tên sự kiện - " + eventname)
+    logging.info("Kết quả - " + result)
+    try:
+        check_title = var.driver.title
+        print(check_title)
+        logging.info(check_title)
+        logging.info(desire)
+        writeData(var.checklistpath, "Checklist", code, 6, check_title)
+
+        if check_title == desire:
+            logging.info("True")
+            writeData(var.checklistpath, "Checklist", code, 7, "Pass")
+        else:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + code + name_image)
+            writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+            writeData(var.checklistpath, "Checklist", code, 13, code + name_image)
+    except:
+        logging.info("False")
+        var.driver.save_screenshot(var.imagepath + code + name_image)
+        writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+        writeData(var.checklistpath, "Checklist", code, 13, code + name_image)
+    # chucnangkhac.write_result_text_try_if_title(code, eventname, result, "Quản trị - Danh sách xe",
+    #                                        "Mở xe thành công", "_QuanTri_DsXe_MoXeNhanh.png")
+
+
+
+def write_result_text_try_if_other(code, eventname, result, path_module, path_text, check_result, name_image):
+    logging.info(path_module)
+    logging.info("Mã - " + code)
+    logging.info("Tên sự kiện - " + eventname)
+    logging.info("Kết quả - " + result)
+    try:
+        check_text = var.driver.find_element(By.XPATH, path_text).text
+        logging.info(check_text)
+        writeData(var.checklistpath, "Checklist", code, 6, check_text)
+
+        if check_text != check_result:
+            logging.info("True")
+            writeData(var.checklistpath, "Checklist", code, 7, "Pass")
+        else:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + code + name_image)
+            writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+            writeData(var.checklistpath, "Checklist", code, 13, code + name_image)
+    except:
+        logging.info("False")
+        var.driver.save_screenshot(var.imagepath + code + name_image)
+        writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+        writeData(var.checklistpath, "Checklist", code, 13, code + name_image)
+    # chucnangkhac.write_result_text_try_if_other(code, eventname, result, "Quản trị - Danh sách xe",
+    #                                       var.check_open_car_quickly, "Mở xe thành công", "_QuanTri_DsXe_MoXeNhanh.png")
+
 
 
 
@@ -318,16 +536,46 @@ def write_result_displayed_try(code, eventname, result, path_module, path_text, 
     try:
         check_displayed = var.driver.find_element(By.XPATH, path_text).is_displayed()
         logging.info("True")
-        writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+        writeData(var.checklistpath, "Checklist", code, 7, "Pass")
     except NoSuchElementException:
         logging.info("False")
         var.driver.save_screenshot(var.imagepath + code + name_image)
-        writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-        writeData(var.checklistpath, "Checklist", code, 9, code + name_image)
+        writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+        writeData(var.checklistpath, "Checklist", code, 13, code + name_image)
 
     # logging.info("Tìm biển kiểm soát - " + data['quantri']['bienkiemsoat'])
     # chucnangkhac.write_result_displayed_try(code, eventname, result, "Quản trị - Danh sách xe",
     #                                         var.check_hide_car, "_QuanTri_DsXe_AnXe.png")
+
+
+
+
+def write_result_displayed_try_close(code, eventname, result, path_module, button_close, name_image):
+    var.driver.implicitly_wait(1)
+    logging.info(path_module)
+    logging.info("Mã - " + code)
+    logging.info("Tên sự kiện - " + eventname)
+    logging.info("Kết quả - " + result)
+    try:
+        var.driver.find_element(By.XPATH, button_close).click()
+    except:
+        button = var.driver.find_element(By.XPATH, button_close)
+        var.driver.execute_script("arguments[0].click();", button)
+    time.sleep(1.5)
+    try:
+        var.driver.find_element(By.XPATH, button_close).click()
+        logging.info("False")
+        var.driver.save_screenshot(var.imagepath + code + name_image)
+        writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+        writeData(var.checklistpath, "Checklist", code, 13, code + name_image)
+    except:
+        logging.info("True")
+        writeData(var.checklistpath, "Checklist", code, 7, "Pass")
+
+
+    # chucnangkhac.write_result_displayed_try_close(code, eventname, result, "Quản trị - Danh sách xe",
+    #                                         var.button_close, "_QuanTri_DsXe_AnXe.png")
+
 
 
 
@@ -341,12 +589,33 @@ def write_result_not_displayed_try(code, eventname, result, path_module, path_te
         check_not_displayed = var.driver.find_element(By.XPATH, path_text).is_displayed()
         logging.info("False")
         var.driver.save_screenshot(var.imagepath + code + name_image)
-        writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-        writeData(var.checklistpath, "Checklist", code, 9, code + name_image)
+        writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+        writeData(var.checklistpath, "Checklist", code, 13, code + name_image)
     except NoSuchElementException:
         logging.info("True")
-        writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+        writeData(var.checklistpath, "Checklist", code, 7, "Pass")
     # chucnangkhac.write_result_displayed_try(code, eventname, result, "Quản trị - Danh sách xe",
+    #                                         var.check_hide_car, "_QuanTri_DsXe_AnXe.png")
+
+
+
+def write_result_not_displayed_try1(code, eventname, result, path_module, path_text, data, name_image):
+    var.driver.implicitly_wait(2)
+    logging.info(path_module)
+    logging.info("Mã - " + code)
+    logging.info("Tên sự kiện - " + eventname)
+    logging.info("Kết quả - " + result)
+    try:
+        check_not_displayed = var.driver.find_element(By.XPATH, path_text).is_displayed()
+        logging.info("False")
+        var.driver.save_screenshot(var.imagepath + code + name_image)
+        writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+        writeData(var.checklistpath, "Checklist", code, 13, code + name_image)
+    except NoSuchElementException:
+        logging.info("True")
+        writeData(var.checklistpath, "Checklist", code, 7, "Pass")
+        writeData(var.checklistpath, "Checklist", code, 6, data)
+    # chucnangkhac.write_result_not_displayed_try1(code, eventname, result, "Quản trị - Danh sách xe",
     #                                         var.check_hide_car, "_QuanTri_DsXe_AnXe.png")
 
 
@@ -356,11 +625,11 @@ def write_result_excelreport(code, sheet, column, name_sheet, number_column, num
         logging.info("Check vị trí: "+number_row+":  "+output+"")
         if str(sheet[column + number_column].value) == output:
             logging.info("True")
-            writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+            writeData(var.checklistpath, "Checklist", code, 7, "Pass")
         else:
             logging.info("False")
-            writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-            writeData(var.checklistpath, "Checklist", code, 11, "File Báo cáo tổng hợp hoạt động sai ô " + number_row)
+            writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+            writeData(var.checklistpath, "Checklist", code, 6, "File Báo cáo sai ô " + number_row)
     # chucnangkhac.write_result_excelreport(code, sheet, column, 'BC Tổng hợp', "5", "C5", "STT")
 
 
@@ -369,6 +638,7 @@ def write_result_excelreport1(code, sheet, column, name_sheet, number_column, nu
     data_excel = str(sheet[number_row2].value)
     output2 = str(output2)
 
+    print("Check vị trí: " + number_row + ":  " + output + "")
     print("Dữ liệu web: " +output2)
     print("Dữ liệu excel: " +data_excel)
     if str(sheet[column + number_column]) == "<Cell '"+name_sheet+"'." + number_row + ">":
@@ -377,12 +647,16 @@ def write_result_excelreport1(code, sheet, column, name_sheet, number_column, nu
         logging.info("Dữ liệu web: "+ output2)
         if str(sheet[column + number_column].value) == output and data_excel == output2:
             logging.info("True")
-            writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+            writeData(var.checklistpath, "Checklist", code, 7, "Pass")
         else:
             logging.info("False")
-            writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-            writeData(var.checklistpath, "Checklist", code, 11, "File Báo cáo tổng hợp hoạt động sai ô " + number_row2)
+            writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+            writeData(var.checklistpath, "Checklist", code, 6, "File Báo cáo sai ô " + number_row2)
+    if output2 != data_excel:
+        writeData(var.checklistpath, "Checklist", code, 6, "File Báo cáo sai ô " + number_row)
     # chucnangkhac.write_result_excelreport1(code, sheet, column, 'BC Tổng hợp', "5", "D5", "Ngày tháng", "D10", activity_synthesis_group_report_day_month)
+
+
 
 
 def write_result_excelreport2(code, output_web, output_excel, name_output):
@@ -390,15 +664,11 @@ def write_result_excelreport2(code, output_web, output_excel, name_output):
     logging.info(name_output + " excel: " + output_excel)
     if output_web == output_excel:
         logging.info("True")
-        writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+        writeData(var.checklistpath, "Checklist", code, 7, "Pass")
     else:
         logging.info("False")
-        writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-        writeData(var.checklistpath, "Checklist", code, 11, "File Báo cáo tổng hợp hoạt động sai trường " + output_web)
-
-
-
-
+        writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+        writeData(var.checklistpath, "Checklist", code, 6, "File Báo cáo sai dữ liệu: \nweb: " + output_web + "\nexcel: " + output_excel)
 
 
 
@@ -408,15 +678,11 @@ def write_result_excel_checkweb(code, data_web, desire):
     logging.info("Dữ liệu mong muốn: " + desire)
     if data_web == desire:
         logging.info("True")
-        writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+        writeData(var.checklistpath, "Checklist", code, 7, "Pass")
     else:
         logging.info("False")
-        writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-        writeData(var.checklistpath, "Checklist", code, 11, "File Báo cáo tổng hợp hoạt động mất sai trường" + desire)
-
-
-
-
+        writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+        writeData(var.checklistpath, "Checklist", code, 6, "File Báo cáo mất sai trường" + desire)
 
 
 
@@ -426,12 +692,12 @@ def write_result_excelreport_clear_data(code, sheet, column, name_sheet, number_
         logging.info("Check vị trí: "+number_row+": "+output+"")
         if str(sheet[column + number_column].value) == output:
             logging.info("True")
-            writeData(var.checklistpath, "Checklist", code, 11, " ")
-            writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+            writeData(var.checklistpath, "Checklist", code, 6, " ")
+            writeData(var.checklistpath, "Checklist", code, 7, "Pass")
         else:
             logging.info("False")
-            writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-            writeData(var.checklistpath, "Checklist", code, 11, "File Báo cáo tổng hợp hoạt động sai ô " + number_row)
+            writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+            writeData(var.checklistpath, "Checklist", code, 6, "File Báo cáo sai ô " + number_row)
     # chucnangkhac.write_result_excelreport(code, sheet, column, 'BC Tổng hợp', "5", "C5", "STT")
 
 

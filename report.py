@@ -75,6 +75,7 @@ def write_from_date(fromdate_input):
     xoa.send_keys(Keys.CONTROL, "a")
     var.driver.find_element(By.XPATH, fromdate_input).send_keys(from_date1)
 
+
 def write_from_date_month(fromdate_month_input):
     var.driver.implicitly_wait(5)
     from_date = var.driver.find_element(By.XPATH, fromdate_month_input).get_attribute('value')
@@ -124,7 +125,7 @@ class synthesis_report:     #báo cáo tổng hợp
         try:
             var.driver.find_element(By.XPATH, var.goto_43e02740)
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
         var.driver.find_element(By.XPATH, var.managerment_report).click()
         time.sleep(4)
         var.driver.find_element(By.XPATH, var.activity_synthesis_report).click()
@@ -139,14 +140,14 @@ class synthesis_report:     #báo cáo tổng hợp
             write_from_date(var.activity_synthesis_group_report_fromdate_input)
             var.driver.find_element(By.XPATH, var.activity_synthesis_report_search).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.activity_synthesis_report).click()
             time.sleep(4)
             write_from_date(var.activity_synthesis_group_report_fromdate_input)
             var.driver.find_element(By.XPATH, var.activity_synthesis_report_search).click()
-        time.sleep(5)
+        time.sleep(8)
         chucnangkhac.write_result_displayed_try(code, eventname, result, "Báo cáo doanh nghiệp - Báo cáo tổng hợp hoạt động (theo nhóm)",
                                                 var.check_activity_synthesis_report_search, "_BaoCaoDoanhNghiep_BaoCaoTongHopHoatDong_TimKiem.png")
 
@@ -157,17 +158,18 @@ class synthesis_report:     #báo cáo tổng hợp
         try:
             var.driver.find_element(By.XPATH, var.check_report_search)
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.activity_synthesis_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.activity_synthesis_report_search).click()
-            time.sleep(5)
+            time.sleep(8)
 
-        del var.driver.requests
+        # del var.driver.requests
         var.driver.find_element(By.XPATH, var.downloadexcel).click()
         time.sleep(10)
+        var.driver.save_screenshot(var.imagepath + code + "_BaoCaoDoanhNghiep_BaoCaoTongHopHoatDong.png")
         x2x = XLS2XLSX(var.excelpath + "/ActivitySummaryNew_43E02740.xls")
         x2x.to_xlsx(var.excelpath + "/ActivitySummaryNew_43E02740.xlsx")
 
@@ -247,7 +249,7 @@ class synthesis_report:     #báo cáo tổng hợp
     def activity_synthesis_group_report_hide_column(self, code, eventname, result):
         var.driver.implicitly_wait(4)
         try:
-            var.driver.find_element(By.XPATH, var.check_activity_synthesis_report)
+            var.driver.find_element(By.XPATH, var.check_activity_synthesis_report1)
         except:
             synthesis_report.activity_synthesis_group_report(self,"", "", "")
 
@@ -261,13 +263,13 @@ class synthesis_report:     #báo cáo tổng hợp
         try:
             var.driver.find_element(By.XPATH, var.activity_synthesis_group_repor_checkbox_daymoth).click()
             logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Pass")
             time.sleep(1)
         except:
             logging.info("False")
             var.driver.save_screenshot(var.imagepath + code + "_BaoCaoDoanhNghiep_BaoCaoTongHopHoatDong_AnHienCot.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_BaoCaoDoanhNghiep_BaoCaoTongHopHoatDong_AnHienCot.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 13, code + "_BaoCaoDoanhNghiep_BaoCaoTongHopHoatDong_AnHienCot.png")
 
         try:
             var.driver.find_element(By.XPATH, var.hide_column_cancel).click()
@@ -286,7 +288,7 @@ class synthesis_report:     #báo cáo tổng hợp
         try:
             var.driver.find_element(By.XPATH, var.detailed_activity_report).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.detailed_activity_report).click()
@@ -300,7 +302,7 @@ class synthesis_report:     #báo cáo tổng hợp
         try:
             var.driver.find_element(By.XPATH, path_checkbox).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.detailed_activity_report).click()
@@ -320,7 +322,7 @@ class synthesis_report:     #báo cáo tổng hợp
         try:
             var.driver.find_element(By.XPATH, var.detailed_activity_report_from_date)
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.detailed_activity_report).click()
@@ -341,7 +343,7 @@ class synthesis_report:     #báo cáo tổng hợp
         try:
             var.driver.find_element(By.XPATH, var.check_report_search)
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.detailed_activity_report).click()
@@ -445,7 +447,7 @@ class synthesis_report:     #báo cáo tổng hợp
     def detailed_activity_report_hide_column(self, code, eventname, result):
         var.driver.implicitly_wait(4)
         try:
-            var.driver.find_element(By.XPATH, var.check_activity_synthesis_report)
+            var.driver.find_element(By.XPATH, var.check_activity_synthesis_report2)
         except:
             synthesis_report.detailed_activity_report(self,"", "", "")
 
@@ -459,13 +461,13 @@ class synthesis_report:     #báo cáo tổng hợp
         try:
             var.driver.find_element(By.XPATH, var.detailed_activity_report_checkbox_typevehicle).click()
             logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Pass")
             time.sleep(1)
         except:
             logging.info("False")
             var.driver.save_screenshot(var.imagepath + code + "_BaoCaoDoanhNghiep_BaoCaoChiTietHoatDong_AnHienCot.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_BaoCaoDoanhNghiep_BaoCaoChiTietHoatDong_AnHienCot.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 13, code + "_BaoCaoDoanhNghiep_BaoCaoChiTietHoatDong_AnHienCot.png")
 
 
         try:
@@ -493,7 +495,7 @@ class synthesis_report:     #báo cáo tổng hợp
         try:
             var.driver.find_element(By.XPATH, var.report_km_activity_summary).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.report_km_activity_summary).click()
@@ -507,7 +509,7 @@ class synthesis_report:     #báo cáo tổng hợp
         try:
             var.driver.find_element(By.XPATH, checkbox).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.report_km_activity_summary).click()
@@ -526,7 +528,7 @@ class synthesis_report:     #báo cáo tổng hợp
         try:
             var.driver.find_element(By.XPATH, var.report_km_activity_summary_detail).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.report_km_activity_summary).click()
@@ -597,7 +599,7 @@ class synthesis_report:     #báo cáo tổng hợp
     def report_km_activity_summary_hide_column1(self, code, eventname, result):
         var.driver.implicitly_wait(4)
         try:
-            var.driver.find_element(By.XPATH, var.check_activity_synthesis_report)
+            var.driver.find_element(By.XPATH, var.check_activity_synthesis_report3)
         except:
             synthesis_report.report_km_activity_summary(self,"", "", "")
 
@@ -611,13 +613,13 @@ class synthesis_report:     #báo cáo tổng hợp
         try:
             var.driver.find_element(By.XPATH, var.checkbox_groupvehicle).click()
             logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Pass")
             time.sleep(1)
         except:
             logging.info("False")
             var.driver.save_screenshot(var.imagepath + code + "_BaoCaoDoanhNghiep_BaoCaoTongHopKmHoatDong_ChiTietXung_AnHienCot.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_BaoCaoDoanhNghiep_BaoCaoTongHopKmHoatDong_ChiTietXung_AnHienCot.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 13, code + "_BaoCaoDoanhNghiep_BaoCaoTongHopKmHoatDong_ChiTietXung_AnHienCot.png")
 
 
         try:
@@ -635,7 +637,7 @@ class synthesis_report:     #báo cáo tổng hợp
         try:
             var.driver.find_element(By.XPATH, var.report_km_activity_summary_summary).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.report_km_activity_summary).click()
@@ -696,7 +698,7 @@ class synthesis_report:     #báo cáo tổng hợp
     def report_km_activity_summary_hide_column(self, code, eventname, result):
         var.driver.implicitly_wait(4)
         try:
-            var.driver.find_element(By.XPATH, var.check_activity_synthesis_report)
+            var.driver.find_element(By.XPATH, var.check_activity_synthesis_report4)
         except:
             synthesis_report.report_km_activity_summary(self,"", "", "")
 
@@ -712,13 +714,13 @@ class synthesis_report:     #báo cáo tổng hợp
         try:
             var.driver.find_element(By.XPATH, var.checkbox_typevehicle).click()
             logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Pass")
             time.sleep(1)
         except:
             logging.info("False")
             var.driver.save_screenshot(var.imagepath + code + "_BaoCaoDoanhNghiep_BaoCaoTongHopKmHoatDong_TongHop_AnHienCot.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_BaoCaoDoanhNghiep_BaoCaoTongHopKmHoatDong_TongHop_AnHienCot.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 13, code + "_BaoCaoDoanhNghiep_BaoCaoTongHopKmHoatDong_TongHop_AnHienCot.png")
 
 
         try:
@@ -744,7 +746,7 @@ class synthesis_report:     #báo cáo tổng hợp
         try:
             var.driver.find_element(By.XPATH, var.report_checkin_checkout).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.report_checkin_checkout).click()
@@ -758,14 +760,15 @@ class synthesis_report:     #báo cáo tổng hợp
         try:
             var.driver.find_element(By.XPATH, var.fromdate_input)
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.report_checkin_checkout).click()
             time.sleep(5)
         write_from_date(var.stop_report_fromdate_input)
         time.sleep(1)
-        var.driver.find_element(By.XPATH, var.report_search).click()
+        button = var.driver.find_element(By.XPATH, var.report_search)
+        var.driver.execute_script("arguments[0].click();", button)
         time.sleep(5)
 
         chucnangkhac.write_result_displayed_try(code, eventname, result,
@@ -780,14 +783,15 @@ class synthesis_report:     #báo cáo tổng hợp
         try:
             var.driver.find_element(By.XPATH, var.check_report_search)
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.report_checkin_checkout).click()
             time.sleep(5)
             write_from_date(var.stop_report_fromdate_input)
             time.sleep(1)
-            var.driver.find_element(By.XPATH, var.report_search).click()
+            button = var.driver.find_element(By.XPATH, var.report_search)
+            var.driver.execute_script("arguments[0].click();", button)
             time.sleep(6)
         var.driver.find_element(By.XPATH, var.downloadexcel).click()
         time.sleep(15)
@@ -830,7 +834,7 @@ class synthesis_report:     #báo cáo tổng hợp
     def report_checkin_checkout_hide_column(self, code, eventname, result):
         var.driver.implicitly_wait(4)
         try:
-            var.driver.find_element(By.XPATH, var.check_activity_synthesis_report)
+            var.driver.find_element(By.XPATH, var.check_activity_synthesis_report16)
         except:
             synthesis_report.report_checkin_checkout(self, "", "", "")
 
@@ -844,13 +848,13 @@ class synthesis_report:     #báo cáo tổng hợp
         try:
             var.driver.find_element(By.XPATH, var.checkbox_typevehicle).click()
             logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Pass")
             time.sleep(1)
         except:
             logging.info("False")
             var.driver.save_screenshot(var.imagepath + code + "_BaoCaoDoanhNghiep_BaoCaoTongHopLaiXeDangNhapDangXuat_AnHienCot.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_BaoCaoDoanhNghiep_BaoCaoTongHopLaiXeDangNhapDangXuat_AnHienCot.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 13, code + "_BaoCaoDoanhNghiep_BaoCaoTongHopLaiXeDangNhapDangXuat_AnHienCot.png")
 
 
         try:
@@ -874,7 +878,7 @@ class activity_report:      #Báo cáo hoạt động
         try:
             var.driver.find_element(By.XPATH, var.stop_report).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.stop_report).click()
@@ -888,7 +892,7 @@ class activity_report:      #Báo cáo hoạt động
         try:
             var.driver.find_element(By.XPATH, var.stop_report_fromdate_input)
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.stop_report).click()
@@ -910,13 +914,14 @@ class activity_report:      #Báo cáo hoạt động
         try:
             var.driver.find_element(By.XPATH, var.check_report_search)
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.stop_report).click()
             time.sleep(5)
             write_from_date(var.stop_report_fromdate_input)
-            var.driver.find_element(By.XPATH, var.report_search).click()
+            button = var.driver.find_element(By.XPATH, var.report_search)
+            var.driver.execute_script("arguments[0].click();", button)
             time.sleep(6)
         var.driver.find_element(By.XPATH, var.downloadexcel).click()
         time.sleep(15)
@@ -957,7 +962,17 @@ class activity_report:      #Báo cáo hoạt động
         stop_report_time_stop = var.driver.find_element(By.XPATH, var.stop_report_time_stop).text
         stop_report_turn_on_stop = var.driver.find_element(By.XPATH, var.stop_report_turn_on_stop).text     #Nổ máy khi dừng
         stop_report_turn_on_air_condition_stop = var.driver.find_element(By.XPATH, var.stop_report_turn_on_air_condition_stop).text
+
         stop_report_fuel = var.driver.find_element(By.XPATH, var.stop_report_fuel).text
+        stop_report_fuel = str(''.join(re.findall(r'\d+', stop_report_fuel)))
+        stop_report_fuel = stop_report_fuel[0:1]
+        stop_report_fuel_excel = str(sheet["L6"].value)
+        stop_report_fuel_excel = str(''.join(re.findall(r'\d+', stop_report_fuel_excel)))
+        stop_report_fuel_excel = stop_report_fuel_excel[0:1]
+
+
+
+
         stop_report_temperature = var.driver.find_element(By.XPATH, var.stop_report_temperature).text       #Nhiệt độ
         stop_report_address = var.driver.find_element(By.XPATH, var.stop_report_address).text
         stop_report_titude_latitude_longitude = var.driver.find_element(By.XPATH, var.stop_report_titude_latitude_longitude).text
@@ -984,21 +999,23 @@ class activity_report:      #Báo cáo hoạt động
             chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "5", "G5", "Thời gian", "G6", stop_report_time)
             chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "5", "H5", "Thời gian (phút)", "H6", stop_report_time_minute)
             chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "5", "I5", "TG dừng đỗ(HH:mm:ss)", "I6", stop_report_time_stop)
-            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "5", "J5", "Nổ máy khi dừng (phút)", "J6", stop_report_turn_on_stop)
-            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "5", "K5", "Bật điều hòa khi dừng (phút)", "K6", stop_report_turn_on_air_condition_stop)
-            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "5", "L5", "Nhiên liệu tiêu hao (lít)", "L6", stop_report_fuel)
+            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "5", "J5", "Bật máy khi dừng (phút)", "J6", stop_report_turn_on_stop)
+            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "5", "K5", "Bật điều hòa khi dừng (phút)", "K6",stop_report_turn_on_air_condition_stop)
+            # chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "5", "L5", "Nhiên liệu tiêu hao (lít)", "L6", stop_report_fuel)
             chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "5", "M5", "Nhiệt độ", "M6", stop_report_temperature)
             chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "5", "N5", "Địa điểm", "N6", stop_report_address)
             chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "5", "O5", "Kinh độ, vĩ độ", "O6", stop_report_titude_latitude_longitude)
             chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "5", "P5", "Ghi chú", "P6", stop_report_note)
         chucnangkhac.write_result_excel_checkweb(code, stop_report_route, "Lộ trình")
         chucnangkhac.write_result_excel_checkweb(code, stop_report_video, "/icons/VideoCam/icons8-video-call-48.png")
+        chucnangkhac.write_result_excelreport2(code, stop_report_fuel, stop_report_fuel_excel, "Nhiên liệu tiêu hao (lít)")
+
 
 
     def stop_report_hide_column(self, code, eventname, result):
         var.driver.implicitly_wait(4)
         try:
-            var.driver.find_element(By.XPATH, var.check_activity_synthesis_report)
+            var.driver.find_element(By.XPATH, var.check_activity_synthesis_report5)
         except:
             activity_report.stop_report(self, "", "", "")
 
@@ -1012,13 +1029,13 @@ class activity_report:      #Báo cáo hoạt động
         try:
             var.driver.find_element(By.XPATH, var.checkbox_groupvehicle).click()
             logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Pass")
             time.sleep(1)
         except:
             logging.info("False")
             var.driver.save_screenshot(var.imagepath + code + "_BaoCaoDoanhNghiep_BaoCaoDungDo_AnHienCot.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_BaoCaoDoanhNghiep_BaoCaoDungDo_AnHienCot.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 13, code + "_BaoCaoDoanhNghiep_BaoCaoDungDo_AnHienCot.png")
 
 
         try:
@@ -1045,7 +1062,7 @@ class activity_report:      #Báo cáo hoạt động
         try:
             var.driver.find_element(By.XPATH, var.report_business_trip).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.report_business_trip).click()
@@ -1059,14 +1076,15 @@ class activity_report:      #Báo cáo hoạt động
         try:
             var.driver.find_element(By.XPATH, var.fromdate_input)
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.report_business_trip).click()
             time.sleep(5)
 
         write_from_date(var.fromdate_input)
-        var.driver.find_element(By.XPATH, var.report_search).click()
+        button = var.driver.find_element(By.XPATH, var.report_search)
+        var.driver.execute_script("arguments[0].click();", button)
         time.sleep(5)
         chucnangkhac.write_result_displayed_try(code, eventname, result,
                                                 "Báo cáo doanh nghiệp - Báo cáo chuyến kinh doanh",
@@ -1081,13 +1099,14 @@ class activity_report:      #Báo cáo hoạt động
             # var.driver.find_element(By.XPATH, var.report_search).click()
             var.driver.find_element(By.XPATH, var.check_report_search)
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.report_business_trip).click()
             time.sleep(5)
             write_from_date(var.fromdate_input)
-            var.driver.find_element(By.XPATH, var.report_search).click()
+            button = var.driver.find_element(By.XPATH, var.report_search)
+            var.driver.execute_script("arguments[0].click();", button)
             time.sleep(6)
         var.driver.find_element(By.XPATH, var.downloadexcel).click()
         time.sleep(15)
@@ -1204,7 +1223,7 @@ class activity_report:      #Báo cáo hoạt động
     def report_business_trip_hide_column(self, code, eventname, result):
         var.driver.implicitly_wait(4)
         try:
-            var.driver.find_element(By.XPATH, var.check_activity_synthesis_report)
+            var.driver.find_element(By.XPATH, var.check_activity_synthesis_report6)
         except:
             activity_report.report_business_trip(self, "", "", "")
 
@@ -1218,13 +1237,13 @@ class activity_report:      #Báo cáo hoạt động
         try:
             var.driver.find_element(By.XPATH, var.checkbox_typevehicle).click()
             logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Pass")
             time.sleep(1)
         except:
             logging.info("False")
             var.driver.save_screenshot(var.imagepath + code + "_BaoCaoDoanhNghiep_BaoCaoChuyenKinhDoanh_AnHienCot.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_BaoCaoDoanhNghiep_BaoCaoChuyenKinhDoanh_AnHienCot.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 13, code + "_BaoCaoDoanhNghiep_BaoCaoChuyenKinhDoanh_AnHienCot.png")
         try:
             button = var.driver.find_element(By.XPATH, var.hide_column_cancel1)
             var.driver.execute_script("arguments[0].click();", button)
@@ -1245,7 +1264,7 @@ class activity_report:      #Báo cáo hoạt động
         try:
             var.driver.find_element(By.XPATH, var.station_report).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.station_report).click()
@@ -1259,14 +1278,15 @@ class activity_report:      #Báo cáo hoạt động
         try:
             var.driver.find_element(By.XPATH, var.fromdate_input)
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.station_report).click()
             time.sleep(5)
 
         write_from_date(var.fromdate_input)
-        var.driver.find_element(By.XPATH, var.report_search).click()
+        button = var.driver.find_element(By.XPATH, var.report_search)
+        var.driver.execute_script("arguments[0].click();", button)
         time.sleep(5)
         chucnangkhac.write_result_displayed_try(code, eventname, result,
                                                 "Báo cáo doanh nghiệp - Báo cáo ra vào trạm",
@@ -1281,13 +1301,14 @@ class activity_report:      #Báo cáo hoạt động
             # var.driver.find_element(By.XPATH, var.report_search).click()
             var.driver.find_element(By.XPATH, var.check_report_search)
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.station_report).click()
             time.sleep(5)
             write_from_date(var.fromdate_input)
-            var.driver.find_element(By.XPATH, var.report_search).click()
+            button = var.driver.find_element(By.XPATH, var.report_search)
+            var.driver.execute_script("arguments[0].click();", button)
             time.sleep(6)
         var.driver.find_element(By.XPATH, var.downloadexcel).click()
         time.sleep(15)
@@ -1331,7 +1352,7 @@ class activity_report:      #Báo cáo hoạt động
     def station_report_hide_column(self, code, eventname, result):
         var.driver.implicitly_wait(4)
         try:
-            var.driver.find_element(By.XPATH, var.check_activity_synthesis_report)
+            var.driver.find_element(By.XPATH, var.check_activity_synthesis_report7)
         except:
             activity_report.station_report(self, "", "", "")
 
@@ -1345,13 +1366,13 @@ class activity_report:      #Báo cáo hoạt động
         try:
             var.driver.find_element(By.XPATH, var.checkbox_typevehicle).click()
             logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Pass")
             time.sleep(1)
         except:
             logging.info("False")
             var.driver.save_screenshot(var.imagepath + code + "_BaoCaoDoanhNghiep_BaoCaoRaVaoTram_AnHienCot.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_BaoCaoDoanhNghiep_BaoCaoRaVaoTram_AnHienCot .png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 13, code + "_BaoCaoDoanhNghiep_BaoCaoRaVaoTram_AnHienCot .png")
         try:
             button = var.driver.find_element(By.XPATH, var.hide_column_cancel1)
             var.driver.execute_script("arguments[0].click();", button)
@@ -1374,7 +1395,7 @@ class activity_report:      #Báo cáo hoạt động
         try:
             var.driver.find_element(By.XPATH, var.report_air_conditioner_summaries).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.report_air_conditioner_summaries).click()
@@ -1388,14 +1409,15 @@ class activity_report:      #Báo cáo hoạt động
         try:
             var.driver.find_element(By.XPATH, var.fromdate_input)
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.report_air_conditioner_summaries).click()
             time.sleep(5)
 
         write_from_date(var.fromdate_input)
-        var.driver.find_element(By.XPATH, var.report_search).click()
+        button = var.driver.find_element(By.XPATH, var.report_search)
+        var.driver.execute_script("arguments[0].click();", button)
         time.sleep(5)
         chucnangkhac.write_result_displayed_try(code, eventname, result,
                                                 "Báo cáo doanh nghiệp - Báo cáo tổng hợp điều hòa",
@@ -1409,14 +1431,15 @@ class activity_report:      #Báo cáo hoạt động
         try:
             var.driver.find_element(By.XPATH, var.check_report_search)
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.report_air_conditioner_summaries).click()
             time.sleep(5)
             write_from_date(var.fromdate_input)
-            var.driver.find_element(By.XPATH, var.report_search).click()
-            time.sleep(6)
+            button = var.driver.find_element(By.XPATH, var.report_search)
+            var.driver.execute_script("arguments[0].click();", button)
+            time.sleep(7)
         var.driver.find_element(By.XPATH, var.downloadexcel).click()
         time.sleep(15)
         filename = max([var.excelpath + "\\" + f for f in os.listdir(var.excelpath)], key=os.path.getctime)
@@ -1439,8 +1462,16 @@ class activity_report:      #Báo cáo hoạt động
         report_air_conditioner_summaries_number_stop_lit_air_conditonal = var.driver.find_element(By.XPATH, var.report_air_conditioner_summaries_number_stop_lit_air_conditonal).text
         report_air_conditioner_summaries_number_stop_lit_air_conditonal = str(''.join(re.findall(r'\d+', report_air_conditioner_summaries_number_stop_lit_air_conditonal)))
         report_air_conditioner_summaries_number_stop_lit_air_conditonal = report_air_conditioner_summaries_number_stop_lit_air_conditonal[0:2]
-        report_air_conditioner_summaries_number_stop_lit_air_conditonal_excel = str(sheet["G7"].value)
+
+        report_air_conditioner_summaries_number_stop_lit_air_conditonal_excel = sheet["G7"].value
+        print("e0: ".format(report_air_conditioner_summaries_number_stop_lit_air_conditonal_excel))
+
+        report_air_conditioner_summaries_number_stop_lit_air_conditonal_excel = round(report_air_conditioner_summaries_number_stop_lit_air_conditonal_excel, 1)
+        print("e1: ".format(report_air_conditioner_summaries_number_stop_lit_air_conditonal_excel))
+
+        report_air_conditioner_summaries_number_stop_lit_air_conditonal_excel = str(report_air_conditioner_summaries_number_stop_lit_air_conditonal_excel)
         report_air_conditioner_summaries_number_stop_lit_air_conditonal_excel = str(''.join(re.findall(r'\d+', report_air_conditioner_summaries_number_stop_lit_air_conditonal_excel)))
+        print("e2: ".format(report_air_conditioner_summaries_number_stop_lit_air_conditonal_excel))
         report_air_conditioner_summaries_number_stop_lit_air_conditonal_excel = report_air_conditioner_summaries_number_stop_lit_air_conditonal_excel[0:2]
 
 
@@ -1469,7 +1500,7 @@ class activity_report:      #Báo cáo hoạt động
     def report_air_conditioner_summaries_hide_column(self, code, eventname, result):
         var.driver.implicitly_wait(4)
         try:
-            var.driver.find_element(By.XPATH, var.check_activity_synthesis_report)
+            var.driver.find_element(By.XPATH, var.check_activity_synthesis_report8)
         except:
             activity_report.report_air_conditioner_summaries(self, "", "", "")
 
@@ -1483,13 +1514,13 @@ class activity_report:      #Báo cáo hoạt động
         try:
             var.driver.find_element(By.XPATH, var.checkbox_typevehicle).click()
             logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Pass")
             time.sleep(1)
         except:
             logging.info("False")
             var.driver.save_screenshot(var.imagepath + code + "_BaoCaoDoanhNghiep_BaoCaoRaVaoTram_AnHienCot.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_BaoCaoDoanhNghiep_BaoCaoRaVaoTram_AnHienCot .png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 13, code + "_BaoCaoDoanhNghiep_BaoCaoRaVaoTram_AnHienCot .png")
         try:
             button = var.driver.find_element(By.XPATH, var.hide_column_cancel1)
             var.driver.execute_script("arguments[0].click();", button)
@@ -1511,7 +1542,7 @@ class activity_report:      #Báo cáo hoạt động
         try:
             var.driver.find_element(By.XPATH, var.machine_report).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk3'], var.data['login']['conhom_quantri_mk3'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.machine_report).click()
@@ -1525,15 +1556,26 @@ class activity_report:      #Báo cáo hoạt động
         try:
             var.driver.find_element(By.XPATH, var.fromdate_input)
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk3'], var.data['login']['conhom_quantri_mk3'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.machine_report).click()
             time.sleep(5)
 
         write_from_date(var.fromdate_input)
-        var.driver.find_element(By.XPATH, var.report_search).click()
+        button = var.driver.find_element(By.XPATH, var.report_search)
+        var.driver.execute_script("arguments[0].click();", button)
         time.sleep(5)
+        try:
+            print("a1")
+            var.driver.find_element(By.XPATH, "//*[@id='ctl00_ctl00_MainContent_Content_ScrollPanel']/div/table/tbody/tr[2]/td[2]")
+            print("a2")
+        except:
+            write_from_date_month(var.fromdate_input)
+            button = var.driver.find_element(By.XPATH, var.report_search)
+            var.driver.execute_script("arguments[0].click();", button)
+            time.sleep(5)
+
         chucnangkhac.write_result_displayed_try(code, eventname, result,
                                                 "Báo cáo doanh nghiệp - Báo cáo động cơ",
                                                 var.check_activity_synthesis_report_search,
@@ -1547,13 +1589,14 @@ class activity_report:      #Báo cáo hoạt động
             # var.driver.find_element(By.XPATH, var.report_search).click()
             var.driver.find_element(By.XPATH, var.check_report_search)
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk3'], var.data['login']['conhom_quantri_mk3'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.machine_report).click()
             time.sleep(5)
             write_from_date(var.fromdate_input)
-            var.driver.find_element(By.XPATH, var.report_search).click()
+            button = var.driver.find_element(By.XPATH, var.report_search)
+            var.driver.execute_script("arguments[0].click();", button)
             time.sleep(6)
         var.driver.find_element(By.XPATH, var.downloadexcel).click()
         time.sleep(15)
@@ -1603,7 +1646,7 @@ class activity_report:      #Báo cáo hoạt động
     def machine_report_hide_column(self, code, eventname, result):
         var.driver.implicitly_wait(4)
         try:
-            var.driver.find_element(By.XPATH, var.check_activity_synthesis_report)
+            var.driver.find_element(By.XPATH, var.check_activity_synthesis_report9)
         except:
             activity_report.machine_report(self, "", "", "")
 
@@ -1617,13 +1660,13 @@ class activity_report:      #Báo cáo hoạt động
         try:
             var.driver.find_element(By.XPATH, var.checkbox_typevehicle).click()
             logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Pass")
             time.sleep(1)
         except:
             logging.info("False")
             var.driver.save_screenshot(var.imagepath + code + "_BaoCaoDoanhNghiep_BaoCaoDongCo_AnHienCot.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_BaoCaoDoanhNghiep_BaoCaoDongCo_AnHienCot .png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 13, code + "_BaoCaoDoanhNghiep_BaoCaoDongCo_AnHienCot .png")
         try:
             button = var.driver.find_element(By.XPATH, var.hide_column_cancel1)
             var.driver.execute_script("arguments[0].click();", button)
@@ -1643,7 +1686,7 @@ class activity_report:      #Báo cáo hoạt động
         try:
             var.driver.find_element(By.XPATH, var.report_speed_over).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.report_speed_over).click()
@@ -1657,7 +1700,7 @@ class activity_report:      #Báo cáo hoạt động
         try:
             var.driver.find_element(By.XPATH, var.fromdate_input)
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.report_speed_over).click()
@@ -1680,7 +1723,8 @@ class activity_report:      #Báo cáo hoạt động
         var.driver.execute_script(JS_ADD_TEXT_TO_INPUT, elm, giamsat.data['baocao']['quatocdo_denngay'])
         time.sleep(1)
 
-        var.driver.find_element(By.XPATH, var.report_search).click()
+        button = var.driver.find_element(By.XPATH, var.report_search)
+        var.driver.execute_script("arguments[0].click();", button)
         time.sleep(10)
         print("aaaa")
         chucnangkhac.write_result_displayed_try(code, eventname, result,"Báo cáo quá tốc độ",
@@ -1696,15 +1740,16 @@ class activity_report:      #Báo cáo hoạt động
             # var.driver.find_element(By.XPATH, var.report_search).click()
             var.driver.find_element(By.XPATH, var.check_report_search)
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.report_speed_over).click()
             time.sleep(5)
 
             write_from_date_month(var.fromdate_input)
-            var.driver.find_element(By.XPATH, var.report_search).click()
-            time.sleep(10)
+            button = var.driver.find_element(By.XPATH, var.report_search)
+            var.driver.execute_script("arguments[0].click();", button)
+            time.sleep(14)
             print("n1")
 
         try:
@@ -1756,7 +1801,7 @@ class activity_report:      #Báo cáo hoạt động
     def report_speed_over_hide_column(self, code, eventname, result):
         var.driver.implicitly_wait(4)
         try:
-            var.driver.find_element(By.XPATH, var.check_activity_synthesis_report)
+            var.driver.find_element(By.XPATH, var.check_activity_synthesis_report15)
         except:
             activity_report.report_speed_over(self, "", "", "")
 
@@ -1770,13 +1815,13 @@ class activity_report:      #Báo cáo hoạt động
         try:
             var.driver.find_element(By.XPATH, var.checkbox_typevehicle).click()
             logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Pass")
             time.sleep(1)
         except:
             logging.info("False")
             var.driver.save_screenshot(var.imagepath + code + "_BaoCaoDoanhNghiep_BaoCaoQuaTocDo_AnHienCot.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_BaoCaoDoanhNghiep_BaoCaoQuaTocDo_AnHienCot.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 13, code + "_BaoCaoDoanhNghiep_BaoCaoQuaTocDo_AnHienCot.png")
         try:
             button = var.driver.find_element(By.XPATH, var.hide_column_cancel1)
             var.driver.execute_script("arguments[0].click();", button)
@@ -1798,7 +1843,7 @@ class report_schedule:  #Báo cáo lịch trình
         try:
             var.driver.find_element(By.XPATH, var.position_history).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.position_history).click()
@@ -1812,7 +1857,7 @@ class report_schedule:  #Báo cáo lịch trình
         try:
             var.driver.find_element(By.XPATH, var.position_history_time_slot).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.position_history).click()
@@ -1833,7 +1878,7 @@ class report_schedule:  #Báo cáo lịch trình
             time.sleep(1)
             var.driver.find_element(By.XPATH, var.position_history_choose_car3rd).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.position_history).click()
@@ -1842,7 +1887,8 @@ class report_schedule:  #Báo cáo lịch trình
             time.sleep(1)
             var.driver.find_element(By.XPATH, var.position_history_choose_car3rd).click()
         time.sleep(1)
-        var.driver.find_element(By.XPATH, var.report_search).click()
+        button = var.driver.find_element(By.XPATH, var.report_search)
+        var.driver.execute_script("arguments[0].click();", button)
         time.sleep(4)
         chucnangkhac.write_result_displayed_try(code, eventname, result, "Báo cáo doanh nghiệp - Báo cáo hành trình",
                                                 var.check_position_history_search, "_BaoCaoDoanhNghiep_BaoCaoHanhTrinh_TimKiem.png")
@@ -1853,9 +1899,9 @@ class report_schedule:  #Báo cáo lịch trình
         chucnangkhac.delete_excel()
         try:
             # var.driver.find_element(By.XPATH, var.check_position_history_search)
-            var.driver.find_element(By.XPATH, var.check_report_search)
+            var.driver.find_element(By.XPATH, var.check_report_search1)
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.position_history).click()
@@ -1863,9 +1909,10 @@ class report_schedule:  #Báo cáo lịch trình
             var.driver.find_element(By.XPATH, var.position_history_choose_car).click()
             time.sleep(1)
             var.driver.find_element(By.XPATH, var.position_history_choose_car3rd).click()
-            var.driver.find_element(By.XPATH, var.report_search).click()
+            button = var.driver.find_element(By.XPATH, var.report_search)
+            var.driver.execute_script("arguments[0].click();", button)
             time.sleep(8)
-        time.sleep(1)
+        time.sleep(5)
         var.driver.find_element(By.XPATH, var.downloadexcel).click()
         time.sleep(15)
         filename = max([var.excelpath + "\\" + f for f in os.listdir(var.excelpath)], key=os.path.getctime)
@@ -1877,7 +1924,7 @@ class report_schedule:  #Báo cáo lịch trình
         logging.info("Tên sự kiện - " + eventname)
         logging.info("Kết quả - " + result)
         logging.info("True")
-        chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+        chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Pass")
 
 
 
@@ -1903,7 +1950,7 @@ class report_schedule:  #Báo cáo lịch trình
     def position_history_hide_map(self, code, eventname, result):
         var.driver.implicitly_wait(4)
         try:
-            var.driver.find_element(By.XPATH, var.check_activity_synthesis_report)
+            var.driver.find_element(By.XPATH, var.check_activity_synthesis_report10)
         except:
             report_schedule.position_history(self, "", "", "")
 
@@ -1917,13 +1964,13 @@ class report_schedule:  #Báo cáo lịch trình
         try:
             var.driver.find_element(By.XPATH, var.position_history_hide_map).click()
             logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Pass")
             time.sleep(1)
         except:
             logging.info("False")
             var.driver.save_screenshot(var.imagepath + code + "_BaoCaoDoanhNghiep_BaoCaoDongCo_AnHienBanDo.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_BaoCaoDoanhNghiep_BaoCaoDongCo_AnHienBanDo .png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 13, code + "_BaoCaoDoanhNghiep_BaoCaoDongCo_AnHienBanDo .png")
         time.sleep(1.5)
 
 
@@ -1937,7 +1984,7 @@ class fuel_report:
         try:
             var.driver.find_element(By.XPATH, var.fuel_consumption_summary_report).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.fuel_consumption_summary_report).click()
@@ -1945,12 +1992,13 @@ class fuel_report:
         chucnangkhac.write_result_text_try_if(code, eventname, result, "Báo cáo doanh nghiệp - Báo cáo tổng hợp tiêu hao nhiên liệu",
                                               var.check_report_km_activity_summary, "BÁO CÁO TỔNG HỢP TIÊU HAO NHIÊN LIỆU", "_BaoCaoDoanhNghiep_BaoCaoTongHopTieuHaoNhienLieu.png")
 
+
     def fuel_consumption_summary_report_search(self, code, eventname,result):  #Báo cáo tổng hợp tiêu hao nhiên liệu - tìm kiếm
         var.driver.implicitly_wait(5)
         try:
             var.driver.find_element(By.XPATH, var.fromdate_input)
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.fuel_consumption_summary_report).click()
@@ -1958,12 +2006,13 @@ class fuel_report:
         # write_from_date(var.stop_report_fromdate_input)
         # time.sleep(1)
         var.driver.find_element(By.XPATH, var.activity_synthesis_report_search).click()
-        time.sleep(5)
+        time.sleep(12)
 
         chucnangkhac.write_result_displayed_try(code, eventname, result,
                                                 "Báo cáo doanh nghiệp - Báo cáo tổng hợp tiêu hao nhiên liệu",
                                                 var.check_activity_synthesis_report_search,
                                                 "_BaoCaoDoanhNghiep_BaoCaoTongHopTieuHaoNhienLieu_TimKiem.png")
+
 
     def fuel_consumption_summary_report_downloadexcel(self, code, eventname, result):    #Báo cáo tổng hợp tiêu hao nhiên liệu -  checkdownload
         var.driver.implicitly_wait(5)
@@ -1972,15 +2021,17 @@ class fuel_report:
             # var.driver.find_element(By.XPATH, var.report_search).click()
             var.driver.find_element(By.XPATH, var.check_report_search)
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.fuel_consumption_summary_report).click()
             time.sleep(5)
             write_from_date(var.stop_report_fromdate_input)
             time.sleep(1)
-            var.driver.find_element(By.XPATH, var.report_search).click()
-            time.sleep(6)
+            button = var.driver.find_element(By.XPATH, var.report_search)
+            var.driver.execute_script("arguments[0].click();", button)
+            # var.driver.find_element(By.XPATH, var.report_search).click()
+            time.sleep(12)
         var.driver.find_element(By.XPATH, var.downloadexcel).click()
         time.sleep(15)
         try:
@@ -1993,7 +2044,7 @@ class fuel_report:
             shutil.move(filename, os.path.join(var.excelpath, r"baocaotonghoptieuhaonhienlieu.xlsx"))
 
         #Đọc check file excel
-        bangchucai = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U']
+        bangchucai = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S']
         wordbook = openpyxl.load_workbook(var.excelpath+"/baocaotonghoptieuhaonhienlieu.xlsX")
         sheet = wordbook.get_sheet_by_name("Data")
 
@@ -2003,35 +2054,37 @@ class fuel_report:
         fuel_consumption_summary_report_liscense_plate = var.driver.find_element(By.XPATH, var.fuel_consumption_summary_report_liscense_plate).text
         fuel_consumption_summary_report_type_vehicle = var.driver.find_element(By.XPATH, var.fuel_consumption_summary_report_type_vehicle).text
         fuel_consumption_summary_report_time_run = var.driver.find_element(By.XPATH, var.fuel_consumption_summary_report_time_run).text
-        fuel_consumption_summary_report_time_stop = var.driver.find_element(By.XPATH, var.fuel_consumption_summary_report_time_stop).text
+
+        # fuel_consumption_summary_report_time_stop = var.driver.find_element(By.XPATH, var.fuel_consumption_summary_report_time_stop).text
+
         fuel_consumption_summary_report_number_stop = var.driver.find_element(By.XPATH, var.fuel_consumption_summary_report_number_stop).text
         fuel_consumption_summary_report_number_of_suction = var.driver.find_element(By.XPATH, var.fuel_consumption_summary_report_number_of_suction).text   #số lần hút
 
         fuel_consumption_summary_report_so_lit_dau_ky = var.driver.find_element(By.XPATH, var.fuel_consumption_summary_report_so_lit_dau_ky).text
         fuel_consumption_summary_report_so_lit_dau_ky = str(''.join(re.findall(r'\d+', fuel_consumption_summary_report_so_lit_dau_ky)))
         fuel_consumption_summary_report_so_lit_dau_ky = fuel_consumption_summary_report_so_lit_dau_ky[0:4]
-        fuel_consumption_summary_report_so_lit_dau_ky_excel = str(sheet["I7"].value)
+        fuel_consumption_summary_report_so_lit_dau_ky_excel = str(sheet["H7"].value)
         fuel_consumption_summary_report_so_lit_dau_ky_excel = str(''.join(re.findall(r'\d+', fuel_consumption_summary_report_so_lit_dau_ky_excel)))
         fuel_consumption_summary_report_so_lit_dau_ky_excel = fuel_consumption_summary_report_so_lit_dau_ky_excel[0:4]
 
         fuel_consumption_summary_report_so_lit_do = var.driver.find_element(By.XPATH, var.fuel_consumption_summary_report_so_lit_do).text
         fuel_consumption_summary_report_so_lit_do = str(''.join(re.findall(r'\d+', fuel_consumption_summary_report_so_lit_do)))
         fuel_consumption_summary_report_so_lit_do = fuel_consumption_summary_report_so_lit_do[0:4]
-        fuel_consumption_summary_report_so_lit_do_excel = str(sheet["J7"].value)
+        fuel_consumption_summary_report_so_lit_do_excel = str(sheet["I7"].value)
         fuel_consumption_summary_report_so_lit_do_excel = str(''.join(re.findall(r'\d+', fuel_consumption_summary_report_so_lit_do_excel)))
         fuel_consumption_summary_report_so_lit_do_excel = fuel_consumption_summary_report_so_lit_do_excel[0:4]
 
         fuel_consumption_summary_report_so_lit_hut = var.driver.find_element(By.XPATH, var.fuel_consumption_summary_report_so_lit_hut).text
         fuel_consumption_summary_report_so_lit_hut = str(''.join(re.findall(r'\d+', fuel_consumption_summary_report_so_lit_hut)))
         fuel_consumption_summary_report_so_lit_hut = fuel_consumption_summary_report_so_lit_hut[0:4]
-        fuel_consumption_summary_report_so_lit_hut_excel = str(sheet["K7"].value)
+        fuel_consumption_summary_report_so_lit_hut_excel = str(sheet["J7"].value)
         fuel_consumption_summary_report_so_lit_hut_excel = str(''.join(re.findall(r'\d+', fuel_consumption_summary_report_so_lit_hut_excel)))
         fuel_consumption_summary_report_so_lit_hut_excel = fuel_consumption_summary_report_so_lit_hut_excel[0:4]
 
         fuel_consumption_summary_report_so_lit_cuoi_ky = var.driver.find_element(By.XPATH, var.fuel_consumption_summary_report_so_lit_cuoi_ky).text
         fuel_consumption_summary_report_so_lit_cuoi_ky = str(''.join(re.findall(r'\d+', fuel_consumption_summary_report_so_lit_cuoi_ky)))
         fuel_consumption_summary_report_so_lit_cuoi_ky = fuel_consumption_summary_report_so_lit_cuoi_ky[0:4]
-        fuel_consumption_summary_report_so_lit_cuoi_ky_excel = str(sheet["L7"].value)
+        fuel_consumption_summary_report_so_lit_cuoi_ky_excel = str(sheet["K7"].value)
         fuel_consumption_summary_report_so_lit_cuoi_ky_excel = str(''.join(re.findall(r'\d+', fuel_consumption_summary_report_so_lit_cuoi_ky_excel)))
         fuel_consumption_summary_report_so_lit_cuoi_ky_excel = fuel_consumption_summary_report_so_lit_cuoi_ky_excel[0:4]
 
@@ -2040,7 +2093,7 @@ class fuel_report:
         fuel_consumption_summary_report_nl_tieu_thu_thuc_te = var.driver.find_element(By.XPATH, var.fuel_consumption_summary_report_nl_tieu_thu_thuc_te).text
         fuel_consumption_summary_report_nl_tieu_thu_thuc_te = str(''.join(re.findall(r'\d+', fuel_consumption_summary_report_nl_tieu_thu_thuc_te)))
         fuel_consumption_summary_report_nl_tieu_thu_thuc_te = fuel_consumption_summary_report_nl_tieu_thu_thuc_te[0:4]
-        fuel_consumption_summary_report_nl_tieu_thu_thuc_te_excel = str(sheet["N7"].value)
+        fuel_consumption_summary_report_nl_tieu_thu_thuc_te_excel = str(sheet["M7"].value)
         fuel_consumption_summary_report_nl_tieu_thu_thuc_te_excel = str(''.join(re.findall(r'\d+', fuel_consumption_summary_report_nl_tieu_thu_thuc_te_excel)))
         fuel_consumption_summary_report_nl_tieu_thu_thuc_te_excel = fuel_consumption_summary_report_nl_tieu_thu_thuc_te_excel[0:4]
 
@@ -2049,23 +2102,30 @@ class fuel_report:
         fuel_consumption_summary_report_dinh_muc_thuc_te = var.driver.find_element(By.XPATH, var.fuel_consumption_summary_report_dinh_muc_thuc_te).text
         fuel_consumption_summary_report_dinh_muc_thuc_te = str(''.join(re.findall(r'\d+', fuel_consumption_summary_report_dinh_muc_thuc_te)))
         fuel_consumption_summary_report_dinh_muc_thuc_te = fuel_consumption_summary_report_dinh_muc_thuc_te[0:3]
-        fuel_consumption_summary_report_dinh_muc_thuc_te_excel = str(sheet["P7"].value)
+        fuel_consumption_summary_report_dinh_muc_thuc_te_excel = str(sheet["O7"].value)
         fuel_consumption_summary_report_dinh_muc_thuc_te_excel = str(''.join(re.findall(r'\d+', fuel_consumption_summary_report_dinh_muc_thuc_te_excel)))
         fuel_consumption_summary_report_dinh_muc_thuc_te_excel = fuel_consumption_summary_report_dinh_muc_thuc_te_excel[0:3]
 
-        fuel_consumption_summary_report_dinh_muc_thuc_te_dung_do = var.driver.find_element(By.XPATH, var.fuel_consumption_summary_report_dinh_muc_thuc_te_dung_do).text
+
+        fuel_consumption_summary_report_dinh_muc_thuc_te_bat_may = var.driver.find_element(By.XPATH, var.fuel_consumption_summary_report_dinh_muc_thuc_te_bat_may).text
+        fuel_consumption_summary_report_dinh_muc_thuc_te_bat_may = str(''.join(re.findall(r'\d+', fuel_consumption_summary_report_dinh_muc_thuc_te_bat_may)))
+        fuel_consumption_summary_report_dinh_muc_thuc_te_bat_may = fuel_consumption_summary_report_dinh_muc_thuc_te_bat_may[0:2]
+        fuel_consumption_summary_report_dinh_muc_thuc_te_bat_may_excel = str(sheet["P7"].value)
+        fuel_consumption_summary_report_dinh_muc_thuc_te_bat_may_excel = str(''.join(re.findall(r'\d+', fuel_consumption_summary_report_dinh_muc_thuc_te_bat_may_excel)))
+        fuel_consumption_summary_report_dinh_muc_thuc_te_bat_may_excel = fuel_consumption_summary_report_dinh_muc_thuc_te_bat_may_excel[0:2]
+
+
+        # fuel_consumption_summary_report_dinh_muc_thuc_te_dung_do = var.driver.find_element(By.XPATH, var.fuel_consumption_summary_report_dinh_muc_thuc_te_dung_do).text
 
         fuel_consumption_summary_report_tong_km = var.driver.find_element(By.XPATH, var.fuel_consumption_summary_report_tong_km).text
         fuel_consumption_summary_report_tong_km = str(''.join(re.findall(r'\d+', fuel_consumption_summary_report_tong_km)))
-        fuel_consumption_summary_report_tong_km = fuel_consumption_summary_report_tong_km[0:4]
-        fuel_consumption_summary_report_tong_km_excel = str(sheet["R7"].value)
+        fuel_consumption_summary_report_tong_km = fuel_consumption_summary_report_tong_km[0:2]
+        fuel_consumption_summary_report_tong_km_excel = str(sheet["Q7"].value)
         fuel_consumption_summary_report_tong_km_excel = str(''.join(re.findall(r'\d+', fuel_consumption_summary_report_tong_km_excel)))
-        fuel_consumption_summary_report_tong_km_excel = fuel_consumption_summary_report_tong_km_excel[0:4]
+        fuel_consumption_summary_report_tong_km_excel = fuel_consumption_summary_report_tong_km_excel[0:2]
 
 
         fuel_consumption_summary_report_km_co = var.driver.find_element(By.XPATH, var.fuel_consumption_summary_report_km_co).text
-        fuel_consumption_summary_report_ghi_chu1 = var.driver.find_element(By.XPATH, var.fuel_consumption_summary_report_ghi_chu1).text
-        fuel_consumption_summary_report_ghi_chu2 = var.driver.find_element(By.XPATH, var.fuel_consumption_summary_report_ghi_chu2).text
         fuel_consumption_summary_report_chi_tiet = var.driver.find_element(By.XPATH, var.fuel_consumption_summary_report_chi_tiet).text
 
 
@@ -2081,27 +2141,19 @@ class fuel_report:
             chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "6", "B6", "Nhóm xe", "B7", fuel_consumption_summary_report_group)
             chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "6", "C6", "Biển kiểm soát", "C7", fuel_consumption_summary_report_liscense_plate)
             chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "6", "D6", "Loại phương tiện", "D7", fuel_consumption_summary_report_type_vehicle)
-            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "6", "E6", "Thời gian lăn bánh", "E7", fuel_consumption_summary_report_time_run)
-            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "6", "F6", "Thời gian dừng đỗ nổ máy", "F7", fuel_consumption_summary_report_time_stop)
-            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "6", "G6", "Số lần đổ", "G7", fuel_consumption_summary_report_number_stop)
-            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "6", "H6", "Số lần hút", "H7", fuel_consumption_summary_report_number_of_suction)
-
-            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "I6", "Số lít đầu kỳ")
-            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "J6", "Số lít đổ")
-            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "K6", "Số lít hút")
-            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "L6", "Số lít cuối kỳ")
-            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "N6", "Nhiên liệu tiêu thụ thực tế")
-            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "P6", "Định mức thực tế")
-            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "R6", "Tổng km")
-
-
-
-            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "6", "M6", "Nhiên liệu tiêu thụ định mức", "M7", fuel_consumption_summary_report_nl_tieu_thu_dinh_muc)
-            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "6", "O6", "Định mức quy định", "O7", fuel_consumption_summary_report_dinh_muc_quy_dinh)
-            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "6", "Q6", "Định mức thực tế dừng đỗ nổ máy", "Q7", fuel_consumption_summary_report_dinh_muc_thuc_te_dung_do)
-            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "6", "S6", "Km cơ", "S7", fuel_consumption_summary_report_km_co)
-            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "6", "T6", "Ghi chú 1", "T7", fuel_consumption_summary_report_ghi_chu1)
-            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "6", "U6", "Ghi chú 2", "U8", fuel_consumption_summary_report_ghi_chu2)
+            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "6", "E6", "Thời gian bật máy", "E7", fuel_consumption_summary_report_time_run)
+            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "6", "F6", "Số lần đổ", "F7", fuel_consumption_summary_report_number_stop)
+            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "6", "G6", "Số lần hút", "G7", fuel_consumption_summary_report_number_of_suction)
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "H6", "Số lít đầu kỳ")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "I6", "Số lít đổ")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "J6", "Số lít hút")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "K6", "Số lít cuối kỳ")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "M6", "Nhiên liệu tiêu thụ thực tế")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "O6", "Định mức thực tế")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "6", "Q6", "Tổng km")
+            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "6", "L6", "Nhiên liệu tiêu thụ định mức", "L7", fuel_consumption_summary_report_nl_tieu_thu_dinh_muc)
+            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "6", "N6", "Định mức quy định", "N7", fuel_consumption_summary_report_dinh_muc_quy_dinh)
+            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "6", "R6", "Km cơ", "R7", fuel_consumption_summary_report_km_co)
         chucnangkhac.write_result_excel_checkweb(code, fuel_consumption_summary_report_chi_tiet, "Chi tiết")
         chucnangkhac.write_result_excelreport2(code, fuel_consumption_summary_report_so_lit_dau_ky, fuel_consumption_summary_report_so_lit_dau_ky_excel, "Số lít đầu kỳ")
         chucnangkhac.write_result_excelreport2(code, fuel_consumption_summary_report_so_lit_do, fuel_consumption_summary_report_so_lit_do_excel, "Số lít đổ")
@@ -2109,12 +2161,15 @@ class fuel_report:
         chucnangkhac.write_result_excelreport2(code, fuel_consumption_summary_report_so_lit_cuoi_ky, fuel_consumption_summary_report_so_lit_cuoi_ky_excel, "Số lít cuối kỳ")
         chucnangkhac.write_result_excelreport2(code, fuel_consumption_summary_report_nl_tieu_thu_thuc_te, fuel_consumption_summary_report_nl_tieu_thu_thuc_te_excel, "Nhiên liệu tiêu thụ thực tế")
         chucnangkhac.write_result_excelreport2(code, fuel_consumption_summary_report_dinh_muc_thuc_te, fuel_consumption_summary_report_dinh_muc_thuc_te_excel, "Định mức thực tế")
+        chucnangkhac.write_result_excelreport2(code, fuel_consumption_summary_report_dinh_muc_thuc_te_bat_may, fuel_consumption_summary_report_dinh_muc_thuc_te_bat_may_excel, "Định mức thực tế bật máy")
         chucnangkhac.write_result_excelreport2(code, fuel_consumption_summary_report_tong_km, fuel_consumption_summary_report_tong_km_excel, "Tổng km")
+
+
 
     def fuel_consumption_summary_report_hide_column(self, code, eventname, result):
         var.driver.implicitly_wait(4)
         try:
-            var.driver.find_element(By.XPATH, var.check_activity_synthesis_report)
+            var.driver.find_element(By.XPATH, var.check_activity_synthesis_report11)
         except:
             fuel_report.fuel_consumption_summary_report(self, "", "", "")
 
@@ -2128,13 +2183,13 @@ class fuel_report:
         try:
             var.driver.find_element(By.XPATH, var.checkbox_typevehicle).click()
             logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Pass")
             time.sleep(1)
         except:
             logging.info("False")
             var.driver.save_screenshot(var.imagepath + code + "__BaoCaoDoanhNghiep_BaoCaoTongHopTieuHaoNhienLieu_AnHienCot.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "__BaoCaoDoanhNghiep_BaoCaoTongHopTieuHaoNhienLieu_AnHienCot .png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 13, code + "__BaoCaoDoanhNghiep_BaoCaoTongHopTieuHaoNhienLieu_AnHienCot .png")
         try:
             button = var.driver.find_element(By.XPATH, var.hide_column_cancel1)
             var.driver.execute_script("arguments[0].click();", button)
@@ -2156,7 +2211,7 @@ class fuel_report:
         try:
             var.driver.find_element(By.XPATH, var.fuel_consumption_daily_report).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.fuel_consumption_daily_report).click()
@@ -2170,20 +2225,22 @@ class fuel_report:
         try:
             var.driver.find_element(By.XPATH, var.fromdate_input)
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.fuel_consumption_daily_report).click()
             time.sleep(5)
         write_from_date(var.stop_report_fromdate_input)
         time.sleep(1)
-        var.driver.find_element(By.XPATH, var.report_search).click()
+        button = var.driver.find_element(By.XPATH, var.report_search)
+        var.driver.execute_script("arguments[0].click();", button)
         time.sleep(5)
 
         chucnangkhac.write_result_displayed_try(code, eventname, result,
                                                 "Báo cáo doanh nghiệp - Báo cáo tiêu hao nhiên liệu",
                                                 var.check_activity_synthesis_report_search,
                                                 "_BaoCaoDoanhNghiep_BaoCaoTieuHaoNhienLieu_TimKiem.png")
+
 
 
     def fuel_consumption_daily_report_downloadexcel(self, code, eventname, result):    #Báo cáo tiêu hao nhiên liệu -  checkdownload
@@ -2193,21 +2250,22 @@ class fuel_report:
             # var.driver.find_element(By.XPATH, var.report_search).click()
             var.driver.find_element(By.XPATH, var.check_report_search)
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.fuel_consumption_daily_report).click()
             time.sleep(5)
             write_from_date(var.stop_report_fromdate_input)
             time.sleep(1)
-            var.driver.find_element(By.XPATH, var.report_search).click()
+            button = var.driver.find_element(By.XPATH, var.report_search)
+            var.driver.execute_script("arguments[0].click();", button)
             time.sleep(6)
         var.driver.find_element(By.XPATH, var.downloadexcel).click()
         time.sleep(15)
         filename = max([var.excelpath + "\\" + f for f in os.listdir(var.excelpath)], key=os.path.getctime)
         shutil.move(filename, os.path.join(var.excelpath, r"baocaotieuhaonhienlieu.xlsx"))
         #Đọc check file excel
-        bangchucai = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T']
+        bangchucai = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V']
         wordbook = openpyxl.load_workbook(var.excelpath+"/baocaotieuhaonhienlieu.xlsX")
         sheet = wordbook.get_sheet_by_name("Data")
 
@@ -2230,10 +2288,19 @@ class fuel_report:
         fuel_consumption_daily_report_ketthucdichuyen_excel = str(''.join(re.findall(r'\d+', fuel_consumption_daily_report_ketthucdichuyen_excel)))
         fuel_consumption_daily_report_ketthucdichuyen_excel = fuel_consumption_daily_report_ketthucdichuyen_excel[0:4]
 
+
+        fuel_consumption_daily_report_thoigianbatmay = var.driver.find_element(By.XPATH, var.fuel_consumption_daily_report_thoigianbatmay).text
+        fuel_consumption_daily_report_thoigianbatmay = str(''.join(re.findall(r'\d+', fuel_consumption_daily_report_thoigianbatmay)))
+        fuel_consumption_daily_report_thoigianbatmay = fuel_consumption_daily_report_thoigianbatmay[0:4]
+        fuel_consumption_daily_report_thoigianbatmay_excel = str(sheet["G6"].value)
+        fuel_consumption_daily_report_thoigianbatmay_excel = str(''.join(re.findall(r'\d+', fuel_consumption_daily_report_thoigianbatmay_excel)))
+        fuel_consumption_daily_report_thoigianbatmay_excel = fuel_consumption_daily_report_thoigianbatmay_excel[0:4]
+
+
         fuel_consumption_daily_report_thoigianlanbanh = var.driver.find_element(By.XPATH, var.fuel_consumption_daily_report_thoigianlanbanh).text
         fuel_consumption_daily_report_thoigianlanbanh = str(''.join(re.findall(r'\d+', fuel_consumption_daily_report_thoigianlanbanh)))
         fuel_consumption_daily_report_thoigianlanbanh = fuel_consumption_daily_report_thoigianlanbanh[0:5]
-        fuel_consumption_daily_report_thoigianlanbanh_excel = str(sheet["G6"].value)
+        fuel_consumption_daily_report_thoigianlanbanh_excel = str(sheet["H6"].value)
         fuel_consumption_daily_report_thoigianlanbanh_excel = str(''.join(re.findall(r'\d+', fuel_consumption_daily_report_thoigianlanbanh_excel)))
         fuel_consumption_daily_report_thoigianlanbanh_excel = fuel_consumption_daily_report_thoigianlanbanh_excel[0:5]
 
@@ -2244,24 +2311,48 @@ class fuel_report:
         fuel_consumption_daily_report_solitdaungay = var.driver.find_element(By.XPATH, var.fuel_consumption_daily_report_solitdaungay).text
         fuel_consumption_daily_report_solitdaungay = str(''.join(re.findall(r'\d+', fuel_consumption_daily_report_solitdaungay)))
         fuel_consumption_daily_report_solitdaungay = fuel_consumption_daily_report_solitdaungay[0:4]
-        fuel_consumption_daily_report_solitdaungay_excel = str(sheet["K6"].value)
+        fuel_consumption_daily_report_solitdaungay_excel = str(sheet["L6"].value)
         fuel_consumption_daily_report_solitdaungay_excel = str(''.join(re.findall(r'\d+', fuel_consumption_daily_report_solitdaungay_excel)))
         fuel_consumption_daily_report_solitdaungay_excel = fuel_consumption_daily_report_solitdaungay_excel[0:4]
 
+
+
+
+
         fuel_consumption_daily_report_solitdo = var.driver.find_element(By.XPATH, var.fuel_consumption_daily_report_solitdo).text
+        fuel_consumption_daily_report_solitdo = str(''.join(re.findall(r'\d+', fuel_consumption_daily_report_solitdo)))
+        fuel_consumption_daily_report_solitdo = fuel_consumption_daily_report_solitdo[0:4]
+        fuel_consumption_daily_report_solitdo_excel = str(sheet["M6"].value)
+        fuel_consumption_daily_report_solitdo_excel = str(''.join(re.findall(r'\d+', fuel_consumption_daily_report_solitdo_excel)))
+        fuel_consumption_daily_report_solitdo_excel = fuel_consumption_daily_report_solitdo_excel[0:4]
+
+
+
+
+
+
+
+
         fuel_consumption_daily_report_solithut = var.driver.find_element(By.XPATH, var.fuel_consumption_daily_report_solithut).text
+        fuel_consumption_daily_report_solithut = str(''.join(re.findall(r'\d+', fuel_consumption_daily_report_solithut)))
+        fuel_consumption_daily_report_solithut = fuel_consumption_daily_report_solithut[0:4]
+        fuel_consumption_daily_report_solithut_excel = str(sheet["N6"].value)
+        fuel_consumption_daily_report_solithut_excel = str(''.join(re.findall(r'\d+', fuel_consumption_daily_report_solithut_excel)))
+        fuel_consumption_daily_report_solithut_excel = fuel_consumption_daily_report_solithut_excel[0:4]
+
+
 
         fuel_consumption_daily_report_solitton = var.driver.find_element(By.XPATH, var.fuel_consumption_daily_report_solitton).text
         fuel_consumption_daily_report_solitton = str(''.join(re.findall(r'\d+', fuel_consumption_daily_report_solitton)))
         fuel_consumption_daily_report_solitton = fuel_consumption_daily_report_solitton[0:4]
-        fuel_consumption_daily_report_solitton_excel = str(sheet["N6"].value)
+        fuel_consumption_daily_report_solitton_excel = str(sheet["O6"].value)
         fuel_consumption_daily_report_solitton_excel = str(''.join(re.findall(r'\d+', fuel_consumption_daily_report_solitton_excel)))
         fuel_consumption_daily_report_solitton_excel = fuel_consumption_daily_report_solitton_excel[0:4]
 
         fuel_consumption_daily_report_nhienlieutieuhao = var.driver.find_element(By.XPATH, var.fuel_consumption_daily_report_nhienlieutieuhao).text
         fuel_consumption_daily_report_nhienlieutieuhao = str(''.join(re.findall(r'\d+', fuel_consumption_daily_report_nhienlieutieuhao)))
         fuel_consumption_daily_report_nhienlieutieuhao = fuel_consumption_daily_report_nhienlieutieuhao[0:4]
-        fuel_consumption_daily_report_nhienlieutieuhao_excel = str(sheet["O6"].value)
+        fuel_consumption_daily_report_nhienlieutieuhao_excel = str(sheet["P6"].value)
         fuel_consumption_daily_report_nhienlieutieuhao_excel = str(''.join(re.findall(r'\d+', fuel_consumption_daily_report_nhienlieutieuhao_excel)))
         fuel_consumption_daily_report_nhienlieutieuhao_excel = fuel_consumption_daily_report_nhienlieutieuhao_excel[0:4]
 
@@ -2270,27 +2361,36 @@ class fuel_report:
         fuel_consumption_daily_report_dinhmucthuctetheokm = var.driver.find_element(By.XPATH, var.fuel_consumption_daily_report_dinhmucthuctetheokm).text
         fuel_consumption_daily_report_dinhmucthuctetheokm = str(''.join(re.findall(r'\d+', fuel_consumption_daily_report_dinhmucthuctetheokm)))
         fuel_consumption_daily_report_dinhmucthuctetheokm = fuel_consumption_daily_report_dinhmucthuctetheokm[0:3]
-        fuel_consumption_daily_report_dinhmucthuctetheokm_excel = str(sheet["Q6"].value)
+        fuel_consumption_daily_report_dinhmucthuctetheokm_excel = str(sheet["R6"].value)
         fuel_consumption_daily_report_dinhmucthuctetheokm_excel = str(''.join(re.findall(r'\d+', fuel_consumption_daily_report_dinhmucthuctetheokm_excel)))
         fuel_consumption_daily_report_dinhmucthuctetheokm_excel = fuel_consumption_daily_report_dinhmucthuctetheokm_excel[0:3]
 
-        fuel_consumption_daily_report_dinhmucthuctedungdonomay = var.driver.find_element(By.XPATH, var.fuel_consumption_daily_report_dinhmucthuctedungdonomay).text
-        fuel_consumption_daily_report_sotien = var.driver.find_element(By.XPATH, var.fuel_consumption_daily_report_sotien).text
+        # fuel_consumption_daily_report_dinhmucthuctedungdonomay = var.driver.find_element(By.XPATH, var.fuel_consumption_daily_report_dinhmucthuctedungdonomay).text
+        fuel_consumption_daily_report_dinhmucthuctebatmay = var.driver.find_element(By.XPATH, var.fuel_consumption_daily_report_dinhmucthuctebatmay).text
+        fuel_consumption_daily_report_dinhmucthuctebatmay = str(''.join(re.findall(r'\d+', fuel_consumption_daily_report_dinhmucthuctebatmay)))
+        fuel_consumption_daily_report_dinhmucthuctebatmay = fuel_consumption_daily_report_dinhmucthuctebatmay[0:3]
+        fuel_consumption_daily_report_dinhmucthuctebatmay_excel = str(sheet["S6"].value)
+        fuel_consumption_daily_report_dinhmucthuctebatmay_excel = str(''.join(re.findall(r'\d+', fuel_consumption_daily_report_dinhmucthuctebatmay_excel)))
+        fuel_consumption_daily_report_dinhmucthuctebatmay_excel = fuel_consumption_daily_report_dinhmucthuctebatmay_excel[0:3]
 
+
+        fuel_consumption_daily_report_sotien = var.driver.find_element(By.XPATH, var.fuel_consumption_daily_report_sotien).text
+        if fuel_consumption_daily_report_sotien == "":
+            fuel_consumption_daily_report_sotien = "0"
 
         fuel_consumption_daily_report_km_gps = var.driver.find_element(By.XPATH, var.fuel_consumption_daily_report_km_gps).text
         fuel_consumption_daily_report_km_gps = str(''.join(re.findall(r'\d+', fuel_consumption_daily_report_km_gps)))
         fuel_consumption_daily_report_km_gps = fuel_consumption_daily_report_km_gps[0:3]
-        fuel_consumption_daily_report_km_gps_excel = str(sheet["T6"].value)
+        fuel_consumption_daily_report_km_gps_excel = str(sheet["U6"].value)
         fuel_consumption_daily_report_km_gps_excel = str(''.join(re.findall(r'\d+', fuel_consumption_daily_report_km_gps_excel)))
         fuel_consumption_daily_report_km_gps_excel = fuel_consumption_daily_report_km_gps_excel[0:3]
 
 
 
-
-
         fuel_consumption_daily_report_bieudo = var.driver.find_element(By.XPATH, var.fuel_consumption_daily_report_bieudo).get_attribute("src")
-        print("src:" + fuel_consumption_daily_report_bieudo)
+        print("src1a:" + fuel_consumption_daily_report_bieudo)
+        print("src1b:" + fuel_consumption_daily_report_bieudo[-24::])
+
         fuel_consumption_daily_report_lotrinh = var.driver.find_element(By.XPATH, var.fuel_consumption_daily_report_lotrinh).text
 
         logging.info("Báo cáo doanh nghiệp - Báo cáo tiêu hao nhiên liệu")
@@ -2307,39 +2407,51 @@ class fuel_report:
 
             chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "E5", "Bắt đầu di chuyển")
             chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "F5", "Kết thúc di chuyển")
-            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "G5", "Thời gian lăn bánh (phút)")
-            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "K5", "Số lít đầu ngày")
-            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "N5", "Số lít tồn")
-            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "O5", "Nhiên liệu tiêu hao")
-            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "Q5", "Định mức thực tế theo km")
-            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "T5", "Km GPS")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "G5", "Thời gian bật máy")
+
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "H5", "Thời gian lăn bánh")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "L5", "Số lít đầu ngày")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "O5", "Số lít tồn")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "P5", "Nhiên liệu tiêu hao")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "R5", "Định mức thực tế theo km")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "S5", "Định mức thực tế bật máy")
+            chucnangkhac.write_result_excelreport(code, sheet, column, 'Data', "5", "U5", "Km GPS")
 
 
+            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "5", "I5", "Thời gian dừng đỗ bật máy", "I6", fuel_consumption_daily_report_thoigiandungdonomay)
+            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "5", "J5", "Số lần đổ", "J6", fuel_consumption_daily_report_solando)
+            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "5", "K5", "Số lần hút", "K6", fuel_consumption_daily_report_solanhut)
+            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "5", "M5", "Số lít đổ", "M6", fuel_consumption_daily_report_solitdo)
+            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "5", "N5", "Số lít hút", "N6", fuel_consumption_daily_report_solithut)
+            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "5", "Q5", "Định mức quy định", "Q6", fuel_consumption_daily_report_dinhmucquydinh)
+            # chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "5", "S5", "Định mức thực tế dừng đỗ bật máy", "S6", fuel_consumption_daily_report_dinhmucthuctedungdonomay)
+            # chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "5", "S5", "Định mức thực tế bật máy", "S6", fuel_consumption_daily_report_dinhmucthuctebatmay)
 
-            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "5", "H5", "Thời gian dừng đỗ nổ máy", "H6", fuel_consumption_daily_report_thoigiandungdonomay)
-            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "5", "I5", "Số lần đổ", "I6", fuel_consumption_daily_report_solando)
-            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "5", "J5", "Số lần hút", "J6", fuel_consumption_daily_report_solanhut)
-            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "5", "L5", "Số lít đổ", "L6", fuel_consumption_daily_report_solitdo)
-            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "5", "M5", "Số lít hút", "M6", fuel_consumption_daily_report_solithut)
-            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "5", "P5", "Định mức quy định", "P6", fuel_consumption_daily_report_dinhmucquydinh)
-            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "5", "R5", "Định mức thực tế dừng đỗ nổ máy", "R6", fuel_consumption_daily_report_dinhmucthuctedungdonomay)
-            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "5", "S5", "Số tiền", "S6", fuel_consumption_daily_report_sotien)
-        chucnangkhac.write_result_excel_checkweb(code, fuel_consumption_daily_report_bieudo, "https://gps.binhanh.vn/Images/s_icon_graph.jpg")
+            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "5", "T5", "Số tiền", "T6", fuel_consumption_daily_report_sotien)
+
+        chucnangkhac.write_result_excel_checkweb(code, fuel_consumption_daily_report_bieudo[-24::], "/Images/s_icon_graph.jpg")
         chucnangkhac.write_result_excel_checkweb(code, fuel_consumption_daily_report_lotrinh, "Lộ trình")
         chucnangkhac.write_result_excelreport2(code, fuel_consumption_daily_report_batdaudichuyen, fuel_consumption_daily_report_batdaudichuyen_excel, "Bắt đầu di chuyển")
         chucnangkhac.write_result_excelreport2(code, fuel_consumption_daily_report_ketthucdichuyen, fuel_consumption_daily_report_ketthucdichuyen_excel, "Kết thúc di chuyển")
-        chucnangkhac.write_result_excelreport2(code, fuel_consumption_daily_report_thoigianlanbanh, fuel_consumption_daily_report_thoigianlanbanh_excel, "Thời gian lăn bánh (phút)")
+        chucnangkhac.write_result_excelreport2(code, fuel_consumption_daily_report_thoigianlanbanh, fuel_consumption_daily_report_thoigianlanbanh_excel, "Thời gian lăn bánh")
         chucnangkhac.write_result_excelreport2(code, fuel_consumption_daily_report_solitdaungay, fuel_consumption_daily_report_solitdaungay_excel, "Số lít đầu ngày")
+        chucnangkhac.write_result_excelreport2(code, fuel_consumption_daily_report_solitdo, fuel_consumption_daily_report_solitdo_excel, "Số lít đổ")
+        chucnangkhac.write_result_excelreport2(code, fuel_consumption_daily_report_solithut, fuel_consumption_daily_report_solithut_excel, "Số lít hút")
+
+
+
         chucnangkhac.write_result_excelreport2(code, fuel_consumption_daily_report_solitton, fuel_consumption_daily_report_solitton_excel, "Số lít tồn")
         chucnangkhac.write_result_excelreport2(code, fuel_consumption_daily_report_nhienlieutieuhao, fuel_consumption_daily_report_nhienlieutieuhao_excel, "Nhiên liệu tiêu hao")
         chucnangkhac.write_result_excelreport2(code, fuel_consumption_daily_report_dinhmucthuctetheokm, fuel_consumption_daily_report_dinhmucthuctetheokm_excel, "Định mức thực tế theo km")
+        chucnangkhac.write_result_excelreport2(code, fuel_consumption_daily_report_dinhmucthuctebatmay, fuel_consumption_daily_report_dinhmucthuctebatmay_excel, "Định mức thực tế bật máy")
         chucnangkhac.write_result_excelreport2(code, fuel_consumption_daily_report_km_gps, fuel_consumption_daily_report_km_gps_excel, "Km GPS")
+
 
 
     def fuel_consumption_daily_report_hide_column(self, code, eventname, result):
         var.driver.implicitly_wait(4)
         try:
-            var.driver.find_element(By.XPATH, var.check_activity_synthesis_report)
+            var.driver.find_element(By.XPATH, var.check_activity_synthesis_report12)
         except:
             fuel_report.fuel_consumption_daily_report(self, "", "", "")
 
@@ -2353,13 +2465,13 @@ class fuel_report:
         try:
             var.driver.find_element(By.XPATH, var.checkbox_typevehicle).click()
             logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Pass")
             time.sleep(1)
         except:
             logging.info("False")
             var.driver.save_screenshot(var.imagepath + code + "_BaoCaoDoanhNghiep_BaoCaoTieuHaoNhienLieu_AnHienCot.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_BaoCaoDoanhNghiep_BaoCaoTieuHaoNhienLieu_AnHienCot .png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 13, code + "_BaoCaoDoanhNghiep_BaoCaoTieuHaoNhienLieu_AnHienCot .png")
         try:
             button = var.driver.find_element(By.XPATH, var.hide_column_cancel1)
             var.driver.execute_script("arguments[0].click();", button)
@@ -2381,7 +2493,7 @@ class fuel_report:
         try:
             var.driver.find_element(By.XPATH, var.report_pour_fuel).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.report_pour_fuel).click()
@@ -2395,14 +2507,15 @@ class fuel_report:
         try:
             var.driver.find_element(By.XPATH, var.fromdate_input)
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.report_pour_fuel).click()
             time.sleep(5)
         write_from_date(var.stop_report_fromdate_input)
         time.sleep(1)
-        var.driver.find_element(By.XPATH, var.report_search).click()
+        button = var.driver.find_element(By.XPATH, var.report_search)
+        var.driver.execute_script("arguments[0].click();", button)
         time.sleep(5)
 
         chucnangkhac.write_result_displayed_try(code, eventname, result,
@@ -2418,14 +2531,15 @@ class fuel_report:
             # var.driver.find_element(By.XPATH, var.report_search).click()
             var.driver.find_element(By.XPATH, var.check_report_search)
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.report_pour_fuel).click()
             time.sleep(5)
             write_from_date(var.stop_report_fromdate_input)
             time.sleep(1)
-            var.driver.find_element(By.XPATH, var.report_search).click()
+            button = var.driver.find_element(By.XPATH, var.report_search)
+            var.driver.execute_script("arguments[0].click();", button)
             time.sleep(6)
         var.driver.find_element(By.XPATH, var.downloadexcel).click()
         time.sleep(15)
@@ -2467,7 +2581,9 @@ class fuel_report:
         report_pour_fuel_ghichu = var.driver.find_element(By.XPATH, var.report_pour_fuel_ghichu).text
         report_pour_fuel_lotrinh = var.driver.find_element(By.XPATH, var.report_pour_fuel_lotrinh).text
         report_pour_fuel_bieudo = var.driver.find_element(By.XPATH, var.report_pour_fuel_bieudo).get_attribute("src")
-        print("src:" + report_pour_fuel_bieudo)
+        print("src2a:" + report_pour_fuel_bieudo)
+        print("src2b:" + report_pour_fuel_bieudo[-24::])
+
 
         report_pour_fuel_xoa = var.driver.find_element(By.XPATH, var.report_pour_fuel_xoa).text
 
@@ -2491,7 +2607,7 @@ class fuel_report:
             chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "6", "G6", "Số tiền", "G7", report_pour_fuel_sotien)
             chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "6", "H6", "Địa chỉ", "H7", report_pour_fuel_diachi)
         chucnangkhac.write_result_excel_checkweb(code, report_pour_fuel_lotrinh, "Lộ trình")
-        chucnangkhac.write_result_excel_checkweb(code, report_pour_fuel_bieudo, "https://gps.binhanh.vn/Images/s_icon_graph.jpg")
+        chucnangkhac.write_result_excel_checkweb(code, report_pour_fuel_bieudo[-24::], "/Images/s_icon_graph.jpg")
         chucnangkhac.write_result_excel_checkweb(code, report_pour_fuel_xoa, "Xóa")
         chucnangkhac.write_result_excelreport2(code, report_pour_fuel_solittruoc, report_pour_fuel_solittruoc_excel, "Số lít trước")
         chucnangkhac.write_result_excelreport2(code, report_pour_fuel_solit, report_pour_fuel_solit_excel, "Số lít")
@@ -2501,7 +2617,7 @@ class fuel_report:
     def report_pour_fuel_hide_column(self, code, eventname, result):
         var.driver.implicitly_wait(4)
         try:
-            var.driver.find_element(By.XPATH, var.check_activity_synthesis_report)
+            var.driver.find_element(By.XPATH, var.check_activity_synthesis_report13)
         except:
             fuel_report.report_pour_fuel(self, "", "", "")
 
@@ -2515,13 +2631,13 @@ class fuel_report:
         try:
             var.driver.find_element(By.XPATH, var.checkbox_typevehicle).click()
             logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Pass")
             time.sleep(1)
         except:
             logging.info("False")
             var.driver.save_screenshot(var.imagepath + code + "_BaoCaoDoanhNghiep_BaoCaoDoHutNhienLieu_AnHienCot.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_BaoCaoDoanhNghiep_BaoCaoDoHutNhienLieu_AnHienCot.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 13, code + "_BaoCaoDoanhNghiep_BaoCaoDoHutNhienLieu_AnHienCot.png")
         try:
             button = var.driver.find_element(By.XPATH, var.hide_column_cancel1)
             var.driver.execute_script("arguments[0].click();", button)
@@ -2541,7 +2657,7 @@ class system_report:
         try:
             var.driver.find_element(By.XPATH, var.device_singnal_report).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.device_singnal_report).click()
@@ -2555,14 +2671,15 @@ class system_report:
         try:
             var.driver.find_element(By.XPATH, var.fromdate_input)
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.device_singnal_report).click()
             time.sleep(5)
         write_from_date(var.stop_report_fromdate_input)
         time.sleep(1)
-        var.driver.find_element(By.XPATH, var.report_search).click()
+        button = var.driver.find_element(By.XPATH, var.report_search)
+        var.driver.execute_script("arguments[0].click();", button)
         time.sleep(5)
 
         chucnangkhac.write_result_displayed_try(code, eventname, result,
@@ -2579,14 +2696,15 @@ class system_report:
             # var.driver.find_element(By.XPATH, var.report_search).click()
             var.driver.find_element(By.XPATH, var.check_report_search)
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.managerment_report).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.device_singnal_report).click()
             time.sleep(5)
             write_from_date(var.stop_report_fromdate_input)
             time.sleep(1)
-            var.driver.find_element(By.XPATH, var.report_search).click()
+            button = var.driver.find_element(By.XPATH, var.report_search)
+            var.driver.execute_script("arguments[0].click();", button)
             time.sleep(6)
         var.driver.find_element(By.XPATH, var.downloadexcel).click()
         time.sleep(15)
@@ -2632,7 +2750,7 @@ class system_report:
     def device_singnal_report_hide_column(self, code, eventname, result):
         var.driver.implicitly_wait(4)
         try:
-            var.driver.find_element(By.XPATH, var.check_activity_synthesis_report)
+            var.driver.find_element(By.XPATH, var.check_activity_synthesis_report14)
         except:
             system_report.device_singnal_report(self, "", "", "")
 
@@ -2646,13 +2764,13 @@ class system_report:
         try:
             var.driver.find_element(By.XPATH, var.checkbox_typevehicle).click()
             logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Pass")
             time.sleep(1)
         except:
             logging.info("False")
             var.driver.save_screenshot(var.imagepath + code + "_BaoCaoDoanhNghiep_BaoCaoMatTinHieu_AnHienCot.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_BaoCaoDoanhNghiep_BaoCaoMatTinHieu_AnHienCot.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 13, code + "_BaoCaoDoanhNghiep_BaoCaoMatTinHieu_AnHienCot.png")
         try:
             button = var.driver.find_element(By.XPATH, var.hide_column_cancel1)
             var.driver.execute_script("arguments[0].click();", button)
@@ -2675,7 +2793,7 @@ class report_BGT:
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.speed_over_report).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.report_BGT).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.speed_over_report).click()
@@ -2689,7 +2807,7 @@ class report_BGT:
         try:
             var.driver.find_element(By.XPATH, var.fromdate_input)
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.report_BGT).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.speed_over_report).click()
@@ -2710,7 +2828,8 @@ class report_BGT:
 
         # write_from_date_month(var.fromdate_input)
         time.sleep(1)
-        var.driver.find_element(By.XPATH, var.report_search).click()
+        button = var.driver.find_element(By.XPATH, var.report_search)
+        var.driver.execute_script("arguments[0].click();", button)
         time.sleep(5)
 
         chucnangkhac.write_result_displayed_try(code, eventname, result,
@@ -2725,14 +2844,15 @@ class report_BGT:
         try:
             var.driver.find_element(By.XPATH, var.check_report_search)
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.report_BGT).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.speed_over_report).click()
             time.sleep(5)
             write_from_date_month(var.stop_report_fromdate_input)
             time.sleep(1)
-            var.driver.find_element(By.XPATH, var.report_search).click()
+            button = var.driver.find_element(By.XPATH, var.report_search)
+            var.driver.execute_script("arguments[0].click();", button)
             time.sleep(6)
         var.driver.find_element(By.XPATH, var.downloadexcel).click()
         time.sleep(15)
@@ -2779,7 +2899,7 @@ class report_BGT:
     def speed_over_report_hide_column(self, code, eventname, result):
         var.driver.implicitly_wait(4)
         try:
-            var.driver.find_element(By.XPATH, var.check_activity_synthesis_report)
+            var.driver.find_element(By.XPATH, var.check_activity_synthesis_report17)
         except:
             report_BGT.speed_over_report(self, "", "", "")
 
@@ -2793,13 +2913,13 @@ class report_BGT:
         try:
             var.driver.find_element(By.XPATH, var.checkbox_typevehicle).click()
             logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Pass")
             time.sleep(1)
         except:
             logging.info("False")
             var.driver.save_screenshot(var.imagepath + code + "_BaoCaoBGT_QuaTocDoGioiHan_AnHienCot.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_BaoCaoBGT_QuaTocDoGioiHan_AnHienCot.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 13, code + "_BaoCaoBGT_QuaTocDoGioiHan_AnHienCot.png")
         try:
             button = var.driver.find_element(By.XPATH, var.hide_column_cancel1)
             var.driver.execute_script("arguments[0].click();", button)

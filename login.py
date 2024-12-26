@@ -5,11 +5,11 @@ import time
 import json
 from selenium.webdriver.common.by import By
 import chucnangkhac
+from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
-file_name = var.datatestpath
-with open(file_name, 'r', encoding='utf-8') as f:
-    data = json.load(f, strict=False)
 
 logging.basicConfig(handlers=[logging.FileHandler(filename= var.logpath,
                                                  encoding='utf-8', mode='a+')], #mode='a+'
@@ -22,165 +22,123 @@ logging.basicConfig(handlers=[logging.FileHandler(filename= var.logpath,
 
 
 
-
-
-
-
-
-
-
-
 class login:
+
+
+    def login_v2_1(self, user, password):
+        var.driver.implicitly_wait(15)
+        var.driver.maximize_window()
+        var.driver.delete_all_cookies()
+        var.driver.get(var.linktest)
+        time.sleep(3)
+        var.driver.find_element(By.XPATH, var.login_user).clear()
+        var.driver.find_element(By.XPATH, var.login_user).send_keys(user)
+        time.sleep(0.5)
+        var.driver.find_element(By.XPATH, var.login_password).clear()
+        var.driver.find_element(By.XPATH, var.login_password).send_keys(password)
+        time.sleep(0.5)
+        var.driver.find_element(By.XPATH, var.dangnhap).click()
+        time.sleep(10)
+        giamsat.xoacanhbao()
+
     def login_v2(self, user, password):
+        try:
+            # Cấu hình driver
+            var.driver.implicitly_wait(10)
+            var.driver.maximize_window()
+            var.driver.delete_all_cookies()
+
+            # Điều hướng đến trang đăng nhập
+            logging.info("Điều hướng đến trang login.")
+            var.driver.get(var.linktest)
+
+            # Chờ trường nhập user xuất hiện
+            username_field = WebDriverWait(var.driver, 15).until(EC.presence_of_element_located((By.XPATH, var.login_user)))
+            username_field.clear()
+            username_field.send_keys(user)
+            time.sleep(1)
+
+            # Chờ trường nhập password xuất hiện
+            password_field = WebDriverWait(var.driver, 15).until(EC.presence_of_element_located((By.XPATH, var.login_password)))
+            password_field.clear()
+            password_field.send_keys(password)
+            time.sleep(1)
+
+            # Nhấn nút đăng nhập
+            login_button = WebDriverWait(var.driver, 10).until(EC.element_to_be_clickable((By.XPATH, var.dangnhap)))
+            login_button.click()
+            time.sleep(3)
+
+            # Chờ sau khi đăng nhập (nếu cần)
+            WebDriverWait(var.driver, 15).until(EC.presence_of_element_located((By.XPATH, var.giamsat)))
+            logging.info("Đăng nhập thành công, chuyển hướng trang.")
+        except Exception as e:
+            logging.error(f"Lỗi trong quá trình đăng nhập: {e}")
+            login.login_v2_1(self, user, password)
+        time.sleep(2)
+        giamsat.xoacanhbao()
+
+
+
+    def login_v2_tkkhachhangcoquyengiamsat(self, code, eventname, result):
+        var.driver.implicitly_wait(5)
+        login.login_v2(self, var.data['login']['khongnhom_thuong_tk'], var.data['login']['khongnhom_thuong_mk'])
+        chucnangkhac.write_result_text_try_if_other(code, eventname, result, "Login",
+                                              var.list_vehicle_vehicle1, "", "_Login_TaiKhoanCoQuyenGiamSat.png")
+
+
+
+    def login_v2_tkbinhanh(self, code, eventname, result):
+        var.driver.implicitly_wait(3)
+        login.login_v2(self, var.data['login']['binhanh_tk'], var.data['login']['binhanh_mk'])
+        chucnangkhac.write_result_text_try_if(code, eventname, result, "Login",
+                                              var.title_page, "DANH SÁCH XE", "_Login_TaiKhoanBinhAnh.png")
+
+
+
+
+
+    def login_v2_tkdaily(self, code, eventname, result):
+        var.driver.implicitly_wait(5)
+        login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
+        chucnangkhac.write_result_text_try_if_other(code, eventname, result, "Login",
+                                              var.list_vehicle_vehicle2, "", "_Login_TaiKhoanDaiLy.png")
+
+
+
+
+    def login_v2_tkkhongcoquyengiamsat(self, code, eventname, result):
+        var.driver.implicitly_wait(3)
+        login.login_v2(self, var.data['login']['khongnhom_thuong_tk1'], var.data['login']['khongnhom_thuong_mk1'])
+        chucnangkhac.write_result_not_displayed_try1(code, eventname, result, "Login",
+                                                var.check_login_giamsat, "Không có chức năng giám sát", "_Login_TaiKhoanKhongCoQuyenGiamSat.png")
+
+
+
+
+    def login_v2sai(self, code, eventname, result):
         var.driver.implicitly_wait(15)
         var.driver.maximize_window()
         var.driver.get(var.linktest)
         time.sleep(3)
         var.driver.find_element(By.XPATH, var.login_user).clear()
-        var.driver.find_element(By.XPATH, var.login_user).send_keys(user)
+        var.driver.find_element(By.XPATH, var.login_user).send_keys(var.data['login']['binhanh_tk'])
+        time.sleep(1)
         var.driver.find_element(By.XPATH, var.login_password).clear()
-        var.driver.find_element(By.XPATH, var.login_password).send_keys(password)
-        var.driver.find_element(By.XPATH, var.dangnhap).click()
-        # time.sleep(3)
-        # var.driver.find_element(By.XPATH, var.iconngonngu_tienganh)
-        time.sleep(10)
-        giamsat.xoacanhbao()
-
-
-    def login_v2_tkkhachhangcoquyengiamsat(self, user, password, ma, tensukien):
-        var.driver.implicitly_wait(5)
-        login.login_v2(self, user, password)
-        try:
-            check_login_giamsat = var.driver.find_element(By.XPATH, var.check_login_giamsat).is_displayed()
-            logging.info("Login - Thành công")
-            logging.info("Tài khoản - " + user)
-            logging.info("Tài khoản - " + password)
-            logging.info("Mã - " + ma)
-            logging.info("Tên sự kiện - " + tensukien)
-            logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
-        except:
-            logging.info("Login - Thành công")
-            logging.info("Tài khoản - " + user)
-            logging.info("Tài khoản - " + password)
-            logging.info("Mã - " + ma)
-            logging.info("Tên sự kiện - " + tensukien)
-            logging.info("False")
-            var.driver.save_screenshot(var.imagepath + ma+".png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma+".png")
-
-    def login_v2_tkbinhanh(self, user, password, ma, tensukien):
-        var.driver.implicitly_wait(3)
-        login.login_v2(self, user, password)
-        try:
-            check_login_khac = var.driver.find_element(By.XPATH, var.check_login_khac).is_displayed()
-            logging.info("Login - Thành công")
-            logging.info("Tài khoản - " + user)
-            logging.info("Tài khoản - " + password)
-            logging.info("Mã - " + ma)
-            logging.info("Tên sự kiện - " + tensukien)
-            logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
-        except:
-            logging.info("Login - Thành công")
-            logging.info("Tài khoản - " + user)
-            logging.info("Tài khoản - " + password)
-            logging.info("Mã - " + ma)
-            logging.info("Tên sự kiện - " + tensukien)
-            logging.info("False")
-            var.driver.save_screenshot(var.imagepath + ma+".png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma+".png")
-
-
-    def login_v2_tkdaily(self, user, password, ma, tensukien):
-        var.driver.implicitly_wait(5)
-        login.login_v2(self, user, password)
-        try:
-            check_login_quantri = var.driver.find_element(By.XPATH, var.check_login_quantri).is_displayed()
-            logging.info("Login - Thành công")
-            logging.info("Tài khoản - " + user)
-            logging.info("Tài khoản - " + password)
-            logging.info("Mã - " + ma)
-            logging.info("Tên sự kiện - " + tensukien)
-            logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
-        except:
-            logging.info("Login - Thành công")
-            logging.info("Tài khoản - " + user)
-            logging.info("Tài khoản - " + password)
-            logging.info("Mã - " + ma)
-            logging.info("Tên sự kiện - " + tensukien)
-            logging.info("False")
-            var.driver.save_screenshot(var.imagepath + ma+".png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma+".png")
-
-
-    def login_v2_tkkhongcoquyengiamsat(self, user, password, ma, tensukien):
-        var.driver.implicitly_wait(3)
-        login.login_v2(self, user, password)
-        try:
-            check_login_giamsat = var.driver.find_element(By.XPATH, var.check_login_giamsat).is_displayed()
-            logging.info("Login - Thành công")
-            logging.info("Tài khoản - " + user)
-            logging.info("Tài khoản - " + password)
-            logging.info("Mã - " + ma)
-            logging.info("Tên sự kiện - " + tensukien)
-            logging.info("False")
-            var.driver.save_screenshot(var.imagepath + ma+".png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma+".png")
-        except:
-            logging.info("Login - Thành công")
-            logging.info("Tài khoản - " + user)
-            logging.info("Tài khoản - " + password)
-            logging.info("Mã - " + ma)
-            logging.info("Tên sự kiện - " + tensukien)
-            logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
-
-
-    def login_v2sai(self, user, password, code, eventname, result):
-        var.driver.implicitly_wait(15)
-        var.driver.maximize_window()
-        var.driver.get(var.linktest)
-        time.sleep(2)
-        var.driver.find_element(By.XPATH, var.login_user).clear()
-        var.driver.find_element(By.XPATH, var.login_user).send_keys(user)
-        var.driver.find_element(By.XPATH, var.login_password).clear()
-        var.driver.find_element(By.XPATH, var.login_password).send_keys(password)
+        var.driver.find_element(By.XPATH, var.login_password).send_keys("11111")
         var.driver.find_element(By.XPATH, var.dangnhap).click()
         time.sleep(1.5)
-        logging.info("Tài khoản - " + user)
-        logging.info("Tài khoản - " + password)
-        chucnangkhac.write_result_not_displayed_try(code, eventname, result, "Login - Đằng nhập sai mật khẩu- Tên đăng nhập hoặc mật khẩu không hợp lệ.",
-                                                var.check_login_v2sai, code+".png")
+
+        chucnangkhac.write_result_text_try_if_or(code, eventname, result, "Login",
+                                              var.check_login_v2sai1, "Tên truy nhập hoặc mật khẩu không đúng, hoặc tài khoản bị khóa.",
+                                                 "Tên đăng nhập hoặc mật khẩu không hợp lệ.", "_Login_TaiKhoanDungMatKhauSai.png")
 
 
 
 
-        # try:
-        #     check_loginsai = var.driver.find_element(By.XPATH, var.check_loginsai).is_displayed()
-        #     logging.info("Login - Đằng nhập sai mật khẩu- Tên đăng nhập hoặc mật khẩu không hợp lệ.")
-        #     logging.info("Tài khoản - " + user)
-        #     logging.info("Tài khoản - " + password)
-        #     logging.info("Mã - " +ma)
-        #     logging.info("Tên sự kiện - " +tensukien)
-        #     logging.info("True")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
-        # except:
-        #     logging.info("Login - Đằng nhập sai mật khẩu- Tên đăng nhập hoặc mật khẩu không hợp lệ.")
-        #     logging.info("Tài khoản - " + user)
-        #     logging.info("Tài khoản - " + password)
-        #     logging.info("Mã - " +ma)
-        #     logging.info("Tên sự kiện - " +tensukien)
-        #     logging.info("False")
-        #     var.driver.save_screenshot(var.imagepath + ma+".png")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-        #     chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma+".png")
-        # time.sleep(1)
+
+
+
 
     def login_ghinhodangnhap1(self, ma, tensukien):
         var.driver.implicitly_wait(5)
@@ -188,8 +146,8 @@ class login:
         var.driver.get(var.linktest)
         time.sleep(2)
         #Bỏ tích ghi nhớ đăng nhập
-        var.driver.find_element(By.XPATH, var.login_user).send_keys(data['login']['ghinhodangnhap_user1'])
-        var.driver.find_element(By.XPATH, var.login_password).send_keys(data['login']['ghinhodangnhap_password1'])
+        var.driver.find_element(By.XPATH, var.login_user).send_keys(var.data['login']['ghinhodangnhap_user1'])
+        var.driver.find_element(By.XPATH, var.login_password).send_keys(v.data['login']['ghinhodangnhap_password1'])
         if var.driver.find_element(By.XPATH, var.login_ghinhodangnhap).is_selected() == True:
             var.driver.find_element(By.XPATH, var.login_ghinhodangnhap).click()
         var.driver.find_element(By.XPATH, var.dangnhap).click()
@@ -199,8 +157,8 @@ class login:
         var.driver.get(var.linktest)
         time.sleep(2)
         logging.info("Login - Ghi nhớ đăng nhập")
-        logging.info("Tài khoản - " + data['login']['ghinhodangnhap_user1'])
-        logging.info("Tài khoản - " + data['login']['ghinhodangnhap_password1'])
+        logging.info("Tài khoản - " + var.data['login']['ghinhodangnhap_user1'])
+        logging.info("Tài khoản - " + var.data['login']['ghinhodangnhap_password1'])
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)
         if var.driver.find_element(By.XPATH, var.login_ghinhodangnhap).is_selected() == False:
@@ -219,9 +177,9 @@ class login:
         time.sleep(2)
         #Tích ghi nhớ đăng nhập
         var.driver.find_element(By.XPATH, var.login_user).clear()
-        var.driver.find_element(By.XPATH, var.login_user).send_keys(data['login']['ghinhodangnhap_user1'])
+        var.driver.find_element(By.XPATH, var.login_user).send_keys(var.data['login']['ghinhodangnhap_user1'])
         var.driver.find_element(By.XPATH, var.login_password).clear()
-        var.driver.find_element(By.XPATH, var.login_password).send_keys(data['login']['ghinhodangnhap_password1'])
+        var.driver.find_element(By.XPATH, var.login_password).send_keys(var.data['login']['ghinhodangnhap_password1'])
         if var.driver.find_element(By.XPATH, var.login_ghinhodangnhap).is_selected() == False:
             var.driver.find_element(By.XPATH, var.login_ghinhodangnhap).click()
         var.driver.find_element(By.XPATH, var.dangnhap).click()
@@ -231,8 +189,8 @@ class login:
         var.driver.find_element(By.XPATH, var.dangxuat).click()
         time.sleep(1.5)
         logging.info("Login - Ghi nhớ đăng nhập")
-        logging.info("Tài khoản - " + data['login']['ghinhodangnhap_user1'])
-        logging.info("Tài khoản - " + data['login']['ghinhodangnhap_password1'])
+        logging.info("Tài khoản - " + var.data['login']['ghinhodangnhap_user1'])
+        logging.info("Tài khoản - " + var.data['login']['ghinhodangnhap_password1'])
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)
         if var.driver.find_element(By.XPATH, var.login_ghinhodangnhap).is_selected() == True:
@@ -245,8 +203,13 @@ class login:
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_GhiNhoDangNhap_TichChon.png")
 
 
+
+
+
+
 class linklienket:
-    def linklienket(self,link):
+
+    def linklienket(self, link):
         var.driver.implicitly_wait(5)
         tab_id = var.driver.window_handles
         tab_0 = tab_id[0]
@@ -262,14 +225,17 @@ class linklienket:
         if link == var.login_icontrangchu:
             time.sleep(3)
         var.driver.find_element(By.XPATH, link).click()
-        time.sleep(2)
-        tab_id = var.driver.window_handles
-        tab_1 = tab_id[1]
-        var.driver.switch_to_window(tab_1)
-        print(var.driver.title)
+        time.sleep(4)
+        try:
+            tab_id = var.driver.window_handles
+            tab_1 = tab_id[1]
+            var.driver.switch_to_window(tab_1)
+            print(var.driver.title)
+        except:
+            pass
 
 
-    def linklienket_trangchu(self, ma, tensukien):
+    def linklienket_trangchu(self, code, eventname, result):
         var.driver.implicitly_wait(5)
         try:
             linklienket.linklienket(self, var.login_icontrangchu)
@@ -278,24 +244,12 @@ class linklienket:
             var.driver.get(var.linktest)
             time.sleep(3)
             linklienket.linklienket(self, var.login_icontrangchu)
-        time.sleep(1)
-        logging.info("Login - Link liên kết - Trang chủ")
-        logging.info("check font-end: Chuyển tới trang Trang chủ")
-        logging.info("Mã - " +ma)
-        logging.info("Tên sự kiện - " +tensukien)
-        time.sleep(1)
-        try:
-            check_login_trangchu = var.driver.find_element(By.XPATH,var.check_login_trangchu).is_displayed()
-            logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
-        except:
-            logging.info("False")
-            var.driver.save_screenshot(var.imagepath + ma + "_TrangChu.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_TrangChu.png")
+        time.sleep(1.5)
+        chucnangkhac.write_result_text_try_if_url(code, eventname, result, "Login - Link liên kết",
+                                              "https://bagps.vn/", "_Login_TrangChu.png")
 
 
-    def linklienket_lienhezalo(self, ma, tensukien):
+    def linklienket_lienhezalo(self, code, eventname, result):
         var.driver.implicitly_wait(5)
         try:
             tab_id = var.driver.window_handles
@@ -310,34 +264,14 @@ class linklienket:
             var.driver.get(var.linktest)
             time.sleep(3)
             var.driver.find_element(By.XPATH, var.login_iconlienhezalo).click()
-
-        time.sleep(1)
+        time.sleep(3)
+        chucnangkhac.write_result_text_try_if(code, eventname, result, "Login - Popup", var.check_login_lienhezalo,
+                                              "LIÊN HỆ VỚI TỔNG ĐÀI QUA ZALO", "_Login_LienHeZalo.png")
         try:
-            check_login_lienhezalo = var.driver.find_element(By.XPATH,var.check_login_lienhezalo).text
-            logging.info("Login - LIÊN HỆ VỚI TỔNG ĐÀI QUA ZALO")
-            logging.info("check font-end: Popup - LIÊN HỆ VỚI TỔNG ĐÀI QUA ZALO")
-            logging.info("Mã - " +ma)
-            logging.info("Tên sự kiện - " +tensukien)
-            logging.info(check_login_lienhezalo)
-            if check_login_lienhezalo == "LIÊN HỆ VỚI TỔNG ĐÀI QUA ZALO":
-                logging.info("True")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
-            else:
-                logging.info("False")
-                var.driver.save_screenshot(var.imagepath + ma+"_LienHeZalo.png")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma+"_LienHeZalo.png")
+            var.driver.find_element(By.XPATH, var.login_iconzalo_x).click()
+            time.sleep(0.5)
         except:
-            logging.info("Login - LIÊN HỆ VỚI TỔNG ĐÀI QUA ZALO")
-            logging.info("check font-end: Popup - LIÊN HỆ VỚI TỔNG ĐÀI QUA ZALO")
-            logging.info("Mã - " +ma)
-            logging.info("Tên sự kiện - " +tensukien)
-            logging.info("False")
-            var.driver.save_screenshot(var.imagepath + ma + "_LienHeZalo.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_LienHeZalo.png")
-        var.driver.find_element(By.XPATH, var.login_iconzalo_x).click()
-        time.sleep(0.5)
+            pass
 
 
     def linklienket_sodienthoai(self, ma, tensukien):
@@ -366,7 +300,7 @@ class linklienket:
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
 
 
-    def linklienket_bagps(self, ma, tensukien):
+    def linklienket_bagps(self, code, eventname, result):
         var.driver.implicitly_wait(5)
         try:
             linklienket.linklienket(self, var.login_bagps)
@@ -375,24 +309,12 @@ class linklienket:
             var.driver.get(var.linktest)
             time.sleep(3)
             linklienket.linklienket(self, var.login_bagps)
-        time.sleep(1)
-        logging.info("Login - Link liên kết - bagps.vn")
-        logging.info("check font-end: Chuyển tới trang bagps.vn")
-        logging.info("Mã - " +ma)
-        logging.info("Tên sự kiện - " +tensukien)
-        time.sleep(1)
-        try:
-            check_login_trangchu = var.driver.find_element(By.XPATH,var.check_login_trangchu).is_displayed()
-            logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
-        except:
-            logging.info("False")
-            var.driver.save_screenshot(var.imagepath + ma + "_BaGps.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_BaGps.png")
+        time.sleep(1.5)
+        chucnangkhac.write_result_text_try_if_url(code, eventname, result, "Login - Link liên kết",
+                                              "https://bagps.vn/", "_Login_Bagps.png")
 
 
-    def linklienket_appstore(self, ma, tensukien):
+    def linklienket_appstore(self, code, eventname, result):
         var.driver.implicitly_wait(5)
         try:
             linklienket.linklienket(self, var.login_iconappstore)
@@ -401,34 +323,12 @@ class linklienket:
             var.driver.get(var.linktest)
             time.sleep(3)
             linklienket.linklienket(self, var.login_iconappstore)
-        time.sleep(1)
-        try:
-            check_login_appstore = var.driver.find_element(By.XPATH,var.check_login_appstore).text
-            logging.info("Login - Link liên kết - App store")
-            logging.info("check font-end: Chuyển tới trang App store")
-            logging.info("Mã - " +ma)
-            logging.info("Tên sự kiện - " +tensukien)
-            logging.info(check_login_appstore)
-            if check_login_appstore == "BA GPS 4+":
-                logging.info("True")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
-            else:
-                logging.info("False")
-                var.driver.save_screenshot(var.imagepath + ma+"_AppStore.png")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma+"AppStore.png")
-        except:
-            logging.info("Login - Link liên kết - App store")
-            logging.info("check font-end: Chuyển tới trang App store")
-            logging.info("Mã - " +ma)
-            logging.info("Tên sự kiện - " +tensukien)
-            logging.info("False")
-            var.driver.save_screenshot(var.imagepath + ma + "_AppStore.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "AppStore.png")
+        time.sleep(1.5)
+        chucnangkhac.write_result_text_try_if(code, eventname, result, "Login - Link liên kết", var.check_login_appstore,
+                                              "BA GPS 4+", "_Login_AppStore.png")
 
 
-    def linklienket_chplay(self, ma, tensukien):
+    def linklienket_chplay(self, code, eventname, result):
         var.driver.implicitly_wait(5)
         try:
             linklienket.linklienket(self, var.login_iconchplay)
@@ -437,31 +337,10 @@ class linklienket:
             var.driver.get(var.linktest)
             time.sleep(3)
             linklienket.linklienket(self, var.login_iconchplay)
-        time.sleep(1)
-        try:
-            check_login_chplay = var.driver.find_element(By.XPATH,var.check_login_chplay).text
-            logging.info("Login - Link liên kết - Ch Play")
-            logging.info("check font-end: Chuyển tới trang Ch Play")
-            logging.info("Mã - " +ma)
-            logging.info("Tên sự kiện - " +tensukien)
-            logging.info(check_login_chplay)
-            if check_login_chplay == "BA GPS":
-                logging.info("True")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
-            else:
-                logging.info("False")
-                var.driver.save_screenshot(var.imagepath + ma+"_ChPlay.png")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma+"_ChPlay.png")
-        except:
-            logging.info("Login - Link liên kết - Ch Play")
-            logging.info("check font-end: Chuyển tới trang Ch Play")
-            logging.info("Mã - " +ma)
-            logging.info("Tên sự kiện - " +tensukien)
-            logging.info("False")
-            var.driver.save_screenshot(var.imagepath + ma + "_ChPlay.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ChPlay.png")
+        time.sleep(1.5)
+        chucnangkhac.write_result_text_try_if(code, eventname, result, "Login - Link liên kết", var.check_login_chplay,
+                                              "BA GPS", "_Login_ChPlay.png")
+
 
 
     def linklienket_hotlinemuahang(self, ma, tensukien):
@@ -488,7 +367,7 @@ class linklienket:
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
 
 
-    def linklienket_muasamsanpham(self, ma, tensukien):
+    def linklienket_muasamsanpham(self, code, eventname, result):
         var.driver.implicitly_wait(5)
         try:
             linklienket.linklienket(self, var.login_muasamsanpham)
@@ -497,34 +376,12 @@ class linklienket:
             var.driver.get(var.linktest)
             time.sleep(3)
             linklienket.linklienket(self, var.login_muasamsanpham)
-        time.sleep(1)
-        try:
-            check_login_muasamsanpham = var.driver.find_element(By.XPATH,var.check_login_muasamsanpham).text
-            logging.info("Login - Link liên kết - Mua sắm sản phẩm")
-            logging.info("check font-end: Chuyển tới trang Mua sắm sản phẩm")
-            logging.info("Mã - " +ma)
-            logging.info("Tên sự kiện - " +tensukien)
-            logging.info(check_login_muasamsanpham)
-            if check_login_muasamsanpham == "SẢN PHẨM":
-                logging.info("True")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
-            else:
-                logging.info("False")
-                var.driver.save_screenshot(var.imagepath + ma+"_MuaSamSanPham.png")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma+"_MuaSamSanPham.png")
-        except:
-            logging.info("Login - Link liên kết - Mua sắm sản phẩm")
-            logging.info("check font-end: Chuyển tới trang Mua sắm sản phẩm")
-            logging.info("Mã - " +ma)
-            logging.info("Tên sự kiện - " +tensukien)
-            logging.info("False")
-            var.driver.save_screenshot(var.imagepath + ma + "_MuaSamSanPham.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_MuaSamSanPham.png")
+        time.sleep(1.5)
+        chucnangkhac.write_result_text_try_if_url(code, eventname, result, "Login - Link liên kết",
+                                              "https://bagps.vn/san-pham-va-giai-phap", "_Login_MuaSamSanPham.png")
 
 
-    def linklienket_thongtingiaiphap(self, ma, tensukien):
+    def linklienket_thongtingiaiphap(self, code, eventname, result):
         var.driver.implicitly_wait(5)
         try:
             linklienket.linklienket(self, var.login_thongtingiaiphap)
@@ -533,34 +390,12 @@ class linklienket:
             var.driver.get(var.linktest)
             time.sleep(3)
             linklienket.linklienket(self, var.login_thongtingiaiphap)
-        time.sleep(1)
-        try:
-            check_login_thongtingiaiphap = var.driver.find_element(By.XPATH,var.check_login_muasamsanpham).text
-            logging.info("Login - Link liên kết - Thông tin giải pháp")
-            logging.info("check font-end: Chuyển tới trang Thông tin giải pháp")
-            logging.info("Mã - " +ma)
-            logging.info("Tên sự kiện - " +tensukien)
-            logging.info(check_login_thongtingiaiphap)
-            if check_login_thongtingiaiphap == "SẢN PHẨM":
-                logging.info("True")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
-            else:
-                logging.info("False")
-                var.driver.save_screenshot(var.imagepath + ma+"_ThongTinGiaiPhap.png")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma+"_ThongTinGiaiPhap.png")
-        except:
-            logging.info("Login - Link liên kết - Thông tin giải pháp")
-            logging.info("check font-end: Chuyển tới trang Thông tin giải pháp")
-            logging.info("Mã - " +ma)
-            logging.info("Tên sự kiện - " +tensukien)
-            logging.info("False")
-            var.driver.save_screenshot(var.imagepath + ma + "_ThongTinGiaiPhap.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_ThongTinGiaiPhap.png")
+        time.sleep(1.5)
+        chucnangkhac.write_result_text_try_if_url(code, eventname, result, "Login - Link liên kết",
+                                              "https://bagps.vn/san-pham-va-giai-phap", "_Login_ThongTinGiaiPhap.png")
 
 
-    def linklienket_vechungtoi(self, ma, tensukien):
+    def linklienket_vechungtoi(self, code, eventname, result):
         var.driver.implicitly_wait(5)
         try:
             linklienket.linklienket(self, var.login_vechungtoi)
@@ -569,34 +404,12 @@ class linklienket:
             var.driver.get(var.linktest)
             time.sleep(3)
             linklienket.linklienket(self, var.login_vechungtoi)
-        time.sleep(1)
-        try:
-            check_login_vechungtoi = var.driver.find_element(By.XPATH,var.check_login_vechungtoi).text
-            logging.info("Login - Link liên kết - Về chúng tôi")
-            logging.info("check font-end: Chuyển tới trang Về chúng tôi")
-            logging.info("Mã - " +ma)
-            logging.info("Tên sự kiện - " +tensukien)
-            logging.info(check_login_vechungtoi)
-            if check_login_vechungtoi == "VỀ CHÚNG TÔI":
-                logging.info("True")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
-            else:
-                logging.info("False")
-                var.driver.save_screenshot(var.imagepath + ma+"_VeChungToi.png")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma+"_VeChungToi.png")
-        except:
-            logging.info("Login - Link liên kết - Về chúng tôi")
-            logging.info("check font-end: Chuyển tới trang Về chúng tôi")
-            logging.info("Mã - " +ma)
-            logging.info("Tên sự kiện - " +tensukien)
-            logging.info("False")
-            var.driver.save_screenshot(var.imagepath + ma + "_VeChungToi.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_VeChungToi.png")
+        time.sleep(1.5)
+        chucnangkhac.write_result_text_try_if_url(code, eventname, result, "Login - Link liên kết",
+                                              "https://bagps.vn/gioi-thieu/", "_Login_VeChungToi.png")
 
 
-    def linklienket_mangluoi(self, ma, tensukien):
+    def linklienket_mangluoi(self, code, eventname, result):
         var.driver.implicitly_wait(5)
         try:
             linklienket.linklienket(self, var.login_mangluoi)
@@ -605,34 +418,12 @@ class linklienket:
             var.driver.get(var.linktest)
             time.sleep(3)
             linklienket.linklienket(self, var.login_mangluoi)
-        time.sleep(1)
-        try:
-            check_login_mangluoi = var.driver.find_element(By.XPATH,var.check_login_mangluoi).text
-            logging.info("Login - Link liên kết - Mạng lưới")
-            logging.info("check font-end: Chuyển tới trang Mạng lưới")
-            logging.info("Mã - " +ma)
-            logging.info("Tên sự kiện - " +tensukien)
-            logging.info(check_login_mangluoi)
-            if check_login_mangluoi == "MẠNG LƯỚI":
-                logging.info("True")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
-            else:
-                logging.info("False")
-                var.driver.save_screenshot(var.imagepath + ma+"_MangLuoi.png")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma+"_MangLuoi.png")
-        except:
-            logging.info("Login - Link liên kết - Mạng lưới")
-            logging.info("check font-end: Chuyển tới trang Mạng lưới")
-            logging.info("Mã - " +ma)
-            logging.info("Tên sự kiện - " +tensukien)
-            logging.info("False")
-            var.driver.save_screenshot(var.imagepath + ma + "_MangLuoi.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_MangLuoi.png")
+        time.sleep(1.5)
+        chucnangkhac.write_result_text_try_if_url(code, eventname, result, "Login - Link liên kết",
+                                              "https://bagps.vn/mang-luoi?position_id=0&branch_type=1&search=", "_Login_MangLuoi.png")
 
 
-    def linklienket_huongdansudung(self, ma, tensukien):
+    def linklienket_huongdansudung(self, code, eventname, result):
         var.driver.implicitly_wait(5)
         tab_id = var.driver.window_handles
         tab_0 = tab_id[0]
@@ -648,35 +439,11 @@ class linklienket:
         tab_1 = tab_id[1]
         var.driver.switch_to_window(tab_1)
         print("n2")
+        chucnangkhac.write_result_text_try_if_url(code, eventname, result, "Login - Link liên kết",
+                                              "https://www.youtube.com/channel/UC0vfDfFTKXXV_d7m86b1MhQ", "_Login_HuongDanSuDung_Youtobe.png")
 
 
-        try:
-            check_login_huongdansudung = var.driver.find_element(By.XPATH,var.check_login_huongdansudung).text
-            logging.info("Login - Link liên kết - Hướng dẫn sử dụng")
-            logging.info("check font-end: Chuyển tới trang Youtobe")
-            logging.info("Mã - " +ma)
-            logging.info("Tên sự kiện - " +tensukien)
-            logging.info(check_login_huongdansudung)
-            if check_login_huongdansudung == "BA GPS":
-                logging.info("True")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
-            else:
-                logging.info("False")
-                var.driver.save_screenshot(var.imagepath + ma+"_HuongDanSuDung_Youtobe.png")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma+"_HuongDanSuDung_Youtobe.png")
-        except:
-            logging.info("Login - Link liên kết - Hướng dẫn sử dụng")
-            logging.info("check font-end: Chuyển tới trang Youtobe")
-            logging.info("Mã - " +ma)
-            logging.info("Tên sự kiện - " +tensukien)
-            logging.info("False")
-            var.driver.save_screenshot(var.imagepath + ma + "_HuongDanSuDung_Youtobe.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_HuongDanSuDung_Youtobe.png")
-
-
-    def linklienket_huongdandongphi(self, ma, tensukien):
+    def linklienket_huongdandongphi(self, code, eventname, result):
         var.driver.implicitly_wait(5)
         try:
             linklienket.linklienket(self, var.login_huongdandongphi)
@@ -685,34 +452,12 @@ class linklienket:
             var.driver.get(var.linktest)
             time.sleep(3)
             linklienket.linklienket(self, var.login_huongdandongphi)
-        time.sleep(1)
-        try:
-            check_login_huongdandongphi = var.driver.find_element(By.XPATH,var.check_login_huongdandongphi).text
-            logging.info("Login - Link liên kết - Hướng dẫn đóng phí")
-            logging.info("check font-end: Chuyển tới trang Hướng dẫn đóng phí")
-            logging.info("Mã - " +ma)
-            logging.info("Tên sự kiện - " +tensukien)
-            logging.info(check_login_huongdandongphi)
-            if check_login_huongdandongphi == "HƯỚNG DẪN ĐÓNG PHÍ DỊCH VỤ BA GPS":
-                logging.info("True")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
-            else:
-                logging.info("False")
-                var.driver.save_screenshot(var.imagepath + ma+"_HuongDanDongPhi.png")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma+"_HuongDanDongPhi.png")
-        except:
-            logging.info("Login - Link liên kết - Hướng dẫn đóng phí")
-            logging.info("check font-end: Chuyển tới trang Hướng dẫn đóng phí")
-            logging.info("Mã - " +ma)
-            logging.info("Tên sự kiện - " +tensukien)
-            logging.info("False")
-            var.driver.save_screenshot(var.imagepath + ma + "_HuongDanDongPhi.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 9, ma + "_HuongDanDongPhi.png")
+        time.sleep(1.5)
+        chucnangkhac.write_result_text_try_if_url(code, eventname, result, "Login - Link liên kết",
+                                              "https://bagps.vn/huong-dan-dong-phi-dich-vu-ba-gps-d610", "_Login_HuongDanDongPhi.png")
 
 
-    def linklienket_hopthoaizalo(self, ma, tensukien):
+    def linklienket_hopthoaizalo(self, code, eventname, result):
         var.driver.implicitly_wait(5)
         time.sleep(3)
         try:
@@ -728,8 +473,8 @@ class linklienket:
             var.driver.get(var.linktest)
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.linklienket_hopthoaizalo).click()
-        time.sleep(1)
-        chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 8, "Pass")
+        time.sleep(1.5)
+        chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Pass")
 
         # #English
         # var.driver.find_element(By.XPATH, var.english).click()
@@ -804,12 +549,15 @@ class linklienket:
 
     def linklienket_dongtab(self):
         var.driver.implicitly_wait(5)
-        #đóng tab không liên quan
-        tab_id = var.driver.window_handles
-        tab_0 = tab_id[0]
-        var.driver.switch_to_window(tab_0)
-        curr = var.driver.current_window_handle
-        for handle in var.driver.window_handles:
-            var.driver.switch_to.window(handle)
-            if handle != curr:
-                var.driver.close()
+        # đóng tab không liên quan
+        try:
+            tab_id = var.driver.window_handles
+            tab_0 = tab_id[0]
+            var.driver.switch_to_window(tab_0)
+            curr = var.driver.current_window_handle
+            for handle in var.driver.window_handles:
+                var.driver.switch_to.window(handle)
+                if handle != curr:
+                    var.driver.close()
+        except:
+            pass

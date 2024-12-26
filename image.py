@@ -32,7 +32,7 @@ class images:
         try:
             var.driver.find_element(By.XPATH, var.image).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.image).click()
         time.sleep(4)
         var.driver.find_element(By.XPATH, var.tracking_by_images).click()
@@ -46,7 +46,7 @@ class images:
         try:
             var.driver.find_element(By.XPATH, var.tracking_by_images_watch_image).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.image).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.tracking_by_images).click()
@@ -55,6 +55,10 @@ class images:
         time.sleep(2)
         chucnangkhac.write_result_displayed_try(code, eventname, result, "Hình ảnh - Giám sát bằng hình ảnh",
                                                 var.tracking_by_images_watch_image_iconx, "_HinhAnh_GiamSatBangHinhAnh_XemAnh.png")
+
+        vehicle  = var.driver.find_element(By.XPATH, var.tracking_by_images_watch_image_info).text
+        chucnangkhac.writeData(var.checklistpath, "Checklist", code, 6, vehicle)
+
         try:
             var.driver.find_element(By.XPATH, var.tracking_by_images_watch_image_iconx).click()
         except:
@@ -67,7 +71,7 @@ class images:
         try:
             var.driver.find_element(By.XPATH, var.tracking_by_images_selecgroup).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.image).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.tracking_by_images).click()
@@ -105,12 +109,14 @@ class images:
         logging.info("Kết quả - " + result)
         logging.info("Phương tiện có đăng ký giám sát Ảnh không: " + video_api)
         logging.info("Tên phương tiện : " + images.license_plate)
+        chucnangkhac.writeData(var.checklistpath, "Checklist", code, 6, "Phương tiện: {} có đăng ký Giám sát Ảnh không: {}".format(images.license_plate, video_api))
         if video_api == "True":
             logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Pass")
         else:
             logging.info("False")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 6, "Phương tiện "+images.license_plate+" đang mất tín hiệu nến không gọi được API")
 
 
 
@@ -124,7 +130,7 @@ class images:
         try:
             var.driver.find_element(By.XPATH, var.image).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.image).click()
         time.sleep(4)
         var.driver.find_element(By.XPATH, var.tracking_vehicle_by_images_online).click()
@@ -138,7 +144,7 @@ class images:
         try:
             var.driver.find_element(By.XPATH, var.tracking_vehicle_by_images_online_watch_image).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.image).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.tracking_vehicle_by_images_online).click()
@@ -147,6 +153,10 @@ class images:
         time.sleep(2)
         chucnangkhac.write_result_displayed_try(code, eventname, result, "Hình ảnh - Giám sát hình ảnh trực tuyến",
                                                 var.tracking_by_images_watch_image_iconx, "_HinhAnh_GiamSatHinhAnhTrucTuyen_XemAnh.png")
+
+        vehicle  = var.driver.find_element(By.XPATH, var.tracking_by_images_watch_image_info1).text
+        chucnangkhac.writeData(var.checklistpath, "Checklist", code, 6, vehicle)
+
         try:
             var.driver.find_element(By.XPATH, var.tracking_by_images_watch_image_iconx).click()
         except:
@@ -160,7 +170,7 @@ class images:
         try:
             var.driver.find_element(By.XPATH, var.cam_tracking_downloadexcel).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.image).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.tracking_vehicle_by_images_online).click()
@@ -195,7 +205,7 @@ class images:
         try:
             var.driver.find_element(By.XPATH, var.tracking_by_images_selecgroup).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.image).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.tracking_vehicle_by_images_online).click()
@@ -237,12 +247,14 @@ class images:
         logging.info("Kết quả - " + result)
         logging.info("Phương tiện có đăng ký giám sát Ảnh không: " + video_api)
         logging.info("Tên phương tiện : " + images.license_plate)
+        chucnangkhac.writeData(var.checklistpath, "Checklist", code, 6, "Phương tiện: {} có đăng ký Giám sát Ảnh không: {}".format(images.license_plate, video_api))
         if video_api == "True":
             logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Pass")
         else:
             logging.info("False")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 6, "Phương tiện "+images.license_plate+" đang mất tín hiệu nến không gọi được API")
 
 
 
@@ -257,7 +269,7 @@ class images:
         try:
             var.driver.find_element(By.XPATH, var.image).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.image).click()
         time.sleep(4)
         var.driver.find_element(By.XPATH, var.tracking_single_vehicle).click()
@@ -271,7 +283,7 @@ class images:
         try:
             var.driver.find_element(By.XPATH, var.tracking_single_vehicle_selecgroup).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.image).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.tracking_single_vehicle).click()
@@ -316,7 +328,7 @@ class images:
         try:
             var.driver.find_element(By.XPATH, var.check_tracking_single_vehicle_search).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.image).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.tracking_single_vehicle).click()
@@ -337,6 +349,10 @@ class images:
         time.sleep(2.5)
         chucnangkhac.write_result_displayed_try(code, eventname, result, "Hình ảnh - Giám sát bằng hình ảnh 1 xe (thư viện ảnh)",
                                                 var.tracking_by_images_watch_image_iconx, "_HinhAnh_GiamSatBangHinhAnh1Xe_XemAnh.png")
+
+        vehicle  = var.driver.find_element(By.XPATH, var.tracking_by_images_watch_image_info1).text
+        chucnangkhac.writeData(var.checklistpath, "Checklist", code, 6, vehicle)
+
         try:
             var.driver.find_element(By.XPATH, var.tracking_by_images_watch_image_iconx).click()
         except:
@@ -360,12 +376,14 @@ class images:
         logging.info("Kết quả - " + result)
         logging.info("Phương tiện có đăng ký giám sát Ảnh không: " + video_api)
         logging.info("Tên phương tiện : " + images.license_plate)
+        chucnangkhac.writeData(var.checklistpath, "Checklist", code, 6, "Phương tiện: {} có đăng ký Giám sát Ảnh không: {}".format(images.license_plate, video_api))
         if video_api == "True":
             logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Pass")
         else:
             logging.info("False")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 6, "Phương tiện "+images.license_plate+" đang mất tín hiệu nến không gọi được API")
 
 
 
@@ -378,24 +396,49 @@ class images:
 
     def camera_image_management(self, code, eventname, result):      #Quản lý ảnh camera
         var.driver.implicitly_wait(5)
-        try:
-            var.driver.find_element(By.XPATH, var.image).click()
-        except:
-            login.login.login_v2(self, "43E02740", "12341234")
-            var.driver.find_element(By.XPATH, var.image).click()
+        login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
+        var.driver.find_element(By.XPATH, var.giamsat).click()
+        time.sleep(4)
+        var.writeData(var.path_luutamthoi, "Sheet1", 89, 2, "")
+
+        var.driver.find_element(By.XPATH, var.trangthai_dichuyen).click()
+        time.sleep(1)
+        n = 0
+        while (n < 100):
+            var.driver.implicitly_wait(1)
+            n += 1
+            n = str(n)
+            pathtenphuongtien = "//*[@id='idClearOnline']/table/tbody/tr[" + n + "]"
+            try:
+                tenphuongtien = var.driver.find_element(By.XPATH, pathtenphuongtien)
+                if tenphuongtien.get_attribute("style") != "display: none;":
+                    print("Tên phương tiện", n, tenphuongtien.text)
+                    tenphuongtien1 = var.driver.find_element(By.XPATH, "//*[@id='idClearOnline']/table/tbody/tr[" + n + "]/td[2]/div[2]").text
+                    var.writeData(var.path_luutamthoi, "Sheet1", 89, 2, tenphuongtien1)
+                    time.sleep(1)
+                    break
+            except:
+                print("số n cuối", n)
+            n = int(n)
+
+
+
+        var.driver.find_element(By.XPATH, var.image).click()
         time.sleep(4)
         var.driver.find_element(By.XPATH, var.camera_image_management).click()
-        time.sleep(3.5)
+        time.sleep(4)
         chucnangkhac.write_result_text_try_if(code, eventname, result, "Hình ảnh - Quản lý ảnh camera",
                                               var.check_camera_image_management, "QUẢN LÝ ẢNH CAMERA", "_HinhAnh_QuanLyAnhCamera.png")
 
     @retry(tries=3, delay=2, backoff=1, jitter=5, )
     def camera_image_management_search(self, code, eventname, result):       #Quản lý ảnh camera - Tìm kiếm
         var.driver.implicitly_wait(5)
+        vehicle = str(var.readData(var.path_luutamthoi, 'Sheet1', 89, 2))
+
         try:
             var.driver.find_element(By.XPATH, var.camera_image_management_selecgroup).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.image).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.camera_image_management).click()
@@ -411,29 +454,42 @@ class images:
         time.sleep(1)
         var.driver.find_element(By.XPATH, var.camera_image_management_chanel).click()
         time.sleep(1)
-
-        n = 1
-        while (n < 10):
-            var.driver.implicitly_wait(2)
-            n += 1
-            n = str(n)
-            pathtenphuongtien = "//*[@id='ctl00_ctl00_MainContent_Content_vehicleAutoComplete_ddlVehiclePlate_chzn']/div/ul/li[" + n + "]"
+        try:
             var.driver.find_element(By.XPATH, var.camera_image_management_chosevehicle).click()
             time.sleep(1)
-            var.driver.find_element(By.XPATH, pathtenphuongtien).click()
+            var.driver.find_element(By.XPATH, "//*[@id='ctl00_ctl00_MainContent_Content_vehicleAutoComplete_ddlVehiclePlate_chzn']//*[text()='"+vehicle+"']").click()
             time.sleep(1)
             var.driver.find_element(By.XPATH, var.camera_image_management_search).click()
-            time.sleep(10)
-            try:
-                var.driver.find_element(By.XPATH, "//*[text()='OK']").click()
-            except:
-                break
-            n = int(n)
+            time.sleep(7)
+            var.driver.find_element(By.XPATH, var.check_camera_image_management_search).click()
+            time.sleep(3)
+            var.driver.find_element(By.XPATH, var.camera_image_management_watch_image_iconx).click()
+        except:
+            var.driver.refresh()
+            time.sleep(7)
+            n = 1
+            while (n < 10):
+                var.driver.implicitly_wait(2)
+                n += 1
+                n = str(n)
+                pathtenphuongtien = "//*[@id='ctl00_ctl00_MainContent_Content_vehicleAutoComplete_ddlVehiclePlate_chzn']/div/ul/li[" + n + "]"
+                var.driver.find_element(By.XPATH, var.camera_image_management_chosevehicle).click()
+                time.sleep(1)
+                var.driver.find_element(By.XPATH, pathtenphuongtien).click()
+                time.sleep(1)
+                var.driver.find_element(By.XPATH, var.camera_image_management_search).click()
+                time.sleep(10)
+                try:
+                    var.driver.find_element(By.XPATH, "//*[text()='OK']").click()
+                except:
+                    break
+                n = int(n)
 
         name_vehicle = var.driver.find_element(By.XPATH, var.camera_image_management_name_vehicle).text
         time.sleep(1)
         logging.info("Tìm kiếm biển số - " + name_vehicle)
         var.writeData(var.path_luutamthoi, "Sheet1", 2, 2, name_vehicle)
+        chucnangkhac.writeData(var.checklistpath, "Checklist", code, 6, name_vehicle)
         chucnangkhac.write_result_displayed_try(code, eventname, result, "Hình ảnh - Quản lý ảnh camera",
                                                 var.check_camera_image_management_search, "_HinhAnh_QuanLyAnhCamera_TimKiem.png")
 
@@ -443,34 +499,15 @@ class images:
         try:
             var.driver.find_element(By.XPATH, var.check_camera_image_management_search).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
-            var.driver.find_element(By.XPATH, var.image).click()
-            time.sleep(4)
-            var.driver.find_element(By.XPATH, var.camera_image_management).click()
-            time.sleep(4)
-            var.driver.find_element(By.XPATH, var.camera_image_management_selecgroup).click()
-            time.sleep(0.5)
-            var.driver.find_element(By.XPATH, var.camera_image_management_selecgroup1).click()
-            time.sleep(1)
+            images.camera_image_management_search(self, "", "", "")
 
-            var.driver.find_element(By.XPATH, var.camera_image_management_chanel).click()
-            time.sleep(1)
-            var.driver.find_element(By.XPATH, var.camera_image_management_chanel1).click()
-            time.sleep(1)
-            var.driver.find_element(By.XPATH, var.camera_image_management_chanel).click()
-
-            var.driver.find_element(By.XPATH, var.camera_image_management_chosevehicle).click()
-            time.sleep(0.5)
-            var.driver.find_element(By.XPATH, var.camera_image_management_chosevehicle1).click()
-            time.sleep(0.5)
-            var.driver.find_element(By.XPATH, var.camera_image_management_chosevehicle).click()
-            time.sleep(0.5)
-            var.driver.find_element(By.XPATH, var.camera_image_management_search).click()
-            time.sleep(5)
-            var.driver.find_element(By.XPATH, var.check_camera_image_management_search).click()
-        time.sleep(3)
+        time.sleep(5)
         chucnangkhac.write_result_displayed_try(code, eventname, result, "Hình ảnh - Quản lý ảnh camera",
                                                 var.camera_image_management_watch_image_iconx, "_HinhAnh_QuanLyAnhCamera_XemAnh.png")
+
+        vehicle = var.driver.find_element(By.XPATH, var.tracking_by_images_watch_image_info2).text
+        chucnangkhac.writeData(var.checklistpath, "Checklist", code, 6, vehicle)
+
         try:
             var.driver.find_element(By.XPATH, var.camera_image_management_watch_image_iconx).click()
         except:
@@ -495,12 +532,13 @@ class images:
         logging.info("Kết quả - " + result)
         logging.info("Phương tiện có đăng ký giám sát Ảnh không: " + video_api)
         logging.info("Tên phương tiện : " + images.license_plate)
+        chucnangkhac.writeData(var.checklistpath, "Checklist", code, 6, "Phương tiện: {} có đăng ký Giám sát Ảnh không: {}".format(images.license_plate, video_api))
         if video_api == "True":
             logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Pass")
         else:
             logging.info("False")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Fail")
 
 
 
@@ -515,7 +553,7 @@ class images:
         try:
             var.driver.find_element(By.XPATH, var.image).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.image).click()
         time.sleep(4)
         var.driver.find_element(By.XPATH, var.view_camera_photos).click()
@@ -529,7 +567,7 @@ class images:
         try:
             var.driver.find_element(By.XPATH, var.camera_image_management_selecgroup).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.image).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.view_camera_photos).click()
@@ -557,18 +595,10 @@ class images:
                 break
             n = int(n)
 
-
-        # var.driver.find_element(By.XPATH, var.camera_image_management_chosevehicle).click()
-        # time.sleep(0.5)
-        # var.driver.find_element(By.XPATH, var.camera_image_management_chosevehicle1).click()
-        # time.sleep(0.5)
         name_vehicle = var.driver.find_element(By.XPATH, var.camera_image_management_name_vehicle).text
-        # time.sleep(1)
-        # var.driver.find_element(By.XPATH, var.camera_image_management_search).click()
-        # time.sleep(5)
-
         logging.info("Tìm kiếm biển số - " + name_vehicle)
         var.writeData(var.path_luutamthoi, "Sheet1", 2, 2, name_vehicle)
+        chucnangkhac.writeData(var.checklistpath, "Checklist", code, 6, name_vehicle)
         chucnangkhac.write_result_displayed_try(code, eventname, result, "Hình ảnh - Xem ảnh Camera",
                                                 var.check_view_camera_photos_search, "_HinhAnh_XemAnhCamera_TimKiem.png")
 
@@ -597,12 +627,13 @@ class images:
         logging.info("Kết quả - " + result)
         logging.info("Phương tiện có đăng ký giám sát Ảnh không: " + video_api)
         logging.info("Tên phương tiện : " + images.license_plate)
+        chucnangkhac.writeData(var.checklistpath, "Checklist", code, 6, "Phương tiện: {} có đăng ký Giám sát Ảnh không: {}".format(images.license_plate, video_api))
         if video_api == "True":
             logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Pass")
         else:
             logging.info("False")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Fail")
 
 
 

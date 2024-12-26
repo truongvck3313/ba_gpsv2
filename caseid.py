@@ -13,6 +13,7 @@ import chucnangkhac
 import var
 import openpyxl
 from retry import retry
+
 def get_datachecklist(ma):
     wordbook = openpyxl.load_workbook(var.checklistpath)
     sheet = wordbook.get_sheet_by_name("Checklist")
@@ -33,87 +34,153 @@ def get_datachecklist(ma):
 
 
 def caseid_login01(self):
-    login.login.login_v2_tkkhachhangcoquyengiamsat(self, "ungroup", "12341234", "Login01", "Đăng nhập với tài khoản khách hàng có quyền giám sát")    #ungroup, 12341234
+    get_datachecklist("Login01")
+    tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    login.login.login_v2_tkkhachhangcoquyengiamsat(self, "Login01", tensukien, ketqua)
+
 
 def caseid_login02(self):
-    login.login.login_v2_tkbinhanh(self, "truongtq@bagroup.vn", "atgmj123", "Login02", "Đăng nhập với tài khoản bình anh")
+    get_datachecklist("Login02")
+    tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    login.login.login_v2_tkbinhanh(self, "Login02", tensukien, ketqua)
+
+
 
 def caseid_login03(self):
-    login.login.login_v2_tkdaily(self, "43E02740", "12341234", "Login03", "Đăng nhập với tài khoản đại lý")
+    get_datachecklist("Login03")
+    tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    login.login.login_v2_tkdaily(self, "Login03", tensukien, ketqua)
+
+
 
 def caseid_login04(self):
-    login.login.login_v2_tkkhongcoquyengiamsat(self, "truongvck1", "12341234", "Login04", "Đăng nhập với tài khoản khách hàng không có quyền giám sát")
+    get_datachecklist("Login04")
+    tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    login.login.login_v2_tkkhongcoquyengiamsat(self, "Login04", tensukien, ketqua)
+
+
 
 def caseid_login05(self):
-    login.login.login_v2sai(self, "truongtq@bagroup.vn", "11111", "Login05", "Đằng nhập sai mật khẩu", "Tài khoản và mật khẩu không đúng")
+    get_datachecklist("Login05")
+    tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    login.login.login_v2sai(self, "Login05", tensukien, ketqua)
 
 
 def caseid_login06(self):
-    login.login.login_ghinhodangnhap1(self, "Login06", "Ghi nhớ đăng nhập - Bỏ chọn")
+    pass
+    # login.login.login_ghinhodangnhap1(self, "Login06", "Ghi nhớ đăng nhập - Bỏ chọn")
 
 
 def caseid_login07(self):
-    login.login.login_ghinhodangnhap2(self, "Login07", "Ghi nhớ đăng nhập - Tích chọn")
+    pass
+    # login.login.login_ghinhodangnhap2(self, "Login07", "Ghi nhớ đăng nhập - Tích chọn")
 
 
 def caseid_login08(self):
-    login.linklienket.linklienket_trangchu(self, "Login08", "Click vào link giới thiệu - Trang chủ")
+    get_datachecklist("Login08")
+    tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    login.linklienket.linklienket_trangchu(self, "Login08", tensukien, ketqua)
     login.linklienket.linklienket_dongtab(self)
 
 def caseid_login09(self):
-    login.linklienket.linklienket_lienhezalo(self, "Login09", "Click vào link giới thiệu - Zalo")
+    get_datachecklist("Login09")
+    tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    login.linklienket.linklienket_lienhezalo(self, "Login09", tensukien, ketqua)
     login.linklienket.linklienket_dongtab(self)
+
 
 def caseid_login10(self):
-    login.linklienket.linklienket_sodienthoai(self, "Login10", "Click vào link giới thiệu - Số điện thoại")
-    login.linklienket.linklienket_dongtab(self)
+    pass
+    # login.linklienket.linklienket_sodienthoai(self, "Login10", "Click vào link giới thiệu - Số điện thoại")
+    # login.linklienket.linklienket_dongtab(self)
+
 
 def caseid_login11(self):
-    login.linklienket.linklienket_bagps(self, "Login11", "Click vào link giới thiệu - Bagps.vn")
+    get_datachecklist("Login11")
+    tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    login.linklienket.linklienket_bagps(self, "Login11", tensukien, ketqua)
     login.linklienket.linklienket_dongtab(self)
+
 
 def caseid_login12(self):
-    login.linklienket.linklienket_appstore(self, "Login12", "Click vào link giới thiệu - App store")
+    get_datachecklist("Login12")
+    tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    login.linklienket.linklienket_appstore(self, "Login12", tensukien, ketqua)
     login.linklienket.linklienket_dongtab(self)
 
+
 def caseid_login13(self):
-    login.linklienket.linklienket_chplay(self, "Login13", "Click vào link giới thiệu - Ch Play")
+    get_datachecklist("Login13")
+    tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    login.linklienket.linklienket_chplay(self, "Login13", tensukien, ketqua)
     login.linklienket.linklienket_dongtab(self)
 
 def caseid_login14(self):
-    login.linklienket.linklienket_hotlinemuahang(self, "Login14", "Click vào link giới thiệu - Hotline mua hàng")
-    login.linklienket.linklienket_dongtab(self)
+    pass
+    # login.linklienket.linklienket_hotlinemuahang(self, "Login14", "Click vào link giới thiệu - Hotline mua hàng")
+    # login.linklienket.linklienket_dongtab(self)
 
 
 def caseid_login15(self):
-    login.linklienket.linklienket_muasamsanpham(self, "Login15", "Click vào link giới thiệu - Mua sắm sản phẩm")
+    get_datachecklist("Login15")
+    tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    login.linklienket.linklienket_muasamsanpham(self, "Login15", tensukien, ketqua)
     login.linklienket.linklienket_dongtab(self)
 
 
 def caseid_login16(self):
-    login.linklienket.linklienket_thongtingiaiphap(self, "Login16", "Click vào link giới thiệu - Thông tin giải pháp")
+    get_datachecklist("Login16")
+    tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    login.linklienket.linklienket_thongtingiaiphap(self, "Login16", tensukien, ketqua)
     login.linklienket.linklienket_dongtab(self)
 
 def caseid_login17(self):
-    login.linklienket.linklienket_vechungtoi(self, "Login17", "Click vào link giới thiệu - Về chúng tôi")
+    get_datachecklist("Login17")
+    tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    login.linklienket.linklienket_vechungtoi(self, "Login17", tensukien, ketqua)
     login.linklienket.linklienket_dongtab(self)
 
 
 def caseid_login18(self):
-    login.linklienket.linklienket_mangluoi(self, "Login18", "Click vào link giới thiệu - Mạng lưới")
+    get_datachecklist("Login18")
+    tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    login.linklienket.linklienket_mangluoi(self, "Login18", tensukien, ketqua)
     login.linklienket.linklienket_dongtab(self)
 
 
 def caseid_login19(self):
-    login.linklienket.linklienket_huongdansudung(self, "Login19", "Click vào link giới thiệu - Hướng dẫn sử dụng")
+    get_datachecklist("Login19")
+    tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    login.linklienket.linklienket_huongdansudung(self, "Login19", tensukien, ketqua)
     login.linklienket.linklienket_dongtab(self)
 
 def caseid_login20(self):
-    login.linklienket.linklienket_huongdandongphi(self, "Login20", "Click vào link giới thiệu - Hướng dẫn đóng phí")
+    get_datachecklist("Login20")
+    tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    login.linklienket.linklienket_huongdandongphi(self, "Login20", tensukien, ketqua)
     login.linklienket.linklienket_dongtab(self)
 
 def caseid_login21(self):
-    login.linklienket.linklienket_hopthoaizalo(self, "Login21", "Hộp thoại zalo")
+    get_datachecklist("Login21")
+    tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    login.linklienket.linklienket_hopthoaizalo(self, "Login21", tensukien, ketqua)
     login.linklienket.linklienket_dongtab(self)
 
 
@@ -634,7 +701,7 @@ def caseid_giamsat80(self):
     giamsat.danhsachxe.check_onlinehandler_soluongxe(self, "GiamSat80", tensukien, ketqua)
 
 
-@retry(tries=3, delay=2, backoff=1, jitter=5, )
+# @retry(tries=3, delay=2, backoff=1, jitter=5, )
 def caseid_giamsat80_1(self):
     get_datachecklist("GiamSat80_1")
     tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
@@ -644,7 +711,7 @@ def caseid_giamsat80_1(self):
 
 
 
-@retry(tries=5, delay=2, backoff=1, jitter=5, )
+@retry(tries=3, delay=2, backoff=1, jitter=5, )
 def caseid_giamsat81(self):
     get_datachecklist("GiamSat81")
     tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
@@ -1234,6 +1301,23 @@ def caseid_giamsat165(self):
     giamsat.canhbao.canhbao_x(self, "GiamSat165", tensukien, ketqua)
 
 
+def caseid_giamsat165_1(self):
+    get_datachecklist("GiamSat165_1")
+    tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    giamsat.canhbao.warn_passengers(self, "GiamSat165_1", tensukien, ketqua)
+
+
+def caseid_giamsat165_2(self):
+    get_datachecklist("GiamSat165_2")
+    tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    giamsat.canhbao.warn_passengers_x(self, "GiamSat165_2", tensukien, ketqua)
+
+
+
+
+
 @retry(tries=3, delay=2, backoff=1, jitter=5, )
 def caseid_giamsat166(self):
     get_datachecklist("GiamSat166")
@@ -1514,16 +1598,18 @@ def caseid_giamsat207(self):
 
 
 def caseid_giamsat208(self):
-    get_datachecklist("GiamSat208")
-    tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
-    ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
-    giamsat.chuotphaimap.chihuong_chihuong(self, "GiamSat208", tensukien, ketqua)
+    pass
+    # get_datachecklist("GiamSat208")
+    # tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    # ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    # giamsat.chuotphaimap.chihuong_chihuong(self, "GiamSat208", tensukien, ketqua)
 
 def caseid_giamsat209(self):
-    get_datachecklist("GiamSat209")
-    tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
-    ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
-    giamsat.chuotphaimap.chihuong_lotrinh(self, "GiamSat209", tensukien, ketqua)
+    pass
+    # get_datachecklist("GiamSat209")
+    # tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    # ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    # giamsat.chuotphaimap.chihuong_lotrinh(self, "GiamSat209", tensukien, ketqua)
 
 def caseid_giamsat210(self):
     get_datachecklist("GiamSat210")
@@ -2060,6 +2146,13 @@ def caseid_route22(self):
     eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
     result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
     lotrinh.route.routedisplayconfig_save(self, "Route22", eventname, result)
+
+
+def caseid_route23(self):
+    get_datachecklist("Route23")
+    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    lotrinh.route.route_loaddata5(self, "Route23", eventname, result)
 
 
 def caseid_admin01(self):
@@ -2773,8 +2866,6 @@ def caseid_report43(self):
     eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
     result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
     report.fuel_report.fuel_consumption_summary_report(self, "Report43", eventname, result)
-
-
 
 
 

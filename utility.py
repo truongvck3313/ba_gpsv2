@@ -34,7 +34,7 @@ class move_module:
             time.sleep(3)
             var.driver.find_element(By.XPATH, module_detail).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, module).click()
             time.sleep(3)
             var.driver.find_element(By.XPATH, module_detail).click()
@@ -48,7 +48,7 @@ class move_module:
             time.sleep(3)
             var.driver.find_element(By.XPATH, module_detail).click()
         except:
-            login.login.login_v2(self, "ungroup", "12341234")
+            login.login.login_v2(self, var.data['login']['khongnhom_thuong_tk'], var.data['login']['khongnhom_thuong_mk'])
             var.driver.find_element(By.XPATH, module).click()
             time.sleep(3)
             var.driver.find_element(By.XPATH, module_detail).click()
@@ -108,20 +108,21 @@ class utility:
         logging.info("Kết quả - " + result)
         try:
             check_text = var.driver.find_element(By.XPATH, var.device_info_device_info).text
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 6, check_text)
             logging.info(check_text)
             if check_text != "":
                 logging.info("True")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Pass")
             else:
                 logging.info("False")
                 var.driver.save_screenshot(var.imagepath + code + "_TienIch_ThongTinThietBi_ThongTinThietBi.png")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "TienIch_ThongTinThietBi_ThongTinThietBi.png")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", code, 13, code + "TienIch_ThongTinThietBi_ThongTinThietBi.png")
         except:
             logging.info("False")
             var.driver.save_screenshot(var.imagepath + code + "TienIch_ThongTinThietBi_ThongTinThietBi.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "TienIch_ThongTinThietBi_ThongTinThietBi.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 13, code + "TienIch_ThongTinThietBi_ThongTinThietBi.png")
 
 
 
@@ -152,12 +153,13 @@ class landmark_administraintion:      #quản trị điểm
         try:
             check_displayed = var.driver.find_element(By.XPATH, var.check_landmark_administraintion_place_search).is_displayed()
             logging.info("False")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 6, "Tính năng không được hỗ trợ.")
             var.driver.save_screenshot(var.imagepath + code + "_TienIch_ThongTinThietBi_Diem_TimKiem.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_TienIch_ThongTinThietBi_Diem_TimKiem.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 13, code + "_TienIch_ThongTinThietBi_Diem_TimKiem.png")
         except NoSuchElementException:
             logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Pass")
 
         try:
             var.driver.find_element(By.XPATH, var.ok).click()
@@ -181,6 +183,12 @@ class landmark_administraintion:      #quản trị điểm
         logging.info("Tìm kiếm tên điểm với từ khóa - " + data['tienich']['quantridiem_timkiem1'])
         chucnangkhac.write_result_displayed_try(code, eventname, result, "Tiện ích - Quản trị điểm",
                                                 var.check_landmark_administraintion_search_nameplace, "_TienIch_QuanTriDiem_TimKiem_TenDiem.png")
+        try:
+            name_location = var.driver.find_element(By.XPATH, var.check_landmark_administraintion_search_nameplace).text
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 6, name_location)
+        except:
+            pass
+
         try:
             var.driver.find_element(By.XPATH, var.check_landmark_administraintion_search_nameplace).click()
         except:
@@ -206,6 +214,12 @@ class landmark_administraintion:      #quản trị điểm
         logging.info("Tìm kiếm tên điểm với từ khóa - " + data['tienich']['quantridiem_timkiem2'])
         chucnangkhac.write_result_displayed_try(code, eventname, result, "Tiện ích - Quản trị điểm",
                                                 var.check_landmark_administraintion_search_adressplace, "_TienIch_QuanTriDiem_TimKiem_DiaChiDiem.png")
+
+        try:
+            name_location = var.driver.find_element(By.XPATH, var.check_landmark_administraintion_search_adressplace).text
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 6, name_location)
+        except:
+            pass
 
         try:
             var.driver.find_element(By.XPATH, var.check_landmark_administraintion_search_adressplace).click()
@@ -234,6 +248,11 @@ class landmark_administraintion:      #quản trị điểm
             var.driver.find_element(By.XPATH, var.landmark_group_name_place2)
         except:
             move_module.move_module_detail1(self, var.admin_utility, var.landmark_group)
+        try:
+            var.driver.find_element(By.XPATH, var.group_d).click()
+        except:
+            var.driver.find_element(By.XPATH, var.group_d1).click()
+        time.sleep(1.5)
         name_place = var.driver.find_element(By.XPATH, var.landmark_group_name_place2).text
         var.driver.find_element(By.XPATH, var.landmark_group_input).send_keys(name_place)
         time.sleep(0.5)
@@ -246,8 +265,6 @@ class landmark_administraintion:      #quản trị điểm
         if var.driver.find_element(By.XPATH, var.point_in_displayed_place).is_selected() == True:
             var.driver.find_element(By.XPATH, var.point_in_displayed_place).click()
 
-        # var.driver.find_element(By.XPATH, var.group_d).click()
-        # time.sleep(0.5)
 
         var.driver.find_element(By.XPATH, var.landmark_group_buttonsearch).click()
         time.sleep(2)
@@ -284,6 +301,11 @@ class landmark_administraintion:      #quản trị điểm
         time.sleep(2)
         chucnangkhac.write_result_displayed_try(code, eventname, result, "Tiện ích - Quản lý nhóm điểm",
                                                 var.nhomdiemz, "_TienIch_QuanLyNhomDiem_ThemMoi.png")
+        try:
+            name_group = var.driver.find_element(By.XPATH, var.nhomdiemz).text
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 6, name_group)
+        except:
+            pass
         time.sleep(1.5)
 
 
@@ -428,9 +450,10 @@ class landmark_administraintion:      #quản trị điểm
             var.driver.find_element(By.XPATH, var.landmark_group_administration_truongvck1).click()
         time.sleep(1)
         var.driver.find_element(By.XPATH, var.landmark_group_administration_iconmanyright).click()
-        time.sleep(1.5)
+        time.sleep(3)
         chucnangkhac.write_result_displayed_try(code, eventname, result, "Tiện ích - Phần quyền nhóm điểm",
                                                 var.check_landmark_group_administration_assign_many_group, "_TienIch_PhanQuyenNhomDiem_GanNhieuNhom.png")
+
 
         try:
             var.driver.find_element(By.XPATH, var.check_landmark_group_administration_assign_many_group).is_displayed()
@@ -535,7 +558,7 @@ class landmark_administraintion:      #quản trị điểm
         subprocess.Popen(var.uploadpath+"templateImportlandmarks.exe")
         time.sleep(1.5)
         var.driver.find_element(By.XPATH, var.add_landmarks_quickly_uploadfile).click()
-        time.sleep(2.5)
+        time.sleep(7)
         var.driver.switch_to.alert.accept()
         time.sleep(2.5)
         chucnangkhac.write_result_displayed_try(code, eventname, result, "Tiện ích - Thêm nhanh điểm",

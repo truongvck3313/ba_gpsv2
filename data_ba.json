@@ -1,9 +1,29 @@
 {
   "login": {
     "ghinhodangnhap_user1": "truongtq@bagroup.vn",
-    "ghinhodangnhap_password1": "atgmj123",
+    "ghinhodangnhap_password1": "truongdz12",
     "quenmatkhau_tendangnhap1": "truongtq@bagroup.vn",
-    "quenmatkhau_dienthoaidung": "0359667694"
+    "quenmatkhau_dienthoaidung": "0359667694",
+    "khongnhom_thuong_tk": "ungroup",
+    "khongnhom_thuong_mk": "12341234",
+    "khongnhom_thuong_tk1": "truongvck1",
+    "khongnhom_thuong_mk1": "12341234",
+    "khongnhom_thuong_tk2": "ungroup_1",
+    "khongnhom_thuong_mk2": "12341234",
+    "khongnhom_thuong_tk3": "truonganphat",
+    "khongnhom_thuong_mk3": "12341234",
+    "conhom_quantri_tk": "43E02740",
+    "conhom_quantri_mk": "atgmj123",
+    "conhom_quantri_tk2": "ctyanhngocminh",
+    "conhom_quantri_mk2": "12341234",
+    "conhom_quantri_tk3": "cttoancau",
+    "conhom_quantri_mk3": "12341234",
+    "conhom_thuong_tk": "43E02744",
+    "conhom_thuong_mk": "atgmj123",
+    "conhom_thuong_tk2": "60F01668_C",
+    "conhom_thuong_mk2": "12341234",
+    "binhanh_tk": "truongtq@bagroup.vn",
+    "binhanh_mk": "truongdz12"
   },
   "giamsat": {
     "timkiem_diem": "CT Binh Anh -NCD",

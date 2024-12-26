@@ -40,7 +40,7 @@ class vehicle_management:
     #quản trị loại phương tiện
     def type_vehicle(self, code, eventname, result):
         var.driver.implicitly_wait(5)
-        login.login.login_v2(self, "ungroup", "12341234")
+        login.login.login_v2(self, var.data['login']['khongnhom_thuong_tk'], var.data['login']['khongnhom_thuong_mk'])
         try:
             var.driver.find_element(By.XPATH, var.managerment).click()
         except:
@@ -65,20 +65,23 @@ class vehicle_management:
             time.sleep(2)
             var.driver.find_element(By.XPATH, var.typevehicle_search).click()
             var.driver.find_element(By.XPATH, var.typevehicle_search).send_keys(name_typevehicle1)
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 6, "Loại phương tiện: {}".format(name_typevehicle1))
         except:
-            login.login.login_v2(self, "ungroup", "12341234")
+            login.login.login_v2(self, var.data['login']['khongnhom_thuong_tk'], var.data['login']['khongnhom_thuong_mk'])
             var.driver.find_element(By.XPATH, var.managerment).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.type_vehicle).click()
             time.sleep(3)
             name_typevehicle1 = var.driver.find_element(By.XPATH, var.name_typevehicle1).text
             var.driver.find_element(By.XPATH, var.typevehicle_search).send_keys(name_typevehicle1)
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 6, "Loại phương tiện: {}".format(name_typevehicle1))
         time.sleep(0.5)
         var.driver.find_element(By.XPATH, var.typevehicle_buttonsearch).click()
         time.sleep(1.5)
         check_search = var.driver.find_element(By.XPATH, var.name_typevehicle1).text
         chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Quản trị loại phương tiện",
                                               var.name_typevehicle1, check_search, "_QuanTri_DSLoaiPhuongTien_TimKiem.png")
+
         var.driver.find_element(By.XPATH, var.typevehicle_search).clear()
         time.sleep(0.5)
         var.driver.find_element(By.XPATH, var.typevehicle_buttonsearch).click()
@@ -93,7 +96,7 @@ class vehicle_management:
         try:
             var.driver.find_element(By.XPATH, var.typevehicle_addnew).click()
         except:
-            login.login.login_v2(self, "ungroup", "12341234")
+            login.login.login_v2(self, var.data['login']['khongnhom_thuong_tk'], var.data['login']['khongnhom_thuong_mk'])
             var.driver.find_element(By.XPATH, var.managerment).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.type_vehicle).click()
@@ -114,11 +117,17 @@ class vehicle_management:
             var.driver.find_element(By.XPATH, var.save_already_exist)
             var.driver.find_element(By.XPATH, var.exit).click()
             time.sleep(1)
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 6, "Loại phương tiện đã tồn tại")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Pass")
         except:
             logging.info("Thêm mới loại xe - " + data['quantri']['loaiphuongtien'])
-            chucnangkhac.write_result_displayed_try(code, eventname, result, "Quản trị - Quản trị loại phương tiện",
-                                                    var.save_successfully, "_QuanTri_DSLoaiPhuongTien_ThemMoi.png")
+            # chucnangkhac.write_result_displayed_try(code, eventname, result, "Quản trị - Quản trị loại phương tiện",
+            #                                         var.save_successfully, "_QuanTri_DSLoaiPhuongTien_ThemMoi.png")
+
+            chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Quản trị loại phương tiện",
+                                                  var.save_successfully, "Thêm mới thành công", "_QuanTri_DSLoaiPhuongTien_ThemMoi.png")
+
+
         time.sleep(2)
 
 
@@ -143,13 +152,14 @@ class vehicle_management:
             time.sleep(1)
             var.driver.switch_to.alert.accept()
             logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 6, "Xóa loại phương tiện: {} thành công".format(data['quantri']['loaiphuongtien']))
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Pass")
         else:
             logging.info("False")
             var.driver.save_screenshot(var.imagepath + code + "_QuanTri_DSLoaiPhuongTien_Xoa.png")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + "_QuanTri_DSLoaiPhuongTien_Xoa.png")
-        time.sleep(1.5)
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 13, code + "_QuanTri_DSLoaiPhuongTien_Xoa.png")
+        time.sleep(5)
 
 
 
@@ -199,9 +209,21 @@ class vehicle_management:
         except:
             vehicle_management.type_vehicle(self, "", "", "")
             var.driver.find_element(By.XPATH, var.type_vehicle_downloadexcel).click()
-        time.sleep(1)
-        chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Quản trị loại phương tiện",
-                                              var.check_downloadexcel, "Đang tiến hành tạo file Excel. Vui lòng không thoát trang, tìm kiếm lại... cho đến khi file được tải về máy", "_QuanTri_DSLoaiPhuongTien_Excel.png")
+        time.sleep(7)
+        logging.info("Quản trị - Quản trị loại phương tiện")
+        logging.info("Mã - " + code)
+        logging.info("Tên sự kiện - " + eventname)
+        logging.info("Kết quả - " + result)
+        try:
+            filename = max([var.excelpath + "\\" + f for f in os.listdir(var.excelpath)], key=os.path.getctime)
+            shutil.move(filename, os.path.join(var.excelpath, r"quantriloaiphuongtien.xlsx"))
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Pass")
+        except:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + code + "_QuanTriLoaiPhuongTien_XuatExcel.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 13, code + "_QuanTriLoaiPhuongTien_XuatExcel.png")
 
 
 
@@ -215,21 +237,28 @@ class vehicle_management:
             vehicle_management.type_vehicle(self, "", "", "")
             var.driver.find_element(By.XPATH, var.type_vehicle_downloadpdf).click()
 
-        time.sleep(1)
+        time.sleep(7)
         logging.info("Quản trị - Quản trị loại phương tiện")
         logging.info("Mã - " + code)
         logging.info("Tên sự kiện - " + eventname)
         logging.info("Kết quả - " + result)
-        logging.info("True")
-        chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
-        time.sleep(2)
+        try:
+            filename = max([var.excelpath + "\\" + f for f in os.listdir(var.excelpath)], key=os.path.getctime)
+            shutil.move(filename, os.path.join(var.excelpath, r"quantriloaiphuongtien.pdf"))
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Pass")
+        except:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + code + "_QuanTriLoaiPhuongTien_XuatPdf.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 13, code + "_QuanTriLoaiPhuongTien_XuatPdf.png")
 
 
 
     #Danh sách xe
     def list_vehicle(self, code, eventname, result):
         var.driver.implicitly_wait(5)
-        login.login.login_v2(self, "ungroup", "12341234")
+        login.login.login_v2(self, var.data['login']['khongnhom_thuong_tk'], var.data['login']['khongnhom_thuong_mk'])
         try:
             var.driver.find_element(By.XPATH, var.managerment).click()
         except:
@@ -250,12 +279,13 @@ class vehicle_management:
         try:
             var.driver.find_element(By.XPATH, var.list_vehicle_buttonsearch).click()
         except:
-            login.login.login_v2(self, "ungroup", "12341234")
+            login.login.login_v2(self, var.data['login']['khongnhom_thuong_tk'], var.data['login']['khongnhom_thuong_mk'])
             var.driver.find_element(By.XPATH, var.managerment).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.list_vehicle).click()
             time.sleep(3.5)
-        time.sleep(1.5)
+        var.driver.find_element(By.XPATH, var.list_vehicle_buttonsearch).click()
+        time.sleep(2)
         name_vehicle1 = var.driver.find_element(By.XPATH, var.name_vehicle1).text
         var.driver.find_element(By.XPATH, var.liscense_plate).send_keys(name_vehicle1)
         time.sleep(0.5)
@@ -266,14 +296,13 @@ class vehicle_management:
 
 
 
-
     ##Danh sách xe - nhập nhanh thông tin xe
     def list_vehicle_write_info_vehicle(self, code, eventname, result):
         var.driver.implicitly_wait(5)
         try:
             var.driver.find_element(By.XPATH, var.write_info_vehicle).click()
         except:
-            login.login.login_v2(self, "ungroup", "12341234")
+            login.login.login_v2(self, var.data['login']['khongnhom_thuong_tk'], var.data['login']['khongnhom_thuong_mk'])
             var.driver.find_element(By.XPATH, var.managerment).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.list_vehicle).click()
@@ -306,7 +335,7 @@ class vehicle_management:
     def list_vehicle_search_information(self, code, eventname, result, page_turning_button, desire, pathcheck, nameimage):
         var.driver.implicitly_wait(5)
         if code == "Admin12":
-            login.login.login_v2(self, "truongtq@bagroup.vn", "atgmj123")
+            login.login.login_v2(self, var.data['login']['binhanh_tk'], var.data['login']['binhanh_mk'])
             var.driver.find_element(By.XPATH, var.managerment).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.list_vehicle).click()
@@ -314,7 +343,7 @@ class vehicle_management:
         try:
             var.driver.find_element(By.XPATH, page_turning_button).click()
         except:
-            login.login.login_v2(self, "truongtq@bagroup.vn", "atgmj123")
+            login.login.login_v2(self, var.data['login']['binhanh_tk'], var.data['login']['binhanh_mk'])
             var.driver.find_element(By.XPATH, var.managerment).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.list_vehicle).click()
@@ -333,20 +362,20 @@ class vehicle_management:
             check_search_information = var.driver.find_element(By.XPATH, pathcheck).text
             logging.info("Chuyển tới trang - " + check_search_information)
             logging.info(check_search_information)
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 11, check_search_information)
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 6, check_search_information)
             if check_search_information == desire:
                 logging.info("True")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Pass")
             else:
                 logging.info("False")
                 var.driver.save_screenshot(var.imagepath + code + nameimage)
-                chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-                chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + nameimage)
+                chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+                chucnangkhac.writeData(var.checklistpath, "Checklist", code, 13, code + nameimage)
         except:
             logging.info("False")
             var.driver.save_screenshot(var.imagepath + code + nameimage)
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 9, code + nameimage)
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 13, code + nameimage)
         login.linklienket.linklienket_dongtab(self)
         var.driver.switch_to_window(tab_0)
         time.sleep(1)
@@ -356,7 +385,7 @@ class vehicle_management:
     #Danh sách xe - goto
     def list_vehiclegototo_company(self, code, eventname, result):
         var.driver.implicitly_wait(5)
-        login.login.login_v2(self, "truongtq@bagroup.vn", "atgmj123")
+        login.login.login_v2(self, var.data['login']['binhanh_tk'], var.data['login']['binhanh_mk'])
         var.driver.find_element(By.XPATH, var.list_vehicle1).click()
         time.sleep(4)
         var.driver.find_element(By.XPATH, var.liscense_plate).send_keys(data['quantri']['bienkiemsoat'])
@@ -386,7 +415,7 @@ class vehicle_management:
             time.sleep(0.5)
             var.driver.find_element(By.XPATH, var.list_vehicle_buttonsearch).click()
         except:
-            login.login.login_v2(self, "truongtq@bagroup.vn", "atgmj123")
+            login.login.login_v2(self, var.data['login']['binhanh_tk'], var.data['login']['binhanh_mk'])
             var.driver.find_element(By.XPATH, var.list_vehicle1).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.liscense_plate).send_keys(data['quantri']['bienkiemsoat1'])
@@ -434,7 +463,7 @@ class vehicle_management:
             time.sleep(0.5)
             var.driver.find_element(By.XPATH, var.list_vehicle_buttonsearch).click()
         except:
-            login.login.login_v2(self, "truongtq@bagroup.vn", "atgmj123")
+            login.login.login_v2(self, var.data['login']['binhanh_tk'], var.data['login']['binhanh_mk'])
             var.driver.find_element(By.XPATH, var.list_vehicle1).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.liscense_plate).send_keys(data['quantri']['bienkiemsoat'])
@@ -459,7 +488,7 @@ class vehicle_management:
             time.sleep(0.5)
             var.driver.find_element(By.XPATH, var.list_vehicle_buttonsearch).click()
         except:
-            login.login.login_v2(self, "truongtq@bagroup.vn", "atgmj123")
+            login.login.login_v2(self, var.data['login']['binhanh_tk'], var.data['login']['binhanh_mk'])
             var.driver.find_element(By.XPATH, var.list_vehicle1).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.liscense_plate).send_keys(data['quantri']['bienkiemsoat'])
@@ -475,7 +504,7 @@ class vehicle_management:
         var.driver.find_element(By.XPATH, var.select_hide_car).click()
         time.sleep(1)
 
-        var.driver.find_element(By.XPATH, var.select_hide1).click()
+        var.driver.find_element(By.XPATH, var.select_hide2).click()
         time.sleep(1)
 
         var.driver.find_element(By.XPATH, var.anxe_ghichu).send_keys(data['giamsat']['anxe_ghichu'])
@@ -499,7 +528,7 @@ class vehicle_management:
             time.sleep(0.5)
             var.driver.find_element(By.XPATH, var.list_vehicle_buttonsearch).click()
         except:
-            login.login.login_v2(self, "truongtq@bagroup.vn", "atgmj123")
+            login.login.login_v2(self, var.data['login']['binhanh_tk'], var.data['login']['binhanh_mk'])
             var.driver.find_element(By.XPATH, var.list_vehicle1).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.liscense_plate).send_keys(data['quantri']['bienkiemsoat'])
@@ -542,7 +571,7 @@ class vehicle_management:
             time.sleep(0.5)
             var.driver.find_element(By.XPATH, var.list_vehicle_buttonsearch).click()
         except:
-            login.login.login_v2(self, "truongtq@bagroup.vn", "atgmj123")
+            login.login.login_v2(self, var.data['login']['binhanh_tk'], var.data['login']['binhanh_mk'])
             var.driver.find_element(By.XPATH, var.list_vehicle1).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.liscense_plate).send_keys(data['quantri']['bienkiemsoat'])
@@ -569,7 +598,7 @@ class vehicle_management:
             time.sleep(0.5)
             var.driver.find_element(By.XPATH, var.list_vehicle_buttonsearch).click()
         except:
-            login.login.login_v2(self, "truongtq@bagroup.vn", "atgmj123")
+            login.login.login_v2(self, var.data['login']['binhanh_tk'], var.data['login']['binhanh_mk'])
             var.driver.find_element(By.XPATH, var.list_vehicle1).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.liscense_plate).send_keys(data['quantri']['bienkiemsoat'])
@@ -604,7 +633,7 @@ class vehicle_management:
             var.driver.find_element(By.XPATH, var.liscense_plate).clear()
             var.driver.find_element(By.XPATH, var.list_vehicle_buttonsearch).click()
         except:
-            login.login.login_v2(self, "truongtq@bagroup.vn", "atgmj123")
+            login.login.login_v2(self, var.data['login']['binhanh_tk'], var.data['login']['binhanh_mk'])
             var.driver.find_element(By.XPATH, var.list_vehicle1).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.liscense_plate).clear()
@@ -621,7 +650,7 @@ class vehicle_management:
     #Quản trị nhóm
     def admin_group(self, code, eventname, result):
         var.driver.implicitly_wait(5)
-        giamsat.danhsachxe.goto_congty(self, "970", "970")
+        giamsat.danhsachxe.goto_congty(self, "khách lẻ Việt Hàn 2", "1110")
         try:
             var.driver.find_element(By.XPATH, var.managerment).click()
         except:
@@ -640,17 +669,21 @@ class vehicle_management:
         time.sleep(2)
         try:
             var.driver.find_element(By.XPATH, var.check_goto_company)
-            name_group = var.driver.find_element(By.XPATH, var.name_group).text
+            var.driver.find_element(By.XPATH, var.anan).click()
+            time.sleep(1)
+            name_group = var.driver.find_element(By.XPATH, var.list_group_car_1).text
             name_group = name_group.strip(" ")
             print(name_group)
             var.driver.find_element(By.XPATH, var.admin_group_search).send_keys(name_group)
         except:
-            giamsat.danhsachxe.goto_congty(self, "970", "970")
+            giamsat.danhsachxe.goto_congty(self, "khách lẻ Việt Hàn 2", "1110")
             var.driver.find_element(By.XPATH, var.managerment).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.admin_group).click()
             time.sleep(4)
-            name_group = var.driver.find_element(By.XPATH, var.name_group).text
+            var.driver.find_element(By.XPATH, var.anan).click()
+            time.sleep(1)
+            name_group = var.driver.find_element(By.XPATH, var.list_group_car_1).text
             name_group = name_group.strip(" ")
             print(name_group)
             var.driver.find_element(By.XPATH, var.admin_group_search).send_keys(name_group)
@@ -711,7 +744,7 @@ class vehicle_management:
         try:
             var.driver.find_element(By.XPATH, var.icon_addgroup_level1).click()
         except:
-            giamsat.danhsachxe.goto_congty(self, "970", "970")
+            giamsat.danhsachxe.goto_congty(self, "khách lẻ Việt Hàn 2", "1110")
             var.driver.find_element(By.XPATH, var.managerment).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.admin_group).click()
@@ -838,7 +871,7 @@ class vehicle_management:
         try:
             var.driver.find_element(By.XPATH, var.namegroup_nhomtest).click()
         except:
-            giamsat.danhsachxe.goto_congty(self, "970", "970")
+            giamsat.danhsachxe.goto_congty(self, "khách lẻ Việt Hàn 2", "1110")
             var.driver.find_element(By.XPATH, var.managerment).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.admin_group).click()
@@ -888,7 +921,7 @@ class vehicle_management:
         try:
             var.driver.find_element(By.XPATH, var.namegroup_nhomtest).click()
         except:
-            giamsat.danhsachxe.goto_congty(self, "970", "970")
+            giamsat.danhsachxe.goto_congty(self, "khách lẻ Việt Hàn 2", "1110")
             var.driver.find_element(By.XPATH, var.managerment).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.admin_group).click()
@@ -901,7 +934,8 @@ class vehicle_management:
         time.sleep(1)
         chucnangkhac.write_result_displayed_try(code, eventname, result, "Quản trị - Quản trị nhóm",
                                                 var.list_group_car_1, ")_QuanTri_QuanLyNhomXe_Gan1Xe.png")
-
+        time.sleep(2)
+        var.driver.find_element(By.XPATH, var.namegroup_nhomtest).click()
         time.sleep(1)
         var.driver.find_element(By.XPATH, var.list_group_car_1).click()
         time.sleep(0.5)
@@ -916,7 +950,7 @@ class vehicle_management:
         try:
             var.driver.find_element(By.XPATH, var.namegroup_nhomtest).click()
         except:
-            giamsat.danhsachxe.goto_congty(self, "970", "970")
+            giamsat.danhsachxe.goto_congty(self, "khách lẻ Việt Hàn 2", "1110")
             var.driver.find_element(By.XPATH, var.managerment).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.admin_group).click()
@@ -929,6 +963,7 @@ class vehicle_management:
             var.driver.switch_to.alert.accept()
         except:
             pass
+        time.sleep(2)
         chucnangkhac.write_result_displayed_try(code, eventname, result, "Quản trị - Quản trị nhóm",
                                                 var.list_group_car_3, ")_QuanTri_QuanLyNhomXe_Gan1Xe.png")
         time.sleep(1)
@@ -939,6 +974,8 @@ class vehicle_management:
         except:
             pass
         time.sleep(1.5)
+
+
 
 
 
@@ -959,7 +996,6 @@ class vehicle_management:
                                               var.check_vehicle_groups_administration, "PHÂN QUYỀN NHÓM XE CHO NGƯỜI DÙNG", "_QuanTri_PhanQuyenNhomXe.png")
 
 
-
     #Phân quyền nhóm xe - Tìm kiếm
     def vehicle_groups_administration_search(self, code, eventname, result):
         var.driver.implicitly_wait(5)
@@ -975,6 +1011,7 @@ class vehicle_management:
             var.driver.find_element(By.XPATH, var.vehicle_groups_administration_search).send_keys(data['quantri']['bienkiemsoat1'])
         time.sleep(0.5)
         var.driver.find_element(By.XPATH, var.vehicle_groups_administration_buttonsearch).click()
+        time.sleep(2)
         chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Phân quyền nhóm xe",
                                               var.check_vehicle_groups_administration_search, "29C14269A-29C14269A", "_QuanTri_PhanQuyenNhomXe_TìmKiem.png")
 
@@ -982,7 +1019,6 @@ class vehicle_management:
         time.sleep(0.5)
         var.driver.find_element(By.XPATH, var.vehicle_groups_administration_buttonsearch).click()
         time.sleep(1)
-
 
 
 
@@ -1069,7 +1105,7 @@ class vehicle_management:
 class system_management:
     def list_user(self, code, eventname, result):
         var.driver.implicitly_wait(5)
-        login.login.login_v2(self, "43E02740", "12341234")
+        login.login.login_v2(self, var.data['login']['khongnhom_thuong_tk'], var.data['login']['khongnhom_thuong_mk'])
         var.driver.find_element(By.XPATH, var.managerment).click()
         time.sleep(5)
         var.driver.find_element(By.XPATH, var.list_user).click()
@@ -1078,15 +1114,13 @@ class system_management:
                                               var.check_page_type_vehicle, "DANH SÁCH NGƯỜI DÙNG", "_QuanTri_DSNguoiDung.png")
 
 
-
-
     def list_user_search(self, code, eventname, result):
         var.driver.implicitly_wait(5)
         try:
             nameuser = var.driver.find_element(By.XPATH, var.list_user_nameuser).text
             var.driver.find_element(By.XPATH, var.list_user_search_input).send_keys(nameuser)
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['khongnhom_thuong_tk'], var.data['login']['khongnhom_thuong_mk'])
             var.driver.find_element(By.XPATH, var.managerment).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.list_user).click()
@@ -1099,7 +1133,10 @@ class system_management:
         chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Danh sách người dùng",
                                               var.list_user_nameuser, nameuser, "_QuanTri_DSNguoiDung_Timkiem.png")
 
-
+        var.driver.find_element(By.XPATH, var.list_user_search_input).clear()
+        time.sleep(0.5)
+        var.driver.find_element(By.XPATH, var.list_user_search).click()
+        time.sleep(1.5)
 
 
     def list_user_downloadexcel(self, code, eventname, result):
@@ -1107,17 +1144,27 @@ class system_management:
         try:
             var.driver.find_element(By.XPATH, var.list_user_icon_downloadexcel).click()
         except:
-            login.login.login_v2(self, "43E02740", "12341234")
+            login.login.login_v2(self, var.data['login']['khongnhom_thuong_tk'], var.data['login']['khongnhom_thuong_mk'])
             var.driver.find_element(By.XPATH, var.managerment).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.list_user).click()
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.list_user_icon_downloadexcel).click()
-        time.sleep(2)
-        chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Danh sách người dùng",
-                                              var.check_downloadexcel, "Đang tiến hành tạo file Excel. Vui lòng không thoát trang, tìm kiếm lại... cho đến khi file được tải về máy", "_QuanTri_DSNguoiDung_TaiFileExcel.png")
-        time.sleep(2)
-
+        time.sleep(7)
+        logging.info("Quản trị - Danh sách người dùng")
+        logging.info("Mã - " + code)
+        logging.info("Tên sự kiện - " + eventname)
+        logging.info("Kết quả - " + result)
+        try:
+            filename = max([var.excelpath + "\\" + f for f in os.listdir(var.excelpath)], key=os.path.getctime)
+            shutil.move(filename, os.path.join(var.excelpath, r"danhsachnguoidung.xlsx"))
+            logging.info("True")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Pass")
+        except:
+            logging.info("False")
+            var.driver.save_screenshot(var.imagepath + code + "_QuanTri_DSNguoiDung_TaiFileExcel.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 13, code + "_QuanTri_DSNguoiDung_TaiFileExcel.png")
 
 
     def list_user_download_pdf(self, code, eventname, result):
@@ -1125,7 +1172,8 @@ class system_management:
         chucnangkhac.delete_excel()
         utility.move_module.move_module_detail1(self, var.managerment, var.list_user)
         var.driver.find_element(By.XPATH, var.list_user_icon_pdf).click()
-        time.sleep(5)
+        time.sleep(7)
+        time.sleep(7)
         logging.info("Quản trị - Danh sách người dùng")
         logging.info("Mã - " + code)
         logging.info("Tên sự kiện - " + eventname)
@@ -1134,13 +1182,12 @@ class system_management:
             filename = max([var.excelpath + "\\" + f for f in os.listdir(var.excelpath)], key=os.path.getctime)
             shutil.move(filename, os.path.join(var.excelpath, r"danhsachnguoidung.pdf"))
             logging.info("True")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Pass")
         except:
             logging.info("False")
-            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Fail")
-
-
-
+            var.driver.save_screenshot(var.imagepath + code + "_QuanTri_DSNguoiDung_TaiPdf.png")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Fail")
+            chucnangkhac.writeData(var.checklistpath, "Checklist", code, 13, code + "_QuanTri_DSNguoiDung_TaiPdf.png")
 
 
     def list_user_print(self, code, eventname, result):
@@ -1162,7 +1209,6 @@ class system_management:
 
 
 
-
     def list_user_column(self, code, eventname, result):
         var.driver.implicitly_wait(5)
         try:
@@ -1176,7 +1222,7 @@ class system_management:
         logging.info("Tên sự kiện - " + eventname)
         logging.info("Kết quả - " + result)
         logging.info("True")
-        chucnangkhac.writeData(var.checklistpath, "Checklist", code, 8, "Pass")
+        chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Pass")
         time.sleep(0.5)
         try:
             var.driver.find_element(By.XPATH, var.list_user_column_cancel).click()
@@ -1324,6 +1370,7 @@ class system_management:
 
     def list_user_reset_copy_acount(self, code, eventname, result):        #Danh sách người dùng - coppy tài khoản
         var.driver.implicitly_wait(5)
+        chucnangkhac.writeData(var.checklistpath, "Checklist", code, 14, "")
         try:
             var.driver.find_element(By.XPATH, var.list_user_search_input).clear()
             var.driver.find_element(By.XPATH, var.list_user_search_input).send_keys(giamsat.data['quantri']['timkiem_danhsachnguoidung2'])
@@ -1350,6 +1397,8 @@ class system_management:
         chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Danh sách người dùng",
                                               var.check_list_user_reset_copy_acount, "Lưu thành công",
                                               "_QuanTri_DSNguoiDung_CopyTaiKhoan.png")
+        nameuser = str(var.readData(var.path_luutamthoi, 'Sheet1', 49, 2))
+        chucnangkhac.writeData(var.checklistpath, "Checklist", code, 14, "Tài khoản tạo: {}".format(nameuser))
 
 
 
@@ -1403,6 +1452,7 @@ class system_management:
 
     def list_user_permanently_deleted(self, code, eventname, result):        #Danh sách người dùng - xóa hẳn
         var.driver.implicitly_wait(5)
+        chucnangkhac.writeData(var.checklistpath, "Checklist", code, 14, "")
         number = random.randint(1, 99999999)
         copyaccount_user = "truongtest" + str(number)
         utility.move_module.move_module_detail1(self, var.managerment, var.list_user)
@@ -1422,6 +1472,7 @@ class system_management:
         var.driver.find_element(By.XPATH, var.list_user_search_input).send_keys(copyaccount_user)
         var.driver.find_element(By.XPATH, var.list_user_search).click()
         time.sleep(2)
+        chucnangkhac.writeData(var.checklistpath, "Checklist", code, 14, "Tài khoản xóa hản: {}".format(copyaccount_user))
         var.driver.find_element(By.XPATH, var.list_user_permanently_deleted).click()
         time.sleep(2)
         var.driver.switch_to.alert.accept()
@@ -1451,7 +1502,6 @@ class system_management:
         check = var.driver.find_element(By.XPATH, var.check_list_user_unlock_login).text
         logging.info(check)
         logging.info("Mở khóa đăng nhập cho " + giamsat.data['quantri']['timkiem_danhsachnguoidung2'] + " thành công")
-
 
 
 
