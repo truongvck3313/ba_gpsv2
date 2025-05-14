@@ -39,8 +39,8 @@ chucnangkhac.timerun()
 
 
 
-# pyinstaller.exe --icon=C:\Users\dungntk\ba_v2\ba_v2\icon_ba.ico .\test_main.py
-#pip install selenium==3.141.0
+# pyinstaller.exe --icon=C:\Users\dungntk\ba_v2\ba_v2\icon_ba.ico .\test_main_staxi_everyday.py
+# pip install selenium==3.141.0
 
 
 class Test(unittest.TestCase):
@@ -51,11 +51,14 @@ class Test(unittest.TestCase):
         module_gpsv2.ModuleTest()
         module_gpsv2.retest_casenone(self)
         module_gpsv2.retest_casefail(self)
-        module_gpsv2.retest_casefail(self)
         try:
             chucnangkhac.notification_telegram()
         except:
             pass
+        chucnangkhac.call_telegram()
+
+
+
 
 
 #
@@ -224,7 +227,7 @@ class Test(unittest.TestCase):
 # # #         # caseid.caseid_giamsat02(self)
 # #
 #         # caseid.caseid_giamsat05(self)
-#         # caseid.caseid_giamsat06(self)
+#         caseid.caseid_giamsat06(self)
 #         caseid.caseid_giamsat07(self)
 #         caseid.caseid_giamsat44(self)
 #         caseid.caseid_giamsat45(self)
@@ -256,7 +259,7 @@ class Test(unittest.TestCase):
 #         caseid.caseid_giamsat83(self)
 #         caseid.caseid_giamsat84(self)
 #         caseid.caseid_giamsat85(self)
-#
+#         caseid.caseid_giamsat86(self)
 #         caseid.caseid_giamsat87(self)
 #         caseid.caseid_giamsat88(self)
 #         caseid.caseid_giamsat89(self)
@@ -271,10 +274,10 @@ class Test(unittest.TestCase):
 #         caseid.caseid_giamsat98(self)
 #         caseid.caseid_giamsat99(self)
 #         caseid.caseid_giamsat100(self)
-        # caseid.caseid_giamsat101(self)
-        # caseid.caseid_giamsat102(self)
-        # caseid.caseid_giamsat103(self)
-        # caseid.caseid_giamsat104(self)
+#         caseid.caseid_giamsat101(self)
+#         caseid.caseid_giamsat102(self)
+#         caseid.caseid_giamsat103(self)
+#         caseid.caseid_giamsat104(self)
         # caseid.caseid_giamsat105(self)
 
         # caseid.caseid_giamsat106(self)
@@ -291,7 +294,7 @@ class Test(unittest.TestCase):
 
         # caseid.caseid_giamsat117(self)
         # caseid.caseid_giamsat118(self)
-
+        #
         # caseid.caseid_giamsat119(self)
         # caseid.caseid_giamsat120(self)
 
@@ -317,7 +320,7 @@ class Test(unittest.TestCase):
         # caseid.caseid_giamsat137(self)
         # caseid.caseid_giamsat138(self)
         # caseid.caseid_giamsat139(self)
-
+        #
         # caseid.caseid_giamsat140(self)
         # caseid.caseid_giamsat141(self)
         # caseid.caseid_giamsat142(self)
@@ -427,9 +430,9 @@ class Test(unittest.TestCase):
 #         caseid.caseid_route15(self)
 #         caseid.caseid_route16(self)
 #
-#         caseid.caseid_route17(self)
-#         caseid.caseid_route18(self)
-#         caseid.caseid_route19(self)
+        # caseid.caseid_route17(self)
+        # caseid.caseid_route18(self)
+        # caseid.caseid_route19(self)
 #         caseid.caseid_route20(self)
 #         caseid.caseid_route21(self)
 #         caseid.caseid_route22(self)
@@ -450,16 +453,16 @@ class Test(unittest.TestCase):
 # # #         # caseid.caseid_giamsat14(self)
 # # #         # caseid.caseid_giamsat15(self)
 # # #         # caseid.caseid_giamsat16(self)
-# # #         # caseid.caseid_giamsat17(self)
-# # #         # caseid.caseid_giamsat18(self)
-# # #         # caseid.caseid_giamsat19(self)
-# # #         # caseid.caseid_giamsat20(self)
-# # #         # caseid.caseid_giamsat21(self)
-# # #         # caseid.caseid_giamsat21(self)
-# # #         # caseid.caseid_giamsat22(self)
-# # #         # caseid.caseid_giamsat23(self)
-# # #         # caseid.caseid_giamsat24(self)
-# # #         # caseid.caseid_giamsat25(self)
+#         caseid.caseid_giamsat17(self)
+#         caseid.caseid_giamsat18(self)
+#         caseid.caseid_giamsat19(self)
+#         caseid.caseid_giamsat20(self)
+#         caseid.caseid_giamsat21(self)
+#         caseid.caseid_giamsat21(self)
+#         caseid.caseid_giamsat22(self)
+#         caseid.caseid_giamsat23(self)
+#         caseid.caseid_giamsat24(self)
+#         caseid.caseid_giamsat25(self)
 #         caseid.caseid_giamsat26(self)
 #         caseid.caseid_giamsat27(self)
 #         caseid.caseid_giamsat28(self)
@@ -683,7 +686,7 @@ class Test(unittest.TestCase):
 # # #
 # # #         # quản trị - quản trị loại phương tiện
 #         caseid.caseid_admin01(self)
-        # caseid.caseid_admin02(self)
+#         caseid.caseid_admin02(self)
 #         caseid.caseid_admin03(self)
 #         caseid.caseid_admin04(self)
 #         caseid.caseid_admin05(self)
@@ -714,12 +717,12 @@ class Test(unittest.TestCase):
 #         caseid.caseid_admin25(self)
 #         caseid.caseid_admin26(self)
 #         caseid.caseid_admin27(self)
-#         caseid.caseid_admin28(self)
-#         caseid.caseid_admin29(self)
-#         caseid.caseid_admin30(self)
-#         caseid.caseid_admin31(self)
+        # caseid.caseid_admin28(self)
+        # caseid.caseid_admin29(self)
+        # caseid.caseid_admin30(self)
+        # caseid.caseid_admin31(self)
 # # #         #
-# # #         # #Phân quyền nhóm xe
+# #         # #Phân quyền nhóm xe
 #         caseid.caseid_admin32(self)
 #         caseid.caseid_admin33(self)
 #         caseid.caseid_admin34(self)
@@ -880,8 +883,8 @@ class Test(unittest.TestCase):
         # caseid.caseid_video10(self)
         # caseid.caseid_video11(self)
         # caseid.caseid_video12(self)
-
-        # Hình ảnh - Giám sát bằng hình ảnh
+        #
+        # # Hình ảnh - Giám sát bằng hình ảnh
         # caseid.caseid_image01(self)
         # caseid.caseid_image02(self)
         # caseid.caseid_image03(self)
@@ -1069,7 +1072,7 @@ class Test(unittest.TestCase):
         # caseid.caseid_giamsat221(self)
         # caseid.caseid_giamsat222(self)
         # caseid.caseid_giamsat223(self)
-
+        #
         # caseid.caseid_giamsat224(self)
         # caseid.caseid_giamsat225(self)
         # caseid.caseid_giamsat226(self)
@@ -1178,6 +1181,9 @@ class Test(unittest.TestCase):
         # caseid.caseid_giamsat88(self)
 
 
+        # caseid.caseid_ai01(self)
+        # caseid.caseid_ai02(self)
+        # caseid.caseid_ai03(self)
 
 
 

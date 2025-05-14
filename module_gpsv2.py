@@ -1,5 +1,5 @@
 import openpyxl
-
+from collections import defaultdict
 import chucnangkhac
 import var
 import re
@@ -42,6 +42,106 @@ def ModuleTest():
                     utility(self='')
                 if i == "9":
                     ai(self='')
+
+
+
+
+def change_casenone():
+    list_casefail = []
+    wordbook = openpyxl.load_workbook(var.checklistpath)
+    sheet = wordbook.get_sheet_by_name("Checklist")
+    rownum = 9
+    modetest = ''.join(re.findall(r'\d+', var.modetest))
+
+    for i in modetest:
+        print("i", i)
+        if i == "1":
+            while (rownum < 1000):
+                rownum += 1
+                rownum = str(rownum)
+                print(sheet["G"+rownum].value)
+                print(sheet["H"+rownum].value)
+                if sheet["H"+rownum].value == "x" and sheet["G"+rownum].value == None:
+                    print(sheet["A"+rownum].value)
+                    case_fail = sheet["A"+rownum].value
+                    list_casefail.append(case_fail)
+                    sheet["G" + rownum] = "Fail"
+                rownum = int(rownum)
+            print(list_casefail)
+            count = len(list_casefail)
+            wordbook.save(var.checklistpath)
+            print("Số case trống mức1: ", count)
+
+
+        if i == "2":
+            while (rownum < 1000):
+                rownum += 1
+                rownum = str(rownum)
+                if sheet["I"+rownum].value == "x" and sheet["G"+rownum].value == None:
+                    print(sheet["A"+rownum].value)
+                    case_fail = sheet["A"+rownum].value
+                    list_casefail.append(case_fail)
+                    sheet["G" + rownum] = "Fail"
+                rownum = int(rownum)
+            print(list_casefail)
+            count = len(list_casefail)
+            wordbook.save(var.checklistpath)
+            print("Số case trống mức2: ", count)
+
+
+        if i == "3":
+            while (rownum < 1000):
+                rownum += 1
+                rownum = str(rownum)
+                if sheet["J"+rownum].value == "x" and sheet["G"+rownum].value == None:
+                    print(sheet["A"+rownum].value)
+                    case_fail = sheet["A"+rownum].value
+                    list_casefail.append(case_fail)
+                    sheet["G" + rownum] = "Fail"
+                rownum = int(rownum)
+            print(list_casefail)
+            count = len(list_casefail)
+            wordbook.save(var.checklistpath)
+            print("Số case trống mức3: ", count)
+
+
+        if i == "4":
+            while (rownum < 1000):
+                rownum += 1
+                rownum = str(rownum)
+                if sheet["K"+rownum].value == "x" and sheet["G"+rownum].value == None:
+                    print(sheet["A"+rownum].value)
+                    case_fail = sheet["A"+rownum].value
+                    list_casefail.append(case_fail)
+                    sheet["G" + rownum] = "Fail"
+                rownum = int(rownum)
+            print(list_casefail)
+            count = len(list_casefail)
+            wordbook.save(var.checklistpath)
+            print("Số case trống mức4: ", count)
+
+
+        if i == "0":
+            while (rownum < 1000):
+                rownum += 1
+                rownum = str(rownum)
+                print(sheet["G" + rownum].value)
+                print(sheet["H" + rownum].value)
+                if (sheet["H" + rownum].value == "x" or sheet["I" + rownum].value == "x" or sheet[
+                    "J" + rownum].value == "x" or sheet["K" + rownum].value == "x") and sheet[
+                    "G" + rownum].value == None:
+                    print(sheet["A" + rownum].value)
+                    case_fail = sheet["A" + rownum].value
+                    list_casefail.append(case_fail)
+                    sheet["G" + rownum] = "Fail"
+                rownum = int(rownum)
+            print(list_casefail)
+            count = len(list_casefail)
+            wordbook.save(var.checklistpath)
+            print("Số case trống mức 0 : ", count)
+
+
+
 
 
 
@@ -174,6 +274,7 @@ def check_casenone():
 
 
 
+
 def check_casefail():
     var.writeData(var.path_luutamthoi, "Sheet1", 70, 2, "0")
     var.writeData(var.path_luutamthoi, "Sheet1", 71, 2, "0")
@@ -181,7 +282,7 @@ def check_casefail():
     var.writeData(var.path_luutamthoi, "Sheet1", 73, 2, "0")
     var.writeData(var.path_luutamthoi, "Sheet1", 74, 2, "0")
     var.writeData(var.path_luutamthoi, "Sheet1", 75, 2, "0")
-
+    var.driver.set_page_load_timeout(20)
 
     list_casefail = []
     wordbook = openpyxl.load_workbook(var.checklistpath)
@@ -446,6 +547,8 @@ def check_casepass():
 
 
 def retest_casenone(self):
+    var.driver.set_page_load_timeout(20)
+
     list_casefail = []
     wordbook = openpyxl.load_workbook(var.checklistpath)
     sheet = wordbook.get_sheet_by_name("Checklist")
@@ -3199,6 +3302,8 @@ def retest_casenone(self):
 
 
 def retest_casefail(self):
+    var.driver.set_page_load_timeout(20)
+
     list_casefail = []
     wordbook = openpyxl.load_workbook(var.checklistpath)
     sheet = wordbook.get_sheet_by_name("Checklist")
@@ -5901,7 +6006,78 @@ def retest_casefail(self):
 
 
 
+def retest_serious():
+    list_casefail = []
+    grouped_by_tag = defaultdict(list)  # Nhóm theo tag
+
+    wordbook = openpyxl.load_workbook(var.checklistpath)
+    sheet = wordbook.get_sheet_by_name("Checklist")
+    rownum = 9
+    while rownum < 1200:
+        rownum += 1
+        row_str = str(rownum)
+
+        if sheet["L" + row_str].value == "x" and sheet["G" + row_str].value == "Fail":
+            case_fail = sheet["A" + row_str].value
+            event_name = sheet["B" + row_str].value
+            account = sheet["C" + row_str].value
+            step = sheet["D" + row_str].value
+            desired_result = sheet["E" + row_str].value
+            actual_result = sheet["F" + row_str].value
+            status = sheet["G" + row_str].value
+            phone_tag = sheet["N" + row_str].value
+            if phone_tag and '(' in phone_tag and ')' in phone_tag:
+                phone, tag = phone_tag.split('(')
+                tag = tag.rstrip(')')
+                phone = phone.strip()
+                print(phone)
+                print(tag + "\n")
+
+                # Nhóm theo tag
+                grouped_by_tag[tag].append({
+                    'case_fail': case_fail,
+                    'event_name': event_name,
+                    'account': account,
+                    'step': step,
+                    'desired_result': desired_result,
+                    'actual_result': actual_result,
+                    'status': status,
+                    'phone': phone})
+                list_casefail.append(case_fail)
+    print(list_casefail)
+    print("Số case fail nghiêm trọng: ", len(list_casefail))
+
+    # In kết quả nhóm theo tag
+    print("\n====== NHÓM THEO TAG ======")
+    n = 89
+    for tag, cases in grouped_by_tag.items():
+        print(f"\nTag: {tag} - {len(cases)} case - ")
+        n+= 1
+        var.writeData(var.path_luutamthoi, "Sheet1", n, 2, tag)
+        var.writeData(var.path_luutamthoi, "Sheet1", n, 4, len(cases))
+        for case in cases:
+            message_bug = (f" -Mã: {case['case_fail']}\n"
+                  f" -Tên sự kiện: {case['event_name']}\n"
+                  f" -Tài khoản: {case['account']}\n"
+                  f" -Các bước thao tác: {case['step']}\n"
+                  f" -Kết quả mong muốn: {case['desired_result']}\n"
+                  f" -Kết quả thực tế: {case['actual_result']}\n"
+                  f" -Trạng thái: {case['status']}\n---------------------------------------------------------\n")
+            var.writeData_append(var.path_luutamthoi, "Sheet1", n, 6, f"{case['case_fail']}, ")
+            var.writeData(var.path_luutamthoi, "Sheet1", n, 3, case['phone'])
+            var.writeData_append(var.path_luutamthoi, "Sheet1", n, 5, message_bug)
+            print(message_bug)
+
+
+
+
+
+
+
+
+
 def run_all(self):
+    var.driver.set_page_load_timeout(20)
     list_0 = []
     wordbook = openpyxl.load_workbook(var.checklistpath)
     sheet = wordbook.get_sheet_by_name("Checklist")
@@ -8607,6 +8783,7 @@ def run_all(self):
 
 
 def login(self):
+    var.driver.set_page_load_timeout(30)
     list_mucdo1 = []
     list_mucdo2 = []
     list_mucdo3 = []
@@ -9032,6 +9209,7 @@ def login(self):
 
 #2 giám sát
 def monitor(self):
+    var.driver.set_page_load_timeout(20)
     list_mucdo1 = []
     list_mucdo2 = []
     list_mucdo3 = []
@@ -14252,6 +14430,7 @@ def monitor(self):
 
 #3 lộ trình
 def route(self):
+    var.driver.set_page_load_timeout(20)
     list_mucdo1 = []
     list_mucdo2 = []
     list_mucdo3 = []
@@ -14754,6 +14933,7 @@ def route(self):
 
 #4 quản trị
 def administration(self):
+    var.driver.set_page_load_timeout(20)
     list_mucdo1 = []
     list_mucdo2 = []
     list_mucdo3 = []
@@ -15842,6 +16022,7 @@ def administration(self):
 
 #5 báo cáo
 def report(self):
+    var.driver.set_page_load_timeout(20)
     list_mucdo1 = []
     list_mucdo2 = []
     list_mucdo3 = []
@@ -17286,6 +17467,7 @@ def report(self):
 
 #6 video clip
 def videoclip(self):
+    var.driver.set_page_load_timeout(20)
     list_mucdo1 = []
     list_mucdo2 = []
     list_mucdo3 = []
@@ -17570,6 +17752,7 @@ def videoclip(self):
 
 #7 hình ảnh
 def image(self):
+    var.driver.set_page_load_timeout(20)
     list_mucdo1 = []
     list_mucdo2 = []
     list_mucdo3 = []
@@ -18018,6 +18201,7 @@ def image(self):
 
 #8 tien ích
 def utility(self):
+    var.driver.set_page_load_timeout(20)
     list_mucdo1 = []
     list_mucdo2 = []
     list_mucdo3 = []
@@ -18528,6 +18712,7 @@ def utility(self):
 
 #9 AI
 def ai(self):
+    var.driver.set_page_load_timeout(20)
     list_mucdo1 = []
     list_mucdo2 = []
     list_mucdo3 = []

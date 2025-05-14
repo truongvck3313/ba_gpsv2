@@ -501,7 +501,7 @@ class vehicle_management:
         time.sleep(0.5)
         var.driver.find_element(By.XPATH, var.anxe_truyen).click()
         time.sleep(0.5)
-        var.driver.find_element(By.XPATH, var.select_hide_car).click()
+        var.driver.find_element(By.XPATH, var.select_hide_car1).click()
         time.sleep(1)
 
         var.driver.find_element(By.XPATH, var.select_hide2).click()
@@ -654,9 +654,14 @@ class vehicle_management:
         try:
             var.driver.find_element(By.XPATH, var.managerment).click()
         except:
-            var.driver.get("https://gps.binhanh.vn/Administration/Vehicles/VehicleGroup.aspx")
+            giamsat.danhsachxe.goto_congty(self, "khách lẻ Việt Hàn 2", "1110")
+            var.driver.find_element(By.XPATH, var.managerment).click()
         time.sleep(4)
-        var.driver.find_element(By.XPATH, var.admin_group).click()
+        try:
+            var.driver.find_element(By.XPATH, var.admin_group).click()
+        except:
+            giamsat.xoacanhbao()
+            var.driver.find_element(By.XPATH, var.admin_group).click()
         time.sleep(4)
         chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Quản trị nhóm",
                                               var.check_admin_group, "QUẢN LÝ NHÓM XE", "_QuanTri_QuanTriNhom.png")
@@ -735,20 +740,86 @@ class vehicle_management:
             time.sleep(1)
         except:
             pass
-
+        var.driver.refresh()
+        time.sleep(5)
 
 
     #Quản trị nhóm -Thêm nhóm bậc 1
     def add_group_level1(self, code, eventname, result):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.icon_addgroup_level1).click()
+            var.driver.find_element(By.XPATH, var.icon_addgroup_level1)
         except:
             giamsat.danhsachxe.goto_congty(self, "khách lẻ Việt Hàn 2", "1110")
             var.driver.find_element(By.XPATH, var.managerment).click()
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.admin_group).click()
             time.sleep(4)
+
+
+        try:
+            var.driver.implicitly_wait(0.3)
+            var.driver.find_element(By.XPATH, var.namegroup_editedgroup).click()
+            time.sleep(1)
+            var.driver.find_element(By.XPATH, var.delete_group).click()
+            time.sleep(1.5)
+            try:
+                var.driver.switch_to.alert.accept()
+            except:
+                pass
+            time.sleep(1.5)
+            try:
+                var.driver.switch_to.alert.accept()
+                time.sleep(1.5)
+            except:
+                pass
+        except:
+            pass
+
+        try:
+            var.driver.implicitly_wait(0.3)
+            var.driver.find_element(By.XPATH, var.namegroup_leveln).click()
+            time.sleep(1)
+            var.driver.find_element(By.XPATH, var.delete_group).click()
+            time.sleep(1.5)
+            try:
+                var.driver.switch_to.alert.accept()
+            except:
+                pass
+            time.sleep(1.5)
+            try:
+                var.driver.switch_to.alert.accept()
+                time.sleep(1.5)
+            except:
+                pass
+        except:
+            pass
+
+
+        try:
+            var.driver.implicitly_wait(0.3)
+            var.driver.find_element(By.XPATH, var.namegroup_level1).click()
+            time.sleep(1)
+            var.driver.find_element(By.XPATH, var.delete_group).click()
+            time.sleep(1.5)
+            try:
+                var.driver.switch_to.alert.accept()
+            except:
+                pass
+            time.sleep(1.5)
+            try:
+                var.driver.switch_to.alert.accept()
+                time.sleep(1.5)
+            except:
+                pass
+        except:
+            pass
+
+        try:
+            var.driver.find_element(By.XPATH, var.icon_addgroup_level1).click()
+        except:
+            var.driver.refresh()
+            time.sleep(5)
             var.driver.find_element(By.XPATH, var.icon_addgroup_level1).click()
         time.sleep(2)
         var.driver.find_element(By.XPATH, var.icon_addgroup_level1_input).send_keys(data['quantri']['add_group_level1'])
@@ -860,6 +931,8 @@ class vehicle_management:
         except:
             pass
         time.sleep(1.5)
+        var.driver.refresh()
+        time.sleep(5)
         chucnangkhac.write_result_not_displayed_try(code, eventname, result, "Quản trị - Quản trị nhóm",
                                                 var.namegroup_editedgroup, "_QuanTri_QuanLyNhomXe_XoaNhom.png")
 
@@ -965,7 +1038,7 @@ class vehicle_management:
             pass
         time.sleep(2)
         chucnangkhac.write_result_displayed_try(code, eventname, result, "Quản trị - Quản trị nhóm",
-                                                var.list_group_car_3, ")_QuanTri_QuanLyNhomXe_Gan1Xe.png")
+                                                var.list_group_car_2, ")_QuanTri_QuanLyNhomXe_Gan1Xe.png")
         time.sleep(1)
         var.driver.find_element(By.XPATH, var.icon_assign_car1).click()
         time.sleep(1.5)
@@ -983,14 +1056,10 @@ class vehicle_management:
     #Phân quyền nhóm xe
     def vehicle_groups_administration(self, code, eventname, result):
         var.driver.implicitly_wait(5)
-        try:
-            var.driver.find_element(By.XPATH, var.check_goto_company).click()
-            var.driver.find_element(By.XPATH, var.vehicle_groups_administration).click()
-        except:
-            giamsat.danhsachxe.goto_congty(self, "970", "970")
-            var.driver.find_element(By.XPATH, var.managerment).click()
-            time.sleep(5)
-            var.driver.find_element(By.XPATH, var.vehicle_groups_administration).click()
+        giamsat.danhsachxe.goto_congty(self, "970", "970")
+        var.driver.find_element(By.XPATH, var.managerment).click()
+        time.sleep(5)
+        var.driver.find_element(By.XPATH, var.vehicle_groups_administration).click()
         time.sleep(4)
         chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Phân quyền nhóm xe",
                                               var.check_vehicle_groups_administration, "PHÂN QUYỀN NHÓM XE CHO NGƯỜI DÙNG", "_QuanTri_PhanQuyenNhomXe.png")
@@ -1000,7 +1069,7 @@ class vehicle_management:
     def vehicle_groups_administration_search(self, code, eventname, result):
         var.driver.implicitly_wait(5)
         try:
-            var.driver.find_element(By.XPATH, var.check_goto_company).click()
+            var.driver.find_element(By.XPATH, var.check_goto_company_970)
             var.driver.find_element(By.XPATH, var.vehicle_groups_administration_search).send_keys(data['quantri']['bienkiemsoat1'])
         except:
             giamsat.danhsachxe.goto_congty(self, "970", "970")
@@ -1012,8 +1081,8 @@ class vehicle_management:
         time.sleep(0.5)
         var.driver.find_element(By.XPATH, var.vehicle_groups_administration_buttonsearch).click()
         time.sleep(2)
-        chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Phân quyền nhóm xe",
-                                              var.check_vehicle_groups_administration_search, "29C14269A-29C14269A", "_QuanTri_PhanQuyenNhomXe_TìmKiem.png")
+        chucnangkhac.write_result_text_try_if_other(code, eventname, result, "Quản trị - Phân quyền nhóm xe",
+                                              var.check_vehicle_groups_administration_search, "", "_QuanTri_PhanQuyenNhomXe_TìmKiem.png")
 
         var.driver.find_element(By.XPATH, var.vehicle_groups_administration_search).clear()
         time.sleep(0.5)
@@ -1241,9 +1310,9 @@ class system_management:
             var.driver.find_element(By.XPATH, var.list_user_create).click()
         time.sleep(3)
         chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Danh sách người dùng",
-                                              var.check_list_user_create, "TẠO MỚI NGƯỜI DÙNG", "_QuanTri_DSNguoiDung_ThemMoi.png")
+                                              var.check_list_user_create, "THÔNG TIN NGƯỜI DÙNG", "_QuanTri_DSNguoiDung_ThemMoi.png")
         print(var.driver.title)
-        if var.driver.title == "TẠO MỚI NGƯỜI DÙNG":
+        if var.driver.title == "THÔNG TIN NGƯỜI DÙNG":
             var.driver.back()
             time.sleep(3)
 
@@ -1360,7 +1429,7 @@ class system_management:
         var.driver.switch_to_window(tab_1)
         print(var.driver.title)
         chucnangkhac.write_result_text_try_if(code, eventname, result, "Quản trị - Danh sách người dùng",
-                                              var.check_list_user_reset_change_password, "CẬP NHẬT NGƯỜI DÙNG",
+                                              var.check_list_user_reset_change_password, "THÔNG TIN NGƯỜI DÙNG",
                                               "_QuanTri_DSNguoiDung_DoiMatKhau.png")
         login.linklienket.linklienket_dongtab(self)
         var.driver.switch_to_window(tab_0)
@@ -1468,6 +1537,8 @@ class system_management:
         var.driver.find_element(By.XPATH, var.copy_acount_typeaccount).click()
         var.driver.find_element(By.XPATH, var.copy_acount_save).click()
         time.sleep(2.5)
+        var.driver.refresh()
+        time.sleep(5)
         var.driver.find_element(By.XPATH, var.list_user_search_input).clear()
         var.driver.find_element(By.XPATH, var.list_user_search_input).send_keys(copyaccount_user)
         var.driver.find_element(By.XPATH, var.list_user_search).click()

@@ -396,10 +396,10 @@ class synthesis_report:     #báo cáo tổng hợp
 
         detailed_activity_report_fuel2 = var.driver.find_element(By.XPATH, var.detailed_activity_report_fuel2).text #nhien liệu tiêu hao
         detailed_activity_report_fuel2 = str(''.join(re.findall(r'\d+', detailed_activity_report_fuel2)))
-        detailed_activity_report_fuel2 = detailed_activity_report_fuel2[0:3]
+        detailed_activity_report_fuel2 = detailed_activity_report_fuel2[0:2]
         detailed_activity_report_fuel2_ecxel = str(sheet["O6"].value)
         detailed_activity_report_fuel2_ecxel = str(''.join(re.findall(r'\d+', detailed_activity_report_fuel2_ecxel)))
-        detailed_activity_report_fuel2_ecxel = detailed_activity_report_fuel2_ecxel[0:3]
+        detailed_activity_report_fuel2_ecxel = detailed_activity_report_fuel2_ecxel[0:2]
 
         detailed_activity_report_from_address = var.driver.find_element(By.XPATH, var.detailed_activity_report_from_address).text
         detailed_activity_report_to_address = var.driver.find_element(By.XPATH, var.detailed_activity_report_to_address).text
@@ -1458,10 +1458,11 @@ class activity_report:      #Báo cáo hoạt động
         report_air_conditioner_summaries_to_day = "23:59 " + report_air_conditioner_summaries_to_day
 
         report_air_conditioner_summaries_summary_on_time = var.driver.find_element(By.XPATH, var.report_air_conditioner_summaries_summary_on_time).text
+
         report_air_conditioner_summaries_number_stop_on_air_conditonal = var.driver.find_element(By.XPATH, var.report_air_conditioner_summaries_number_stop_on_air_conditonal).text
         report_air_conditioner_summaries_number_stop_lit_air_conditonal = var.driver.find_element(By.XPATH, var.report_air_conditioner_summaries_number_stop_lit_air_conditonal).text
         report_air_conditioner_summaries_number_stop_lit_air_conditonal = str(''.join(re.findall(r'\d+', report_air_conditioner_summaries_number_stop_lit_air_conditonal)))
-        report_air_conditioner_summaries_number_stop_lit_air_conditonal = report_air_conditioner_summaries_number_stop_lit_air_conditonal[0:2]
+        report_air_conditioner_summaries_number_stop_lit_air_conditonal = report_air_conditioner_summaries_number_stop_lit_air_conditonal[0:1]
 
         report_air_conditioner_summaries_number_stop_lit_air_conditonal_excel = sheet["G7"].value
         print("e0: ".format(report_air_conditioner_summaries_number_stop_lit_air_conditonal_excel))
@@ -1472,7 +1473,7 @@ class activity_report:      #Báo cáo hoạt động
         report_air_conditioner_summaries_number_stop_lit_air_conditonal_excel = str(report_air_conditioner_summaries_number_stop_lit_air_conditonal_excel)
         report_air_conditioner_summaries_number_stop_lit_air_conditonal_excel = str(''.join(re.findall(r'\d+', report_air_conditioner_summaries_number_stop_lit_air_conditonal_excel)))
         print("e2: ".format(report_air_conditioner_summaries_number_stop_lit_air_conditonal_excel))
-        report_air_conditioner_summaries_number_stop_lit_air_conditonal_excel = report_air_conditioner_summaries_number_stop_lit_air_conditonal_excel[0:2]
+        report_air_conditioner_summaries_number_stop_lit_air_conditonal_excel = report_air_conditioner_summaries_number_stop_lit_air_conditonal_excel[0:1]
 
 
 
@@ -1539,13 +1540,13 @@ class activity_report:      #Báo cáo hoạt động
 
     def machine_report(self, code, eventname, result):        #Báo cáo động cơ
         var.driver.implicitly_wait(5)
-        try:
-            var.driver.find_element(By.XPATH, var.machine_report).click()
-        except:
-            login.login.login_v2(self, var.data['login']['conhom_quantri_tk3'], var.data['login']['conhom_quantri_mk3'])
-            var.driver.find_element(By.XPATH, var.managerment_report).click()
-            time.sleep(5)
-            var.driver.find_element(By.XPATH, var.machine_report).click()
+        # try:
+        #     var.driver.find_element(By.XPATH, var.machine_report).click()
+        # except:
+        login.login.login_v2(self, var.data['login']['conhom_quantri_tk3'], var.data['login']['conhom_quantri_mk3'])
+        var.driver.find_element(By.XPATH, var.managerment_report).click()
+        time.sleep(5)
+        var.driver.find_element(By.XPATH, var.machine_report).click()
         time.sleep(5)
         chucnangkhac.write_result_text_try_if(code, eventname, result, "Báo cáo doanh nghiệp - Báo cáo động cơ",
                                               var.check_report_km_activity_summary, "BÁO CÁO ĐỘNG CƠ", "_BaoCaoDoanhNghiep_BaoCaoDongCo.png")
@@ -1723,9 +1724,13 @@ class activity_report:      #Báo cáo hoạt động
         var.driver.execute_script(JS_ADD_TEXT_TO_INPUT, elm, giamsat.data['baocao']['quatocdo_denngay'])
         time.sleep(1)
 
+        var.driver.find_element(By.XPATH, var.speed_input).clear()
+        var.driver.find_element(By.XPATH, var.speed_input).send_keys("60")
+        time.sleep(1)
+
         button = var.driver.find_element(By.XPATH, var.report_search)
         var.driver.execute_script("arguments[0].click();", button)
-        time.sleep(10)
+        time.sleep(14)
         print("aaaa")
         chucnangkhac.write_result_displayed_try(code, eventname, result,"Báo cáo quá tốc độ",
                                                 var.check_activity_synthesis_report_search,
@@ -1840,13 +1845,13 @@ class activity_report:      #Báo cáo hoạt động
 class report_schedule:  #Báo cáo lịch trình
     def position_history(self, code, eventname, result):     #Báo cáo hành trình
         var.driver.implicitly_wait(5)
-        try:
-            var.driver.find_element(By.XPATH, var.position_history).click()
-        except:
-            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
-            var.driver.find_element(By.XPATH, var.managerment_report).click()
-            time.sleep(5)
-            var.driver.find_element(By.XPATH, var.position_history).click()
+        # try:
+        #     var.driver.find_element(By.XPATH, var.position_history).click()
+        # except:
+        login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
+        var.driver.find_element(By.XPATH, var.managerment_report).click()
+        time.sleep(5)
+        var.driver.find_element(By.XPATH, var.position_history).click()
         time.sleep(5)
         chucnangkhac.write_result_text_try_if(code, eventname, result, "Báo cáo doanh nghiệp - Báo cáo hành trình",
                                               var.check_report_km_activity_summary, "BÁO CÁO HÀNH TRÌNH", "_BaoCaoDoanhNghiep_BaoCaoHanhTrinh.png")
@@ -1874,6 +1879,22 @@ class report_schedule:  #Báo cáo lịch trình
     def position_history_search(self, code, eventname, result):     #Báo cáo hành trình
         var.driver.implicitly_wait(5)
         try:
+            delete = var.driver.find_element(By.XPATH, var.fromdate_input)
+            delete.send_keys(Keys.CONTROL, "a")
+            time.sleep(0.5)
+            var.driver.find_element(By.XPATH, var.fromdate_input).send_keys("05/01/2025")
+            time.sleep(1)
+
+            var.driver.find_element(By.XPATH, var.todate_input).click()
+            time.sleep(1)
+            delete = var.driver.find_element(By.XPATH, var.todate_input)
+            delete.send_keys(Keys.CONTROL, "a")
+            time.sleep(1)
+            var.driver.find_element(By.XPATH, var.todate_input).send_keys("05/01/2025")
+            time.sleep(1)
+            var.driver.find_element(By.XPATH, var.fromdate_input).click()
+            time.sleep(1)
+
             var.driver.find_element(By.XPATH, var.position_history_choose_car).click()
             time.sleep(1)
             var.driver.find_element(By.XPATH, var.position_history_choose_car3rd).click()
@@ -1883,10 +1904,29 @@ class report_schedule:  #Báo cáo lịch trình
             time.sleep(5)
             var.driver.find_element(By.XPATH, var.position_history).click()
             time.sleep(5)
+            delete = var.driver.find_element(By.XPATH, var.fromdate_input)
+            delete.send_keys(Keys.CONTROL, "a")
+            time.sleep(0.5)
+            var.driver.find_element(By.XPATH, var.fromdate_input).send_keys("05/01/2025")
+            time.sleep(0.5)
+
+            var.driver.find_element(By.XPATH, var.todate_input).click()
+            time.sleep(1)
+            delete = var.driver.find_element(By.XPATH, var.todate_input)
+            delete.send_keys(Keys.CONTROL, "a")
+            time.sleep(1)
+            var.driver.find_element(By.XPATH, var.todate_input).send_keys("05/01/2025")
+            time.sleep(1)
+            var.driver.find_element(By.XPATH, var.fromdate_input).click()
+            time.sleep(1)
+
+
             var.driver.find_element(By.XPATH, var.position_history_choose_car).click()
             time.sleep(1)
             var.driver.find_element(By.XPATH, var.position_history_choose_car3rd).click()
         time.sleep(1)
+
+
         button = var.driver.find_element(By.XPATH, var.report_search)
         var.driver.execute_script("arguments[0].click();", button)
         time.sleep(4)
@@ -1906,6 +1946,22 @@ class report_schedule:  #Báo cáo lịch trình
             time.sleep(4)
             var.driver.find_element(By.XPATH, var.position_history).click()
             time.sleep(5)
+            delete = var.driver.find_element(By.XPATH, var.fromdate_input)
+            delete.send_keys(Keys.CONTROL, "a")
+            time.sleep(0.5)
+            var.driver.find_element(By.XPATH, var.fromdate_input).send_keys("05/01/2025")
+            time.sleep(0.5)
+
+            var.driver.find_element(By.XPATH, var.todate_input).click()
+            time.sleep(1)
+            delete = var.driver.find_element(By.XPATH, var.todate_input)
+            delete.send_keys(Keys.CONTROL, "a")
+            time.sleep(1)
+            var.driver.find_element(By.XPATH, var.todate_input).send_keys("05/01/2025")
+            time.sleep(1)
+            var.driver.find_element(By.XPATH, var.fromdate_input).click()
+            time.sleep(1)
+
             var.driver.find_element(By.XPATH, var.position_history_choose_car).click()
             time.sleep(1)
             var.driver.find_element(By.XPATH, var.position_history_choose_car3rd).click()
@@ -2380,10 +2436,10 @@ class fuel_report:
 
         fuel_consumption_daily_report_km_gps = var.driver.find_element(By.XPATH, var.fuel_consumption_daily_report_km_gps).text
         fuel_consumption_daily_report_km_gps = str(''.join(re.findall(r'\d+', fuel_consumption_daily_report_km_gps)))
-        fuel_consumption_daily_report_km_gps = fuel_consumption_daily_report_km_gps[0:3]
+        fuel_consumption_daily_report_km_gps = fuel_consumption_daily_report_km_gps[0:2]
         fuel_consumption_daily_report_km_gps_excel = str(sheet["U6"].value)
         fuel_consumption_daily_report_km_gps_excel = str(''.join(re.findall(r'\d+', fuel_consumption_daily_report_km_gps_excel)))
-        fuel_consumption_daily_report_km_gps_excel = fuel_consumption_daily_report_km_gps_excel[0:3]
+        fuel_consumption_daily_report_km_gps_excel = fuel_consumption_daily_report_km_gps_excel[0:2]
 
 
 

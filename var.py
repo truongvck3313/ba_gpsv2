@@ -5,6 +5,8 @@ capa = DesiredCapabilities.CHROME
 capa["pageLoadStrategy"] = "none"
 from seleniumwire import webdriver
 import json
+import chucnangkhac
+
 
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument('--headless')
@@ -14,17 +16,6 @@ chrome_options.add_argument('window-size=1920x1480')
 
 
 
-
-
-
-# options = webdriver.ChromeOptions()
-# options.add_argument("--start-maximized")
-# prefs = {"profile.default_content_settings.popups": 0,
-#              "download.default_directory":
-#                         r"C:\Users\truongtq.BA\PycharmProjects\pythonProject\ba_v2\excel",
-#              "directory_upgrade": True}
-# options.add_experimental_option("prefs", prefs)
-# driver = webdriver.Chrome(options=options, desired_capabilities=capa)
 
 
 
@@ -38,6 +29,18 @@ def writeData(file,sheetName,rowum,columnno,data):
     sheet = wordbook.get_sheet_by_name(sheetName)
     sheet.cell(row=rowum,column=columnno).value = data
     wordbook.save(file)
+
+
+def writeData_append(file, sheetName, rowum, columnno, new_data):
+    workbook = openpyxl.load_workbook(file)
+    sheet = workbook[sheetName]
+    # Lấy nội dung cũ
+    current_value = sheet.cell(row=rowum, column=columnno).value
+    if current_value is None:
+        current_value = ""
+    # Ghi tiếp vào nội dung cũ
+    sheet.cell(row=rowum, column=columnno).value = str(current_value) + str(new_data)
+    workbook.save(file)
 
 
 #đọc file config
@@ -87,6 +90,18 @@ for x in f:
 
 
 
+def restart_driver():
+    global driver  # Dùng lại biến global
+    try:
+        driver.quit()
+    except:
+        pass
+    driver = webdriver.Chrome(options=options, desired_capabilities=capa)
+    chucnangkhac.logging.info("Đã mở lại chrome")
+
+
+
+
 
 
 login_user = "//*[@placeholder='Tên đăng nhập']"
@@ -99,6 +114,28 @@ check_loginsai = "//*[text()='Tên đăng nhập hoặc mật khẩu không hợ
 login_iconappstore = "//*[@src='/Images/Login/iconLogin/SVG/photo_logo-IOS.svg']"
 check_login_appstore = "//*[text()='BA GPS']"
 list_vehicle_vehicle2 = "//*[@id='tblVehicleList']/tbody//*[@vh_online='43C05815_C']/td[2]/div[2]"
+
+
+calling = By.XPATH, "//*[@class='modal-content custom-scroll']/div[4]/span"
+waitting = By.XPATH, "//*[text()='waiting...']"
+tele_search_input = By.XPATH, "//*[@id='telegram-search-input']"
+tele_search_input1 = By.XPATH, "//*[@class='input-search']/input"
+tele_search_name1b = By.XPATH, "//*[@class='search-group search-group-contacts']/ul/a[1]/div[3]/div[1]/span"
+tele_search_name1 = By.XPATH, "//*[@class='search-section']/div[1]/div//*[@role='button']"
+tele_profile_name = By.XPATH, "//*[@class='ChatInfo']//*[@role='button']"
+tele_profile_name1 = By.XPATH, "//*[@class='user-title']/span"
+tele_profile_phone = By.XPATH, "//*[@class='ChatExtra']/div[1]//*[@class='title']"
+tele_profile_tag = By.XPATH, "//*[@class='ChatExtra']/div[2]//*[@class='title']"
+tele_profile_call = By.XPATH, "//*[@class='HeaderActions']//*[@class='icon icon-phone']"
+tele_profile_end_call = By.XPATH, "//*[@class='modal-content custom-scroll']//*[@class='icon icon-phone-discard']"
+tele_profile_phone1 = By.XPATH, "//*[@class='profile-content']/div[3]/div/div/div[1]/div[3]"
+tele_profile_tag1 = By.XPATH, "//*[@class='profile-content']/div[3]/div/div/div[2]/div[3]"
+hopthoai_input1 = By.XPATH, "//*[@class='input-message-container']/div[1]"
+tele_profile_call1 = By.XPATH, "//*[@class='chat-utils']/button[3]/span"
+calling1 = By.XPATH, "//*[@class='call-subtitle']/div/span"
+tele_profile_end_call1 = By.XPATH, "//*[@class='call-button rp-overflow rp call-button-red']/span"
+
+
 
 
 hopthoai1 = By.XPATH, "//*[@class='chat-list custom-scroll']//*[text()='Group QA Test']"
@@ -214,12 +251,13 @@ xemlotrinhnhieuxe1 = "/html/body/div[20]/div[2]/div[2]/div[3]"
 hientrang = "/html/body/div[20]/div[2]/div[2]/div[4]"
 check_danhsachxe_hientrang = "//*[@class='leaflet-popup-content-wrapper']"
 gannhomdacbiet_hover = "//*[text()='Gán nhóm đặc biệt']"
-themnhomdacbiet = "/html/body/div[20]/div[2]/div[2]/div"
-themnhomdacbiet1 = "/html/body/div[19]/div[2]/div[2]/div"
+themnhomdacbiet = "/html/body/div[21]/div[2]/div[2]/div"
+themnhomdacbiet1 = "/html/body/div[22]/div[2]/div[2]/div"
 check_themnhomdacbiet = "//*[@id='masterTwoColumnRight']/div/div/div/table/tbody/tr[1]/td"
 anxe = "/html/body/div[20]/div[2]/div[2]/div[6]"
 anxe_antoanbotrang = "//*[@id='panelHideVehicle']/div/div[2]/div[3]/div[2]/div/div[1]/input"
 anxe_truyen = "//*[@id='panelHideVehicle']/div/div[2]/div[4]/div[2]/div/div[1]/input"
+anxe_truyen1 = "//*[@id='panelHideVehicle']/div/div[2]/div[4]/div[2]/div/div[1]/label"
 anxe_nguyennhan = "//*[@id='panelHideVehicle']/div/div[2]/div[5]/div[2]/select"
 anxe_nguyennhan_xetainan = "//*[@id='panelHideVehicle']/div/div[2]/div[5]/div[2]/select//*[@value='3']"
 anxe_ghichu = "//*[@id='panelHideVehicle']/div/div[2]/div[6]/div[2]/textarea"
@@ -382,10 +420,15 @@ cauhinhhienthinhomdiem_hienthivungbao = "//*[@id='divConfigGroupLandmark']/div[5
 cauhinhhienthinhomdiem_hienthitendiem = "//*[@id='divConfigGroupLandmark']/div[5]/table/tbody/tr[4]/td/input"
 chuotphaimap_luuthongtinhienthi = "//*[@id='btnSaveConfigGroupLandmark']"
 check_tramthuphi_vungbao = "/html/body/div[3]/form/div[3]/div[3]/div[9]/div[2]/div[3]//*[@fill-opacity='0.2']"
+check_tramthuphi_vungbao1 = "//*[@stroke-opacity='0.8']"
 check_tramthuphi_tendiem = "//*[text()='Trạm thu phí Cao tốc Pháp Vân - Cầu Giẽ (Liên Ninh)']"
 chuotphaimap_luuthongtinhienthi_ok = "//*[@data-bb-handler='ok']"
 check_message_luucauhinhhienthi = "//*[@class='bootbox modal fade bootbox-alert in']/div/div/div[1]/div"
 check_chuachonnhom_vungbao = "/html/body/div[3]/form/div[3]/div[3]/div[9]/div[2]/div[3]//*[@fill-opacity='0.5']"
+check_chuachonnhom_vungbao1 = "//*[@fill-opacity='0.5']"
+select_hide_car1 = "//*[@id='ddlErrorTypeHideVehicle_chzn']"
+check_giamsatnhieuxe = "//*[@class='leaflet-popup  leaflet-zoom-animated']"
+truyenc08_x = "//*[@class='missing-info-tcdb missing-tcdb popup-online']//*[@class='btn-close btn-close-page']"
 check_chuachonnhom_tendiem = "//*[@class='leaflet-marker-icon custom-marker-leaflet leaflet-zoom-animated leaflet-interactive']//*[text()='Nhà của Trường1']"
 chuotphaimap_cauhinhkhoidong = "/html/body/div[21]/div[2]/div[2]/div[15]"
 check_popupcauhinhhienthibando = "//*[@id='frmConfigMap']//*[@class='float_left Header']"
@@ -448,6 +491,7 @@ danhsachxe_xe1 = "//*[@id='idClearOnline']/table/tbody/tr[2]"
 popupthongtinxe_capnhat1 = "//*[@id='ctl00_MainContent_vehicleInfoBGT_BtnUpdate']"
 check_giamsatnhieuxe_xe1 = "//*[@id='boxRight']/div[1]"
 check_giamsatnhieuxe_xe3 = "//*[@id='boxRight']/div[3]"
+warm_checkbox = "//*[@for='cbx_readed']"
 hover_giamsat = "//*[@id='boxRight']/div[1]/div[6]"
 hover_giamsat_phongto = "//*[@id='boxRight']/div[1]/div[6]/ul/li[2]"
 check_giamsat_iconphongto = "//*[@class='c leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom']"
@@ -697,7 +741,13 @@ list_group_car_1 = "//*[@id='lstAssignedVehicle']/option[1]"
 icon_assign_car2 = "//*[@id='btnMoveRight']"
 icon_assign_car4 = "//*[@id='btnMoveAllLeft']"
 list_group_car_3 = "//*[@id='lstAssignedVehicle']/option[3]"
+list_group_car_2 = "//*[@id='lstAssignedVehicle']/option[2]"
 icon_assign_car1 = "//*[@id='btnMoveAllRight']"
+speed_input = "//*[@name='ctl00$ctl00$MainContent$Content$txtVelocity']"
+xemnhanh2 = "/html/body/div[19]/div[2]/div[2]/div[1]/div[5]"
+xemchitiettrencuasomoi2 = "/html/body/div[19]/div[2]/div[2]/div[2]/div[5]"
+trongngay2 = "/html/body/div[20]/div[2]/div[2]/div[9]/div[5]"
+tuychon2 = "/html/body/div[20]/div[2]/div[2]/div[10]/div[5]"
 vehicle_groups_administration = "//*[@class='leftMenuContainer']//*[@id='AdminPermissionUserVehicleGroups']"
 check_vehicle_groups_administration = "//*[@class='masterTwoColumnRight']//*[@class='tableBoxHeader']"
 vehicle_groups_administration_search = "//*[@placeholder='Nhập biển kiểm soát tìm kiếm']"
@@ -1106,7 +1156,7 @@ station_report_name_station = "//*[@id='ctl00_ctl00_MainContent_Content_ScrollPa
 station_report_time_station = "//*[@id='ctl00_ctl00_MainContent_Content_ScrollPanel']/div/table/tbody/tr[2]/td[8]"
 station_report_route = "//*[@id='ctl00_ctl00_MainContent_Content_ScrollPanel']/div/table/tbody/tr[2]/td[9]"
 station_report_linkvideo = "//*[@id='ctl00_ctl00_MainContent_Content_ScrollPanel']/div/table/tbody/tr[2]/td[10]/div/a/img"
-
+close1 = "//*[@id='btnClose_notice']"
 report_air_conditioner_summaries_stt = "//*[@id='ctl00_ctl00_MainContent_Content_ScrollPanel']/div/table/tbody/tr[2]/td[1]"
 report_air_conditioner_summaries_liscense_plate = "//*[@id='ctl00_ctl00_MainContent_Content_ScrollPanel']/div/table/tbody/tr[2]/td[2]"
 report_air_conditioner_summaries_from_day = "//*[@id='ctl00_ctl00_MainContent_Content_ScrollPanel']/div/table/tbody/tr[2]/td[3]"
@@ -1115,8 +1165,10 @@ report_air_conditioner_summaries_summary_on_time = "//*[@id='ctl00_ctl00_MainCon
 report_air_conditioner_summaries_number_stop_on_air_conditonal = "//*[@id='ctl00_ctl00_MainContent_Content_ScrollPanel']/div/table/tbody/tr[2]/td[6]"
 report_air_conditioner_summaries_number_stop_lit_air_conditonal = "//*[@id='ctl00_ctl00_MainContent_Content_ScrollPanel']/div/table/tbody/tr[2]/td[7]"
 report_air_conditioner_summaries_detail = "//*[@id='ctl00_ctl00_MainContent_Content_ScrollPanel']/div/table/tbody/tr[2]/td[8]"
-
-
+warn_x1 = "//*[@class='btn-close btn-close-page']"
+warn_x2 = "//*[@id='btnCloseSpeedOverTimeLine']/img"
+warn_x3 = "//*[@id='panelWarningOnline']//*[@title='Đóng']"
+testxn913 = "//*[text()='QA TEST [913]']"
 
 machine_report_stt = "//*[@id='ctl00_ctl00_MainContent_Content_ScrollPanel']/div/table/tbody/tr[2]/td[1]"
 machine_report_liscense_plate = "//*[@id='ctl00_ctl00_MainContent_Content_ScrollPanel']/div/table/tbody/tr[2]/td[2]"
@@ -1313,7 +1365,7 @@ warn_passengers = "//*[@title='Cảnh báo hành khách trên xe']"
 check_warn_passengers = "//*[@id='pabico_input']/tbody/tr[1]"
 warn_passengers_x = "//*[@id='pabico_input']//*[@src='/Images/s_icon_x.png']"
 move = "//*[@title='Di chuyển']"
-
+check_goto_company_970 = "//*[text()='970-970-XÍ  NGHIỆP SẢN XUẤT VÀ KINH DOANH VẬT LIỆU [970]']"
 
 
 

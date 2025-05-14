@@ -29,6 +29,7 @@ class login:
         var.driver.implicitly_wait(15)
         var.driver.maximize_window()
         var.driver.delete_all_cookies()
+        time.sleep(1)
         var.driver.get(var.linktest)
         time.sleep(3)
         var.driver.find_element(By.XPATH, var.login_user).clear()
@@ -47,7 +48,7 @@ class login:
             var.driver.implicitly_wait(10)
             var.driver.maximize_window()
             var.driver.delete_all_cookies()
-
+            time.sleep(1)
             # Điều hướng đến trang đăng nhập
             logging.info("Điều hướng đến trang login.")
             var.driver.get(var.linktest)
@@ -76,6 +77,7 @@ class login:
             logging.error(f"Lỗi trong quá trình đăng nhập: {e}")
             login.login_v2_1(self, user, password)
         time.sleep(2)
+        giamsat.xoacanhbao()
         giamsat.xoacanhbao()
 
 
@@ -147,7 +149,7 @@ class login:
         time.sleep(2)
         #Bỏ tích ghi nhớ đăng nhập
         var.driver.find_element(By.XPATH, var.login_user).send_keys(var.data['login']['ghinhodangnhap_user1'])
-        var.driver.find_element(By.XPATH, var.login_password).send_keys(v.data['login']['ghinhodangnhap_password1'])
+        var.driver.find_element(By.XPATH, var.login_password).send_keys(var.data['login']['ghinhodangnhap_password1'])
         if var.driver.find_element(By.XPATH, var.login_ghinhodangnhap).is_selected() == True:
             var.driver.find_element(By.XPATH, var.login_ghinhodangnhap).click()
         var.driver.find_element(By.XPATH, var.dangnhap).click()

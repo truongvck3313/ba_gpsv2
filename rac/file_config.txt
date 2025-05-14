@@ -1,6 +1,6 @@
-- ModeTest: "4"
-- ModuleTest: "1,2,3"
-- LinkTest: "https://gps.binhanh.vn"
+- ModeTest: "1"
+- ModuleTest: "1,2,3,4,5,6,7,8,9"
+- LinkTest: "https://testgps2.binhanh.vn/Default.aspx?LoginErrorMsgID=4"
 - TimeRun: ""
 - LogPath: "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/ba.log"
 - CheckListPath: "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/GPS_ChecklistForAutoTest.xlsx"
@@ -10,4 +10,4 @@
 - LuuDuLieuTamThoiPath: "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/bangluudulieu_tamthoi.xlsx"
 - ExcelPath: "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/excel"
 - PathDriver: "C:/Users/truongtq.BA/PycharmProjects/pythonProject/ba_v2/chromedriver.exe"
-
+- ExcelPathDownload: "C:\Users\truongtq.BA\PycharmProjects\pythonProject\ba_v2\excel"

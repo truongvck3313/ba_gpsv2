@@ -778,65 +778,73 @@ def caseid_giamsat89(self):
 
 
 def caseid_giamsat90(self):
-    get_datachecklist("GiamSat90")
-    tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
-    ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
-    giamsat.danhsachxe.chuotphaixe_nhapthongtinxe(self, "GiamSat90", tensukien, ketqua)
+    pass
+    # get_datachecklist("GiamSat90")
+    # tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    # ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    # giamsat.danhsachxe.chuotphaixe_nhapthongtinxe(self, "GiamSat90", tensukien, ketqua)
 
 
 def caseid_giamsat91(self):
-    get_datachecklist("GiamSat91")
-    tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
-    ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
-    giamsat.danhsachxe.chuotphaixe_nhapthongtinxe_capnhat(self, "GiamSat91", tensukien, ketqua)
+    pass
+    # get_datachecklist("GiamSat91")
+    # tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    # ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    # giamsat.danhsachxe.chuotphaixe_nhapthongtinxe_capnhat(self, "GiamSat91", tensukien, ketqua)
 
 def caseid_giamsat92(self):
-    get_datachecklist("GiamSat92")
-    tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
-    ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
-    giamsat.danhsachxe.chuotphaixe_nhapthongtinxe_checkthongtinxe_Congty(self, "GiamSat92", tensukien, ketqua)
+    pass
+    # get_datachecklist("GiamSat92")
+    # tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    # ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    # giamsat.danhsachxe.chuotphaixe_nhapthongtinxe_checkthongtinxe_Congty(self, "GiamSat92", tensukien, ketqua)
 
 
 def caseid_giamsat93(self):
-    get_datachecklist("GiamSat93")
-    tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
-    ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
-    giamsat.danhsachxe.chuotphaixe_nhapthongtinxe_checkthongtinxe_loaihinhvantai(self, "GiamSat93", tensukien, ketqua)
+    pass
+    # get_datachecklist("GiamSat93")
+    # tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    # ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    # giamsat.danhsachxe.chuotphaixe_nhapthongtinxe_checkthongtinxe_loaihinhvantai(self, "GiamSat93", tensukien, ketqua)
 
 
 @retry(tries=3, delay=2, backoff=1, jitter=5, )
 def caseid_giamsat94(self):
-    get_datachecklist("GiamSat94")
-    tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
-    ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
-    giamsat.danhsachxe.chuotphaixe_nhapthongtinxe_checkthongtinxe_trongtai(self, "GiamSat94", tensukien, ketqua)
+    pass
+    # get_datachecklist("GiamSat94")
+    # tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    # ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    # giamsat.danhsachxe.chuotphaixe_nhapthongtinxe_checkthongtinxe_trongtai(self, "GiamSat94", tensukien, ketqua)
 
 
 @retry(tries=3, delay=2, backoff=1, jitter=5, )
 def caseid_giamsat95(self):
-    get_datachecklist("GiamSat95")
-    tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
-    ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
-    giamsat.danhsachxe.chuotphaixe_nhapthongtinxe_checkthongtinxe_vantaidangkynoithanh(self, "GiamSat95", tensukien, ketqua)
+    pass
+    # get_datachecklist("GiamSat95")
+    # tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    # ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    # giamsat.danhsachxe.chuotphaixe_nhapthongtinxe_checkthongtinxe_vantaidangkynoithanh(self, "GiamSat95", tensukien, ketqua)
 
 
 @retry(tries=3, delay=2, backoff=1, jitter=5, )
 def caseid_giamsat96(self):
-    get_datachecklist("GiamSat96")
-    tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
-    ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
-    giamsat.danhsachxe.chuotphaixe_nhapthongtinxe_checkthongtinxe_chopheptruyendulieu(self, "GiamSat96", tensukien, ketqua)
+    pass
+    # get_datachecklist("GiamSat96")
+    # tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    # ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    # giamsat.danhsachxe.chuotphaixe_nhapthongtinxe_checkthongtinxe_chopheptruyendulieu(self, "GiamSat96", tensukien, ketqua)
 
 
 @retry(tries=3, delay=2, backoff=1, jitter=5, )
 def caseid_giamsat97(self):
-    get_datachecklist("GiamSat97")
-    tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
-    ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
-    giamsat.danhsachxe.chuotphaixe_nhapthongtinxe_huy(self, "GiamSat97", tensukien, ketqua)
+    pass
+    # get_datachecklist("GiamSat97")
+    # tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    # ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    # giamsat.danhsachxe.chuotphaixe_nhapthongtinxe_huy(self, "GiamSat97", tensukien, ketqua)
 
 
-@retry(tries=3, delay=2, backoff=1, jitter=5, )
+# @retry(tries=3, delay=2, backoff=1, jitter=5, )
 def caseid_giamsat98(self):
     get_datachecklist("GiamSat98")
     tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
@@ -2118,21 +2126,15 @@ def caseid_route19(self):
     get_datachecklist("Route19")
     eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
     result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
-    lotrinh.route.route_display_config_fieldcheckbox(self, "Route19", eventname, result,
-                                             var.combined_parking,
-                                             var.stoptime,
-                                             "Thời gian dừng đỗ",
-                                             "_CauHinhHienThiLoTrinh_ThoiGianDungDo.png")
+    lotrinh.route.route_display_config_fieldcheckbox(self, "Route19", eventname, result, var.combined_parking, var.stoptime,
+                                             "Thời gian dừng đỗ", "_CauHinhHienThiLoTrinh_ThoiGianDungDo.png")
 
 def caseid_route20(self):
     get_datachecklist("Route20")
     eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
     result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
-    lotrinh.route.route_display_config_fieldcheckbox(self, "Route20", eventname, result,
-                                             var.note_lost_signal,
-                                             var.lost_signal_time,
-                                             "Thời gian mất tín hiệu",
-                                             "_CauHinhHienThiLoTrinh_ThoiGianMatTinHieu.png")
+    lotrinh.route.route_display_config_fieldcheckbox(self, "Route20", eventname, result, var.note_lost_signal, var.lost_signal_time,
+                                             "Thời gian mất tín hiệu", "_CauHinhHienThiLoTrinh_ThoiGianMatTinHieu.png")
 
 
 def caseid_route21(self):
@@ -2787,10 +2789,11 @@ def caseid_report32(self):
 
 
 def caseid_report33(self):
-    get_datachecklist("Report33")
-    eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
-    result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
-    report.activity_report.report_air_conditioner_summaries_hide_column(self, "Report33", eventname, result)
+    pass
+    # get_datachecklist("Report33")
+    # eventname = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    # result = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    # report.activity_report.report_air_conditioner_summaries_hide_column(self, "Report33", eventname, result)
 
 
 

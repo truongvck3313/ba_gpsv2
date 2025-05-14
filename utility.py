@@ -290,9 +290,11 @@ class landmark_administraintion:      #quản trị điểm
     def landmark_group_addnewplace(self, code, eventname, result):   #quản lý nhóm điểm - thêm mới điểm
         var.driver.implicitly_wait(5)
         try:
+            var.driver.find_element(By.XPATH, var.landmark_group_addnewplace_input).clear()
             var.driver.find_element(By.XPATH, var.landmark_group_addnewplace_input).send_keys(data['tienich']['quanlynhomdiem_themmoi'])
         except:
             move_module.move_module_detail1(self, var.admin_utility, var.landmark_group)
+            var.driver.find_element(By.XPATH, var.landmark_group_addnewplace_input).clear()
             var.driver.find_element(By.XPATH, var.landmark_group_addnewplace_input).send_keys(data['tienich']['quanlynhomdiem_themmoi'])
         time.sleep(0.5)
         var.driver.find_element(By.XPATH, var.landmark_group_addnewplace).click()
@@ -385,7 +387,7 @@ class landmark_administraintion:      #quản trị điểm
             var.driver.find_element(By.XPATH, var.landmark_group_administration_create_user).click()
         time.sleep(3)
         chucnangkhac.write_result_text_try_if(code, eventname, result, "Tiện ích - Phần quyền nhóm điểm",
-                              var.check_landmark_group_administration_create_user, "TẠO MỚI NGƯỜI DÙNG", "_TienIch_PhanQuyenNhomDiem_TaoMoiNguoiDung.png")
+                              var.check_landmark_group_administration_create_user, "THÔNG TIN NGƯỜI DÙNG", "_TienIch_PhanQuyenNhomDiem_TaoMoiNguoiDung.png")
 
         try:
             var.driver.find_element(By.XPATH, var.check_landmark_group_administration_create_user).is_displayed()

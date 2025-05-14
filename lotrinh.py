@@ -173,7 +173,7 @@ class route:
         except:
             login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
             var.driver.find_element(By.XPATH, var.vehicle).click()
-            time.sleep(2)
+            time.sleep(3)
             var.driver.find_element(By.XPATH, var.check_popup_route)
             time.sleep(1)
         vehiclename1 = str(var.readData(var.path_luutamthoi, 'Sheet1', 2, 2))
@@ -480,7 +480,7 @@ class route:
             var.driver.save_screenshot(var.imagepath + code + nameimage)
             chucnangkhac.writeData(var.checklistpath, "Checklist", code, 7, "Fail")
             chucnangkhac.writeData(var.checklistpath, "Checklist", code, 13, code + nameimage)
-        var.driver.find_element(By.XPATH, checkbox).click()
+        # var.driver.find_element(By.XPATH, checkbox).click()
         time.sleep(1)
 
 

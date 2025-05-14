@@ -9,7 +9,8 @@ import os
 from selenium.webdriver.common.by import By
 from retry import retry
 import module_gpsv2
-
+from playsound import playsound
+from gtts import gTTS
 
 
 
@@ -121,20 +122,165 @@ def writeData(file,sheetName,caseid,columnno,data):
 
 
 
-# def whatsapp_QR():
-#     options = webdriver.ChromeOptions()
-#     options.add_argument('--user-data-dir=C:/Users/truongtq.BA/AppData/Local/Google/Chrome/User Data/Default')
-#     driver = webdriver.Chrome(chrome_options=options)
-#     driver.get('https://web.telegram.org/a/')
-#     # var.driver.get("https://web.telegram.org/a/")
-#     print("Scan QR Code, And then Enter")
-#     input()
-#     print("Logged In")
-#     var.driver.close()
+
+
+def generate_audio(text, filename):
+    tts = gTTS(text=text, lang='vi')
+    tts.save(filename)
+    print(f"Đã tạo file âm thanh: {filename}")
+
+
+def allow_mic(driver2):
+    try:
+        allow_button = driver2.ele('xpath://button[contains(text(), "Allow while visiting the site")]', timeout=5)
+        if allow_button:
+            allow_button.click()
+            print("Đã bấm Cho phép dùng Microphone.")
+    except Exception as e:
+        print(f"Không thấy popup xin quyền micro: {e}")
+
+
+def play_mp3_hidden(filepath):
+    playsound(filepath)
+
+
+def tele_search(tag, phone, data):
+    global driver2
+    driver2.ele(var.tele_search_input).clear()
+    time.sleep(0.5)
+    driver2.ele(var.tele_search_input).input(tag)
+    time.sleep(1)
+    driver2.ele(var.tele_search_name1, timeout=10).click()
+    time.sleep(2)
+    driver2.ele(var.tele_profile_name).click()
+    time.sleep(2.5)
+    check_phone = driver2.ele(var.tele_profile_phone).text
+    check_tag = driver2.ele(var.tele_profile_tag).text
+    print(check_phone)
+    print(phone)
+    print(check_tag)
+    print(tag)
+    if (check_phone == phone) and (check_tag == tag):
+        driver2.ele(var.hopthoai_input).input(data)
+        driver2.ele(var.hopthoai_input).input(Keys.ENTER)
+        time.sleep(1)
+
+
+
+def tele_call(tag, phone, count, cases):
+    global driver2
+    check_phone = driver2.ele(var.tele_profile_phone).text
+    check_tag = driver2.ele(var.tele_profile_tag).text
+    print(check_phone)
+    print(phone)
+    print(check_tag)
+    print(tag)
+    if (check_phone == phone) and (check_tag == tag):
+        driver2.ele(var.tele_profile_call).click()
+        time.sleep(1)
+        print("n10")
+        allow_mic(driver2)
+        n = 0
+        while n < 15:
+            n += 1
+            time.sleep(1)
+            try:
+                check_call = driver2.ele(var.calling).text
+                print("n11")
+                if check_call not in ["waiting...", "exchanging encryption keys...", "Connected"]:
+                    # if check_call not in ["Ringing...", "Connecting..."]:
+                    generate_audio(f"Bạn đang có {count} lỗi cần xử lý, mã lỗi: {cases}", var.uploadpath + "output.mp3")
+                    print("n12")
+                    play_mp3_hidden(var.uploadpath + "output.mp3")
+                    print("n13")
+                    time.sleep(2)
+                    break
+            except Exception as e:
+                print(f"Lỗi kiểm tra cuộc gọi: {e}")
+                pass
+
+    driver2.ele(var.tele_profile_end_call).click()
+    time.sleep(2)
+
+
+
+def open_tele():
+    from DrissionPage import ChromiumPage, ChromiumOptions
+    do1 = ChromiumOptions().set_paths(local_port=9201, user_data_path=r""+var.uploadpath+"Profile 30""")
+    driver2 = ChromiumPage(addr_or_opts=do1)
+    driver2.get("https://web.telegram.org/a/")
+    time.sleep(2)
+    var.driver.close()
+
+
+
+def call_telegram():
+    from DrissionPage import ChromiumPage, ChromiumOptions
+    do1 = ChromiumOptions().set_paths(local_port=9201, user_data_path=r""+var.uploadpath+"Profile 30""")
+    global driver2
+    driver2 = ChromiumPage(addr_or_opts=do1)
+    clearData_luutamthoi2(var.path_luutamthoi, "Sheet1", "", "", "", "", "")
+    module_gpsv2.retest_serious()
+
+
+
+    driver2.get("https://web.telegram.org/a/")
+    time.sleep(2)
+    try:
+        driver2.ele("//*[text()='OK']").click()
+    except:
+        pass
+
+    i = 89
+    while i < 100:
+        i += 1
+        try:
+            tag = str(var.readData(var.path_luutamthoi, 'Sheet1', i, 2))
+            phone = str(var.readData(var.path_luutamthoi, 'Sheet1', i, 3))
+            count = int(var.readData(var.path_luutamthoi, 'Sheet1', i, 4))
+            data = str(var.readData(var.path_luutamthoi, 'Sheet1', i, 5))
+            cases = str(var.readData(var.path_luutamthoi, 'Sheet1', i, 6))
+            tele_search(tag, phone, data)
+            tele_call(tag, phone, count, cases)
+            print(f"{i}: {tag}")
+            if tag == "None":
+                break
+            if tag == None:
+                break
+
+        except Exception as e:
+            print(f"Lỗi kiểm tra cuộc gọi: {e}")
+            pass
+
+
+
+def check_info_telegram():
+    global driver2
+    driver2.get("https://web.telegram.org/a/")
 
 
 
 
+
+
+
+
+
+
+def clearData_luutamthoi2(file,sheetName, column1, column2, column3, column4, column5):
+    wordbook = openpyxl.load_workbook(file)
+    sheet = wordbook.get_sheet_by_name(sheetName)
+    i = 89
+    while (i < 100):
+        i += 1
+        i = str(i)
+        sheet["B"+i] = column1
+        sheet["C"+i] = column2
+        sheet["D"+i] = column3
+        sheet["E"+i] = column4
+        sheet["F"+i] = column5
+        i = int(i)
+    wordbook.save(file)
 
 
 
@@ -152,6 +298,7 @@ def notification_telegram():
     wordbook = openpyxl.load_workbook(var.checklistpath)
     sheet = wordbook.get_sheet_by_name("Checklist")
     module_gpsv2.check_casenone()
+    module_gpsv2.change_casenone()
     module_gpsv2.check_casefail()
     module_gpsv2.check_casepass()
 
@@ -161,12 +308,11 @@ def notification_telegram():
     case_fail = str(var.readData(var.path_luutamthoi, 'Sheet1', 77, 2))
     case_pass = str(var.readData(var.path_luutamthoi, 'Sheet1', 87, 2))
 
-
     thoigianbatdauchay = str(var.readData(var.path_luutamthoi , 'Sheet1', 47, 2))
 
 
     # if case_fail >= 1:
-    time_string1 = time.strftime("%m/%d/%Y, ", time.localtime())
+    time_string1 = time.strftime("%d/%m/%Y, ", time.localtime())
     time_string1 = str(time_string1)
     time_string2 = time.strftime("%H:%M", time.localtime())
     time_string2 = str(time_string2)
@@ -175,7 +321,6 @@ def notification_telegram():
                                               "\n- ModeTest: " + var.modetest+
                                               "\n- Số case Pass: " + case_pass+
                                               "\n- Số case False: "+ case_fail+
-                                              "\n- Số case trống: "+ tong_case_trong+
                                               "\n- Số case False nghiêm trọng: "+ mucnghiemtrong)
 
 
@@ -190,12 +335,13 @@ def notification_telegram():
         except:
             pass
 
-        if var.linktest[0:27] == "https://testgps2.binhanh.vn":
-            driver2.ele(var.hopthoai1).click()
-        else:
+        # if var.linktest[0:27] == "https://testgps2.binhanh.vn":
+        if var.linktest[0:22] == "https://gps.binhanh.vn":
             driver2.ele(var.hopthoai).click()
+        else:
+            driver2.ele(var.hopthoai1).click()
         time.sleep(0.5)
-        time_string1 = time.strftime("%m/%d/%Y, ", time.localtime())
+        time_string1 = time.strftime("%d/%m/%Y, ", time.localtime())
         time_string1 = str(time_string1)
         time_string2 = time.strftime("%H:%M", time.localtime())
         time_string2 = str(time_string2)
@@ -204,7 +350,6 @@ def notification_telegram():
                                                   "\n- ModeTest: " + var.modetest+
                                                   "\n- Số case Pass: " + case_pass+
                                                   "\n- Số case False: "+ case_fail+
-                                                  "\n- Số case trống: "+ tong_case_trong+
                                                   "\n- Số case False nghiêm trọng: "+ mucnghiemtrong)
         driver2.ele(var.hopthoai_input).input(Keys.ENTER)
         time.sleep(1)
@@ -227,7 +372,6 @@ def notification_telegram():
 
         time.sleep(30)
         driver2.close()
-
 
 
 
@@ -289,46 +433,65 @@ def swich_tab_0():
     except:
         pass
 
+    # time.sleep(1)
+    # try:
+    #     var.driver.switch_to.window(var.driver.window_handles[0])
+    #     time.sleep(1)
+    #     var.driver.execute_script("window.open('');")
+    #     time.sleep(2)
+    #     var.driver.switch_to.window(var.driver.window_handles[1])
+    #     var.driver.get("https://gps.binhanh.vn/Default.aspx")
+    #     time.sleep(5)
+    # except:
+    #     var.driver.execute_script("window.open('');")
+    #     time.sleep(2)
+    #     var.driver.switch_to.window(var.driver.window_handles[1])
+    #     var.driver.get("https://gps.binhanh.vn/Default.aspx")
+    #     time.sleep(5)
+    #     var.driver.switch_to.window(var.driver.window_handles[0])
+    #
+    #
+    #
+    # try:
+    #     var.driver.switch_to.window(var.driver.window_handles[0])
+    #     time.sleep(1)
+    #     var.driver.execute_script("window.open('');")
+    #     time.sleep(2)
+    #     var.driver.switch_to.window(var.driver.window_handles[1])
+    #     var.driver.get("https://gps.binhanh.vn/Default.aspx")
+    #     time.sleep(5)
+    # except:
+    #     var.driver.execute_script("window.open('');")
+    #     time.sleep(2)
+    #     var.driver.switch_to.window(var.driver.window_handles[1])
+    #     var.driver.get("https://gps.binhanh.vn/Default.aspx")
+    #     time.sleep(5)
+    #     var.driver.switch_to.window(var.driver.window_handles[0])
 
-    time.sleep(1)
+
+
+    # try:
+    #     var.driver.switch_to.window(var.driver.window_handles[0])
+    #     curr = var.driver.current_window_handle
+    #     for handle in var.driver.window_handles:
+    #         if handle != curr:
+    #             var.driver.switch_to.window(handle)
+    #             var.driver.close()
+    #             time.sleep(1)
+    #     var.driver.switch_to.window(curr)
+    #     time.sleep(0.5)
+    #
+    # except:
+    #     var.driver.execute_script("window.open('');")
+    #     var.driver.switch_to.window(var.driver.window_handles[-1])  # Chuyển đến tab mới nhất
+    #     var.driver.get("https://gps.binhanh.vn/Default.aspx")
+    #     time.sleep(5)
+    #     var.driver.switch_to.window(var.driver.window_handles[0])
+
     try:
         var.driver.switch_to.window(var.driver.window_handles[0])
-        time.sleep(1)
-        var.driver.execute_script("window.open('');")
-        time.sleep(2)
-        var.driver.switch_to.window(var.driver.window_handles[1])
-        var.driver.get("https://gps.binhanh.vn/Default.aspx")
-        time.sleep(5)
+        time.sleep(0.5)
     except:
-        var.driver.execute_script("window.open('');")
-        time.sleep(2)
-        var.driver.switch_to.window(var.driver.window_handles[1])
-        var.driver.get("https://gps.binhanh.vn/Default.aspx")
-        time.sleep(5)
-        var.driver.switch_to.window(var.driver.window_handles[0])
-
-
-
-    try:
-        var.driver.switch_to.window(var.driver.window_handles[0])
-        time.sleep(1)
-        var.driver.execute_script("window.open('');")
-        time.sleep(2)
-        var.driver.switch_to.window(var.driver.window_handles[1])
-        var.driver.get("https://gps.binhanh.vn/Default.aspx")
-        time.sleep(5)
-    except:
-        var.driver.execute_script("window.open('');")
-        time.sleep(2)
-        var.driver.switch_to.window(var.driver.window_handles[1])
-        var.driver.get("https://gps.binhanh.vn/Default.aspx")
-        time.sleep(5)
-        var.driver.switch_to.window(var.driver.window_handles[0])
-
-
-
-    try:
-        var.driver.switch_to.window(var.driver.window_handles[2])
         curr = var.driver.current_window_handle
         for handle in var.driver.window_handles:
             if handle != curr:
@@ -336,19 +499,12 @@ def swich_tab_0():
                 var.driver.close()
                 time.sleep(1)
         var.driver.switch_to.window(curr)
-        time.sleep(0.5)
+        time.sleep(1)
 
-    except:
-        var.driver.execute_script("window.open('');")
-        var.driver.switch_to.window(var.driver.window_handles[-1])  # Chuyển đến tab mới nhất
-        var.driver.get("https://gps.binhanh.vn/Default.aspx")
-        time.sleep(5)
-        var.driver.switch_to.window(var.driver.window_handles[0])
-
-
-
-
-
+    # Khởi tạo lại trình duyệt
+    var.restart_driver()
+    var.driver.get(var.linktest)
+    time.sleep(10)
 
 
 def write_caseif():

@@ -36,6 +36,7 @@ logging.basicConfig(handlers=[logging.FileHandler(filename=var.logpath,
 
 def xoacanhbao():
     var.driver.implicitly_wait(0.3)
+
     try:
         var.driver.find_element(By.XPATH, var.danhsachxe2g_x).click()
     except:
@@ -56,6 +57,14 @@ def xoacanhbao():
     except:
         pass
 
+    try:
+        var.driver.find_element(By.XPATH, var.warm_checkbox).click()
+        time.sleep(1)
+        button = var.driver.find_element(By.XPATH, var.close1)
+        var.driver.execute_script("arguments[0].click();", button)
+    except:
+        pass
+
 
     try:
         var.driver.find_element(By.XPATH, var.canhbaotimeline_x).click()
@@ -70,6 +79,24 @@ def xoacanhbao():
 
     try:
         var.driver.find_element(By.XPATH, var.phuongtienthieutichtruyen_x).click()
+    except:
+        pass
+
+    try:
+        var.driver.find_element(By.XPATH, var.truyenc08_x).click()
+    except:
+        pass
+
+    try:
+        var.driver.find_element(By.XPATH, var.warn_x1).click()
+    except:
+        pass
+    try:
+        var.driver.find_element(By.XPATH, var.warn_x2).click()
+    except:
+        pass
+    try:
+        var.driver.find_element(By.XPATH, var.warn_x3).click()
     except:
         pass
 
@@ -294,7 +321,7 @@ class danhsachxe:
 
     def nhomxe_chontatca(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
+        login.login.login_v2(self, var.data['login']['testxn913_tk'], var.data['login']['testxn913_mk'])
         # Tất cả nhóm xe
         time.sleep(0.5)
         var.driver.find_element(By.XPATH, var.tatcanhomxe).click()
@@ -514,9 +541,9 @@ class danhsachxe:
 
         if quyen == "quyền thường" and nhomdoi == "công ty không có nhóm":
             try:
-                var.driver.find_element(By.XPATH, var.ungroup_1)
+                var.driver.find_element(By.XPATH, var.testxn913)
             except:
-                login.login.login_v2(self, var.data['login']['khongnhom_thuong_tk2'], var.data['login']['khongnhom_thuong_mk2'])
+                login.login.login_v2(self, var.data['login']['testxn913_tk'], var.data['login']['testxn913_mk'])
 
         if quyen == "quyền quản trị" and nhomdoi == "công ty có nhóm":
             try:
@@ -1467,7 +1494,7 @@ class danhsachxe:
             pass
 
 
-    @retry(tries=3, delay=2, backoff=1, jitter=5)
+    # @retry(tries=3, delay=2, backoff=1, jitter=5)
     def danhsachxe_chuotphaixe(self, desire):
         var.driver.implicitly_wait(5)
         var.driver.find_element(By.XPATH, var.tongsoxe_duoi).click()
@@ -1476,38 +1503,62 @@ class danhsachxe:
         actions = ActionChains(var.driver)
         time.sleep(1)
         actions.context_click(button).perform()
-        time.sleep(1)
+        time.sleep(1.5)
+        print("n0.1")
         try:
-            var.driver.find_element(By.XPATH, "/html/body/div[21]//*[text()='Xem lại lộ trình ']")
+            var.driver.find_element(By.XPATH, "/html/body/div[22]//*[text()='Xem lại lộ trình ']")
+            print("n0")
             n = 0
             while (n < 25):
                 n += 1
                 n = str(n)
-                pathcheck = "/html/body/div[21]/div[2]/div[2]/div[" + n + "]"
+                pathcheck = "/html/body/div[22]/div[2]/div[2]/div[" + n + "]/div[2]"
+                pathcheck_button = "/html/body/div[22]/div[2]/div[2]/div[" + n + "]"
                 try:
                     tenphuongtien = var.driver.find_element(By.XPATH, pathcheck).text
+                    print("n1")
                     print(tenphuongtien)
                     if tenphuongtien == desire:
-                        var.driver.find_element(By.XPATH, pathcheck).click()
+                        print("n2")
+                        var.driver.find_element(By.XPATH, pathcheck_button).click()
                         time.sleep(2)
+                        try:
+                            button = var.driver.find_element(By.XPATH, pathcheck_button)
+                            var.driver.execute_script("arguments[0].click();", button)
+                        except:
+                            pass
                         break
                 except:
                     pass
                 n = int(n)
         except:
+            print("n2")
             n = 0
             while (n < 25):
                 n += 1
                 n = str(n)
-                pathcheck = "/html/body/div[20]/div[2]/div[2]/div[" + n + "]"
+                pathcheck1 = "/html/body/div[21]/div[2]/div[2]/div[" + n + "]/div[2]"
+                pathcheck1_button = "/html/body/div[21]/div[2]/div[2]/div[" + n + "]"
+                print("n4")
                 try:
-                    tenphuongtien = var.driver.find_element(By.XPATH, pathcheck).text
+                    tenphuongtien = var.driver.find_element(By.XPATH, pathcheck1).text
+                    print("n5")
                     print(tenphuongtien)
                     if tenphuongtien == desire:
-                        var.driver.find_element(By.XPATH, pathcheck).click()
+                        print("n6")
+                        var.driver.find_element(By.XPATH, pathcheck1_button).click()
                         time.sleep(2)
+                        try:
+                            print("n6.4")
+                            button = var.driver.find_element(By.XPATH, pathcheck1_button)
+                            var.driver.execute_script("arguments[0].click();", button)
+                            print("n6.6")
+                        except:
+                            pass
+                        print("n6.5")
                         break
                 except:
+                    print("n7")
                     pass
                 n = int(n)
 
@@ -1526,18 +1577,24 @@ class danhsachxe:
         time.sleep(1)
 
         try:
-            var.driver.find_element(By.XPATH, "/html/body/div[21]//*[text()='Xem lại lộ trình ']")
+            var.driver.find_element(By.XPATH, "/html/body/div[22]//*[text()='Xem lại lộ trình ']")
             n = 0
             while (n < 25):
                 n += 1
                 n = str(n)
-                pathcheck = "/html/body/div[21]/div[2]/div[2]/div[" + n + "]"
+                pathcheck = "/html/body/div[22]/div[2]/div[2]/div[" + n + "]/div[2]"
+                pathcheck_button = "/html/body/div[22]/div[2]/div[2]/div[" + n + "]"
                 try:
                     tenphuongtien = var.driver.find_element(By.XPATH, pathcheck).text
                     print(tenphuongtien)
                     if tenphuongtien == desire:
-                        var.driver.find_element(By.XPATH, pathcheck).click()
+                        var.driver.find_element(By.XPATH, pathcheck_button).click()
                         time.sleep(2)
+                        try:
+                            button = var.driver.find_element(By.XPATH, pathcheck_button)
+                            var.driver.execute_script("arguments[0].click();", button)
+                        except:
+                            pass
                         break
                 except:
                     pass
@@ -1548,13 +1605,26 @@ class danhsachxe:
             while (n < 25):
                 n += 1
                 n = str(n)
-                pathcheck = "/html/body/div[20]/div[2]/div[2]/div[" + n + "]"
+                pathcheck1        = "/html/body/div[21]/div[2]/div[2]/div[" + n + "]/div[2]"
+                pathcheck_button1 = "/html/body/div[21]/div[2]/div[2]/div[" + n + "]"
                 try:
-                    tenphuongtien = var.driver.find_element(By.XPATH, pathcheck).text
+                    tenphuongtien = var.driver.find_element(By.XPATH, pathcheck1).text
+                    print("n1")
                     print(tenphuongtien)
                     if tenphuongtien == desire:
-                        var.driver.find_element(By.XPATH, pathcheck).click()
+                        print("n2")
+                        var.driver.find_element(By.XPATH, pathcheck_button1).click()
                         time.sleep(2)
+                        print("n3")
+                        try:
+                            print("n4")
+                            button = var.driver.find_element(By.XPATH, pathcheck_button1)
+                            var.driver.execute_script("arguments[0].click();", button)
+                            print("n5")
+                        except:
+                            print("n6")
+                            pass
+                        print("n7")
                         break
                 except:
                     pass
@@ -1641,7 +1711,10 @@ class danhsachxe:
         try:
             var.driver.find_element(By.XPATH, var.xemnhanh).click()
         except:
-            var.driver.find_element(By.XPATH, var.xemnhanh1).click()
+            try:
+                var.driver.find_element(By.XPATH, var.xemnhanh1).click()
+            except:
+                var.driver.find_element(By.XPATH, var.xemnhanh2).click()
         time.sleep(2)
         logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Xem lộ trình")
         logging.info("Mã - " + ma)
@@ -1675,8 +1748,11 @@ class danhsachxe:
         # Xem lại lộ trình - Xem chi tiết trên cửa sổ mới
         var.driver.refresh()
         time.sleep(5)
+        var.driver.find_element(By.XPATH, var.account).click()
+        time.sleep(1)
         danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
         time.sleep(1)
+
         # Xem lại lộ trình
         xemlailotrinh_hover = var.driver.find_element(By.XPATH, var.xemlailotrinh)
         actions = ActionChains(var.driver)
@@ -1691,7 +1767,10 @@ class danhsachxe:
         try:
             var.driver.find_element(By.XPATH, var.xemchitiettrencuasomoi).click()
         except:
-            var.driver.find_element(By.XPATH, var.xemchitiettrencuasomoi1).click()
+            try:
+                var.driver.find_element(By.XPATH, var.xemchitiettrencuasomoi1).click()
+            except:
+                var.driver.find_element(By.XPATH, var.xemchitiettrencuasomoi2).click()
 
         time.sleep(2)
         print("n1")
@@ -1749,7 +1828,10 @@ class danhsachxe:
         try:
             var.driver.find_element(By.XPATH, var.trongngay).click()
         except:
-            var.driver.find_element(By.XPATH, var.trongngay1).click()
+            try:
+                var.driver.find_element(By.XPATH, var.trongngay1).click()
+            except:
+                var.driver.find_element(By.XPATH, var.trongngay2).click()
         time.sleep(2)
         var.driver.switch_to.window(var.driver.window_handles[1])
         time.sleep(7)
@@ -1800,7 +1882,10 @@ class danhsachxe:
         try:
             var.driver.find_element(By.XPATH, var.tuychon).click()
         except:
-            var.driver.find_element(By.XPATH, var.tuychon1).click()
+            try:
+                var.driver.find_element(By.XPATH, var.tuychon1).click()
+            except:
+                var.driver.find_element(By.XPATH, var.tuychon2).click()
         time.sleep(2)
         var.driver.switch_to.window(var.driver.window_handles[1])
         time.sleep(7)
@@ -1870,9 +1955,11 @@ class danhsachxe:
         if var.driver.find_element(By.XPATH, var.popupthongtinxe_vantaidangkychaynoithanh).is_selected() == False:
             var.driver.find_element(By.XPATH, var.popupthongtinxe_vantaidangkychaynoithanh).click()
 
-        if var.driver.find_element(By.XPATH, var.popupthongtinxe_chopheptichtruyendulieu).is_selected() == False:
-            var.driver.find_element(By.XPATH, var.popupthongtinxe_chopheptichtruyendulieu).click()
-
+        # try:
+        #     if var.driver.find_element(By.XPATH, var.popupthongtinxe_chopheptichtruyendulieu).is_selected() == False:     #Đang lỗi
+        #         var.driver.find_element(By.XPATH, var.popupthongtinxe_chopheptichtruyendulieu).click()
+        # except:
+        #     pass
 
         var.driver.find_element(By.XPATH, var.popupthongtinxe_trongtaiinput).clear()
         JS_ADD_TEXT_TO_INPUT = """
@@ -2038,8 +2125,8 @@ class danhsachxe:
         if var.driver.find_element(By.XPATH, var.popupthongtinxe_vantaidangkychaynoithanh).is_selected() == True:
             var.driver.find_element(By.XPATH, var.popupthongtinxe_vantaidangkychaynoithanh).click()
 
-        if var.driver.find_element(By.XPATH, var.popupthongtinxe_chopheptichtruyendulieu).is_selected() == True:
-            var.driver.find_element(By.XPATH, var.popupthongtinxe_chopheptichtruyendulieu).click()
+        # if var.driver.find_element(By.XPATH, var.popupthongtinxe_chopheptichtruyendulieu).is_selected() == True:
+        #     var.driver.find_element(By.XPATH, var.popupthongtinxe_chopheptichtruyendulieu).click()
 
         var.driver.find_element(By.XPATH, var.popupthongtinxe_capnhat).click()
         time.sleep(1)
@@ -2063,11 +2150,14 @@ class danhsachxe:
         var.driver.implicitly_wait(4)
         login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
 
-        danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
-        try:
-            var.driver.find_element(By.XPATH, var.xemlotrinhnhieuxe).click()
-        except:
-            var.driver.find_element(By.XPATH, var.xemlotrinhnhieuxe1).click()
+        # danhsachxe.danhsachxe_chuotphaixedangdichuyen(self)
+        # danhsachxe.danhsachxe_chuotphaixe_checkpopup(self, "Giám sát nhiều xe", var.check_giamsatnhieuxe)
+        danhsachxe.danhsachxe_chuotphaixe(self, "Giám sát nhiều xe")
+
+        # try:
+        #     var.driver.find_element(By.XPATH, var.xemlotrinhnhieuxe).click()
+        # except:
+        #     var.driver.find_element(By.XPATH, var.xemlotrinhnhieuxe1).click()
 
         time.sleep(3)
         chucnangkhac.write_result_text_try_if_title(ma, tensukien, ketqua, "Giám sát - Danh sách xe - Chuột phải vào xe - Nhập thông tin xe",
@@ -2305,7 +2395,7 @@ class danhsachxe:
             var.driver.find_element(By.XPATH, var.anxe_antoanbotrang).click()
 
         if var.driver.find_element(By.XPATH, var.anxe_truyen).is_selected() == False:
-            var.driver.find_element(By.XPATH, var.anxe_truyen).click()
+            var.driver.find_element(By.XPATH, var.anxe_truyen1).click()
 
         # var.driver.find_element(By.XPATH, var.anxe_nguyennhan).click()
         time.sleep(0.5)
@@ -3096,11 +3186,13 @@ class danhsachxe:
         if check_timkiem_congty == macongty:
             var.driver.find_element(By.XPATH, var.danhsachcongty_icondencongty).click()
             time.sleep(8)
+            xoacanhbao()
             try:
                 var.driver.find_element(By.XPATH, var.danhsachxe_dungtat).is_displayed()
             except:
                 var.driver.find_element(By.XPATH, var.giamsat).click()
                 time.sleep(3)
+                xoacanhbao()
             time.sleep(2)
 
 
@@ -3338,7 +3430,7 @@ class danhsachxe:
 class canhbao:
     def phuongtienthieuthongtintichtruyen(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        danhsachxe.goto_congty(self, "Công Ty cổ phần xe khách Bắc Giang", "295")
+        danhsachxe.goto_congty(self, "Xí nghiệp Buýt Hà Nội", "1")
 
         tab_id = var.driver.window_handles
         tab_0 = tab_id[0]
@@ -4948,12 +5040,12 @@ class chuotphaimap:
         time.sleep(1.5)
 
         try:
-            var.driver.find_element(By.XPATH, "/html/body/div[22]//*[text()='Phóng to']")
+            var.driver.find_element(By.XPATH, "/html/body/div[23]//*[text()='Phóng to']")
             n = 0
             while (n < 25):
                 n += 1
                 n = str(n)
-                pathcheck = "/html/body/div[22]/div[2]/div[2]/div[" + n + "]"
+                pathcheck = "/html/body/div[23]/div[2]/div[2]/div[" + n + "]"
                 try:
                     tenphuongtien = var.driver.find_element(By.XPATH, pathcheck).text
                     print(tenphuongtien)
@@ -4969,12 +5061,12 @@ class chuotphaimap:
             while (n < 25):
                 n += 1
                 n = str(n)
-                pathcheck = "/html/body/div[21]/div[2]/div[2]/div[" + n + "]"
+                pathcheck1 = "/html/body/div[22]/div[2]/div[2]/div[" + n + "]"
                 try:
-                    tenphuongtien = var.driver.find_element(By.XPATH, pathcheck).text
+                    tenphuongtien = var.driver.find_element(By.XPATH, pathcheck1).text
                     print(tenphuongtien)
                     if tenphuongtien == "Đo khoảng cách":
-                        var.driver.find_element(By.XPATH, pathcheck).click()
+                        var.driver.find_element(By.XPATH, pathcheck1).click()
                         time.sleep(1.5)
                         break
                 except:
@@ -5070,12 +5162,12 @@ class chuotphaimap:
 
 
         try:
-            var.driver.find_element(By.XPATH, "/html/body/div[22]//*[text()='Phóng to']")
+            var.driver.find_element(By.XPATH, "/html/body/div[23]//*[text()='Phóng to']")
             n = 0
             while (n < 25):
                 n += 1
                 n = str(n)
-                pathcheck = "/html/body/div[22]/div[2]/div[2]/div[" + n + "]"
+                pathcheck = "/html/body/div[23]/div[2]/div[2]/div[" + n + "]"
                 try:
                     tenphuongtien = var.driver.find_element(By.XPATH, pathcheck).text
                     print(tenphuongtien)
@@ -5091,12 +5183,12 @@ class chuotphaimap:
             while (n < 25):
                 n += 1
                 n = str(n)
-                pathcheck = "/html/body/div[21]/div[2]/div[2]/div[" + n + "]"
+                pathcheck1 = "/html/body/div[22]/div[2]/div[2]/div[" + n + "]"
                 try:
-                    tenphuongtien = var.driver.find_element(By.XPATH, pathcheck).text
+                    tenphuongtien = var.driver.find_element(By.XPATH, pathcheck1).text
                     print(tenphuongtien)
                     if tenphuongtien == "Chỉ hướng":
-                        var.driver.find_element(By.XPATH, pathcheck).click()
+                        var.driver.find_element(By.XPATH, pathcheck1).click()
                         time.sleep(1.5)
                         break
                 except:
@@ -5307,12 +5399,12 @@ class chuotphaimap:
 
 
         try:
-            var.driver.find_element(By.XPATH, "/html/body/div[22]//*[text()='Phóng to']")
+            var.driver.find_element(By.XPATH, "/html/body/div[23]//*[text()='Phóng to']")
             n = 0
             while (n < 25):
                 n += 1
                 n = str(n)
-                pathcheck = "/html/body/div[22]/div[2]/div[2]/div[" + n + "]"
+                pathcheck = "/html/body/div[23]/div[2]/div[2]/div[" + n + "]"
                 try:
                     tenphuongtien = var.driver.find_element(By.XPATH, pathcheck).text
                     print(tenphuongtien)
@@ -5328,12 +5420,12 @@ class chuotphaimap:
             while (n < 25):
                 n += 1
                 n = str(n)
-                pathcheck = "/html/body/div[21]/div[2]/div[2]/div[" + n + "]"
+                pathcheck1 = "/html/body/div[22]/div[2]/div[2]/div[" + n + "]"
                 try:
-                    tenphuongtien = var.driver.find_element(By.XPATH, pathcheck).text
+                    tenphuongtien = var.driver.find_element(By.XPATH, pathcheck1).text
                     print(tenphuongtien)
                     if tenphuongtien == "Tạo điểm bản đồ":
-                        var.driver.find_element(By.XPATH, pathcheck).click()
+                        var.driver.find_element(By.XPATH, pathcheck1).click()
                         time.sleep(1.5)
                         break
                 except:
@@ -5548,12 +5640,12 @@ class chuotphaimap:
 
 
         try:
-            var.driver.find_element(By.XPATH, "/html/body/div[22]//*[text()='Phóng to']")
+            var.driver.find_element(By.XPATH, "/html/body/div[23]//*[text()='Phóng to']")
             n = 0
             while (n < 25):
                 n += 1
                 n = str(n)
-                pathcheck = "/html/body/div[22]/div[2]/div[2]/div[" + n + "]"
+                pathcheck = "/html/body/div[23]/div[2]/div[2]/div[" + n + "]"
                 try:
                     tenphuongtien = var.driver.find_element(By.XPATH, pathcheck).text
                     print(tenphuongtien)
@@ -5569,12 +5661,12 @@ class chuotphaimap:
             while (n < 25):
                 n += 1
                 n = str(n)
-                pathcheck = "/html/body/div[21]/div[2]/div[2]/div[" + n + "]"
+                pathcheck1 = "/html/body/div[22]/div[2]/div[2]/div[" + n + "]"
                 try:
-                    tenphuongtien = var.driver.find_element(By.XPATH, pathcheck).text
+                    tenphuongtien = var.driver.find_element(By.XPATH, pathcheck1).text
                     print(tenphuongtien)
                     if tenphuongtien == "Tạo vùng lộ trình":
-                        var.driver.find_element(By.XPATH, pathcheck).click()
+                        var.driver.find_element(By.XPATH, pathcheck1).click()
                         time.sleep(1.5)
                         break
                 except:
@@ -5975,7 +6067,7 @@ class chuotphaimap:
         logging.info("Kết quả - " + ketqua)
         var.driver.implicitly_wait(1)
         try:
-            check_tramthuphi_vungbao = var.driver.find_element(By.XPATH, var.check_tramthuphi_vungbao).is_displayed()
+            check_tramthuphi_vungbao = var.driver.find_element(By.XPATH, var.check_tramthuphi_vungbao1).is_displayed()
             print("Bật vùng bao - trạm thu phi: True")
             logging.info("True")
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 7, "Pass")
@@ -6107,7 +6199,7 @@ class chuotphaimap:
         logging.info("Tên sự kiện - " + tensukien)
         logging.info("Kết quả - " + ketqua)
         try:
-            check_chuachonnhom_vungbao = var.driver.find_element(By.XPATH, var.check_chuachonnhom_vungbao).is_displayed()
+            check_chuachonnhom_vungbao = var.driver.find_element(By.XPATH, var.check_chuachonnhom_vungbao1).is_displayed()
             print("Bật vùng bao - Chưa chọn nhóm: True")
             logging.info("True")
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 7, "Pass")
@@ -6986,12 +7078,12 @@ class chuotphaimap:
         time.sleep(1.5)
 
         try:
-            var.driver.find_element(By.XPATH, "/html/body/div[22]//*[text()='Phóng to']")
+            var.driver.find_element(By.XPATH, "/html/body/div[23]//*[text()='Phóng to']")
             n = 0
             while (n < 25):
                 n += 1
                 n = str(n)
-                pathcheck = "/html/body/div[22]/div[2]/div[2]/div[" + n + "]"
+                pathcheck = "/html/body/div[23]/div[2]/div[2]/div[" + n + "]"
                 try:
                     tenphuongtien = var.driver.find_element(By.XPATH, pathcheck).text
                     print(tenphuongtien)
@@ -7010,13 +7102,13 @@ class chuotphaimap:
             while (n < 25):
                 n += 1
                 n = str(n)
-                pathcheck = "/html/body/div[21]/div[2]/div[2]/div[" + n + "]"
+                pathcheck1 = "/html/body/div[22]/div[2]/div[2]/div[" + n + "]"
                 try:
-                    tenphuongtien = var.driver.find_element(By.XPATH, pathcheck).text
+                    tenphuongtien = var.driver.find_element(By.XPATH, pathcheck1).text
                     print(tenphuongtien)
                     if tenphuongtien == desire:
                         try:
-                            var.driver.find_element(By.XPATH, pathcheck).click()
+                            var.driver.find_element(By.XPATH, pathcheck1).click()
                             time.sleep(1.5)
                         except:
                             xoacanhbao()
