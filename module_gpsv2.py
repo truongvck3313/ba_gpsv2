@@ -6006,9 +6006,78 @@ def retest_casefail(self):
 
 
 
+
+# def retest_serious():
+#     list_casefail = []
+#     grouped_by_tag = defaultdict(list)  # Nhóm theo tag
+#
+#     wordbook = openpyxl.load_workbook(var.checklistpath)
+#     sheet = wordbook.get_sheet_by_name("Checklist")
+#     rownum = 9
+#     while rownum < 1200:
+#         rownum += 1
+#         row_str = str(rownum)
+#
+#         if sheet["L" + row_str].value == "x" and sheet["G" + row_str].value == "Fail":
+#             case_fail = sheet["A" + row_str].value
+#             event_name = sheet["B" + row_str].value
+#             account = sheet["C" + row_str].value
+#             step = sheet["D" + row_str].value
+#             desired_result = sheet["E" + row_str].value
+#             actual_result = sheet["F" + row_str].value
+#             status = sheet["G" + row_str].value
+#             phone_tag = sheet["N" + row_str].value
+#             if phone_tag and '(' in phone_tag and ')' in phone_tag:
+#                 phone, tag = phone_tag.split('(')
+#                 tag = tag.rstrip(')')
+#                 phone = phone.strip()
+#                 print(phone)
+#                 print(tag + "\n")
+#
+#                 # Nhóm theo tag
+#                 grouped_by_tag[tag].append({
+#                     'case_fail': case_fail,
+#                     'event_name': event_name,
+#                     'account': account,
+#                     'step': step,
+#                     'desired_result': desired_result,
+#                     'actual_result': actual_result,
+#                     'status': status,
+#                     'phone': phone})
+#                 list_casefail.append(case_fail)
+#     print(list_casefail)
+#     print("Số case fail nghiêm trọng: ", len(list_casefail))
+#
+#     # In kết quả nhóm theo tag
+#     print("\n====== NHÓM THEO TAG ======")
+#     n = 89
+#     for tag, cases in grouped_by_tag.items():
+#         print(f"\nTag: {tag} - {len(cases)} case - ")
+#         n+= 1
+#         var.writeData(var.path_luutamthoi, "Sheet1", n, 2, tag)
+#         var.writeData(var.path_luutamthoi, "Sheet1", n, 4, len(cases))
+#         for case in cases:
+#             message_bug = (f" -Mã: {case['case_fail']}\n"
+#                   f" -Tên sự kiện: {case['event_name']}\n"
+#                   f" -Tài khoản: {case['account']}\n"
+#                   f" -Các bước thao tác: {case['step']}\n"
+#                   f" -Kết quả mong muốn: {case['desired_result']}\n"
+#                   f" -Kết quả thực tế: {case['actual_result']}\n"
+#                   f" -Trạng thái: {case['status']}\n---------------------------------------------------------\n")
+#             var.writeData_append(var.path_luutamthoi, "Sheet1", n, 6, f"{case['case_fail']}, ")
+#             var.writeData(var.path_luutamthoi, "Sheet1", n, 3, case['phone'])
+#             var.writeData_append(var.path_luutamthoi, "Sheet1", n, 5, message_bug)
+#             print(message_bug)
+
+
+
 def retest_serious():
+    var.writeData_append(var.path_luutamthoi, "Sheet1", 90, 2, "")
+    var.writeData_append(var.path_luutamthoi, "Sheet1", 91, 2, 0)
+    var.writeData_append(var.path_luutamthoi, "Sheet1", 92, 2, "")
+
     list_casefail = []
-    grouped_by_tag = defaultdict(list)  # Nhóm theo tag
+    grouped_by_casefail = defaultdict(list)  # Nhóm theo case_fail
 
     wordbook = openpyxl.load_workbook(var.checklistpath)
     sheet = wordbook.get_sheet_by_name("Checklist")
@@ -6025,49 +6094,54 @@ def retest_serious():
             desired_result = sheet["E" + row_str].value
             actual_result = sheet["F" + row_str].value
             status = sheet["G" + row_str].value
-            phone_tag = sheet["N" + row_str].value
-            if phone_tag and '(' in phone_tag and ')' in phone_tag:
-                phone, tag = phone_tag.split('(')
-                tag = tag.rstrip(')')
-                phone = phone.strip()
-                print(phone)
-                print(tag + "\n")
 
-                # Nhóm theo tag
-                grouped_by_tag[tag].append({
-                    'case_fail': case_fail,
-                    'event_name': event_name,
-                    'account': account,
-                    'step': step,
-                    'desired_result': desired_result,
-                    'actual_result': actual_result,
-                    'status': status,
-                    'phone': phone})
-                list_casefail.append(case_fail)
+            grouped_by_casefail[case_fail].append({
+                'event_name': event_name,
+                'account': account,
+                'step': step,
+                'desired_result': desired_result,
+                'actual_result': actual_result,
+                'status': status
+            })
+
+            list_casefail.append(case_fail)
+
     print(list_casefail)
     print("Số case fail nghiêm trọng: ", len(list_casefail))
 
-    # In kết quả nhóm theo tag
-    print("\n====== NHÓM THEO TAG ======")
-    n = 89
-    for tag, cases in grouped_by_tag.items():
-        print(f"\nTag: {tag} - {len(cases)} case - ")
-        n+= 1
-        var.writeData(var.path_luutamthoi, "Sheet1", n, 2, tag)
-        var.writeData(var.path_luutamthoi, "Sheet1", n, 4, len(cases))
-        for case in cases:
-            message_bug = (f" -Mã: {case['case_fail']}\n"
-                  f" -Tên sự kiện: {case['event_name']}\n"
-                  f" -Tài khoản: {case['account']}\n"
-                  f" -Các bước thao tác: {case['step']}\n"
-                  f" -Kết quả mong muốn: {case['desired_result']}\n"
-                  f" -Kết quả thực tế: {case['actual_result']}\n"
-                  f" -Trạng thái: {case['status']}\n---------------------------------------------------------\n")
-            var.writeData_append(var.path_luutamthoi, "Sheet1", n, 6, f"{case['case_fail']}, ")
-            var.writeData(var.path_luutamthoi, "Sheet1", n, 3, case['phone'])
-            var.writeData_append(var.path_luutamthoi, "Sheet1", n, 5, message_bug)
-            print(message_bug)
+    print("\n====== NHÓM THEO CASE FAIL ======")
+    for case_fail, items in grouped_by_casefail.items():
+        print(f"\nCase Fail: {case_fail} - Số dòng liên quan: {len(items)}")
 
+        # Gom tên case_fail (chỉ 1 vì mỗi nhóm là duy nhất)
+        casefail_str = case_fail
+
+        # Gom tất cả các bước step lại
+        all_steps = "\n".join([item['step'] for item in items if item['step']])
+
+        # Gộp nội dung chi tiết lỗi
+        message_bug = ""
+        for item in items:
+            message_bug += (f" -Mã: {case_fail}\n"
+                            f" -Tên sự kiện: {item['event_name']}\n"
+                            f" -Tài khoản: {item['account']}\n"
+                            f" -Các bước thao tác: {item['step']}\n"
+                            f" -Kết quả mong muốn: {item['desired_result']}\n"
+                            f" -Kết quả thực tế: {item['actual_result']}\n"
+                            f" -Trạng thái: {item['status']}\n"
+                            f"---------------------------------------------------------\n")
+
+        # Ghi vào Excel
+        var.writeData_append(var.path_luutamthoi, "Sheet1", 90, 2, f"{casefail_str}, ")  # Tên case_fail
+
+        count_casefail = str(var.readData(var.path_luutamthoi, 'Sheet1', 90, 2))
+        parts = count_casefail.split(',')
+        cleaned = [p.strip() for p in parts if p.strip()]
+        count = len(cleaned)
+
+        var.writeData(var.path_luutamthoi, "Sheet1", 91, 2, count)  # Số dòng liên quan
+        var.writeData_append(var.path_luutamthoi, "Sheet1", 92, 2, message_bug)  # Ghi toàn bộ message
+        print(message_bug)
 
 
 

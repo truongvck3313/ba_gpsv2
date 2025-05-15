@@ -194,6 +194,7 @@ def tele_call(tag, phone, count, cases):
                     play_mp3_hidden(var.uploadpath + "output.mp3")
                     print("n13")
                     time.sleep(2)
+                    var.writeData(var.path_luutamthoi, "Sheet1", 93, 2, "Đã gọi")
                     break
             except Exception as e:
                 print(f"Lỗi kiểm tra cuộc gọi: {e}")
@@ -231,21 +232,30 @@ def call_telegram():
     except:
         pass
 
-    i = 89
-    while i < 100:
-        i += 1
+    var.writeData(var.path_luutamthoi, "Sheet1", 93, 2, "Đang check cuộc gọi")
+    count = int(var.readData(var.path_luutamthoi, 'Sheet1', 91, 2))
+    data = str(var.readData(var.path_luutamthoi, 'Sheet1', 92, 2))
+    cases = str(var.readData(var.path_luutamthoi, 'Sheet1', 90, 2))
+
+
+    wordbook = openpyxl.load_workbook(var.checklistpath)
+    sheet = wordbook.get_sheet_by_name("Checklist")
+    rownum = 3
+    while rownum < 6:
+        rownum += 1
+        row_str = str(rownum)
+        phone_tag = sheet["N" + row_str].value
+        print(f"Dòng {row_str}, Phone_tag: {phone_tag}")
+        phone, tag = phone_tag.split('(')
+        phone = phone.strip()
+        tag = tag.replace(')', '').strip()
+        print(phone)
+        print(tag)
         try:
-            tag = str(var.readData(var.path_luutamthoi, 'Sheet1', i, 2))
-            phone = str(var.readData(var.path_luutamthoi, 'Sheet1', i, 3))
-            count = int(var.readData(var.path_luutamthoi, 'Sheet1', i, 4))
-            data = str(var.readData(var.path_luutamthoi, 'Sheet1', i, 5))
-            cases = str(var.readData(var.path_luutamthoi, 'Sheet1', i, 6))
             tele_search(tag, phone, data)
             tele_call(tag, phone, count, cases)
-            print(f"{i}: {tag}")
-            if tag == "None":
-                break
-            if tag == None:
+            check_call = str(var.readData(var.path_luutamthoi, 'Sheet1', 93, 2))
+            if check_call == "Đã gọi":
                 break
 
         except Exception as e:
@@ -288,6 +298,91 @@ def clearData_luutamthoi2(file,sheetName, column1, column2, column3, column4, co
 
 
 
+# @retry(tries=2, delay=2, backoff=1, jitter=5, )
+# def notification_telegram():
+#     from DrissionPage import ChromiumPage, ChromiumOptions
+#     do1 = ChromiumOptions().set_paths(local_port=9201, user_data_path=r""+var.uploadpath+"Profile 30""")
+#     driver2 = ChromiumPage(addr_or_opts=do1)
+#
+#
+#     wordbook = openpyxl.load_workbook(var.checklistpath)
+#     sheet = wordbook.get_sheet_by_name("Checklist")
+#     module_gpsv2.check_casenone()
+#     module_gpsv2.change_casenone()
+#     module_gpsv2.check_casefail()
+#     module_gpsv2.check_casepass()
+#
+#     mucnghiemtrong = str(var.readData(var.path_luutamthoi, 'Sheet1', 65, 2))
+#     tong_case_trong = str(var.readData(var.path_luutamthoi, 'Sheet1', 66, 2))
+#
+#     case_fail = str(var.readData(var.path_luutamthoi, 'Sheet1', 77, 2))
+#     case_pass = str(var.readData(var.path_luutamthoi, 'Sheet1', 87, 2))
+#
+#     thoigianbatdauchay = str(var.readData(var.path_luutamthoi , 'Sheet1', 47, 2))
+#
+#
+#     # if case_fail >= 1:
+#     time_string1 = time.strftime("%d/%m/%Y, ", time.localtime())
+#     time_string1 = str(time_string1)
+#     time_string2 = time.strftime("%H:%M", time.localtime())
+#     time_string2 = str(time_string2)
+#     print("- DateTest : "+time_string1+""+thoigianbatdauchay+" - "+time_string2+
+#                                               "\n- LinkTest: " + var.linktest+
+#                                               "\n- ModeTest: " + var.modetest+
+#                                               "\n- Số case Pass: " + case_pass+
+#                                               "\n- Số case False: "+ case_fail+
+#                                               "\n- Số case False nghiêm trọng: "+ mucnghiemtrong)
+#
+#
+#     if int(case_fail) >= 1 or int(tong_case_trong)>=1:
+#         print("đã vào telegram")
+#         driver2.get("https://web.telegram.org/a/")
+#         time.sleep(2)
+#         case_pass = str(case_pass)
+#         case_fail = str(case_fail)
+#         try:
+#             driver2.ele("//*[text()='OK']").click()
+#         except:
+#             pass
+#
+#         # if var.linktest[0:27] == "https://testgps2.binhanh.vn":
+#         if var.linktest[0:22] == "https://gps.binhanh.vn":
+#             driver2.ele(var.hopthoai).click()
+#         else:
+#             driver2.ele(var.hopthoai1).click()
+#         time.sleep(0.5)
+#         time_string1 = time.strftime("%d/%m/%Y, ", time.localtime())
+#         time_string1 = str(time_string1)
+#         time_string2 = time.strftime("%H:%M", time.localtime())
+#         time_string2 = str(time_string2)
+#         driver2.ele(var.hopthoai_input).input("- DateTest : "+time_string1+""+thoigianbatdauchay+" - "+time_string2+
+#                                                   "\n- LinkTest: " + var.linktest+
+#                                                   "\n- ModeTest: " + var.modetest+
+#                                                   "\n- Số case Pass: " + case_pass+
+#                                                   "\n- Số case False: "+ case_fail+
+#                                                   "\n- Số case False nghiêm trọng: "+ mucnghiemtrong)
+#         driver2.ele(var.hopthoai_input).input(Keys.ENTER)
+#         time.sleep(1)
+#         driver2.ele(var.hopthoai_iconlink).click()
+#         time.sleep(1)
+#         driver2.ele(var.hopthoai_iconlink_file).click()
+#         time.sleep(1)
+#         subprocess.Popen(var.uploadpath+"checklist_bagps.exe")
+#         time.sleep(1)
+#         driver2.ele(var.hopthoai_send).click()
+#         time.sleep(2)
+#         driver2.ele(var.hopthoai_iconlink).click()
+#         time.sleep(1)
+#         driver2.ele(var.hopthoai_iconlink_file).click()
+#         time.sleep(1)
+#         subprocess.Popen(var.uploadpath+"ba_log.exe")
+#         time.sleep(1)
+#         driver2.ele(var.hopthoai_send).click()
+#         time.sleep(1)
+#
+#         time.sleep(30)
+#         driver2.close()
+
 @retry(tries=2, delay=2, backoff=1, jitter=5, )
 def notification_telegram():
     from DrissionPage import ChromiumPage, ChromiumOptions
@@ -323,41 +418,70 @@ def notification_telegram():
                                               "\n- Số case False: "+ case_fail+
                                               "\n- Số case False nghiêm trọng: "+ mucnghiemtrong)
 
-
-    if int(case_fail) >= 1 or int(tong_case_trong)>=1:
-        print("đã vào telegram")
-        driver2.get("https://web.telegram.org/a/")
+    driver2.get("https://web.telegram.org/a/")
+    time.sleep(3)
+    try:
+        driver2.ele("//*[text()='OK']").click()
         time.sleep(2)
-        case_pass = str(case_pass)
-        case_fail = str(case_fail)
-        try:
-            driver2.ele("//*[text()='OK']").click()
-        except:
-            pass
+    except:
+        pass
 
-        # if var.linktest[0:27] == "https://testgps2.binhanh.vn":
-        if var.linktest[0:22] == "https://gps.binhanh.vn":
+    if var.linktest[0:22] == "https://gps.binhanh.vn":
+        if int(case_fail) >= 1:
             driver2.ele(var.hopthoai).click()
-        else:
-            driver2.ele(var.hopthoai1).click()
-        time.sleep(0.5)
+            time.sleep(1.5)
+            time_string1 = time.strftime("%d/%m/%Y, ", time.localtime())
+            time_string1 = str(time_string1)
+            time_string2 = time.strftime("%H:%M", time.localtime())
+            time_string2 = str(time_string2)
+            driver2.ele(var.hopthoai_input).input("- DateTest : "+time_string1+""+thoigianbatdauchay+" - "+time_string2+
+                                                      "\n- LinkTest: " + var.linktest+
+                                                      "\n- ModeTest: " + var.modetest+
+                                                      "\n- Số case Pass: " + case_pass+
+                                                      "\n- Số case False: "+ case_fail+
+                                                      "\n- Số case False nghiêm trọng: "+ mucnghiemtrong)
+            driver2.ele(var.hopthoai_input).input(Keys.ENTER)
+            time.sleep(1)
+            driver2.ele(var.hopthoai_iconlink).click()
+            time.sleep(1)
+            driver2.ele(var.hopthoai_iconlink_file).click()
+            time.sleep(1)
+            subprocess.Popen(var.uploadpath+"checklist_bagps.exe")
+            time.sleep(1)
+            driver2.ele(var.hopthoai_send).click()
+            time.sleep(2)
+            driver2.ele(var.hopthoai_iconlink).click()
+            time.sleep(1)
+            driver2.ele(var.hopthoai_iconlink_file).click()
+            time.sleep(1)
+            subprocess.Popen(var.uploadpath+"ba_log.exe")
+            time.sleep(1)
+            driver2.ele(var.hopthoai_send).click()
+            time.sleep(1)
+
+            time.sleep(30)
+            driver2.close()
+    else:
+        driver2.ele(var.hopthoai1).click()
+        time.sleep(1.5)
         time_string1 = time.strftime("%d/%m/%Y, ", time.localtime())
         time_string1 = str(time_string1)
         time_string2 = time.strftime("%H:%M", time.localtime())
         time_string2 = str(time_string2)
-        driver2.ele(var.hopthoai_input).input("- DateTest : "+time_string1+""+thoigianbatdauchay+" - "+time_string2+
-                                                  "\n- LinkTest: " + var.linktest+
-                                                  "\n- ModeTest: " + var.modetest+
-                                                  "\n- Số case Pass: " + case_pass+
-                                                  "\n- Số case False: "+ case_fail+
-                                                  "\n- Số case False nghiêm trọng: "+ mucnghiemtrong)
+        driver2.ele(var.hopthoai_input).input(
+            "- DateTest : " + time_string1 + "" + thoigianbatdauchay + " - " + time_string2 +
+            "\n- LinkTest: " + var.linktest +
+            "\n- ModeTest: " + var.modetest +
+            "\n- Số case Pass: " + case_pass +
+            "\n- Số case False: " + case_fail +
+            "\n- Số case False nghiêm trọng: " + mucnghiemtrong)
         driver2.ele(var.hopthoai_input).input(Keys.ENTER)
         time.sleep(1)
         driver2.ele(var.hopthoai_iconlink).click()
         time.sleep(1)
         driver2.ele(var.hopthoai_iconlink_file).click()
         time.sleep(1)
-        subprocess.Popen(var.uploadpath+"checklist_bagps.exe")
+        subprocess.Popen(var.uploadpath + "checklist_bagps.exe")
         time.sleep(1)
         driver2.ele(var.hopthoai_send).click()
         time.sleep(2)
@@ -365,13 +489,18 @@ def notification_telegram():
         time.sleep(1)
         driver2.ele(var.hopthoai_iconlink_file).click()
         time.sleep(1)
-        subprocess.Popen(var.uploadpath+"ba_log.exe")
+        subprocess.Popen(var.uploadpath + "ba_log.exe")
         time.sleep(1)
         driver2.ele(var.hopthoai_send).click()
-        time.sleep(1)
-
         time.sleep(30)
         driver2.close()
+
+
+
+
+
+
+
 
 
 
