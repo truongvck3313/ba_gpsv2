@@ -6072,9 +6072,10 @@ def retest_casefail(self):
 
 
 def retest_serious():
-    var.writeData_append(var.path_luutamthoi, "Sheet1", 90, 2, "")
-    var.writeData_append(var.path_luutamthoi, "Sheet1", 91, 2, 0)
-    var.writeData_append(var.path_luutamthoi, "Sheet1", 92, 2, "")
+    var.writeData(var.path_luutamthoi, "Sheet1", 90, 2, "")
+    var.writeData(var.path_luutamthoi, "Sheet1", 90, 3, "")
+    var.writeData(var.path_luutamthoi, "Sheet1", 91, 2, 0)
+    var.writeData(var.path_luutamthoi, "Sheet1", 92, 2, "")
 
     list_casefail = []
     grouped_by_casefail = defaultdict(list)  # Nhóm theo case_fail
@@ -6130,6 +6131,8 @@ def retest_serious():
                             f" -Kết quả thực tế: {item['actual_result']}\n"
                             f" -Trạng thái: {item['status']}\n"
                             f"---------------------------------------------------------\n")
+            var.writeData_append(var.path_luutamthoi, "Sheet1", 90, 3, f"{case_fail} {item['event_name']}, \n")
+
 
         # Ghi vào Excel
         var.writeData_append(var.path_luutamthoi, "Sheet1", 90, 2, f"{casefail_str}, ")  # Tên case_fail

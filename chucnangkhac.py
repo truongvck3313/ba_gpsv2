@@ -235,7 +235,7 @@ def call_telegram():
     var.writeData(var.path_luutamthoi, "Sheet1", 93, 2, "Đang check cuộc gọi")
     count = int(var.readData(var.path_luutamthoi, 'Sheet1', 91, 2))
     data = str(var.readData(var.path_luutamthoi, 'Sheet1', 92, 2))
-    cases = str(var.readData(var.path_luutamthoi, 'Sheet1', 90, 2))
+    cases = str(var.readData(var.path_luutamthoi, 'Sheet1', 90, 3))
 
 
     wordbook = openpyxl.load_workbook(var.checklistpath)
