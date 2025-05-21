@@ -1506,14 +1506,14 @@ class danhsachxe:
         time.sleep(1.5)
         print("n0.1")
         try:
-            var.driver.find_element(By.XPATH, "/html/body/div[22]//*[text()='Xem lại lộ trình ']")
+            var.driver.find_element(By.XPATH, "/html/body/div[24]//*[text()='Xem lại lộ trình ']")
             print("n0")
             n = 0
             while (n < 25):
                 n += 1
                 n = str(n)
-                pathcheck = "/html/body/div[22]/div[2]/div[2]/div[" + n + "]/div[2]"
-                pathcheck_button = "/html/body/div[22]/div[2]/div[2]/div[" + n + "]"
+                pathcheck = "/html/body/div[24]/div[2]/div[2]/div[" + n + "]/div[2]"
+                pathcheck_button = "/html/body/div[24]/div[2]/div[2]/div[" + n + "]"
                 try:
                     tenphuongtien = var.driver.find_element(By.XPATH, pathcheck).text
                     print("n1")
@@ -1537,8 +1537,8 @@ class danhsachxe:
             while (n < 25):
                 n += 1
                 n = str(n)
-                pathcheck1 = "/html/body/div[21]/div[2]/div[2]/div[" + n + "]/div[2]"
-                pathcheck1_button = "/html/body/div[21]/div[2]/div[2]/div[" + n + "]"
+                pathcheck1 = "/html/body/div[25]/div[2]/div[2]/div[" + n + "]/div[2]"
+                pathcheck1_button = "/html/body/div[25]/div[2]/div[2]/div[" + n + "]"
                 print("n4")
                 try:
                     tenphuongtien = var.driver.find_element(By.XPATH, pathcheck1).text
@@ -1577,13 +1577,13 @@ class danhsachxe:
         time.sleep(1)
 
         try:
-            var.driver.find_element(By.XPATH, "/html/body/div[22]//*[text()='Xem lại lộ trình ']")
+            var.driver.find_element(By.XPATH, "/html/body/div[24]//*[text()='Xem lại lộ trình ']")
             n = 0
             while (n < 25):
                 n += 1
                 n = str(n)
-                pathcheck = "/html/body/div[22]/div[2]/div[2]/div[" + n + "]/div[2]"
-                pathcheck_button = "/html/body/div[22]/div[2]/div[2]/div[" + n + "]"
+                pathcheck = "/html/body/div[24]/div[2]/div[2]/div[" + n + "]/div[2]"
+                pathcheck_button = "/html/body/div[24]/div[2]/div[2]/div[" + n + "]"
                 try:
                     tenphuongtien = var.driver.find_element(By.XPATH, pathcheck).text
                     print(tenphuongtien)
@@ -1605,8 +1605,8 @@ class danhsachxe:
             while (n < 25):
                 n += 1
                 n = str(n)
-                pathcheck1        = "/html/body/div[21]/div[2]/div[2]/div[" + n + "]/div[2]"
-                pathcheck_button1 = "/html/body/div[21]/div[2]/div[2]/div[" + n + "]"
+                pathcheck1        = "/html/body/div[25]/div[2]/div[2]/div[" + n + "]/div[2]"
+                pathcheck_button1 = "/html/body/div[25]/div[2]/div[2]/div[" + n + "]"
                 try:
                     tenphuongtien = var.driver.find_element(By.XPATH, pathcheck1).text
                     print("n1")
@@ -5075,12 +5075,12 @@ class chuotphaimap:
         time.sleep(1.5)
 
         try:
-            var.driver.find_element(By.XPATH, "/html/body/div[23]//*[text()='Phóng to']")
+            var.driver.find_element(By.XPATH, "/html/body/div[25]//*[text()='Phóng to']")
             n = 0
             while (n < 25):
                 n += 1
                 n = str(n)
-                pathcheck = "/html/body/div[23]/div[2]/div[2]/div[" + n + "]"
+                pathcheck = "/html/body/div[25]/div[2]/div[2]/div[" + n + "]"
                 try:
                     tenphuongtien = var.driver.find_element(By.XPATH, pathcheck).text
                     print(tenphuongtien)
@@ -5096,7 +5096,7 @@ class chuotphaimap:
             while (n < 25):
                 n += 1
                 n = str(n)
-                pathcheck1 = "/html/body/div[22]/div[2]/div[2]/div[" + n + "]"
+                pathcheck1 = "/html/body/div[24]/div[2]/div[2]/div[" + n + "]"
                 try:
                     tenphuongtien = var.driver.find_element(By.XPATH, pathcheck1).text
                     print(tenphuongtien)
@@ -5197,12 +5197,12 @@ class chuotphaimap:
 
 
         try:
-            var.driver.find_element(By.XPATH, "/html/body/div[23]//*[text()='Phóng to']")
+            var.driver.find_element(By.XPATH, "/html/body/div[25]//*[text()='Phóng to']")
             n = 0
             while (n < 25):
                 n += 1
                 n = str(n)
-                pathcheck = "/html/body/div[23]/div[2]/div[2]/div[" + n + "]"
+                pathcheck = "/html/body/div[25]/div[2]/div[2]/div[" + n + "]"
                 try:
                     tenphuongtien = var.driver.find_element(By.XPATH, pathcheck).text
                     print(tenphuongtien)
@@ -5218,7 +5218,7 @@ class chuotphaimap:
             while (n < 25):
                 n += 1
                 n = str(n)
-                pathcheck1 = "/html/body/div[22]/div[2]/div[2]/div[" + n + "]"
+                pathcheck1 = "/html/body/div[24]/div[2]/div[2]/div[" + n + "]"
                 try:
                     tenphuongtien = var.driver.find_element(By.XPATH, pathcheck1).text
                     print(tenphuongtien)
@@ -5434,12 +5434,12 @@ class chuotphaimap:
 
 
         try:
-            var.driver.find_element(By.XPATH, "/html/body/div[23]//*[text()='Phóng to']")
+            var.driver.find_element(By.XPATH, "/html/body/div[25]//*[text()='Phóng to']")
             n = 0
             while (n < 25):
                 n += 1
                 n = str(n)
-                pathcheck = "/html/body/div[23]/div[2]/div[2]/div[" + n + "]"
+                pathcheck = "/html/body/div[25]/div[2]/div[2]/div[" + n + "]"
                 try:
                     tenphuongtien = var.driver.find_element(By.XPATH, pathcheck).text
                     print(tenphuongtien)
@@ -5455,7 +5455,7 @@ class chuotphaimap:
             while (n < 25):
                 n += 1
                 n = str(n)
-                pathcheck1 = "/html/body/div[22]/div[2]/div[2]/div[" + n + "]"
+                pathcheck1 = "/html/body/div[24]/div[2]/div[2]/div[" + n + "]"
                 try:
                     tenphuongtien = var.driver.find_element(By.XPATH, pathcheck1).text
                     print(tenphuongtien)
@@ -5675,12 +5675,12 @@ class chuotphaimap:
 
 
         try:
-            var.driver.find_element(By.XPATH, "/html/body/div[23]//*[text()='Phóng to']")
+            var.driver.find_element(By.XPATH, "/html/body/div[25]//*[text()='Phóng to']")
             n = 0
             while (n < 25):
                 n += 1
                 n = str(n)
-                pathcheck = "/html/body/div[23]/div[2]/div[2]/div[" + n + "]"
+                pathcheck = "/html/body/div[25]/div[2]/div[2]/div[" + n + "]"
                 try:
                     tenphuongtien = var.driver.find_element(By.XPATH, pathcheck).text
                     print(tenphuongtien)
@@ -5696,7 +5696,7 @@ class chuotphaimap:
             while (n < 25):
                 n += 1
                 n = str(n)
-                pathcheck1 = "/html/body/div[22]/div[2]/div[2]/div[" + n + "]"
+                pathcheck1 = "/html/body/div[24]/div[2]/div[2]/div[" + n + "]"
                 try:
                     tenphuongtien = var.driver.find_element(By.XPATH, pathcheck1).text
                     print(tenphuongtien)
@@ -7113,12 +7113,12 @@ class chuotphaimap:
         time.sleep(1.5)
 
         try:
-            var.driver.find_element(By.XPATH, "/html/body/div[23]//*[text()='Phóng to']")
+            var.driver.find_element(By.XPATH, "/html/body/div[25]//*[text()='Phóng to']")
             n = 0
             while (n < 25):
                 n += 1
                 n = str(n)
-                pathcheck = "/html/body/div[23]/div[2]/div[2]/div[" + n + "]"
+                pathcheck = "/html/body/div[25]/div[2]/div[2]/div[" + n + "]"
                 try:
                     tenphuongtien = var.driver.find_element(By.XPATH, pathcheck).text
                     print(tenphuongtien)
@@ -7137,7 +7137,7 @@ class chuotphaimap:
             while (n < 25):
                 n += 1
                 n = str(n)
-                pathcheck1 = "/html/body/div[22]/div[2]/div[2]/div[" + n + "]"
+                pathcheck1 = "/html/body/div[24]/div[2]/div[2]/div[" + n + "]"
                 try:
                     tenphuongtien = var.driver.find_element(By.XPATH, pathcheck1).text
                     print(tenphuongtien)
