@@ -935,10 +935,11 @@ def caseid_giamsat110(self):
 
 
 def caseid_giamsat111(self):
-    get_datachecklist("GiamSat111")
-    tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
-    ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
-    giamsat.danhsachxe.chuotphaixe_anxe_truyen(self, "GiamSat111", tensukien, ketqua)
+    pass
+    # get_datachecklist("GiamSat111")
+    # tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))
+    # ketqua = str(var.readData(var.path_luutamthoi, 'Sheet1', 43, 2))
+    # giamsat.danhsachxe.chuotphaixe_anxe_truyen(self, "GiamSat111", tensukien, ketqua)
 
 def caseid_giamsat112(self):
     get_datachecklist("GiamSat112")

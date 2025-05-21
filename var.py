@@ -1366,10 +1366,10 @@ check_warn_passengers = "//*[@id='pabico_input']/tbody/tr[1]"
 warn_passengers_x = "//*[@id='pabico_input']//*[@src='/Images/s_icon_x.png']"
 move = "//*[@title='Di chuyển']"
 check_goto_company_970 = "//*[text()='970-970-XÍ  NGHIỆP SẢN XUẤT VÀ KINH DOANH VẬT LIỆU [970]']"
-
-
-
-
+capnhatxe_antrengiamsat1 = "//*[@class='tblDetailError']//*[text()='Ẩn trên giám sát']"
+capnhatxe_antrengiamsat_for = "//*[@id='radHideTracking']"
+tichtruyen = "//*[@class='confirm-body']//*[text()='Tích truyền']"
+warn_hide_vehicle = "//*[@title='Danh sách xe đang ẩn']"
 
 
 

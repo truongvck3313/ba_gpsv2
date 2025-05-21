@@ -2317,9 +2317,11 @@ class danhsachxe:
     def chuotphaixe_hientrang_goicuoc(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(4)
         try:
+            xoacanhbao()
             var.driver.find_element(By.XPATH, var.hientrang_goicuoc).click()
         except:
             danhsachxe.chuotphaixe_hientrang_thongtinxe(self, "", "", "")
+            xoacanhbao()
             var.driver.find_element(By.XPATH, var.hientrang_goicuoc).click()
 
         chucnangkhac.write_result_text_try_if(ma, tensukien, ketqua, "Giám sát - Danh sách xe - Chuột phải vào xe - Hiện trạng(Gói cước camera)",
@@ -2362,8 +2364,32 @@ class danhsachxe:
     def chuotphaixe_anxe(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(4)
         login.login.login_v2(self, var.data['login']['khongnhom_thuong_tk'], var.data['login']['khongnhom_thuong_mk'])
-        danhsachxe.danhsachxe_chuotphaixe_checkpopup(self, "Ẩn xe", var.check_chuotphaixe_anxe)
+        xoacanhbao()
+        var.driver.find_element(By.XPATH, var.warn_hide_vehicle).click()
+        time.sleep(2)
+        for i in range(10, -1, -1):
+            print(i)
+            var.driver.implicitly_wait(2)
+            i = str(i)
+            nguoithuchien = "//*[@class='errorTableContent']/tr[" + i + "]/td[7]"
+            icon_x = "//*[@class='errorTableContent']/tr[" + i + "]/td[10]/a/img"
 
+            try:
+                name_nguoithuchien = var.driver.find_element(By.XPATH, nguoithuchien).text
+                if name_nguoithuchien != "Trần Quang Trường PQA":
+                    var.driver.find_element(By.XPATH, icon_x).click()
+                    time.sleep(1.5)
+                    var.driver.find_element(By.XPATH, var.tichtruyen).click()
+                    time.sleep(1.5)
+                    print("đã bỏ ẩn phương tiện hàng: ", i)
+            except:
+                pass
+            i = int(i)
+
+        var.driver.refresh()
+        time.sleep(7)
+        xoacanhbao()
+        danhsachxe.danhsachxe_chuotphaixe_checkpopup(self, "Ẩn xe", var.check_chuotphaixe_anxe)
         chucnangkhac.write_result_text_try_if(ma, tensukien, ketqua, "Giám sát - Danh sách xe - Chuột phải vào xe - Ẩn xe",
                                               var.check_popup_anxe, "ẨN XE", "_ChuotPhaiXe_AnXe.png")
 
@@ -2581,12 +2607,16 @@ class danhsachxe:
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 13, ma + "_ChuotPhaiXe_AnXe_GhiChu.png")
 
         if var.driver.find_element(By.XPATH, var.capnhatxe_antrengiamsat).is_selected() == False:
-            var.driver.find_element(By.XPATH, var.capnhatxe_antrengiamsat).click()
+            # var.driver.find_element(By.XPATH, var.capnhatxe_antrengiamsat_for).click()
+            button = var.driver.find_element(By.XPATH, var.capnhatxe_antrengiamsat_for)
+            var.driver.execute_script("arguments[0].click();", button)
+
+        # var.driver.find_element(By.XPATH, var.capnhatxe_antrengiamsat1).click()
         time.sleep(0.5)
         # var.driver.find_element(By.XPATH, var.luuvadungtruyen).click()
         button = var.driver.find_element(By.XPATH, var.luuvadungtruyen)
         var.driver.execute_script("arguments[0].click();", button)
-        time.sleep(1.5)
+        time.sleep(3)
         xoacanhbao()
 
 
@@ -2598,6 +2628,11 @@ class danhsachxe:
         except:
             var.driver.find_element(By.XPATH, var.icon_danhsachxedangan).click()
             time.sleep(1.5)
+
+        var.driver.find_element(By.XPATH, var.icon_danhsachxedangan_nguyennhan).click()
+        time.sleep(0.5)
+        var.driver.find_element(By.XPATH, var.icon_danhsachxedangan_timkiem).click()
+        time.sleep(1)
 
         check_danhsachxedangan_trangthai = var.driver.find_element(By.XPATH, var.check_danhsachxedangan_trangthai).text
         logging.info("Giám sát - Danh sách xe - Chuột phải vào xe - Ẩn xe")
@@ -5716,7 +5751,7 @@ class chuotphaimap:
             chuotphaimap.timdiachi(self, data['giamsat']['timkiem_toado13'])
         var.driver.find_element(By.XPATH, var.close).click()
 
-        zoom_map("thu nhỏ", 10)
+        zoom_map("thu nhỏ", 11)
         time.sleep(2)
         xoacanhbao()
         del var.driver.requests

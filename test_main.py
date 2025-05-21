@@ -71,7 +71,7 @@ class Test(unittest.TestCase):
 # #         # caseid.caseid_giamsat199(self)
 # #         # caseid.sat202(self)
 # #         # caseid.caseid_giamsat203(self)
-# #         # caseid.caseid_giamsat104(self)
+#         caseid.caseid_giamsat104(self)
 # #
 #         try:
 #             caseid.caseid_giamsat85(self)
