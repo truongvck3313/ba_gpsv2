@@ -22,13 +22,10 @@ class Test(unittest.TestCase):
             chucnangkhac.clear_log()
             module_gpsv2.ModuleTest()
             module_gpsv2.retest_casenone(self)
-            module_gpsv2.retest_casenone(self)
             module_gpsv2.retest_casefail(self)
             module_gpsv2.retest_casefail(self)
-            try:
-                chucnangkhac.notification_telegram()
-            except:
-                pass
+            chucnangkhac.send_viber()
+
             print("đang chạy ngày thứ n: ", day)
             if day == 7:
                 chucnangkhac.clear_log()

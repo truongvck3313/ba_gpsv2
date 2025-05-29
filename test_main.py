@@ -51,11 +51,12 @@ class Test(unittest.TestCase):
         module_gpsv2.ModuleTest()
         module_gpsv2.retest_casenone(self)
         module_gpsv2.retest_casefail(self)
-        try:
-            chucnangkhac.notification_telegram()
-        except:
-            pass
-        chucnangkhac.call_telegram()
+        chucnangkhac.send_viber()
+
+
+        # chucnangkhac.call_telegram()
+
+
 
 
 
@@ -720,13 +721,13 @@ class Test(unittest.TestCase):
         # caseid.caseid_admin29(self)
         # caseid.caseid_admin30(self)
         # caseid.caseid_admin31(self)
-# # #         #
+
 # #         # #Phân quyền nhóm xe
 #         caseid.caseid_admin32(self)
 #         caseid.caseid_admin33(self)
 #         caseid.caseid_admin34(self)
 #         caseid.caseid_admin35(self)
-# # # #
+
 # # #         # danh sách người dùng
 #         caseid.caseid_user01(self)
 #         caseid.caseid_user02(self)
