@@ -971,16 +971,46 @@ class danhsachxe:
 
     def check_number_of_update_time(self, ma, tensukien, ketqua):
         var.driver.implicitly_wait(5)
-        login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
+        wordbook = openpyxl.load_workbook(var.checklistpath)
+        sheet = wordbook.get_sheet_by_name("Checklist")
+        rownum = 9
+        while (rownum < 3000):
+            rownum += 1
+            rownum = str(rownum)
+            if sheet["A"+rownum].value == ma:
+                ghichu = sheet["N"+rownum].value
+                ten_cty = re.search(r'Tên công ty:\s*"([^"]+)"', ghichu).group(1)
+                ma_xn = re.search(r'Mã XN:\s*"([^"]+)"', ghichu).group(1)
+                print(ma)
+                print(ghichu)
+                print(ten_cty)
+                print(ma_xn)
+                danhsachxe.goto_congty(self, ten_cty, ma_xn)
+            rownum = int(rownum)
+
+
+        # login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
+        # danhsachxe.goto_congty(self, "Công ty Cổ phần Vật Liệu Xây Dựng Thế Giới Nhà", "288")
+        time.sleep(5)
         var.writeData(var.path_luutamthoi, "Sheet1", 55, 4, "0")
         var.writeData(var.path_luutamthoi, "Sheet1", 56, 4, "0")
         var.writeData(var.path_luutamthoi, "Sheet1", 57, 4, "0")
         var.writeData(var.path_luutamthoi, "Sheet1", 58, 4, "0")
         var.writeData(var.path_luutamthoi, "Sheet1", 59, 4, "0")
 
-        # var.driver.find_element(By.XPATH, var.trangthai_dichuyen).click()
+        var.driver.find_element(By.XPATH, var.trangthai_dichuyen).click()
         time.sleep(2)
-        n = 1
+
+        number_move = var.driver.find_element(By.XPATH, var.trangthai_dichuyen_count).get_attribute("data-count")
+        print(f"Số lượng xe: {number_move}")
+        if int(number_move) < 5:
+            var.driver.refresh()
+            time.sleep(10)
+
+
+
+
+        n = 0
         m = 54
         while (n < 60):
             var.driver.implicitly_wait(2)
@@ -1032,9 +1062,15 @@ class danhsachxe:
                 actions = ActionChains(var.driver)
                 actions.double_click(button).perform()
             except:
-                var.driver.find_element(By.XPATH, "//*[@id='idClearOnline']//*[@vh_online='" + vehicle1 + "']").click()
-                time.sleep(0.5)
-                var.driver.find_element(By.XPATH, "//*[@id='idClearOnline']//*[@vh_online='" + vehicle1 + "']").click()
+                try:
+                    button = var.driver.find_element(By.XPATH, "//*[@id='idClearOnline']//*[@vh_online='" + vehicle1 + "']")
+                    actions = ActionChains(var.driver)
+                    actions.double_click(button).perform()
+                except:
+                    button = var.driver.find_element(By.XPATH, "//*[@id='idClearOnline']//*[@vh_online='" + vehicle1 + "']")
+                    actions = ActionChains(var.driver)
+                    actions.double_click(button).perform()
+
 
             time.sleep(2)
             n = 0
@@ -1065,9 +1101,14 @@ class danhsachxe:
                 actions = ActionChains(var.driver)
                 actions.double_click(button).perform()
             except:
-                var.driver.find_element(By.XPATH, "//*[@id='idClearOnline']//*[@vh_online='" + vehicle2 + "']]").click()
-                time.sleep(0.5)
-                var.driver.find_element(By.XPATH, "//*[@id='idClearOnline']//*[@vh_online='" + vehicle2 + "']").click()
+                try:
+                    button = var.driver.find_element(By.XPATH, "//*[@id='idClearOnline']//*[@vh_online='" + vehicle2 + "']")
+                    actions = ActionChains(var.driver)
+                    actions.double_click(button).perform()
+                except:
+                    button = var.driver.find_element(By.XPATH, "//*[@id='idClearOnline']//*[@vh_online='" + vehicle2 + "']")
+                    actions = ActionChains(var.driver)
+                    actions.double_click(button).perform()
 
             time.sleep(2)
             n = 0
@@ -1098,9 +1139,14 @@ class danhsachxe:
                 actions = ActionChains(var.driver)
                 actions.double_click(button).perform()
             except:
-                var.driver.find_element(By.XPATH, "//*[@id='idClearOnline']//*[@vh_online='" + vehicle3 + "']").click()
-                time.sleep(0.5)
-                var.driver.find_element(By.XPATH, "//*[@id='idClearOnline']//*[@vh_online='" + vehicle3 + "']").click()
+                try:
+                    button = var.driver.find_element(By.XPATH, "//*[@id='idClearOnline']//*[@vh_online='" + vehicle3 + "']")
+                    actions = ActionChains(var.driver)
+                    actions.double_click(button).perform()
+                except:
+                    button = var.driver.find_element(By.XPATH, "//*[@id='idClearOnline']//*[@vh_online='" + vehicle3 + "']")
+                    actions = ActionChains(var.driver)
+                    actions.double_click(button).perform()
 
             time.sleep(2)
             n = 0
@@ -1131,9 +1177,14 @@ class danhsachxe:
                 actions = ActionChains(var.driver)
                 actions.double_click(button).perform()
             except:
-                var.driver.find_element(By.XPATH, "//*[@id='idClearOnline']//*[@vh_online='" + vehicle4 + "']").click()
-                time.sleep(0.5)
-                var.driver.find_element(By.XPATH, "//*[@id='idClearOnline']//*[@vh_online='" + vehicle4 + "']").click()
+                try:
+                    button = var.driver.find_element(By.XPATH, "//*[@id='idClearOnline']//*[@vh_online='" + vehicle4 + "']")
+                    actions = ActionChains(var.driver)
+                    actions.double_click(button).perform()
+                except:
+                    button = var.driver.find_element(By.XPATH, "//*[@id='idClearOnline']//*[@vh_online='" + vehicle4 + "']")
+                    actions = ActionChains(var.driver)
+                    actions.double_click(button).perform()
 
             time.sleep(2)
             n = 0
@@ -1164,10 +1215,15 @@ class danhsachxe:
                 actions = ActionChains(var.driver)
                 actions.double_click(button).perform()
             except:
-                var.driver.find_element(By.XPATH, "//*[@id='idClearOnline']//*[@vh_online='" + vehicle5 + "']").click()
-                time.sleep(0.5)
-                var.driver.find_element(By.XPATH, "//*[@id='idClearOnline']//*[@vh_online='" + vehicle5 + "']").click()
+                try:
+                    button = var.driver.find_element(By.XPATH, "//*[@id='idClearOnline']//*[@vh_online='" + vehicle5 + "']")
+                    actions = ActionChains(var.driver)
+                    actions.double_click(button).perform()
 
+                except:
+                    button = var.driver.find_element(By.XPATH, "//*[@id='idClearOnline']//*[@vh_online='" + vehicle5 + "']")
+                    actions = ActionChains(var.driver)
+                    actions.double_click(button).perform()
 
             time.sleep(2)
             n = 0
@@ -1291,7 +1347,7 @@ class danhsachxe:
         logging.info("Mã - " + ma)
         logging.info("Tên sự kiện - " + tensukien)
         logging.info("Kết quả - " + ketqua)
-        if count_update >= 3:
+        if count_update >= 2:
             logging.info("True")
             chucnangkhac.writeData(var.checklistpath, "Checklist", ma, 7, "Pass")
 

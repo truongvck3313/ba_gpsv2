@@ -11,8 +11,9 @@ from retry import retry
 import module_gpsv2
 from playsound import playsound
 from gtts import gTTS
+import json
 import requests
-
+from requests.auth import HTTPBasicAuth
 
 def timerun():
     while True:
@@ -580,30 +581,47 @@ def check_user_id():
     print(res.json())
 
 
-def upload_to_catbox(file_path):
-    url = "https://catbox.moe/user/api.php"
-    files = {
-        'fileToUpload': open(file_path, 'rb')
-    }
-    data = {
-        'reqtype': 'fileupload'
-    }
+# def upload_to_catbox(file_path):
+#     url = "https://catbox.moe/user/api.php"
+#     files = {
+#         'fileToUpload': open(file_path, 'rb')
+#     }
+#     data = {
+#         'reqtype': 'fileupload'
+#     }
+#
+#     try:
+#         response = requests.post(url, files=files, data=data)
+#         response.raise_for_status()
+#     except requests.RequestException as e:
+#         print("❌ Lỗi upload:", e)
+#         return None
+#
+#     direct_link = response.text.strip()
+#     # Catbox trả về URL trực tiếp của file, vd: https://files.catbox.moe/abc123.png
+#     print(f"✅ Upload thành công! Link tải trực tiếp:\n{direct_link}")
+#     return direct_link
 
-    try:
-        response = requests.post(url, files=files, data=data)
-        response.raise_for_status()
-    except requests.RequestException as e:
-        print("❌ Lỗi upload:", e)
-        return None
 
-    direct_link = response.text.strip()
-    # Catbox trả về URL trực tiếp của file, vd: https://files.catbox.moe/abc123.png
-    print(f"✅ Upload thành công! Link tải trực tiếp:\n{direct_link}")
-    return direct_link
+def upload_pixeldrain_auth(filepath):
+    API_KEY = "c567bb13-f4c0-4aac-b9bd-c8add1e467fc"  # Thay bằng key thật
+
+    with open(filepath, "rb") as f:
+        res = requests.post(
+            "https://pixeldrain.com/api/file",
+            files={"file": f},
+            auth=HTTPBasicAuth('', API_KEY)
+        )
+        res_json = json.loads(res.text)
+        file_id = res_json["id"]
+        link_download = (f"https://pixeldrain.com/api/file/{file_id}")
+        print(link_download)
+        return link_download
+
 
 
 def send_gofile_link_via_viber(AUTH_TOKEN, FROM_USER_ID, file_path):
-    file_url = upload_to_catbox(file_path)
+    file_url = upload_pixeldrain_auth(file_path)
     if not file_url:
         print("⚠️ Không thể upload file. Hủy gửi.")
         return

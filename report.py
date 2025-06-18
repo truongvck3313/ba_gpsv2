@@ -1725,16 +1725,38 @@ class activity_report:      #Báo cáo hoạt động
         time.sleep(1)
 
         var.driver.find_element(By.XPATH, var.speed_input).clear()
+        time.sleep(0.5)
         var.driver.find_element(By.XPATH, var.speed_input).send_keys("60")
         time.sleep(1)
 
         button = var.driver.find_element(By.XPATH, var.report_search)
         var.driver.execute_script("arguments[0].click();", button)
         time.sleep(14)
+        try:
+            var.driver.find_element(By.XPATH, var.check_activity_synthesis_report_search1)
+        except:
+            var.driver.find_element(By.XPATH, var.fromdate_input).clear()
+            elm = var.driver.find_element(By.XPATH, var.fromdate_input)
+            var.driver.execute_script(JS_ADD_TEXT_TO_INPUT, elm, giamsat.data['baocao']['quatocdo_tungay'])
+            time.sleep(1)
+
+            var.driver.find_element(By.XPATH, var.todate_input).clear()
+            elm = var.driver.find_element(By.XPATH, var.todate_input)
+            var.driver.execute_script(JS_ADD_TEXT_TO_INPUT, elm, giamsat.data['baocao']['quatocdo_denngay'])
+            time.sleep(1)
+
+            var.driver.find_element(By.XPATH, var.speed_input).clear()
+            time.sleep(0.5)
+            var.driver.find_element(By.XPATH, var.speed_input).send_keys("60")
+            time.sleep(1)
+
+            button = var.driver.find_element(By.XPATH, var.report_search)
+            var.driver.execute_script("arguments[0].click();", button)
+            time.sleep(14)
+
         print("aaaa")
-        chucnangkhac.write_result_displayed_try(code, eventname, result,"Báo cáo quá tốc độ",
-                                                var.check_activity_synthesis_report_search,
-                                                "_BaoCaoDoanhNghiep_BaoCaoQuaTocDo_TimKiem.png")
+        chucnangkhac.write_result_text_try_if_other(code, eventname, result,"Báo cáo quá tốc độ", var.check_activity_synthesis_report_search1,
+                                                "", "_BaoCaoDoanhNghiep_BaoCaoQuaTocDo_TimKiem.png")
 
 
     def report_speed_over_downloadexcel(self, code, eventname, result):    #Báo cáo quá tốc độ -  checkdownload
@@ -1742,65 +1764,62 @@ class activity_report:      #Báo cáo hoạt động
         chucnangkhac.delete_excel()
 
         try:
-            # var.driver.find_element(By.XPATH, var.report_search).click()
-            var.driver.find_element(By.XPATH, var.check_report_search)
+            var.driver.find_element(By.XPATH, "//*[@id='ctl00_ctl00_MainContent_Content_ScrollPanel']/div/table/tbody/tr[3]/td[1]")
         except:
-            login.login.login_v2(self, var.data['login']['conhom_quantri_tk'], var.data['login']['conhom_quantri_mk'])
-            var.driver.find_element(By.XPATH, var.managerment_report).click()
-            time.sleep(4)
-            var.driver.find_element(By.XPATH, var.report_speed_over).click()
-            time.sleep(5)
-
-            write_from_date_month(var.fromdate_input)
-            button = var.driver.find_element(By.XPATH, var.report_search)
-            var.driver.execute_script("arguments[0].click();", button)
-            time.sleep(14)
-            print("n1")
+            activity_report.report_speed_over_search(self, "", "", "")
 
         try:
-            var.driver.find_element(By.XPATH, var.nodata).is_displayed()
-            print("n2")
-        except:
-            print("n3")
             var.driver.find_element(By.XPATH, var.downloadexcel).click()
             time.sleep(15)
             filename = max([var.excelpath + "\\" + f for f in os.listdir(var.excelpath)], key=os.path.getctime)
             shutil.move(filename, os.path.join(var.excelpath, r"baocaoquatocdo.xlsx"))
 
+            # Đọc check file excel
+            bangchucai = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
+            wordbook = openpyxl.load_workbook(var.excelpath + "/baocaoquatocdo.xlsx")
+            sheet = wordbook.get_sheet_by_name("Data")
+        except:
+            activity_report.report_speed_over_search(self, "", "", "")
+
+            var.driver.find_element(By.XPATH, var.downloadexcel).click()
+            time.sleep(25)
+            filename = max([var.excelpath + "\\" + f for f in os.listdir(var.excelpath)], key=os.path.getctime)
+            shutil.move(filename, os.path.join(var.excelpath, r"baocaoquatocdo.xlsx"))
+
             #Đọc check file excel
             bangchucai = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
-            wordbook = openpyxl.load_workbook(var.excelpath+"/baocaoquatocdo.xlsX")
+            wordbook = openpyxl.load_workbook(var.excelpath+"/baocaoquatocdo.xlsx")
             sheet = wordbook.get_sheet_by_name("Data")
 
-            report_speed_over_stt = var.driver.find_element(By.XPATH, var.report_speed_over_stt).text
-            report_speed_over_bienkiemsoat = var.driver.find_element(By.XPATH, var.report_speed_over_bienkiemsoat).text
-            report_speed_over_thoidiem = var.driver.find_element(By.XPATH, var.report_speed_over_thoidiem).text
-            report_speed_over_thoigian = var.driver.find_element(By.XPATH, var.report_speed_over_thoigian).text
-            report_speed_over_quangduong = var.driver.find_element(By.XPATH, var.report_speed_over_quangduong).text
-            report_speed_over_tocdocucdai = var.driver.find_element(By.XPATH, var.report_speed_over_tocdocucdai).text
-            report_speed_over_diadiembatdau = var.driver.find_element(By.XPATH, var.report_speed_over_diadiembatdau).text
-            report_speed_over_diadiemketthuc = var.driver.find_element(By.XPATH, var.report_speed_over_diadiemketthuc).text
-            report_speed_over_ghichu = var.driver.find_element(By.XPATH, var.report_speed_over_ghichu).text
-            report_speed_over_bando = var.driver.find_element(By.XPATH, var.report_speed_over_bando).text
+        report_speed_over_stt = var.driver.find_element(By.XPATH, var.report_speed_over_stt).text
+        report_speed_over_bienkiemsoat = var.driver.find_element(By.XPATH, var.report_speed_over_bienkiemsoat).text
+        report_speed_over_thoidiem = var.driver.find_element(By.XPATH, var.report_speed_over_thoidiem).text
+        report_speed_over_thoigian = var.driver.find_element(By.XPATH, var.report_speed_over_thoigian).text
+        report_speed_over_quangduong = var.driver.find_element(By.XPATH, var.report_speed_over_quangduong).text
+        report_speed_over_tocdocucdai = var.driver.find_element(By.XPATH, var.report_speed_over_tocdocucdai).text
+        report_speed_over_diadiembatdau = var.driver.find_element(By.XPATH, var.report_speed_over_diadiembatdau).text
+        report_speed_over_diadiemketthuc = var.driver.find_element(By.XPATH, var.report_speed_over_diadiemketthuc).text
+        report_speed_over_ghichu = var.driver.find_element(By.XPATH, var.report_speed_over_ghichu).text
+        report_speed_over_bando = var.driver.find_element(By.XPATH, var.report_speed_over_bando).text
 
 
-            logging.info("Báo cáo doanh nghiệp - Báo cáo quá tốc độ")
-            logging.info("Mã - " + code)
-            logging.info("Tên sự kiện - " + eventname)
-            logging.info("Kết quả - " + result)
-            for column in bangchucai:
-                print(sheet[column + "6"].value)
-                print(sheet[column + "6"])
-                chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "6", "A6", "STT", "A7", report_speed_over_stt)
-                chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "6", "B6", "Biển kiểm soát", "B7", report_speed_over_bienkiemsoat)
-                chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "6", "C6", "Thời điểm", "C7", report_speed_over_thoidiem)
-                chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "6", "D6", "Thời gian (s)", "D7", report_speed_over_thoigian)
-                chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "6", "E6", "Quãng đường (m)", "E7", report_speed_over_quangduong)
-                chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "6", "F6", "Tốc độ cực đại ≥", "F7", report_speed_over_tocdocucdai)
-                chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "6", "G6", "Địa điểm bắt đầu", "G7", report_speed_over_diadiembatdau)
-                chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "6", "H6", "Địa điểm kết thúc", "H7", report_speed_over_diadiemketthuc)
-                chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "6", "I6", "Ghi chú", "I7", report_speed_over_ghichu)
-            chucnangkhac.write_result_excel_checkweb(code, report_speed_over_bando, "Lộ trình")
+        logging.info("Báo cáo doanh nghiệp - Báo cáo quá tốc độ")
+        logging.info("Mã - " + code)
+        logging.info("Tên sự kiện - " + eventname)
+        logging.info("Kết quả - " + result)
+        for column in bangchucai:
+            print(sheet[column + "6"].value)
+            print(sheet[column + "6"])
+            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "6", "A6", "STT", "A7", report_speed_over_stt)
+            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "6", "B6", "Biển kiểm soát", "B7", report_speed_over_bienkiemsoat)
+            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "6", "C6", "Thời điểm", "C7", report_speed_over_thoidiem)
+            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "6", "D6", "Thời gian (s)", "D7", report_speed_over_thoigian)
+            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "6", "E6", "Quãng đường (m)", "E7", report_speed_over_quangduong)
+            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "6", "F6", "Tốc độ cực đại ≥", "F7", report_speed_over_tocdocucdai)
+            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "6", "G6", "Địa điểm bắt đầu", "G7", report_speed_over_diadiembatdau)
+            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "6", "H6", "Địa điểm kết thúc", "H7", report_speed_over_diadiemketthuc)
+            chucnangkhac.write_result_excelreport1(code, sheet, column, 'Data', "6", "I6", "Ghi chú", "I7", report_speed_over_ghichu)
+        chucnangkhac.write_result_excel_checkweb(code, report_speed_over_bando, "Lộ trình")
 
 
     def report_speed_over_hide_column(self, code, eventname, result):

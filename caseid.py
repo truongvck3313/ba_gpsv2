@@ -701,7 +701,7 @@ def caseid_giamsat80(self):
     giamsat.danhsachxe.check_onlinehandler_soluongxe(self, "GiamSat80", tensukien, ketqua)
 
 
-# @retry(tries=3, delay=2, backoff=1, jitter=5, )
+@retry(tries=3, delay=2, backoff=1, jitter=5, )
 def caseid_giamsat80_1(self):
     get_datachecklist("GiamSat80_1")
     tensukien = str(var.readData(var.path_luutamthoi, 'Sheet1', 42, 2))

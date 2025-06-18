@@ -1371,8 +1371,8 @@ capnhatxe_antrengiamsat1 = "//*[@class='tblDetailError']//*[text()='Ẩn trên g
 capnhatxe_antrengiamsat_for = "//*[@id='radHideTracking']"
 tichtruyen = "//*[@class='confirm-body']//*[text()='Tích truyền']"
 warn_hide_vehicle = "//*[@title='Danh sách xe đang ẩn']"
-
-
+check_activity_synthesis_report_search1 = "//*[@id='ctl00_ctl00_MainContent_Content_ScrollPanel']/div/table/tbody/tr[2]/td[2]"
+trangthai_dichuyen_count = "//*[@id='notification_3']"
 
 
 
